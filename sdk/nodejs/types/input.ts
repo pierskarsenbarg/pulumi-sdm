@@ -56,6 +56,84 @@ export interface AccountUser {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ApprovalWorkflowApprovalStep {
+    /**
+     * The approvers for this approval step
+     */
+    approvers: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStepApprover>[]>;
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: pulumi.Input<string>;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: pulumi.Input<string>;
+}
+
+export interface ApprovalWorkflowApprovalStepApprover {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    roleId?: pulumi.Input<string>;
+}
+
+export interface GetApprovalWorkflowApprovalStep {
+    /**
+     * The approvers for this approval step
+     */
+    approvers: inputs.GetApprovalWorkflowApprovalStepApprover[];
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: string;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: string;
+}
+
+export interface GetApprovalWorkflowApprovalStepArgs {
+    /**
+     * The approvers for this approval step
+     */
+    approvers: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepApproverArgs>[]>;
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: pulumi.Input<string>;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: pulumi.Input<string>;
+}
+
+export interface GetApprovalWorkflowApprovalStepApprover {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    accountId?: string;
+    /**
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    roleId?: string;
+}
+
+export interface GetApprovalWorkflowApprovalStepApproverArgs {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    roleId?: pulumi.Input<string>;
+}
+
 export interface NodeGateway {
     /**
      * The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -5123,6 +5201,61 @@ export interface ResourceRedis {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceRedisCluster {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface ResourceRedshift {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -5836,6 +5969,14 @@ export interface ResourceSshCustomerKey {
      */
     hostname: pulumi.Input<string>;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: pulumi.Input<string>;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -6142,6 +6283,172 @@ export interface ResourceTrino {
      * The username to authenticate with.
      */
     username?: pulumi.Input<string>;
+}
+
+export interface ResourceVertica {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface SecretEngineActiveDirectory {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: pulumi.Input<string>;
+    /**
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     */
+    binddn: pulumi.Input<string>;
+    /**
+     * Password to use along with binddn when performing user search.
+     */
+    bindpass: pulumi.Input<string>;
+    /**
+     * CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+     */
+    certificate?: pulumi.Input<string>;
+    /**
+     * Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+     */
+    connectionTimeout?: pulumi.Input<number>;
+    /**
+     * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+     */
+    doNotValidateTimestamps?: pulumi.Input<boolean>;
+    /**
+     * If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+     */
+    insecureTls?: pulumi.Input<boolean>;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+     */
+    maxBackoffDuration?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+     */
+    requestTimeout?: pulumi.Input<number>;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: pulumi.Input<string>;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: pulumi.Input<string>;
+    /**
+     * If true, issues a StartTLS command after establishing an unencrypted connection.
+     */
+    startTls?: pulumi.Input<boolean>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: pulumi.Input<string>;
+    /**
+     * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+     */
+    upndomain?: pulumi.Input<string>;
+    /**
+     * The LDAP server to connect to.
+     */
+    url: pulumi.Input<string>;
+    /**
+     * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+     * * key_value:
+     */
+    userdn?: pulumi.Input<string>;
+}
+
+export interface SecretEngineKeyValue {
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: pulumi.Input<string>;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface SecretStoreActiveDirectoryStore {

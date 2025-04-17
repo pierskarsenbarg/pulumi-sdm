@@ -167,6 +167,42 @@
                 }
             }
         },
+        "sdm:index/ApprovalWorkflowApprovalStep:ApprovalWorkflowApprovalStep": {
+            "properties": {
+                "approvers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ApprovalWorkflowApprovalStepApprover:ApprovalWorkflowApprovalStepApprover"
+                    },
+                    "description": "The approvers for this approval step\n"
+                },
+                "quantifier": {
+                    "type": "string",
+                    "description": "Whether any or all approvers are required to approve for this approval step (optional, defaults to any)\n"
+                },
+                "skipAfter": {
+                    "type": "string",
+                    "description": "Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "approvers"
+            ]
+        },
+        "sdm:index/ApprovalWorkflowApprovalStepApprover:ApprovalWorkflowApprovalStepApprover": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/NodeGateway:NodeGateway": {
             "properties": {
                 "bindAddress": {
@@ -7305,6 +7341,83 @@
                 }
             }
         },
+        "sdm:index/ResourceRedisCluster:ResourceRedisCluster": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceRedshift:ResourceRedshift": {
             "properties": {
                 "bindInterface": {
@@ -8280,6 +8393,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8722,6 +8843,241 @@
                         "name",
                         "portOverride",
                         "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceVertica:ResourceVertica": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "binddn": {
+                    "type": "string",
+                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                },
+                "bindpass": {
+                    "type": "string",
+                    "description": "Password to use along with binddn when performing user search.\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.\n"
+                },
+                "connectionTimeout": {
+                    "type": "integer",
+                    "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
+                },
+                "doNotValidateTimestamps": {
+                    "type": "boolean",
+                    "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                },
+                "insecureTls": {
+                    "type": "boolean",
+                    "description": "If true, skips LDAP server SSL certificate verification - insecure, use with caution!\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "maxBackoffDuration": {
+                    "type": "string",
+                    "description": "The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "requestTimeout": {
+                    "type": "integer",
+                    "description": "Timeout, in seconds, for the connection when making requests against the server before returning back an error.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "startTls": {
+                    "type": "boolean",
+                    "description": "If true, issues a StartTLS command after establishing an unencrypted connection.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "upndomain": {
+                    "type": "string",
+                    "description": "The domain (userPrincipalDomain) used to construct a UPN string for authentication.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The LDAP server to connect to.\n"
+                },
+                "userdn": {
+                    "type": "string",
+                    "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n* key_value:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "binddn",
+                "bindpass",
+                "name",
+                "secretStoreId",
+                "secretStoreRootPath",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "binddn",
+                        "bindpass",
+                        "name",
+                        "publicKey",
+                        "secretStoreId",
+                        "secretStoreRootPath",
+                        "url"
+                    ]
+                }
+            }
+        },
+        "sdm:index/SecretEngineKeyValue:SecretEngineKeyValue": {
+            "properties": {
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "secretStoreId",
+                "secretStoreRootPath"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "publicKey",
+                        "secretStoreId",
+                        "secretStoreRootPath"
                     ]
                 }
             }
@@ -9745,11 +10101,54 @@
             },
             "type": "object"
         },
+        "sdm:index/getApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalStep": {
+            "properties": {
+                "approvers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getApprovalWorkflowApprovalStepApprover:getApprovalWorkflowApprovalStepApprover"
+                    },
+                    "description": "The approvers for this approval step\n"
+                },
+                "quantifier": {
+                    "type": "string",
+                    "description": "Whether any or all approvers are required to approve for this approval step (optional, defaults to any)\n"
+                },
+                "skipAfter": {
+                    "type": "string",
+                    "description": "Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "approvers"
+            ]
+        },
+        "sdm:index/getApprovalWorkflowApprovalStepApprover:getApprovalWorkflowApprovalStepApprover": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getApprovalWorkflowApprovalWorkflow:getApprovalWorkflowApprovalWorkflow": {
             "properties": {
                 "approvalMode": {
                     "type": "string",
                     "description": "Approval mode of the ApprovalWorkflow\n"
+                },
+                "approvalSteps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getApprovalWorkflowApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalWorkflowApprovalStep"
+                    },
+                    "description": "The approval steps of this approval workflow\n"
                 },
                 "description": {
                     "type": "string",
@@ -9766,40 +10165,43 @@
             },
             "type": "object"
         },
-        "sdm:index/getApprovalWorkflowApproverApprovalWorkflowApprover:getApprovalWorkflowApproverApprovalWorkflowApprover": {
+        "sdm:index/getApprovalWorkflowApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalWorkflowApprovalStep": {
+            "properties": {
+                "approvers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getApprovalWorkflowApprovalWorkflowApprovalStepApprover:getApprovalWorkflowApprovalWorkflowApprovalStepApprover"
+                    },
+                    "description": "The approvers for this approval step\n"
+                },
+                "quantifier": {
+                    "type": "string",
+                    "description": "Whether any or all approvers are required to approve for this approval step (optional, defaults to any)\n"
+                },
+                "skipAfter": {
+                    "type": "string",
+                    "description": "Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "approvers"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getApprovalWorkflowApprovalWorkflowApprovalStepApprover:getApprovalWorkflowApprovalWorkflowApprovalStepApprover": {
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The approver account id.\n"
-                },
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workflow that this approver belongs to\n"
-                },
-                "approvalStepId": {
-                    "type": "string",
-                    "description": "The approval step id specified the approval flow step that this approver belongs to\n"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the ApprovalWorkflowApprover.\n"
+                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The approver role id\n"
-                }
-            },
-            "type": "object"
-        },
-        "sdm:index/getApprovalWorkflowStepApprovalWorkflowStep:getApprovalWorkflowStepApprovalWorkflowStep": {
-            "properties": {
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workfflow that this step belongs to\n"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the ApprovalWorkflowStep.\n"
+                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -9837,6 +10239,62 @@
                 }
             },
             "type": "object"
+        },
+        "sdm:index/getManagedSecretManagedSecret:getManagedSecretManagedSecret": {
+            "properties": {
+                "config": {
+                    "type": "string",
+                    "description": "public part of the secret value\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Timestamp of when secret is going to be rotated\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Managed Secret.\n"
+                },
+                "lastRotatedAt": {
+                    "type": "string",
+                    "description": "Timestamp of when secret was last rotated\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Managed Secret.\n"
+                },
+                "secretEngineId": {
+                    "type": "string",
+                    "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                },
+                "secretStorePath": {
+                    "type": "string",
+                    "description": "Path in a secret store.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Sensitive value of the secret.\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "config",
+                "expiresAt",
+                "lastRotatedAt",
+                "secretStorePath"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getNodeNode:getNodeNode": {
             "properties": {
@@ -10717,6 +11175,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceRedi:getResourceResourceRedi"
                     }
                 },
+                "redisClusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceRedisCluster:getResourceResourceRedisCluster"
+                    }
+                },
                 "redshiftIams": {
                     "type": "array",
                     "items": {
@@ -10818,6 +11282,12 @@
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceTrino:getResourceResourceTrino"
                     }
+                },
+                "verticas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceVertica:getResourceResourceVertica"
+                    }
                 }
             },
             "type": "object",
@@ -10906,6 +11376,7 @@
                 "rdpCerts",
                 "rdsPostgresIams",
                 "redis",
+                "redisClusters",
                 "redshifts",
                 "redshiftIams",
                 "redshiftServerlessIams",
@@ -10922,7 +11393,8 @@
                 "sybases",
                 "sybaseIqs",
                 "teradatas",
-                "trinos"
+                "trinos",
+                "verticas"
             ],
             "language": {
                 "nodejs": {
@@ -16720,6 +17192,71 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceRedisCluster:getResourceResourceRedisCluster": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceRedshift:getResourceResourceRedshift": {
             "properties": {
                 "bindInterface": {
@@ -17549,6 +18086,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -17913,6 +18458,71 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceVertica:getResourceResourceVertica": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getRoleRole:getRoleRole": {
             "properties": {
                 "accessRules": {
@@ -17942,6 +18552,176 @@
             "type": "object",
             "required": [
                 "managedBy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEngine:getSecretEngineSecretEngine": {
+            "properties": {
+                "activeDirectories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretEngineSecretEngineActiveDirectory:getSecretEngineSecretEngineActiveDirectory"
+                    }
+                },
+                "keyValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretEngineSecretEngineKeyValue:getSecretEngineSecretEngineKeyValue"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "activeDirectories",
+                "keyValues"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEngineActiveDirectory:getSecretEngineSecretEngineActiveDirectory": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "binddn": {
+                    "type": "string",
+                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                },
+                "bindpass": {
+                    "type": "string",
+                    "description": "Password to use along with binddn when performing user search.\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.\n"
+                },
+                "connectionTimeout": {
+                    "type": "integer",
+                    "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
+                },
+                "doNotValidateTimestamps": {
+                    "type": "boolean",
+                    "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Secret Engine.\n"
+                },
+                "insecureTls": {
+                    "type": "boolean",
+                    "description": "If true, skips LDAP server SSL certificate verification - insecure, use with caution!\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "maxBackoffDuration": {
+                    "type": "string",
+                    "description": "The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "requestTimeout": {
+                    "type": "integer",
+                    "description": "Timeout, in seconds, for the connection when making requests against the server before returning back an error.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "startTls": {
+                    "type": "boolean",
+                    "description": "If true, issues a StartTLS command after establishing an unencrypted connection.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "upndomain": {
+                    "type": "string",
+                    "description": "The domain (userPrincipalDomain) used to construct a UPN string for authentication.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The LDAP server to connect to.\n"
+                },
+                "userdn": {
+                    "type": "string",
+                    "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEngineKeyValue:getSecretEngineSecretEngineKeyValue": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Secret Engine.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
             ],
             "language": {
                 "nodejs": {
@@ -19143,6 +19923,13 @@
                     "type": "string",
                     "description": "Approval mode of the ApprovalWorkflow\n"
                 },
+                "approvalSteps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ApprovalWorkflowApprovalStep:ApprovalWorkflowApprovalStep"
+                    },
+                    "description": "The approval steps of this approval workflow\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Optional description of the ApprovalWorkflow.\n"
@@ -19160,6 +19947,13 @@
                 "approvalMode": {
                     "type": "string",
                     "description": "Approval mode of the ApprovalWorkflow\n"
+                },
+                "approvalSteps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ApprovalWorkflowApprovalStep:ApprovalWorkflowApprovalStep"
+                    },
+                    "description": "The approval steps of this approval workflow\n"
                 },
                 "description": {
                     "type": "string",
@@ -19180,6 +19974,13 @@
                         "type": "string",
                         "description": "Approval mode of the ApprovalWorkflow\n"
                     },
+                    "approvalSteps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/ApprovalWorkflowApprovalStep:ApprovalWorkflowApprovalStep"
+                        },
+                        "description": "The approval steps of this approval workflow\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "Optional description of the ApprovalWorkflow.\n"
@@ -19187,116 +19988,6 @@
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the ApprovalWorkflow.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover": {
-            "description": "ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowApproverAccountExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    approvalFlowId: \"af-6799234\",\n    approvalStepId: \"afs-2956266\",\n});\nconst approvalWorkflowApproverRoleExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", {\n    approvalFlowId: \"af-1935694\",\n    approvalStepId: \"afs-9245942\",\n    roleId: \"r-542982\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_approver_account_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    approval_flow_id=\"af-6799234\",\n    approval_step_id=\"afs-2956266\")\napproval_workflow_approver_role_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\",\n    approval_flow_id=\"af-1935694\",\n    approval_step_id=\"afs-9245942\",\n    role_id=\"r-542982\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowApproverAccountExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        ApprovalFlowId = \"af-6799234\",\n        ApprovalStepId = \"afs-2956266\",\n    });\n\n    var approvalWorkflowApproverRoleExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", new()\n    {\n        ApprovalFlowId = \"af-1935694\",\n        ApprovalStepId = \"afs-9245942\",\n        RoleId = \"r-542982\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverAccountExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tAccountId:      pulumi.String(\"a-234605\"),\n\t\t\tApprovalFlowId: pulumi.String(\"af-6799234\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-2956266\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverRoleExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-1935694\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-9245942\"),\n\t\t\tRoleId:         pulumi.String(\"r-542982\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowApprover;\nimport com.pulumi.sdm.ApprovalWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowApproverAccountExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", ApprovalWorkflowApproverArgs.builder()\n            .accountId(\"a-234605\")\n            .approvalFlowId(\"af-6799234\")\n            .approvalStepId(\"afs-2956266\")\n            .build());\n\n        var approvalWorkflowApproverRoleExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", ApprovalWorkflowApproverArgs.builder()\n            .approvalFlowId(\"af-1935694\")\n            .approvalStepId(\"afs-9245942\")\n            .roleId(\"r-542982\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowApproverAccountExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      accountId: a-234605\n      approvalFlowId: af-6799234\n      approvalStepId: afs-2956266\n  approvalWorkflowApproverRoleExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      approvalFlowId: af-1935694\n      approvalStepId: afs-9245942\n      roleId: r-542982\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover example afa-12345678\n```\n",
-            "properties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "The approver account id.\n"
-                },
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workflow that this approver belongs to\n"
-                },
-                "approvalStepId": {
-                    "type": "string",
-                    "description": "The approval step id specified the approval flow step that this approver belongs to\n"
-                },
-                "roleId": {
-                    "type": "string",
-                    "description": "The approver role id\n"
-                }
-            },
-            "required": [
-                "approvalFlowId",
-                "approvalStepId"
-            ],
-            "inputProperties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "The approver account id.\n",
-                    "willReplaceOnChanges": true
-                },
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workflow that this approver belongs to\n",
-                    "willReplaceOnChanges": true
-                },
-                "approvalStepId": {
-                    "type": "string",
-                    "description": "The approval step id specified the approval flow step that this approver belongs to\n",
-                    "willReplaceOnChanges": true
-                },
-                "roleId": {
-                    "type": "string",
-                    "description": "The approver role id\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "approvalFlowId",
-                "approvalStepId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering ApprovalWorkflowApprover resources.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "The approver account id.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workflow that this approver belongs to\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "approvalStepId": {
-                        "type": "string",
-                        "description": "The approval step id specified the approval flow step that this approver belongs to\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The approver role id\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep": {
-            "description": "ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowStepExample = new sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", {approvalFlowId: \"af-343865\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_step_example = sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", approval_flow_id=\"af-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowStepExample = new Sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", new()\n    {\n        ApprovalFlowId = \"af-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowStep(ctx, \"approvalWorkflowStepExample\", \u0026sdm.ApprovalWorkflowStepArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowStep;\nimport com.pulumi.sdm.ApprovalWorkflowStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowStepExample = new ApprovalWorkflowStep(\"approvalWorkflowStepExample\", ApprovalWorkflowStepArgs.builder()\n            .approvalFlowId(\"af-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowStepExample:\n    type: sdm:ApprovalWorkflowStep\n    properties:\n      approvalFlowId: af-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowStep can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowStep:ApprovalWorkflowStep example afs-12345678\n```\n",
-            "properties": {
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workfflow that this step belongs to\n"
-                }
-            },
-            "required": [
-                "approvalFlowId"
-            ],
-            "inputProperties": {
-                "approvalFlowId": {
-                    "type": "string",
-                    "description": "The approval flow id specified the approval workfflow that this step belongs to\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "approvalFlowId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering ApprovalWorkflowStep resources.\n",
-                "properties": {
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workfflow that this step belongs to\n",
-                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -19384,6 +20075,122 @@
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the IdentitySet.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/managedSecret:ManagedSecret": {
+            "description": "ManagedSecret contains details about managed secret\nThis resource can be imported using the import command.\n\n## Import\n\nA ManagedSecret can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/managedSecret:ManagedSecret example ms-12345678\n```\n",
+            "properties": {
+                "config": {
+                    "type": "string",
+                    "description": "public part of the secret value\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Timestamp of when secret is going to be rotated\n"
+                },
+                "lastRotatedAt": {
+                    "type": "string",
+                    "description": "Timestamp of when secret was last rotated\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Managed Secret.\n"
+                },
+                "secretEngineId": {
+                    "type": "string",
+                    "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                },
+                "secretStorePath": {
+                    "type": "string",
+                    "description": "Path in a secret store.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Sensitive value of the secret.\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "config",
+                "expiresAt",
+                "lastRotatedAt",
+                "name",
+                "secretEngineId",
+                "secretStorePath"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Managed Secret.\n"
+                },
+                "secretEngineId": {
+                    "type": "string",
+                    "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Sensitive value of the secret.\n",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "secretEngineId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ManagedSecret resources.\n",
+                "properties": {
+                    "config": {
+                        "type": "string",
+                        "description": "public part of the secret value\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Timestamp of when secret is going to be rotated\n"
+                    },
+                    "lastRotatedAt": {
+                        "type": "string",
+                        "description": "Timestamp of when secret was last rotated\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Managed Secret.\n"
+                    },
+                    "secretEngineId": {
+                        "type": "string",
+                        "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                    },
+                    "secretStorePath": {
+                        "type": "string",
+                        "description": "Path in a secret store.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key, value pairs.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Sensitive value of the secret.\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -19791,8 +20598,7 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
                 "amazonEsiam": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
-                    "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -20017,6 +20823,9 @@
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                 },
+                "redisCluster": {
+                    "$ref": "#/types/sdm:index/ResourceRedisCluster:ResourceRedisCluster"
+                },
                 "redshift": {
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                 },
@@ -20070,6 +20879,10 @@
                 "trino": {
                     "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
                     "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "vertica": {
+                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
+                    "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 }
             },
             "inputProperties": {
@@ -20105,8 +20918,7 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
                 "amazonEsiam": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
-                    "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -20331,6 +21143,9 @@
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                 },
+                "redisCluster": {
+                    "$ref": "#/types/sdm:index/ResourceRedisCluster:ResourceRedisCluster"
+                },
                 "redshift": {
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                 },
@@ -20384,6 +21199,10 @@
                 "trino": {
                     "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
                     "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "vertica": {
+                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
+                    "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 }
             },
             "stateInputs": {
@@ -20421,8 +21240,7 @@
                         "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                     },
                     "amazonEsiam": {
-                        "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
-                        "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                     },
                     "amazonmqAmqp091": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -20647,6 +21465,9 @@
                     "redis": {
                         "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                     },
+                    "redisCluster": {
+                        "$ref": "#/types/sdm:index/ResourceRedisCluster:ResourceRedisCluster"
+                    },
                     "redshift": {
                         "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                     },
@@ -20700,6 +21521,10 @@
                     "trino": {
                         "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
                         "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
+                    "vertica": {
+                        "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
+                        "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     }
                 },
                 "type": "object"
@@ -20771,6 +21596,43 @@
                             "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/secretEngine:SecretEngine": {
+            "description": "A SecretEngine is managing secrets in SecretStores.\nThis resource can be imported using the import command.\n\n## Import\n\nA SecretEngine can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/secretEngine:SecretEngine example eng-12345678\n```\n",
+            "properties": {
+                "activeDirectory": {
+                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
+                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "keyValue": {
+                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
+                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                }
+            },
+            "inputProperties": {
+                "activeDirectory": {
+                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
+                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "keyValue": {
+                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
+                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecretEngine resources.\n",
+                "properties": {
+                    "activeDirectory": {
+                        "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
+                        "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
+                    "keyValue": {
+                        "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
+                        "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     }
                 },
                 "type": "object"
@@ -21443,6 +22305,13 @@
                         "type": "string",
                         "description": "Approval mode of the ApprovalWorkflow\n"
                     },
+                    "approvalSteps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalStep"
+                        },
+                        "description": "The approval steps of this approval workflow\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "Optional description of the ApprovalWorkflow.\n"
@@ -21464,6 +22333,13 @@
                     "approvalMode": {
                         "type": "string",
                         "description": "Approval mode of the ApprovalWorkflow\n"
+                    },
+                    "approvalSteps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalStep"
+                        },
+                        "description": "The approval steps of this approval workflow\n"
                     },
                     "approvalWorkflows": {
                         "type": "array",
@@ -21495,128 +22371,6 @@
                 "type": "object",
                 "required": [
                     "approvalWorkflows",
-                    "ids"
-                ]
-            }
-        },
-        "sdm:index/getApprovalWorkflowApprover:getApprovalWorkflowApprover": {
-            "description": "ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst approvalWorkflowApproverAccountQuery = sdm.getApprovalWorkflowApprover({\n    accountId: \"a-234605\",\n    approvalFlowId: \"af-6799234\",\n    approvalStepId: \"afs-2956266\",\n});\nconst approvalWorkflowApproverRoleQuery = sdm.getApprovalWorkflowApprover({\n    approvalFlowId: \"af-1935694\",\n    approvalStepId: \"afs-9245942\",\n    roleId: \"r-542982\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\napproval_workflow_approver_account_query = sdm.get_approval_workflow_approver(account_id=\"a-234605\",\n    approval_flow_id=\"af-6799234\",\n    approval_step_id=\"afs-2956266\")\napproval_workflow_approver_role_query = sdm.get_approval_workflow_approver(approval_flow_id=\"af-1935694\",\n    approval_step_id=\"afs-9245942\",\n    role_id=\"r-542982\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowApproverAccountQuery = Sdm.GetApprovalWorkflowApprover.Invoke(new()\n    {\n        AccountId = \"a-234605\",\n        ApprovalFlowId = \"af-6799234\",\n        ApprovalStepId = \"afs-2956266\",\n    });\n\n    var approvalWorkflowApproverRoleQuery = Sdm.GetApprovalWorkflowApprover.Invoke(new()\n    {\n        ApprovalFlowId = \"af-1935694\",\n        ApprovalStepId = \"afs-9245942\",\n        RoleId = \"r-542982\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupApprovalWorkflowApprover(ctx, \u0026sdm.LookupApprovalWorkflowApproverArgs{\n\t\t\tAccountId:      pulumi.StringRef(\"a-234605\"),\n\t\t\tApprovalFlowId: pulumi.StringRef(\"af-6799234\"),\n\t\t\tApprovalStepId: pulumi.StringRef(\"afs-2956266\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupApprovalWorkflowApprover(ctx, \u0026sdm.LookupApprovalWorkflowApproverArgs{\n\t\t\tApprovalFlowId: pulumi.StringRef(\"af-1935694\"),\n\t\t\tApprovalStepId: pulumi.StringRef(\"afs-9245942\"),\n\t\t\tRoleId:         pulumi.StringRef(\"r-542982\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetApprovalWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var approvalWorkflowApproverAccountQuery = SdmFunctions.getApprovalWorkflowApprover(GetApprovalWorkflowApproverArgs.builder()\n            .accountId(\"a-234605\")\n            .approvalFlowId(\"af-6799234\")\n            .approvalStepId(\"afs-2956266\")\n            .build());\n\n        final var approvalWorkflowApproverRoleQuery = SdmFunctions.getApprovalWorkflowApprover(GetApprovalWorkflowApproverArgs.builder()\n            .approvalFlowId(\"af-1935694\")\n            .approvalStepId(\"afs-9245942\")\n            .roleId(\"r-542982\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  approvalWorkflowApproverAccountQuery:\n    fn::invoke:\n      function: sdm:getApprovalWorkflowApprover\n      arguments:\n        accountId: a-234605\n        approvalFlowId: af-6799234\n        approvalStepId: afs-2956266\n  approvalWorkflowApproverRoleQuery:\n    fn::invoke:\n      function: sdm:getApprovalWorkflowApprover\n      arguments:\n        approvalFlowId: af-1935694\n        approvalStepId: afs-9245942\n        roleId: r-542982\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getApprovalWorkflowApprover.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "The approver account id.\n"
-                    },
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workflow that this approver belongs to\n"
-                    },
-                    "approvalStepId": {
-                        "type": "string",
-                        "description": "The approval step id specified the approval flow step that this approver belongs to\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the ApprovalWorkflowApprover.\n"
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The approver role id\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getApprovalWorkflowApprover.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "The approver account id.\n"
-                    },
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workflow that this approver belongs to\n"
-                    },
-                    "approvalStepId": {
-                        "type": "string",
-                        "description": "The approval step id specified the approval flow step that this approver belongs to\n"
-                    },
-                    "approvalWorkflowApprovers": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/sdm:index/getApprovalWorkflowApproverApprovalWorkflowApprover:getApprovalWorkflowApproverApprovalWorkflowApprover"
-                        },
-                        "description": "A list where each element has the following attributes:\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the ApprovalWorkflowApprover.\n"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The approver role id\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "approvalWorkflowApprovers",
-                    "ids"
-                ]
-            }
-        },
-        "sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep": {
-            "description": "ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst approvalWorkflowStepQuery = sdm.getApprovalWorkflowStep({\n    approvalFlowId: \"af-7935485\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\napproval_workflow_step_query = sdm.get_approval_workflow_step(approval_flow_id=\"af-7935485\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowStepQuery = Sdm.GetApprovalWorkflowStep.Invoke(new()\n    {\n        ApprovalFlowId = \"af-7935485\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupApprovalWorkflowStep(ctx, \u0026sdm.LookupApprovalWorkflowStepArgs{\n\t\t\tApprovalFlowId: pulumi.StringRef(\"af-7935485\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetApprovalWorkflowStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var approvalWorkflowStepQuery = SdmFunctions.getApprovalWorkflowStep(GetApprovalWorkflowStepArgs.builder()\n            .approvalFlowId(\"af-7935485\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  approvalWorkflowStepQuery:\n    fn::invoke:\n      function: sdm:getApprovalWorkflowStep\n      arguments:\n        approvalFlowId: af-7935485\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getApprovalWorkflowStep.\n",
-                "properties": {
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workfflow that this step belongs to\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the ApprovalWorkflowStep.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getApprovalWorkflowStep.\n",
-                "properties": {
-                    "approvalFlowId": {
-                        "type": "string",
-                        "description": "The approval flow id specified the approval workfflow that this step belongs to\n"
-                    },
-                    "approvalWorkflowSteps": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/sdm:index/getApprovalWorkflowStepApprovalWorkflowStep:getApprovalWorkflowStepApprovalWorkflowStep"
-                        },
-                        "description": "A list where each element has the following attributes:\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the ApprovalWorkflowStep.\n"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "approvalWorkflowSteps",
                     "ids"
                 ]
             }
@@ -21732,6 +22486,107 @@
                 "required": [
                     "identitySets",
                     "ids"
+                ]
+            }
+        },
+        "sdm:index/getManagedSecret:getManagedSecret": {
+            "description": "ManagedSecret contains details about managed secret\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getManagedSecret.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Managed Secret.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Managed Secret.\n"
+                    },
+                    "secretEngineId": {
+                        "type": "string",
+                        "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key, value pairs.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Sensitive value of the secret.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getManagedSecret.\n",
+                "properties": {
+                    "config": {
+                        "type": "string",
+                        "description": "public part of the secret value\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Timestamp of when secret is going to be rotated\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Managed Secret.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "lastRotatedAt": {
+                        "type": "string",
+                        "description": "Timestamp of when secret was last rotated\n"
+                    },
+                    "managedSecrets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getManagedSecretManagedSecret:getManagedSecretManagedSecret"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Managed Secret.\n"
+                    },
+                    "secretEngineId": {
+                        "type": "string",
+                        "description": "An ID of a Secret Engine linked with the Managed Secret.\n"
+                    },
+                    "secretStorePath": {
+                        "type": "string",
+                        "description": "Path in a secret store.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key, value pairs.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Sensitive value of the secret.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "config",
+                    "expiresAt",
+                    "ids",
+                    "lastRotatedAt",
+                    "managedSecrets",
+                    "secretStorePath"
                 ]
             }
         },
@@ -22428,6 +23283,188 @@
                     "ids",
                     "managedBy",
                     "roles"
+                ]
+            }
+        },
+        "sdm:index/getSecretEngine:getSecretEngine": {
+            "description": "A SecretEngine is managing secrets in SecretStores.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSecretEngine.\n",
+                "properties": {
+                    "binddn": {
+                        "type": "string",
+                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                    },
+                    "bindpass": {
+                        "type": "string",
+                        "description": "Password to use along with binddn when performing user search.\n"
+                    },
+                    "certificate": {
+                        "type": "string",
+                        "description": "CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.\n"
+                    },
+                    "connectionTimeout": {
+                        "type": "integer",
+                        "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
+                    },
+                    "doNotValidateTimestamps": {
+                        "type": "boolean",
+                        "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Secret Engine.\n"
+                    },
+                    "insecureTls": {
+                        "type": "boolean",
+                        "description": "If true, skips LDAP server SSL certificate verification - insecure, use with caution!\n"
+                    },
+                    "keyRotationIntervalDays": {
+                        "type": "integer",
+                        "description": "An interval of public/private key rotation for secret engine in days\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Secret Engine.\n"
+                    },
+                    "requestTimeout": {
+                        "type": "integer",
+                        "description": "Timeout, in seconds, for the connection when making requests against the server before returning back an error.\n"
+                    },
+                    "secretStoreId": {
+                        "type": "string",
+                        "description": "Backing secret store identifier\n"
+                    },
+                    "secretStoreRootPath": {
+                        "type": "string",
+                        "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                    },
+                    "startTls": {
+                        "type": "boolean",
+                        "description": "If true, issues a StartTLS command after establishing an unencrypted connection.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key, value pairs.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                    },
+                    "upndomain": {
+                        "type": "string",
+                        "description": "The domain (userPrincipalDomain) used to construct a UPN string for authentication.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The LDAP server to connect to.\n"
+                    },
+                    "userdn": {
+                        "type": "string",
+                        "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSecretEngine.\n",
+                "properties": {
+                    "binddn": {
+                        "type": "string",
+                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                    },
+                    "bindpass": {
+                        "type": "string",
+                        "description": "Password to use along with binddn when performing user search.\n"
+                    },
+                    "certificate": {
+                        "type": "string",
+                        "description": "CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.\n"
+                    },
+                    "connectionTimeout": {
+                        "type": "integer",
+                        "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
+                    },
+                    "doNotValidateTimestamps": {
+                        "type": "boolean",
+                        "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Secret Engine.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "insecureTls": {
+                        "type": "boolean",
+                        "description": "If true, skips LDAP server SSL certificate verification - insecure, use with caution!\n"
+                    },
+                    "keyRotationIntervalDays": {
+                        "type": "integer",
+                        "description": "An interval of public/private key rotation for secret engine in days\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Secret Engine.\n"
+                    },
+                    "requestTimeout": {
+                        "type": "integer",
+                        "description": "Timeout, in seconds, for the connection when making requests against the server before returning back an error.\n"
+                    },
+                    "secretEngines": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getSecretEngineSecretEngine:getSecretEngineSecretEngine"
+                        },
+                        "description": "A single element list containing a map, where each key lists one of the following objects:\n* active_directory:\n"
+                    },
+                    "secretStoreId": {
+                        "type": "string",
+                        "description": "Backing secret store identifier\n"
+                    },
+                    "secretStoreRootPath": {
+                        "type": "string",
+                        "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                    },
+                    "startTls": {
+                        "type": "boolean",
+                        "description": "If true, issues a StartTLS command after establishing an unencrypted connection.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key, value pairs.\n"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "upndomain": {
+                        "type": "string",
+                        "description": "The domain (userPrincipalDomain) used to construct a UPN string for authentication.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The LDAP server to connect to.\n"
+                    },
+                    "userdn": {
+                        "type": "string",
+                        "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n* key_value:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "secretEngines"
                 ]
             }
         },

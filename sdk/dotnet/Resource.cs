@@ -55,9 +55,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEs")]
         public Output<Outputs.ResourceAmazonEs?> AmazonEs { get; private set; } = null!;
 
-        /// <summary>
-        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("amazonEsiam")]
         public Output<Outputs.ResourceAmazonEsiam?> AmazonEsiam { get; private set; } = null!;
 
@@ -292,6 +289,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("redis")]
         public Output<Outputs.ResourceRedis?> Redis { get; private set; } = null!;
 
+        [Output("redisCluster")]
+        public Output<Outputs.ResourceRedisCluster?> RedisCluster { get; private set; } = null!;
+
         [Output("redshift")]
         public Output<Outputs.ResourceRedshift?> Redshift { get; private set; } = null!;
 
@@ -351,6 +351,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Output("trino")]
         public Output<Outputs.ResourceTrino?> Trino { get; private set; } = null!;
+
+        /// <summary>
+        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vertica")]
+        public Output<Outputs.ResourceVertica?> Vertica { get; private set; } = null!;
 
 
         /// <summary>
@@ -432,9 +438,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEs")]
         public Input<Inputs.ResourceAmazonEsArgs>? AmazonEs { get; set; }
 
-        /// <summary>
-        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamArgs>? AmazonEsiam { get; set; }
 
@@ -669,6 +672,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("redis")]
         public Input<Inputs.ResourceRedisArgs>? Redis { get; set; }
 
+        [Input("redisCluster")]
+        public Input<Inputs.ResourceRedisClusterArgs>? RedisCluster { get; set; }
+
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftArgs>? Redshift { get; set; }
 
@@ -729,6 +735,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("trino")]
         public Input<Inputs.ResourceTrinoArgs>? Trino { get; set; }
 
+        /// <summary>
+        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vertica")]
+        public Input<Inputs.ResourceVerticaArgs>? Vertica { get; set; }
+
         public ResourceArgs()
         {
         }
@@ -770,9 +782,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEs")]
         public Input<Inputs.ResourceAmazonEsGetArgs>? AmazonEs { get; set; }
 
-        /// <summary>
-        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamGetArgs>? AmazonEsiam { get; set; }
 
@@ -1007,6 +1016,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("redis")]
         public Input<Inputs.ResourceRedisGetArgs>? Redis { get; set; }
 
+        [Input("redisCluster")]
+        public Input<Inputs.ResourceRedisClusterGetArgs>? RedisCluster { get; set; }
+
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftGetArgs>? Redshift { get; set; }
 
@@ -1066,6 +1078,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("trino")]
         public Input<Inputs.ResourceTrinoGetArgs>? Trino { get; set; }
+
+        /// <summary>
+        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vertica")]
+        public Input<Inputs.ResourceVerticaGetArgs>? Vertica { get; set; }
 
         public ResourceState()
         {

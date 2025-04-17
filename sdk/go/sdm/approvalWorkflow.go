@@ -61,6 +61,8 @@ type ApprovalWorkflow struct {
 
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode pulumi.StringOutput `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps ApprovalWorkflowApprovalStepArrayOutput `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique human-readable name of the ApprovalWorkflow.
@@ -102,6 +104,8 @@ func GetApprovalWorkflow(ctx *pulumi.Context,
 type approvalWorkflowState struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode *string `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps []ApprovalWorkflowApprovalStep `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description *string `pulumi:"description"`
 	// Unique human-readable name of the ApprovalWorkflow.
@@ -111,6 +115,8 @@ type approvalWorkflowState struct {
 type ApprovalWorkflowState struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode pulumi.StringPtrInput
+	// The approval steps of this approval workflow
+	ApprovalSteps ApprovalWorkflowApprovalStepArrayInput
 	// Optional description of the ApprovalWorkflow.
 	Description pulumi.StringPtrInput
 	// Unique human-readable name of the ApprovalWorkflow.
@@ -124,6 +130,8 @@ func (ApprovalWorkflowState) ElementType() reflect.Type {
 type approvalWorkflowArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode string `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps []ApprovalWorkflowApprovalStep `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description *string `pulumi:"description"`
 	// Unique human-readable name of the ApprovalWorkflow.
@@ -134,6 +142,8 @@ type approvalWorkflowArgs struct {
 type ApprovalWorkflowArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode pulumi.StringInput
+	// The approval steps of this approval workflow
+	ApprovalSteps ApprovalWorkflowApprovalStepArrayInput
 	// Optional description of the ApprovalWorkflow.
 	Description pulumi.StringPtrInput
 	// Unique human-readable name of the ApprovalWorkflow.
@@ -230,6 +240,11 @@ func (o ApprovalWorkflowOutput) ToApprovalWorkflowOutputWithContext(ctx context.
 // Approval mode of the ApprovalWorkflow
 func (o ApprovalWorkflowOutput) ApprovalMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApprovalWorkflow) pulumi.StringOutput { return v.ApprovalMode }).(pulumi.StringOutput)
+}
+
+// The approval steps of this approval workflow
+func (o ApprovalWorkflowOutput) ApprovalSteps() ApprovalWorkflowApprovalStepArrayOutput {
+	return o.ApplyT(func(v *ApprovalWorkflow) ApprovalWorkflowApprovalStepArrayOutput { return v.ApprovalSteps }).(ApprovalWorkflowApprovalStepArrayOutput)
 }
 
 // Optional description of the ApprovalWorkflow.

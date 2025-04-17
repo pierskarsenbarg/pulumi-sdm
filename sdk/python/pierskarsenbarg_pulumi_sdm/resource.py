@@ -106,6 +106,7 @@ class ResourceArgs:
                  rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
+                 redis_cluster: Optional[pulumi.Input['ResourceRedisClusterArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
                  redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
@@ -122,11 +123,11 @@ class ResourceArgs:
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
-                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
+                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None,
+                 vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAmazonEsiamArgs'] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -134,6 +135,7 @@ class ResourceArgs:
         :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -303,6 +305,8 @@ class ResourceArgs:
             pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+        if redis_cluster is not None:
+            pulumi.set(__self__, "redis_cluster", redis_cluster)
         if redshift is not None:
             pulumi.set(__self__, "redshift", redshift)
         if redshift_iam is not None:
@@ -337,6 +341,8 @@ class ResourceArgs:
             pulumi.set(__self__, "teradata", teradata)
         if trino is not None:
             pulumi.set(__self__, "trino", trino)
+        if vertica is not None:
+            pulumi.set(__self__, "vertica", vertica)
 
     @property
     @pulumi.getter
@@ -434,9 +440,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="amazonEsiam")
     def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
-        """
-        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazon_esiam")
 
     @amazon_esiam.setter
@@ -1113,6 +1116,15 @@ class ResourceArgs:
         pulumi.set(self, "redis", value)
 
     @property
+    @pulumi.getter(name="redisCluster")
+    def redis_cluster(self) -> Optional[pulumi.Input['ResourceRedisClusterArgs']]:
+        return pulumi.get(self, "redis_cluster")
+
+    @redis_cluster.setter
+    def redis_cluster(self, value: Optional[pulumi.Input['ResourceRedisClusterArgs']]):
+        pulumi.set(self, "redis_cluster", value)
+
+    @property
     @pulumi.getter
     def redshift(self) -> Optional[pulumi.Input['ResourceRedshiftArgs']]:
         return pulumi.get(self, "redshift")
@@ -1273,6 +1285,18 @@ class ResourceArgs:
     @trino.setter
     def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
         pulumi.set(self, "trino", value)
+
+    @property
+    @pulumi.getter
+    def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
+        """
+        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vertica")
+
+    @vertica.setter
+    def vertica(self, value: Optional[pulumi.Input['ResourceVerticaArgs']]):
+        pulumi.set(self, "vertica", value)
 
 
 @pulumi.input_type
@@ -1362,6 +1386,7 @@ class _ResourceState:
                  rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
+                 redis_cluster: Optional[pulumi.Input['ResourceRedisClusterArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
                  redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
@@ -1378,11 +1403,11 @@ class _ResourceState:
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
-                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
+                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None,
+                 vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAmazonEsiamArgs'] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1390,6 +1415,7 @@ class _ResourceState:
         :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -1559,6 +1585,8 @@ class _ResourceState:
             pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+        if redis_cluster is not None:
+            pulumi.set(__self__, "redis_cluster", redis_cluster)
         if redshift is not None:
             pulumi.set(__self__, "redshift", redshift)
         if redshift_iam is not None:
@@ -1593,6 +1621,8 @@ class _ResourceState:
             pulumi.set(__self__, "teradata", teradata)
         if trino is not None:
             pulumi.set(__self__, "trino", trino)
+        if vertica is not None:
+            pulumi.set(__self__, "vertica", vertica)
 
     @property
     @pulumi.getter
@@ -1690,9 +1720,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="amazonEsiam")
     def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
-        """
-        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazon_esiam")
 
     @amazon_esiam.setter
@@ -2369,6 +2396,15 @@ class _ResourceState:
         pulumi.set(self, "redis", value)
 
     @property
+    @pulumi.getter(name="redisCluster")
+    def redis_cluster(self) -> Optional[pulumi.Input['ResourceRedisClusterArgs']]:
+        return pulumi.get(self, "redis_cluster")
+
+    @redis_cluster.setter
+    def redis_cluster(self, value: Optional[pulumi.Input['ResourceRedisClusterArgs']]):
+        pulumi.set(self, "redis_cluster", value)
+
+    @property
     @pulumi.getter
     def redshift(self) -> Optional[pulumi.Input['ResourceRedshiftArgs']]:
         return pulumi.get(self, "redshift")
@@ -2529,6 +2565,18 @@ class _ResourceState:
     @trino.setter
     def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
         pulumi.set(self, "trino", value)
+
+    @property
+    @pulumi.getter
+    def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
+        """
+        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vertica")
+
+    @vertica.setter
+    def vertica(self, value: Optional[pulumi.Input['ResourceVerticaArgs']]):
+        pulumi.set(self, "vertica", value)
 
 
 class Resource(pulumi.CustomResource):
@@ -2620,6 +2668,7 @@ class Resource(pulumi.CustomResource):
                  rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
                  rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
                  redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+                 redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
                  redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
                  redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
                  redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
@@ -2637,6 +2686,7 @@ class Resource(pulumi.CustomResource):
                  sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
                  teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
                  trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+                 vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
                  __props__=None):
         """
         ## Import
@@ -2650,7 +2700,6 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2658,6 +2707,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -2773,6 +2823,7 @@ class Resource(pulumi.CustomResource):
                  rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
                  rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
                  redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+                 redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
                  redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
                  redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
                  redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
@@ -2790,6 +2841,7 @@ class Resource(pulumi.CustomResource):
                  sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
                  teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
                  trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+                 vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2883,6 +2935,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["rdp_cert"] = rdp_cert
             __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
             __props__.__dict__["redis"] = redis
+            __props__.__dict__["redis_cluster"] = redis_cluster
             __props__.__dict__["redshift"] = redshift
             __props__.__dict__["redshift_iam"] = redshift_iam
             __props__.__dict__["redshift_serverless_iam"] = redshift_serverless_iam
@@ -2900,6 +2953,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["sybase_iq"] = sybase_iq
             __props__.__dict__["teradata"] = teradata
             __props__.__dict__["trino"] = trino
+            __props__.__dict__["vertica"] = vertica
         super(Resource, __self__).__init__(
             'sdm:index/resource:Resource',
             resource_name,
@@ -2994,6 +3048,7 @@ class Resource(pulumi.CustomResource):
             rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
             rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
             redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+            redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
             redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
             redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
             redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
@@ -3010,7 +3065,8 @@ class Resource(pulumi.CustomResource):
             sybase: Optional[pulumi.Input[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
             sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
             teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
-            trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None) -> 'Resource':
+            trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+            vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3019,7 +3075,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3027,6 +3082,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3116,6 +3172,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["rdp_cert"] = rdp_cert
         __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
         __props__.__dict__["redis"] = redis
+        __props__.__dict__["redis_cluster"] = redis_cluster
         __props__.__dict__["redshift"] = redshift
         __props__.__dict__["redshift_iam"] = redshift_iam
         __props__.__dict__["redshift_serverless_iam"] = redshift_serverless_iam
@@ -3133,6 +3190,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["sybase_iq"] = sybase_iq
         __props__.__dict__["teradata"] = teradata
         __props__.__dict__["trino"] = trino
+        __props__.__dict__["vertica"] = vertica
         return Resource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -3191,9 +3249,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="amazonEsiam")
     def amazon_esiam(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEsiam']]:
-        """
-        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazon_esiam")
 
     @property
@@ -3574,6 +3629,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "redis")
 
     @property
+    @pulumi.getter(name="redisCluster")
+    def redis_cluster(self) -> pulumi.Output[Optional['outputs.ResourceRedisCluster']]:
+        return pulumi.get(self, "redis_cluster")
+
+    @property
     @pulumi.getter
     def redshift(self) -> pulumi.Output[Optional['outputs.ResourceRedshift']]:
         return pulumi.get(self, "redshift")
@@ -3666,4 +3726,12 @@ class Resource(pulumi.CustomResource):
         Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "trino")
+
+    @property
+    @pulumi.getter
+    def vertica(self) -> pulumi.Output[Optional['outputs.ResourceVertica']]:
+        """
+        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vertica")
 

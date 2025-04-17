@@ -56,6 +56,32 @@ export interface AccountUser {
     tags?: {[key: string]: string};
 }
 
+export interface ApprovalWorkflowApprovalStep {
+    /**
+     * The approvers for this approval step
+     */
+    approvers: outputs.ApprovalWorkflowApprovalStepApprover[];
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: string;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: string;
+}
+
+export interface ApprovalWorkflowApprovalStepApprover {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    accountId?: string;
+    /**
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    roleId?: string;
+}
+
 export interface GetAccountAccount {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
@@ -183,11 +209,41 @@ export interface GetAccountAttachmentAccountAttachment {
     roleId?: string;
 }
 
+export interface GetApprovalWorkflowApprovalStep {
+    /**
+     * The approvers for this approval step
+     */
+    approvers: outputs.GetApprovalWorkflowApprovalStepApprover[];
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: string;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: string;
+}
+
+export interface GetApprovalWorkflowApprovalStepApprover {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    accountId?: string;
+    /**
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     */
+    roleId?: string;
+}
+
 export interface GetApprovalWorkflowApprovalWorkflow {
     /**
      * Approval mode of the ApprovalWorkflow
      */
     approvalMode?: string;
+    /**
+     * The approval steps of this approval workflow
+     */
+    approvalSteps?: outputs.GetApprovalWorkflowApprovalWorkflowApprovalStep[];
     /**
      * Optional description of the ApprovalWorkflow.
      */
@@ -202,38 +258,30 @@ export interface GetApprovalWorkflowApprovalWorkflow {
     name?: string;
 }
 
-export interface GetApprovalWorkflowApproverApprovalWorkflowApprover {
+export interface GetApprovalWorkflowApprovalWorkflowApprovalStep {
     /**
-     * The approver account id.
+     * The approvers for this approval step
+     */
+    approvers: outputs.GetApprovalWorkflowApprovalWorkflowApprovalStepApprover[];
+    /**
+     * Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+     */
+    quantifier?: string;
+    /**
+     * Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+     */
+    skipAfter?: string;
+}
+
+export interface GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
+    /**
+     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
      */
     accountId?: string;
     /**
-     * The approval flow id specified the approval workflow that this approver belongs to
-     */
-    approvalFlowId?: string;
-    /**
-     * The approval step id specified the approval flow step that this approver belongs to
-     */
-    approvalStepId?: string;
-    /**
-     * Unique identifier of the ApprovalWorkflowApprover.
-     */
-    id?: string;
-    /**
-     * The approver role id
+     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
      */
     roleId?: string;
-}
-
-export interface GetApprovalWorkflowStepApprovalWorkflowStep {
-    /**
-     * The approval flow id specified the approval workfflow that this step belongs to
-     */
-    approvalFlowId?: string;
-    /**
-     * Unique identifier of the ApprovalWorkflowStep.
-     */
-    id?: string;
 }
 
 export interface GetIdentityAliasIdentityAlias {
@@ -264,6 +312,45 @@ export interface GetIdentitySetIdentitySet {
      * Unique human-readable name of the IdentitySet.
      */
     name?: string;
+}
+
+export interface GetManagedSecretManagedSecret {
+    /**
+     * public part of the secret value
+     */
+    config: string;
+    /**
+     * Timestamp of when secret is going to be rotated
+     */
+    expiresAt: string;
+    /**
+     * Unique identifier of the Managed Secret.
+     */
+    id?: string;
+    /**
+     * Timestamp of when secret was last rotated
+     */
+    lastRotatedAt: string;
+    /**
+     * Unique human-readable name of the Managed Secret.
+     */
+    name?: string;
+    /**
+     * An ID of a Secret Engine linked with the Managed Secret.
+     */
+    secretEngineId?: string;
+    /**
+     * Path in a secret store.
+     */
+    secretStorePath: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Sensitive value of the secret.
+     */
+    value?: string;
 }
 
 export interface GetNodeNode {
@@ -598,6 +685,7 @@ export interface GetResourceResource {
     rdps: outputs.GetResourceResourceRdp[];
     rdsPostgresIams: outputs.GetResourceResourceRdsPostgresIam[];
     redis: outputs.GetResourceResourceRedi[];
+    redisClusters: outputs.GetResourceResourceRedisCluster[];
     redshiftIams: outputs.GetResourceResourceRedshiftIam[];
     redshiftServerlessIams: outputs.GetResourceResourceRedshiftServerlessIam[];
     redshifts: outputs.GetResourceResourceRedshift[];
@@ -615,6 +703,7 @@ export interface GetResourceResource {
     sybases: outputs.GetResourceResourceSybase[];
     teradatas: outputs.GetResourceResourceTeradata[];
     trinos: outputs.GetResourceResourceTrino[];
+    verticas: outputs.GetResourceResourceVertica[];
 }
 
 export interface GetResourceResourceAk {
@@ -5914,6 +6003,65 @@ export interface GetResourceResourceRedi {
     username?: string;
 }
 
+export interface GetResourceResourceRedisCluster {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface GetResourceResourceRedshift {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -6675,6 +6823,14 @@ export interface GetResourceResourceSshCustomerKey {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -7003,6 +7159,65 @@ export interface GetResourceResourceTrino {
     username?: string;
 }
 
+export interface GetResourceResourceVertica {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface GetRoleRole {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
@@ -7020,6 +7235,129 @@ export interface GetRoleRole {
      * Unique human-readable name of the Role.
      */
     name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretEngineSecretEngine {
+    activeDirectories: outputs.GetSecretEngineSecretEngineActiveDirectory[];
+    keyValues: outputs.GetSecretEngineSecretEngineKeyValue[];
+}
+
+export interface GetSecretEngineSecretEngineActiveDirectory {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     */
+    binddn?: string;
+    /**
+     * Password to use along with binddn when performing user search.
+     */
+    bindpass?: string;
+    /**
+     * CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+     */
+    certificate?: string;
+    /**
+     * Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+     */
+    connectionTimeout?: number;
+    /**
+     * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+     */
+    doNotValidateTimestamps?: boolean;
+    /**
+     * Unique identifier of the Secret Engine.
+     */
+    id?: string;
+    /**
+     * If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+     */
+    insecureTls?: boolean;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+     */
+    maxBackoffDuration?: string;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name?: string;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+     */
+    requestTimeout?: number;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId?: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath?: string;
+    /**
+     * If true, issues a StartTLS command after establishing an unencrypted connection.
+     */
+    startTls?: boolean;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+     */
+    upndomain?: string;
+    /**
+     * The LDAP server to connect to.
+     */
+    url?: string;
+    /**
+     * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+     */
+    userdn?: string;
+}
+
+export interface GetSecretEngineSecretEngineKeyValue {
+    /**
+     * Unique identifier of the Secret Engine.
+     */
+    id?: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name?: string;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId?: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -12887,6 +13225,61 @@ export interface ResourceRedis {
     username?: string;
 }
 
+export interface ResourceRedisCluster {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface ResourceRedshift {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -13600,6 +13993,14 @@ export interface ResourceSshCustomerKey {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -13906,6 +14307,172 @@ export interface ResourceTrino {
      * The username to authenticate with.
      */
     username?: string;
+}
+
+export interface ResourceVertica {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface SecretEngineActiveDirectory {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     */
+    binddn: string;
+    /**
+     * Password to use along with binddn when performing user search.
+     */
+    bindpass: string;
+    /**
+     * CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+     */
+    certificate?: string;
+    /**
+     * Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+     */
+    connectionTimeout?: number;
+    /**
+     * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+     */
+    doNotValidateTimestamps?: boolean;
+    /**
+     * If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+     */
+    insecureTls?: boolean;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+     */
+    maxBackoffDuration?: string;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: string;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+     */
+    requestTimeout?: number;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: string;
+    /**
+     * If true, issues a StartTLS command after establishing an unencrypted connection.
+     */
+    startTls?: boolean;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+     */
+    upndomain?: string;
+    /**
+     * The LDAP server to connect to.
+     */
+    url: string;
+    /**
+     * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+     * * key_value:
+     */
+    userdn?: string;
+}
+
+export interface SecretEngineKeyValue {
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: string;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
 }
 
 export interface SecretStoreActiveDirectoryStore {

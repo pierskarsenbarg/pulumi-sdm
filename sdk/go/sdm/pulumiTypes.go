@@ -473,6 +473,227 @@ func (o AccountUserPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ApprovalWorkflowApprovalStep struct {
+	// The approvers for this approval step
+	Approvers []ApprovalWorkflowApprovalStepApprover `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier *string `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter *string `pulumi:"skipAfter"`
+}
+
+// ApprovalWorkflowApprovalStepInput is an input type that accepts ApprovalWorkflowApprovalStepArgs and ApprovalWorkflowApprovalStepOutput values.
+// You can construct a concrete instance of `ApprovalWorkflowApprovalStepInput` via:
+//
+//	ApprovalWorkflowApprovalStepArgs{...}
+type ApprovalWorkflowApprovalStepInput interface {
+	pulumi.Input
+
+	ToApprovalWorkflowApprovalStepOutput() ApprovalWorkflowApprovalStepOutput
+	ToApprovalWorkflowApprovalStepOutputWithContext(context.Context) ApprovalWorkflowApprovalStepOutput
+}
+
+type ApprovalWorkflowApprovalStepArgs struct {
+	// The approvers for this approval step
+	Approvers ApprovalWorkflowApprovalStepApproverArrayInput `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier pulumi.StringPtrInput `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter pulumi.StringPtrInput `pulumi:"skipAfter"`
+}
+
+func (ApprovalWorkflowApprovalStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i ApprovalWorkflowApprovalStepArgs) ToApprovalWorkflowApprovalStepOutput() ApprovalWorkflowApprovalStepOutput {
+	return i.ToApprovalWorkflowApprovalStepOutputWithContext(context.Background())
+}
+
+func (i ApprovalWorkflowApprovalStepArgs) ToApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalWorkflowApprovalStepOutput)
+}
+
+// ApprovalWorkflowApprovalStepArrayInput is an input type that accepts ApprovalWorkflowApprovalStepArray and ApprovalWorkflowApprovalStepArrayOutput values.
+// You can construct a concrete instance of `ApprovalWorkflowApprovalStepArrayInput` via:
+//
+//	ApprovalWorkflowApprovalStepArray{ ApprovalWorkflowApprovalStepArgs{...} }
+type ApprovalWorkflowApprovalStepArrayInput interface {
+	pulumi.Input
+
+	ToApprovalWorkflowApprovalStepArrayOutput() ApprovalWorkflowApprovalStepArrayOutput
+	ToApprovalWorkflowApprovalStepArrayOutputWithContext(context.Context) ApprovalWorkflowApprovalStepArrayOutput
+}
+
+type ApprovalWorkflowApprovalStepArray []ApprovalWorkflowApprovalStepInput
+
+func (ApprovalWorkflowApprovalStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i ApprovalWorkflowApprovalStepArray) ToApprovalWorkflowApprovalStepArrayOutput() ApprovalWorkflowApprovalStepArrayOutput {
+	return i.ToApprovalWorkflowApprovalStepArrayOutputWithContext(context.Background())
+}
+
+func (i ApprovalWorkflowApprovalStepArray) ToApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalWorkflowApprovalStepArrayOutput)
+}
+
+type ApprovalWorkflowApprovalStepOutput struct{ *pulumi.OutputState }
+
+func (ApprovalWorkflowApprovalStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o ApprovalWorkflowApprovalStepOutput) ToApprovalWorkflowApprovalStepOutput() ApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepOutput) ToApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+// The approvers for this approval step
+func (o ApprovalWorkflowApprovalStepOutput) Approvers() ApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStep) []ApprovalWorkflowApprovalStepApprover { return v.Approvers }).(ApprovalWorkflowApprovalStepApproverArrayOutput)
+}
+
+// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+func (o ApprovalWorkflowApprovalStepOutput) Quantifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStep) *string { return v.Quantifier }).(pulumi.StringPtrOutput)
+}
+
+// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+func (o ApprovalWorkflowApprovalStepOutput) SkipAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStep) *string { return v.SkipAfter }).(pulumi.StringPtrOutput)
+}
+
+type ApprovalWorkflowApprovalStepArrayOutput struct{ *pulumi.OutputState }
+
+func (ApprovalWorkflowApprovalStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o ApprovalWorkflowApprovalStepArrayOutput) ToApprovalWorkflowApprovalStepArrayOutput() ApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepArrayOutput) ToApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepArrayOutput) Index(i pulumi.IntInput) ApprovalWorkflowApprovalStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApprovalWorkflowApprovalStep {
+		return vs[0].([]ApprovalWorkflowApprovalStep)[vs[1].(int)]
+	}).(ApprovalWorkflowApprovalStepOutput)
+}
+
+type ApprovalWorkflowApprovalStepApprover struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	AccountId *string `pulumi:"accountId"`
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	RoleId *string `pulumi:"roleId"`
+}
+
+// ApprovalWorkflowApprovalStepApproverInput is an input type that accepts ApprovalWorkflowApprovalStepApproverArgs and ApprovalWorkflowApprovalStepApproverOutput values.
+// You can construct a concrete instance of `ApprovalWorkflowApprovalStepApproverInput` via:
+//
+//	ApprovalWorkflowApprovalStepApproverArgs{...}
+type ApprovalWorkflowApprovalStepApproverInput interface {
+	pulumi.Input
+
+	ToApprovalWorkflowApprovalStepApproverOutput() ApprovalWorkflowApprovalStepApproverOutput
+	ToApprovalWorkflowApprovalStepApproverOutputWithContext(context.Context) ApprovalWorkflowApprovalStepApproverOutput
+}
+
+type ApprovalWorkflowApprovalStepApproverArgs struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+}
+
+func (ApprovalWorkflowApprovalStepApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (i ApprovalWorkflowApprovalStepApproverArgs) ToApprovalWorkflowApprovalStepApproverOutput() ApprovalWorkflowApprovalStepApproverOutput {
+	return i.ToApprovalWorkflowApprovalStepApproverOutputWithContext(context.Background())
+}
+
+func (i ApprovalWorkflowApprovalStepApproverArgs) ToApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalWorkflowApprovalStepApproverOutput)
+}
+
+// ApprovalWorkflowApprovalStepApproverArrayInput is an input type that accepts ApprovalWorkflowApprovalStepApproverArray and ApprovalWorkflowApprovalStepApproverArrayOutput values.
+// You can construct a concrete instance of `ApprovalWorkflowApprovalStepApproverArrayInput` via:
+//
+//	ApprovalWorkflowApprovalStepApproverArray{ ApprovalWorkflowApprovalStepApproverArgs{...} }
+type ApprovalWorkflowApprovalStepApproverArrayInput interface {
+	pulumi.Input
+
+	ToApprovalWorkflowApprovalStepApproverArrayOutput() ApprovalWorkflowApprovalStepApproverArrayOutput
+	ToApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Context) ApprovalWorkflowApprovalStepApproverArrayOutput
+}
+
+type ApprovalWorkflowApprovalStepApproverArray []ApprovalWorkflowApprovalStepApproverInput
+
+func (ApprovalWorkflowApprovalStepApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (i ApprovalWorkflowApprovalStepApproverArray) ToApprovalWorkflowApprovalStepApproverArrayOutput() ApprovalWorkflowApprovalStepApproverArrayOutput {
+	return i.ToApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Background())
+}
+
+func (i ApprovalWorkflowApprovalStepApproverArray) ToApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApprovalWorkflowApprovalStepApproverArrayOutput)
+}
+
+type ApprovalWorkflowApprovalStepApproverOutput struct{ *pulumi.OutputState }
+
+func (ApprovalWorkflowApprovalStepApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (o ApprovalWorkflowApprovalStepApproverOutput) ToApprovalWorkflowApprovalStepApproverOutput() ApprovalWorkflowApprovalStepApproverOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepApproverOutput) ToApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepApproverOutput {
+	return o
+}
+
+// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o ApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o ApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+type ApprovalWorkflowApprovalStepApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (ApprovalWorkflowApprovalStepApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (o ApprovalWorkflowApprovalStepApproverArrayOutput) ToApprovalWorkflowApprovalStepApproverArrayOutput() ApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepApproverArrayOutput) ToApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) ApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o ApprovalWorkflowApprovalStepApproverArrayOutput) Index(i pulumi.IntInput) ApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApprovalWorkflowApprovalStepApprover {
+		return vs[0].([]ApprovalWorkflowApprovalStepApprover)[vs[1].(int)]
+	}).(ApprovalWorkflowApprovalStepApproverOutput)
+}
+
 type NodeGateway struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress *string `pulumi:"bindAddress"`
@@ -33807,6 +34028,371 @@ func (o ResourceRedisPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceRedisCluster struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceRedisClusterInput is an input type that accepts ResourceRedisClusterArgs and ResourceRedisClusterOutput values.
+// You can construct a concrete instance of `ResourceRedisClusterInput` via:
+//
+//	ResourceRedisClusterArgs{...}
+type ResourceRedisClusterInput interface {
+	pulumi.Input
+
+	ToResourceRedisClusterOutput() ResourceRedisClusterOutput
+	ToResourceRedisClusterOutputWithContext(context.Context) ResourceRedisClusterOutput
+}
+
+type ResourceRedisClusterArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceRedisClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedisCluster)(nil)).Elem()
+}
+
+func (i ResourceRedisClusterArgs) ToResourceRedisClusterOutput() ResourceRedisClusterOutput {
+	return i.ToResourceRedisClusterOutputWithContext(context.Background())
+}
+
+func (i ResourceRedisClusterArgs) ToResourceRedisClusterOutputWithContext(ctx context.Context) ResourceRedisClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedisClusterOutput)
+}
+
+func (i ResourceRedisClusterArgs) ToResourceRedisClusterPtrOutput() ResourceRedisClusterPtrOutput {
+	return i.ToResourceRedisClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRedisClusterArgs) ToResourceRedisClusterPtrOutputWithContext(ctx context.Context) ResourceRedisClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedisClusterOutput).ToResourceRedisClusterPtrOutputWithContext(ctx)
+}
+
+// ResourceRedisClusterPtrInput is an input type that accepts ResourceRedisClusterArgs, ResourceRedisClusterPtr and ResourceRedisClusterPtrOutput values.
+// You can construct a concrete instance of `ResourceRedisClusterPtrInput` via:
+//
+//	        ResourceRedisClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRedisClusterPtrInput interface {
+	pulumi.Input
+
+	ToResourceRedisClusterPtrOutput() ResourceRedisClusterPtrOutput
+	ToResourceRedisClusterPtrOutputWithContext(context.Context) ResourceRedisClusterPtrOutput
+}
+
+type resourceRedisClusterPtrType ResourceRedisClusterArgs
+
+func ResourceRedisClusterPtr(v *ResourceRedisClusterArgs) ResourceRedisClusterPtrInput {
+	return (*resourceRedisClusterPtrType)(v)
+}
+
+func (*resourceRedisClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedisCluster)(nil)).Elem()
+}
+
+func (i *resourceRedisClusterPtrType) ToResourceRedisClusterPtrOutput() ResourceRedisClusterPtrOutput {
+	return i.ToResourceRedisClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRedisClusterPtrType) ToResourceRedisClusterPtrOutputWithContext(ctx context.Context) ResourceRedisClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedisClusterPtrOutput)
+}
+
+type ResourceRedisClusterOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedisClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedisCluster)(nil)).Elem()
+}
+
+func (o ResourceRedisClusterOutput) ToResourceRedisClusterOutput() ResourceRedisClusterOutput {
+	return o
+}
+
+func (o ResourceRedisClusterOutput) ToResourceRedisClusterOutputWithContext(ctx context.Context) ResourceRedisClusterOutput {
+	return o
+}
+
+func (o ResourceRedisClusterOutput) ToResourceRedisClusterPtrOutput() ResourceRedisClusterPtrOutput {
+	return o.ToResourceRedisClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRedisClusterOutput) ToResourceRedisClusterPtrOutputWithContext(ctx context.Context) ResourceRedisClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRedisCluster) *ResourceRedisCluster {
+		return &v
+	}).(ResourceRedisClusterPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedisClusterOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedisClusterOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedisClusterOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedisClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceRedisClusterOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedisClusterOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedisClusterOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedisClusterOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedisClusterOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedisClusterOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedisClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceRedisClusterOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRedisClusterOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedisCluster) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceRedisClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedisClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedisCluster)(nil)).Elem()
+}
+
+func (o ResourceRedisClusterPtrOutput) ToResourceRedisClusterPtrOutput() ResourceRedisClusterPtrOutput {
+	return o
+}
+
+func (o ResourceRedisClusterPtrOutput) ToResourceRedisClusterPtrOutputWithContext(ctx context.Context) ResourceRedisClusterPtrOutput {
+	return o
+}
+
+func (o ResourceRedisClusterPtrOutput) Elem() ResourceRedisClusterOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) ResourceRedisCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRedisCluster
+		return ret
+	}).(ResourceRedisClusterOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedisClusterPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedisClusterPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedisClusterPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedisClusterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceRedisClusterPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedisClusterPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedisClusterPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedisClusterPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedisClusterPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedisClusterPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedisClusterPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceRedisClusterPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRedisClusterPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedisCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceRedshift struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -38257,6 +38843,10 @@ type ResourceSshCustomerKey struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -38299,6 +38889,10 @@ type ResourceSshCustomerKeyArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -38418,6 +39012,16 @@ func (o ResourceSshCustomerKeyOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSshCustomerKey) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceSshCustomerKeyOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceSshCustomerKeyOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceSshCustomerKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSshCustomerKey) string { return v.Name }).(pulumi.StringOutput)
@@ -38529,6 +39133,26 @@ func (o ResourceSshCustomerKeyPtrOutput) Hostname() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceSshCustomerKeyPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceSshCustomerKeyPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40417,6 +41041,1105 @@ func (o ResourceTrinoPtrOutput) Username() pulumi.StringPtrOutput {
 		}
 		return v.Username
 	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceVertica struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceVerticaInput is an input type that accepts ResourceVerticaArgs and ResourceVerticaOutput values.
+// You can construct a concrete instance of `ResourceVerticaInput` via:
+//
+//	ResourceVerticaArgs{...}
+type ResourceVerticaInput interface {
+	pulumi.Input
+
+	ToResourceVerticaOutput() ResourceVerticaOutput
+	ToResourceVerticaOutputWithContext(context.Context) ResourceVerticaOutput
+}
+
+type ResourceVerticaArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceVerticaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceVertica)(nil)).Elem()
+}
+
+func (i ResourceVerticaArgs) ToResourceVerticaOutput() ResourceVerticaOutput {
+	return i.ToResourceVerticaOutputWithContext(context.Background())
+}
+
+func (i ResourceVerticaArgs) ToResourceVerticaOutputWithContext(ctx context.Context) ResourceVerticaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceVerticaOutput)
+}
+
+func (i ResourceVerticaArgs) ToResourceVerticaPtrOutput() ResourceVerticaPtrOutput {
+	return i.ToResourceVerticaPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceVerticaArgs) ToResourceVerticaPtrOutputWithContext(ctx context.Context) ResourceVerticaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceVerticaOutput).ToResourceVerticaPtrOutputWithContext(ctx)
+}
+
+// ResourceVerticaPtrInput is an input type that accepts ResourceVerticaArgs, ResourceVerticaPtr and ResourceVerticaPtrOutput values.
+// You can construct a concrete instance of `ResourceVerticaPtrInput` via:
+//
+//	        ResourceVerticaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceVerticaPtrInput interface {
+	pulumi.Input
+
+	ToResourceVerticaPtrOutput() ResourceVerticaPtrOutput
+	ToResourceVerticaPtrOutputWithContext(context.Context) ResourceVerticaPtrOutput
+}
+
+type resourceVerticaPtrType ResourceVerticaArgs
+
+func ResourceVerticaPtr(v *ResourceVerticaArgs) ResourceVerticaPtrInput {
+	return (*resourceVerticaPtrType)(v)
+}
+
+func (*resourceVerticaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceVertica)(nil)).Elem()
+}
+
+func (i *resourceVerticaPtrType) ToResourceVerticaPtrOutput() ResourceVerticaPtrOutput {
+	return i.ToResourceVerticaPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceVerticaPtrType) ToResourceVerticaPtrOutputWithContext(ctx context.Context) ResourceVerticaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceVerticaPtrOutput)
+}
+
+type ResourceVerticaOutput struct{ *pulumi.OutputState }
+
+func (ResourceVerticaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceVertica)(nil)).Elem()
+}
+
+func (o ResourceVerticaOutput) ToResourceVerticaOutput() ResourceVerticaOutput {
+	return o
+}
+
+func (o ResourceVerticaOutput) ToResourceVerticaOutputWithContext(ctx context.Context) ResourceVerticaOutput {
+	return o
+}
+
+func (o ResourceVerticaOutput) ToResourceVerticaPtrOutput() ResourceVerticaPtrOutput {
+	return o.ToResourceVerticaPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceVerticaOutput) ToResourceVerticaPtrOutputWithContext(ctx context.Context) ResourceVerticaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceVertica) *ResourceVertica {
+		return &v
+	}).(ResourceVerticaPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceVerticaOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceVerticaOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceVertica) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceVerticaOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceVerticaOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceVertica) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceVerticaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceVertica) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceVerticaOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceVerticaOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceVerticaOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceVerticaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceVerticaOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceVerticaOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceVerticaOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceVertica) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceVerticaOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceVertica) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceVerticaPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceVerticaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceVertica)(nil)).Elem()
+}
+
+func (o ResourceVerticaPtrOutput) ToResourceVerticaPtrOutput() ResourceVerticaPtrOutput {
+	return o
+}
+
+func (o ResourceVerticaPtrOutput) ToResourceVerticaPtrOutputWithContext(ctx context.Context) ResourceVerticaPtrOutput {
+	return o
+}
+
+func (o ResourceVerticaPtrOutput) Elem() ResourceVerticaOutput {
+	return o.ApplyT(func(v *ResourceVertica) ResourceVertica {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceVertica
+		return ret
+	}).(ResourceVerticaOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceVerticaPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceVerticaPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceVerticaPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceVerticaPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceVerticaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceVerticaPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceVerticaPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceVerticaPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceVerticaPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceVerticaPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceVerticaPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceVerticaPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceVertica) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceVerticaPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceVertica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretEngineActiveDirectory struct {
+	// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+	AfterReadTtl *string `pulumi:"afterReadTtl"`
+	// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+	Binddn string `pulumi:"binddn"`
+	// Password to use along with binddn when performing user search.
+	Bindpass string `pulumi:"bindpass"`
+	// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+	Certificate *string `pulumi:"certificate"`
+	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+	ConnectionTimeout *int `pulumi:"connectionTimeout"`
+	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+	DoNotValidateTimestamps *bool `pulumi:"doNotValidateTimestamps"`
+	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+	InsecureTls *bool `pulumi:"insecureTls"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+	MaxBackoffDuration *string `pulumi:"maxBackoffDuration"`
+	// Unique human-readable name of the Secret Engine.
+	Name string `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey *string `pulumi:"publicKey"`
+	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+	RequestTimeout *int `pulumi:"requestTimeout"`
+	// Backing secret store identifier
+	SecretStoreId string `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath string `pulumi:"secretStoreRootPath"`
+	// If true, issues a StartTLS command after establishing an unencrypted connection.
+	StartTls *bool `pulumi:"startTls"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+	Ttl *string `pulumi:"ttl"`
+	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+	Upndomain *string `pulumi:"upndomain"`
+	// The LDAP server to connect to.
+	Url string `pulumi:"url"`
+	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+	// * key_value:
+	Userdn *string `pulumi:"userdn"`
+}
+
+// SecretEngineActiveDirectoryInput is an input type that accepts SecretEngineActiveDirectoryArgs and SecretEngineActiveDirectoryOutput values.
+// You can construct a concrete instance of `SecretEngineActiveDirectoryInput` via:
+//
+//	SecretEngineActiveDirectoryArgs{...}
+type SecretEngineActiveDirectoryInput interface {
+	pulumi.Input
+
+	ToSecretEngineActiveDirectoryOutput() SecretEngineActiveDirectoryOutput
+	ToSecretEngineActiveDirectoryOutputWithContext(context.Context) SecretEngineActiveDirectoryOutput
+}
+
+type SecretEngineActiveDirectoryArgs struct {
+	// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+	AfterReadTtl pulumi.StringPtrInput `pulumi:"afterReadTtl"`
+	// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+	Binddn pulumi.StringInput `pulumi:"binddn"`
+	// Password to use along with binddn when performing user search.
+	Bindpass pulumi.StringInput `pulumi:"bindpass"`
+	// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+	ConnectionTimeout pulumi.IntPtrInput `pulumi:"connectionTimeout"`
+	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+	DoNotValidateTimestamps pulumi.BoolPtrInput `pulumi:"doNotValidateTimestamps"`
+	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+	InsecureTls pulumi.BoolPtrInput `pulumi:"insecureTls"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
+	// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+	MaxBackoffDuration pulumi.StringPtrInput `pulumi:"maxBackoffDuration"`
+	// Unique human-readable name of the Secret Engine.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+	RequestTimeout pulumi.IntPtrInput `pulumi:"requestTimeout"`
+	// Backing secret store identifier
+	SecretStoreId pulumi.StringInput `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath pulumi.StringInput `pulumi:"secretStoreRootPath"`
+	// If true, issues a StartTLS command after establishing an unencrypted connection.
+	StartTls pulumi.BoolPtrInput `pulumi:"startTls"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+	Upndomain pulumi.StringPtrInput `pulumi:"upndomain"`
+	// The LDAP server to connect to.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+	// * key_value:
+	Userdn pulumi.StringPtrInput `pulumi:"userdn"`
+}
+
+func (SecretEngineActiveDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (i SecretEngineActiveDirectoryArgs) ToSecretEngineActiveDirectoryOutput() SecretEngineActiveDirectoryOutput {
+	return i.ToSecretEngineActiveDirectoryOutputWithContext(context.Background())
+}
+
+func (i SecretEngineActiveDirectoryArgs) ToSecretEngineActiveDirectoryOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineActiveDirectoryOutput)
+}
+
+func (i SecretEngineActiveDirectoryArgs) ToSecretEngineActiveDirectoryPtrOutput() SecretEngineActiveDirectoryPtrOutput {
+	return i.ToSecretEngineActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i SecretEngineActiveDirectoryArgs) ToSecretEngineActiveDirectoryPtrOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineActiveDirectoryOutput).ToSecretEngineActiveDirectoryPtrOutputWithContext(ctx)
+}
+
+// SecretEngineActiveDirectoryPtrInput is an input type that accepts SecretEngineActiveDirectoryArgs, SecretEngineActiveDirectoryPtr and SecretEngineActiveDirectoryPtrOutput values.
+// You can construct a concrete instance of `SecretEngineActiveDirectoryPtrInput` via:
+//
+//	        SecretEngineActiveDirectoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretEngineActiveDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToSecretEngineActiveDirectoryPtrOutput() SecretEngineActiveDirectoryPtrOutput
+	ToSecretEngineActiveDirectoryPtrOutputWithContext(context.Context) SecretEngineActiveDirectoryPtrOutput
+}
+
+type secretEngineActiveDirectoryPtrType SecretEngineActiveDirectoryArgs
+
+func SecretEngineActiveDirectoryPtr(v *SecretEngineActiveDirectoryArgs) SecretEngineActiveDirectoryPtrInput {
+	return (*secretEngineActiveDirectoryPtrType)(v)
+}
+
+func (*secretEngineActiveDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (i *secretEngineActiveDirectoryPtrType) ToSecretEngineActiveDirectoryPtrOutput() SecretEngineActiveDirectoryPtrOutput {
+	return i.ToSecretEngineActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *secretEngineActiveDirectoryPtrType) ToSecretEngineActiveDirectoryPtrOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineActiveDirectoryPtrOutput)
+}
+
+type SecretEngineActiveDirectoryOutput struct{ *pulumi.OutputState }
+
+func (SecretEngineActiveDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (o SecretEngineActiveDirectoryOutput) ToSecretEngineActiveDirectoryOutput() SecretEngineActiveDirectoryOutput {
+	return o
+}
+
+func (o SecretEngineActiveDirectoryOutput) ToSecretEngineActiveDirectoryOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryOutput {
+	return o
+}
+
+func (o SecretEngineActiveDirectoryOutput) ToSecretEngineActiveDirectoryPtrOutput() SecretEngineActiveDirectoryPtrOutput {
+	return o.ToSecretEngineActiveDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o SecretEngineActiveDirectoryOutput) ToSecretEngineActiveDirectoryPtrOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretEngineActiveDirectory) *SecretEngineActiveDirectory {
+		return &v
+	}).(SecretEngineActiveDirectoryPtrOutput)
+}
+
+// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+func (o SecretEngineActiveDirectoryOutput) AfterReadTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.AfterReadTtl }).(pulumi.StringPtrOutput)
+}
+
+// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+func (o SecretEngineActiveDirectoryOutput) Binddn() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.Binddn }).(pulumi.StringOutput)
+}
+
+// Password to use along with binddn when performing user search.
+func (o SecretEngineActiveDirectoryOutput) Bindpass() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.Bindpass }).(pulumi.StringOutput)
+}
+
+// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+func (o SecretEngineActiveDirectoryOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+func (o SecretEngineActiveDirectoryOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *int { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+func (o SecretEngineActiveDirectoryOutput) DoNotValidateTimestamps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *bool { return v.DoNotValidateTimestamps }).(pulumi.BoolPtrOutput)
+}
+
+// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+func (o SecretEngineActiveDirectoryOutput) InsecureTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *bool { return v.InsecureTls }).(pulumi.BoolPtrOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o SecretEngineActiveDirectoryOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *int { return v.KeyRotationIntervalDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+func (o SecretEngineActiveDirectoryOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o SecretEngineActiveDirectoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Public key linked with a secret engine
+func (o SecretEngineActiveDirectoryOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+func (o SecretEngineActiveDirectoryOutput) RequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *int { return v.RequestTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Backing secret store identifier
+func (o SecretEngineActiveDirectoryOutput) SecretStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.SecretStoreId }).(pulumi.StringOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o SecretEngineActiveDirectoryOutput) SecretStoreRootPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.SecretStoreRootPath }).(pulumi.StringOutput)
+}
+
+// If true, issues a StartTLS command after establishing an unencrypted connection.
+func (o SecretEngineActiveDirectoryOutput) StartTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *bool { return v.StartTls }).(pulumi.BoolPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretEngineActiveDirectoryOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+func (o SecretEngineActiveDirectoryOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+func (o SecretEngineActiveDirectoryOutput) Upndomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.Upndomain }).(pulumi.StringPtrOutput)
+}
+
+// The LDAP server to connect to.
+func (o SecretEngineActiveDirectoryOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+// * key_value:
+func (o SecretEngineActiveDirectoryOutput) Userdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineActiveDirectory) *string { return v.Userdn }).(pulumi.StringPtrOutput)
+}
+
+type SecretEngineActiveDirectoryPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretEngineActiveDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (o SecretEngineActiveDirectoryPtrOutput) ToSecretEngineActiveDirectoryPtrOutput() SecretEngineActiveDirectoryPtrOutput {
+	return o
+}
+
+func (o SecretEngineActiveDirectoryPtrOutput) ToSecretEngineActiveDirectoryPtrOutputWithContext(ctx context.Context) SecretEngineActiveDirectoryPtrOutput {
+	return o
+}
+
+func (o SecretEngineActiveDirectoryPtrOutput) Elem() SecretEngineActiveDirectoryOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) SecretEngineActiveDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret SecretEngineActiveDirectory
+		return ret
+	}).(SecretEngineActiveDirectoryOutput)
+}
+
+// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+func (o SecretEngineActiveDirectoryPtrOutput) AfterReadTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AfterReadTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+func (o SecretEngineActiveDirectoryPtrOutput) Binddn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Binddn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password to use along with binddn when performing user search.
+func (o SecretEngineActiveDirectoryPtrOutput) Bindpass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bindpass
+	}).(pulumi.StringPtrOutput)
+}
+
+// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+func (o SecretEngineActiveDirectoryPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+func (o SecretEngineActiveDirectoryPtrOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+func (o SecretEngineActiveDirectoryPtrOutput) DoNotValidateTimestamps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DoNotValidateTimestamps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+func (o SecretEngineActiveDirectoryPtrOutput) InsecureTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureTls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o SecretEngineActiveDirectoryPtrOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRotationIntervalDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+func (o SecretEngineActiveDirectoryPtrOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBackoffDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o SecretEngineActiveDirectoryPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public key linked with a secret engine
+func (o SecretEngineActiveDirectoryPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+func (o SecretEngineActiveDirectoryPtrOutput) RequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Backing secret store identifier
+func (o SecretEngineActiveDirectoryPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o SecretEngineActiveDirectoryPtrOutput) SecretStoreRootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretStoreRootPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, issues a StartTLS command after establishing an unencrypted connection.
+func (o SecretEngineActiveDirectoryPtrOutput) StartTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StartTls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretEngineActiveDirectoryPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+func (o SecretEngineActiveDirectoryPtrOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+func (o SecretEngineActiveDirectoryPtrOutput) Upndomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Upndomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The LDAP server to connect to.
+func (o SecretEngineActiveDirectoryPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+// * key_value:
+func (o SecretEngineActiveDirectoryPtrOutput) Userdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineActiveDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Userdn
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretEngineKeyValue struct {
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// Unique human-readable name of the Secret Engine.
+	Name string `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey *string `pulumi:"publicKey"`
+	// Backing secret store identifier
+	SecretStoreId string `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath string `pulumi:"secretStoreRootPath"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretEngineKeyValueInput is an input type that accepts SecretEngineKeyValueArgs and SecretEngineKeyValueOutput values.
+// You can construct a concrete instance of `SecretEngineKeyValueInput` via:
+//
+//	SecretEngineKeyValueArgs{...}
+type SecretEngineKeyValueInput interface {
+	pulumi.Input
+
+	ToSecretEngineKeyValueOutput() SecretEngineKeyValueOutput
+	ToSecretEngineKeyValueOutputWithContext(context.Context) SecretEngineKeyValueOutput
+}
+
+type SecretEngineKeyValueArgs struct {
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
+	// Unique human-readable name of the Secret Engine.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Backing secret store identifier
+	SecretStoreId pulumi.StringInput `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath pulumi.StringInput `pulumi:"secretStoreRootPath"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretEngineKeyValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEngineKeyValue)(nil)).Elem()
+}
+
+func (i SecretEngineKeyValueArgs) ToSecretEngineKeyValueOutput() SecretEngineKeyValueOutput {
+	return i.ToSecretEngineKeyValueOutputWithContext(context.Background())
+}
+
+func (i SecretEngineKeyValueArgs) ToSecretEngineKeyValueOutputWithContext(ctx context.Context) SecretEngineKeyValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineKeyValueOutput)
+}
+
+func (i SecretEngineKeyValueArgs) ToSecretEngineKeyValuePtrOutput() SecretEngineKeyValuePtrOutput {
+	return i.ToSecretEngineKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (i SecretEngineKeyValueArgs) ToSecretEngineKeyValuePtrOutputWithContext(ctx context.Context) SecretEngineKeyValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineKeyValueOutput).ToSecretEngineKeyValuePtrOutputWithContext(ctx)
+}
+
+// SecretEngineKeyValuePtrInput is an input type that accepts SecretEngineKeyValueArgs, SecretEngineKeyValuePtr and SecretEngineKeyValuePtrOutput values.
+// You can construct a concrete instance of `SecretEngineKeyValuePtrInput` via:
+//
+//	        SecretEngineKeyValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretEngineKeyValuePtrInput interface {
+	pulumi.Input
+
+	ToSecretEngineKeyValuePtrOutput() SecretEngineKeyValuePtrOutput
+	ToSecretEngineKeyValuePtrOutputWithContext(context.Context) SecretEngineKeyValuePtrOutput
+}
+
+type secretEngineKeyValuePtrType SecretEngineKeyValueArgs
+
+func SecretEngineKeyValuePtr(v *SecretEngineKeyValueArgs) SecretEngineKeyValuePtrInput {
+	return (*secretEngineKeyValuePtrType)(v)
+}
+
+func (*secretEngineKeyValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretEngineKeyValue)(nil)).Elem()
+}
+
+func (i *secretEngineKeyValuePtrType) ToSecretEngineKeyValuePtrOutput() SecretEngineKeyValuePtrOutput {
+	return i.ToSecretEngineKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (i *secretEngineKeyValuePtrType) ToSecretEngineKeyValuePtrOutputWithContext(ctx context.Context) SecretEngineKeyValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEngineKeyValuePtrOutput)
+}
+
+type SecretEngineKeyValueOutput struct{ *pulumi.OutputState }
+
+func (SecretEngineKeyValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEngineKeyValue)(nil)).Elem()
+}
+
+func (o SecretEngineKeyValueOutput) ToSecretEngineKeyValueOutput() SecretEngineKeyValueOutput {
+	return o
+}
+
+func (o SecretEngineKeyValueOutput) ToSecretEngineKeyValueOutputWithContext(ctx context.Context) SecretEngineKeyValueOutput {
+	return o
+}
+
+func (o SecretEngineKeyValueOutput) ToSecretEngineKeyValuePtrOutput() SecretEngineKeyValuePtrOutput {
+	return o.ToSecretEngineKeyValuePtrOutputWithContext(context.Background())
+}
+
+func (o SecretEngineKeyValueOutput) ToSecretEngineKeyValuePtrOutputWithContext(ctx context.Context) SecretEngineKeyValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretEngineKeyValue) *SecretEngineKeyValue {
+		return &v
+	}).(SecretEngineKeyValuePtrOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o SecretEngineKeyValueOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) *int { return v.KeyRotationIntervalDays }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o SecretEngineKeyValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Public key linked with a secret engine
+func (o SecretEngineKeyValueOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Backing secret store identifier
+func (o SecretEngineKeyValueOutput) SecretStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) string { return v.SecretStoreId }).(pulumi.StringOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o SecretEngineKeyValueOutput) SecretStoreRootPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) string { return v.SecretStoreRootPath }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretEngineKeyValueOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretEngineKeyValue) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretEngineKeyValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretEngineKeyValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretEngineKeyValue)(nil)).Elem()
+}
+
+func (o SecretEngineKeyValuePtrOutput) ToSecretEngineKeyValuePtrOutput() SecretEngineKeyValuePtrOutput {
+	return o
+}
+
+func (o SecretEngineKeyValuePtrOutput) ToSecretEngineKeyValuePtrOutputWithContext(ctx context.Context) SecretEngineKeyValuePtrOutput {
+	return o
+}
+
+func (o SecretEngineKeyValuePtrOutput) Elem() SecretEngineKeyValueOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) SecretEngineKeyValue {
+		if v != nil {
+			return *v
+		}
+		var ret SecretEngineKeyValue
+		return ret
+	}).(SecretEngineKeyValueOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o SecretEngineKeyValuePtrOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRotationIntervalDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o SecretEngineKeyValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public key linked with a secret engine
+func (o SecretEngineKeyValuePtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backing secret store identifier
+func (o SecretEngineKeyValuePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o SecretEngineKeyValuePtrOutput) SecretStoreRootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretStoreRootPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretEngineKeyValuePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretEngineKeyValue) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
 }
 
 type SecretStoreActiveDirectoryStore struct {
@@ -46341,9 +48064,232 @@ func (o GetAccountAttachmentAccountAttachmentArrayOutput) Index(i pulumi.IntInpu
 	}).(GetAccountAttachmentAccountAttachmentOutput)
 }
 
+type GetApprovalWorkflowApprovalStep struct {
+	// The approvers for this approval step
+	Approvers []GetApprovalWorkflowApprovalStepApprover `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier *string `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter *string `pulumi:"skipAfter"`
+}
+
+// GetApprovalWorkflowApprovalStepInput is an input type that accepts GetApprovalWorkflowApprovalStepArgs and GetApprovalWorkflowApprovalStepOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalStepInput` via:
+//
+//	GetApprovalWorkflowApprovalStepArgs{...}
+type GetApprovalWorkflowApprovalStepInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalStepOutput
+	ToGetApprovalWorkflowApprovalStepOutputWithContext(context.Context) GetApprovalWorkflowApprovalStepOutput
+}
+
+type GetApprovalWorkflowApprovalStepArgs struct {
+	// The approvers for this approval step
+	Approvers GetApprovalWorkflowApprovalStepApproverArrayInput `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier pulumi.StringPtrInput `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter pulumi.StringPtrInput `pulumi:"skipAfter"`
+}
+
+func (GetApprovalWorkflowApprovalStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalStepArgs) ToGetApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalStepOutput {
+	return i.ToGetApprovalWorkflowApprovalStepOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalStepArgs) ToGetApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalStepOutput)
+}
+
+// GetApprovalWorkflowApprovalStepArrayInput is an input type that accepts GetApprovalWorkflowApprovalStepArray and GetApprovalWorkflowApprovalStepArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalStepArrayInput` via:
+//
+//	GetApprovalWorkflowApprovalStepArray{ GetApprovalWorkflowApprovalStepArgs{...} }
+type GetApprovalWorkflowApprovalStepArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalStepArrayOutput
+	ToGetApprovalWorkflowApprovalStepArrayOutputWithContext(context.Context) GetApprovalWorkflowApprovalStepArrayOutput
+}
+
+type GetApprovalWorkflowApprovalStepArray []GetApprovalWorkflowApprovalStepInput
+
+func (GetApprovalWorkflowApprovalStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalStepArray) ToGetApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalStepArrayOutput {
+	return i.ToGetApprovalWorkflowApprovalStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalStepArray) ToGetApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalStepArrayOutput)
+}
+
+type GetApprovalWorkflowApprovalStepOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalStepOutput) ToGetApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepOutput) ToGetApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+// The approvers for this approval step
+func (o GetApprovalWorkflowApprovalStepOutput) Approvers() GetApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStep) []GetApprovalWorkflowApprovalStepApprover { return v.Approvers }).(GetApprovalWorkflowApprovalStepApproverArrayOutput)
+}
+
+// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+func (o GetApprovalWorkflowApprovalStepOutput) Quantifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStep) *string { return v.Quantifier }).(pulumi.StringPtrOutput)
+}
+
+// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+func (o GetApprovalWorkflowApprovalStepOutput) SkipAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStep) *string { return v.SkipAfter }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowApprovalStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalStepArrayOutput) ToGetApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepArrayOutput) ToGetApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApprovalStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApprovalStep {
+		return vs[0].([]GetApprovalWorkflowApprovalStep)[vs[1].(int)]
+	}).(GetApprovalWorkflowApprovalStepOutput)
+}
+
+type GetApprovalWorkflowApprovalStepApprover struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	AccountId *string `pulumi:"accountId"`
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	RoleId *string `pulumi:"roleId"`
+}
+
+// GetApprovalWorkflowApprovalStepApproverInput is an input type that accepts GetApprovalWorkflowApprovalStepApproverArgs and GetApprovalWorkflowApprovalStepApproverOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalStepApproverInput` via:
+//
+//	GetApprovalWorkflowApprovalStepApproverArgs{...}
+type GetApprovalWorkflowApprovalStepApproverInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalStepApproverOutput
+	ToGetApprovalWorkflowApprovalStepApproverOutputWithContext(context.Context) GetApprovalWorkflowApprovalStepApproverOutput
+}
+
+type GetApprovalWorkflowApprovalStepApproverArgs struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+}
+
+func (GetApprovalWorkflowApprovalStepApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalStepApproverArgs) ToGetApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalStepApproverOutput {
+	return i.ToGetApprovalWorkflowApprovalStepApproverOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalStepApproverArgs) ToGetApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalStepApproverOutput)
+}
+
+// GetApprovalWorkflowApprovalStepApproverArrayInput is an input type that accepts GetApprovalWorkflowApprovalStepApproverArray and GetApprovalWorkflowApprovalStepApproverArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalStepApproverArrayInput` via:
+//
+//	GetApprovalWorkflowApprovalStepApproverArray{ GetApprovalWorkflowApprovalStepApproverArgs{...} }
+type GetApprovalWorkflowApprovalStepApproverArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalStepApproverArrayOutput
+	ToGetApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Context) GetApprovalWorkflowApprovalStepApproverArrayOutput
+}
+
+type GetApprovalWorkflowApprovalStepApproverArray []GetApprovalWorkflowApprovalStepApproverInput
+
+func (GetApprovalWorkflowApprovalStepApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalStepApproverArray) ToGetApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalStepApproverArrayOutput {
+	return i.ToGetApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalStepApproverArray) ToGetApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalStepApproverArrayOutput)
+}
+
+type GetApprovalWorkflowApprovalStepApproverOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalStepApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalStepApproverOutput) ToGetApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalStepApproverOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepApproverOutput) ToGetApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepApproverOutput {
+	return o
+}
+
+// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o GetApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o GetApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowApprovalStepApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalStepApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalStepApprover)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalStepApproverArrayOutput) ToGetApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepApproverArrayOutput) ToGetApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalStepApproverArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApprovalStepApprover {
+		return vs[0].([]GetApprovalWorkflowApprovalStepApprover)[vs[1].(int)]
+	}).(GetApprovalWorkflowApprovalStepApproverOutput)
+}
+
 type GetApprovalWorkflowApprovalWorkflow struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode *string `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps []GetApprovalWorkflowApprovalWorkflowApprovalStep `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the ApprovalWorkflow.
@@ -46366,6 +48312,8 @@ type GetApprovalWorkflowApprovalWorkflowInput interface {
 type GetApprovalWorkflowApprovalWorkflowArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps GetApprovalWorkflowApprovalWorkflowApprovalStepArrayInput `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Unique identifier of the ApprovalWorkflow.
@@ -46430,6 +48378,13 @@ func (o GetApprovalWorkflowApprovalWorkflowOutput) ApprovalMode() pulumi.StringP
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
 }
 
+// The approval steps of this approval workflow
+func (o GetApprovalWorkflowApprovalWorkflowOutput) ApprovalSteps() GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) []GetApprovalWorkflowApprovalWorkflowApprovalStep {
+		return v.ApprovalSteps
+	}).(GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput)
+}
+
 // Optional description of the ApprovalWorkflow.
 func (o GetApprovalWorkflowApprovalWorkflowOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -46465,243 +48420,227 @@ func (o GetApprovalWorkflowApprovalWorkflowArrayOutput) Index(i pulumi.IntInput)
 	}).(GetApprovalWorkflowApprovalWorkflowOutput)
 }
 
-type GetApprovalWorkflowApproverApprovalWorkflowApprover struct {
-	// The approver account id.
+type GetApprovalWorkflowApprovalWorkflowApprovalStep struct {
+	// The approvers for this approval step
+	Approvers []GetApprovalWorkflowApprovalWorkflowApprovalStepApprover `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier *string `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter *string `pulumi:"skipAfter"`
+}
+
+// GetApprovalWorkflowApprovalWorkflowApprovalStepInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowApprovalStepArgs and GetApprovalWorkflowApprovalWorkflowApprovalStepOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowApprovalStepInput` via:
+//
+//	GetApprovalWorkflowApprovalWorkflowApprovalStepArgs{...}
+type GetApprovalWorkflowApprovalWorkflowApprovalStepInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepOutput
+}
+
+type GetApprovalWorkflowApprovalWorkflowApprovalStepArgs struct {
+	// The approvers for this approval step
+	Approvers GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayInput `pulumi:"approvers"`
+	// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+	Quantifier pulumi.StringPtrInput `pulumi:"quantifier"`
+	// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+	SkipAfter pulumi.StringPtrInput `pulumi:"skipAfter"`
+}
+
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepArgs) ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepArgs) ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowApprovalStepOutput)
+}
+
+// GetApprovalWorkflowApprovalWorkflowApprovalStepArrayInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowApprovalStepArray and GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowApprovalStepArrayInput` via:
+//
+//	GetApprovalWorkflowApprovalWorkflowApprovalStepArray{ GetApprovalWorkflowApprovalWorkflowApprovalStepArgs{...} }
+type GetApprovalWorkflowApprovalWorkflowApprovalStepArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput
+}
+
+type GetApprovalWorkflowApprovalWorkflowApprovalStepArray []GetApprovalWorkflowApprovalWorkflowApprovalStepInput
+
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepArray) ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepArray) ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput)
+}
+
+type GetApprovalWorkflowApprovalWorkflowApprovalStepOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepOutput {
+	return o
+}
+
+// The approvers for this approval step
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) Approvers() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStep) []GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
+		return v.Approvers
+	}).(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput)
+}
+
+// Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) Quantifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStep) *string { return v.Quantifier }).(pulumi.StringPtrOutput)
+}
+
+// Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepOutput) SkipAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStep) *string { return v.SkipAfter }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflowApprovalStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApprovalWorkflowApprovalStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApprovalWorkflowApprovalStep {
+		return vs[0].([]GetApprovalWorkflowApprovalWorkflowApprovalStep)[vs[1].(int)]
+	}).(GetApprovalWorkflowApprovalWorkflowApprovalStepOutput)
+}
+
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApprover struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
 	AccountId *string `pulumi:"accountId"`
-	// The approval flow id specified the approval workflow that this approver belongs to
-	ApprovalFlowId *string `pulumi:"approvalFlowId"`
-	// The approval step id specified the approval flow step that this approver belongs to
-	ApprovalStepId *string `pulumi:"approvalStepId"`
-	// Unique identifier of the ApprovalWorkflowApprover.
-	Id *string `pulumi:"id"`
-	// The approver role id
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
 	RoleId *string `pulumi:"roleId"`
 }
 
-// GetApprovalWorkflowApproverApprovalWorkflowApproverInput is an input type that accepts GetApprovalWorkflowApproverApprovalWorkflowApproverArgs and GetApprovalWorkflowApproverApprovalWorkflowApproverOutput values.
-// You can construct a concrete instance of `GetApprovalWorkflowApproverApprovalWorkflowApproverInput` via:
+// GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs and GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput` via:
 //
-//	GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{...}
-type GetApprovalWorkflowApproverApprovalWorkflowApproverInput interface {
+//	GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs{...}
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput interface {
 	pulumi.Input
 
-	ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput
-	ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput
 }
 
-type GetApprovalWorkflowApproverApprovalWorkflowApproverArgs struct {
-	// The approver account id.
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs struct {
+	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The approval flow id specified the approval workflow that this approver belongs to
-	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
-	// The approval step id specified the approval flow step that this approver belongs to
-	ApprovalStepId pulumi.StringPtrInput `pulumi:"approvalStepId"`
-	// Unique identifier of the ApprovalWorkflowApprover.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The approver role id
+	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 }
 
-func (GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepApprover)(nil)).Elem()
 }
 
-func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
-	return i.ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(context.Background())
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutputWithContext(context.Background())
 }
 
-func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput)
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput)
 }
 
-// GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput is an input type that accepts GetApprovalWorkflowApproverApprovalWorkflowApproverArray and GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput values.
-// You can construct a concrete instance of `GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput` via:
+// GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray and GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayInput` via:
 //
-//	GetApprovalWorkflowApproverApprovalWorkflowApproverArray{ GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{...} }
-type GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput interface {
+//	GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray{ GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs{...} }
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayInput interface {
 	pulumi.Input
 
-	ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput
-	ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput
+	ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput
 }
 
-type GetApprovalWorkflowApproverApprovalWorkflowApproverArray []GetApprovalWorkflowApproverApprovalWorkflowApproverInput
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray []GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput
 
-func (GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflowApprovalStepApprover)(nil)).Elem()
 }
 
-func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
-	return i.ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(context.Background())
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutputWithContext(context.Background())
 }
 
-func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput)
+func (i GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput)
 }
 
-type GetApprovalWorkflowApproverApprovalWorkflowApproverOutput struct{ *pulumi.OutputState }
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput struct{ *pulumi.OutputState }
 
-func (GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepApprover)(nil)).Elem()
 }
 
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput {
 	return o
 }
 
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput {
 	return o
 }
 
-// The approver account id.
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The approval flow id specified the approval workflow that this approver belongs to
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ApprovalFlowId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
+// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
-// The approval step id specified the approval flow step that this approver belongs to
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ApprovalStepId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.ApprovalStepId }).(pulumi.StringPtrOutput)
+type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflowApprovalStepApprover)(nil)).Elem()
 }
 
-// Unique identifier of the ApprovalWorkflowApprover.
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The approver role id
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) RoleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
-}
-
-type GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
-}
-
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput() GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput {
 	return o
 }
 
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput) ToGetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput {
 	return o
 }
 
-func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApproverApprovalWorkflowApprover {
-		return vs[0].([]GetApprovalWorkflowApproverApprovalWorkflowApprover)[vs[1].(int)]
-	}).(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput)
-}
-
-type GetApprovalWorkflowStepApprovalWorkflowStep struct {
-	// The approval flow id specified the approval workfflow that this step belongs to
-	ApprovalFlowId *string `pulumi:"approvalFlowId"`
-	// Unique identifier of the ApprovalWorkflowStep.
-	Id *string `pulumi:"id"`
-}
-
-// GetApprovalWorkflowStepApprovalWorkflowStepInput is an input type that accepts GetApprovalWorkflowStepApprovalWorkflowStepArgs and GetApprovalWorkflowStepApprovalWorkflowStepOutput values.
-// You can construct a concrete instance of `GetApprovalWorkflowStepApprovalWorkflowStepInput` via:
-//
-//	GetApprovalWorkflowStepApprovalWorkflowStepArgs{...}
-type GetApprovalWorkflowStepApprovalWorkflowStepInput interface {
-	pulumi.Input
-
-	ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput
-	ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput
-}
-
-type GetApprovalWorkflowStepApprovalWorkflowStepArgs struct {
-	// The approval flow id specified the approval workfflow that this step belongs to
-	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
-	// Unique identifier of the ApprovalWorkflowStep.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (GetApprovalWorkflowStepApprovalWorkflowStepArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
-}
-
-func (i GetApprovalWorkflowStepApprovalWorkflowStepArgs) ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput {
-	return i.ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(context.Background())
-}
-
-func (i GetApprovalWorkflowStepApprovalWorkflowStepArgs) ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowStepApprovalWorkflowStepOutput)
-}
-
-// GetApprovalWorkflowStepApprovalWorkflowStepArrayInput is an input type that accepts GetApprovalWorkflowStepApprovalWorkflowStepArray and GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput values.
-// You can construct a concrete instance of `GetApprovalWorkflowStepApprovalWorkflowStepArrayInput` via:
-//
-//	GetApprovalWorkflowStepApprovalWorkflowStepArray{ GetApprovalWorkflowStepApprovalWorkflowStepArgs{...} }
-type GetApprovalWorkflowStepApprovalWorkflowStepArrayInput interface {
-	pulumi.Input
-
-	ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput
-	ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput
-}
-
-type GetApprovalWorkflowStepApprovalWorkflowStepArray []GetApprovalWorkflowStepApprovalWorkflowStepInput
-
-func (GetApprovalWorkflowStepApprovalWorkflowStepArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
-}
-
-func (i GetApprovalWorkflowStepApprovalWorkflowStepArray) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
-	return i.ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(context.Background())
-}
-
-func (i GetApprovalWorkflowStepApprovalWorkflowStepArray) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput)
-}
-
-type GetApprovalWorkflowStepApprovalWorkflowStepOutput struct{ *pulumi.OutputState }
-
-func (GetApprovalWorkflowStepApprovalWorkflowStepOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
-}
-
-func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput {
-	return o
-}
-
-func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
-	return o
-}
-
-// The approval flow id specified the approval workfflow that this step belongs to
-func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ApprovalFlowId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowStepApprovalWorkflowStep) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the ApprovalWorkflowStep.
-func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowStepApprovalWorkflowStep) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
-}
-
-func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
-	return o
-}
-
-func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
-	return o
-}
-
-func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowStepApprovalWorkflowStep {
-		return vs[0].([]GetApprovalWorkflowStepApprovalWorkflowStep)[vs[1].(int)]
-	}).(GetApprovalWorkflowStepApprovalWorkflowStepOutput)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
+		return vs[0].([]GetApprovalWorkflowApprovalWorkflowApprovalStepApprover)[vs[1].(int)]
+	}).(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput)
 }
 
 type GetIdentityAliasIdentityAlias struct {
@@ -46932,6 +48871,175 @@ func (o GetIdentitySetIdentitySetArrayOutput) Index(i pulumi.IntInput) GetIdenti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdentitySetIdentitySet {
 		return vs[0].([]GetIdentitySetIdentitySet)[vs[1].(int)]
 	}).(GetIdentitySetIdentitySetOutput)
+}
+
+type GetManagedSecretManagedSecret struct {
+	// public part of the secret value
+	Config string `pulumi:"config"`
+	// Timestamp of when secret is going to be rotated
+	ExpiresAt string `pulumi:"expiresAt"`
+	// Unique identifier of the Managed Secret.
+	Id *string `pulumi:"id"`
+	// Timestamp of when secret was last rotated
+	LastRotatedAt string `pulumi:"lastRotatedAt"`
+	// Unique human-readable name of the Managed Secret.
+	Name *string `pulumi:"name"`
+	// An ID of a Secret Engine linked with the Managed Secret.
+	SecretEngineId *string `pulumi:"secretEngineId"`
+	// Path in a secret store.
+	SecretStorePath string `pulumi:"secretStorePath"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Sensitive value of the secret.
+	Value *string `pulumi:"value"`
+}
+
+// GetManagedSecretManagedSecretInput is an input type that accepts GetManagedSecretManagedSecretArgs and GetManagedSecretManagedSecretOutput values.
+// You can construct a concrete instance of `GetManagedSecretManagedSecretInput` via:
+//
+//	GetManagedSecretManagedSecretArgs{...}
+type GetManagedSecretManagedSecretInput interface {
+	pulumi.Input
+
+	ToGetManagedSecretManagedSecretOutput() GetManagedSecretManagedSecretOutput
+	ToGetManagedSecretManagedSecretOutputWithContext(context.Context) GetManagedSecretManagedSecretOutput
+}
+
+type GetManagedSecretManagedSecretArgs struct {
+	// public part of the secret value
+	Config pulumi.StringInput `pulumi:"config"`
+	// Timestamp of when secret is going to be rotated
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// Unique identifier of the Managed Secret.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Timestamp of when secret was last rotated
+	LastRotatedAt pulumi.StringInput `pulumi:"lastRotatedAt"`
+	// Unique human-readable name of the Managed Secret.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An ID of a Secret Engine linked with the Managed Secret.
+	SecretEngineId pulumi.StringPtrInput `pulumi:"secretEngineId"`
+	// Path in a secret store.
+	SecretStorePath pulumi.StringInput `pulumi:"secretStorePath"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Sensitive value of the secret.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetManagedSecretManagedSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedSecretManagedSecret)(nil)).Elem()
+}
+
+func (i GetManagedSecretManagedSecretArgs) ToGetManagedSecretManagedSecretOutput() GetManagedSecretManagedSecretOutput {
+	return i.ToGetManagedSecretManagedSecretOutputWithContext(context.Background())
+}
+
+func (i GetManagedSecretManagedSecretArgs) ToGetManagedSecretManagedSecretOutputWithContext(ctx context.Context) GetManagedSecretManagedSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedSecretManagedSecretOutput)
+}
+
+// GetManagedSecretManagedSecretArrayInput is an input type that accepts GetManagedSecretManagedSecretArray and GetManagedSecretManagedSecretArrayOutput values.
+// You can construct a concrete instance of `GetManagedSecretManagedSecretArrayInput` via:
+//
+//	GetManagedSecretManagedSecretArray{ GetManagedSecretManagedSecretArgs{...} }
+type GetManagedSecretManagedSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetManagedSecretManagedSecretArrayOutput() GetManagedSecretManagedSecretArrayOutput
+	ToGetManagedSecretManagedSecretArrayOutputWithContext(context.Context) GetManagedSecretManagedSecretArrayOutput
+}
+
+type GetManagedSecretManagedSecretArray []GetManagedSecretManagedSecretInput
+
+func (GetManagedSecretManagedSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedSecretManagedSecret)(nil)).Elem()
+}
+
+func (i GetManagedSecretManagedSecretArray) ToGetManagedSecretManagedSecretArrayOutput() GetManagedSecretManagedSecretArrayOutput {
+	return i.ToGetManagedSecretManagedSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagedSecretManagedSecretArray) ToGetManagedSecretManagedSecretArrayOutputWithContext(ctx context.Context) GetManagedSecretManagedSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedSecretManagedSecretArrayOutput)
+}
+
+type GetManagedSecretManagedSecretOutput struct{ *pulumi.OutputState }
+
+func (GetManagedSecretManagedSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedSecretManagedSecret)(nil)).Elem()
+}
+
+func (o GetManagedSecretManagedSecretOutput) ToGetManagedSecretManagedSecretOutput() GetManagedSecretManagedSecretOutput {
+	return o
+}
+
+func (o GetManagedSecretManagedSecretOutput) ToGetManagedSecretManagedSecretOutputWithContext(ctx context.Context) GetManagedSecretManagedSecretOutput {
+	return o
+}
+
+// public part of the secret value
+func (o GetManagedSecretManagedSecretOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) string { return v.Config }).(pulumi.StringOutput)
+}
+
+// Timestamp of when secret is going to be rotated
+func (o GetManagedSecretManagedSecretOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the Managed Secret.
+func (o GetManagedSecretManagedSecretOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of when secret was last rotated
+func (o GetManagedSecretManagedSecretOutput) LastRotatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) string { return v.LastRotatedAt }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Managed Secret.
+func (o GetManagedSecretManagedSecretOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// An ID of a Secret Engine linked with the Managed Secret.
+func (o GetManagedSecretManagedSecretOutput) SecretEngineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) *string { return v.SecretEngineId }).(pulumi.StringPtrOutput)
+}
+
+// Path in a secret store.
+func (o GetManagedSecretManagedSecretOutput) SecretStorePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) string { return v.SecretStorePath }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetManagedSecretManagedSecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Sensitive value of the secret.
+func (o GetManagedSecretManagedSecretOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedSecretManagedSecret) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetManagedSecretManagedSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagedSecretManagedSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedSecretManagedSecret)(nil)).Elem()
+}
+
+func (o GetManagedSecretManagedSecretArrayOutput) ToGetManagedSecretManagedSecretArrayOutput() GetManagedSecretManagedSecretArrayOutput {
+	return o
+}
+
+func (o GetManagedSecretManagedSecretArrayOutput) ToGetManagedSecretManagedSecretArrayOutputWithContext(ctx context.Context) GetManagedSecretManagedSecretArrayOutput {
+	return o
+}
+
+func (o GetManagedSecretManagedSecretArrayOutput) Index(i pulumi.IntInput) GetManagedSecretManagedSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedSecretManagedSecret {
+		return vs[0].([]GetManagedSecretManagedSecret)[vs[1].(int)]
+	}).(GetManagedSecretManagedSecretOutput)
 }
 
 type GetNodeNode struct {
@@ -48818,6 +50926,7 @@ type GetResourceResource struct {
 	Rdps                                       []GetResourceResourceRdp                                       `pulumi:"rdps"`
 	RdsPostgresIams                            []GetResourceResourceRdsPostgresIam                            `pulumi:"rdsPostgresIams"`
 	Redis                                      []GetResourceResourceRedi                                      `pulumi:"redis"`
+	RedisClusters                              []GetResourceResourceRedisCluster                              `pulumi:"redisClusters"`
 	RedshiftIams                               []GetResourceResourceRedshiftIam                               `pulumi:"redshiftIams"`
 	RedshiftServerlessIams                     []GetResourceResourceRedshiftServerlessIam                     `pulumi:"redshiftServerlessIams"`
 	Redshifts                                  []GetResourceResourceRedshift                                  `pulumi:"redshifts"`
@@ -48835,6 +50944,7 @@ type GetResourceResource struct {
 	Sybases                                    []GetResourceResourceSybase                                    `pulumi:"sybases"`
 	Teradatas                                  []GetResourceResourceTeradata                                  `pulumi:"teradatas"`
 	Trinos                                     []GetResourceResourceTrino                                     `pulumi:"trinos"`
+	Verticas                                   []GetResourceResourceVertica                                   `pulumi:"verticas"`
 }
 
 // GetResourceResourceInput is an input type that accepts GetResourceResourceArgs and GetResourceResourceOutput values.
@@ -48933,6 +51043,7 @@ type GetResourceResourceArgs struct {
 	Rdps                                       GetResourceResourceRdpArrayInput                                       `pulumi:"rdps"`
 	RdsPostgresIams                            GetResourceResourceRdsPostgresIamArrayInput                            `pulumi:"rdsPostgresIams"`
 	Redis                                      GetResourceResourceRediArrayInput                                      `pulumi:"redis"`
+	RedisClusters                              GetResourceResourceRedisClusterArrayInput                              `pulumi:"redisClusters"`
 	RedshiftIams                               GetResourceResourceRedshiftIamArrayInput                               `pulumi:"redshiftIams"`
 	RedshiftServerlessIams                     GetResourceResourceRedshiftServerlessIamArrayInput                     `pulumi:"redshiftServerlessIams"`
 	Redshifts                                  GetResourceResourceRedshiftArrayInput                                  `pulumi:"redshifts"`
@@ -48950,6 +51061,7 @@ type GetResourceResourceArgs struct {
 	Sybases                                    GetResourceResourceSybaseArrayInput                                    `pulumi:"sybases"`
 	Teradatas                                  GetResourceResourceTeradataArrayInput                                  `pulumi:"teradatas"`
 	Trinos                                     GetResourceResourceTrinoArrayInput                                     `pulumi:"trinos"`
+	Verticas                                   GetResourceResourceVerticaArrayInput                                   `pulumi:"verticas"`
 }
 
 func (GetResourceResourceArgs) ElementType() reflect.Type {
@@ -49363,6 +51475,10 @@ func (o GetResourceResourceOutput) Redis() GetResourceResourceRediArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedi { return v.Redis }).(GetResourceResourceRediArrayOutput)
 }
 
+func (o GetResourceResourceOutput) RedisClusters() GetResourceResourceRedisClusterArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedisCluster { return v.RedisClusters }).(GetResourceResourceRedisClusterArrayOutput)
+}
+
 func (o GetResourceResourceOutput) RedshiftIams() GetResourceResourceRedshiftIamArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedshiftIam { return v.RedshiftIams }).(GetResourceResourceRedshiftIamArrayOutput)
 }
@@ -49431,6 +51547,10 @@ func (o GetResourceResourceOutput) Teradatas() GetResourceResourceTeradataArrayO
 
 func (o GetResourceResourceOutput) Trinos() GetResourceResourceTrinoArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceTrino { return v.Trinos }).(GetResourceResourceTrinoArrayOutput)
+}
+
+func (o GetResourceResourceOutput) Verticas() GetResourceResourceVerticaArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceVertica { return v.Verticas }).(GetResourceResourceVerticaArrayOutput)
 }
 
 type GetResourceResourceArrayOutput struct{ *pulumi.OutputState }
@@ -68212,6 +70332,220 @@ func (o GetResourceResourceRediArrayOutput) Index(i pulumi.IntInput) GetResource
 	}).(GetResourceResourceRediOutput)
 }
 
+type GetResourceResourceRedisCluster struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceRedisClusterInput is an input type that accepts GetResourceResourceRedisClusterArgs and GetResourceResourceRedisClusterOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedisClusterInput` via:
+//
+//	GetResourceResourceRedisClusterArgs{...}
+type GetResourceResourceRedisClusterInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedisClusterOutput() GetResourceResourceRedisClusterOutput
+	ToGetResourceResourceRedisClusterOutputWithContext(context.Context) GetResourceResourceRedisClusterOutput
+}
+
+type GetResourceResourceRedisClusterArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceRedisClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedisCluster)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedisClusterArgs) ToGetResourceResourceRedisClusterOutput() GetResourceResourceRedisClusterOutput {
+	return i.ToGetResourceResourceRedisClusterOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedisClusterArgs) ToGetResourceResourceRedisClusterOutputWithContext(ctx context.Context) GetResourceResourceRedisClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedisClusterOutput)
+}
+
+// GetResourceResourceRedisClusterArrayInput is an input type that accepts GetResourceResourceRedisClusterArray and GetResourceResourceRedisClusterArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedisClusterArrayInput` via:
+//
+//	GetResourceResourceRedisClusterArray{ GetResourceResourceRedisClusterArgs{...} }
+type GetResourceResourceRedisClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedisClusterArrayOutput() GetResourceResourceRedisClusterArrayOutput
+	ToGetResourceResourceRedisClusterArrayOutputWithContext(context.Context) GetResourceResourceRedisClusterArrayOutput
+}
+
+type GetResourceResourceRedisClusterArray []GetResourceResourceRedisClusterInput
+
+func (GetResourceResourceRedisClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedisCluster)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedisClusterArray) ToGetResourceResourceRedisClusterArrayOutput() GetResourceResourceRedisClusterArrayOutput {
+	return i.ToGetResourceResourceRedisClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedisClusterArray) ToGetResourceResourceRedisClusterArrayOutputWithContext(ctx context.Context) GetResourceResourceRedisClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedisClusterArrayOutput)
+}
+
+type GetResourceResourceRedisClusterOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedisClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedisCluster)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedisClusterOutput) ToGetResourceResourceRedisClusterOutput() GetResourceResourceRedisClusterOutput {
+	return o
+}
+
+func (o GetResourceResourceRedisClusterOutput) ToGetResourceResourceRedisClusterOutputWithContext(ctx context.Context) GetResourceResourceRedisClusterOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceRedisClusterOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceRedisClusterOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedisClusterOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceRedisClusterOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceRedisClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceRedisClusterOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedisClusterOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceRedisClusterOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRedisClusterOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceRedisClusterOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceRedisClusterOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceRedisClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceRedisClusterOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceRedisClusterOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedisCluster) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceRedisClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedisClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedisCluster)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedisClusterArrayOutput) ToGetResourceResourceRedisClusterArrayOutput() GetResourceResourceRedisClusterArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedisClusterArrayOutput) ToGetResourceResourceRedisClusterArrayOutputWithContext(ctx context.Context) GetResourceResourceRedisClusterArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedisClusterArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRedisClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRedisCluster {
+		return vs[0].([]GetResourceResourceRedisCluster)[vs[1].(int)]
+	}).(GetResourceResourceRedisClusterOutput)
+}
+
 type GetResourceResourceRedshift struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -70781,6 +73115,10 @@ type GetResourceResourceSshCustomerKey struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -70825,6 +73163,10 @@ type GetResourceResourceSshCustomerKeyArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -70921,6 +73263,16 @@ func (o GetResourceResourceSshCustomerKeyOutput) Hostname() pulumi.StringPtrOutp
 // Unique identifier of the Resource.
 func (o GetResourceResourceSshCustomerKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceSshCustomerKeyOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceSshCustomerKeyOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -72045,6 +74397,220 @@ func (o GetResourceResourceTrinoArrayOutput) Index(i pulumi.IntInput) GetResourc
 	}).(GetResourceResourceTrinoOutput)
 }
 
+type GetResourceResourceVertica struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceVerticaInput is an input type that accepts GetResourceResourceVerticaArgs and GetResourceResourceVerticaOutput values.
+// You can construct a concrete instance of `GetResourceResourceVerticaInput` via:
+//
+//	GetResourceResourceVerticaArgs{...}
+type GetResourceResourceVerticaInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceVerticaOutput() GetResourceResourceVerticaOutput
+	ToGetResourceResourceVerticaOutputWithContext(context.Context) GetResourceResourceVerticaOutput
+}
+
+type GetResourceResourceVerticaArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceVerticaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceVertica)(nil)).Elem()
+}
+
+func (i GetResourceResourceVerticaArgs) ToGetResourceResourceVerticaOutput() GetResourceResourceVerticaOutput {
+	return i.ToGetResourceResourceVerticaOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceVerticaArgs) ToGetResourceResourceVerticaOutputWithContext(ctx context.Context) GetResourceResourceVerticaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceVerticaOutput)
+}
+
+// GetResourceResourceVerticaArrayInput is an input type that accepts GetResourceResourceVerticaArray and GetResourceResourceVerticaArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceVerticaArrayInput` via:
+//
+//	GetResourceResourceVerticaArray{ GetResourceResourceVerticaArgs{...} }
+type GetResourceResourceVerticaArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceVerticaArrayOutput() GetResourceResourceVerticaArrayOutput
+	ToGetResourceResourceVerticaArrayOutputWithContext(context.Context) GetResourceResourceVerticaArrayOutput
+}
+
+type GetResourceResourceVerticaArray []GetResourceResourceVerticaInput
+
+func (GetResourceResourceVerticaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceVertica)(nil)).Elem()
+}
+
+func (i GetResourceResourceVerticaArray) ToGetResourceResourceVerticaArrayOutput() GetResourceResourceVerticaArrayOutput {
+	return i.ToGetResourceResourceVerticaArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceVerticaArray) ToGetResourceResourceVerticaArrayOutputWithContext(ctx context.Context) GetResourceResourceVerticaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceVerticaArrayOutput)
+}
+
+type GetResourceResourceVerticaOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceVerticaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceVertica)(nil)).Elem()
+}
+
+func (o GetResourceResourceVerticaOutput) ToGetResourceResourceVerticaOutput() GetResourceResourceVerticaOutput {
+	return o
+}
+
+func (o GetResourceResourceVerticaOutput) ToGetResourceResourceVerticaOutputWithContext(ctx context.Context) GetResourceResourceVerticaOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceVerticaOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceVerticaOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceVerticaOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceVerticaOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceVerticaOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceVerticaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceVerticaOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceVerticaOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceVerticaOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceVerticaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceVerticaOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceVerticaOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceVerticaOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceVerticaOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceVertica) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceVerticaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceVerticaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceVertica)(nil)).Elem()
+}
+
+func (o GetResourceResourceVerticaArrayOutput) ToGetResourceResourceVerticaArrayOutput() GetResourceResourceVerticaArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceVerticaArrayOutput) ToGetResourceResourceVerticaArrayOutputWithContext(ctx context.Context) GetResourceResourceVerticaArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceVerticaArrayOutput) Index(i pulumi.IntInput) GetResourceResourceVerticaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceVertica {
+		return vs[0].([]GetResourceResourceVertica)[vs[1].(int)]
+	}).(GetResourceResourceVerticaOutput)
+}
+
 type GetRoleRole struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules *string `pulumi:"accessRules"`
@@ -72176,6 +74742,536 @@ func (o GetRoleRoleArrayOutput) Index(i pulumi.IntInput) GetRoleRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleRole {
 		return vs[0].([]GetRoleRole)[vs[1].(int)]
 	}).(GetRoleRoleOutput)
+}
+
+type GetSecretEngineSecretEngine struct {
+	ActiveDirectories []GetSecretEngineSecretEngineActiveDirectory `pulumi:"activeDirectories"`
+	KeyValues         []GetSecretEngineSecretEngineKeyValue        `pulumi:"keyValues"`
+}
+
+// GetSecretEngineSecretEngineInput is an input type that accepts GetSecretEngineSecretEngineArgs and GetSecretEngineSecretEngineOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineInput` via:
+//
+//	GetSecretEngineSecretEngineArgs{...}
+type GetSecretEngineSecretEngineInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineOutput() GetSecretEngineSecretEngineOutput
+	ToGetSecretEngineSecretEngineOutputWithContext(context.Context) GetSecretEngineSecretEngineOutput
+}
+
+type GetSecretEngineSecretEngineArgs struct {
+	ActiveDirectories GetSecretEngineSecretEngineActiveDirectoryArrayInput `pulumi:"activeDirectories"`
+	KeyValues         GetSecretEngineSecretEngineKeyValueArrayInput        `pulumi:"keyValues"`
+}
+
+func (GetSecretEngineSecretEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngine)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineArgs) ToGetSecretEngineSecretEngineOutput() GetSecretEngineSecretEngineOutput {
+	return i.ToGetSecretEngineSecretEngineOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineArgs) ToGetSecretEngineSecretEngineOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineOutput)
+}
+
+// GetSecretEngineSecretEngineArrayInput is an input type that accepts GetSecretEngineSecretEngineArray and GetSecretEngineSecretEngineArrayOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineArrayInput` via:
+//
+//	GetSecretEngineSecretEngineArray{ GetSecretEngineSecretEngineArgs{...} }
+type GetSecretEngineSecretEngineArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineArrayOutput() GetSecretEngineSecretEngineArrayOutput
+	ToGetSecretEngineSecretEngineArrayOutputWithContext(context.Context) GetSecretEngineSecretEngineArrayOutput
+}
+
+type GetSecretEngineSecretEngineArray []GetSecretEngineSecretEngineInput
+
+func (GetSecretEngineSecretEngineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngine)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineArray) ToGetSecretEngineSecretEngineArrayOutput() GetSecretEngineSecretEngineArrayOutput {
+	return i.ToGetSecretEngineSecretEngineArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineArray) ToGetSecretEngineSecretEngineArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineArrayOutput)
+}
+
+type GetSecretEngineSecretEngineOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngine)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineOutput) ToGetSecretEngineSecretEngineOutput() GetSecretEngineSecretEngineOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineOutput) ToGetSecretEngineSecretEngineOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineOutput) ActiveDirectories() GetSecretEngineSecretEngineActiveDirectoryArrayOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngine) []GetSecretEngineSecretEngineActiveDirectory {
+		return v.ActiveDirectories
+	}).(GetSecretEngineSecretEngineActiveDirectoryArrayOutput)
+}
+
+func (o GetSecretEngineSecretEngineOutput) KeyValues() GetSecretEngineSecretEngineKeyValueArrayOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngine) []GetSecretEngineSecretEngineKeyValue { return v.KeyValues }).(GetSecretEngineSecretEngineKeyValueArrayOutput)
+}
+
+type GetSecretEngineSecretEngineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngine)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineArrayOutput) ToGetSecretEngineSecretEngineArrayOutput() GetSecretEngineSecretEngineArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineArrayOutput) ToGetSecretEngineSecretEngineArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineArrayOutput) Index(i pulumi.IntInput) GetSecretEngineSecretEngineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretEngineSecretEngine {
+		return vs[0].([]GetSecretEngineSecretEngine)[vs[1].(int)]
+	}).(GetSecretEngineSecretEngineOutput)
+}
+
+type GetSecretEngineSecretEngineActiveDirectory struct {
+	// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+	AfterReadTtl *string `pulumi:"afterReadTtl"`
+	// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+	Binddn *string `pulumi:"binddn"`
+	// Password to use along with binddn when performing user search.
+	Bindpass *string `pulumi:"bindpass"`
+	// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+	Certificate *string `pulumi:"certificate"`
+	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+	ConnectionTimeout *int `pulumi:"connectionTimeout"`
+	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+	DoNotValidateTimestamps *bool `pulumi:"doNotValidateTimestamps"`
+	// Unique identifier of the Secret Engine.
+	Id *string `pulumi:"id"`
+	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+	InsecureTls *bool `pulumi:"insecureTls"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+	MaxBackoffDuration *string `pulumi:"maxBackoffDuration"`
+	// Unique human-readable name of the Secret Engine.
+	Name *string `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey string `pulumi:"publicKey"`
+	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+	RequestTimeout *int `pulumi:"requestTimeout"`
+	// Backing secret store identifier
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath *string `pulumi:"secretStoreRootPath"`
+	// If true, issues a StartTLS command after establishing an unencrypted connection.
+	StartTls *bool `pulumi:"startTls"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+	Ttl *string `pulumi:"ttl"`
+	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+	Upndomain *string `pulumi:"upndomain"`
+	// The LDAP server to connect to.
+	Url *string `pulumi:"url"`
+	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+	Userdn *string `pulumi:"userdn"`
+}
+
+// GetSecretEngineSecretEngineActiveDirectoryInput is an input type that accepts GetSecretEngineSecretEngineActiveDirectoryArgs and GetSecretEngineSecretEngineActiveDirectoryOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineActiveDirectoryInput` via:
+//
+//	GetSecretEngineSecretEngineActiveDirectoryArgs{...}
+type GetSecretEngineSecretEngineActiveDirectoryInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineActiveDirectoryOutput() GetSecretEngineSecretEngineActiveDirectoryOutput
+	ToGetSecretEngineSecretEngineActiveDirectoryOutputWithContext(context.Context) GetSecretEngineSecretEngineActiveDirectoryOutput
+}
+
+type GetSecretEngineSecretEngineActiveDirectoryArgs struct {
+	// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+	AfterReadTtl pulumi.StringPtrInput `pulumi:"afterReadTtl"`
+	// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+	Binddn pulumi.StringPtrInput `pulumi:"binddn"`
+	// Password to use along with binddn when performing user search.
+	Bindpass pulumi.StringPtrInput `pulumi:"bindpass"`
+	// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+	ConnectionTimeout pulumi.IntPtrInput `pulumi:"connectionTimeout"`
+	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+	DoNotValidateTimestamps pulumi.BoolPtrInput `pulumi:"doNotValidateTimestamps"`
+	// Unique identifier of the Secret Engine.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+	InsecureTls pulumi.BoolPtrInput `pulumi:"insecureTls"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
+	// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+	MaxBackoffDuration pulumi.StringPtrInput `pulumi:"maxBackoffDuration"`
+	// Unique human-readable name of the Secret Engine.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+	RequestTimeout pulumi.IntPtrInput `pulumi:"requestTimeout"`
+	// Backing secret store identifier
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath pulumi.StringPtrInput `pulumi:"secretStoreRootPath"`
+	// If true, issues a StartTLS command after establishing an unencrypted connection.
+	StartTls pulumi.BoolPtrInput `pulumi:"startTls"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+	Upndomain pulumi.StringPtrInput `pulumi:"upndomain"`
+	// The LDAP server to connect to.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+	Userdn pulumi.StringPtrInput `pulumi:"userdn"`
+}
+
+func (GetSecretEngineSecretEngineActiveDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineActiveDirectoryArgs) ToGetSecretEngineSecretEngineActiveDirectoryOutput() GetSecretEngineSecretEngineActiveDirectoryOutput {
+	return i.ToGetSecretEngineSecretEngineActiveDirectoryOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineActiveDirectoryArgs) ToGetSecretEngineSecretEngineActiveDirectoryOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineActiveDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineActiveDirectoryOutput)
+}
+
+// GetSecretEngineSecretEngineActiveDirectoryArrayInput is an input type that accepts GetSecretEngineSecretEngineActiveDirectoryArray and GetSecretEngineSecretEngineActiveDirectoryArrayOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineActiveDirectoryArrayInput` via:
+//
+//	GetSecretEngineSecretEngineActiveDirectoryArray{ GetSecretEngineSecretEngineActiveDirectoryArgs{...} }
+type GetSecretEngineSecretEngineActiveDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineActiveDirectoryArrayOutput() GetSecretEngineSecretEngineActiveDirectoryArrayOutput
+	ToGetSecretEngineSecretEngineActiveDirectoryArrayOutputWithContext(context.Context) GetSecretEngineSecretEngineActiveDirectoryArrayOutput
+}
+
+type GetSecretEngineSecretEngineActiveDirectoryArray []GetSecretEngineSecretEngineActiveDirectoryInput
+
+func (GetSecretEngineSecretEngineActiveDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineActiveDirectoryArray) ToGetSecretEngineSecretEngineActiveDirectoryArrayOutput() GetSecretEngineSecretEngineActiveDirectoryArrayOutput {
+	return i.ToGetSecretEngineSecretEngineActiveDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineActiveDirectoryArray) ToGetSecretEngineSecretEngineActiveDirectoryArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineActiveDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineActiveDirectoryArrayOutput)
+}
+
+type GetSecretEngineSecretEngineActiveDirectoryOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineActiveDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) ToGetSecretEngineSecretEngineActiveDirectoryOutput() GetSecretEngineSecretEngineActiveDirectoryOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) ToGetSecretEngineSecretEngineActiveDirectoryOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineActiveDirectoryOutput {
+	return o
+}
+
+// The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) AfterReadTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.AfterReadTtl }).(pulumi.StringPtrOutput)
+}
+
+// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Binddn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Binddn }).(pulumi.StringPtrOutput)
+}
+
+// Password to use along with binddn when performing user search.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Bindpass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Bindpass }).(pulumi.StringPtrOutput)
+}
+
+// CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) ConnectionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *int { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) DoNotValidateTimestamps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *bool { return v.DoNotValidateTimestamps }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of the Secret Engine.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) InsecureTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *bool { return v.InsecureTls }).(pulumi.BoolPtrOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *int { return v.KeyRotationIntervalDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Public key linked with a secret engine
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) RequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *int { return v.RequestTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Backing secret store identifier
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) SecretStoreRootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.SecretStoreRootPath }).(pulumi.StringPtrOutput)
+}
+
+// If true, issues a StartTLS command after establishing an unencrypted connection.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) StartTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *bool { return v.StartTls }).(pulumi.BoolPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Upndomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Upndomain }).(pulumi.StringPtrOutput)
+}
+
+// The LDAP server to connect to.
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+func (o GetSecretEngineSecretEngineActiveDirectoryOutput) Userdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineActiveDirectory) *string { return v.Userdn }).(pulumi.StringPtrOutput)
+}
+
+type GetSecretEngineSecretEngineActiveDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineActiveDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngineActiveDirectory)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineActiveDirectoryArrayOutput) ToGetSecretEngineSecretEngineActiveDirectoryArrayOutput() GetSecretEngineSecretEngineActiveDirectoryArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineActiveDirectoryArrayOutput) ToGetSecretEngineSecretEngineActiveDirectoryArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineActiveDirectoryArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineActiveDirectoryArrayOutput) Index(i pulumi.IntInput) GetSecretEngineSecretEngineActiveDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretEngineSecretEngineActiveDirectory {
+		return vs[0].([]GetSecretEngineSecretEngineActiveDirectory)[vs[1].(int)]
+	}).(GetSecretEngineSecretEngineActiveDirectoryOutput)
+}
+
+type GetSecretEngineSecretEngineKeyValue struct {
+	// Unique identifier of the Secret Engine.
+	Id *string `pulumi:"id"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
+	// Unique human-readable name of the Secret Engine.
+	Name *string `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey string `pulumi:"publicKey"`
+	// Backing secret store identifier
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath *string `pulumi:"secretStoreRootPath"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretEngineSecretEngineKeyValueInput is an input type that accepts GetSecretEngineSecretEngineKeyValueArgs and GetSecretEngineSecretEngineKeyValueOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineKeyValueInput` via:
+//
+//	GetSecretEngineSecretEngineKeyValueArgs{...}
+type GetSecretEngineSecretEngineKeyValueInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineKeyValueOutput() GetSecretEngineSecretEngineKeyValueOutput
+	ToGetSecretEngineSecretEngineKeyValueOutputWithContext(context.Context) GetSecretEngineSecretEngineKeyValueOutput
+}
+
+type GetSecretEngineSecretEngineKeyValueArgs struct {
+	// Unique identifier of the Secret Engine.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// An interval of public/private key rotation for secret engine in days
+	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
+	// Unique human-readable name of the Secret Engine.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Public key linked with a secret engine
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Backing secret store identifier
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Backing Secret Store root path where managed secrets are going to be stored
+	SecretStoreRootPath pulumi.StringPtrInput `pulumi:"secretStoreRootPath"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretEngineSecretEngineKeyValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngineKeyValue)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineKeyValueArgs) ToGetSecretEngineSecretEngineKeyValueOutput() GetSecretEngineSecretEngineKeyValueOutput {
+	return i.ToGetSecretEngineSecretEngineKeyValueOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineKeyValueArgs) ToGetSecretEngineSecretEngineKeyValueOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineKeyValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineKeyValueOutput)
+}
+
+// GetSecretEngineSecretEngineKeyValueArrayInput is an input type that accepts GetSecretEngineSecretEngineKeyValueArray and GetSecretEngineSecretEngineKeyValueArrayOutput values.
+// You can construct a concrete instance of `GetSecretEngineSecretEngineKeyValueArrayInput` via:
+//
+//	GetSecretEngineSecretEngineKeyValueArray{ GetSecretEngineSecretEngineKeyValueArgs{...} }
+type GetSecretEngineSecretEngineKeyValueArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretEngineSecretEngineKeyValueArrayOutput() GetSecretEngineSecretEngineKeyValueArrayOutput
+	ToGetSecretEngineSecretEngineKeyValueArrayOutputWithContext(context.Context) GetSecretEngineSecretEngineKeyValueArrayOutput
+}
+
+type GetSecretEngineSecretEngineKeyValueArray []GetSecretEngineSecretEngineKeyValueInput
+
+func (GetSecretEngineSecretEngineKeyValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngineKeyValue)(nil)).Elem()
+}
+
+func (i GetSecretEngineSecretEngineKeyValueArray) ToGetSecretEngineSecretEngineKeyValueArrayOutput() GetSecretEngineSecretEngineKeyValueArrayOutput {
+	return i.ToGetSecretEngineSecretEngineKeyValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretEngineSecretEngineKeyValueArray) ToGetSecretEngineSecretEngineKeyValueArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineKeyValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretEngineSecretEngineKeyValueArrayOutput)
+}
+
+type GetSecretEngineSecretEngineKeyValueOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineKeyValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretEngineSecretEngineKeyValue)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineKeyValueOutput) ToGetSecretEngineSecretEngineKeyValueOutput() GetSecretEngineSecretEngineKeyValueOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineKeyValueOutput) ToGetSecretEngineSecretEngineKeyValueOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineKeyValueOutput {
+	return o
+}
+
+// Unique identifier of the Secret Engine.
+func (o GetSecretEngineSecretEngineKeyValueOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An interval of public/private key rotation for secret engine in days
+func (o GetSecretEngineSecretEngineKeyValueOutput) KeyRotationIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) *int { return v.KeyRotationIntervalDays }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the Secret Engine.
+func (o GetSecretEngineSecretEngineKeyValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Public key linked with a secret engine
+func (o GetSecretEngineSecretEngineKeyValueOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Backing secret store identifier
+func (o GetSecretEngineSecretEngineKeyValueOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Backing Secret Store root path where managed secrets are going to be stored
+func (o GetSecretEngineSecretEngineKeyValueOutput) SecretStoreRootPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) *string { return v.SecretStoreRootPath }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretEngineSecretEngineKeyValueOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretEngineSecretEngineKeyValue) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretEngineSecretEngineKeyValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretEngineSecretEngineKeyValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretEngineSecretEngineKeyValue)(nil)).Elem()
+}
+
+func (o GetSecretEngineSecretEngineKeyValueArrayOutput) ToGetSecretEngineSecretEngineKeyValueArrayOutput() GetSecretEngineSecretEngineKeyValueArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineKeyValueArrayOutput) ToGetSecretEngineSecretEngineKeyValueArrayOutputWithContext(ctx context.Context) GetSecretEngineSecretEngineKeyValueArrayOutput {
+	return o
+}
+
+func (o GetSecretEngineSecretEngineKeyValueArrayOutput) Index(i pulumi.IntInput) GetSecretEngineSecretEngineKeyValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretEngineSecretEngineKeyValue {
+		return vs[0].([]GetSecretEngineSecretEngineKeyValue)[vs[1].(int)]
+	}).(GetSecretEngineSecretEngineKeyValueOutput)
 }
 
 type GetSecretStoreSecretStore struct {
@@ -76273,6 +79369,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountServicePtrInput)(nil)).Elem(), AccountServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountUserInput)(nil)).Elem(), AccountUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountUserPtrInput)(nil)).Elem(), AccountUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalWorkflowApprovalStepInput)(nil)).Elem(), ApprovalWorkflowApprovalStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalWorkflowApprovalStepArrayInput)(nil)).Elem(), ApprovalWorkflowApprovalStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalWorkflowApprovalStepApproverInput)(nil)).Elem(), ApprovalWorkflowApprovalStepApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalWorkflowApprovalStepApproverArrayInput)(nil)).Elem(), ApprovalWorkflowApprovalStepApproverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayInput)(nil)).Elem(), NodeGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayPtrInput)(nil)).Elem(), NodeGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayMaintenanceWindowInput)(nil)).Elem(), NodeGatewayMaintenanceWindowArgs{})
@@ -76453,6 +79553,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdsPostgresIamPtrInput)(nil)).Elem(), ResourceRdsPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisInput)(nil)).Elem(), ResourceRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisPtrInput)(nil)).Elem(), ResourceRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisClusterInput)(nil)).Elem(), ResourceRedisClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisClusterPtrInput)(nil)).Elem(), ResourceRedisClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftInput)(nil)).Elem(), ResourceRedshiftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftPtrInput)(nil)).Elem(), ResourceRedshiftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftIamInput)(nil)).Elem(), ResourceRedshiftIamArgs{})
@@ -76487,6 +79589,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTeradataPtrInput)(nil)).Elem(), ResourceTeradataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTrinoInput)(nil)).Elem(), ResourceTrinoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTrinoPtrInput)(nil)).Elem(), ResourceTrinoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceVerticaInput)(nil)).Elem(), ResourceVerticaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceVerticaPtrInput)(nil)).Elem(), ResourceVerticaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEngineActiveDirectoryInput)(nil)).Elem(), SecretEngineActiveDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEngineActiveDirectoryPtrInput)(nil)).Elem(), SecretEngineActiveDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEngineKeyValueInput)(nil)).Elem(), SecretEngineKeyValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEngineKeyValuePtrInput)(nil)).Elem(), SecretEngineKeyValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreActiveDirectoryStoreInput)(nil)).Elem(), SecretStoreActiveDirectoryStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreActiveDirectoryStorePtrInput)(nil)).Elem(), SecretStoreActiveDirectoryStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsInput)(nil)).Elem(), SecretStoreAwsArgs{})
@@ -76543,16 +79651,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountUserArrayInput)(nil)).Elem(), GetAccountAccountUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentArrayInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalStepInput)(nil)).Elem(), GetApprovalWorkflowApprovalStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalStepArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalStepApproverInput)(nil)).Elem(), GetApprovalWorkflowApprovalStepApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalStepApproverArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalStepApproverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApproverInput)(nil)).Elem(), GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput)(nil)).Elem(), GetApprovalWorkflowApproverApprovalWorkflowApproverArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepArrayInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowApprovalStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowApprovalStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentityAliasIdentityAliasInput)(nil)).Elem(), GetIdentityAliasIdentityAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentityAliasIdentityAliasArrayInput)(nil)).Elem(), GetIdentityAliasIdentityAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentitySetIdentitySetInput)(nil)).Elem(), GetIdentitySetIdentitySetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentitySetIdentitySetArrayInput)(nil)).Elem(), GetIdentitySetIdentitySetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedSecretManagedSecretInput)(nil)).Elem(), GetManagedSecretManagedSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedSecretManagedSecretArrayInput)(nil)).Elem(), GetManagedSecretManagedSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeInput)(nil)).Elem(), GetNodeNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeArrayInput)(nil)).Elem(), GetNodeNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayInput)(nil)).Elem(), GetNodeNodeGatewayArgs{})
@@ -76753,6 +79867,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdsPostgresIamArrayInput)(nil)).Elem(), GetResourceResourceRdsPostgresIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediInput)(nil)).Elem(), GetResourceResourceRediArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediArrayInput)(nil)).Elem(), GetResourceResourceRediArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedisClusterInput)(nil)).Elem(), GetResourceResourceRedisClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedisClusterArrayInput)(nil)).Elem(), GetResourceResourceRedisClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftInput)(nil)).Elem(), GetResourceResourceRedshiftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftArrayInput)(nil)).Elem(), GetResourceResourceRedshiftArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftIamInput)(nil)).Elem(), GetResourceResourceRedshiftIamArgs{})
@@ -76787,8 +79903,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceTeradataArrayInput)(nil)).Elem(), GetResourceResourceTeradataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceTrinoInput)(nil)).Elem(), GetResourceResourceTrinoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceTrinoArrayInput)(nil)).Elem(), GetResourceResourceTrinoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceVerticaInput)(nil)).Elem(), GetResourceResourceVerticaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceVerticaArrayInput)(nil)).Elem(), GetResourceResourceVerticaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleRoleInput)(nil)).Elem(), GetRoleRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleRoleArrayInput)(nil)).Elem(), GetRoleRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineInput)(nil)).Elem(), GetSecretEngineSecretEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineArrayInput)(nil)).Elem(), GetSecretEngineSecretEngineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineActiveDirectoryInput)(nil)).Elem(), GetSecretEngineSecretEngineActiveDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineActiveDirectoryArrayInput)(nil)).Elem(), GetSecretEngineSecretEngineActiveDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineKeyValueInput)(nil)).Elem(), GetSecretEngineSecretEngineKeyValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretEngineSecretEngineKeyValueArrayInput)(nil)).Elem(), GetSecretEngineSecretEngineKeyValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreActiveDirectoryStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreActiveDirectoryStoreArgs{})
@@ -76847,6 +79971,10 @@ func init() {
 	pulumi.RegisterOutputType(AccountServicePtrOutput{})
 	pulumi.RegisterOutputType(AccountUserOutput{})
 	pulumi.RegisterOutputType(AccountUserPtrOutput{})
+	pulumi.RegisterOutputType(ApprovalWorkflowApprovalStepOutput{})
+	pulumi.RegisterOutputType(ApprovalWorkflowApprovalStepArrayOutput{})
+	pulumi.RegisterOutputType(ApprovalWorkflowApprovalStepApproverOutput{})
+	pulumi.RegisterOutputType(ApprovalWorkflowApprovalStepApproverArrayOutput{})
 	pulumi.RegisterOutputType(NodeGatewayOutput{})
 	pulumi.RegisterOutputType(NodeGatewayPtrOutput{})
 	pulumi.RegisterOutputType(NodeGatewayMaintenanceWindowOutput{})
@@ -77027,6 +80155,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRdsPostgresIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedisOutput{})
 	pulumi.RegisterOutputType(ResourceRedisPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRedisClusterOutput{})
+	pulumi.RegisterOutputType(ResourceRedisClusterPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftIamOutput{})
@@ -77061,6 +80191,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceTeradataPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTrinoOutput{})
 	pulumi.RegisterOutputType(ResourceTrinoPtrOutput{})
+	pulumi.RegisterOutputType(ResourceVerticaOutput{})
+	pulumi.RegisterOutputType(ResourceVerticaPtrOutput{})
+	pulumi.RegisterOutputType(SecretEngineActiveDirectoryOutput{})
+	pulumi.RegisterOutputType(SecretEngineActiveDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(SecretEngineKeyValueOutput{})
+	pulumi.RegisterOutputType(SecretEngineKeyValuePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreActiveDirectoryStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreActiveDirectoryStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreAwsOutput{})
@@ -77117,16 +80253,22 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountAccountUserArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalStepOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalStepArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalStepApproverOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalStepApproverArrayOutput{})
 	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowOutput{})
 	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowArrayOutput{})
-	pulumi.RegisterOutputType(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput{})
-	pulumi.RegisterOutputType(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput{})
-	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepOutput{})
-	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowApprovalStepOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArrayOutput{})
 	pulumi.RegisterOutputType(GetIdentityAliasIdentityAliasOutput{})
 	pulumi.RegisterOutputType(GetIdentityAliasIdentityAliasArrayOutput{})
 	pulumi.RegisterOutputType(GetIdentitySetIdentitySetOutput{})
 	pulumi.RegisterOutputType(GetIdentitySetIdentitySetArrayOutput{})
+	pulumi.RegisterOutputType(GetManagedSecretManagedSecretOutput{})
+	pulumi.RegisterOutputType(GetManagedSecretManagedSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayOutput{})
@@ -77327,6 +80469,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceRdsPostgresIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRediOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRediArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedisClusterOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedisClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftIamOutput{})
@@ -77361,8 +80505,16 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceTeradataArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceTrinoOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceTrinoArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceVerticaOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceVerticaArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleRoleOutput{})
 	pulumi.RegisterOutputType(GetRoleRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineActiveDirectoryOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineActiveDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineKeyValueOutput{})
+	pulumi.RegisterOutputType(GetSecretEngineSecretEngineKeyValueArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreActiveDirectoryStoreOutput{})

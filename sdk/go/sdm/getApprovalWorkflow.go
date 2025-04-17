@@ -62,6 +62,8 @@ func LookupApprovalWorkflow(ctx *pulumi.Context, args *LookupApprovalWorkflowArg
 type LookupApprovalWorkflowArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode *string `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps []GetApprovalWorkflowApprovalStep `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the ApprovalWorkflow.
@@ -74,6 +76,8 @@ type LookupApprovalWorkflowArgs struct {
 type LookupApprovalWorkflowResult struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode *string `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps []GetApprovalWorkflowApprovalStep `pulumi:"approvalSteps"`
 	// A list where each element has the following attributes:
 	ApprovalWorkflows []GetApprovalWorkflowApprovalWorkflow `pulumi:"approvalWorkflows"`
 	// Optional description of the ApprovalWorkflow.
@@ -99,6 +103,8 @@ func LookupApprovalWorkflowOutput(ctx *pulumi.Context, args LookupApprovalWorkfl
 type LookupApprovalWorkflowOutputArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// The approval steps of this approval workflow
+	ApprovalSteps GetApprovalWorkflowApprovalStepArrayInput `pulumi:"approvalSteps"`
 	// Optional description of the ApprovalWorkflow.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Unique identifier of the ApprovalWorkflow.
@@ -129,6 +135,11 @@ func (o LookupApprovalWorkflowResultOutput) ToLookupApprovalWorkflowResultOutput
 // Approval mode of the ApprovalWorkflow
 func (o LookupApprovalWorkflowResultOutput) ApprovalMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApprovalWorkflowResult) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// The approval steps of this approval workflow
+func (o LookupApprovalWorkflowResultOutput) ApprovalSteps() GetApprovalWorkflowApprovalStepArrayOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowResult) []GetApprovalWorkflowApprovalStep { return v.ApprovalSteps }).(GetApprovalWorkflowApprovalStepArrayOutput)
 }
 
 // A list where each element has the following attributes:

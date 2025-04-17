@@ -98,6 +98,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceRdpResult> Rdps;
         public readonly ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> RdsPostgresIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRediResult> Redis;
+        public readonly ImmutableArray<Outputs.GetResourceResourceRedisClusterResult> RedisClusters;
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftIamResult> RedshiftIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftServerlessIamResult> RedshiftServerlessIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftResult> Redshifts;
@@ -115,6 +116,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceSybaseResult> Sybases;
         public readonly ImmutableArray<Outputs.GetResourceResourceTeradataResult> Teradatas;
         public readonly ImmutableArray<Outputs.GetResourceResourceTrinoResult> Trinos;
+        public readonly ImmutableArray<Outputs.GetResourceResourceVerticaResult> Verticas;
 
         [OutputConstructor]
         private GetResourceResourceResult(
@@ -286,6 +288,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceRediResult> redis,
 
+            ImmutableArray<Outputs.GetResourceResourceRedisClusterResult> redisClusters,
+
             ImmutableArray<Outputs.GetResourceResourceRedshiftIamResult> redshiftIams,
 
             ImmutableArray<Outputs.GetResourceResourceRedshiftServerlessIamResult> redshiftServerlessIams,
@@ -318,7 +322,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceTeradataResult> teradatas,
 
-            ImmutableArray<Outputs.GetResourceResourceTrinoResult> trinos)
+            ImmutableArray<Outputs.GetResourceResourceTrinoResult> trinos,
+
+            ImmutableArray<Outputs.GetResourceResourceVerticaResult> verticas)
         {
             Aks = aks;
             AksBasicAuths = aksBasicAuths;
@@ -404,6 +410,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Rdps = rdps;
             RdsPostgresIams = rdsPostgresIams;
             Redis = redis;
+            RedisClusters = redisClusters;
             RedshiftIams = redshiftIams;
             RedshiftServerlessIams = redshiftServerlessIams;
             Redshifts = redshifts;
@@ -421,6 +428,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Sybases = sybases;
             Teradatas = teradatas;
             Trinos = trinos;
+            Verticas = verticas;
         }
     }
 }

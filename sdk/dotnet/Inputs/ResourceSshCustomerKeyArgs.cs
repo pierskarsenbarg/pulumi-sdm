@@ -38,6 +38,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        [Input("identityAliasHealthcheckUsername")]
+        public Input<string>? IdentityAliasHealthcheckUsername { get; set; }
+
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        [Input("identitySetId")]
+        public Input<string>? IdentitySetId { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]

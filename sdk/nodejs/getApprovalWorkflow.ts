@@ -30,6 +30,7 @@ export function getApprovalWorkflow(args?: GetApprovalWorkflowArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getApprovalWorkflow:getApprovalWorkflow", {
         "approvalMode": args.approvalMode,
+        "approvalSteps": args.approvalSteps,
         "description": args.description,
         "id": args.id,
         "name": args.name,
@@ -44,6 +45,10 @@ export interface GetApprovalWorkflowArgs {
      * Approval mode of the ApprovalWorkflow
      */
     approvalMode?: string;
+    /**
+     * The approval steps of this approval workflow
+     */
+    approvalSteps?: inputs.GetApprovalWorkflowApprovalStep[];
     /**
      * Optional description of the ApprovalWorkflow.
      */
@@ -66,6 +71,10 @@ export interface GetApprovalWorkflowResult {
      * Approval mode of the ApprovalWorkflow
      */
     readonly approvalMode?: string;
+    /**
+     * The approval steps of this approval workflow
+     */
+    readonly approvalSteps?: outputs.GetApprovalWorkflowApprovalStep[];
     /**
      * A list where each element has the following attributes:
      */
@@ -111,6 +120,7 @@ export function getApprovalWorkflowOutput(args?: GetApprovalWorkflowOutputArgs, 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getApprovalWorkflow:getApprovalWorkflow", {
         "approvalMode": args.approvalMode,
+        "approvalSteps": args.approvalSteps,
         "description": args.description,
         "id": args.id,
         "name": args.name,
@@ -125,6 +135,10 @@ export interface GetApprovalWorkflowOutputArgs {
      * Approval mode of the ApprovalWorkflow
      */
     approvalMode?: pulumi.Input<string>;
+    /**
+     * The approval steps of this approval workflow
+     */
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepArgs>[]>;
     /**
      * Optional description of the ApprovalWorkflow.
      */

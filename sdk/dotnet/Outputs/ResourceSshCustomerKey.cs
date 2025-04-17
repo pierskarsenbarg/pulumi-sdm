@@ -31,6 +31,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
@@ -81,6 +89,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string hostname,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string name,
 
             int port,
@@ -105,6 +117,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             Name = name;
             Port = port;
             PortForwarding = portForwarding;

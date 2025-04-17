@@ -9,15 +9,12 @@ import typing
 from .account import *
 from .account_attachment import *
 from .approval_workflow import *
-from .approval_workflow_approver import *
-from .approval_workflow_step import *
 from .get_account import *
 from .get_account_attachment import *
 from .get_approval_workflow import *
-from .get_approval_workflow_approver import *
-from .get_approval_workflow_step import *
 from .get_identity_alias import *
 from .get_identity_set import *
+from .get_managed_secret import *
 from .get_node import *
 from .get_peering_group import *
 from .get_peering_group_node import *
@@ -29,6 +26,7 @@ from .get_remote_identity import *
 from .get_remote_identity_group import *
 from .get_resource import *
 from .get_role import *
+from .get_secret_engine import *
 from .get_secret_store import *
 from .get_ssh_ca_pubkey import *
 from .get_workflow import *
@@ -36,6 +34,7 @@ from .get_workflow_approver import *
 from .get_workflow_role import *
 from .identity_alias import *
 from .identity_set import *
+from .managed_secret import *
 from .node import *
 from .peering_group import *
 from .peering_group_node import *
@@ -47,6 +46,7 @@ from .proxy_cluster_key import *
 from .remote_identity import *
 from .resource import *
 from .role import *
+from .secret_engine import *
 from .secret_store import *
 from .workflow import *
 from .workflow_approver import *
@@ -90,22 +90,6 @@ _utilities.register(
  },
  {
   "pkg": "sdm",
-  "mod": "index/approvalWorkflowApprover",
-  "fqn": "pierskarsenbarg_pulumi_sdm",
-  "classes": {
-   "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover": "ApprovalWorkflowApprover"
-  }
- },
- {
-  "pkg": "sdm",
-  "mod": "index/approvalWorkflowStep",
-  "fqn": "pierskarsenbarg_pulumi_sdm",
-  "classes": {
-   "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep": "ApprovalWorkflowStep"
-  }
- },
- {
-  "pkg": "sdm",
   "mod": "index/identityAlias",
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
@@ -118,6 +102,14 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/identitySet:IdentitySet": "IdentitySet"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/managedSecret",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/managedSecret:ManagedSecret": "ManagedSecret"
   }
  },
  {
@@ -198,6 +190,14 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/secretEngine",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/secretEngine:SecretEngine": "SecretEngine"
   }
  },
  {

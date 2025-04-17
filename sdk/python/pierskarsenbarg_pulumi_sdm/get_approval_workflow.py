@@ -15,6 +15,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetApprovalWorkflowResult',
@@ -28,10 +29,13 @@ class GetApprovalWorkflowResult:
     """
     A collection of values returned by getApprovalWorkflow.
     """
-    def __init__(__self__, approval_mode=None, approval_workflows=None, description=None, id=None, ids=None, name=None):
+    def __init__(__self__, approval_mode=None, approval_steps=None, approval_workflows=None, description=None, id=None, ids=None, name=None):
         if approval_mode and not isinstance(approval_mode, str):
             raise TypeError("Expected argument 'approval_mode' to be a str")
         pulumi.set(__self__, "approval_mode", approval_mode)
+        if approval_steps and not isinstance(approval_steps, list):
+            raise TypeError("Expected argument 'approval_steps' to be a list")
+        pulumi.set(__self__, "approval_steps", approval_steps)
         if approval_workflows and not isinstance(approval_workflows, list):
             raise TypeError("Expected argument 'approval_workflows' to be a list")
         pulumi.set(__self__, "approval_workflows", approval_workflows)
@@ -55,6 +59,14 @@ class GetApprovalWorkflowResult:
         Approval mode of the ApprovalWorkflow
         """
         return pulumi.get(self, "approval_mode")
+
+    @property
+    @pulumi.getter(name="approvalSteps")
+    def approval_steps(self) -> Optional[Sequence['outputs.GetApprovalWorkflowApprovalStepResult']]:
+        """
+        The approval steps of this approval workflow
+        """
+        return pulumi.get(self, "approval_steps")
 
     @property
     @pulumi.getter(name="approvalWorkflows")
@@ -104,6 +116,7 @@ class AwaitableGetApprovalWorkflowResult(GetApprovalWorkflowResult):
             yield self
         return GetApprovalWorkflowResult(
             approval_mode=self.approval_mode,
+            approval_steps=self.approval_steps,
             approval_workflows=self.approval_workflows,
             description=self.description,
             id=self.id,
@@ -112,6 +125,7 @@ class AwaitableGetApprovalWorkflowResult(GetApprovalWorkflowResult):
 
 
 def get_approval_workflow(approval_mode: Optional[builtins.str] = None,
+                          approval_steps: Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]] = None,
                           description: Optional[builtins.str] = None,
                           id: Optional[builtins.str] = None,
                           name: Optional[builtins.str] = None,
@@ -133,12 +147,14 @@ def get_approval_workflow(approval_mode: Optional[builtins.str] = None,
 
 
     :param builtins.str approval_mode: Approval mode of the ApprovalWorkflow
+    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']] approval_steps: The approval steps of this approval workflow
     :param builtins.str description: Optional description of the ApprovalWorkflow.
     :param builtins.str id: Unique identifier of the ApprovalWorkflow.
     :param builtins.str name: Unique human-readable name of the ApprovalWorkflow.
     """
     __args__ = dict()
     __args__['approvalMode'] = approval_mode
+    __args__['approvalSteps'] = approval_steps
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
@@ -147,12 +163,14 @@ def get_approval_workflow(approval_mode: Optional[builtins.str] = None,
 
     return AwaitableGetApprovalWorkflowResult(
         approval_mode=pulumi.get(__ret__, 'approval_mode'),
+        approval_steps=pulumi.get(__ret__, 'approval_steps'),
         approval_workflows=pulumi.get(__ret__, 'approval_workflows'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'))
 def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                 approval_steps: Optional[pulumi.Input[Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]]]] = None,
                                  description: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -174,12 +192,14 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[b
 
 
     :param builtins.str approval_mode: Approval mode of the ApprovalWorkflow
+    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']] approval_steps: The approval steps of this approval workflow
     :param builtins.str description: Optional description of the ApprovalWorkflow.
     :param builtins.str id: Unique identifier of the ApprovalWorkflow.
     :param builtins.str name: Unique human-readable name of the ApprovalWorkflow.
     """
     __args__ = dict()
     __args__['approvalMode'] = approval_mode
+    __args__['approvalSteps'] = approval_steps
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
@@ -187,6 +207,7 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[b
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getApprovalWorkflow:getApprovalWorkflow', __args__, opts=opts, typ=GetApprovalWorkflowResult)
     return __ret__.apply(lambda __response__: GetApprovalWorkflowResult(
         approval_mode=pulumi.get(__response__, 'approval_mode'),
+        approval_steps=pulumi.get(__response__, 'approval_steps'),
         approval_workflows=pulumi.get(__response__, 'approval_workflows'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
