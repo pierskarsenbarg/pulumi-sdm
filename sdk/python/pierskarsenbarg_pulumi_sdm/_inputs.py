@@ -20,6 +20,10 @@ __all__ = [
     'AccountServiceArgsDict',
     'AccountUserArgs',
     'AccountUserArgsDict',
+    'ApprovalWorkflowApprovalStepArgs',
+    'ApprovalWorkflowApprovalStepArgsDict',
+    'ApprovalWorkflowApprovalStepApproverArgs',
+    'ApprovalWorkflowApprovalStepApproverArgsDict',
     'NodeGatewayArgs',
     'NodeGatewayArgsDict',
     'NodeGatewayMaintenanceWindowArgs',
@@ -200,6 +204,8 @@ __all__ = [
     'ResourceRdsPostgresIamArgsDict',
     'ResourceRedisArgs',
     'ResourceRedisArgsDict',
+    'ResourceRedisClusterArgs',
+    'ResourceRedisClusterArgsDict',
     'ResourceRedshiftArgs',
     'ResourceRedshiftArgsDict',
     'ResourceRedshiftIamArgs',
@@ -234,6 +240,12 @@ __all__ = [
     'ResourceTeradataArgsDict',
     'ResourceTrinoArgs',
     'ResourceTrinoArgsDict',
+    'ResourceVerticaArgs',
+    'ResourceVerticaArgsDict',
+    'SecretEngineActiveDirectoryArgs',
+    'SecretEngineActiveDirectoryArgsDict',
+    'SecretEngineKeyValueArgs',
+    'SecretEngineKeyValueArgsDict',
     'SecretStoreActiveDirectoryStoreArgs',
     'SecretStoreActiveDirectoryStoreArgsDict',
     'SecretStoreAwsArgs',
@@ -280,6 +292,10 @@ __all__ = [
     'SecretStoreVaultTokenCertSshArgsDict',
     'SecretStoreVaultTokenCertX509Args',
     'SecretStoreVaultTokenCertX509ArgsDict',
+    'GetApprovalWorkflowApprovalStepArgs',
+    'GetApprovalWorkflowApprovalStepArgsDict',
+    'GetApprovalWorkflowApprovalStepApproverArgs',
+    'GetApprovalWorkflowApprovalStepApproverArgsDict',
 ]
 
 MYPY = False
@@ -535,6 +551,129 @@ class AccountUserArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class ApprovalWorkflowApprovalStepArgsDict(TypedDict):
+        approvers: pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgsDict']]]
+        """
+        The approvers for this approval step
+        """
+        quantifier: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        """
+        skip_after: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+elif False:
+    ApprovalWorkflowApprovalStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApprovalWorkflowApprovalStepArgs:
+    def __init__(__self__, *,
+                 approvers: pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgs']]],
+                 quantifier: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_after: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgs']]] approvers: The approvers for this approval step
+        :param pulumi.Input[builtins.str] quantifier: Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        :param pulumi.Input[builtins.str] skip_after: Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+        pulumi.set(__self__, "approvers", approvers)
+        if quantifier is not None:
+            pulumi.set(__self__, "quantifier", quantifier)
+        if skip_after is not None:
+            pulumi.set(__self__, "skip_after", skip_after)
+
+    @property
+    @pulumi.getter
+    def approvers(self) -> pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgs']]]:
+        """
+        The approvers for this approval step
+        """
+        return pulumi.get(self, "approvers")
+
+    @approvers.setter
+    def approvers(self, value: pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgs']]]):
+        pulumi.set(self, "approvers", value)
+
+    @property
+    @pulumi.getter
+    def quantifier(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        """
+        return pulumi.get(self, "quantifier")
+
+    @quantifier.setter
+    def quantifier(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "quantifier", value)
+
+    @property
+    @pulumi.getter(name="skipAfter")
+    def skip_after(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+        return pulumi.get(self, "skip_after")
+
+    @skip_after.setter
+    def skip_after(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "skip_after", value)
+
+
+if not MYPY:
+    class ApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
+        account_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        role_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+elif False:
+    ApprovalWorkflowApprovalStepApproverArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApprovalWorkflowApprovalStepApproverArgs:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] account_id: The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        :param pulumi.Input[builtins.str] role_id: The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "role_id", value)
 
 
 if not MYPY:
@@ -25395,6 +25534,276 @@ class ResourceRedisArgs:
 
 
 if not MYPY:
+    class ResourceRedisClusterArgsDict(TypedDict):
+        hostname: pulumi.Input[builtins.str]
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Resource.
+        """
+        bind_interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        egress_filter: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        password: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The password to authenticate with.
+        """
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        port_override: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The local port used by clients to connect to this resource.
+        """
+        proxy_cluster_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        secret_store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        subdomain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+        tls_required: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        username: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The username to authenticate with.
+        """
+elif False:
+    ResourceRedisClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceRedisClusterArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str],
+                 bind_interface: Optional[pulumi.Input[builtins.str]] = None,
+                 egress_filter: Optional[pulumi.Input[builtins.str]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.int]] = None,
+                 port_override: Optional[pulumi.Input[builtins.int]] = None,
+                 proxy_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subdomain: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 tls_required: Optional[pulumi.Input[builtins.bool]] = None,
+                 username: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[builtins.str] password: The password to authenticate with.
+        :param pulumi.Input[builtins.int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param pulumi.Input[builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[builtins.str] username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[builtins.str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @proxy_cluster_id.setter
+    def proxy_cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "proxy_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        return pulumi.get(self, "tls_required")
+
+    @tls_required.setter
+    def tls_required(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "tls_required", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
     class ResourceRedshiftArgsDict(TypedDict):
         database: pulumi.Input[builtins.str]
         """
@@ -28824,6 +29233,14 @@ if not MYPY:
         """
         A filter applied to the routing logic to pin datasource to nodes.
         """
+        identity_alias_healthcheck_username: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        identity_set_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the identity set to use for identity connections.
+        """
         port_forwarding: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether port forwarding is allowed through this server.
@@ -28868,6 +29285,8 @@ class ResourceSshCustomerKeyArgs:
                  allow_deprecated_key_exchanges: Optional[pulumi.Input[builtins.bool]] = None,
                  bind_interface: Optional[pulumi.Input[builtins.str]] = None,
                  egress_filter: Optional[pulumi.Input[builtins.str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[builtins.str]] = None,
+                 identity_set_id: Optional[pulumi.Input[builtins.str]] = None,
                  port_forwarding: Optional[pulumi.Input[builtins.bool]] = None,
                  port_override: Optional[pulumi.Input[builtins.int]] = None,
                  private_key: Optional[pulumi.Input[builtins.str]] = None,
@@ -28883,6 +29302,8 @@ class ResourceSshCustomerKeyArgs:
         :param pulumi.Input[builtins.bool] allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
         :param pulumi.Input[builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[builtins.str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[builtins.str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[builtins.bool] port_forwarding: Whether port forwarding is allowed through this server.
         :param pulumi.Input[builtins.int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[builtins.str] private_key: The private key used to authenticate with the server.
@@ -28901,6 +29322,10 @@ class ResourceSshCustomerKeyArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_forwarding is not None:
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
@@ -28989,6 +29414,30 @@ class ResourceSshCustomerKeyArgs:
     @egress_filter.setter
     def egress_filter(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "identity_set_id", value)
 
     @property
     @pulumi.getter(name="portForwarding")
@@ -30393,6 +30842,813 @@ class ResourceTrinoArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ResourceVerticaArgsDict(TypedDict):
+        database: pulumi.Input[builtins.str]
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        hostname: pulumi.Input[builtins.str]
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Resource.
+        """
+        bind_interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        egress_filter: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        password: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The password to authenticate with.
+        """
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        port_override: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The local port used by clients to connect to this resource.
+        """
+        proxy_cluster_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        secret_store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        subdomain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+        username: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The username to authenticate with.
+        """
+elif False:
+    ResourceVerticaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceVerticaArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[builtins.str],
+                 hostname: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str],
+                 bind_interface: Optional[pulumi.Input[builtins.str]] = None,
+                 egress_filter: Optional[pulumi.Input[builtins.str]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.int]] = None,
+                 port_override: Optional[pulumi.Input[builtins.int]] = None,
+                 proxy_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subdomain: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 username: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[builtins.str] hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[builtins.str] password: The password to authenticate with.
+        :param pulumi.Input[builtins.int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param pulumi.Input[builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[builtins.str] username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[builtins.str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[builtins.str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @proxy_cluster_id.setter
+    def proxy_cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "proxy_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class SecretEngineActiveDirectoryArgsDict(TypedDict):
+        binddn: pulumi.Input[builtins.str]
+        """
+        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        """
+        bindpass: pulumi.Input[builtins.str]
+        """
+        Password to use along with binddn when performing user search.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Secret Engine.
+        """
+        secret_store_id: pulumi.Input[builtins.str]
+        """
+        Backing secret store identifier
+        """
+        secret_store_root_path: pulumi.Input[builtins.str]
+        """
+        Backing Secret Store root path where managed secrets are going to be stored
+        """
+        url: pulumi.Input[builtins.str]
+        """
+        The LDAP server to connect to.
+        """
+        after_read_ttl: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+        """
+        certificate: NotRequired[pulumi.Input[builtins.str]]
+        """
+        CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+        """
+        connection_timeout: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+        """
+        do_not_validate_timestamps: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+        """
+        insecure_tls: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+        """
+        key_rotation_interval_days: NotRequired[pulumi.Input[builtins.int]]
+        """
+        An interval of public/private key rotation for secret engine in days
+        """
+        max_backoff_duration: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+        """
+        public_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Public key linked with a secret engine
+        """
+        request_timeout: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+        """
+        start_tls: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, issues a StartTLS command after establishing an unencrypted connection.
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+        ttl: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+        """
+        upndomain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+        """
+        userdn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+        * key_value:
+        """
+elif False:
+    SecretEngineActiveDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretEngineActiveDirectoryArgs:
+    def __init__(__self__, *,
+                 binddn: pulumi.Input[builtins.str],
+                 bindpass: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str],
+                 secret_store_id: pulumi.Input[builtins.str],
+                 secret_store_root_path: pulumi.Input[builtins.str],
+                 url: pulumi.Input[builtins.str],
+                 after_read_ttl: Optional[pulumi.Input[builtins.str]] = None,
+                 certificate: Optional[pulumi.Input[builtins.str]] = None,
+                 connection_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 do_not_validate_timestamps: Optional[pulumi.Input[builtins.bool]] = None,
+                 insecure_tls: Optional[pulumi.Input[builtins.bool]] = None,
+                 key_rotation_interval_days: Optional[pulumi.Input[builtins.int]] = None,
+                 max_backoff_duration: Optional[pulumi.Input[builtins.str]] = None,
+                 public_key: Optional[pulumi.Input[builtins.str]] = None,
+                 request_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 start_tls: Optional[pulumi.Input[builtins.bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 ttl: Optional[pulumi.Input[builtins.str]] = None,
+                 upndomain: Optional[pulumi.Input[builtins.str]] = None,
+                 userdn: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] binddn: Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        :param pulumi.Input[builtins.str] bindpass: Password to use along with binddn when performing user search.
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Secret Engine.
+        :param pulumi.Input[builtins.str] secret_store_id: Backing secret store identifier
+        :param pulumi.Input[builtins.str] secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
+        :param pulumi.Input[builtins.str] url: The LDAP server to connect to.
+        :param pulumi.Input[builtins.str] after_read_ttl: The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+        :param pulumi.Input[builtins.str] certificate: CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+        :param pulumi.Input[builtins.int] connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+        :param pulumi.Input[builtins.bool] do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+        :param pulumi.Input[builtins.bool] insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+        :param pulumi.Input[builtins.int] key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
+        :param pulumi.Input[builtins.str] max_backoff_duration: The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+        :param pulumi.Input[builtins.str] public_key: Public key linked with a secret engine
+        :param pulumi.Input[builtins.int] request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+        :param pulumi.Input[builtins.bool] start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[builtins.str] ttl: The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+        :param pulumi.Input[builtins.str] upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+        :param pulumi.Input[builtins.str] userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+               * key_value:
+        """
+        pulumi.set(__self__, "binddn", binddn)
+        pulumi.set(__self__, "bindpass", bindpass)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_store_id", secret_store_id)
+        pulumi.set(__self__, "secret_store_root_path", secret_store_root_path)
+        pulumi.set(__self__, "url", url)
+        if after_read_ttl is not None:
+            pulumi.set(__self__, "after_read_ttl", after_read_ttl)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if connection_timeout is not None:
+            pulumi.set(__self__, "connection_timeout", connection_timeout)
+        if do_not_validate_timestamps is not None:
+            pulumi.set(__self__, "do_not_validate_timestamps", do_not_validate_timestamps)
+        if insecure_tls is not None:
+            pulumi.set(__self__, "insecure_tls", insecure_tls)
+        if key_rotation_interval_days is not None:
+            pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+        if max_backoff_duration is not None:
+            pulumi.set(__self__, "max_backoff_duration", max_backoff_duration)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
+        if start_tls is not None:
+            pulumi.set(__self__, "start_tls", start_tls)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if upndomain is not None:
+            pulumi.set(__self__, "upndomain", upndomain)
+        if userdn is not None:
+            pulumi.set(__self__, "userdn", userdn)
+
+    @property
+    @pulumi.getter
+    def binddn(self) -> pulumi.Input[builtins.str]:
+        """
+        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        """
+        return pulumi.get(self, "binddn")
+
+    @binddn.setter
+    def binddn(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "binddn", value)
+
+    @property
+    @pulumi.getter
+    def bindpass(self) -> pulumi.Input[builtins.str]:
+        """
+        Password to use along with binddn when performing user search.
+        """
+        return pulumi.get(self, "bindpass")
+
+    @bindpass.setter
+    def bindpass(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "bindpass", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Secret Engine.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Backing secret store identifier
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreRootPath")
+    def secret_store_root_path(self) -> pulumi.Input[builtins.str]:
+        """
+        Backing Secret Store root path where managed secrets are going to be stored
+        """
+        return pulumi.get(self, "secret_store_root_path")
+
+    @secret_store_root_path.setter
+    def secret_store_root_path(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret_store_root_path", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[builtins.str]:
+        """
+        The LDAP server to connect to.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="afterReadTtl")
+    def after_read_ttl(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+        """
+        return pulumi.get(self, "after_read_ttl")
+
+    @after_read_ttl.setter
+    def after_read_ttl(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "after_read_ttl", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="connectionTimeout")
+    def connection_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+        """
+        return pulumi.get(self, "connection_timeout")
+
+    @connection_timeout.setter
+    def connection_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "connection_timeout", value)
+
+    @property
+    @pulumi.getter(name="doNotValidateTimestamps")
+    def do_not_validate_timestamps(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+        """
+        return pulumi.get(self, "do_not_validate_timestamps")
+
+    @do_not_validate_timestamps.setter
+    def do_not_validate_timestamps(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "do_not_validate_timestamps", value)
+
+    @property
+    @pulumi.getter(name="insecureTls")
+    def insecure_tls(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+        """
+        return pulumi.get(self, "insecure_tls")
+
+    @insecure_tls.setter
+    def insecure_tls(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "insecure_tls", value)
+
+    @property
+    @pulumi.getter(name="keyRotationIntervalDays")
+    def key_rotation_interval_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        An interval of public/private key rotation for secret engine in days
+        """
+        return pulumi.get(self, "key_rotation_interval_days")
+
+    @key_rotation_interval_days.setter
+    def key_rotation_interval_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "key_rotation_interval_days", value)
+
+    @property
+    @pulumi.getter(name="maxBackoffDuration")
+    def max_backoff_duration(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+        """
+        return pulumi.get(self, "max_backoff_duration")
+
+    @max_backoff_duration.setter
+    def max_backoff_duration(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "max_backoff_duration", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Public key linked with a secret engine
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+        """
+        return pulumi.get(self, "request_timeout")
+
+    @request_timeout.setter
+    def request_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "request_timeout", value)
+
+    @property
+    @pulumi.getter(name="startTls")
+    def start_tls(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, issues a StartTLS command after establishing an unencrypted connection.
+        """
+        return pulumi.get(self, "start_tls")
+
+    @start_tls.setter
+    def start_tls(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "start_tls", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def upndomain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+        """
+        return pulumi.get(self, "upndomain")
+
+    @upndomain.setter
+    def upndomain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "upndomain", value)
+
+    @property
+    @pulumi.getter
+    def userdn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+        * key_value:
+        """
+        return pulumi.get(self, "userdn")
+
+    @userdn.setter
+    def userdn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "userdn", value)
+
+
+if not MYPY:
+    class SecretEngineKeyValueArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Secret Engine.
+        """
+        secret_store_id: pulumi.Input[builtins.str]
+        """
+        Backing secret store identifier
+        """
+        secret_store_root_path: pulumi.Input[builtins.str]
+        """
+        Backing Secret Store root path where managed secrets are going to be stored
+        """
+        key_rotation_interval_days: NotRequired[pulumi.Input[builtins.int]]
+        """
+        An interval of public/private key rotation for secret engine in days
+        """
+        public_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Public key linked with a secret engine
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretEngineKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretEngineKeyValueArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str],
+                 secret_store_id: pulumi.Input[builtins.str],
+                 secret_store_root_path: pulumi.Input[builtins.str],
+                 key_rotation_interval_days: Optional[pulumi.Input[builtins.int]] = None,
+                 public_key: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Secret Engine.
+        :param pulumi.Input[builtins.str] secret_store_id: Backing secret store identifier
+        :param pulumi.Input[builtins.str] secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
+        :param pulumi.Input[builtins.int] key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
+        :param pulumi.Input[builtins.str] public_key: Public key linked with a secret engine
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_store_id", secret_store_id)
+        pulumi.set(__self__, "secret_store_root_path", secret_store_root_path)
+        if key_rotation_interval_days is not None:
+            pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Secret Engine.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Backing secret store identifier
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreRootPath")
+    def secret_store_root_path(self) -> pulumi.Input[builtins.str]:
+        """
+        Backing Secret Store root path where managed secrets are going to be stored
+        """
+        return pulumi.get(self, "secret_store_root_path")
+
+    @secret_store_root_path.setter
+    def secret_store_root_path(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "secret_store_root_path", value)
+
+    @property
+    @pulumi.getter(name="keyRotationIntervalDays")
+    def key_rotation_interval_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        An interval of public/private key rotation for secret engine in days
+        """
+        return pulumi.get(self, "key_rotation_interval_days")
+
+    @key_rotation_interval_days.setter
+    def key_rotation_interval_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "key_rotation_interval_days", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Public key linked with a secret engine
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 if not MYPY:
@@ -33231,5 +34487,128 @@ class SecretStoreVaultTokenCertX509Args:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class GetApprovalWorkflowApprovalStepArgsDict(TypedDict):
+        approvers: Sequence['GetApprovalWorkflowApprovalStepApproverArgsDict']
+        """
+        The approvers for this approval step
+        """
+        quantifier: NotRequired[builtins.str]
+        """
+        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        """
+        skip_after: NotRequired[builtins.str]
+        """
+        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+elif False:
+    GetApprovalWorkflowApprovalStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetApprovalWorkflowApprovalStepArgs:
+    def __init__(__self__, *,
+                 approvers: Sequence['GetApprovalWorkflowApprovalStepApproverArgs'],
+                 quantifier: Optional[builtins.str] = None,
+                 skip_after: Optional[builtins.str] = None):
+        """
+        :param Sequence['GetApprovalWorkflowApprovalStepApproverArgs'] approvers: The approvers for this approval step
+        :param builtins.str quantifier: Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        :param builtins.str skip_after: Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+        pulumi.set(__self__, "approvers", approvers)
+        if quantifier is not None:
+            pulumi.set(__self__, "quantifier", quantifier)
+        if skip_after is not None:
+            pulumi.set(__self__, "skip_after", skip_after)
+
+    @property
+    @pulumi.getter
+    def approvers(self) -> Sequence['GetApprovalWorkflowApprovalStepApproverArgs']:
+        """
+        The approvers for this approval step
+        """
+        return pulumi.get(self, "approvers")
+
+    @approvers.setter
+    def approvers(self, value: Sequence['GetApprovalWorkflowApprovalStepApproverArgs']):
+        pulumi.set(self, "approvers", value)
+
+    @property
+    @pulumi.getter
+    def quantifier(self) -> Optional[builtins.str]:
+        """
+        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+        """
+        return pulumi.get(self, "quantifier")
+
+    @quantifier.setter
+    def quantifier(self, value: Optional[builtins.str]):
+        pulumi.set(self, "quantifier", value)
+
+    @property
+    @pulumi.getter(name="skipAfter")
+    def skip_after(self) -> Optional[builtins.str]:
+        """
+        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+        """
+        return pulumi.get(self, "skip_after")
+
+    @skip_after.setter
+    def skip_after(self, value: Optional[builtins.str]):
+        pulumi.set(self, "skip_after", value)
+
+
+if not MYPY:
+    class GetApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
+        account_id: NotRequired[builtins.str]
+        """
+        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        role_id: NotRequired[builtins.str]
+        """
+        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+elif False:
+    GetApprovalWorkflowApprovalStepApproverArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetApprovalWorkflowApprovalStepApproverArgs:
+    def __init__(__self__, *,
+                 account_id: Optional[builtins.str] = None,
+                 role_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str account_id: The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        :param builtins.str role_id: The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[builtins.str]:
+        """
+        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[builtins.str]:
+        """
+        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "role_id", value)
 
 

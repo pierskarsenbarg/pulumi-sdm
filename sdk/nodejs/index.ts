@@ -20,16 +20,6 @@ export type ApprovalWorkflow = import("./approvalWorkflow").ApprovalWorkflow;
 export const ApprovalWorkflow: typeof import("./approvalWorkflow").ApprovalWorkflow = null as any;
 utilities.lazyLoad(exports, ["ApprovalWorkflow"], () => require("./approvalWorkflow"));
 
-export { ApprovalWorkflowApproverArgs, ApprovalWorkflowApproverState } from "./approvalWorkflowApprover";
-export type ApprovalWorkflowApprover = import("./approvalWorkflowApprover").ApprovalWorkflowApprover;
-export const ApprovalWorkflowApprover: typeof import("./approvalWorkflowApprover").ApprovalWorkflowApprover = null as any;
-utilities.lazyLoad(exports, ["ApprovalWorkflowApprover"], () => require("./approvalWorkflowApprover"));
-
-export { ApprovalWorkflowStepArgs, ApprovalWorkflowStepState } from "./approvalWorkflowStep";
-export type ApprovalWorkflowStep = import("./approvalWorkflowStep").ApprovalWorkflowStep;
-export const ApprovalWorkflowStep: typeof import("./approvalWorkflowStep").ApprovalWorkflowStep = null as any;
-utilities.lazyLoad(exports, ["ApprovalWorkflowStep"], () => require("./approvalWorkflowStep"));
-
 export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -45,16 +35,6 @@ export const getApprovalWorkflow: typeof import("./getApprovalWorkflow").getAppr
 export const getApprovalWorkflowOutput: typeof import("./getApprovalWorkflow").getApprovalWorkflowOutput = null as any;
 utilities.lazyLoad(exports, ["getApprovalWorkflow","getApprovalWorkflowOutput"], () => require("./getApprovalWorkflow"));
 
-export { GetApprovalWorkflowApproverArgs, GetApprovalWorkflowApproverResult, GetApprovalWorkflowApproverOutputArgs } from "./getApprovalWorkflowApprover";
-export const getApprovalWorkflowApprover: typeof import("./getApprovalWorkflowApprover").getApprovalWorkflowApprover = null as any;
-export const getApprovalWorkflowApproverOutput: typeof import("./getApprovalWorkflowApprover").getApprovalWorkflowApproverOutput = null as any;
-utilities.lazyLoad(exports, ["getApprovalWorkflowApprover","getApprovalWorkflowApproverOutput"], () => require("./getApprovalWorkflowApprover"));
-
-export { GetApprovalWorkflowStepArgs, GetApprovalWorkflowStepResult, GetApprovalWorkflowStepOutputArgs } from "./getApprovalWorkflowStep";
-export const getApprovalWorkflowStep: typeof import("./getApprovalWorkflowStep").getApprovalWorkflowStep = null as any;
-export const getApprovalWorkflowStepOutput: typeof import("./getApprovalWorkflowStep").getApprovalWorkflowStepOutput = null as any;
-utilities.lazyLoad(exports, ["getApprovalWorkflowStep","getApprovalWorkflowStepOutput"], () => require("./getApprovalWorkflowStep"));
-
 export { GetIdentityAliasArgs, GetIdentityAliasResult, GetIdentityAliasOutputArgs } from "./getIdentityAlias";
 export const getIdentityAlias: typeof import("./getIdentityAlias").getIdentityAlias = null as any;
 export const getIdentityAliasOutput: typeof import("./getIdentityAlias").getIdentityAliasOutput = null as any;
@@ -64,6 +44,11 @@ export { GetIdentitySetArgs, GetIdentitySetResult, GetIdentitySetOutputArgs } fr
 export const getIdentitySet: typeof import("./getIdentitySet").getIdentitySet = null as any;
 export const getIdentitySetOutput: typeof import("./getIdentitySet").getIdentitySetOutput = null as any;
 utilities.lazyLoad(exports, ["getIdentitySet","getIdentitySetOutput"], () => require("./getIdentitySet"));
+
+export { GetManagedSecretArgs, GetManagedSecretResult, GetManagedSecretOutputArgs } from "./getManagedSecret";
+export const getManagedSecret: typeof import("./getManagedSecret").getManagedSecret = null as any;
+export const getManagedSecretOutput: typeof import("./getManagedSecret").getManagedSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedSecret","getManagedSecretOutput"], () => require("./getManagedSecret"));
 
 export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
 export const getNode: typeof import("./getNode").getNode = null as any;
@@ -120,6 +105,11 @@ export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
 
+export { GetSecretEngineArgs, GetSecretEngineResult, GetSecretEngineOutputArgs } from "./getSecretEngine";
+export const getSecretEngine: typeof import("./getSecretEngine").getSecretEngine = null as any;
+export const getSecretEngineOutput: typeof import("./getSecretEngine").getSecretEngineOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretEngine","getSecretEngineOutput"], () => require("./getSecretEngine"));
+
 export { GetSecretStoreArgs, GetSecretStoreResult, GetSecretStoreOutputArgs } from "./getSecretStore";
 export const getSecretStore: typeof import("./getSecretStore").getSecretStore = null as any;
 export const getSecretStoreOutput: typeof import("./getSecretStore").getSecretStoreOutput = null as any;
@@ -154,6 +144,11 @@ export { IdentitySetArgs, IdentitySetState } from "./identitySet";
 export type IdentitySet = import("./identitySet").IdentitySet;
 export const IdentitySet: typeof import("./identitySet").IdentitySet = null as any;
 utilities.lazyLoad(exports, ["IdentitySet"], () => require("./identitySet"));
+
+export { ManagedSecretArgs, ManagedSecretState } from "./managedSecret";
+export type ManagedSecret = import("./managedSecret").ManagedSecret;
+export const ManagedSecret: typeof import("./managedSecret").ManagedSecret = null as any;
+utilities.lazyLoad(exports, ["ManagedSecret"], () => require("./managedSecret"));
 
 export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
@@ -210,6 +205,11 @@ export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
+export { SecretEngineArgs, SecretEngineState } from "./secretEngine";
+export type SecretEngine = import("./secretEngine").SecretEngine;
+export const SecretEngine: typeof import("./secretEngine").SecretEngine = null as any;
+utilities.lazyLoad(exports, ["SecretEngine"], () => require("./secretEngine"));
+
 export { SecretStoreArgs, SecretStoreState } from "./secretStore";
 export type SecretStore = import("./secretStore").SecretStore;
 export const SecretStore: typeof import("./secretStore").SecretStore = null as any;
@@ -250,14 +250,12 @@ const _module = {
                 return new AccountAttachment(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflow:ApprovalWorkflow":
                 return new ApprovalWorkflow(name, <any>undefined, { urn })
-            case "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover":
-                return new ApprovalWorkflowApprover(name, <any>undefined, { urn })
-            case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
-                return new ApprovalWorkflowStep(name, <any>undefined, { urn })
             case "sdm:index/identityAlias:IdentityAlias":
                 return new IdentityAlias(name, <any>undefined, { urn })
             case "sdm:index/identitySet:IdentitySet":
                 return new IdentitySet(name, <any>undefined, { urn })
+            case "sdm:index/managedSecret:ManagedSecret":
+                return new ManagedSecret(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
             case "sdm:index/peeringGroup:PeeringGroup":
@@ -278,6 +276,8 @@ const _module = {
                 return new Resource(name, <any>undefined, { urn })
             case "sdm:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "sdm:index/secretEngine:SecretEngine":
+                return new SecretEngine(name, <any>undefined, { urn })
             case "sdm:index/secretStore:SecretStore":
                 return new SecretStore(name, <any>undefined, { urn })
             case "sdm:index/workflow:Workflow":
@@ -294,10 +294,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowApprover", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowStep", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/identityAlias", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/identitySet", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/managedSecret", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)
@@ -308,6 +307,7 @@ pulumi.runtime.registerResourceModule("sdm", "index/proxyClusterKey", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/secretEngine", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/secretStore", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/workflow", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/workflowApprover", _module)

@@ -56,9 +56,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly amazonEksInstanceProfileUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
-    /**
-     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly amazonEsiam!: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
@@ -145,6 +142,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly rdpCert!: pulumi.Output<outputs.ResourceRdpCert | undefined>;
     public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
+    public readonly redisCluster!: pulumi.Output<outputs.ResourceRedisCluster | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
     /**
      * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -171,6 +169,10 @@ export class Resource extends pulumi.CustomResource {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     public readonly trino!: pulumi.Output<outputs.ResourceTrino | undefined>;
+    /**
+     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly vertica!: pulumi.Output<outputs.ResourceVertica | undefined>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -269,6 +271,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rdpCert"] = state ? state.rdpCert : undefined;
             resourceInputs["rdsPostgresIam"] = state ? state.rdsPostgresIam : undefined;
             resourceInputs["redis"] = state ? state.redis : undefined;
+            resourceInputs["redisCluster"] = state ? state.redisCluster : undefined;
             resourceInputs["redshift"] = state ? state.redshift : undefined;
             resourceInputs["redshiftIam"] = state ? state.redshiftIam : undefined;
             resourceInputs["redshiftServerlessIam"] = state ? state.redshiftServerlessIam : undefined;
@@ -286,6 +289,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["sybaseIq"] = state ? state.sybaseIq : undefined;
             resourceInputs["teradata"] = state ? state.teradata : undefined;
             resourceInputs["trino"] = state ? state.trino : undefined;
+            resourceInputs["vertica"] = state ? state.vertica : undefined;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
             resourceInputs["aks"] = args ? args.aks : undefined;
@@ -372,6 +376,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rdpCert"] = args ? args.rdpCert : undefined;
             resourceInputs["rdsPostgresIam"] = args ? args.rdsPostgresIam : undefined;
             resourceInputs["redis"] = args ? args.redis : undefined;
+            resourceInputs["redisCluster"] = args ? args.redisCluster : undefined;
             resourceInputs["redshift"] = args ? args.redshift : undefined;
             resourceInputs["redshiftIam"] = args ? args.redshiftIam : undefined;
             resourceInputs["redshiftServerlessIam"] = args ? args.redshiftServerlessIam : undefined;
@@ -389,6 +394,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["sybaseIq"] = args ? args.sybaseIq : undefined;
             resourceInputs["teradata"] = args ? args.teradata : undefined;
             resourceInputs["trino"] = args ? args.trino : undefined;
+            resourceInputs["vertica"] = args ? args.vertica : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resource.__pulumiType, name, resourceInputs, opts);
@@ -412,9 +418,6 @@ export interface ResourceState {
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
-    /**
-     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
@@ -501,6 +504,7 @@ export interface ResourceState {
     rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
+    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     /**
      * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -527,6 +531,10 @@ export interface ResourceState {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     trino?: pulumi.Input<inputs.ResourceTrino>;
+    /**
+     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vertica?: pulumi.Input<inputs.ResourceVertica>;
 }
 
 /**
@@ -546,9 +554,6 @@ export interface ResourceArgs {
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
-    /**
-     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
@@ -635,6 +640,7 @@ export interface ResourceArgs {
     rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
+    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     /**
      * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -661,4 +667,8 @@ export interface ResourceArgs {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     trino?: pulumi.Input<inputs.ResourceTrino>;
+    /**
+     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vertica?: pulumi.Input<inputs.ResourceVertica>;
 }

@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ApprovalMode;
         /// <summary>
+        /// The approval steps of this approval workflow
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApprovalWorkflowApprovalWorkflowApprovalStepResult> ApprovalSteps;
+        /// <summary>
         /// Optional description of the ApprovalWorkflow.
         /// </summary>
         public readonly string? Description;
@@ -35,6 +39,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetApprovalWorkflowApprovalWorkflowResult(
             string? approvalMode,
 
+            ImmutableArray<Outputs.GetApprovalWorkflowApprovalWorkflowApprovalStepResult> approvalSteps,
+
             string? description,
 
             string? id,
@@ -42,6 +48,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? name)
         {
             ApprovalMode = approvalMode;
+            ApprovalSteps = approvalSteps;
             Description = description;
             Id = id;
             Name = name;

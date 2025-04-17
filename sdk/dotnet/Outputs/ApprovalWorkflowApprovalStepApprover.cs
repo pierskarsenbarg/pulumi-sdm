@@ -12,25 +12,25 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetApprovalWorkflowStepApprovalWorkflowStepResult
+    public sealed class ApprovalWorkflowApprovalStepApprover
     {
         /// <summary>
-        /// The approval flow id specified the approval workfflow that this step belongs to
+        /// The account id of the approver (only an account_id OR a role_id may be present for one approver)
         /// </summary>
-        public readonly string? ApprovalFlowId;
+        public readonly string? AccountId;
         /// <summary>
-        /// Unique identifier of the ApprovalWorkflowStep.
+        /// The role id of the approver (only an account_id OR a role_id may be present for one approver)
         /// </summary>
-        public readonly string? Id;
+        public readonly string? RoleId;
 
         [OutputConstructor]
-        private GetApprovalWorkflowStepApprovalWorkflowStepResult(
-            string? approvalFlowId,
+        private ApprovalWorkflowApprovalStepApprover(
+            string? accountId,
 
-            string? id)
+            string? roleId)
         {
-            ApprovalFlowId = approvalFlowId;
-            Id = id;
+            AccountId = accountId;
+            RoleId = roleId;
         }
     }
 }

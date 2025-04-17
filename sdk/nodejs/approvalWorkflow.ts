@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -59,6 +61,10 @@ export class ApprovalWorkflow extends pulumi.CustomResource {
      */
     public readonly approvalMode!: pulumi.Output<string>;
     /**
+     * The approval steps of this approval workflow
+     */
+    public readonly approvalSteps!: pulumi.Output<outputs.ApprovalWorkflowApprovalStep[] | undefined>;
+    /**
      * Optional description of the ApprovalWorkflow.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -81,6 +87,7 @@ export class ApprovalWorkflow extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApprovalWorkflowState | undefined;
             resourceInputs["approvalMode"] = state ? state.approvalMode : undefined;
+            resourceInputs["approvalSteps"] = state ? state.approvalSteps : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
@@ -89,6 +96,7 @@ export class ApprovalWorkflow extends pulumi.CustomResource {
                 throw new Error("Missing required property 'approvalMode'");
             }
             resourceInputs["approvalMode"] = args ? args.approvalMode : undefined;
+            resourceInputs["approvalSteps"] = args ? args.approvalSteps : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
@@ -105,6 +113,10 @@ export interface ApprovalWorkflowState {
      * Approval mode of the ApprovalWorkflow
      */
     approvalMode?: pulumi.Input<string>;
+    /**
+     * The approval steps of this approval workflow
+     */
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
@@ -123,6 +135,10 @@ export interface ApprovalWorkflowArgs {
      * Approval mode of the ApprovalWorkflow
      */
     approvalMode: pulumi.Input<string>;
+    /**
+     * The approval steps of this approval workflow
+     */
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
     /**
      * Optional description of the ApprovalWorkflow.
      */

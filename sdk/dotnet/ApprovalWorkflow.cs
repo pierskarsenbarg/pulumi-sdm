@@ -55,6 +55,12 @@ namespace PiersKarsenbarg.Sdm
         public Output<string> ApprovalMode { get; private set; } = null!;
 
         /// <summary>
+        /// The approval steps of this approval workflow
+        /// </summary>
+        [Output("approvalSteps")]
+        public Output<ImmutableArray<Outputs.ApprovalWorkflowApprovalStep>> ApprovalSteps { get; private set; } = null!;
+
+        /// <summary>
         /// Optional description of the ApprovalWorkflow.
         /// </summary>
         [Output("description")]
@@ -119,6 +125,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("approvalMode", required: true)]
         public Input<string> ApprovalMode { get; set; } = null!;
 
+        [Input("approvalSteps")]
+        private InputList<Inputs.ApprovalWorkflowApprovalStepArgs>? _approvalSteps;
+
+        /// <summary>
+        /// The approval steps of this approval workflow
+        /// </summary>
+        public InputList<Inputs.ApprovalWorkflowApprovalStepArgs> ApprovalSteps
+        {
+            get => _approvalSteps ?? (_approvalSteps = new InputList<Inputs.ApprovalWorkflowApprovalStepArgs>());
+            set => _approvalSteps = value;
+        }
+
         /// <summary>
         /// Optional description of the ApprovalWorkflow.
         /// </summary>
@@ -144,6 +162,18 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("approvalMode")]
         public Input<string>? ApprovalMode { get; set; }
+
+        [Input("approvalSteps")]
+        private InputList<Inputs.ApprovalWorkflowApprovalStepGetArgs>? _approvalSteps;
+
+        /// <summary>
+        /// The approval steps of this approval workflow
+        /// </summary>
+        public InputList<Inputs.ApprovalWorkflowApprovalStepGetArgs> ApprovalSteps
+        {
+            get => _approvalSteps ?? (_approvalSteps = new InputList<Inputs.ApprovalWorkflowApprovalStepGetArgs>());
+            set => _approvalSteps = value;
+        }
 
         /// <summary>
         /// Optional description of the ApprovalWorkflow.

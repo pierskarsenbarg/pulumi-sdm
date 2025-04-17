@@ -32,54 +32,53 @@ type Resource struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrOutput                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
-	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonEsiam                  ResourceAmazonEsiamPtrOutput                  `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrOutput              `pulumi:"amazonmqAmqp091"`
-	Athena                       ResourceAthenaPtrOutput                       `pulumi:"athena"`
-	AthenaIam                    ResourceAthenaIamPtrOutput                    `pulumi:"athenaIam"`
-	AuroraMysql                  ResourceAuroraMysqlPtrOutput                  `pulumi:"auroraMysql"`
-	AuroraMysqlIam               ResourceAuroraMysqlIamPtrOutput               `pulumi:"auroraMysqlIam"`
-	AuroraPostgres               ResourceAuroraPostgresPtrOutput               `pulumi:"auroraPostgres"`
-	AuroraPostgresIam            ResourceAuroraPostgresIamPtrOutput            `pulumi:"auroraPostgresIam"`
-	Aws                          ResourceAwsPtrOutput                          `pulumi:"aws"`
-	AwsConsole                   ResourceAwsConsolePtrOutput                   `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrOutput      `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile           ResourceAwsInstanceProfilePtrOutput           `pulumi:"awsInstanceProfile"`
-	Azure                        ResourceAzurePtrOutput                        `pulumi:"azure"`
-	AzureCertificate             ResourceAzureCertificatePtrOutput             `pulumi:"azureCertificate"`
-	AzureMysql                   ResourceAzureMysqlPtrOutput                   `pulumi:"azureMysql"`
-	AzurePostgres                ResourceAzurePostgresPtrOutput                `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrOutput `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                     ResourceBigQueryPtrOutput                     `pulumi:"bigQuery"`
-	Cassandra                    ResourceCassandraPtrOutput                    `pulumi:"cassandra"`
-	Citus                        ResourceCitusPtrOutput                        `pulumi:"citus"`
-	ClickHouseHttp               ResourceClickHouseHttpPtrOutput               `pulumi:"clickHouseHttp"`
-	ClickHouseMySql              ResourceClickHouseMySqlPtrOutput              `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                ResourceClickHouseTcpPtrOutput                `pulumi:"clickHouseTcp"`
-	Clustrix                     ResourceClustrixPtrOutput                     `pulumi:"clustrix"`
-	Cockroach                    ResourceCockroachPtrOutput                    `pulumi:"cockroach"`
-	CouchbaseDatabase            ResourceCouchbaseDatabasePtrOutput            `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi               ResourceCouchbaseWebUiPtrOutput               `pulumi:"couchbaseWebUi"`
-	Db2I                         ResourceDb2IPtrOutput                         `pulumi:"db2I"`
-	Db2Luw                       ResourceDb2LuwPtrOutput                       `pulumi:"db2Luw"`
-	DocumentDbHost               ResourceDocumentDbHostPtrOutput               `pulumi:"documentDbHost"`
-	DocumentDbHostIam            ResourceDocumentDbHostIamPtrOutput            `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrOutput         `pulumi:"documentDbReplicaSet"`
-	Druid                        ResourceDruidPtrOutput                        `pulumi:"druid"`
-	DynamoDb                     ResourceDynamoDbPtrOutput                     `pulumi:"dynamoDb"`
-	DynamoDbiam                  ResourceDynamoDbiamPtrOutput                  `pulumi:"dynamoDbiam"`
-	Elastic                      ResourceElasticPtrOutput                      `pulumi:"elastic"`
-	ElasticacheRedis             ResourceElasticacheRedisPtrOutput             `pulumi:"elasticacheRedis"`
-	Gcp                          ResourceGcpPtrOutput                          `pulumi:"gcp"`
-	GcpConsole                   ResourceGcpConsolePtrOutput                   `pulumi:"gcpConsole"`
-	Gcpwif                       ResourceGcpwifPtrOutput                       `pulumi:"gcpwif"`
-	GoogleGke                    ResourceGoogleGkePtrOutput                    `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation   ResourceGoogleGkeUserImpersonationPtrOutput   `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                    ResourceGreenplumPtrOutput                    `pulumi:"greenplum"`
-	HttpAuth                     ResourceHttpAuthPtrOutput                     `pulumi:"httpAuth"`
-	HttpBasicAuth                ResourceHttpBasicAuthPtrOutput                `pulumi:"httpBasicAuth"`
-	HttpNoAuth                   ResourceHttpNoAuthPtrOutput                   `pulumi:"httpNoAuth"`
-	Kubernetes                   ResourceKubernetesPtrOutput                   `pulumi:"kubernetes"`
+	AmazonEsiam                               ResourceAmazonEsiamPtrOutput                               `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
+	AthenaIam                                 ResourceAthenaIamPtrOutput                                 `pulumi:"athenaIam"`
+	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
+	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrOutput                            `pulumi:"auroraMysqlIam"`
+	AuroraPostgres                            ResourceAuroraPostgresPtrOutput                            `pulumi:"auroraPostgres"`
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrOutput                         `pulumi:"auroraPostgresIam"`
+	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
+	AwsConsole                                ResourceAwsConsolePtrOutput                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrOutput                        `pulumi:"awsInstanceProfile"`
+	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
+	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
+	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
+	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrOutput              `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
+	Cassandra                                 ResourceCassandraPtrOutput                                 `pulumi:"cassandra"`
+	Citus                                     ResourceCitusPtrOutput                                     `pulumi:"citus"`
+	ClickHouseHttp                            ResourceClickHouseHttpPtrOutput                            `pulumi:"clickHouseHttp"`
+	ClickHouseMySql                           ResourceClickHouseMySqlPtrOutput                           `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                             ResourceClickHouseTcpPtrOutput                             `pulumi:"clickHouseTcp"`
+	Clustrix                                  ResourceClustrixPtrOutput                                  `pulumi:"clustrix"`
+	Cockroach                                 ResourceCockroachPtrOutput                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrOutput                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrOutput                            `pulumi:"couchbaseWebUi"`
+	Db2I                                      ResourceDb2IPtrOutput                                      `pulumi:"db2I"`
+	Db2Luw                                    ResourceDb2LuwPtrOutput                                    `pulumi:"db2Luw"`
+	DocumentDbHost                            ResourceDocumentDbHostPtrOutput                            `pulumi:"documentDbHost"`
+	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrOutput                         `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrOutput                      `pulumi:"documentDbReplicaSet"`
+	Druid                                     ResourceDruidPtrOutput                                     `pulumi:"druid"`
+	DynamoDb                                  ResourceDynamoDbPtrOutput                                  `pulumi:"dynamoDb"`
+	DynamoDbiam                               ResourceDynamoDbiamPtrOutput                               `pulumi:"dynamoDbiam"`
+	Elastic                                   ResourceElasticPtrOutput                                   `pulumi:"elastic"`
+	ElasticacheRedis                          ResourceElasticacheRedisPtrOutput                          `pulumi:"elasticacheRedis"`
+	Gcp                                       ResourceGcpPtrOutput                                       `pulumi:"gcp"`
+	GcpConsole                                ResourceGcpConsolePtrOutput                                `pulumi:"gcpConsole"`
+	Gcpwif                                    ResourceGcpwifPtrOutput                                    `pulumi:"gcpwif"`
+	GoogleGke                                 ResourceGoogleGkePtrOutput                                 `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrOutput                `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                                 ResourceGreenplumPtrOutput                                 `pulumi:"greenplum"`
+	HttpAuth                                  ResourceHttpAuthPtrOutput                                  `pulumi:"httpAuth"`
+	HttpBasicAuth                             ResourceHttpBasicAuthPtrOutput                             `pulumi:"httpBasicAuth"`
+	HttpNoAuth                                ResourceHttpNoAuthPtrOutput                                `pulumi:"httpNoAuth"`
+	Kubernetes                                ResourceKubernetesPtrOutput                                `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrOutput                     `pulumi:"kubernetesPodIdentity"`
@@ -111,6 +110,7 @@ type Resource struct {
 	RdpCert         ResourceRdpCertPtrOutput         `pulumi:"rdpCert"`
 	RdsPostgresIam  ResourceRdsPostgresIamPtrOutput  `pulumi:"rdsPostgresIam"`
 	Redis           ResourceRedisPtrOutput           `pulumi:"redis"`
+	RedisCluster    ResourceRedisClusterPtrOutput    `pulumi:"redisCluster"`
 	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
 	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	RedshiftIam ResourceRedshiftIamPtrOutput `pulumi:"redshiftIam"`
@@ -131,6 +131,8 @@ type Resource struct {
 	Teradata              ResourceTeradataPtrOutput              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
+	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Vertica ResourceVerticaPtrOutput `pulumi:"vertica"`
 }
 
 // NewResource registers a new resource with the given unique name, arguments, and options.
@@ -174,54 +176,53 @@ type resourceState struct {
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
-	Athena                       *ResourceAthena                       `pulumi:"athena"`
-	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
-	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
-	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
-	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
-	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
-	Aws                          *ResourceAws                          `pulumi:"aws"`
-	AwsConsole                   *ResourceAwsConsole                   `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair      *ResourceAwsConsoleStaticKeyPair      `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile           *ResourceAwsInstanceProfile           `pulumi:"awsInstanceProfile"`
-	Azure                        *ResourceAzure                        `pulumi:"azure"`
-	AzureCertificate             *ResourceAzureCertificate             `pulumi:"azureCertificate"`
-	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
-	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
-	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
-	Citus                        *ResourceCitus                        `pulumi:"citus"`
-	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
-	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
-	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
-	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
-	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
-	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
-	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
-	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
-	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
-	Druid                        *ResourceDruid                        `pulumi:"druid"`
-	DynamoDb                     *ResourceDynamoDb                     `pulumi:"dynamoDb"`
-	DynamoDbiam                  *ResourceDynamoDbiam                  `pulumi:"dynamoDbiam"`
-	Elastic                      *ResourceElastic                      `pulumi:"elastic"`
-	ElasticacheRedis             *ResourceElasticacheRedis             `pulumi:"elasticacheRedis"`
-	Gcp                          *ResourceGcp                          `pulumi:"gcp"`
-	GcpConsole                   *ResourceGcpConsole                   `pulumi:"gcpConsole"`
-	Gcpwif                       *ResourceGcpwif                       `pulumi:"gcpwif"`
-	GoogleGke                    *ResourceGoogleGke                    `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation   *ResourceGoogleGkeUserImpersonation   `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                    *ResourceGreenplum                    `pulumi:"greenplum"`
-	HttpAuth                     *ResourceHttpAuth                     `pulumi:"httpAuth"`
-	HttpBasicAuth                *ResourceHttpBasicAuth                `pulumi:"httpBasicAuth"`
-	HttpNoAuth                   *ResourceHttpNoAuth                   `pulumi:"httpNoAuth"`
-	Kubernetes                   *ResourceKubernetes                   `pulumi:"kubernetes"`
+	AmazonEsiam                               *ResourceAmazonEsiam                               `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
+	AthenaIam                                 *ResourceAthenaIam                                 `pulumi:"athenaIam"`
+	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
+	AuroraMysqlIam                            *ResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIam"`
+	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
+	Aws                                       *ResourceAws                                       `pulumi:"aws"`
+	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
+	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
+	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
+	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
+	ClickHouseHttp                            *ResourceClickHouseHttp                            `pulumi:"clickHouseHttp"`
+	ClickHouseMySql                           *ResourceClickHouseMySql                           `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                             *ResourceClickHouseTcp                             `pulumi:"clickHouseTcp"`
+	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
+	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
+	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
+	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
+	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
+	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
+	Druid                                     *ResourceDruid                                     `pulumi:"druid"`
+	DynamoDb                                  *ResourceDynamoDb                                  `pulumi:"dynamoDb"`
+	DynamoDbiam                               *ResourceDynamoDbiam                               `pulumi:"dynamoDbiam"`
+	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
+	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
+	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
+	GcpConsole                                *ResourceGcpConsole                                `pulumi:"gcpConsole"`
+	Gcpwif                                    *ResourceGcpwif                                    `pulumi:"gcpwif"`
+	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
+	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
+	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
+	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
+	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
@@ -253,6 +254,7 @@ type resourceState struct {
 	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
 	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
 	Redis           *ResourceRedis           `pulumi:"redis"`
+	RedisCluster    *ResourceRedisCluster    `pulumi:"redisCluster"`
 	Redshift        *ResourceRedshift        `pulumi:"redshift"`
 	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
@@ -273,6 +275,8 @@ type resourceState struct {
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
+	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Vertica *ResourceVertica `pulumi:"vertica"`
 }
 
 type ResourceState struct {
@@ -287,54 +291,53 @@ type ResourceState struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                                  ResourceAmazonEsPtrInput
-	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonEsiam                  ResourceAmazonEsiamPtrInput
-	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
-	Athena                       ResourceAthenaPtrInput
-	AthenaIam                    ResourceAthenaIamPtrInput
-	AuroraMysql                  ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres               ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
-	Aws                          ResourceAwsPtrInput
-	AwsConsole                   ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile           ResourceAwsInstanceProfilePtrInput
-	Azure                        ResourceAzurePtrInput
-	AzureCertificate             ResourceAzureCertificatePtrInput
-	AzureMysql                   ResourceAzureMysqlPtrInput
-	AzurePostgres                ResourceAzurePostgresPtrInput
-	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
-	BigQuery                     ResourceBigQueryPtrInput
-	Cassandra                    ResourceCassandraPtrInput
-	Citus                        ResourceCitusPtrInput
-	ClickHouseHttp               ResourceClickHouseHttpPtrInput
-	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
-	ClickHouseTcp                ResourceClickHouseTcpPtrInput
-	Clustrix                     ResourceClustrixPtrInput
-	Cockroach                    ResourceCockroachPtrInput
-	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
-	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
-	Db2I                         ResourceDb2IPtrInput
-	Db2Luw                       ResourceDb2LuwPtrInput
-	DocumentDbHost               ResourceDocumentDbHostPtrInput
-	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
-	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
-	Druid                        ResourceDruidPtrInput
-	DynamoDb                     ResourceDynamoDbPtrInput
-	DynamoDbiam                  ResourceDynamoDbiamPtrInput
-	Elastic                      ResourceElasticPtrInput
-	ElasticacheRedis             ResourceElasticacheRedisPtrInput
-	Gcp                          ResourceGcpPtrInput
-	GcpConsole                   ResourceGcpConsolePtrInput
-	Gcpwif                       ResourceGcpwifPtrInput
-	GoogleGke                    ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation   ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                    ResourceGreenplumPtrInput
-	HttpAuth                     ResourceHttpAuthPtrInput
-	HttpBasicAuth                ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                   ResourceHttpNoAuthPtrInput
-	Kubernetes                   ResourceKubernetesPtrInput
+	AmazonEsiam                               ResourceAmazonEsiamPtrInput
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
+	Athena                                    ResourceAthenaPtrInput
+	AthenaIam                                 ResourceAthenaIamPtrInput
+	AuroraMysql                               ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
+	Aws                                       ResourceAwsPtrInput
+	AwsConsole                                ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AzureMysql                                ResourceAzureMysqlPtrInput
+	AzurePostgres                             ResourceAzurePostgresPtrInput
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
+	BigQuery                                  ResourceBigQueryPtrInput
+	Cassandra                                 ResourceCassandraPtrInput
+	Citus                                     ResourceCitusPtrInput
+	ClickHouseHttp                            ResourceClickHouseHttpPtrInput
+	ClickHouseMySql                           ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                             ResourceClickHouseTcpPtrInput
+	Clustrix                                  ResourceClustrixPtrInput
+	Cockroach                                 ResourceCockroachPtrInput
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
+	Db2I                                      ResourceDb2IPtrInput
+	Db2Luw                                    ResourceDb2LuwPtrInput
+	DocumentDbHost                            ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
+	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
+	Druid                                     ResourceDruidPtrInput
+	DynamoDb                                  ResourceDynamoDbPtrInput
+	DynamoDbiam                               ResourceDynamoDbiamPtrInput
+	Elastic                                   ResourceElasticPtrInput
+	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
+	Gcp                                       ResourceGcpPtrInput
+	GcpConsole                                ResourceGcpConsolePtrInput
+	Gcpwif                                    ResourceGcpwifPtrInput
+	GoogleGke                                 ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                                 ResourceGreenplumPtrInput
+	HttpAuth                                  ResourceHttpAuthPtrInput
+	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                                ResourceHttpNoAuthPtrInput
+	Kubernetes                                ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
@@ -366,6 +369,7 @@ type ResourceState struct {
 	RdpCert         ResourceRdpCertPtrInput
 	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
 	Redis           ResourceRedisPtrInput
+	RedisCluster    ResourceRedisClusterPtrInput
 	Redshift        ResourceRedshiftPtrInput
 	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	RedshiftIam ResourceRedshiftIamPtrInput
@@ -386,6 +390,8 @@ type ResourceState struct {
 	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
+	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Vertica ResourceVerticaPtrInput
 }
 
 func (ResourceState) ElementType() reflect.Type {
@@ -404,54 +410,53 @@ type resourceArgs struct {
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
-	Athena                       *ResourceAthena                       `pulumi:"athena"`
-	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
-	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
-	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
-	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
-	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
-	Aws                          *ResourceAws                          `pulumi:"aws"`
-	AwsConsole                   *ResourceAwsConsole                   `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair      *ResourceAwsConsoleStaticKeyPair      `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile           *ResourceAwsInstanceProfile           `pulumi:"awsInstanceProfile"`
-	Azure                        *ResourceAzure                        `pulumi:"azure"`
-	AzureCertificate             *ResourceAzureCertificate             `pulumi:"azureCertificate"`
-	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
-	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
-	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
-	Citus                        *ResourceCitus                        `pulumi:"citus"`
-	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
-	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
-	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
-	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
-	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
-	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
-	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
-	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
-	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
-	Druid                        *ResourceDruid                        `pulumi:"druid"`
-	DynamoDb                     *ResourceDynamoDb                     `pulumi:"dynamoDb"`
-	DynamoDbiam                  *ResourceDynamoDbiam                  `pulumi:"dynamoDbiam"`
-	Elastic                      *ResourceElastic                      `pulumi:"elastic"`
-	ElasticacheRedis             *ResourceElasticacheRedis             `pulumi:"elasticacheRedis"`
-	Gcp                          *ResourceGcp                          `pulumi:"gcp"`
-	GcpConsole                   *ResourceGcpConsole                   `pulumi:"gcpConsole"`
-	Gcpwif                       *ResourceGcpwif                       `pulumi:"gcpwif"`
-	GoogleGke                    *ResourceGoogleGke                    `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation   *ResourceGoogleGkeUserImpersonation   `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                    *ResourceGreenplum                    `pulumi:"greenplum"`
-	HttpAuth                     *ResourceHttpAuth                     `pulumi:"httpAuth"`
-	HttpBasicAuth                *ResourceHttpBasicAuth                `pulumi:"httpBasicAuth"`
-	HttpNoAuth                   *ResourceHttpNoAuth                   `pulumi:"httpNoAuth"`
-	Kubernetes                   *ResourceKubernetes                   `pulumi:"kubernetes"`
+	AmazonEsiam                               *ResourceAmazonEsiam                               `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
+	AthenaIam                                 *ResourceAthenaIam                                 `pulumi:"athenaIam"`
+	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
+	AuroraMysqlIam                            *ResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIam"`
+	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
+	Aws                                       *ResourceAws                                       `pulumi:"aws"`
+	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
+	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
+	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
+	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
+	ClickHouseHttp                            *ResourceClickHouseHttp                            `pulumi:"clickHouseHttp"`
+	ClickHouseMySql                           *ResourceClickHouseMySql                           `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                             *ResourceClickHouseTcp                             `pulumi:"clickHouseTcp"`
+	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
+	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
+	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
+	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
+	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
+	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
+	Druid                                     *ResourceDruid                                     `pulumi:"druid"`
+	DynamoDb                                  *ResourceDynamoDb                                  `pulumi:"dynamoDb"`
+	DynamoDbiam                               *ResourceDynamoDbiam                               `pulumi:"dynamoDbiam"`
+	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
+	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
+	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
+	GcpConsole                                *ResourceGcpConsole                                `pulumi:"gcpConsole"`
+	Gcpwif                                    *ResourceGcpwif                                    `pulumi:"gcpwif"`
+	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
+	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
+	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
+	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
+	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
@@ -483,6 +488,7 @@ type resourceArgs struct {
 	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
 	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
 	Redis           *ResourceRedis           `pulumi:"redis"`
+	RedisCluster    *ResourceRedisCluster    `pulumi:"redisCluster"`
 	Redshift        *ResourceRedshift        `pulumi:"redshift"`
 	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
@@ -503,6 +509,8 @@ type resourceArgs struct {
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
+	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Vertica *ResourceVertica `pulumi:"vertica"`
 }
 
 // The set of arguments for constructing a Resource resource.
@@ -518,54 +526,53 @@ type ResourceArgs struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                                  ResourceAmazonEsPtrInput
-	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonEsiam                  ResourceAmazonEsiamPtrInput
-	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
-	Athena                       ResourceAthenaPtrInput
-	AthenaIam                    ResourceAthenaIamPtrInput
-	AuroraMysql                  ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres               ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
-	Aws                          ResourceAwsPtrInput
-	AwsConsole                   ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile           ResourceAwsInstanceProfilePtrInput
-	Azure                        ResourceAzurePtrInput
-	AzureCertificate             ResourceAzureCertificatePtrInput
-	AzureMysql                   ResourceAzureMysqlPtrInput
-	AzurePostgres                ResourceAzurePostgresPtrInput
-	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
-	BigQuery                     ResourceBigQueryPtrInput
-	Cassandra                    ResourceCassandraPtrInput
-	Citus                        ResourceCitusPtrInput
-	ClickHouseHttp               ResourceClickHouseHttpPtrInput
-	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
-	ClickHouseTcp                ResourceClickHouseTcpPtrInput
-	Clustrix                     ResourceClustrixPtrInput
-	Cockroach                    ResourceCockroachPtrInput
-	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
-	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
-	Db2I                         ResourceDb2IPtrInput
-	Db2Luw                       ResourceDb2LuwPtrInput
-	DocumentDbHost               ResourceDocumentDbHostPtrInput
-	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
-	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
-	Druid                        ResourceDruidPtrInput
-	DynamoDb                     ResourceDynamoDbPtrInput
-	DynamoDbiam                  ResourceDynamoDbiamPtrInput
-	Elastic                      ResourceElasticPtrInput
-	ElasticacheRedis             ResourceElasticacheRedisPtrInput
-	Gcp                          ResourceGcpPtrInput
-	GcpConsole                   ResourceGcpConsolePtrInput
-	Gcpwif                       ResourceGcpwifPtrInput
-	GoogleGke                    ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation   ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                    ResourceGreenplumPtrInput
-	HttpAuth                     ResourceHttpAuthPtrInput
-	HttpBasicAuth                ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                   ResourceHttpNoAuthPtrInput
-	Kubernetes                   ResourceKubernetesPtrInput
+	AmazonEsiam                               ResourceAmazonEsiamPtrInput
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
+	Athena                                    ResourceAthenaPtrInput
+	AthenaIam                                 ResourceAthenaIamPtrInput
+	AuroraMysql                               ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
+	Aws                                       ResourceAwsPtrInput
+	AwsConsole                                ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AzureMysql                                ResourceAzureMysqlPtrInput
+	AzurePostgres                             ResourceAzurePostgresPtrInput
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
+	BigQuery                                  ResourceBigQueryPtrInput
+	Cassandra                                 ResourceCassandraPtrInput
+	Citus                                     ResourceCitusPtrInput
+	ClickHouseHttp                            ResourceClickHouseHttpPtrInput
+	ClickHouseMySql                           ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                             ResourceClickHouseTcpPtrInput
+	Clustrix                                  ResourceClustrixPtrInput
+	Cockroach                                 ResourceCockroachPtrInput
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
+	Db2I                                      ResourceDb2IPtrInput
+	Db2Luw                                    ResourceDb2LuwPtrInput
+	DocumentDbHost                            ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
+	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
+	Druid                                     ResourceDruidPtrInput
+	DynamoDb                                  ResourceDynamoDbPtrInput
+	DynamoDbiam                               ResourceDynamoDbiamPtrInput
+	Elastic                                   ResourceElasticPtrInput
+	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
+	Gcp                                       ResourceGcpPtrInput
+	GcpConsole                                ResourceGcpConsolePtrInput
+	Gcpwif                                    ResourceGcpwifPtrInput
+	GoogleGke                                 ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                                 ResourceGreenplumPtrInput
+	HttpAuth                                  ResourceHttpAuthPtrInput
+	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                                ResourceHttpNoAuthPtrInput
+	Kubernetes                                ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
@@ -597,6 +604,7 @@ type ResourceArgs struct {
 	RdpCert         ResourceRdpCertPtrInput
 	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
 	Redis           ResourceRedisPtrInput
+	RedisCluster    ResourceRedisClusterPtrInput
 	Redshift        ResourceRedshiftPtrInput
 	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	RedshiftIam ResourceRedshiftIamPtrInput
@@ -617,6 +625,8 @@ type ResourceArgs struct {
 	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
+	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Vertica ResourceVerticaPtrInput
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -751,7 +761,6 @@ func (o ResourceOutput) AmazonEs() ResourceAmazonEsPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEsPtrOutput { return v.AmazonEs }).(ResourceAmazonEsPtrOutput)
 }
 
-// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AmazonEsiam() ResourceAmazonEsiamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEsiamPtrOutput { return v.AmazonEsiam }).(ResourceAmazonEsiamPtrOutput)
 }
@@ -1054,6 +1063,10 @@ func (o ResourceOutput) Redis() ResourceRedisPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedisPtrOutput { return v.Redis }).(ResourceRedisPtrOutput)
 }
 
+func (o ResourceOutput) RedisCluster() ResourceRedisClusterPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceRedisClusterPtrOutput { return v.RedisCluster }).(ResourceRedisClusterPtrOutput)
+}
+
 func (o ResourceOutput) Redshift() ResourceRedshiftPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedshiftPtrOutput { return v.Redshift }).(ResourceRedshiftPtrOutput)
 }
@@ -1123,6 +1136,11 @@ func (o ResourceOutput) Teradata() ResourceTeradataPtrOutput {
 // Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Trino() ResourceTrinoPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceTrinoPtrOutput { return v.Trino }).(ResourceTrinoPtrOutput)
+}
+
+// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Vertica() ResourceVerticaPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceVerticaPtrOutput { return v.Vertica }).(ResourceVerticaPtrOutput)
 }
 
 type ResourceArrayOutput struct{ *pulumi.OutputState }
