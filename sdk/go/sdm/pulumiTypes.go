@@ -17967,6 +17967,333 @@ func (o ResourceDocumentDbReplicaSetPtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceDocumentDbReplicaSetIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// Set to connect to a replica instead of the primary node.
+	ConnectToReplica *bool `pulumi:"connectToReplica"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceDocumentDbReplicaSetIamInput is an input type that accepts ResourceDocumentDbReplicaSetIamArgs and ResourceDocumentDbReplicaSetIamOutput values.
+// You can construct a concrete instance of `ResourceDocumentDbReplicaSetIamInput` via:
+//
+//	ResourceDocumentDbReplicaSetIamArgs{...}
+type ResourceDocumentDbReplicaSetIamInput interface {
+	pulumi.Input
+
+	ToResourceDocumentDbReplicaSetIamOutput() ResourceDocumentDbReplicaSetIamOutput
+	ToResourceDocumentDbReplicaSetIamOutputWithContext(context.Context) ResourceDocumentDbReplicaSetIamOutput
+}
+
+type ResourceDocumentDbReplicaSetIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// Set to connect to a replica instead of the primary node.
+	ConnectToReplica pulumi.BoolPtrInput `pulumi:"connectToReplica"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceDocumentDbReplicaSetIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (i ResourceDocumentDbReplicaSetIamArgs) ToResourceDocumentDbReplicaSetIamOutput() ResourceDocumentDbReplicaSetIamOutput {
+	return i.ToResourceDocumentDbReplicaSetIamOutputWithContext(context.Background())
+}
+
+func (i ResourceDocumentDbReplicaSetIamArgs) ToResourceDocumentDbReplicaSetIamOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbReplicaSetIamOutput)
+}
+
+func (i ResourceDocumentDbReplicaSetIamArgs) ToResourceDocumentDbReplicaSetIamPtrOutput() ResourceDocumentDbReplicaSetIamPtrOutput {
+	return i.ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceDocumentDbReplicaSetIamArgs) ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbReplicaSetIamOutput).ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(ctx)
+}
+
+// ResourceDocumentDbReplicaSetIamPtrInput is an input type that accepts ResourceDocumentDbReplicaSetIamArgs, ResourceDocumentDbReplicaSetIamPtr and ResourceDocumentDbReplicaSetIamPtrOutput values.
+// You can construct a concrete instance of `ResourceDocumentDbReplicaSetIamPtrInput` via:
+//
+//	        ResourceDocumentDbReplicaSetIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceDocumentDbReplicaSetIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceDocumentDbReplicaSetIamPtrOutput() ResourceDocumentDbReplicaSetIamPtrOutput
+	ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(context.Context) ResourceDocumentDbReplicaSetIamPtrOutput
+}
+
+type resourceDocumentDbReplicaSetIamPtrType ResourceDocumentDbReplicaSetIamArgs
+
+func ResourceDocumentDbReplicaSetIamPtr(v *ResourceDocumentDbReplicaSetIamArgs) ResourceDocumentDbReplicaSetIamPtrInput {
+	return (*resourceDocumentDbReplicaSetIamPtrType)(v)
+}
+
+func (*resourceDocumentDbReplicaSetIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (i *resourceDocumentDbReplicaSetIamPtrType) ToResourceDocumentDbReplicaSetIamPtrOutput() ResourceDocumentDbReplicaSetIamPtrOutput {
+	return i.ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceDocumentDbReplicaSetIamPtrType) ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbReplicaSetIamPtrOutput)
+}
+
+type ResourceDocumentDbReplicaSetIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceDocumentDbReplicaSetIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (o ResourceDocumentDbReplicaSetIamOutput) ToResourceDocumentDbReplicaSetIamOutput() ResourceDocumentDbReplicaSetIamOutput {
+	return o
+}
+
+func (o ResourceDocumentDbReplicaSetIamOutput) ToResourceDocumentDbReplicaSetIamOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamOutput {
+	return o
+}
+
+func (o ResourceDocumentDbReplicaSetIamOutput) ToResourceDocumentDbReplicaSetIamPtrOutput() ResourceDocumentDbReplicaSetIamPtrOutput {
+	return o.ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceDocumentDbReplicaSetIamOutput) ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDocumentDbReplicaSetIam) *ResourceDocumentDbReplicaSetIam {
+		return &v
+	}).(ResourceDocumentDbReplicaSetIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDocumentDbReplicaSetIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// Set to connect to a replica instead of the primary node.
+func (o ResourceDocumentDbReplicaSetIamOutput) ConnectToReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *bool { return v.ConnectToReplica }).(pulumi.BoolPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDocumentDbReplicaSetIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbReplicaSetIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDocumentDbReplicaSetIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDocumentDbReplicaSetIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbReplicaSetIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDocumentDbReplicaSetIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDocumentDbReplicaSetIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDocumentDbReplicaSetIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDocumentDbReplicaSetIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSetIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceDocumentDbReplicaSetIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceDocumentDbReplicaSetIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) ToResourceDocumentDbReplicaSetIamPtrOutput() ResourceDocumentDbReplicaSetIamPtrOutput {
+	return o
+}
+
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) ToResourceDocumentDbReplicaSetIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetIamPtrOutput {
+	return o
+}
+
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Elem() ResourceDocumentDbReplicaSetIamOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) ResourceDocumentDbReplicaSetIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceDocumentDbReplicaSetIam
+		return ret
+	}).(ResourceDocumentDbReplicaSetIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set to connect to a replica instead of the primary node.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) ConnectToReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectToReplica
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDocumentDbReplicaSetIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSetIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceDruid struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -31044,6 +31371,371 @@ func (o ResourceOraclePtrOutput) TlsRequired() pulumi.BoolPtrOutput {
 // The username to authenticate with.
 func (o ResourceOraclePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceOracleNne struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceOracleNneInput is an input type that accepts ResourceOracleNneArgs and ResourceOracleNneOutput values.
+// You can construct a concrete instance of `ResourceOracleNneInput` via:
+//
+//	ResourceOracleNneArgs{...}
+type ResourceOracleNneInput interface {
+	pulumi.Input
+
+	ToResourceOracleNneOutput() ResourceOracleNneOutput
+	ToResourceOracleNneOutputWithContext(context.Context) ResourceOracleNneOutput
+}
+
+type ResourceOracleNneArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceOracleNneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOracleNne)(nil)).Elem()
+}
+
+func (i ResourceOracleNneArgs) ToResourceOracleNneOutput() ResourceOracleNneOutput {
+	return i.ToResourceOracleNneOutputWithContext(context.Background())
+}
+
+func (i ResourceOracleNneArgs) ToResourceOracleNneOutputWithContext(ctx context.Context) ResourceOracleNneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOracleNneOutput)
+}
+
+func (i ResourceOracleNneArgs) ToResourceOracleNnePtrOutput() ResourceOracleNnePtrOutput {
+	return i.ToResourceOracleNnePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceOracleNneArgs) ToResourceOracleNnePtrOutputWithContext(ctx context.Context) ResourceOracleNnePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOracleNneOutput).ToResourceOracleNnePtrOutputWithContext(ctx)
+}
+
+// ResourceOracleNnePtrInput is an input type that accepts ResourceOracleNneArgs, ResourceOracleNnePtr and ResourceOracleNnePtrOutput values.
+// You can construct a concrete instance of `ResourceOracleNnePtrInput` via:
+//
+//	        ResourceOracleNneArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceOracleNnePtrInput interface {
+	pulumi.Input
+
+	ToResourceOracleNnePtrOutput() ResourceOracleNnePtrOutput
+	ToResourceOracleNnePtrOutputWithContext(context.Context) ResourceOracleNnePtrOutput
+}
+
+type resourceOracleNnePtrType ResourceOracleNneArgs
+
+func ResourceOracleNnePtr(v *ResourceOracleNneArgs) ResourceOracleNnePtrInput {
+	return (*resourceOracleNnePtrType)(v)
+}
+
+func (*resourceOracleNnePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOracleNne)(nil)).Elem()
+}
+
+func (i *resourceOracleNnePtrType) ToResourceOracleNnePtrOutput() ResourceOracleNnePtrOutput {
+	return i.ToResourceOracleNnePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceOracleNnePtrType) ToResourceOracleNnePtrOutputWithContext(ctx context.Context) ResourceOracleNnePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOracleNnePtrOutput)
+}
+
+type ResourceOracleNneOutput struct{ *pulumi.OutputState }
+
+func (ResourceOracleNneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOracleNne)(nil)).Elem()
+}
+
+func (o ResourceOracleNneOutput) ToResourceOracleNneOutput() ResourceOracleNneOutput {
+	return o
+}
+
+func (o ResourceOracleNneOutput) ToResourceOracleNneOutputWithContext(ctx context.Context) ResourceOracleNneOutput {
+	return o
+}
+
+func (o ResourceOracleNneOutput) ToResourceOracleNnePtrOutput() ResourceOracleNnePtrOutput {
+	return o.ToResourceOracleNnePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceOracleNneOutput) ToResourceOracleNnePtrOutputWithContext(ctx context.Context) ResourceOracleNnePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOracleNne) *ResourceOracleNne {
+		return &v
+	}).(ResourceOracleNnePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceOracleNneOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceOracleNneOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceOracleNne) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceOracleNneOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceOracleNneOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceOracleNne) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceOracleNneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceOracleNne) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceOracleNneOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceOracleNneOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceOracleNne) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceOracleNneOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceOracleNneOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceOracleNneOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceOracleNneOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceOracleNneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceOracleNne) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceOracleNneOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracleNne) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceOracleNnePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceOracleNnePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOracleNne)(nil)).Elem()
+}
+
+func (o ResourceOracleNnePtrOutput) ToResourceOracleNnePtrOutput() ResourceOracleNnePtrOutput {
+	return o
+}
+
+func (o ResourceOracleNnePtrOutput) ToResourceOracleNnePtrOutputWithContext(ctx context.Context) ResourceOracleNnePtrOutput {
+	return o
+}
+
+func (o ResourceOracleNnePtrOutput) Elem() ResourceOracleNneOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) ResourceOracleNne {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceOracleNne
+		return ret
+	}).(ResourceOracleNneOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceOracleNnePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceOracleNnePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceOracleNnePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceOracleNnePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceOracleNnePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceOracleNnePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceOracleNnePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceOracleNnePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceOracleNnePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceOracleNnePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceOracleNnePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceOracleNnePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceOracleNnePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracleNne) *string {
 		if v == nil {
 			return nil
 		}
@@ -50883,6 +51575,7 @@ type GetResourceResource struct {
 	Db2Luws                                    []GetResourceResourceDb2Luw                                    `pulumi:"db2Luws"`
 	DocumentDbHostIams                         []GetResourceResourceDocumentDbHostIam                         `pulumi:"documentDbHostIams"`
 	DocumentDbHosts                            []GetResourceResourceDocumentDbHost                            `pulumi:"documentDbHosts"`
+	DocumentDbReplicaSetIams                   []GetResourceResourceDocumentDbReplicaSetIam                   `pulumi:"documentDbReplicaSetIams"`
 	DocumentDbReplicaSets                      []GetResourceResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSets"`
 	Druids                                     []GetResourceResourceDruid                                     `pulumi:"druids"`
 	DynamoDbiams                               []GetResourceResourceDynamoDbiam                               `pulumi:"dynamoDbiams"`
@@ -50917,6 +51610,7 @@ type GetResourceResource struct {
 	Mysqls                                     []GetResourceResourceMysql                                     `pulumi:"mysqls"`
 	NeptuneIams                                []GetResourceResourceNeptuneIam                                `pulumi:"neptuneIams"`
 	Neptunes                                   []GetResourceResourceNeptune                                   `pulumi:"neptunes"`
+	OracleNnes                                 []GetResourceResourceOracleNne                                 `pulumi:"oracleNnes"`
 	Oracles                                    []GetResourceResourceOracle                                    `pulumi:"oracles"`
 	Postgres                                   []GetResourceResourcePostgre                                   `pulumi:"postgres"`
 	Prestos                                    []GetResourceResourcePresto                                    `pulumi:"prestos"`
@@ -51000,6 +51694,7 @@ type GetResourceResourceArgs struct {
 	Db2Luws                                    GetResourceResourceDb2LuwArrayInput                                    `pulumi:"db2Luws"`
 	DocumentDbHostIams                         GetResourceResourceDocumentDbHostIamArrayInput                         `pulumi:"documentDbHostIams"`
 	DocumentDbHosts                            GetResourceResourceDocumentDbHostArrayInput                            `pulumi:"documentDbHosts"`
+	DocumentDbReplicaSetIams                   GetResourceResourceDocumentDbReplicaSetIamArrayInput                   `pulumi:"documentDbReplicaSetIams"`
 	DocumentDbReplicaSets                      GetResourceResourceDocumentDbReplicaSetArrayInput                      `pulumi:"documentDbReplicaSets"`
 	Druids                                     GetResourceResourceDruidArrayInput                                     `pulumi:"druids"`
 	DynamoDbiams                               GetResourceResourceDynamoDbiamArrayInput                               `pulumi:"dynamoDbiams"`
@@ -51034,6 +51729,7 @@ type GetResourceResourceArgs struct {
 	Mysqls                                     GetResourceResourceMysqlArrayInput                                     `pulumi:"mysqls"`
 	NeptuneIams                                GetResourceResourceNeptuneIamArrayInput                                `pulumi:"neptuneIams"`
 	Neptunes                                   GetResourceResourceNeptuneArrayInput                                   `pulumi:"neptunes"`
+	OracleNnes                                 GetResourceResourceOracleNneArrayInput                                 `pulumi:"oracleNnes"`
 	Oracles                                    GetResourceResourceOracleArrayInput                                    `pulumi:"oracles"`
 	Postgres                                   GetResourceResourcePostgreArrayInput                                   `pulumi:"postgres"`
 	Prestos                                    GetResourceResourcePrestoArrayInput                                    `pulumi:"prestos"`
@@ -51291,6 +51987,12 @@ func (o GetResourceResourceOutput) DocumentDbHosts() GetResourceResourceDocument
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDocumentDbHost { return v.DocumentDbHosts }).(GetResourceResourceDocumentDbHostArrayOutput)
 }
 
+func (o GetResourceResourceOutput) DocumentDbReplicaSetIams() GetResourceResourceDocumentDbReplicaSetIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDocumentDbReplicaSetIam {
+		return v.DocumentDbReplicaSetIams
+	}).(GetResourceResourceDocumentDbReplicaSetIamArrayOutput)
+}
+
 func (o GetResourceResourceOutput) DocumentDbReplicaSets() GetResourceResourceDocumentDbReplicaSetArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDocumentDbReplicaSet { return v.DocumentDbReplicaSets }).(GetResourceResourceDocumentDbReplicaSetArrayOutput)
 }
@@ -51437,6 +52139,10 @@ func (o GetResourceResourceOutput) NeptuneIams() GetResourceResourceNeptuneIamAr
 
 func (o GetResourceResourceOutput) Neptunes() GetResourceResourceNeptuneArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceNeptune { return v.Neptunes }).(GetResourceResourceNeptuneArrayOutput)
+}
+
+func (o GetResourceResourceOutput) OracleNnes() GetResourceResourceOracleNneArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceOracleNne { return v.OracleNnes }).(GetResourceResourceOracleNneArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Oracles() GetResourceResourceOracleArrayOutput {
@@ -60988,6 +61694,202 @@ func (o GetResourceResourceDocumentDbReplicaSetArrayOutput) Index(i pulumi.IntIn
 	}).(GetResourceResourceDocumentDbReplicaSetOutput)
 }
 
+type GetResourceResourceDocumentDbReplicaSetIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// Set to connect to a replica instead of the primary node.
+	ConnectToReplica *bool `pulumi:"connectToReplica"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceDocumentDbReplicaSetIamInput is an input type that accepts GetResourceResourceDocumentDbReplicaSetIamArgs and GetResourceResourceDocumentDbReplicaSetIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceDocumentDbReplicaSetIamInput` via:
+//
+//	GetResourceResourceDocumentDbReplicaSetIamArgs{...}
+type GetResourceResourceDocumentDbReplicaSetIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDocumentDbReplicaSetIamOutput() GetResourceResourceDocumentDbReplicaSetIamOutput
+	ToGetResourceResourceDocumentDbReplicaSetIamOutputWithContext(context.Context) GetResourceResourceDocumentDbReplicaSetIamOutput
+}
+
+type GetResourceResourceDocumentDbReplicaSetIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// Set to connect to a replica instead of the primary node.
+	ConnectToReplica pulumi.BoolPtrInput `pulumi:"connectToReplica"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceDocumentDbReplicaSetIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDocumentDbReplicaSetIamArgs) ToGetResourceResourceDocumentDbReplicaSetIamOutput() GetResourceResourceDocumentDbReplicaSetIamOutput {
+	return i.ToGetResourceResourceDocumentDbReplicaSetIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDocumentDbReplicaSetIamArgs) ToGetResourceResourceDocumentDbReplicaSetIamOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbReplicaSetIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbReplicaSetIamOutput)
+}
+
+// GetResourceResourceDocumentDbReplicaSetIamArrayInput is an input type that accepts GetResourceResourceDocumentDbReplicaSetIamArray and GetResourceResourceDocumentDbReplicaSetIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceDocumentDbReplicaSetIamArrayInput` via:
+//
+//	GetResourceResourceDocumentDbReplicaSetIamArray{ GetResourceResourceDocumentDbReplicaSetIamArgs{...} }
+type GetResourceResourceDocumentDbReplicaSetIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDocumentDbReplicaSetIamArrayOutput() GetResourceResourceDocumentDbReplicaSetIamArrayOutput
+	ToGetResourceResourceDocumentDbReplicaSetIamArrayOutputWithContext(context.Context) GetResourceResourceDocumentDbReplicaSetIamArrayOutput
+}
+
+type GetResourceResourceDocumentDbReplicaSetIamArray []GetResourceResourceDocumentDbReplicaSetIamInput
+
+func (GetResourceResourceDocumentDbReplicaSetIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDocumentDbReplicaSetIamArray) ToGetResourceResourceDocumentDbReplicaSetIamArrayOutput() GetResourceResourceDocumentDbReplicaSetIamArrayOutput {
+	return i.ToGetResourceResourceDocumentDbReplicaSetIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDocumentDbReplicaSetIamArray) ToGetResourceResourceDocumentDbReplicaSetIamArrayOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbReplicaSetIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbReplicaSetIamArrayOutput)
+}
+
+type GetResourceResourceDocumentDbReplicaSetIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDocumentDbReplicaSetIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) ToGetResourceResourceDocumentDbReplicaSetIamOutput() GetResourceResourceDocumentDbReplicaSetIamOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) ToGetResourceResourceDocumentDbReplicaSetIamOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbReplicaSetIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// Set to connect to a replica instead of the primary node.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) ConnectToReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *bool { return v.ConnectToReplica }).(pulumi.BoolPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceDocumentDbReplicaSetIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSetIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceDocumentDbReplicaSetIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDocumentDbReplicaSetIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDocumentDbReplicaSetIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetIamArrayOutput) ToGetResourceResourceDocumentDbReplicaSetIamArrayOutput() GetResourceResourceDocumentDbReplicaSetIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetIamArrayOutput) ToGetResourceResourceDocumentDbReplicaSetIamArrayOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbReplicaSetIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDocumentDbReplicaSetIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceDocumentDbReplicaSetIam {
+		return vs[0].([]GetResourceResourceDocumentDbReplicaSetIam)[vs[1].(int)]
+	}).(GetResourceResourceDocumentDbReplicaSetIamOutput)
+}
+
 type GetResourceResourceDruid struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -68591,6 +69493,220 @@ func (o GetResourceResourceOracleArrayOutput) Index(i pulumi.IntInput) GetResour
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceOracle {
 		return vs[0].([]GetResourceResourceOracle)[vs[1].(int)]
 	}).(GetResourceResourceOracleOutput)
+}
+
+type GetResourceResourceOracleNne struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceOracleNneInput is an input type that accepts GetResourceResourceOracleNneArgs and GetResourceResourceOracleNneOutput values.
+// You can construct a concrete instance of `GetResourceResourceOracleNneInput` via:
+//
+//	GetResourceResourceOracleNneArgs{...}
+type GetResourceResourceOracleNneInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceOracleNneOutput() GetResourceResourceOracleNneOutput
+	ToGetResourceResourceOracleNneOutputWithContext(context.Context) GetResourceResourceOracleNneOutput
+}
+
+type GetResourceResourceOracleNneArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceOracleNneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceOracleNne)(nil)).Elem()
+}
+
+func (i GetResourceResourceOracleNneArgs) ToGetResourceResourceOracleNneOutput() GetResourceResourceOracleNneOutput {
+	return i.ToGetResourceResourceOracleNneOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceOracleNneArgs) ToGetResourceResourceOracleNneOutputWithContext(ctx context.Context) GetResourceResourceOracleNneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceOracleNneOutput)
+}
+
+// GetResourceResourceOracleNneArrayInput is an input type that accepts GetResourceResourceOracleNneArray and GetResourceResourceOracleNneArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceOracleNneArrayInput` via:
+//
+//	GetResourceResourceOracleNneArray{ GetResourceResourceOracleNneArgs{...} }
+type GetResourceResourceOracleNneArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceOracleNneArrayOutput() GetResourceResourceOracleNneArrayOutput
+	ToGetResourceResourceOracleNneArrayOutputWithContext(context.Context) GetResourceResourceOracleNneArrayOutput
+}
+
+type GetResourceResourceOracleNneArray []GetResourceResourceOracleNneInput
+
+func (GetResourceResourceOracleNneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceOracleNne)(nil)).Elem()
+}
+
+func (i GetResourceResourceOracleNneArray) ToGetResourceResourceOracleNneArrayOutput() GetResourceResourceOracleNneArrayOutput {
+	return i.ToGetResourceResourceOracleNneArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceOracleNneArray) ToGetResourceResourceOracleNneArrayOutputWithContext(ctx context.Context) GetResourceResourceOracleNneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceOracleNneArrayOutput)
+}
+
+type GetResourceResourceOracleNneOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceOracleNneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceOracleNne)(nil)).Elem()
+}
+
+func (o GetResourceResourceOracleNneOutput) ToGetResourceResourceOracleNneOutput() GetResourceResourceOracleNneOutput {
+	return o
+}
+
+func (o GetResourceResourceOracleNneOutput) ToGetResourceResourceOracleNneOutputWithContext(ctx context.Context) GetResourceResourceOracleNneOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceOracleNneOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceOracleNneOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceOracleNneOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceOracleNneOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceOracleNneOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceOracleNneOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceOracleNneOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceOracleNneOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceOracleNneOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceOracleNneOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceOracleNneOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceOracleNneOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceOracleNneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceOracleNneOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracleNne) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceOracleNneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceOracleNneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceOracleNne)(nil)).Elem()
+}
+
+func (o GetResourceResourceOracleNneArrayOutput) ToGetResourceResourceOracleNneArrayOutput() GetResourceResourceOracleNneArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceOracleNneArrayOutput) ToGetResourceResourceOracleNneArrayOutputWithContext(ctx context.Context) GetResourceResourceOracleNneArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceOracleNneArrayOutput) Index(i pulumi.IntInput) GetResourceResourceOracleNneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceOracleNne {
+		return vs[0].([]GetResourceResourceOracleNne)[vs[1].(int)]
+	}).(GetResourceResourceOracleNneOutput)
 }
 
 type GetResourceResourcePostgre struct {
@@ -79469,6 +80585,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbHostIamPtrInput)(nil)).Elem(), ResourceDocumentDbHostIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetInput)(nil)).Elem(), ResourceDocumentDbReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetPtrInput)(nil)).Elem(), ResourceDocumentDbReplicaSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetIamInput)(nil)).Elem(), ResourceDocumentDbReplicaSetIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetIamPtrInput)(nil)).Elem(), ResourceDocumentDbReplicaSetIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDruidInput)(nil)).Elem(), ResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDruidPtrInput)(nil)).Elem(), ResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDynamoDbInput)(nil)).Elem(), ResourceDynamoDbArgs{})
@@ -79537,6 +80655,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceNeptuneIamPtrInput)(nil)).Elem(), ResourceNeptuneIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOracleInput)(nil)).Elem(), ResourceOracleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOraclePtrInput)(nil)).Elem(), ResourceOracleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOracleNneInput)(nil)).Elem(), ResourceOracleNneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOracleNnePtrInput)(nil)).Elem(), ResourceOracleNneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePostgresInput)(nil)).Elem(), ResourcePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePostgresPtrInput)(nil)).Elem(), ResourcePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePrestoInput)(nil)).Elem(), ResourcePrestoArgs{})
@@ -79783,6 +80903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbHostIamArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbHostIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetIamInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetIamArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDruidInput)(nil)).Elem(), GetResourceResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDruidArrayInput)(nil)).Elem(), GetResourceResourceDruidArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDynamoDbInput)(nil)).Elem(), GetResourceResourceDynamoDbArgs{})
@@ -79851,6 +80973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceNeptuneIamArrayInput)(nil)).Elem(), GetResourceResourceNeptuneIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceOracleInput)(nil)).Elem(), GetResourceResourceOracleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceOracleArrayInput)(nil)).Elem(), GetResourceResourceOracleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceOracleNneInput)(nil)).Elem(), GetResourceResourceOracleNneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceOracleNneArrayInput)(nil)).Elem(), GetResourceResourceOracleNneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourcePostgreInput)(nil)).Elem(), GetResourceResourcePostgreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourcePostgreArrayInput)(nil)).Elem(), GetResourceResourcePostgreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourcePrestoInput)(nil)).Elem(), GetResourceResourcePrestoArgs{})
@@ -80071,6 +81195,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceDocumentDbHostIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetPtrOutput{})
+	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetIamOutput{})
+	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDruidOutput{})
 	pulumi.RegisterOutputType(ResourceDruidPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDynamoDbOutput{})
@@ -80139,6 +81265,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceNeptuneIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceOracleOutput{})
 	pulumi.RegisterOutputType(ResourceOraclePtrOutput{})
+	pulumi.RegisterOutputType(ResourceOracleNneOutput{})
+	pulumi.RegisterOutputType(ResourceOracleNnePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePostgresOutput{})
 	pulumi.RegisterOutputType(ResourcePostgresPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePrestoOutput{})
@@ -80385,6 +81513,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbHostIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDruidOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDruidArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDynamoDbOutput{})
@@ -80453,6 +81583,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceNeptuneIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceOracleOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceOracleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceOracleNneOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceOracleNneArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourcePostgreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourcePostgreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourcePrestoOutput{})

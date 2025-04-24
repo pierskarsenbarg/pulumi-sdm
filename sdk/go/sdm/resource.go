@@ -64,21 +64,24 @@ type Resource struct {
 	DocumentDbHost                            ResourceDocumentDbHostPtrOutput                            `pulumi:"documentDbHost"`
 	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrOutput                         `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrOutput                      `pulumi:"documentDbReplicaSet"`
-	Druid                                     ResourceDruidPtrOutput                                     `pulumi:"druid"`
-	DynamoDb                                  ResourceDynamoDbPtrOutput                                  `pulumi:"dynamoDb"`
-	DynamoDbiam                               ResourceDynamoDbiamPtrOutput                               `pulumi:"dynamoDbiam"`
-	Elastic                                   ResourceElasticPtrOutput                                   `pulumi:"elastic"`
-	ElasticacheRedis                          ResourceElasticacheRedisPtrOutput                          `pulumi:"elasticacheRedis"`
-	Gcp                                       ResourceGcpPtrOutput                                       `pulumi:"gcp"`
-	GcpConsole                                ResourceGcpConsolePtrOutput                                `pulumi:"gcpConsole"`
-	Gcpwif                                    ResourceGcpwifPtrOutput                                    `pulumi:"gcpwif"`
-	GoogleGke                                 ResourceGoogleGkePtrOutput                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrOutput                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 ResourceGreenplumPtrOutput                                 `pulumi:"greenplum"`
-	HttpAuth                                  ResourceHttpAuthPtrOutput                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrOutput                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                ResourceHttpNoAuthPtrOutput                                `pulumi:"httpNoAuth"`
-	Kubernetes                                ResourceKubernetesPtrOutput                                `pulumi:"kubernetes"`
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrOutput    `pulumi:"documentDbReplicaSetIam"`
+	Druid                      ResourceDruidPtrOutput                      `pulumi:"druid"`
+	DynamoDb                   ResourceDynamoDbPtrOutput                   `pulumi:"dynamoDb"`
+	DynamoDbiam                ResourceDynamoDbiamPtrOutput                `pulumi:"dynamoDbiam"`
+	Elastic                    ResourceElasticPtrOutput                    `pulumi:"elastic"`
+	ElasticacheRedis           ResourceElasticacheRedisPtrOutput           `pulumi:"elasticacheRedis"`
+	Gcp                        ResourceGcpPtrOutput                        `pulumi:"gcp"`
+	GcpConsole                 ResourceGcpConsolePtrOutput                 `pulumi:"gcpConsole"`
+	Gcpwif                     ResourceGcpwifPtrOutput                     `pulumi:"gcpwif"`
+	GoogleGke                  ResourceGoogleGkePtrOutput                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
+	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
+	HttpBasicAuth              ResourceHttpBasicAuthPtrOutput              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 ResourceHttpNoAuthPtrOutput                 `pulumi:"httpNoAuth"`
+	Kubernetes                 ResourceKubernetesPtrOutput                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrOutput                     `pulumi:"kubernetesPodIdentity"`
@@ -96,25 +99,25 @@ type Resource struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrOutput       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   ResourceMongoShardedClusterPtrOutput   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql       ResourceMtlsMysqlPtrOutput       `pulumi:"mtlsMysql"`
-	MtlsPostgres    ResourceMtlsPostgresPtrOutput    `pulumi:"mtlsPostgres"`
-	Mysql           ResourceMysqlPtrOutput           `pulumi:"mysql"`
-	Neptune         ResourceNeptunePtrOutput         `pulumi:"neptune"`
-	NeptuneIam      ResourceNeptuneIamPtrOutput      `pulumi:"neptuneIam"`
-	Oracle          ResourceOraclePtrOutput          `pulumi:"oracle"`
-	Postgres        ResourcePostgresPtrOutput        `pulumi:"postgres"`
-	Presto          ResourcePrestoPtrOutput          `pulumi:"presto"`
-	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrOutput `pulumi:"rabbitmqAmqp091"`
-	RawTcp          ResourceRawTcpPtrOutput          `pulumi:"rawTcp"`
-	Rdp             ResourceRdpPtrOutput             `pulumi:"rdp"`
-	RdpCert         ResourceRdpCertPtrOutput         `pulumi:"rdpCert"`
-	RdsPostgresIam  ResourceRdsPostgresIamPtrOutput  `pulumi:"rdsPostgresIam"`
-	Redis           ResourceRedisPtrOutput           `pulumi:"redis"`
-	RedisCluster    ResourceRedisClusterPtrOutput    `pulumi:"redisCluster"`
-	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
-	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	RedshiftIam ResourceRedshiftIamPtrOutput `pulumi:"redshiftIam"`
-	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrOutput    `pulumi:"mtlsMysql"`
+	MtlsPostgres ResourceMtlsPostgresPtrOutput `pulumi:"mtlsPostgres"`
+	Mysql        ResourceMysqlPtrOutput        `pulumi:"mysql"`
+	Neptune      ResourceNeptunePtrOutput      `pulumi:"neptune"`
+	NeptuneIam   ResourceNeptuneIamPtrOutput   `pulumi:"neptuneIam"`
+	Oracle       ResourceOraclePtrOutput       `pulumi:"oracle"`
+	// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OracleNne             ResourceOracleNnePtrOutput             `pulumi:"oracleNne"`
+	Postgres              ResourcePostgresPtrOutput              `pulumi:"postgres"`
+	Presto                ResourcePrestoPtrOutput                `pulumi:"presto"`
+	RabbitmqAmqp091       ResourceRabbitmqAmqp091PtrOutput       `pulumi:"rabbitmqAmqp091"`
+	RawTcp                ResourceRawTcpPtrOutput                `pulumi:"rawTcp"`
+	Rdp                   ResourceRdpPtrOutput                   `pulumi:"rdp"`
+	RdpCert               ResourceRdpCertPtrOutput               `pulumi:"rdpCert"`
+	RdsPostgresIam        ResourceRdsPostgresIamPtrOutput        `pulumi:"rdsPostgresIam"`
+	Redis                 ResourceRedisPtrOutput                 `pulumi:"redis"`
+	RedisCluster          ResourceRedisClusterPtrOutput          `pulumi:"redisCluster"`
+	Redshift              ResourceRedshiftPtrOutput              `pulumi:"redshift"`
+	RedshiftIam           ResourceRedshiftIamPtrOutput           `pulumi:"redshiftIam"`
 	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrOutput `pulumi:"redshiftServerlessIam"`
 	SingleStore           ResourceSingleStorePtrOutput           `pulumi:"singleStore"`
 	Snowflake             ResourceSnowflakePtrOutput             `pulumi:"snowflake"`
@@ -208,21 +211,24 @@ type resourceState struct {
 	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
 	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
-	Druid                                     *ResourceDruid                                     `pulumi:"druid"`
-	DynamoDb                                  *ResourceDynamoDb                                  `pulumi:"dynamoDb"`
-	DynamoDbiam                               *ResourceDynamoDbiam                               `pulumi:"dynamoDbiam"`
-	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
-	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
-	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
-	GcpConsole                                *ResourceGcpConsole                                `pulumi:"gcpConsole"`
-	Gcpwif                                    *ResourceGcpwif                                    `pulumi:"gcpwif"`
-	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
-	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
-	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
+	Druid                      *ResourceDruid                      `pulumi:"druid"`
+	DynamoDb                   *ResourceDynamoDb                   `pulumi:"dynamoDb"`
+	DynamoDbiam                *ResourceDynamoDbiam                `pulumi:"dynamoDbiam"`
+	Elastic                    *ResourceElastic                    `pulumi:"elastic"`
+	ElasticacheRedis           *ResourceElasticacheRedis           `pulumi:"elasticacheRedis"`
+	Gcp                        *ResourceGcp                        `pulumi:"gcp"`
+	GcpConsole                 *ResourceGcpConsole                 `pulumi:"gcpConsole"`
+	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
+	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
@@ -240,25 +246,25 @@ type resourceState struct {
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
-	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
-	Mysql           *ResourceMysql           `pulumi:"mysql"`
-	Neptune         *ResourceNeptune         `pulumi:"neptune"`
-	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
-	Oracle          *ResourceOracle          `pulumi:"oracle"`
-	Postgres        *ResourcePostgres        `pulumi:"postgres"`
-	Presto          *ResourcePresto          `pulumi:"presto"`
-	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
-	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
-	Rdp             *ResourceRdp             `pulumi:"rdp"`
-	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
-	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
-	Redis           *ResourceRedis           `pulumi:"redis"`
-	RedisCluster    *ResourceRedisCluster    `pulumi:"redisCluster"`
-	Redshift        *ResourceRedshift        `pulumi:"redshift"`
-	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
-	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
+	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
+	Mysql        *ResourceMysql        `pulumi:"mysql"`
+	Neptune      *ResourceNeptune      `pulumi:"neptune"`
+	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
+	Oracle       *ResourceOracle       `pulumi:"oracle"`
+	// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
+	Postgres              *ResourcePostgres              `pulumi:"postgres"`
+	Presto                *ResourcePresto                `pulumi:"presto"`
+	RabbitmqAmqp091       *ResourceRabbitmqAmqp091       `pulumi:"rabbitmqAmqp091"`
+	RawTcp                *ResourceRawTcp                `pulumi:"rawTcp"`
+	Rdp                   *ResourceRdp                   `pulumi:"rdp"`
+	RdpCert               *ResourceRdpCert               `pulumi:"rdpCert"`
+	RdsPostgresIam        *ResourceRdsPostgresIam        `pulumi:"rdsPostgresIam"`
+	Redis                 *ResourceRedis                 `pulumi:"redis"`
+	RedisCluster          *ResourceRedisCluster          `pulumi:"redisCluster"`
+	Redshift              *ResourceRedshift              `pulumi:"redshift"`
+	RedshiftIam           *ResourceRedshiftIam           `pulumi:"redshiftIam"`
 	RedshiftServerlessIam *ResourceRedshiftServerlessIam `pulumi:"redshiftServerlessIam"`
 	SingleStore           *ResourceSingleStore           `pulumi:"singleStore"`
 	Snowflake             *ResourceSnowflake             `pulumi:"snowflake"`
@@ -323,21 +329,24 @@ type ResourceState struct {
 	DocumentDbHost                            ResourceDocumentDbHostPtrInput
 	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
-	Druid                                     ResourceDruidPtrInput
-	DynamoDb                                  ResourceDynamoDbPtrInput
-	DynamoDbiam                               ResourceDynamoDbiamPtrInput
-	Elastic                                   ResourceElasticPtrInput
-	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
-	Gcp                                       ResourceGcpPtrInput
-	GcpConsole                                ResourceGcpConsolePtrInput
-	Gcpwif                                    ResourceGcpwifPtrInput
-	GoogleGke                                 ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                                 ResourceGreenplumPtrInput
-	HttpAuth                                  ResourceHttpAuthPtrInput
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                                ResourceHttpNoAuthPtrInput
-	Kubernetes                                ResourceKubernetesPtrInput
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
+	Druid                      ResourceDruidPtrInput
+	DynamoDb                   ResourceDynamoDbPtrInput
+	DynamoDbiam                ResourceDynamoDbiamPtrInput
+	Elastic                    ResourceElasticPtrInput
+	ElasticacheRedis           ResourceElasticacheRedisPtrInput
+	Gcp                        ResourceGcpPtrInput
+	GcpConsole                 ResourceGcpConsolePtrInput
+	Gcpwif                     ResourceGcpwifPtrInput
+	GoogleGke                  ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
@@ -355,25 +364,25 @@ type ResourceState struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql       ResourceMtlsMysqlPtrInput
-	MtlsPostgres    ResourceMtlsPostgresPtrInput
-	Mysql           ResourceMysqlPtrInput
-	Neptune         ResourceNeptunePtrInput
-	NeptuneIam      ResourceNeptuneIamPtrInput
-	Oracle          ResourceOraclePtrInput
-	Postgres        ResourcePostgresPtrInput
-	Presto          ResourcePrestoPtrInput
-	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
-	RawTcp          ResourceRawTcpPtrInput
-	Rdp             ResourceRdpPtrInput
-	RdpCert         ResourceRdpCertPtrInput
-	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
-	Redis           ResourceRedisPtrInput
-	RedisCluster    ResourceRedisClusterPtrInput
-	Redshift        ResourceRedshiftPtrInput
-	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	RedshiftIam ResourceRedshiftIamPtrInput
-	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrInput
+	MtlsPostgres ResourceMtlsPostgresPtrInput
+	Mysql        ResourceMysqlPtrInput
+	Neptune      ResourceNeptunePtrInput
+	NeptuneIam   ResourceNeptuneIamPtrInput
+	Oracle       ResourceOraclePtrInput
+	// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OracleNne             ResourceOracleNnePtrInput
+	Postgres              ResourcePostgresPtrInput
+	Presto                ResourcePrestoPtrInput
+	RabbitmqAmqp091       ResourceRabbitmqAmqp091PtrInput
+	RawTcp                ResourceRawTcpPtrInput
+	Rdp                   ResourceRdpPtrInput
+	RdpCert               ResourceRdpCertPtrInput
+	RdsPostgresIam        ResourceRdsPostgresIamPtrInput
+	Redis                 ResourceRedisPtrInput
+	RedisCluster          ResourceRedisClusterPtrInput
+	Redshift              ResourceRedshiftPtrInput
+	RedshiftIam           ResourceRedshiftIamPtrInput
 	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrInput
 	SingleStore           ResourceSingleStorePtrInput
 	Snowflake             ResourceSnowflakePtrInput
@@ -442,21 +451,24 @@ type resourceArgs struct {
 	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
 	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
-	Druid                                     *ResourceDruid                                     `pulumi:"druid"`
-	DynamoDb                                  *ResourceDynamoDb                                  `pulumi:"dynamoDb"`
-	DynamoDbiam                               *ResourceDynamoDbiam                               `pulumi:"dynamoDbiam"`
-	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
-	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
-	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
-	GcpConsole                                *ResourceGcpConsole                                `pulumi:"gcpConsole"`
-	Gcpwif                                    *ResourceGcpwif                                    `pulumi:"gcpwif"`
-	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
-	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
-	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
+	Druid                      *ResourceDruid                      `pulumi:"druid"`
+	DynamoDb                   *ResourceDynamoDb                   `pulumi:"dynamoDb"`
+	DynamoDbiam                *ResourceDynamoDbiam                `pulumi:"dynamoDbiam"`
+	Elastic                    *ResourceElastic                    `pulumi:"elastic"`
+	ElasticacheRedis           *ResourceElasticacheRedis           `pulumi:"elasticacheRedis"`
+	Gcp                        *ResourceGcp                        `pulumi:"gcp"`
+	GcpConsole                 *ResourceGcpConsole                 `pulumi:"gcpConsole"`
+	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
+	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
@@ -474,25 +486,25 @@ type resourceArgs struct {
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
-	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
-	Mysql           *ResourceMysql           `pulumi:"mysql"`
-	Neptune         *ResourceNeptune         `pulumi:"neptune"`
-	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
-	Oracle          *ResourceOracle          `pulumi:"oracle"`
-	Postgres        *ResourcePostgres        `pulumi:"postgres"`
-	Presto          *ResourcePresto          `pulumi:"presto"`
-	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
-	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
-	Rdp             *ResourceRdp             `pulumi:"rdp"`
-	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
-	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
-	Redis           *ResourceRedis           `pulumi:"redis"`
-	RedisCluster    *ResourceRedisCluster    `pulumi:"redisCluster"`
-	Redshift        *ResourceRedshift        `pulumi:"redshift"`
-	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
-	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
+	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
+	Mysql        *ResourceMysql        `pulumi:"mysql"`
+	Neptune      *ResourceNeptune      `pulumi:"neptune"`
+	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
+	Oracle       *ResourceOracle       `pulumi:"oracle"`
+	// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
+	Postgres              *ResourcePostgres              `pulumi:"postgres"`
+	Presto                *ResourcePresto                `pulumi:"presto"`
+	RabbitmqAmqp091       *ResourceRabbitmqAmqp091       `pulumi:"rabbitmqAmqp091"`
+	RawTcp                *ResourceRawTcp                `pulumi:"rawTcp"`
+	Rdp                   *ResourceRdp                   `pulumi:"rdp"`
+	RdpCert               *ResourceRdpCert               `pulumi:"rdpCert"`
+	RdsPostgresIam        *ResourceRdsPostgresIam        `pulumi:"rdsPostgresIam"`
+	Redis                 *ResourceRedis                 `pulumi:"redis"`
+	RedisCluster          *ResourceRedisCluster          `pulumi:"redisCluster"`
+	Redshift              *ResourceRedshift              `pulumi:"redshift"`
+	RedshiftIam           *ResourceRedshiftIam           `pulumi:"redshiftIam"`
 	RedshiftServerlessIam *ResourceRedshiftServerlessIam `pulumi:"redshiftServerlessIam"`
 	SingleStore           *ResourceSingleStore           `pulumi:"singleStore"`
 	Snowflake             *ResourceSnowflake             `pulumi:"snowflake"`
@@ -558,21 +570,24 @@ type ResourceArgs struct {
 	DocumentDbHost                            ResourceDocumentDbHostPtrInput
 	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
-	Druid                                     ResourceDruidPtrInput
-	DynamoDb                                  ResourceDynamoDbPtrInput
-	DynamoDbiam                               ResourceDynamoDbiamPtrInput
-	Elastic                                   ResourceElasticPtrInput
-	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
-	Gcp                                       ResourceGcpPtrInput
-	GcpConsole                                ResourceGcpConsolePtrInput
-	Gcpwif                                    ResourceGcpwifPtrInput
-	GoogleGke                                 ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                                 ResourceGreenplumPtrInput
-	HttpAuth                                  ResourceHttpAuthPtrInput
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                                ResourceHttpNoAuthPtrInput
-	Kubernetes                                ResourceKubernetesPtrInput
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
+	Druid                      ResourceDruidPtrInput
+	DynamoDb                   ResourceDynamoDbPtrInput
+	DynamoDbiam                ResourceDynamoDbiamPtrInput
+	Elastic                    ResourceElasticPtrInput
+	ElasticacheRedis           ResourceElasticacheRedisPtrInput
+	Gcp                        ResourceGcpPtrInput
+	GcpConsole                 ResourceGcpConsolePtrInput
+	Gcpwif                     ResourceGcpwifPtrInput
+	GoogleGke                  ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
@@ -590,25 +605,25 @@ type ResourceArgs struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql       ResourceMtlsMysqlPtrInput
-	MtlsPostgres    ResourceMtlsPostgresPtrInput
-	Mysql           ResourceMysqlPtrInput
-	Neptune         ResourceNeptunePtrInput
-	NeptuneIam      ResourceNeptuneIamPtrInput
-	Oracle          ResourceOraclePtrInput
-	Postgres        ResourcePostgresPtrInput
-	Presto          ResourcePrestoPtrInput
-	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
-	RawTcp          ResourceRawTcpPtrInput
-	Rdp             ResourceRdpPtrInput
-	RdpCert         ResourceRdpCertPtrInput
-	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
-	Redis           ResourceRedisPtrInput
-	RedisCluster    ResourceRedisClusterPtrInput
-	Redshift        ResourceRedshiftPtrInput
-	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	RedshiftIam ResourceRedshiftIamPtrInput
-	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrInput
+	MtlsPostgres ResourceMtlsPostgresPtrInput
+	Mysql        ResourceMysqlPtrInput
+	Neptune      ResourceNeptunePtrInput
+	NeptuneIam   ResourceNeptuneIamPtrInput
+	Oracle       ResourceOraclePtrInput
+	// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OracleNne             ResourceOracleNnePtrInput
+	Postgres              ResourcePostgresPtrInput
+	Presto                ResourcePrestoPtrInput
+	RabbitmqAmqp091       ResourceRabbitmqAmqp091PtrInput
+	RawTcp                ResourceRawTcpPtrInput
+	Rdp                   ResourceRdpPtrInput
+	RdpCert               ResourceRdpCertPtrInput
+	RdsPostgresIam        ResourceRdsPostgresIamPtrInput
+	Redis                 ResourceRedisPtrInput
+	RedisCluster          ResourceRedisClusterPtrInput
+	Redshift              ResourceRedshiftPtrInput
+	RedshiftIam           ResourceRedshiftIamPtrInput
 	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrInput
 	SingleStore           ResourceSingleStorePtrInput
 	Snowflake             ResourceSnowflakePtrInput
@@ -889,6 +904,12 @@ func (o ResourceOutput) DocumentDbReplicaSet() ResourceDocumentDbReplicaSetPtrOu
 	return o.ApplyT(func(v *Resource) ResourceDocumentDbReplicaSetPtrOutput { return v.DocumentDbReplicaSet }).(ResourceDocumentDbReplicaSetPtrOutput)
 }
 
+// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+// bump.
+func (o ResourceOutput) DocumentDbReplicaSetIam() ResourceDocumentDbReplicaSetIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceDocumentDbReplicaSetIamPtrOutput { return v.DocumentDbReplicaSetIam }).(ResourceDocumentDbReplicaSetIamPtrOutput)
+}
+
 func (o ResourceOutput) Druid() ResourceDruidPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDruidPtrOutput { return v.Druid }).(ResourceDruidPtrOutput)
 }
@@ -1031,6 +1052,11 @@ func (o ResourceOutput) Oracle() ResourceOraclePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceOraclePtrOutput { return v.Oracle }).(ResourceOraclePtrOutput)
 }
 
+// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) OracleNne() ResourceOracleNnePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceOracleNnePtrOutput { return v.OracleNne }).(ResourceOracleNnePtrOutput)
+}
+
 func (o ResourceOutput) Postgres() ResourcePostgresPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourcePostgresPtrOutput { return v.Postgres }).(ResourcePostgresPtrOutput)
 }
@@ -1071,12 +1097,10 @@ func (o ResourceOutput) Redshift() ResourceRedshiftPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedshiftPtrOutput { return v.Redshift }).(ResourceRedshiftPtrOutput)
 }
 
-// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) RedshiftIam() ResourceRedshiftIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedshiftIamPtrOutput { return v.RedshiftIam }).(ResourceRedshiftIamPtrOutput)
 }
 
-// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) RedshiftServerlessIam() ResourceRedshiftServerlessIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedshiftServerlessIamPtrOutput { return v.RedshiftServerlessIam }).(ResourceRedshiftServerlessIamPtrOutput)
 }

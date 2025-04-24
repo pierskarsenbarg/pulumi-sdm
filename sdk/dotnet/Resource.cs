@@ -151,6 +151,13 @@ namespace PiersKarsenbarg.Sdm
         [Output("documentDbReplicaSet")]
         public Output<Outputs.ResourceDocumentDbReplicaSet?> DocumentDbReplicaSet { get; private set; } = null!;
 
+        /// <summary>
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Output("documentDbReplicaSetIam")]
+        public Output<Outputs.ResourceDocumentDbReplicaSetIam?> DocumentDbReplicaSetIam { get; private set; } = null!;
+
         [Output("druid")]
         public Output<Outputs.ResourceDruid?> Druid { get; private set; } = null!;
 
@@ -265,6 +272,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("oracle")]
         public Output<Outputs.ResourceOracle?> Oracle { get; private set; } = null!;
 
+        /// <summary>
+        /// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("oracleNne")]
+        public Output<Outputs.ResourceOracleNne?> OracleNne { get; private set; } = null!;
+
         [Output("postgres")]
         public Output<Outputs.ResourcePostgres?> Postgres { get; private set; } = null!;
 
@@ -295,15 +308,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("redshift")]
         public Output<Outputs.ResourceRedshift?> Redshift { get; private set; } = null!;
 
-        /// <summary>
-        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("redshiftIam")]
         public Output<Outputs.ResourceRedshiftIam?> RedshiftIam { get; private set; } = null!;
 
-        /// <summary>
-        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("redshiftServerlessIam")]
         public Output<Outputs.ResourceRedshiftServerlessIam?> RedshiftServerlessIam { get; private set; } = null!;
 
@@ -534,6 +541,13 @@ namespace PiersKarsenbarg.Sdm
         [Input("documentDbReplicaSet")]
         public Input<Inputs.ResourceDocumentDbReplicaSetArgs>? DocumentDbReplicaSet { get; set; }
 
+        /// <summary>
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("documentDbReplicaSetIam")]
+        public Input<Inputs.ResourceDocumentDbReplicaSetIamArgs>? DocumentDbReplicaSetIam { get; set; }
+
         [Input("druid")]
         public Input<Inputs.ResourceDruidArgs>? Druid { get; set; }
 
@@ -648,6 +662,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("oracle")]
         public Input<Inputs.ResourceOracleArgs>? Oracle { get; set; }
 
+        /// <summary>
+        /// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("oracleNne")]
+        public Input<Inputs.ResourceOracleNneArgs>? OracleNne { get; set; }
+
         [Input("postgres")]
         public Input<Inputs.ResourcePostgresArgs>? Postgres { get; set; }
 
@@ -678,15 +698,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftArgs>? Redshift { get; set; }
 
-        /// <summary>
-        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("redshiftIam")]
         public Input<Inputs.ResourceRedshiftIamArgs>? RedshiftIam { get; set; }
 
-        /// <summary>
-        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("redshiftServerlessIam")]
         public Input<Inputs.ResourceRedshiftServerlessIamArgs>? RedshiftServerlessIam { get; set; }
 
@@ -878,6 +892,13 @@ namespace PiersKarsenbarg.Sdm
         [Input("documentDbReplicaSet")]
         public Input<Inputs.ResourceDocumentDbReplicaSetGetArgs>? DocumentDbReplicaSet { get; set; }
 
+        /// <summary>
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("documentDbReplicaSetIam")]
+        public Input<Inputs.ResourceDocumentDbReplicaSetIamGetArgs>? DocumentDbReplicaSetIam { get; set; }
+
         [Input("druid")]
         public Input<Inputs.ResourceDruidGetArgs>? Druid { get; set; }
 
@@ -992,6 +1013,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("oracle")]
         public Input<Inputs.ResourceOracleGetArgs>? Oracle { get; set; }
 
+        /// <summary>
+        /// OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("oracleNne")]
+        public Input<Inputs.ResourceOracleNneGetArgs>? OracleNne { get; set; }
+
         [Input("postgres")]
         public Input<Inputs.ResourcePostgresGetArgs>? Postgres { get; set; }
 
@@ -1022,15 +1049,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftGetArgs>? Redshift { get; set; }
 
-        /// <summary>
-        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("redshiftIam")]
         public Input<Inputs.ResourceRedshiftIamGetArgs>? RedshiftIam { get; set; }
 
-        /// <summary>
-        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("redshiftServerlessIam")]
         public Input<Inputs.ResourceRedshiftServerlessIamGetArgs>? RedshiftServerlessIam { get; set; }
 
