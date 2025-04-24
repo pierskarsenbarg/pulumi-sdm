@@ -120,6 +120,8 @@ __all__ = [
     'ResourceDocumentDbHostIamArgsDict',
     'ResourceDocumentDbReplicaSetArgs',
     'ResourceDocumentDbReplicaSetArgsDict',
+    'ResourceDocumentDbReplicaSetIamArgs',
+    'ResourceDocumentDbReplicaSetIamArgsDict',
     'ResourceDruidArgs',
     'ResourceDruidArgsDict',
     'ResourceDynamoDbArgs',
@@ -188,6 +190,8 @@ __all__ = [
     'ResourceNeptuneIamArgsDict',
     'ResourceOracleArgs',
     'ResourceOracleArgsDict',
+    'ResourceOracleNneArgs',
+    'ResourceOracleNneArgsDict',
     'ResourcePostgresArgs',
     'ResourcePostgresArgsDict',
     'ResourcePrestoArgs',
@@ -13465,6 +13469,235 @@ class ResourceDocumentDbReplicaSetArgs:
 
 
 if not MYPY:
+    class ResourceDocumentDbReplicaSetIamArgsDict(TypedDict):
+        hostname: pulumi.Input[builtins.str]
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Resource.
+        """
+        region: pulumi.Input[builtins.str]
+        """
+        The AWS region to connect to.
+        """
+        bind_interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        connect_to_replica: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Set to connect to a replica instead of the primary node.
+        """
+        egress_filter: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        port_override: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The local port used by clients to connect to this resource.
+        """
+        proxy_cluster_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        secret_store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        subdomain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    ResourceDocumentDbReplicaSetIamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceDocumentDbReplicaSetIamArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str],
+                 region: pulumi.Input[builtins.str],
+                 bind_interface: Optional[pulumi.Input[builtins.str]] = None,
+                 connect_to_replica: Optional[pulumi.Input[builtins.bool]] = None,
+                 egress_filter: Optional[pulumi.Input[builtins.str]] = None,
+                 port_override: Optional[pulumi.Input[builtins.int]] = None,
+                 proxy_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subdomain: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[builtins.str] region: The AWS region to connect to.
+        :param pulumi.Input[builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[builtins.bool] connect_to_replica: Set to connect to a replica instead of the primary node.
+        :param pulumi.Input[builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[builtins.int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param pulumi.Input[builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if connect_to_replica is not None:
+            pulumi.set(__self__, "connect_to_replica", connect_to_replica)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[builtins.str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[builtins.str]:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="connectToReplica")
+    def connect_to_replica(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Set to connect to a replica instead of the primary node.
+        """
+        return pulumi.get(self, "connect_to_replica")
+
+    @connect_to_replica.setter
+    def connect_to_replica(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "connect_to_replica", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @proxy_cluster_id.setter
+    def proxy_cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "proxy_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
     class ResourceDruidArgsDict(TypedDict):
         hostname: pulumi.Input[builtins.str]
         """
@@ -23303,6 +23536,274 @@ class ResourceOracleArgs:
     @tls_required.setter
     def tls_required(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "tls_required", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ResourceOracleNneArgsDict(TypedDict):
+        database: pulumi.Input[builtins.str]
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        hostname: pulumi.Input[builtins.str]
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        name: pulumi.Input[builtins.str]
+        """
+        Unique human-readable name of the Resource.
+        """
+        port: pulumi.Input[builtins.int]
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        bind_interface: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        egress_filter: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        password: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The password to authenticate with.
+        """
+        port_override: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The local port used by clients to connect to this resource.
+        """
+        proxy_cluster_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        secret_store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        subdomain: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+        username: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The username to authenticate with.
+        """
+elif False:
+    ResourceOracleNneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceOracleNneArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[builtins.str],
+                 hostname: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str],
+                 port: pulumi.Input[builtins.int],
+                 bind_interface: Optional[pulumi.Input[builtins.str]] = None,
+                 egress_filter: Optional[pulumi.Input[builtins.str]] = None,
+                 password: Optional[pulumi.Input[builtins.str]] = None,
+                 port_override: Optional[pulumi.Input[builtins.int]] = None,
+                 proxy_cluster_id: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subdomain: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 username: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[builtins.str] hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[builtins.int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[builtins.str] password: The password to authenticate with.
+        :param pulumi.Input[builtins.int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param pulumi.Input[builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[builtins.str] username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[builtins.str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[builtins.str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[builtins.int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @proxy_cluster_id.setter
+    def proxy_cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "proxy_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter

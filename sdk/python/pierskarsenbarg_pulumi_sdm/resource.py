@@ -64,6 +64,7 @@ class ResourceArgs:
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
                  document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
                  document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
+                 document_db_replica_set_iam: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']] = None,
                  druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
                  dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
@@ -98,6 +99,7 @@ class ResourceArgs:
                  neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
                  neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
                  oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
+                 oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
                  postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
                  presto: Optional[pulumi.Input['ResourcePrestoArgs']] = None,
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
@@ -128,12 +130,13 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOracleNneArgs'] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -221,6 +224,8 @@ class ResourceArgs:
             pulumi.set(__self__, "document_db_host_iam", document_db_host_iam)
         if document_db_replica_set is not None:
             pulumi.set(__self__, "document_db_replica_set", document_db_replica_set)
+        if document_db_replica_set_iam is not None:
+            pulumi.set(__self__, "document_db_replica_set_iam", document_db_replica_set_iam)
         if druid is not None:
             pulumi.set(__self__, "druid", druid)
         if dynamo_db is not None:
@@ -289,6 +294,8 @@ class ResourceArgs:
             pulumi.set(__self__, "neptune_iam", neptune_iam)
         if oracle is not None:
             pulumi.set(__self__, "oracle", oracle)
+        if oracle_nne is not None:
+            pulumi.set(__self__, "oracle_nne", oracle_nne)
         if postgres is not None:
             pulumi.set(__self__, "postgres", postgres)
         if presto is not None:
@@ -726,6 +733,19 @@ class ResourceArgs:
         pulumi.set(self, "document_db_replica_set", value)
 
     @property
+    @pulumi.getter(name="documentDbReplicaSetIam")
+    def document_db_replica_set_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]:
+        """
+        DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "document_db_replica_set_iam")
+
+    @document_db_replica_set_iam.setter
+    def document_db_replica_set_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]):
+        pulumi.set(self, "document_db_replica_set_iam", value)
+
+    @property
     @pulumi.getter
     def druid(self) -> Optional[pulumi.Input['ResourceDruidArgs']]:
         return pulumi.get(self, "druid")
@@ -1044,6 +1064,18 @@ class ResourceArgs:
         pulumi.set(self, "oracle", value)
 
     @property
+    @pulumi.getter(name="oracleNne")
+    def oracle_nne(self) -> Optional[pulumi.Input['ResourceOracleNneArgs']]:
+        """
+        OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "oracle_nne")
+
+    @oracle_nne.setter
+    def oracle_nne(self, value: Optional[pulumi.Input['ResourceOracleNneArgs']]):
+        pulumi.set(self, "oracle_nne", value)
+
+    @property
     @pulumi.getter
     def postgres(self) -> Optional[pulumi.Input['ResourcePostgresArgs']]:
         return pulumi.get(self, "postgres")
@@ -1136,9 +1168,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="redshiftIam")
     def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
-        """
-        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_iam")
 
     @redshift_iam.setter
@@ -1148,9 +1177,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="redshiftServerlessIam")
     def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
-        """
-        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_serverless_iam")
 
     @redshift_serverless_iam.setter
@@ -1344,6 +1370,7 @@ class _ResourceState:
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
                  document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
                  document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
+                 document_db_replica_set_iam: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']] = None,
                  druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
                  dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
@@ -1378,6 +1405,7 @@ class _ResourceState:
                  neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
                  neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
                  oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
+                 oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
                  postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
                  presto: Optional[pulumi.Input['ResourcePrestoArgs']] = None,
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
@@ -1408,12 +1436,13 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOracleNneArgs'] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -1501,6 +1530,8 @@ class _ResourceState:
             pulumi.set(__self__, "document_db_host_iam", document_db_host_iam)
         if document_db_replica_set is not None:
             pulumi.set(__self__, "document_db_replica_set", document_db_replica_set)
+        if document_db_replica_set_iam is not None:
+            pulumi.set(__self__, "document_db_replica_set_iam", document_db_replica_set_iam)
         if druid is not None:
             pulumi.set(__self__, "druid", druid)
         if dynamo_db is not None:
@@ -1569,6 +1600,8 @@ class _ResourceState:
             pulumi.set(__self__, "neptune_iam", neptune_iam)
         if oracle is not None:
             pulumi.set(__self__, "oracle", oracle)
+        if oracle_nne is not None:
+            pulumi.set(__self__, "oracle_nne", oracle_nne)
         if postgres is not None:
             pulumi.set(__self__, "postgres", postgres)
         if presto is not None:
@@ -2006,6 +2039,19 @@ class _ResourceState:
         pulumi.set(self, "document_db_replica_set", value)
 
     @property
+    @pulumi.getter(name="documentDbReplicaSetIam")
+    def document_db_replica_set_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]:
+        """
+        DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "document_db_replica_set_iam")
+
+    @document_db_replica_set_iam.setter
+    def document_db_replica_set_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]):
+        pulumi.set(self, "document_db_replica_set_iam", value)
+
+    @property
     @pulumi.getter
     def druid(self) -> Optional[pulumi.Input['ResourceDruidArgs']]:
         return pulumi.get(self, "druid")
@@ -2324,6 +2370,18 @@ class _ResourceState:
         pulumi.set(self, "oracle", value)
 
     @property
+    @pulumi.getter(name="oracleNne")
+    def oracle_nne(self) -> Optional[pulumi.Input['ResourceOracleNneArgs']]:
+        """
+        OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "oracle_nne")
+
+    @oracle_nne.setter
+    def oracle_nne(self, value: Optional[pulumi.Input['ResourceOracleNneArgs']]):
+        pulumi.set(self, "oracle_nne", value)
+
+    @property
     @pulumi.getter
     def postgres(self) -> Optional[pulumi.Input['ResourcePostgresArgs']]:
         return pulumi.get(self, "postgres")
@@ -2416,9 +2474,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="redshiftIam")
     def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
-        """
-        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_iam")
 
     @redshift_iam.setter
@@ -2428,9 +2483,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="redshiftServerlessIam")
     def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
-        """
-        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_serverless_iam")
 
     @redshift_serverless_iam.setter
@@ -2626,6 +2678,7 @@ class Resource(pulumi.CustomResource):
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
                  document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
                  document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+                 document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
                  druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
                  dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
@@ -2660,6 +2713,7 @@ class Resource(pulumi.CustomResource):
                  neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
                  neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
                  oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+                 oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
                  postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
                  presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
                  rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
@@ -2700,12 +2754,13 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -2781,6 +2836,7 @@ class Resource(pulumi.CustomResource):
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
                  document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
                  document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+                 document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
                  druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
                  dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
@@ -2815,6 +2871,7 @@ class Resource(pulumi.CustomResource):
                  neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
                  neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
                  oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+                 oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
                  postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
                  presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
                  rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
@@ -2893,6 +2950,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["document_db_host"] = document_db_host
             __props__.__dict__["document_db_host_iam"] = document_db_host_iam
             __props__.__dict__["document_db_replica_set"] = document_db_replica_set
+            __props__.__dict__["document_db_replica_set_iam"] = document_db_replica_set_iam
             __props__.__dict__["druid"] = druid
             __props__.__dict__["dynamo_db"] = dynamo_db
             __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
@@ -2927,6 +2985,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["neptune"] = neptune
             __props__.__dict__["neptune_iam"] = neptune_iam
             __props__.__dict__["oracle"] = oracle
+            __props__.__dict__["oracle_nne"] = oracle_nne
             __props__.__dict__["postgres"] = postgres
             __props__.__dict__["presto"] = presto
             __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
@@ -3006,6 +3065,7 @@ class Resource(pulumi.CustomResource):
             document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
             document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
             document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+            document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
             druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
             dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
             dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
@@ -3040,6 +3100,7 @@ class Resource(pulumi.CustomResource):
             neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
             neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
             oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+            oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
             postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
             presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
             rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
@@ -3075,12 +3136,13 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -3130,6 +3192,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["document_db_host"] = document_db_host
         __props__.__dict__["document_db_host_iam"] = document_db_host_iam
         __props__.__dict__["document_db_replica_set"] = document_db_replica_set
+        __props__.__dict__["document_db_replica_set_iam"] = document_db_replica_set_iam
         __props__.__dict__["druid"] = druid
         __props__.__dict__["dynamo_db"] = dynamo_db
         __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
@@ -3164,6 +3227,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["neptune"] = neptune
         __props__.__dict__["neptune_iam"] = neptune_iam
         __props__.__dict__["oracle"] = oracle
+        __props__.__dict__["oracle_nne"] = oracle_nne
         __props__.__dict__["postgres"] = postgres
         __props__.__dict__["presto"] = presto
         __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
@@ -3407,6 +3471,15 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "document_db_replica_set")
 
     @property
+    @pulumi.getter(name="documentDbReplicaSetIam")
+    def document_db_replica_set_iam(self) -> pulumi.Output[Optional['outputs.ResourceDocumentDbReplicaSetIam']]:
+        """
+        DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "document_db_replica_set_iam")
+
+    @property
     @pulumi.getter
     def druid(self) -> pulumi.Output[Optional['outputs.ResourceDruid']]:
         return pulumi.get(self, "druid")
@@ -3589,6 +3662,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "oracle")
 
     @property
+    @pulumi.getter(name="oracleNne")
+    def oracle_nne(self) -> pulumi.Output[Optional['outputs.ResourceOracleNne']]:
+        """
+        OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "oracle_nne")
+
+    @property
     @pulumi.getter
     def postgres(self) -> pulumi.Output[Optional['outputs.ResourcePostgres']]:
         return pulumi.get(self, "postgres")
@@ -3641,17 +3722,11 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="redshiftIam")
     def redshift_iam(self) -> pulumi.Output[Optional['outputs.ResourceRedshiftIam']]:
-        """
-        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_iam")
 
     @property
     @pulumi.getter(name="redshiftServerlessIam")
     def redshift_serverless_iam(self) -> pulumi.Output[Optional['outputs.ResourceRedshiftServerlessIam']]:
-        """
-        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "redshift_serverless_iam")
 
     @property

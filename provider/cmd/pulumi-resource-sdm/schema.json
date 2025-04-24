@@ -3891,6 +3891,76 @@
                 }
             }
         },
+        "sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "connectToReplica": {
+                    "type": "boolean",
+                    "description": "Set to connect to a replica instead of the primary node.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceDruid:ResourceDruid": {
             "properties": {
                 "bindInterface": {
@@ -6681,6 +6751,87 @@
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "port",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceOracleNne:ResourceOracleNne": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
                 },
                 "username": {
                     "type": "string",
@@ -10917,6 +11068,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceDocumentDbHost:getResourceResourceDocumentDbHost"
                     }
                 },
+                "documentDbReplicaSetIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceDocumentDbReplicaSetIam:getResourceResourceDocumentDbReplicaSetIam"
+                    }
+                },
                 "documentDbReplicaSets": {
                     "type": "array",
                     "items": {
@@ -11119,6 +11276,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceNeptune:getResourceResourceNeptune"
+                    }
+                },
+                "oracleNnes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceOracleNne:getResourceResourceOracleNne"
                     }
                 },
                 "oracles": {
@@ -11334,6 +11497,7 @@
                 "documentDbHosts",
                 "documentDbHostIams",
                 "documentDbReplicaSets",
+                "documentDbReplicaSetIams",
                 "druids",
                 "dynamoDbs",
                 "dynamoDbiams",
@@ -11368,6 +11532,7 @@
                 "neptunes",
                 "neptuneIams",
                 "oracles",
+                "oracleNnes",
                 "postgres",
                 "prestos",
                 "rabbitmqAmqp091s",
@@ -14311,6 +14476,62 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceDocumentDbReplicaSetIam:getResourceResourceDocumentDbReplicaSetIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "connectToReplica": {
+                    "type": "boolean",
+                    "description": "Set to connect to a replica instead of the primary node.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceDruid:getResourceResourceDruid": {
             "properties": {
                 "bindInterface": {
@@ -16655,6 +16876,71 @@
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceOracleNne:getResourceResourceOracleNne": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
                 },
                 "username": {
                     "type": "string",
@@ -20693,6 +20979,10 @@
                 "documentDbReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                 },
+                "documentDbReplicaSetIam": {
+                    "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
+                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                },
                 "druid": {
                     "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
                 },
@@ -20799,6 +21089,10 @@
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                 },
+                "oracleNne": {
+                    "$ref": "#/types/sdm:index/ResourceOracleNne:ResourceOracleNne",
+                    "description": "OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "postgres": {
                     "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
                 },
@@ -20830,12 +21124,10 @@
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                 },
                 "redshiftIam": {
-                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
-                    "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam"
                 },
                 "redshiftServerlessIam": {
-                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
-                    "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam"
                 },
                 "singleStore": {
                     "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"
@@ -21013,6 +21305,10 @@
                 "documentDbReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                 },
+                "documentDbReplicaSetIam": {
+                    "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
+                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                },
                 "druid": {
                     "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
                 },
@@ -21119,6 +21415,10 @@
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                 },
+                "oracleNne": {
+                    "$ref": "#/types/sdm:index/ResourceOracleNne:ResourceOracleNne",
+                    "description": "OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "postgres": {
                     "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
                 },
@@ -21150,12 +21450,10 @@
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                 },
                 "redshiftIam": {
-                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
-                    "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam"
                 },
                 "redshiftServerlessIam": {
-                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
-                    "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam"
                 },
                 "singleStore": {
                     "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"
@@ -21335,6 +21633,10 @@
                     "documentDbReplicaSet": {
                         "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                     },
+                    "documentDbReplicaSetIam": {
+                        "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
+                        "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                    },
                     "druid": {
                         "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
                     },
@@ -21441,6 +21743,10 @@
                     "oracle": {
                         "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                     },
+                    "oracleNne": {
+                        "$ref": "#/types/sdm:index/ResourceOracleNne:ResourceOracleNne",
+                        "description": "OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "postgres": {
                         "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
                     },
@@ -21472,12 +21778,10 @@
                         "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
                     },
                     "redshiftIam": {
-                        "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
-                        "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam"
                     },
                     "redshiftServerlessIam": {
-                        "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
-                        "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam"
                     },
                     "singleStore": {
                         "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"

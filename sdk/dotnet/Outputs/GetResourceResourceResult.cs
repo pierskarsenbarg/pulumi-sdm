@@ -55,6 +55,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> Db2Luws;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostIamResult> DocumentDbHostIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostResult> DocumentDbHosts;
+        public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetIamResult> DocumentDbReplicaSetIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetResult> DocumentDbReplicaSets;
         public readonly ImmutableArray<Outputs.GetResourceResourceDruidResult> Druids;
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbiamResult> DynamoDbiams;
@@ -89,6 +90,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceMysqlResult> Mysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceNeptuneIamResult> NeptuneIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceNeptuneResult> Neptunes;
+        public readonly ImmutableArray<Outputs.GetResourceResourceOracleNneResult> OracleNnes;
         public readonly ImmutableArray<Outputs.GetResourceResourceOracleResult> Oracles;
         public readonly ImmutableArray<Outputs.GetResourceResourcePostgreResult> Postgres;
         public readonly ImmutableArray<Outputs.GetResourceResourcePrestoResult> Prestos;
@@ -202,6 +204,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceDocumentDbHostResult> documentDbHosts,
 
+            ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetIamResult> documentDbReplicaSetIams,
+
             ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetResult> documentDbReplicaSets,
 
             ImmutableArray<Outputs.GetResourceResourceDruidResult> druids,
@@ -269,6 +273,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceNeptuneIamResult> neptuneIams,
 
             ImmutableArray<Outputs.GetResourceResourceNeptuneResult> neptunes,
+
+            ImmutableArray<Outputs.GetResourceResourceOracleNneResult> oracleNnes,
 
             ImmutableArray<Outputs.GetResourceResourceOracleResult> oracles,
 
@@ -367,6 +373,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Db2Luws = db2Luws;
             DocumentDbHostIams = documentDbHostIams;
             DocumentDbHosts = documentDbHosts;
+            DocumentDbReplicaSetIams = documentDbReplicaSetIams;
             DocumentDbReplicaSets = documentDbReplicaSets;
             Druids = druids;
             DynamoDbiams = dynamoDbiams;
@@ -401,6 +408,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Mysqls = mysqls;
             NeptuneIams = neptuneIams;
             Neptunes = neptunes;
+            OracleNnes = oracleNnes;
             Oracles = oracles;
             Postgres = postgres;
             Prestos = prestos;

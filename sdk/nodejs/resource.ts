@@ -88,6 +88,11 @@ export class Resource extends pulumi.CustomResource {
     public readonly documentDbHost!: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
     public readonly documentDbHostIam!: pulumi.Output<outputs.ResourceDocumentDbHostIam | undefined>;
     public readonly documentDbReplicaSet!: pulumi.Output<outputs.ResourceDocumentDbReplicaSet | undefined>;
+    /**
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    public readonly documentDbReplicaSetIam!: pulumi.Output<outputs.ResourceDocumentDbReplicaSetIam | undefined>;
     public readonly druid!: pulumi.Output<outputs.ResourceDruid | undefined>;
     public readonly dynamoDb!: pulumi.Output<outputs.ResourceDynamoDb | undefined>;
     public readonly dynamoDbiam!: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
@@ -134,6 +139,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly neptune!: pulumi.Output<outputs.ResourceNeptune | undefined>;
     public readonly neptuneIam!: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
     public readonly oracle!: pulumi.Output<outputs.ResourceOracle | undefined>;
+    /**
+     * OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly oracleNne!: pulumi.Output<outputs.ResourceOracleNne | undefined>;
     public readonly postgres!: pulumi.Output<outputs.ResourcePostgres | undefined>;
     public readonly presto!: pulumi.Output<outputs.ResourcePresto | undefined>;
     public readonly rabbitmqAmqp091!: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
@@ -144,13 +153,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
     public readonly redisCluster!: pulumi.Output<outputs.ResourceRedisCluster | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
-    /**
-     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly redshiftIam!: pulumi.Output<outputs.ResourceRedshiftIam | undefined>;
-    /**
-     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly redshiftServerlessIam!: pulumi.Output<outputs.ResourceRedshiftServerlessIam | undefined>;
     public readonly singleStore!: pulumi.Output<outputs.ResourceSingleStore | undefined>;
     public readonly snowflake!: pulumi.Output<outputs.ResourceSnowflake | undefined>;
@@ -229,6 +232,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["documentDbHost"] = state ? state.documentDbHost : undefined;
             resourceInputs["documentDbHostIam"] = state ? state.documentDbHostIam : undefined;
             resourceInputs["documentDbReplicaSet"] = state ? state.documentDbReplicaSet : undefined;
+            resourceInputs["documentDbReplicaSetIam"] = state ? state.documentDbReplicaSetIam : undefined;
             resourceInputs["druid"] = state ? state.druid : undefined;
             resourceInputs["dynamoDb"] = state ? state.dynamoDb : undefined;
             resourceInputs["dynamoDbiam"] = state ? state.dynamoDbiam : undefined;
@@ -263,6 +267,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["neptune"] = state ? state.neptune : undefined;
             resourceInputs["neptuneIam"] = state ? state.neptuneIam : undefined;
             resourceInputs["oracle"] = state ? state.oracle : undefined;
+            resourceInputs["oracleNne"] = state ? state.oracleNne : undefined;
             resourceInputs["postgres"] = state ? state.postgres : undefined;
             resourceInputs["presto"] = state ? state.presto : undefined;
             resourceInputs["rabbitmqAmqp091"] = state ? state.rabbitmqAmqp091 : undefined;
@@ -334,6 +339,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["documentDbHost"] = args ? args.documentDbHost : undefined;
             resourceInputs["documentDbHostIam"] = args ? args.documentDbHostIam : undefined;
             resourceInputs["documentDbReplicaSet"] = args ? args.documentDbReplicaSet : undefined;
+            resourceInputs["documentDbReplicaSetIam"] = args ? args.documentDbReplicaSetIam : undefined;
             resourceInputs["druid"] = args ? args.druid : undefined;
             resourceInputs["dynamoDb"] = args ? args.dynamoDb : undefined;
             resourceInputs["dynamoDbiam"] = args ? args.dynamoDbiam : undefined;
@@ -368,6 +374,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["neptune"] = args ? args.neptune : undefined;
             resourceInputs["neptuneIam"] = args ? args.neptuneIam : undefined;
             resourceInputs["oracle"] = args ? args.oracle : undefined;
+            resourceInputs["oracleNne"] = args ? args.oracleNne : undefined;
             resourceInputs["postgres"] = args ? args.postgres : undefined;
             resourceInputs["presto"] = args ? args.presto : undefined;
             resourceInputs["rabbitmqAmqp091"] = args ? args.rabbitmqAmqp091 : undefined;
@@ -450,6 +457,11 @@ export interface ResourceState {
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
     documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
+    /**
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
     druid?: pulumi.Input<inputs.ResourceDruid>;
     dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
@@ -496,6 +508,10 @@ export interface ResourceState {
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
+    /**
+     * OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
@@ -506,13 +522,7 @@ export interface ResourceState {
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
-    /**
-     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
-    /**
-     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
@@ -586,6 +596,11 @@ export interface ResourceArgs {
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
     documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
+    /**
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
     druid?: pulumi.Input<inputs.ResourceDruid>;
     dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
@@ -632,6 +647,10 @@ export interface ResourceArgs {
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
+    /**
+     * OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
@@ -642,13 +661,7 @@ export interface ResourceArgs {
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
-    /**
-     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
-    /**
-     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
