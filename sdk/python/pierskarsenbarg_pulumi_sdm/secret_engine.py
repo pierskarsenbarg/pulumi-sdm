@@ -99,6 +99,7 @@ class _SecretEngineState:
         pulumi.set(self, "key_value", value)
 
 
+@pulumi.type_token("sdm:index/secretEngine:SecretEngine")
 class SecretEngine(pulumi.CustomResource):
     @overload
     def __init__(__self__,

@@ -162,6 +162,7 @@ class _ApprovalWorkflowState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("sdm:index/approvalWorkflow:ApprovalWorkflow")
 class ApprovalWorkflow(pulumi.CustomResource):
     @overload
     def __init__(__self__,

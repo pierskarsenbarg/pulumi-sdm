@@ -126,6 +126,7 @@ class _RemoteIdentityState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("sdm:index/remoteIdentity:RemoteIdentity")
 class RemoteIdentity(pulumi.CustomResource):
     @overload
     def __init__(__self__,

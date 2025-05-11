@@ -126,6 +126,7 @@ class _IdentityAliasState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("sdm:index/identityAlias:IdentityAlias")
 class IdentityAlias(pulumi.CustomResource):
     @overload
     def __init__(__self__,

@@ -180,10 +180,8 @@ export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { ProxyClusterKeyArgs, ProxyClusterKeyState } from "./proxyClusterKey";
 export type ProxyClusterKey = import("./proxyClusterKey").ProxyClusterKey;

@@ -321,6 +321,7 @@ class _WorkflowState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("sdm:index/workflow:Workflow")
 class Workflow(pulumi.CustomResource):
     @overload
     def __init__(__self__,

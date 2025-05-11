@@ -145,6 +145,7 @@ class _RoleState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("sdm:index/role:Role")
 class Role(pulumi.CustomResource):
     @overload
     def __init__(__self__,

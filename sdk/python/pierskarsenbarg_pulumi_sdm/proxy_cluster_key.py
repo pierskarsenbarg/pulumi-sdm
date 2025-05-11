@@ -76,6 +76,7 @@ class _ProxyClusterKeyState:
         pulumi.set(self, "secret_key", value)
 
 
+@pulumi.type_token("sdm:index/proxyClusterKey:ProxyClusterKey")
 class ProxyClusterKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,

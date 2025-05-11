@@ -95,6 +95,7 @@ class _AccountAttachmentState:
         pulumi.set(self, "role_id", value)
 
 
+@pulumi.type_token("sdm:index/accountAttachment:AccountAttachment")
 class AccountAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,

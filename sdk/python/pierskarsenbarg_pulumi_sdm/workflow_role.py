@@ -95,6 +95,7 @@ class _WorkflowRoleState:
         pulumi.set(self, "workflow_id", value)
 
 
+@pulumi.type_token("sdm:index/workflowRole:WorkflowRole")
 class WorkflowRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,

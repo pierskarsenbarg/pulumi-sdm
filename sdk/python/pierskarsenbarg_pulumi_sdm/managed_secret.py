@@ -224,6 +224,7 @@ class _ManagedSecretState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("sdm:index/managedSecret:ManagedSecret")
 class ManagedSecret(pulumi.CustomResource):
     @overload
     def __init__(__self__,

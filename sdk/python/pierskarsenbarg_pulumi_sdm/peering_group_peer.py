@@ -97,6 +97,7 @@ class _PeeringGroupPeerState:
         pulumi.set(self, "peers_with_group_id", value)
 
 
+@pulumi.type_token("sdm:index/peeringGroupPeer:PeeringGroupPeer")
 class PeeringGroupPeer(pulumi.CustomResource):
     @overload
     def __init__(__self__,

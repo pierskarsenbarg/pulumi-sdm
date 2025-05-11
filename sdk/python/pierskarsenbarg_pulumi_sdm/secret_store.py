@@ -615,6 +615,7 @@ class _SecretStoreState:
         pulumi.set(self, "vault_token_cert_x509", value)
 
 
+@pulumi.type_token("sdm:index/secretStore:SecretStore")
 class SecretStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,

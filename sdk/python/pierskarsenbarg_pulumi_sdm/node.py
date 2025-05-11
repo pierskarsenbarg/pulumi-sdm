@@ -131,6 +131,7 @@ class _NodeState:
         pulumi.set(self, "relay", value)
 
 
+@pulumi.type_token("sdm:index/node:Node")
 class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
