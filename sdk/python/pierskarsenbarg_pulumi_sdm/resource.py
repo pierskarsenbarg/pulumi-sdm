@@ -2631,6 +2631,7 @@ class _ResourceState:
         pulumi.set(self, "vertica", value)
 
 
+@pulumi.type_token("sdm:index/resource:Resource")
 class Resource(pulumi.CustomResource):
     @overload
     def __init__(__self__,

@@ -103,6 +103,7 @@ class _AccountState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("sdm:index/account:Account")
 class Account(pulumi.CustomResource):
     @overload
     def __init__(__self__,

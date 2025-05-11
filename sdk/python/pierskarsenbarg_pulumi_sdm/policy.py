@@ -129,6 +129,7 @@ class _PolicyState:
         pulumi.set(self, "policy_content", value)
 
 
+@pulumi.type_token("sdm:index/policy:Policy")
 class Policy(pulumi.CustomResource):
     @overload
     def __init__(__self__,

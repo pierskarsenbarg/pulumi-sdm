@@ -65,6 +65,7 @@ class _IdentitySetState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("sdm:index/identitySet:IdentitySet")
 class IdentitySet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
