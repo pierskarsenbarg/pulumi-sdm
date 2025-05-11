@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     email: "albob@strongdm.com",
  *     firstName: "al",
  *     lastName: "bob",
+ *     managerId: "a-1234abc",
+ *     permissionLevel: "database-admin",
  *     tags: {
  *         env: "dev",
  *         region: "us-west",

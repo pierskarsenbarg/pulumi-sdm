@@ -44,10 +44,28 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ManagedBy { get; set; }
 
         /// <summary>
+        /// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        /// </summary>
+        [Input("managerId")]
+        public Input<string>? ManagerId { get; set; }
+
+        /// <summary>
         /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
         [Input("permissionLevel")]
         public Input<string>? PermissionLevel { get; set; }
+
+        /// <summary>
+        /// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        /// </summary>
+        [Input("resolvedManagerId")]
+        public Input<string>? ResolvedManagerId { get; set; }
+
+        /// <summary>
+        /// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+        /// </summary>
+        [Input("scim")]
+        public Input<string>? Scim { get; set; }
 
         /// <summary>
         /// The Service's suspended state.

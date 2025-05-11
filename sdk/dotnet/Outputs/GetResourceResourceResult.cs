@@ -14,6 +14,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class GetResourceResourceResult
     {
+        public readonly ImmutableArray<Outputs.GetResourceResourceAerospikeResult> Aerospikes;
         public readonly ImmutableArray<Outputs.GetResourceResourceAkResult> Aks;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksBasicAuthResult> AksBasicAuths;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksServiceAccountUserImpersonationResult> AksServiceAccountUserImpersonations;
@@ -122,6 +123,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetResourceResourceResult(
+            ImmutableArray<Outputs.GetResourceResourceAerospikeResult> aerospikes,
+
             ImmutableArray<Outputs.GetResourceResourceAkResult> aks,
 
             ImmutableArray<Outputs.GetResourceResourceAksBasicAuthResult> aksBasicAuths,
@@ -332,6 +335,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceVerticaResult> verticas)
         {
+            Aerospikes = aerospikes;
             Aks = aks;
             AksBasicAuths = aksBasicAuths;
             AksServiceAccountUserImpersonations = aksServiceAccountUserImpersonations;

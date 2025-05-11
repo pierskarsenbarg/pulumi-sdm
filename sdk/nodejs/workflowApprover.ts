@@ -6,21 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pierskarsenbarg/sdm";
- *
- * const workflowApproverAccountExample = new sdm.WorkflowApprover("workflowApproverAccountExample", {
- *     accountId: "a-234605",
- *     workflowId: "aw-6799234",
- * });
- * const workflowApproverRoleExample = new sdm.WorkflowApprover("workflowApproverRoleExample", {
- *     roleId: "r-542982",
- *     workflowId: "aw-1935694",
- * });
- * ```
+ * This resource is deprecated.
  * This resource can be imported using the import command.
  *
  * ## Import

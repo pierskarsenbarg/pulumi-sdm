@@ -27,6 +27,7 @@ __all__ = [
     'NodeProxyClusterMaintenanceWindow',
     'NodeRelay',
     'NodeRelayMaintenanceWindow',
+    'ResourceAerospike',
     'ResourceAks',
     'ResourceAksBasicAuth',
     'ResourceAksServiceAccount',
@@ -186,6 +187,7 @@ __all__ = [
     'GetRemoteIdentityGroupRemoteIdentityGroupResult',
     'GetRemoteIdentityRemoteIdentityResult',
     'GetResourceResourceResult',
+    'GetResourceResourceAerospikeResult',
     'GetResourceResourceAkResult',
     'GetResourceResourceAksBasicAuthResult',
     'GetResourceResourceAksServiceAccountResult',
@@ -387,8 +389,12 @@ class AccountUser(dict):
             suggest = "external_id"
         elif key == "managedBy":
             suggest = "managed_by"
+        elif key == "managerId":
+            suggest = "manager_id"
         elif key == "permissionLevel":
             suggest = "permission_level"
+        elif key == "resolvedManagerId":
+            suggest = "resolved_manager_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccountUser. Access the value via the '{suggest}' property getter instead.")
@@ -407,7 +413,10 @@ class AccountUser(dict):
                  last_name: builtins.str,
                  external_id: Optional[builtins.str] = None,
                  managed_by: Optional[builtins.str] = None,
+                 manager_id: Optional[builtins.str] = None,
                  permission_level: Optional[builtins.str] = None,
+                 resolved_manager_id: Optional[builtins.str] = None,
+                 scim: Optional[builtins.str] = None,
                  suspended: Optional[builtins.bool] = None,
                  tags: Optional[Mapping[str, builtins.str]] = None):
         """
@@ -416,7 +425,10 @@ class AccountUser(dict):
         :param builtins.str last_name: The User's last name.
         :param builtins.str external_id: External ID is an alternative unique ID this user is represented by within an external service.
         :param builtins.str managed_by: Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        :param builtins.str manager_id: Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
         :param builtins.str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
+        :param builtins.str resolved_manager_id: Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        :param builtins.str scim: SCIM contains the raw SCIM metadata for the user. This is a read-only field.
         :param builtins.bool suspended: The Service's suspended state.
         :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
         """
@@ -427,8 +439,14 @@ class AccountUser(dict):
             pulumi.set(__self__, "external_id", external_id)
         if managed_by is not None:
             pulumi.set(__self__, "managed_by", managed_by)
+        if manager_id is not None:
+            pulumi.set(__self__, "manager_id", manager_id)
         if permission_level is not None:
             pulumi.set(__self__, "permission_level", permission_level)
+        if resolved_manager_id is not None:
+            pulumi.set(__self__, "resolved_manager_id", resolved_manager_id)
+        if scim is not None:
+            pulumi.set(__self__, "scim", scim)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
         if tags is not None:
@@ -475,12 +493,36 @@ class AccountUser(dict):
         return pulumi.get(self, "managed_by")
 
     @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> Optional[builtins.str]:
+        """
+        Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        """
+        return pulumi.get(self, "manager_id")
+
+    @property
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> Optional[builtins.str]:
         """
         PermissionLevel is the user's permission level e.g. admin, DBA, user.
         """
         return pulumi.get(self, "permission_level")
+
+    @property
+    @pulumi.getter(name="resolvedManagerId")
+    def resolved_manager_id(self) -> Optional[builtins.str]:
+        """
+        Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        """
+        return pulumi.get(self, "resolved_manager_id")
+
+    @property
+    @pulumi.getter
+    def scim(self) -> Optional[builtins.str]:
+        """
+        SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+        """
+        return pulumi.get(self, "scim")
 
     @property
     @pulumi.getter
@@ -581,13 +623,17 @@ class ApprovalWorkflowApprovalStepApprover(dict):
 
     def __init__(__self__, *,
                  account_id: Optional[builtins.str] = None,
+                 reference: Optional[builtins.str] = None,
                  role_id: Optional[builtins.str] = None):
         """
-        :param builtins.str account_id: The account id of the approver (only an account_id OR a role_id may be present for one approver)
-        :param builtins.str role_id: The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        :param builtins.str account_id: The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str reference: A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str role_id: The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
 
@@ -595,15 +641,23 @@ class ApprovalWorkflowApprovalStepApprover(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[builtins.str]:
         """
-        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def reference(self) -> Optional[builtins.str]:
+        """
+        A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        """
+        return pulumi.get(self, "reference")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[builtins.str]:
         """
-        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "role_id")
 
@@ -1054,6 +1108,180 @@ class NodeRelayMaintenanceWindow(dict):
     @pulumi.getter(name="requireIdleness")
     def require_idleness(self) -> builtins.bool:
         return pulumi.get(self, "require_idleness")
+
+
+@pulumi.output_type
+class ResourceAerospike(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceAerospike. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceAerospike.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceAerospike.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: builtins.str,
+                 name: builtins.str,
+                 bind_interface: Optional[builtins.str] = None,
+                 egress_filter: Optional[builtins.str] = None,
+                 password: Optional[builtins.str] = None,
+                 port: Optional[builtins.int] = None,
+                 port_override: Optional[builtins.int] = None,
+                 proxy_cluster_id: Optional[builtins.str] = None,
+                 secret_store_id: Optional[builtins.str] = None,
+                 subdomain: Optional[builtins.str] = None,
+                 tags: Optional[Mapping[str, builtins.str]] = None,
+                 username: Optional[builtins.str] = None):
+        """
+        :param builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param builtins.str name: Unique human-readable name of the Resource.
+        :param builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param builtins.str password: The password to authenticate with.
+        :param builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param builtins.int port_override: The local port used by clients to connect to this resource.
+        :param builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
+        :param builtins.str username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> builtins.str:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[builtins.int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[builtins.str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[builtins.str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -21975,7 +22203,6 @@ class ResourceTrino(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: builtins.str,
                  hostname: builtins.str,
                  name: builtins.str,
                  bind_interface: Optional[builtins.str] = None,
@@ -21989,7 +22216,6 @@ class ResourceTrino(dict):
                  tags: Optional[Mapping[str, builtins.str]] = None,
                  username: Optional[builtins.str] = None):
         """
-        :param builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param builtins.str name: Unique human-readable name of the Resource.
         :param builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -22003,7 +22229,6 @@ class ResourceTrino(dict):
         :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
         :param builtins.str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
@@ -22026,14 +22251,6 @@ class ResourceTrino(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> builtins.str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -25049,26 +25266,34 @@ class GetAccountAccountTokenResult(dict):
 class GetAccountAccountUserResult(dict):
     def __init__(__self__, *,
                  managed_by: builtins.str,
+                 resolved_manager_id: builtins.str,
+                 scim: builtins.str,
                  suspended: builtins.bool,
                  email: Optional[builtins.str] = None,
                  external_id: Optional[builtins.str] = None,
                  first_name: Optional[builtins.str] = None,
                  id: Optional[builtins.str] = None,
                  last_name: Optional[builtins.str] = None,
+                 manager_id: Optional[builtins.str] = None,
                  permission_level: Optional[builtins.str] = None,
                  tags: Optional[Mapping[str, builtins.str]] = None):
         """
         :param builtins.str managed_by: Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        :param builtins.str resolved_manager_id: Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        :param builtins.str scim: SCIM contains the raw SCIM metadata for the user. This is a read-only field.
         :param builtins.bool suspended: Reserved for future use.  Always false for tokens.
         :param builtins.str email: The User's email address. Must be unique.
         :param builtins.str external_id: External ID is an alternative unique ID this user is represented by within an external service.
         :param builtins.str first_name: The User's first name.
         :param builtins.str id: Unique identifier of the User.
         :param builtins.str last_name: The User's last name.
+        :param builtins.str manager_id: Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
         :param builtins.str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
         :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "managed_by", managed_by)
+        pulumi.set(__self__, "resolved_manager_id", resolved_manager_id)
+        pulumi.set(__self__, "scim", scim)
         pulumi.set(__self__, "suspended", suspended)
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -25080,6 +25305,8 @@ class GetAccountAccountUserResult(dict):
             pulumi.set(__self__, "id", id)
         if last_name is not None:
             pulumi.set(__self__, "last_name", last_name)
+        if manager_id is not None:
+            pulumi.set(__self__, "manager_id", manager_id)
         if permission_level is not None:
             pulumi.set(__self__, "permission_level", permission_level)
         if tags is not None:
@@ -25092,6 +25319,22 @@ class GetAccountAccountUserResult(dict):
         Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
         """
         return pulumi.get(self, "managed_by")
+
+    @property
+    @pulumi.getter(name="resolvedManagerId")
+    def resolved_manager_id(self) -> builtins.str:
+        """
+        Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        """
+        return pulumi.get(self, "resolved_manager_id")
+
+    @property
+    @pulumi.getter
+    def scim(self) -> builtins.str:
+        """
+        SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+        """
+        return pulumi.get(self, "scim")
 
     @property
     @pulumi.getter
@@ -25140,6 +25383,14 @@ class GetAccountAccountUserResult(dict):
         The User's last name.
         """
         return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> Optional[builtins.str]:
+        """
+        Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        """
+        return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="permissionLevel")
@@ -25247,13 +25498,17 @@ class GetApprovalWorkflowApprovalStepResult(dict):
 class GetApprovalWorkflowApprovalStepApproverResult(dict):
     def __init__(__self__, *,
                  account_id: Optional[builtins.str] = None,
+                 reference: Optional[builtins.str] = None,
                  role_id: Optional[builtins.str] = None):
         """
-        :param builtins.str account_id: The account id of the approver (only an account_id OR a role_id may be present for one approver)
-        :param builtins.str role_id: The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        :param builtins.str account_id: The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str reference: A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str role_id: The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
 
@@ -25261,15 +25516,23 @@ class GetApprovalWorkflowApprovalStepApproverResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[builtins.str]:
         """
-        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def reference(self) -> Optional[builtins.str]:
+        """
+        A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        """
+        return pulumi.get(self, "reference")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[builtins.str]:
         """
-        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "role_id")
 
@@ -25387,13 +25650,17 @@ class GetApprovalWorkflowApprovalWorkflowApprovalStepResult(dict):
 class GetApprovalWorkflowApprovalWorkflowApprovalStepApproverResult(dict):
     def __init__(__self__, *,
                  account_id: Optional[builtins.str] = None,
+                 reference: Optional[builtins.str] = None,
                  role_id: Optional[builtins.str] = None):
         """
-        :param builtins.str account_id: The account id of the approver (only an account_id OR a role_id may be present for one approver)
-        :param builtins.str role_id: The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        :param builtins.str account_id: The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str reference: A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        :param builtins.str role_id: The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
 
@@ -25401,15 +25668,23 @@ class GetApprovalWorkflowApprovalWorkflowApprovalStepApproverResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[builtins.str]:
         """
-        The account id of the approver (only an account_id OR a role_id may be present for one approver)
+        The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def reference(self) -> Optional[builtins.str]:
+        """
+        A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        """
+        return pulumi.get(self, "reference")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[builtins.str]:
         """
-        The role id of the approver (only an account_id OR a role_id may be present for one approver)
+        The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
         """
         return pulumi.get(self, "role_id")
 
@@ -26334,6 +26609,7 @@ class GetRemoteIdentityRemoteIdentityResult(dict):
 @pulumi.output_type
 class GetResourceResourceResult(dict):
     def __init__(__self__, *,
+                 aerospikes: Sequence['outputs.GetResourceResourceAerospikeResult'],
                  aks: Sequence['outputs.GetResourceResourceAkResult'],
                  aks_basic_auths: Sequence['outputs.GetResourceResourceAksBasicAuthResult'],
                  aks_service_account_user_impersonations: Sequence['outputs.GetResourceResourceAksServiceAccountUserImpersonationResult'],
@@ -26439,6 +26715,7 @@ class GetResourceResourceResult(dict):
                  teradatas: Sequence['outputs.GetResourceResourceTeradataResult'],
                  trinos: Sequence['outputs.GetResourceResourceTrinoResult'],
                  verticas: Sequence['outputs.GetResourceResourceVerticaResult']):
+        pulumi.set(__self__, "aerospikes", aerospikes)
         pulumi.set(__self__, "aks", aks)
         pulumi.set(__self__, "aks_basic_auths", aks_basic_auths)
         pulumi.set(__self__, "aks_service_account_user_impersonations", aks_service_account_user_impersonations)
@@ -26544,6 +26821,11 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "teradatas", teradatas)
         pulumi.set(__self__, "trinos", trinos)
         pulumi.set(__self__, "verticas", verticas)
+
+    @property
+    @pulumi.getter
+    def aerospikes(self) -> Sequence['outputs.GetResourceResourceAerospikeResult']:
+        return pulumi.get(self, "aerospikes")
 
     @property
     @pulumi.getter
@@ -27069,6 +27351,169 @@ class GetResourceResourceResult(dict):
     @pulumi.getter
     def verticas(self) -> Sequence['outputs.GetResourceResourceVerticaResult']:
         return pulumi.get(self, "verticas")
+
+
+@pulumi.output_type
+class GetResourceResourceAerospikeResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[builtins.str] = None,
+                 egress_filter: Optional[builtins.str] = None,
+                 hostname: Optional[builtins.str] = None,
+                 id: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 password: Optional[builtins.str] = None,
+                 port: Optional[builtins.int] = None,
+                 port_override: Optional[builtins.int] = None,
+                 proxy_cluster_id: Optional[builtins.str] = None,
+                 secret_store_id: Optional[builtins.str] = None,
+                 subdomain: Optional[builtins.str] = None,
+                 tags: Optional[Mapping[str, builtins.str]] = None,
+                 username: Optional[builtins.str] = None):
+        """
+        :param builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param builtins.str id: Unique identifier of the Resource.
+        :param builtins.str name: Unique human-readable name of the Resource.
+        :param builtins.str password: The password to authenticate with.
+        :param builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param builtins.int port_override: The local port used by clients to connect to this resource.
+        :param builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
+        :param builtins.str username: The username to authenticate with.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[builtins.str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[builtins.str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[builtins.int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[builtins.str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[builtins.str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -46365,7 +46810,6 @@ class GetResourceResourceTeradataResult(dict):
 class GetResourceResourceTrinoResult(dict):
     def __init__(__self__, *,
                  bind_interface: Optional[builtins.str] = None,
-                 database: Optional[builtins.str] = None,
                  egress_filter: Optional[builtins.str] = None,
                  hostname: Optional[builtins.str] = None,
                  id: Optional[builtins.str] = None,
@@ -46380,7 +46824,6 @@ class GetResourceResourceTrinoResult(dict):
                  username: Optional[builtins.str] = None):
         """
         :param builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-        :param builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param builtins.str id: Unique identifier of the Resource.
@@ -46396,8 +46839,6 @@ class GetResourceResourceTrinoResult(dict):
         """
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
-        if database is not None:
-            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if hostname is not None:
@@ -46430,14 +46871,6 @@ class GetResourceResourceTrinoResult(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
-
-    @property
-    @pulumi.getter
-    def database(self) -> Optional[builtins.str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -49513,6 +49946,7 @@ class GetWorkflowWorkflowResult(dict):
 
     @property
     @pulumi.getter(name="autoGrant")
+    @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
     def auto_grant(self) -> Optional[builtins.bool]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.

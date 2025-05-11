@@ -45,6 +45,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
         "firstName": args.firstName,
         "id": args.id,
         "lastName": args.lastName,
+        "managerId": args.managerId,
         "name": args.name,
         "permissionLevel": args.permissionLevel,
         "permissions": args.permissions,
@@ -82,6 +83,10 @@ export interface GetAccountArgs {
      * The User's last name.
      */
     lastName?: string;
+    /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    managerId?: string;
     /**
      * Unique human-readable name of the Token.
      */
@@ -146,6 +151,10 @@ export interface GetAccountResult {
      */
     readonly lastName?: string;
     /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    readonly managerId?: string;
+    /**
      * Unique human-readable name of the Token.
      */
     readonly name?: string;
@@ -206,6 +215,7 @@ export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.Invo
         "firstName": args.firstName,
         "id": args.id,
         "lastName": args.lastName,
+        "managerId": args.managerId,
         "name": args.name,
         "permissionLevel": args.permissionLevel,
         "permissions": args.permissions,
@@ -243,6 +253,10 @@ export interface GetAccountOutputArgs {
      * The User's last name.
      */
     lastName?: pulumi.Input<string>;
+    /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    managerId?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Token.
      */

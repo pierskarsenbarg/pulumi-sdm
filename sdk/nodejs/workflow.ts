@@ -62,6 +62,8 @@ export class Workflow extends pulumi.CustomResource {
     public readonly approvalFlowId!: pulumi.Output<string | undefined>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     public readonly autoGrant!: pulumi.Output<boolean | undefined>;
     /**
@@ -142,6 +144,8 @@ export interface WorkflowState {
     approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     autoGrant?: pulumi.Input<boolean>;
     /**
@@ -184,6 +188,8 @@ export interface WorkflowArgs {
     approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     autoGrant?: pulumi.Input<boolean>;
     /**

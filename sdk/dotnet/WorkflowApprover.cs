@@ -12,30 +12,7 @@ namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
     /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Sdm = PiersKarsenbarg.Sdm;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var workflowApproverAccountExample = new Sdm.WorkflowApprover("workflowApproverAccountExample", new()
-    ///     {
-    ///         AccountId = "a-234605",
-    ///         WorkflowId = "aw-6799234",
-    ///     });
-    /// 
-    ///     var workflowApproverRoleExample = new Sdm.WorkflowApprover("workflowApproverRoleExample", new()
-    ///     {
-    ///         RoleId = "r-542982",
-    ///         WorkflowId = "aw-1935694",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// This resource is deprecated.
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

@@ -32,6 +32,35 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.NewApprovalWorkflow(ctx, "manualApprovalWorkflow", &sdm.ApprovalWorkflowArgs{
 //				ApprovalMode: pulumi.String("manual"),
+//				ApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{
+//					&sdm.ApprovalWorkflowApprovalStepArgs{
+//						Approvers: sdm.ApprovalWorkflowApprovalStepApproverArray{
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								AccountId: pulumi.String("a-1234abc"),
+//							},
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								Reference: pulumi.String("manager-of-requester"),
+//							},
+//						},
+//						Quantifier: pulumi.String("any"),
+//						SkipAfter:  pulumi.String("1h0m0s"),
+//					},
+//					&sdm.ApprovalWorkflowApprovalStepArgs{
+//						Approvers: sdm.ApprovalWorkflowApprovalStepApproverArray{
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								RoleId: pulumi.String("r-1234abc"),
+//							},
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								AccountId: pulumi.String("a-5678def"),
+//							},
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								Reference: pulumi.String("manager-of-manager-of-requester"),
+//							},
+//						},
+//						Quantifier: pulumi.String("all"),
+//						SkipAfter:  pulumi.String("0s"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

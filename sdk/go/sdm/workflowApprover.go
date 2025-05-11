@@ -13,39 +13,7 @@ import (
 )
 
 // WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewWorkflowApprover(ctx, "workflowApproverAccountExample", &sdm.WorkflowApproverArgs{
-//				AccountId:  pulumi.String("a-234605"),
-//				WorkflowId: pulumi.String("aw-6799234"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sdm.NewWorkflowApprover(ctx, "workflowApproverRoleExample", &sdm.WorkflowApproverArgs{
-//				RoleId:     pulumi.String("r-542982"),
-//				WorkflowId: pulumi.String("aw-1935694"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// This resource is deprecated.
 // This resource can be imported using the import command.
 //
 // ## Import

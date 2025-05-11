@@ -32,6 +32,8 @@ namespace PiersKarsenbarg.Sdm
     ///             Email = "albob@strongdm.com",
     ///             FirstName = "al",
     ///             LastName = "bob",
+    ///             ManagerId = "a-1234abc",
+    ///             PermissionLevel = "database-admin",
     ///             Tags = 
     ///             {
     ///                 { "env", "dev" },

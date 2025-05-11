@@ -12,39 +12,7 @@ import (
 )
 
 // WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupWorkflowApprover(ctx, &sdm.LookupWorkflowApproverArgs{
-//				AccountId:  pulumi.StringRef("a-2496542"),
-//				WorkflowId: pulumi.StringRef("aw-541894"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sdm.LookupWorkflowApprover(ctx, &sdm.LookupWorkflowApproverArgs{
-//				RoleId:     pulumi.StringRef("r-417345"),
-//				WorkflowId: pulumi.StringRef("aw-679923"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// This data source is deprecated.
 func LookupWorkflowApprover(ctx *pulumi.Context, args *LookupWorkflowApproverArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowApproverResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowApproverResult

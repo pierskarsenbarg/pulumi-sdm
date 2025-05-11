@@ -12,7 +12,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceTrinoResult
+    public sealed class ResourceAerospike
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -25,15 +25,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The host to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        public readonly string? Hostname;
-        /// <summary>
-        /// Unique identifier of the Resource.
-        /// </summary>
-        public readonly string? Id;
+        public readonly string Hostname;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The password to authenticate with.
         /// </summary>
@@ -68,16 +64,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Username;
 
         [OutputConstructor]
-        private GetResourceResourceTrinoResult(
+        private ResourceAerospike(
             string? bindInterface,
 
             string? egressFilter,
 
-            string? hostname,
+            string hostname,
 
-            string? id,
-
-            string? name,
+            string name,
 
             string? password,
 
@@ -98,7 +92,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
-            Id = id;
             Name = name;
             Password = password;
             Port = port;

@@ -185,6 +185,12 @@ namespace PiersKarsenbarg.Sdm
         public string? LastName { get; set; }
 
         /// <summary>
+        /// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        /// </summary>
+        [Input("managerId")]
+        public string? ManagerId { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Token.
         /// </summary>
         [Input("name")]
@@ -269,6 +275,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
+
+        /// <summary>
+        /// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        /// </summary>
+        [Input("managerId")]
+        public Input<string>? ManagerId { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Token.
@@ -356,6 +368,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? LastName;
         /// <summary>
+        /// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        /// </summary>
+        public readonly string? ManagerId;
+        /// <summary>
         /// Unique human-readable name of the Token.
         /// </summary>
         public readonly string? Name;
@@ -395,6 +411,8 @@ namespace PiersKarsenbarg.Sdm
 
             string? lastName,
 
+            string? managerId,
+
             string? name,
 
             string? permissionLevel,
@@ -415,6 +433,7 @@ namespace PiersKarsenbarg.Sdm
             Id = id;
             Ids = ids;
             LastName = lastName;
+            ManagerId = managerId;
             Name = name;
             PermissionLevel = permissionLevel;
             Permissions = permissions;

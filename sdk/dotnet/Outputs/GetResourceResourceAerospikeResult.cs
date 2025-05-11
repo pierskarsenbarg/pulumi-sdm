@@ -12,7 +12,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceTrinoResult
+    public sealed class GetResourceResourceAerospikeResult
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -68,7 +68,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Username;
 
         [OutputConstructor]
-        private GetResourceResourceTrinoResult(
+        private GetResourceResourceAerospikeResult(
             string? bindInterface,
 
             string? egressFilter,

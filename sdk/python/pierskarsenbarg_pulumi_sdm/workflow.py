@@ -50,6 +50,9 @@ class WorkflowArgs:
         if approval_flow_id is not None:
             pulumi.set(__self__, "approval_flow_id", approval_flow_id)
         if auto_grant is not None:
+            warnings.warn("""auto_grant is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""auto_grant is deprecated: auto_grant is deprecated, see docs for more info""")
+        if auto_grant is not None:
             pulumi.set(__self__, "auto_grant", auto_grant)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -110,6 +113,7 @@ class WorkflowArgs:
 
     @property
     @pulumi.getter(name="autoGrant")
+    @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
     def auto_grant(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -202,6 +206,9 @@ class _WorkflowState:
         if approval_flow_id is not None:
             pulumi.set(__self__, "approval_flow_id", approval_flow_id)
         if auto_grant is not None:
+            warnings.warn("""auto_grant is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""auto_grant is deprecated: auto_grant is deprecated, see docs for more info""")
+        if auto_grant is not None:
             pulumi.set(__self__, "auto_grant", auto_grant)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -262,6 +269,7 @@ class _WorkflowState:
 
     @property
     @pulumi.getter(name="autoGrant")
+    @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
     def auto_grant(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -506,6 +514,7 @@ class Workflow(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoGrant")
+    @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
     def auto_grant(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.

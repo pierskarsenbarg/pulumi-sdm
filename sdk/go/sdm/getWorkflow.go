@@ -34,6 +34,8 @@ type LookupWorkflowArgs struct {
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	//
+	// Deprecated: auto_grant is deprecated, see docs for more info
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
 	Description *string `pulumi:"description"`
@@ -56,6 +58,8 @@ type LookupWorkflowResult struct {
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	//
+	// Deprecated: auto_grant is deprecated, see docs for more info
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
 	Description *string `pulumi:"description"`
@@ -91,6 +95,8 @@ type LookupWorkflowOutputArgs struct {
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	//
+	// Deprecated: auto_grant is deprecated, see docs for more info
 	AutoGrant pulumi.BoolPtrInput `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -139,6 +145,8 @@ func (o LookupWorkflowResultOutput) ApprovalFlowId() pulumi.StringPtrOutput {
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.
+//
+// Deprecated: auto_grant is deprecated, see docs for more info
 func (o LookupWorkflowResultOutput) AutoGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) *bool { return v.AutoGrant }).(pulumi.BoolPtrOutput)
 }

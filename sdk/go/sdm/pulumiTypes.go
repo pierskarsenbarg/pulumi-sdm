@@ -214,8 +214,14 @@ type AccountUser struct {
 	LastName string `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy *string `pulumi:"managedBy"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId *string `pulumi:"managerId"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
+	// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+	ResolvedManagerId *string `pulumi:"resolvedManagerId"`
+	// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+	Scim *string `pulumi:"scim"`
 	// The Service's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -244,8 +250,14 @@ type AccountUserArgs struct {
 	LastName pulumi.StringInput `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy pulumi.StringPtrInput `pulumi:"managedBy"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId pulumi.StringPtrInput `pulumi:"managerId"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
+	// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+	ResolvedManagerId pulumi.StringPtrInput `pulumi:"resolvedManagerId"`
+	// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+	Scim pulumi.StringPtrInput `pulumi:"scim"`
 	// The Service's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -354,9 +366,24 @@ func (o AccountUserOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountUser) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
+// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+func (o AccountUserOutput) ManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.ManagerId }).(pulumi.StringPtrOutput)
+}
+
 // PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o AccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
+}
+
+// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+func (o AccountUserOutput) ResolvedManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.ResolvedManagerId }).(pulumi.StringPtrOutput)
+}
+
+// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+func (o AccountUserOutput) Scim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.Scim }).(pulumi.StringPtrOutput)
 }
 
 // The Service's suspended state.
@@ -443,6 +470,16 @@ func (o AccountUserPtrOutput) ManagedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+func (o AccountUserPtrOutput) ManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagerId
+	}).(pulumi.StringPtrOutput)
+}
+
 // PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o AccountUserPtrOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountUser) *string {
@@ -450,6 +487,26 @@ func (o AccountUserPtrOutput) PermissionLevel() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PermissionLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+func (o AccountUserPtrOutput) ResolvedManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResolvedManagerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+func (o AccountUserPtrOutput) Scim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scim
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -589,9 +646,11 @@ func (o ApprovalWorkflowApprovalStepArrayOutput) Index(i pulumi.IntInput) Approv
 }
 
 type ApprovalWorkflowApprovalStepApprover struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId *string `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference *string `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId *string `pulumi:"roleId"`
 }
 
@@ -607,9 +666,11 @@ type ApprovalWorkflowApprovalStepApproverInput interface {
 }
 
 type ApprovalWorkflowApprovalStepApproverArgs struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference pulumi.StringPtrInput `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 }
 
@@ -664,12 +725,17 @@ func (o ApprovalWorkflowApprovalStepApproverOutput) ToApprovalWorkflowApprovalSt
 	return o
 }
 
-// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o ApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+func (o ApprovalWorkflowApprovalStepApproverOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalWorkflowApprovalStepApprover) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o ApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
@@ -1756,6 +1822,352 @@ func (o NodeRelayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeRela
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeRelayMaintenanceWindow {
 		return vs[0].([]NodeRelayMaintenanceWindow)[vs[1].(int)]
 	}).(NodeRelayMaintenanceWindowOutput)
+}
+
+type ResourceAerospike struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceAerospikeInput is an input type that accepts ResourceAerospikeArgs and ResourceAerospikeOutput values.
+// You can construct a concrete instance of `ResourceAerospikeInput` via:
+//
+//	ResourceAerospikeArgs{...}
+type ResourceAerospikeInput interface {
+	pulumi.Input
+
+	ToResourceAerospikeOutput() ResourceAerospikeOutput
+	ToResourceAerospikeOutputWithContext(context.Context) ResourceAerospikeOutput
+}
+
+type ResourceAerospikeArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAerospikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAerospike)(nil)).Elem()
+}
+
+func (i ResourceAerospikeArgs) ToResourceAerospikeOutput() ResourceAerospikeOutput {
+	return i.ToResourceAerospikeOutputWithContext(context.Background())
+}
+
+func (i ResourceAerospikeArgs) ToResourceAerospikeOutputWithContext(ctx context.Context) ResourceAerospikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAerospikeOutput)
+}
+
+func (i ResourceAerospikeArgs) ToResourceAerospikePtrOutput() ResourceAerospikePtrOutput {
+	return i.ToResourceAerospikePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAerospikeArgs) ToResourceAerospikePtrOutputWithContext(ctx context.Context) ResourceAerospikePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAerospikeOutput).ToResourceAerospikePtrOutputWithContext(ctx)
+}
+
+// ResourceAerospikePtrInput is an input type that accepts ResourceAerospikeArgs, ResourceAerospikePtr and ResourceAerospikePtrOutput values.
+// You can construct a concrete instance of `ResourceAerospikePtrInput` via:
+//
+//	        ResourceAerospikeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAerospikePtrInput interface {
+	pulumi.Input
+
+	ToResourceAerospikePtrOutput() ResourceAerospikePtrOutput
+	ToResourceAerospikePtrOutputWithContext(context.Context) ResourceAerospikePtrOutput
+}
+
+type resourceAerospikePtrType ResourceAerospikeArgs
+
+func ResourceAerospikePtr(v *ResourceAerospikeArgs) ResourceAerospikePtrInput {
+	return (*resourceAerospikePtrType)(v)
+}
+
+func (*resourceAerospikePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAerospike)(nil)).Elem()
+}
+
+func (i *resourceAerospikePtrType) ToResourceAerospikePtrOutput() ResourceAerospikePtrOutput {
+	return i.ToResourceAerospikePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAerospikePtrType) ToResourceAerospikePtrOutputWithContext(ctx context.Context) ResourceAerospikePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAerospikePtrOutput)
+}
+
+type ResourceAerospikeOutput struct{ *pulumi.OutputState }
+
+func (ResourceAerospikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAerospike)(nil)).Elem()
+}
+
+func (o ResourceAerospikeOutput) ToResourceAerospikeOutput() ResourceAerospikeOutput {
+	return o
+}
+
+func (o ResourceAerospikeOutput) ToResourceAerospikeOutputWithContext(ctx context.Context) ResourceAerospikeOutput {
+	return o
+}
+
+func (o ResourceAerospikeOutput) ToResourceAerospikePtrOutput() ResourceAerospikePtrOutput {
+	return o.ToResourceAerospikePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAerospikeOutput) ToResourceAerospikePtrOutputWithContext(ctx context.Context) ResourceAerospikePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAerospike) *ResourceAerospike {
+		return &v
+	}).(ResourceAerospikePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAerospikeOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAerospikeOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAerospikeOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAerospike) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAerospikeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAerospike) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAerospikeOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAerospikeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAerospikeOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAerospikeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAerospikeOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAerospikeOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAerospikeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAerospike) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAerospikeOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAerospike) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAerospikePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAerospikePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAerospike)(nil)).Elem()
+}
+
+func (o ResourceAerospikePtrOutput) ToResourceAerospikePtrOutput() ResourceAerospikePtrOutput {
+	return o
+}
+
+func (o ResourceAerospikePtrOutput) ToResourceAerospikePtrOutputWithContext(ctx context.Context) ResourceAerospikePtrOutput {
+	return o
+}
+
+func (o ResourceAerospikePtrOutput) Elem() ResourceAerospikeOutput {
+	return o.ApplyT(func(v *ResourceAerospike) ResourceAerospike {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAerospike
+		return ret
+	}).(ResourceAerospikeOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAerospikePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAerospikePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAerospikePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAerospikePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAerospikePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAerospikePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAerospikePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAerospikePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAerospikePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAerospikePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAerospikePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAerospike) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAerospikePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAerospike) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceAks struct {
@@ -41373,8 +41785,6 @@ func (o ResourceTeradataPtrOutput) Username() pulumi.StringPtrOutput {
 type ResourceTrino struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
-	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -41413,8 +41823,6 @@ type ResourceTrinoInput interface {
 type ResourceTrinoArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
-	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -41521,11 +41929,6 @@ func (o ResourceTrinoOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
 }
 
-// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceTrinoOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceTrino) string { return v.Database }).(pulumi.StringOutput)
-}
-
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceTrinoOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -41612,16 +42015,6 @@ func (o ResourceTrinoPtrOutput) BindInterface() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BindInterface
-	}).(pulumi.StringPtrOutput)
-}
-
-// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceTrinoPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTrino) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -48485,8 +48878,14 @@ type GetAccountAccountUser struct {
 	LastName *string `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy string `pulumi:"managedBy"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId *string `pulumi:"managerId"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
+	// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+	ResolvedManagerId string `pulumi:"resolvedManagerId"`
+	// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+	Scim string `pulumi:"scim"`
 	// Reserved for future use.  Always false for tokens.
 	Suspended bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -48517,8 +48916,14 @@ type GetAccountAccountUserArgs struct {
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy pulumi.StringInput `pulumi:"managedBy"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId pulumi.StringPtrInput `pulumi:"managerId"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
+	// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+	ResolvedManagerId pulumi.StringInput `pulumi:"resolvedManagerId"`
+	// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+	Scim pulumi.StringInput `pulumi:"scim"`
 	// Reserved for future use.  Always false for tokens.
 	Suspended pulumi.BoolInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -48606,9 +49011,24 @@ func (o GetAccountAccountUserOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
+// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+func (o GetAccountAccountUserOutput) ManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.ManagerId }).(pulumi.StringPtrOutput)
+}
+
 // PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o GetAccountAccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
+}
+
+// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+func (o GetAccountAccountUserOutput) ResolvedManagerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) string { return v.ResolvedManagerId }).(pulumi.StringOutput)
+}
+
+// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+func (o GetAccountAccountUserOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) string { return v.Scim }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.  Always false for tokens.
@@ -48872,9 +49292,11 @@ func (o GetApprovalWorkflowApprovalStepArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetApprovalWorkflowApprovalStepApprover struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId *string `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference *string `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId *string `pulumi:"roleId"`
 }
 
@@ -48890,9 +49312,11 @@ type GetApprovalWorkflowApprovalStepApproverInput interface {
 }
 
 type GetApprovalWorkflowApprovalStepApproverArgs struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference pulumi.StringPtrInput `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 }
 
@@ -48947,12 +49371,17 @@ func (o GetApprovalWorkflowApprovalStepApproverOutput) ToGetApprovalWorkflowAppr
 	return o
 }
 
-// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o GetApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+func (o GetApprovalWorkflowApprovalStepApproverOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalStepApprover) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o GetApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
@@ -49230,9 +49659,11 @@ func (o GetApprovalWorkflowApprovalWorkflowApprovalStepArrayOutput) Index(i pulu
 }
 
 type GetApprovalWorkflowApprovalWorkflowApprovalStepApprover struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId *string `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference *string `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId *string `pulumi:"roleId"`
 }
 
@@ -49248,9 +49679,11 @@ type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverInput interface {
 }
 
 type GetApprovalWorkflowApprovalWorkflowApprovalStepApproverArgs struct {
-	// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+	// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+	// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+	Reference pulumi.StringPtrInput `pulumi:"reference"`
+	// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 }
 
@@ -49305,12 +49738,17 @@ func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) ToGetAppr
 	return o
 }
 
-// The account id of the approver (only an accountId OR a roleId may be present for one approver)
+// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStepApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The role id of the approver (only an accountId OR a roleId may be present for one approver)
+// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) Reference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStepApprover) *string { return v.Reference }).(pulumi.StringPtrOutput)
+}
+
+// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
 func (o GetApprovalWorkflowApprovalWorkflowApprovalStepApproverOutput) RoleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflowApprovalStepApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
@@ -51534,6 +51972,7 @@ func (o GetRemoteIdentityRemoteIdentityArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetResourceResource struct {
+	Aerospikes                                 []GetResourceResourceAerospike                                 `pulumi:"aerospikes"`
 	Aks                                        []GetResourceResourceAk                                        `pulumi:"aks"`
 	AksBasicAuths                              []GetResourceResourceAksBasicAuth                              `pulumi:"aksBasicAuths"`
 	AksServiceAccountUserImpersonations        []GetResourceResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonations"`
@@ -51653,6 +52092,7 @@ type GetResourceResourceInput interface {
 }
 
 type GetResourceResourceArgs struct {
+	Aerospikes                                 GetResourceResourceAerospikeArrayInput                                 `pulumi:"aerospikes"`
 	Aks                                        GetResourceResourceAkArrayInput                                        `pulumi:"aks"`
 	AksBasicAuths                              GetResourceResourceAksBasicAuthArrayInput                              `pulumi:"aksBasicAuths"`
 	AksServiceAccountUserImpersonations        GetResourceResourceAksServiceAccountUserImpersonationArrayInput        `pulumi:"aksServiceAccountUserImpersonations"`
@@ -51809,6 +52249,10 @@ func (o GetResourceResourceOutput) ToGetResourceResourceOutput() GetResourceReso
 
 func (o GetResourceResourceOutput) ToGetResourceResourceOutputWithContext(ctx context.Context) GetResourceResourceOutput {
 	return o
+}
+
+func (o GetResourceResourceOutput) Aerospikes() GetResourceResourceAerospikeArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAerospike { return v.Aerospikes }).(GetResourceResourceAerospikeArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Aks() GetResourceResourceAkArrayOutput {
@@ -52277,6 +52721,211 @@ func (o GetResourceResourceArrayOutput) Index(i pulumi.IntInput) GetResourceReso
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResource {
 		return vs[0].([]GetResourceResource)[vs[1].(int)]
 	}).(GetResourceResourceOutput)
+}
+
+type GetResourceResourceAerospike struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceAerospikeInput is an input type that accepts GetResourceResourceAerospikeArgs and GetResourceResourceAerospikeOutput values.
+// You can construct a concrete instance of `GetResourceResourceAerospikeInput` via:
+//
+//	GetResourceResourceAerospikeArgs{...}
+type GetResourceResourceAerospikeInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAerospikeOutput() GetResourceResourceAerospikeOutput
+	ToGetResourceResourceAerospikeOutputWithContext(context.Context) GetResourceResourceAerospikeOutput
+}
+
+type GetResourceResourceAerospikeArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAerospikeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAerospike)(nil)).Elem()
+}
+
+func (i GetResourceResourceAerospikeArgs) ToGetResourceResourceAerospikeOutput() GetResourceResourceAerospikeOutput {
+	return i.ToGetResourceResourceAerospikeOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAerospikeArgs) ToGetResourceResourceAerospikeOutputWithContext(ctx context.Context) GetResourceResourceAerospikeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAerospikeOutput)
+}
+
+// GetResourceResourceAerospikeArrayInput is an input type that accepts GetResourceResourceAerospikeArray and GetResourceResourceAerospikeArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAerospikeArrayInput` via:
+//
+//	GetResourceResourceAerospikeArray{ GetResourceResourceAerospikeArgs{...} }
+type GetResourceResourceAerospikeArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAerospikeArrayOutput() GetResourceResourceAerospikeArrayOutput
+	ToGetResourceResourceAerospikeArrayOutputWithContext(context.Context) GetResourceResourceAerospikeArrayOutput
+}
+
+type GetResourceResourceAerospikeArray []GetResourceResourceAerospikeInput
+
+func (GetResourceResourceAerospikeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAerospike)(nil)).Elem()
+}
+
+func (i GetResourceResourceAerospikeArray) ToGetResourceResourceAerospikeArrayOutput() GetResourceResourceAerospikeArrayOutput {
+	return i.ToGetResourceResourceAerospikeArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAerospikeArray) ToGetResourceResourceAerospikeArrayOutputWithContext(ctx context.Context) GetResourceResourceAerospikeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAerospikeArrayOutput)
+}
+
+type GetResourceResourceAerospikeOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAerospikeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAerospike)(nil)).Elem()
+}
+
+func (o GetResourceResourceAerospikeOutput) ToGetResourceResourceAerospikeOutput() GetResourceResourceAerospikeOutput {
+	return o
+}
+
+func (o GetResourceResourceAerospikeOutput) ToGetResourceResourceAerospikeOutputWithContext(ctx context.Context) GetResourceResourceAerospikeOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAerospikeOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAerospikeOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAerospikeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAerospikeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAerospikeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceAerospikeOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAerospikeOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAerospikeOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAerospikeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAerospikeOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAerospikeOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAerospikeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceAerospikeOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAerospike) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAerospikeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAerospikeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAerospike)(nil)).Elem()
+}
+
+func (o GetResourceResourceAerospikeArrayOutput) ToGetResourceResourceAerospikeArrayOutput() GetResourceResourceAerospikeArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAerospikeArrayOutput) ToGetResourceResourceAerospikeArrayOutputWithContext(ctx context.Context) GetResourceResourceAerospikeArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAerospikeArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAerospikeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAerospike {
+		return vs[0].([]GetResourceResourceAerospike)[vs[1].(int)]
+	}).(GetResourceResourceAerospikeOutput)
 }
 
 type GetResourceResourceAk struct {
@@ -75302,8 +75951,6 @@ func (o GetResourceResourceTeradataArrayOutput) Index(i pulumi.IntInput) GetReso
 type GetResourceResourceTrino struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
-	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -75344,8 +75991,6 @@ type GetResourceResourceTrinoInput interface {
 type GetResourceResourceTrinoArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
-	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -75426,11 +76071,6 @@ func (o GetResourceResourceTrinoOutput) ToGetResourceResourceTrinoOutputWithCont
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o GetResourceResourceTrinoOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceTrino) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
-}
-
-// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o GetResourceResourceTrinoOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceTrino) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -80312,6 +80952,8 @@ type GetWorkflowWorkflow struct {
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	//
+	// Deprecated: auto_grant is deprecated, see docs for more info
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
 	Description *string `pulumi:"description"`
@@ -80346,6 +80988,8 @@ type GetWorkflowWorkflowArgs struct {
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	//
+	// Deprecated: auto_grant is deprecated, see docs for more info
 	AutoGrant pulumi.BoolPtrInput `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -80431,6 +81075,8 @@ func (o GetWorkflowWorkflowOutput) ApprovalFlowId() pulumi.StringPtrOutput {
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.
+//
+// Deprecated: auto_grant is deprecated, see docs for more info
 func (o GetWorkflowWorkflowOutput) AutoGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetWorkflowWorkflow) *bool { return v.AutoGrant }).(pulumi.BoolPtrOutput)
 }
@@ -80501,6 +81147,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayPtrInput)(nil)).Elem(), NodeRelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayMaintenanceWindowInput)(nil)).Elem(), NodeRelayMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayMaintenanceWindowArrayInput)(nil)).Elem(), NodeRelayMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAerospikeInput)(nil)).Elem(), ResourceAerospikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAerospikePtrInput)(nil)).Elem(), ResourceAerospikeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAksInput)(nil)).Elem(), ResourceAksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAksPtrInput)(nil)).Elem(), ResourceAksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAksBasicAuthInput)(nil)).Elem(), ResourceAksBasicAuthArgs{})
@@ -80819,6 +81467,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityRemoteIdentityArrayInput)(nil)).Elem(), GetRemoteIdentityRemoteIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceInput)(nil)).Elem(), GetResourceResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceArrayInput)(nil)).Elem(), GetResourceResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAerospikeInput)(nil)).Elem(), GetResourceResourceAerospikeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAerospikeArrayInput)(nil)).Elem(), GetResourceResourceAerospikeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAkInput)(nil)).Elem(), GetResourceResourceAkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAkArrayInput)(nil)).Elem(), GetResourceResourceAkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAksBasicAuthInput)(nil)).Elem(), GetResourceResourceAksBasicAuthArgs{})
@@ -81111,6 +81761,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeRelayPtrOutput{})
 	pulumi.RegisterOutputType(NodeRelayMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(NodeRelayMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(ResourceAerospikeOutput{})
+	pulumi.RegisterOutputType(ResourceAerospikePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAksOutput{})
 	pulumi.RegisterOutputType(ResourceAksPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAksBasicAuthOutput{})
@@ -81429,6 +82081,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRemoteIdentityRemoteIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAerospikeOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAerospikeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAkOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAkArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAksBasicAuthOutput{})

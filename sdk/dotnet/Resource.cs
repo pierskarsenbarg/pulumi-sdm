@@ -22,6 +22,12 @@ namespace PiersKarsenbarg.Sdm
     [SdmResourceType("sdm:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("aerospike")]
+        public Output<Outputs.ResourceAerospike?> Aerospike { get; private set; } = null!;
+
         [Output("aks")]
         public Output<Outputs.ResourceAks?> Aks { get; private set; } = null!;
 
@@ -359,9 +365,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("trino")]
         public Output<Outputs.ResourceTrino?> Trino { get; private set; } = null!;
 
-        /// <summary>
-        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("vertica")]
         public Output<Outputs.ResourceVertica?> Vertica { get; private set; } = null!;
 
@@ -412,6 +415,12 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("aerospike")]
+        public Input<Inputs.ResourceAerospikeArgs>? Aerospike { get; set; }
+
         [Input("aks")]
         public Input<Inputs.ResourceAksArgs>? Aks { get; set; }
 
@@ -749,9 +758,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("trino")]
         public Input<Inputs.ResourceTrinoArgs>? Trino { get; set; }
 
-        /// <summary>
-        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("vertica")]
         public Input<Inputs.ResourceVerticaArgs>? Vertica { get; set; }
 
@@ -763,6 +769,12 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("aerospike")]
+        public Input<Inputs.ResourceAerospikeGetArgs>? Aerospike { get; set; }
+
         [Input("aks")]
         public Input<Inputs.ResourceAksGetArgs>? Aks { get; set; }
 
@@ -1100,9 +1112,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("trino")]
         public Input<Inputs.ResourceTrinoGetArgs>? Trino { get; set; }
 
-        /// <summary>
-        /// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("vertica")]
         public Input<Inputs.ResourceVerticaGetArgs>? Vertica { get; set; }
 
