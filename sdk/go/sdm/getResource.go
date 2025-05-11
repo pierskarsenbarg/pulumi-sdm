@@ -86,7 +86,7 @@ type LookupResourceResult struct {
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// A single element list containing a map, where each key lists one of the following objects:
-	// * aks:
+	// * aerospike:
 	Resources []GetResourceResource `pulumi:"resources"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
@@ -167,7 +167,7 @@ func (o LookupResourceResultOutput) Port() pulumi.IntPtrOutput {
 }
 
 // A single element list containing a map, where each key lists one of the following objects:
-// * aks:
+// * aerospike:
 func (o LookupResourceResultOutput) Resources() GetResourceResourceArrayOutput {
 	return o.ApplyT(func(v LookupResourceResult) []GetResourceResource { return v.Resources }).(GetResourceResourceArrayOutput)
 }

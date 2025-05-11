@@ -43,9 +43,21 @@ export interface AccountUser {
      */
     managedBy?: pulumi.Input<string>;
     /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    managerId?: pulumi.Input<string>;
+    /**
      * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     permissionLevel?: pulumi.Input<string>;
+    /**
+     * Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+     */
+    resolvedManagerId?: pulumi.Input<string>;
+    /**
+     * SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+     */
+    scim?: pulumi.Input<string>;
     /**
      * The Service's suspended state.
      */
@@ -73,11 +85,15 @@ export interface ApprovalWorkflowApprovalStep {
 
 export interface ApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: pulumi.Input<string>;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: pulumi.Input<string>;
 }
@@ -114,22 +130,30 @@ export interface GetApprovalWorkflowApprovalStepArgs {
 
 export interface GetApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: string;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: string;
 }
 
 export interface GetApprovalWorkflowApprovalStepApproverArgs {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: pulumi.Input<string>;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: pulumi.Input<string>;
 }
@@ -238,6 +262,57 @@ export interface NodeRelay {
 export interface NodeRelayMaintenanceWindow {
     cronSchedule: pulumi.Input<string>;
     requireIdleness: pulumi.Input<boolean>;
+}
+
+export interface ResourceAerospike {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
 }
 
 export interface ResourceAks {
@@ -6337,10 +6412,6 @@ export interface ResourceTrino {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
-    /**
-     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-     */
-    database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */

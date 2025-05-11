@@ -102,7 +102,7 @@ class GetResourceResult:
     def resources(self) -> Sequence['outputs.GetResourceResourceResult']:
         """
         A single element list containing a map, where each key lists one of the following objects:
-        * aks:
+        * aerospike:
         """
         return pulumi.get(self, "resources")
 

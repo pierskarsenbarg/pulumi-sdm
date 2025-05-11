@@ -8,21 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pulumi/sdm";
- *
- * const workflowApproverAccountQuery = sdm.getWorkflowApprover({
- *     accountId: "a-2496542",
- *     workflowId: "aw-541894",
- * });
- * const workflowApproverRoleQuery = sdm.getWorkflowApprover({
- *     roleId: "r-417345",
- *     workflowId: "aw-679923",
- * });
- * ```
+ * This data source is deprecated.
  */
 export function getWorkflowApprover(args?: GetWorkflowApproverArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowApproverResult> {
     args = args || {};
@@ -88,21 +74,7 @@ export interface GetWorkflowApproverResult {
 }
 /**
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pulumi/sdm";
- *
- * const workflowApproverAccountQuery = sdm.getWorkflowApprover({
- *     accountId: "a-2496542",
- *     workflowId: "aw-541894",
- * });
- * const workflowApproverRoleQuery = sdm.getWorkflowApprover({
- *     roleId: "r-417345",
- *     workflowId: "aw-679923",
- * });
- * ```
+ * This data source is deprecated.
  */
 export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowApproverResult> {
     args = args || {};

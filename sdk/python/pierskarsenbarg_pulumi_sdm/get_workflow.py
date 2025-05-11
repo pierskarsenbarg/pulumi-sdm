@@ -89,6 +89,7 @@ class GetWorkflowResult:
 
     @property
     @pulumi.getter(name="autoGrant")
+    @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
     def auto_grant(self) -> Optional[builtins.bool]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.

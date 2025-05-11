@@ -19,10 +19,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
-        /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        /// </summary>
-        public readonly string Database;
-        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
@@ -71,8 +67,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private ResourceTrino(
             string? bindInterface,
 
-            string database,
-
             string? egressFilter,
 
             string hostname,
@@ -96,7 +90,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? username)
         {
             BindInterface = bindInterface;
-            Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
             Name = name;

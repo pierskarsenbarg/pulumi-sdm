@@ -43,9 +43,21 @@ export interface AccountUser {
      */
     managedBy: string;
     /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    managerId?: string;
+    /**
      * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     permissionLevel: string;
+    /**
+     * Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+     */
+    resolvedManagerId: string;
+    /**
+     * SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+     */
+    scim: string;
     /**
      * The Service's suspended state.
      */
@@ -73,11 +85,15 @@ export interface ApprovalWorkflowApprovalStep {
 
 export interface ApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: string;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: string;
 }
@@ -181,9 +197,21 @@ export interface GetAccountAccountUser {
      */
     managedBy: string;
     /**
+     * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+     */
+    managerId?: string;
+    /**
      * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     permissionLevel?: string;
+    /**
+     * Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+     */
+    resolvedManagerId: string;
+    /**
+     * SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+     */
+    scim: string;
     /**
      * Reserved for future use.  Always false for tokens.
      */
@@ -226,11 +254,15 @@ export interface GetApprovalWorkflowApprovalStep {
 
 export interface GetApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: string;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: string;
 }
@@ -275,11 +307,15 @@ export interface GetApprovalWorkflowApprovalWorkflowApprovalStep {
 
 export interface GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only an accountId OR a roleId may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * The role id of the approver (only an accountId OR a roleId may be present for one approver)
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     */
+    reference?: string;
+    /**
+     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
      */
     roleId?: string;
 }
@@ -601,6 +637,7 @@ export interface GetRemoteIdentityRemoteIdentity {
 }
 
 export interface GetResourceResource {
+    aerospikes: outputs.GetResourceResourceAerospike[];
     aks: outputs.GetResourceResourceAk[];
     aksBasicAuths: outputs.GetResourceResourceAksBasicAuth[];
     aksServiceAccountUserImpersonations: outputs.GetResourceResourceAksServiceAccountUserImpersonation[];
@@ -706,6 +743,61 @@ export interface GetResourceResource {
     teradatas: outputs.GetResourceResourceTeradata[];
     trinos: outputs.GetResourceResourceTrino[];
     verticas: outputs.GetResourceResourceVertica[];
+}
+
+export interface GetResourceResourceAerospike {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
 }
 
 export interface GetResourceResourceAk {
@@ -7218,10 +7310,6 @@ export interface GetResourceResourceTrino {
      */
     bindInterface?: string;
     /**
-     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-     */
-    database?: string;
-    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -8246,6 +8334,8 @@ export interface GetWorkflowWorkflow {
     approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     autoGrant?: boolean;
     /**
@@ -8374,6 +8464,57 @@ export interface NodeRelay {
 export interface NodeRelayMaintenanceWindow {
     cronSchedule: string;
     requireIdleness: boolean;
+}
+
+export interface ResourceAerospike {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
 }
 
 export interface ResourceAks {
@@ -14473,10 +14614,6 @@ export interface ResourceTrino {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
-    /**
-     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-     */
-    database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */

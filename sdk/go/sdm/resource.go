@@ -21,7 +21,9 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	Aks ResourceAksPtrOutput `pulumi:"aks"`
+	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Aerospike ResourceAerospikePtrOutput `pulumi:"aerospike"`
+	Aks       ResourceAksPtrOutput       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrOutput                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         ResourceAksServiceAccountPtrOutput                         `pulumi:"aksServiceAccount"`
@@ -133,8 +135,7 @@ type Resource struct {
 	SybaseIq              ResourceSybaseIqPtrOutput              `pulumi:"sybaseIq"`
 	Teradata              ResourceTeradataPtrOutput              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
-	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino   ResourceTrinoPtrOutput   `pulumi:"trino"`
 	Vertica ResourceVerticaPtrOutput `pulumi:"vertica"`
 }
 
@@ -168,7 +169,9 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	Aks *ResourceAks `pulumi:"aks"`
+	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Aerospike *ResourceAerospike `pulumi:"aerospike"`
+	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
@@ -280,13 +283,14 @@ type resourceState struct {
 	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino *ResourceTrino `pulumi:"trino"`
-	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino   *ResourceTrino   `pulumi:"trino"`
 	Vertica *ResourceVertica `pulumi:"vertica"`
 }
 
 type ResourceState struct {
-	Aks ResourceAksPtrInput
+	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Aerospike ResourceAerospikePtrInput
+	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrInput
 	AksServiceAccount                         ResourceAksServiceAccountPtrInput
@@ -398,8 +402,7 @@ type ResourceState struct {
 	SybaseIq              ResourceSybaseIqPtrInput
 	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino ResourceTrinoPtrInput
-	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino   ResourceTrinoPtrInput
 	Vertica ResourceVerticaPtrInput
 }
 
@@ -408,7 +411,9 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	Aks *ResourceAks `pulumi:"aks"`
+	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Aerospike *ResourceAerospike `pulumi:"aerospike"`
+	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
@@ -520,14 +525,15 @@ type resourceArgs struct {
 	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino *ResourceTrino `pulumi:"trino"`
-	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino   *ResourceTrino   `pulumi:"trino"`
 	Vertica *ResourceVertica `pulumi:"vertica"`
 }
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	Aks ResourceAksPtrInput
+	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Aerospike ResourceAerospikePtrInput
+	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrInput
 	AksServiceAccount                         ResourceAksServiceAccountPtrInput
@@ -639,8 +645,7 @@ type ResourceArgs struct {
 	SybaseIq              ResourceSybaseIqPtrInput
 	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino ResourceTrinoPtrInput
-	// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino   ResourceTrinoPtrInput
 	Vertica ResourceVerticaPtrInput
 }
 
@@ -729,6 +734,11 @@ func (o ResourceOutput) ToResourceOutput() ResourceOutput {
 
 func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
 	return o
+}
+
+// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Aerospike() ResourceAerospikePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAerospikePtrOutput { return v.Aerospike }).(ResourceAerospikePtrOutput)
 }
 
 func (o ResourceOutput) Aks() ResourceAksPtrOutput {
@@ -1162,7 +1172,6 @@ func (o ResourceOutput) Trino() ResourceTrinoPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceTrinoPtrOutput { return v.Trino }).(ResourceTrinoPtrOutput)
 }
 
-// Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Vertica() ResourceVerticaPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceVerticaPtrOutput { return v.Vertica }).(ResourceVerticaPtrOutput)
 }

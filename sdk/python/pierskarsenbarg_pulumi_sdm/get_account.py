@@ -28,7 +28,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_type=None, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, permission_level=None, permissions=None, suspended=None, tags=None, type=None):
+    def __init__(__self__, account_type=None, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, manager_id=None, name=None, permission_level=None, permissions=None, suspended=None, tags=None, type=None):
         if account_type and not isinstance(account_type, str):
             raise TypeError("Expected argument 'account_type' to be a str")
         pulumi.set(__self__, "account_type", account_type)
@@ -53,6 +53,9 @@ class GetAccountResult:
         if last_name and not isinstance(last_name, str):
             raise TypeError("Expected argument 'last_name' to be a str")
         pulumi.set(__self__, "last_name", last_name)
+        if manager_id and not isinstance(manager_id, str):
+            raise TypeError("Expected argument 'manager_id' to be a str")
+        pulumi.set(__self__, "manager_id", manager_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -138,6 +141,14 @@ class GetAccountResult:
         return pulumi.get(self, "last_name")
 
     @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> Optional[builtins.str]:
+        """
+        Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        """
+        return pulumi.get(self, "manager_id")
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
@@ -197,6 +208,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             id=self.id,
             ids=self.ids,
             last_name=self.last_name,
+            manager_id=self.manager_id,
             name=self.name,
             permission_level=self.permission_level,
             permissions=self.permissions,
@@ -211,6 +223,7 @@ def get_account(account_type: Optional[builtins.str] = None,
                 first_name: Optional[builtins.str] = None,
                 id: Optional[builtins.str] = None,
                 last_name: Optional[builtins.str] = None,
+                manager_id: Optional[builtins.str] = None,
                 name: Optional[builtins.str] = None,
                 permission_level: Optional[builtins.str] = None,
                 permissions: Optional[builtins.str] = None,
@@ -248,6 +261,7 @@ def get_account(account_type: Optional[builtins.str] = None,
     :param builtins.str first_name: The User's first name.
     :param builtins.str id: Unique identifier of the User.
     :param builtins.str last_name: The User's last name.
+    :param builtins.str manager_id: Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
     :param builtins.str name: Unique human-readable name of the Token.
     :param builtins.str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
     :param builtins.str permissions: Permissions assigned to the token, e.g. role:create.
@@ -262,6 +276,7 @@ def get_account(account_type: Optional[builtins.str] = None,
     __args__['firstName'] = first_name
     __args__['id'] = id
     __args__['lastName'] = last_name
+    __args__['managerId'] = manager_id
     __args__['name'] = name
     __args__['permissionLevel'] = permission_level
     __args__['permissions'] = permissions
@@ -280,6 +295,7 @@ def get_account(account_type: Optional[builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         last_name=pulumi.get(__ret__, 'last_name'),
+        manager_id=pulumi.get(__ret__, 'manager_id'),
         name=pulumi.get(__ret__, 'name'),
         permission_level=pulumi.get(__ret__, 'permission_level'),
         permissions=pulumi.get(__ret__, 'permissions'),
@@ -292,6 +308,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[builtins.str
                        first_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        last_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                       manager_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        permission_level: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        permissions: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -329,6 +346,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[builtins.str
     :param builtins.str first_name: The User's first name.
     :param builtins.str id: Unique identifier of the User.
     :param builtins.str last_name: The User's last name.
+    :param builtins.str manager_id: Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
     :param builtins.str name: Unique human-readable name of the Token.
     :param builtins.str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
     :param builtins.str permissions: Permissions assigned to the token, e.g. role:create.
@@ -343,6 +361,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[builtins.str
     __args__['firstName'] = first_name
     __args__['id'] = id
     __args__['lastName'] = last_name
+    __args__['managerId'] = manager_id
     __args__['name'] = name
     __args__['permissionLevel'] = permission_level
     __args__['permissions'] = permissions
@@ -360,6 +379,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[builtins.str
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         last_name=pulumi.get(__response__, 'last_name'),
+        manager_id=pulumi.get(__response__, 'manager_id'),
         name=pulumi.get(__response__, 'name'),
         permission_level=pulumi.get(__response__, 'permission_level'),
         permissions=pulumi.get(__response__, 'permissions'),

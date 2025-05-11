@@ -45,6 +45,8 @@ export interface GetWorkflowArgs {
     approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     autoGrant?: boolean;
     /**
@@ -87,6 +89,8 @@ export interface GetWorkflowResult {
     readonly approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     readonly autoGrant?: boolean;
     /**
@@ -157,6 +161,8 @@ export interface GetWorkflowOutputArgs {
     approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     *
+     * @deprecated auto_grant is deprecated, see docs for more info
      */
     autoGrant?: pulumi.Input<boolean>;
     /**

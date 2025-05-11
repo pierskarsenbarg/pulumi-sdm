@@ -84,6 +84,8 @@ type LookupAccountArgs struct {
 	Id *string `pulumi:"id"`
 	// The User's last name.
 	LastName *string `pulumi:"lastName"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId *string `pulumi:"managerId"`
 	// Unique human-readable name of the Token.
 	Name *string `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
@@ -117,6 +119,8 @@ type LookupAccountResult struct {
 	Ids []string `pulumi:"ids"`
 	// The User's last name.
 	LastName *string `pulumi:"lastName"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId *string `pulumi:"managerId"`
 	// Unique human-readable name of the Token.
 	Name *string `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
@@ -153,6 +157,8 @@ type LookupAccountOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The User's last name.
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+	ManagerId pulumi.StringPtrInput `pulumi:"managerId"`
 	// Unique human-readable name of the Token.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
@@ -225,6 +231,11 @@ func (o LookupAccountResultOutput) Ids() pulumi.StringArrayOutput {
 // The User's last name.
 func (o LookupAccountResultOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+func (o LookupAccountResultOutput) ManagerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.ManagerId }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Token.

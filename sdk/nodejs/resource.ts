@@ -43,6 +43,10 @@ export class Resource extends pulumi.CustomResource {
         return obj['__pulumiType'] === Resource.__pulumiType;
     }
 
+    /**
+     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly aerospike!: pulumi.Output<outputs.ResourceAerospike | undefined>;
     public readonly aks!: pulumi.Output<outputs.ResourceAks | undefined>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -172,9 +176,6 @@ export class Resource extends pulumi.CustomResource {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     public readonly trino!: pulumi.Output<outputs.ResourceTrino | undefined>;
-    /**
-     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly vertica!: pulumi.Output<outputs.ResourceVertica | undefined>;
 
     /**
@@ -190,6 +191,7 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
+            resourceInputs["aerospike"] = state ? state.aerospike : undefined;
             resourceInputs["aks"] = state ? state.aks : undefined;
             resourceInputs["aksBasicAuth"] = state ? state.aksBasicAuth : undefined;
             resourceInputs["aksServiceAccount"] = state ? state.aksServiceAccount : undefined;
@@ -297,6 +299,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["vertica"] = state ? state.vertica : undefined;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
+            resourceInputs["aerospike"] = args ? args.aerospike : undefined;
             resourceInputs["aks"] = args ? args.aks : undefined;
             resourceInputs["aksBasicAuth"] = args ? args.aksBasicAuth : undefined;
             resourceInputs["aksServiceAccount"] = args ? args.aksServiceAccount : undefined;
@@ -412,6 +415,10 @@ export class Resource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Resource resources.
  */
 export interface ResourceState {
+    /**
+     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    aerospike?: pulumi.Input<inputs.ResourceAerospike>;
     aks?: pulumi.Input<inputs.ResourceAks>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -541,9 +548,6 @@ export interface ResourceState {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     trino?: pulumi.Input<inputs.ResourceTrino>;
-    /**
-     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     vertica?: pulumi.Input<inputs.ResourceVertica>;
 }
 
@@ -551,6 +555,10 @@ export interface ResourceState {
  * The set of arguments for constructing a Resource resource.
  */
 export interface ResourceArgs {
+    /**
+     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    aerospike?: pulumi.Input<inputs.ResourceAerospike>;
     aks?: pulumi.Input<inputs.ResourceAks>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -680,8 +688,5 @@ export interface ResourceArgs {
      * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     trino?: pulumi.Input<inputs.ResourceTrino>;
-    /**
-     * Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     vertica?: pulumi.Input<inputs.ResourceVertica>;
 }

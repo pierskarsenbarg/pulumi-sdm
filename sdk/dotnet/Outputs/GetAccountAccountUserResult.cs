@@ -39,9 +39,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string ManagedBy;
         /// <summary>
+        /// Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+        /// </summary>
+        public readonly string? ManagerId;
+        /// <summary>
         /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
         public readonly string? PermissionLevel;
+        /// <summary>
+        /// Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+        /// </summary>
+        public readonly string ResolvedManagerId;
+        /// <summary>
+        /// SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+        /// </summary>
+        public readonly string Scim;
         /// <summary>
         /// Reserved for future use.  Always false for tokens.
         /// </summary>
@@ -65,7 +77,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string managedBy,
 
+            string? managerId,
+
             string? permissionLevel,
+
+            string resolvedManagerId,
+
+            string scim,
 
             bool suspended,
 
@@ -77,7 +95,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             LastName = lastName;
             ManagedBy = managedBy;
+            ManagerId = managerId;
             PermissionLevel = permissionLevel;
+            ResolvedManagerId = resolvedManagerId;
+            Scim = scim;
             Suspended = suspended;
             Tags = tags;
         }

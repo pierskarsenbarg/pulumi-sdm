@@ -26,6 +26,45 @@ namespace PiersKarsenbarg.Sdm
     ///     var manualApprovalWorkflow = new Sdm.ApprovalWorkflow("manualApprovalWorkflow", new()
     ///     {
     ///         ApprovalMode = "manual",
+    ///         ApprovalSteps = new[]
+    ///         {
+    ///             new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs
+    ///             {
+    ///                 Approvers = new[]
+    ///                 {
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         AccountId = "a-1234abc",
+    ///                     },
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         Reference = "manager-of-requester",
+    ///                     },
+    ///                 },
+    ///                 Quantifier = "any",
+    ///                 SkipAfter = "1h0m0s",
+    ///             },
+    ///             new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs
+    ///             {
+    ///                 Approvers = new[]
+    ///                 {
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         RoleId = "r-1234abc",
+    ///                     },
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         AccountId = "a-5678def",
+    ///                     },
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         Reference = "manager-of-manager-of-requester",
+    ///                     },
+    ///                 },
+    ///                 Quantifier = "all",
+    ///                 SkipAfter = "0s",
+    ///             },
+    ///         },
     ///     });
     /// 
     ///     var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", new()

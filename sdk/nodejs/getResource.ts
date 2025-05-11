@@ -99,7 +99,7 @@ export interface GetResourceResult {
     readonly port?: number;
     /**
      * A single element list containing a map, where each key lists one of the following objects:
-     * * aks:
+     * * aerospike:
      */
     readonly resources: outputs.GetResourceResource[];
     /**

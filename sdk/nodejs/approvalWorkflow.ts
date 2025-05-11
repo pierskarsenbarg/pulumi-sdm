@@ -15,7 +15,38 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const manualApprovalWorkflow = new sdm.ApprovalWorkflow("manualApprovalWorkflow", {approvalMode: "manual"});
+ * const manualApprovalWorkflow = new sdm.ApprovalWorkflow("manualApprovalWorkflow", {
+ *     approvalMode: "manual",
+ *     approvalSteps: [
+ *         {
+ *             approvers: [
+ *                 {
+ *                     accountId: "a-1234abc",
+ *                 },
+ *                 {
+ *                     reference: "manager-of-requester",
+ *                 },
+ *             ],
+ *             quantifier: "any",
+ *             skipAfter: "1h0m0s",
+ *         },
+ *         {
+ *             approvers: [
+ *                 {
+ *                     roleId: "r-1234abc",
+ *                 },
+ *                 {
+ *                     accountId: "a-5678def",
+ *                 },
+ *                 {
+ *                     reference: "manager-of-manager-of-requester",
+ *                 },
+ *             ],
+ *             quantifier: "all",
+ *             skipAfter: "0s",
+ *         },
+ *     ],
+ * });
  * const autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", {approvalMode: "automatic"});
  * ```
  * This resource can be imported using the import command.

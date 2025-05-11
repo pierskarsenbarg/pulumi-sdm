@@ -242,7 +242,7 @@ namespace PiersKarsenbarg.Sdm
         public readonly int? Port;
         /// <summary>
         /// A single element list containing a map, where each key lists one of the following objects:
-        /// * aks:
+        /// * aerospike:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceResourceResult> Resources;
         /// <summary>

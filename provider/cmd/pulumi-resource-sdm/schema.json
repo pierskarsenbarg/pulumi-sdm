@@ -132,9 +132,21 @@
                     "type": "string",
                     "description": "Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.\n"
                 },
+                "managerId": {
+                    "type": "string",
+                    "description": "Manager ID is the ID of the user's manager. This field is empty when the user has no manager.\n"
+                },
                 "permissionLevel": {
                     "type": "string",
                     "description": "PermissionLevel is the user's permission level e.g. admin, DBA, user.\n"
+                },
+                "resolvedManagerId": {
+                    "type": "string",
+                    "description": "Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.\n"
+                },
+                "scim": {
+                    "type": "string",
+                    "description": "SCIM contains the raw SCIM metadata for the user. This is a read-only field.\n"
                 },
                 "suspended": {
                     "type": "boolean",
@@ -162,6 +174,8 @@
                         "lastName",
                         "managedBy",
                         "permissionLevel",
+                        "resolvedManagerId",
+                        "scim",
                         "suspended"
                     ]
                 }
@@ -194,11 +208,15 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -408,6 +426,79 @@
                 "cronSchedule",
                 "requireIdleness"
             ]
+        },
+        "sdm:index/ResourceAerospike:ResourceAerospike": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
         },
         "sdm:index/ResourceAks:ResourceAks": {
             "properties": {
@@ -8925,10 +9016,6 @@
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
                 },
-                "database": {
-                    "type": "string",
-                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
-                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -8981,7 +9068,6 @@
             },
             "type": "object",
             "required": [
-                "database",
                 "hostname",
                 "name"
             ],
@@ -8989,7 +9075,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "database",
                         "hostname",
                         "name",
                         "portOverride",
@@ -10208,9 +10293,21 @@
                     "type": "string",
                     "description": "Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.\n"
                 },
+                "managerId": {
+                    "type": "string",
+                    "description": "Manager ID is the ID of the user's manager. This field is empty when the user has no manager.\n"
+                },
                 "permissionLevel": {
                     "type": "string",
                     "description": "PermissionLevel is the user's permission level e.g. admin, DBA, user.\n"
+                },
+                "resolvedManagerId": {
+                    "type": "string",
+                    "description": "Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.\n"
+                },
+                "scim": {
+                    "type": "string",
+                    "description": "SCIM contains the raw SCIM metadata for the user. This is a read-only field.\n"
                 },
                 "suspended": {
                     "type": "boolean",
@@ -10227,6 +10324,8 @@
             "type": "object",
             "required": [
                 "managedBy",
+                "resolvedManagerId",
+                "scim",
                 "suspended"
             ],
             "language": {
@@ -10279,11 +10378,15 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -10348,11 +10451,15 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only an account_id OR a role_id may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -10822,6 +10929,12 @@
         },
         "sdm:index/getResourceResource:getResourceResource": {
             "properties": {
+                "aerospikes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAerospike:getResourceResourceAerospike"
+                    }
+                },
                 "aks": {
                     "type": "array",
                     "items": {
@@ -11455,6 +11568,7 @@
             },
             "type": "object",
             "required": [
+                "aerospikes",
                 "aks",
                 "aksBasicAuths",
                 "aksServiceAccounts",
@@ -11566,6 +11680,67 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "sdm:index/getResourceResourceAerospike:getResourceResourceAerospike": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
         },
         "sdm:index/getResourceResourceAk:getResourceResourceAk": {
             "properties": {
@@ -18685,10 +18860,6 @@
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
                 },
-                "database": {
-                    "type": "string",
-                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
-                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -20050,7 +20221,8 @@
                 },
                 "autoGrant": {
                     "type": "boolean",
-                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                    "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                 },
                 "description": {
                     "type": "string",
@@ -20120,7 +20292,7 @@
     },
     "resources": {
         "sdm:index/account:Account": {
-            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user={\n    \"email\": \"albob@strongdm.com\",\n    \"first_name\": \"al\",\n    \"last_name\": \"bob\",\n    \"tags\": {\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n})\ntest_service = sdm.Account(\"test-service\", service={\n    \"name\": \"test-service\",\n    \"tags\": {\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()\n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()\n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
+            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    managerId: \"a-1234abc\",\n    permissionLevel: \"database-admin\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user={\n    \"email\": \"albob@strongdm.com\",\n    \"first_name\": \"al\",\n    \"last_name\": \"bob\",\n    \"manager_id\": \"a-1234abc\",\n    \"permission_level\": \"database-admin\",\n    \"tags\": {\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n})\ntest_service = sdm.Account(\"test-service\", service={\n    \"name\": \"test-service\",\n    \"tags\": {\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            ManagerId = \"a-1234abc\",\n            PermissionLevel = \"database-admin\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:           pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName:       pulumi.String(\"al\"),\n\t\t\t\tLastName:        pulumi.String(\"bob\"),\n\t\t\t\tManagerId:       pulumi.String(\"a-1234abc\"),\n\t\t\t\tPermissionLevel: pulumi.String(\"database-admin\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()\n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .managerId(\"a-1234abc\")\n                .permissionLevel(\"database-admin\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()\n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        managerId: a-1234abc\n        permissionLevel: database-admin\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
             "properties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
@@ -20206,7 +20378,7 @@
             }
         },
         "sdm:index/approvalWorkflow:ApprovalWorkflow": {
-            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {approvalMode: \"manual\"});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", approval_mode=\"manual\")\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
+            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {\n    approvalMode: \"manual\",\n    approvalSteps: [\n        {\n            approvers: [\n                {\n                    accountId: \"a-1234abc\",\n                },\n                {\n                    reference: \"manager-of-requester\",\n                },\n            ],\n            quantifier: \"any\",\n            skipAfter: \"1h0m0s\",\n        },\n        {\n            approvers: [\n                {\n                    roleId: \"r-1234abc\",\n                },\n                {\n                    accountId: \"a-5678def\",\n                },\n                {\n                    reference: \"manager-of-manager-of-requester\",\n                },\n            ],\n            quantifier: \"all\",\n            skipAfter: \"0s\",\n        },\n    ],\n});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\",\n    approval_mode=\"manual\",\n    approval_steps=[\n        {\n            \"approvers\": [\n                {\n                    \"account_id\": \"a-1234abc\",\n                },\n                {\n                    \"reference\": \"manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"any\",\n            \"skip_after\": \"1h0m0s\",\n        },\n        {\n            \"approvers\": [\n                {\n                    \"role_id\": \"r-1234abc\",\n                },\n                {\n                    \"account_id\": \"a-5678def\",\n                },\n                {\n                    \"reference\": \"manager-of-manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"all\",\n            \"skip_after\": \"0s\",\n        },\n    ])\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n        ApprovalSteps = new[]\n        {\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-requester\",\n                    },\n                },\n                Quantifier = \"any\",\n                SkipAfter = \"1h0m0s\",\n            },\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        RoleId = \"r-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-5678def\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-manager-of-requester\",\n                    },\n                },\n                Quantifier = \"all\",\n                SkipAfter = \"0s\",\n            },\n        },\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t\tApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"any\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"1h0m0s\"),\n\t\t\t\t},\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tRoleId: pulumi.String(\"r-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-5678def\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"all\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"0s\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport com.pulumi.sdm.inputs.ApprovalWorkflowApprovalStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .approvalSteps(            \n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-requester\")\n                            .build())\n                    .quantifier(\"any\")\n                    .skipAfter(\"1h0m0s\")\n                    .build(),\n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .roleId(\"r-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-5678def\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-manager-of-requester\")\n                            .build())\n                    .quantifier(\"all\")\n                    .skipAfter(\"0s\")\n                    .build())\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n      approvalSteps:\n        - approvers:\n            - accountId: a-1234abc\n            - reference: manager-of-requester\n          quantifier: any\n          skipAfter: 1h0m0s\n        - approvers:\n            - roleId: r-1234abc\n            - accountId: a-5678def\n            - reference: manager-of-manager-of-requester\n          quantifier: all\n          skipAfter: 0s\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
             "properties": {
                 "approvalMode": {
                     "type": "string",
@@ -20855,6 +21027,10 @@
         "sdm:index/resource:Resource": {
             "description": "\n\n## Import\n\nA Resource can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/resource:Resource example rs-12345678\n```\n",
             "properties": {
+                "aerospike": {
+                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
+                    "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "aks": {
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                 },
@@ -21176,11 +21352,14 @@
                     "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "vertica": {
-                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
-                    "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
                 }
             },
             "inputProperties": {
+                "aerospike": {
+                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
+                    "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "aks": {
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                 },
@@ -21502,13 +21681,16 @@
                     "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "vertica": {
-                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
-                    "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
                 }
             },
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Resource resources.\n",
                 "properties": {
+                    "aerospike": {
+                        "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
+                        "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "aks": {
                         "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                     },
@@ -21830,8 +22012,7 @@
                         "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "vertica": {
-                        "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica",
-                        "description": "Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
                     }
                 },
                 "type": "object"
@@ -22195,7 +22376,8 @@
                 },
                 "autoGrant": {
                     "type": "boolean",
-                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                    "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                 },
                 "description": {
                     "type": "string",
@@ -22238,7 +22420,8 @@
                 },
                 "autoGrant": {
                     "type": "boolean",
-                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                    "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                 },
                 "description": {
                     "type": "string",
@@ -22278,7 +22461,8 @@
                     },
                     "autoGrant": {
                         "type": "boolean",
-                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                        "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                     },
                     "description": {
                         "type": "string",
@@ -22301,7 +22485,7 @@
             }
         },
         "sdm:index/workflowApprover:WorkflowApprover": {
-            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowApproverAccountExample = new sdm.WorkflowApprover(\"workflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    workflowId: \"aw-6799234\",\n});\nconst workflowApproverRoleExample = new sdm.WorkflowApprover(\"workflowApproverRoleExample\", {\n    roleId: \"r-542982\",\n    workflowId: \"aw-1935694\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_approver_account_example = sdm.WorkflowApprover(\"workflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    workflow_id=\"aw-6799234\")\nworkflow_approver_role_example = sdm.WorkflowApprover(\"workflowApproverRoleExample\",\n    role_id=\"r-542982\",\n    workflow_id=\"aw-1935694\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverAccountExample = new Sdm.WorkflowApprover(\"workflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        WorkflowId = \"aw-6799234\",\n    });\n\n    var workflowApproverRoleExample = new Sdm.WorkflowApprover(\"workflowApproverRoleExample\", new()\n    {\n        RoleId = \"r-542982\",\n        WorkflowId = \"aw-1935694\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowApprover(ctx, \"workflowApproverAccountExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tAccountId:  pulumi.String(\"a-234605\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-6799234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewWorkflowApprover(ctx, \"workflowApproverRoleExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tRoleId:     pulumi.String(\"r-542982\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-1935694\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowApprover;\nimport com.pulumi.sdm.WorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowApproverAccountExample = new WorkflowApprover(\"workflowApproverAccountExample\", WorkflowApproverArgs.builder()\n            .accountId(\"a-234605\")\n            .workflowId(\"aw-6799234\")\n            .build());\n\n        var workflowApproverRoleExample = new WorkflowApprover(\"workflowApproverRoleExample\", WorkflowApproverArgs.builder()\n            .roleId(\"r-542982\")\n            .workflowId(\"aw-1935694\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowApproverAccountExample:\n    type: sdm:WorkflowApprover\n    properties:\n      accountId: a-234605\n      workflowId: aw-6799234\n  workflowApproverRoleExample:\n    type: sdm:WorkflowApprover\n    properties:\n      roleId: r-542982\n      workflowId: aw-1935694\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678\n```\n",
+            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\nThis resource is deprecated.\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678\n```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -22470,6 +22654,10 @@
                         "type": "string",
                         "description": "The User's last name.\n"
                     },
+                    "managerId": {
+                        "type": "string",
+                        "description": "Manager ID is the ID of the user's manager. This field is empty when the user has no manager.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Token.\n"
@@ -22540,6 +22728,10 @@
                     "lastName": {
                         "type": "string",
                         "description": "The User's last name.\n"
+                    },
+                    "managerId": {
+                        "type": "string",
+                        "description": "Manager ID is the ID of the user's manager. This field is empty when the user has no manager.\n"
                     },
                     "name": {
                         "type": "string",
@@ -23530,7 +23722,7 @@
                         "items": {
                             "$ref": "#/types/sdm:index/getResourceResource:getResourceResource"
                         },
-                        "description": "A single element list containing a map, where each key lists one of the following objects:\n* aks:\n"
+                        "description": "A single element list containing a map, where each key lists one of the following objects:\n* aerospike:\n"
                     },
                     "tags": {
                         "type": "object",
@@ -23924,7 +24116,8 @@
                     },
                     "autoGrant": {
                         "type": "boolean",
-                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                        "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                     },
                     "description": {
                         "type": "string",
@@ -23966,7 +24159,8 @@
                     },
                     "autoGrant": {
                         "type": "boolean",
-                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n",
+                        "deprecationMessage": "auto_grant is deprecated, see docs for more info"
                     },
                     "description": {
                         "type": "string",
@@ -24011,7 +24205,7 @@
             }
         },
         "sdm:index/getWorkflowApprover:getWorkflowApprover": {
-            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst workflowApproverAccountQuery = sdm.getWorkflowApprover({\n    accountId: \"a-2496542\",\n    workflowId: \"aw-541894\",\n});\nconst workflowApproverRoleQuery = sdm.getWorkflowApprover({\n    roleId: \"r-417345\",\n    workflowId: \"aw-679923\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_approver_account_query = sdm.get_workflow_approver(account_id=\"a-2496542\",\n    workflow_id=\"aw-541894\")\nworkflow_approver_role_query = sdm.get_workflow_approver(role_id=\"r-417345\",\n    workflow_id=\"aw-679923\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverAccountQuery = Sdm.GetWorkflowApprover.Invoke(new()\n    {\n        AccountId = \"a-2496542\",\n        WorkflowId = \"aw-541894\",\n    });\n\n    var workflowApproverRoleQuery = Sdm.GetWorkflowApprover.Invoke(new()\n    {\n        RoleId = \"r-417345\",\n        WorkflowId = \"aw-679923\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflowApprover(ctx, \u0026sdm.LookupWorkflowApproverArgs{\n\t\t\tAccountId:  pulumi.StringRef(\"a-2496542\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"aw-541894\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupWorkflowApprover(ctx, \u0026sdm.LookupWorkflowApproverArgs{\n\t\t\tRoleId:     pulumi.StringRef(\"r-417345\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"aw-679923\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowApproverAccountQuery = SdmFunctions.getWorkflowApprover(GetWorkflowApproverArgs.builder()\n            .accountId(\"a-2496542\")\n            .workflowId(\"aw-541894\")\n            .build());\n\n        final var workflowApproverRoleQuery = SdmFunctions.getWorkflowApprover(GetWorkflowApproverArgs.builder()\n            .roleId(\"r-417345\")\n            .workflowId(\"aw-679923\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowApproverAccountQuery:\n    fn::invoke:\n      function: sdm:getWorkflowApprover\n      arguments:\n        accountId: a-2496542\n        workflowId: aw-541894\n  workflowApproverRoleQuery:\n    fn::invoke:\n      function: sdm:getWorkflowApprover\n      arguments:\n        roleId: r-417345\n        workflowId: aw-679923\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\nThis data source is deprecated.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflowApprover.\n",
                 "properties": {

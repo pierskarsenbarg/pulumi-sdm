@@ -127,6 +127,8 @@ class Account(pulumi.CustomResource):
             "email": "albob@strongdm.com",
             "first_name": "al",
             "last_name": "bob",
+            "manager_id": "a-1234abc",
+            "permission_level": "database-admin",
             "tags": {
                 "env": "dev",
                 "region": "us-west",
@@ -177,6 +179,8 @@ class Account(pulumi.CustomResource):
             "email": "albob@strongdm.com",
             "first_name": "al",
             "last_name": "bob",
+            "manager_id": "a-1234abc",
+            "permission_level": "database-admin",
             "tags": {
                 "env": "dev",
                 "region": "us-west",

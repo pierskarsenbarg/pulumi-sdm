@@ -22,6 +22,7 @@ __all__ = ['ResourceArgs', 'Resource']
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
+                 aerospike: Optional[pulumi.Input['ResourceAerospikeArgs']] = None,
                  aks: Optional[pulumi.Input['ResourceAksArgs']] = None,
                  aks_basic_auth: Optional[pulumi.Input['ResourceAksBasicAuthArgs']] = None,
                  aks_service_account: Optional[pulumi.Input['ResourceAksServiceAccountArgs']] = None,
@@ -129,6 +130,7 @@ class ResourceArgs:
                  vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
+        :param pulumi.Input['ResourceAerospikeArgs'] aerospike: Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
@@ -138,8 +140,9 @@ class ResourceArgs:
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceOracleNneArgs'] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
+        if aerospike is not None:
+            pulumi.set(__self__, "aerospike", aerospike)
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
         if aks_basic_auth is not None:
@@ -350,6 +353,18 @@ class ResourceArgs:
             pulumi.set(__self__, "trino", trino)
         if vertica is not None:
             pulumi.set(__self__, "vertica", vertica)
+
+    @property
+    @pulumi.getter
+    def aerospike(self) -> Optional[pulumi.Input['ResourceAerospikeArgs']]:
+        """
+        Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aerospike")
+
+    @aerospike.setter
+    def aerospike(self, value: Optional[pulumi.Input['ResourceAerospikeArgs']]):
+        pulumi.set(self, "aerospike", value)
 
     @property
     @pulumi.getter
@@ -1315,9 +1330,6 @@ class ResourceArgs:
     @property
     @pulumi.getter
     def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
-        """
-        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vertica")
 
     @vertica.setter
@@ -1328,6 +1340,7 @@ class ResourceArgs:
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
+                 aerospike: Optional[pulumi.Input['ResourceAerospikeArgs']] = None,
                  aks: Optional[pulumi.Input['ResourceAksArgs']] = None,
                  aks_basic_auth: Optional[pulumi.Input['ResourceAksBasicAuthArgs']] = None,
                  aks_service_account: Optional[pulumi.Input['ResourceAksServiceAccountArgs']] = None,
@@ -1435,6 +1448,7 @@ class _ResourceState:
                  vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+        :param pulumi.Input['ResourceAerospikeArgs'] aerospike: Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
@@ -1444,8 +1458,9 @@ class _ResourceState:
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceOracleNneArgs'] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceVerticaArgs'] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
+        if aerospike is not None:
+            pulumi.set(__self__, "aerospike", aerospike)
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
         if aks_basic_auth is not None:
@@ -1656,6 +1671,18 @@ class _ResourceState:
             pulumi.set(__self__, "trino", trino)
         if vertica is not None:
             pulumi.set(__self__, "vertica", vertica)
+
+    @property
+    @pulumi.getter
+    def aerospike(self) -> Optional[pulumi.Input['ResourceAerospikeArgs']]:
+        """
+        Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aerospike")
+
+    @aerospike.setter
+    def aerospike(self, value: Optional[pulumi.Input['ResourceAerospikeArgs']]):
+        pulumi.set(self, "aerospike", value)
 
     @property
     @pulumi.getter
@@ -2621,9 +2648,6 @@ class _ResourceState:
     @property
     @pulumi.getter
     def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
-        """
-        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vertica")
 
     @vertica.setter
@@ -2637,6 +2661,7 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
                  aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
                  aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
                  aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
@@ -2754,6 +2779,7 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']] aerospike: Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
@@ -2763,7 +2789,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -2795,6 +2820,7 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
                  aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
                  aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
                  aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
@@ -2909,6 +2935,7 @@ class Resource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceArgs.__new__(ResourceArgs)
 
+            __props__.__dict__["aerospike"] = aerospike
             __props__.__dict__["aks"] = aks
             __props__.__dict__["aks_basic_auth"] = aks_basic_auth
             __props__.__dict__["aks_service_account"] = aks_service_account
@@ -3024,6 +3051,7 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
             aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
             aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
             aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
@@ -3136,6 +3164,7 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']] aerospike: Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
@@ -3145,12 +3174,12 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']] oracle_nne: OracleNNE is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']] vertica: Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ResourceState.__new__(_ResourceState)
 
+        __props__.__dict__["aerospike"] = aerospike
         __props__.__dict__["aks"] = aks
         __props__.__dict__["aks_basic_auth"] = aks_basic_auth
         __props__.__dict__["aks_service_account"] = aks_service_account
@@ -3257,6 +3286,14 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["trino"] = trino
         __props__.__dict__["vertica"] = vertica
         return Resource(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def aerospike(self) -> pulumi.Output[Optional['outputs.ResourceAerospike']]:
+        """
+        Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aerospike")
 
     @property
     @pulumi.getter
@@ -3806,8 +3843,5 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def vertica(self) -> pulumi.Output[Optional['outputs.ResourceVertica']]:
-        """
-        Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vertica")
 

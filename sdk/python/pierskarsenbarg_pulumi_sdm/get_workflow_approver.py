@@ -118,17 +118,7 @@ def get_workflow_approver(account_id: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowApproverResult:
     """
     WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sdm as sdm
-
-    workflow_approver_account_query = sdm.get_workflow_approver(account_id="a-2496542",
-        workflow_id="aw-541894")
-    workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
-        workflow_id="aw-679923")
-    ```
+    This data source is deprecated.
 
 
     :param builtins.str account_id: The approver account id.
@@ -158,17 +148,7 @@ def get_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[buil
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowApproverResult]:
     """
     WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sdm as sdm
-
-    workflow_approver_account_query = sdm.get_workflow_approver(account_id="a-2496542",
-        workflow_id="aw-541894")
-    workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
-        workflow_id="aw-679923")
-    ```
+    This data source is deprecated.
 
 
     :param builtins.str account_id: The approver account id.

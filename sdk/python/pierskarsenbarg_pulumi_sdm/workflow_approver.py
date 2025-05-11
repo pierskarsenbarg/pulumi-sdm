@@ -140,19 +140,7 @@ class WorkflowApprover(pulumi.CustomResource):
                  __props__=None):
         """
         WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pierskarsenbarg_pulumi_sdm as sdm
-
-        workflow_approver_account_example = sdm.WorkflowApprover("workflowApproverAccountExample",
-            account_id="a-234605",
-            workflow_id="aw-6799234")
-        workflow_approver_role_example = sdm.WorkflowApprover("workflowApproverRoleExample",
-            role_id="r-542982",
-            workflow_id="aw-1935694")
-        ```
+        This resource is deprecated.
         This resource can be imported using the import command.
 
         ## Import
@@ -177,19 +165,7 @@ class WorkflowApprover(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pierskarsenbarg_pulumi_sdm as sdm
-
-        workflow_approver_account_example = sdm.WorkflowApprover("workflowApproverAccountExample",
-            account_id="a-234605",
-            workflow_id="aw-6799234")
-        workflow_approver_role_example = sdm.WorkflowApprover("workflowApproverRoleExample",
-            role_id="r-542982",
-            workflow_id="aw-1935694")
-        ```
+        This resource is deprecated.
         This resource can be imported using the import command.
 
         ## Import
