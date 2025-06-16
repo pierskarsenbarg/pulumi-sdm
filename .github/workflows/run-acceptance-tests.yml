@@ -87,9 +87,9 @@ jobs:
         - dotnet
         - go
         nodeversion:
-        - 18.x
+        - 20.x
         pythonversion:
-        - "3.11"
+        - "3.12"
   comment-notification:
     if: github.event_name == 'repository_dispatch'
     name: comment-notification
@@ -175,9 +175,9 @@ jobs:
         goversion:
         - 1.22.x
         nodeversion:
-        - 18.x
+        - 20.x
         pythonversion:
-        - "3.11"
+        - "3.12"
   # test:
   #   if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
   #     == github.repository
