@@ -65,6 +65,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The private key used to authenticate with the server.
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>

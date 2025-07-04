@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceDb2LuwArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceAzureConsoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -20,10 +20,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
-        /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        /// The connector ID to authenticate through.
         /// </summary>
-        [Input("database", required: true)]
-        public Input<string> Database { get; set; } = null!;
+        [Input("connectorId", required: true)]
+        public Input<string> ConnectorId { get; set; } = null!;
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -32,10 +32,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
-        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// The ID of the identity set to use for identity connections.
         /// </summary>
-        [Input("hostname", required: true)]
-        public Input<string> Hostname { get; set; } = null!;
+        [Input("identitySetId")]
+        public Input<string>? IdentitySetId { get; set; }
+
+        /// <summary>
+        /// The management group ID to authenticate scope Privileges to.
+        /// </summary>
+        [Input("managementGroupId")]
+        public Input<string>? ManagementGroupId { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -43,33 +49,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("password")]
-        private Input<string>? _password;
-
         /// <summary>
-        /// The password to authenticate with.
+        /// The privilege levels specify which Groups are managed externally
         /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The port to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        /// <summary>
-        /// The local port used by clients to connect to this resource.
-        /// </summary>
-        [Input("portOverride")]
-        public Input<int>? PortOverride { get; set; }
+        [Input("privilegeLevels", required: true)]
+        public Input<string> PrivilegeLevels { get; set; } = null!;
 
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
@@ -89,6 +73,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
 
+        /// <summary>
+        /// The subscription ID to authenticate scope Privileges to.
+        /// </summary>
+        [Input("subscriptionId")]
+        public Input<string>? SubscriptionId { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -101,21 +91,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// If set, TLS must be used to connect to this resource.
-        /// </summary>
-        [Input("tlsRequired")]
-        public Input<bool>? TlsRequired { get; set; }
-
-        /// <summary>
-        /// The username to authenticate with.
-        /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public ResourceDb2LuwArgs()
+        public ResourceAzureConsoleArgs()
         {
         }
-        public static new ResourceDb2LuwArgs Empty => new ResourceDb2LuwArgs();
+        public static new ResourceAzureConsoleArgs Empty => new ResourceAzureConsoleArgs();
     }
 }

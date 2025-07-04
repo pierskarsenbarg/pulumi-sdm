@@ -122,7 +122,7 @@ def get_secret_store(id: Optional[builtins.str] = None,
     :param builtins.str id: Unique identifier of the SecretStore.
     :param builtins.str name: Unique human-readable name of the SecretStore.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -152,7 +152,7 @@ def get_secret_store_output(id: Optional[pulumi.Input[Optional[builtins.str]]] =
     :param builtins.str id: Unique identifier of the SecretStore.
     :param builtins.str name: Unique human-readable name of the SecretStore.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['id'] = id

@@ -41,11 +41,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The password to authenticate with.
         /// </summary>
-        public readonly string? Password;
+        public readonly string Password;
         /// <summary>
         /// The local port used by clients to connect to this resource.
         /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The private key used to authenticate with the server.
+        /// </summary>
+        public readonly string? PrivateKey;
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
@@ -85,9 +89,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
-            string? password,
+            string password,
 
             int? portOverride,
+
+            string? privateKey,
 
             string? proxyClusterId,
 
@@ -109,6 +115,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             Password = password;
             PortOverride = portOverride;
+            PrivateKey = privateKey;
             ProxyClusterId = proxyClusterId;
             Schema = schema;
             SecretStoreId = secretStoreId;

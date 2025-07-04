@@ -164,7 +164,7 @@ def get_node(bind_address: Optional[builtins.str] = None,
     :param builtins.str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
     :param builtins.str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['bindAddress'] = bind_address
@@ -216,7 +216,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[builtins.str]]]
     :param builtins.str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
     :param builtins.str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['bindAddress'] = bind_address

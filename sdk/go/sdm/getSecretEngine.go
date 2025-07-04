@@ -52,7 +52,7 @@ type LookupSecretEngineArgs struct {
 	StartTls *bool `pulumi:"startTls"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
 	Type *string `pulumi:"type"`
 	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
 	Upndomain *string `pulumi:"upndomain"`
@@ -146,7 +146,7 @@ type LookupSecretEngineOutputArgs struct {
 	StartTls pulumi.BoolPtrInput `pulumi:"startTls"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
 	Upndomain pulumi.StringPtrInput `pulumi:"upndomain"`

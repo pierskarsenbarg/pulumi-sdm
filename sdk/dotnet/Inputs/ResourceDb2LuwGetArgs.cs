@@ -102,6 +102,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// If set, TLS must be used to connect to this resource.
+        /// </summary>
+        [Input("tlsRequired")]
+        public Input<bool>? TlsRequired { get; set; }
+
+        /// <summary>
         /// The username to authenticate with.
         /// </summary>
         [Input("username")]

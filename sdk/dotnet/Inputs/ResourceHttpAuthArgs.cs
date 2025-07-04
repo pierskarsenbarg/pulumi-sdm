@@ -72,6 +72,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
+        /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         [Input("proxyClusterId")]

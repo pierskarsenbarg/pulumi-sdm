@@ -108,7 +108,7 @@ export interface GetAccountArgs {
      */
     tags?: {[key: string]: string};
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
      */
     type?: string;
 }
@@ -278,7 +278,7 @@ export interface GetAccountOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
      */
     type?: pulumi.Input<string>;
 }
