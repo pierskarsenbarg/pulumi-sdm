@@ -464,8 +464,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -575,8 +574,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -651,8 +649,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -746,8 +743,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -822,8 +818,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -913,8 +908,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1030,8 +1024,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1140,8 +1133,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1230,8 +1222,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1329,8 +1320,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1415,8 +1405,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1487,8 +1476,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1562,8 +1550,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1651,8 +1638,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1723,8 +1709,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1800,8 +1785,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1884,8 +1868,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1967,8 +1950,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2053,8 +2035,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2138,8 +2119,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2218,8 +2198,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "sessionExpiry": {
                     "type": "integer",
@@ -2308,8 +2287,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "sessionExpiry": {
                     "type": "integer",
@@ -2385,8 +2363,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2450,8 +2427,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2517,8 +2493,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2546,6 +2521,78 @@
                         "bindInterface",
                         "name",
                         "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAzureConsole:ResourceAzureConsole": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "connectorId": {
+                    "type": "string",
+                    "description": "The connector ID to authenticate through.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "managementGroupId": {
+                    "type": "string",
+                    "description": "The management group ID to authenticate scope Privileges to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "The subscription ID to authenticate scope Privileges to.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorId",
+                "name",
+                "privilegeLevels"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "connectorId",
+                        "name",
+                        "privilegeLevels",
                         "subdomain"
                     ]
                 }
@@ -2596,8 +2643,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2681,8 +2727,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2764,8 +2809,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2843,8 +2887,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -2918,8 +2961,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3003,8 +3045,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3074,8 +3115,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3154,8 +3194,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3231,8 +3270,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3318,8 +3356,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3403,8 +3440,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3482,8 +3518,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3553,8 +3588,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3631,8 +3665,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3714,8 +3747,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3727,6 +3759,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
                 },
                 "username": {
                     "type": "string",
@@ -3793,8 +3829,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3867,8 +3902,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -3946,8 +3980,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4022,8 +4055,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4093,8 +4125,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4178,8 +4209,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4252,8 +4282,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4323,8 +4352,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4400,8 +4428,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4473,8 +4500,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4537,8 +4563,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "sessionExpiry": {
                     "type": "integer",
@@ -4624,8 +4649,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "sessionExpiry": {
                     "type": "integer",
@@ -4729,8 +4753,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "serviceAccountKey": {
                     "type": "string",
@@ -4804,8 +4827,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "serviceAccountKey": {
                     "type": "string",
@@ -4887,8 +4909,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4960,14 +4981,17 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -4998,6 +5022,7 @@
                         "bindInterface",
                         "healthcheckPath",
                         "name",
+                        "portOverride",
                         "subdomain",
                         "url"
                     ]
@@ -5039,14 +5064,17 @@
                     "description": "The password to authenticate with.\n",
                     "secret": true
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5081,6 +5109,7 @@
                         "bindInterface",
                         "healthcheckPath",
                         "name",
+                        "portOverride",
                         "subdomain",
                         "url"
                     ]
@@ -5117,14 +5146,17 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5155,6 +5187,7 @@
                         "bindInterface",
                         "healthcheckPath",
                         "name",
+                        "portOverride",
                         "subdomain",
                         "url"
                     ]
@@ -5232,8 +5265,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5308,8 +5340,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5400,8 +5431,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5487,8 +5517,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5563,8 +5592,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5654,8 +5682,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5734,8 +5761,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5806,8 +5832,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5883,8 +5908,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -5964,8 +5988,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6047,8 +6070,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6138,8 +6160,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6231,8 +6252,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6312,8 +6332,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6414,8 +6433,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "serverName": {
                     "type": "string",
@@ -6518,8 +6536,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "serverName": {
                     "type": "string",
@@ -6605,8 +6622,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6677,8 +6693,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6762,8 +6777,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6837,8 +6851,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -6922,8 +6935,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7007,8 +7019,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7086,8 +7097,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7165,8 +7175,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7237,8 +7246,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7314,8 +7322,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7394,8 +7401,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7478,8 +7484,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7555,8 +7560,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7632,8 +7636,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7717,8 +7720,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7807,8 +7809,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7893,8 +7894,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -7980,8 +7980,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8051,6 +8050,11 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The private key used to authenticate with the server.\n",
+                    "secret": true
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -8061,8 +8065,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8093,6 +8096,7 @@
                         "database",
                         "hostname",
                         "name",
+                        "password",
                         "portOverride",
                         "subdomain"
                     ]
@@ -8131,8 +8135,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8217,8 +8220,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8310,8 +8312,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8408,8 +8409,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "serverSpn": {
                     "type": "string",
@@ -8498,8 +8498,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8590,8 +8589,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8682,8 +8680,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8765,8 +8762,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8840,8 +8836,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8913,8 +8908,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8986,8 +8980,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -9059,8 +9052,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -9140,8 +9132,7 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -11089,6 +11080,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAzureCertificate:getResourceResourceAzureCertificate"
                     }
                 },
+                "azureConsoles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAzureConsole:getResourceResourceAzureConsole"
+                    }
+                },
                 "azureMysqls": {
                     "type": "array",
                     "items": {
@@ -11609,6 +11606,7 @@
                 "awsInstanceProfiles",
                 "azures",
                 "azureCertificates",
+                "azureConsoles",
                 "azureMysqls",
                 "azurePostgres",
                 "azurePostgresManagedIdentities",
@@ -13478,6 +13476,66 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceAzureConsole:getResourceResourceAzureConsole": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "connectorId": {
+                    "type": "string",
+                    "description": "The connector ID to authenticate through.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "managementGroupId": {
+                    "type": "string",
+                    "description": "The management group ID to authenticate scope Privileges to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "subscriptionId": {
+                    "type": "string",
+                    "description": "The subscription ID to authenticate scope Privileges to.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceAzureMysql:getResourceResourceAzureMysql": {
             "properties": {
                 "bindInterface": {
@@ -14473,6 +14531,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
                 },
                 "username": {
                     "type": "string",
@@ -15488,6 +15550,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -15553,6 +15619,10 @@
                     "description": "The password to authenticate with.\n",
                     "secret": true
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -15616,6 +15686,10 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
                 },
                 "proxyClusterId": {
                     "type": "string",
@@ -18067,6 +18141,11 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The private key used to authenticate with the server.\n",
+                    "secret": true
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -18095,7 +18174,15 @@
                     "description": "The username to authenticate with.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "password"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getResourceResourceSnowsight:getResourceResourceSnowsight": {
             "properties": {
@@ -21126,8 +21213,7 @@
             "description": "\n\n## Import\n\nA Resource can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/resource:Resource example rs-12345678\n```\n",
             "properties": {
                 "aerospike": {
-                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
-                    "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike"
                 },
                 "aks": {
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
@@ -21201,6 +21287,10 @@
                 },
                 "azureCertificate": {
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                },
+                "azureConsole": {
+                    "$ref": "#/types/sdm:index/ResourceAzureConsole:ResourceAzureConsole",
+                    "description": "AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "azureMysql": {
                     "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
@@ -21445,8 +21535,7 @@
                     "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
                 },
                 "trino": {
-                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
-                    "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino"
                 },
                 "vertica": {
                     "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
@@ -21454,8 +21543,7 @@
             },
             "inputProperties": {
                 "aerospike": {
-                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
-                    "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike"
                 },
                 "aks": {
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
@@ -21529,6 +21617,10 @@
                 },
                 "azureCertificate": {
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                },
+                "azureConsole": {
+                    "$ref": "#/types/sdm:index/ResourceAzureConsole:ResourceAzureConsole",
+                    "description": "AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "azureMysql": {
                     "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
@@ -21773,8 +21865,7 @@
                     "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
                 },
                 "trino": {
-                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
-                    "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino"
                 },
                 "vertica": {
                     "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
@@ -21784,8 +21875,7 @@
                 "description": "Input properties used for looking up and filtering Resource resources.\n",
                 "properties": {
                     "aerospike": {
-                        "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike",
-                        "description": "Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAerospike:ResourceAerospike"
                     },
                     "aks": {
                         "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
@@ -21859,6 +21949,10 @@
                     },
                     "azureCertificate": {
                         "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                    },
+                    "azureConsole": {
+                        "$ref": "#/types/sdm:index/ResourceAzureConsole:ResourceAzureConsole",
+                        "description": "AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "azureMysql": {
                         "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
@@ -22103,8 +22197,7 @@
                         "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
                     },
                     "trino": {
-                        "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
-                        "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino"
                     },
                     "vertica": {
                         "$ref": "#/types/sdm:index/ResourceVertica:ResourceVertica"
@@ -22772,7 +22865,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"
@@ -23237,7 +23330,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"
@@ -23802,7 +23895,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
                     },
                     "username": {
                         "type": "string",
@@ -24000,7 +24093,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
                     },
                     "upndomain": {
                         "type": "string",
@@ -24138,7 +24231,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"

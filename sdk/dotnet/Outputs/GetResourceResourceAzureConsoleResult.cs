@@ -12,44 +12,40 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceHttpAuth
+    public sealed class GetResourceResourceAzureConsoleResult
     {
-        /// <summary>
-        /// The content to set as the authorization header.
-        /// </summary>
-        public readonly string? AuthHeader;
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
-        /// Automatically redirect to this path upon connecting.
+        /// The connector ID to authenticate through.
         /// </summary>
-        public readonly string? DefaultPath;
+        public readonly string? ConnectorId;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
         /// <summary>
-        /// Header names (e.g. Authorization), to omit from logs.
+        /// Unique identifier of the Resource.
         /// </summary>
-        public readonly string? HeadersBlacklist;
+        public readonly string? Id;
         /// <summary>
-        /// This path will be used to check the health of your site.
+        /// The ID of the identity set to use for identity connections.
         /// </summary>
-        public readonly string HealthcheckPath;
+        public readonly string? IdentitySetId;
         /// <summary>
-        /// The host header will be overwritten with this field if provided.
+        /// The management group ID to authenticate scope Privileges to.
         /// </summary>
-        public readonly string? HostOverride;
+        public readonly string? ManagementGroupId;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// The local port used by clients to connect to this resource.
+        /// The privilege levels specify which Groups are managed externally
         /// </summary>
-        public readonly int? PortOverride;
+        public readonly string? PrivilegeLevels;
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
@@ -61,61 +57,57 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
-        public readonly string Subdomain;
+        public readonly string? Subdomain;
+        /// <summary>
+        /// The subscription ID to authenticate scope Privileges to.
+        /// </summary>
+        public readonly string? SubscriptionId;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// The base address of your website without the path.
-        /// * kubernetes:
-        /// </summary>
-        public readonly string Url;
 
         [OutputConstructor]
-        private ResourceHttpAuth(
-            string? authHeader,
-
+        private GetResourceResourceAzureConsoleResult(
             string? bindInterface,
 
-            string? defaultPath,
+            string? connectorId,
 
             string? egressFilter,
 
-            string? headersBlacklist,
+            string? id,
 
-            string healthcheckPath,
+            string? identitySetId,
 
-            string? hostOverride,
+            string? managementGroupId,
 
-            string name,
+            string? name,
 
-            int? portOverride,
+            string? privilegeLevels,
 
             string? proxyClusterId,
 
             string? secretStoreId,
 
-            string subdomain,
+            string? subdomain,
 
-            ImmutableDictionary<string, string>? tags,
+            string? subscriptionId,
 
-            string url)
+            ImmutableDictionary<string, string>? tags)
         {
-            AuthHeader = authHeader;
             BindInterface = bindInterface;
-            DefaultPath = defaultPath;
+            ConnectorId = connectorId;
             EgressFilter = egressFilter;
-            HeadersBlacklist = headersBlacklist;
-            HealthcheckPath = healthcheckPath;
-            HostOverride = hostOverride;
+            Id = id;
+            IdentitySetId = identitySetId;
+            ManagementGroupId = managementGroupId;
             Name = name;
-            PortOverride = portOverride;
+            PrivilegeLevels = privilegeLevels;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
+            SubscriptionId = subscriptionId;
             Tags = tags;
-            Url = url;
         }
     }
 }

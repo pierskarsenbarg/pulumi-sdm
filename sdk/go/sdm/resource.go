@@ -21,7 +21,6 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Aerospike ResourceAerospikePtrOutput `pulumi:"aerospike"`
 	Aks       ResourceAksPtrOutput       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -48,24 +47,26 @@ type Resource struct {
 	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrOutput                        `pulumi:"awsInstanceProfile"`
 	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
 	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
-	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
-	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrOutput              `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
-	Cassandra                                 ResourceCassandraPtrOutput                                 `pulumi:"cassandra"`
-	Citus                                     ResourceCitusPtrOutput                                     `pulumi:"citus"`
-	ClickHouseHttp                            ResourceClickHouseHttpPtrOutput                            `pulumi:"clickHouseHttp"`
-	ClickHouseMySql                           ResourceClickHouseMySqlPtrOutput                           `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                             ResourceClickHouseTcpPtrOutput                             `pulumi:"clickHouseTcp"`
-	Clustrix                                  ResourceClustrixPtrOutput                                  `pulumi:"clustrix"`
-	Cockroach                                 ResourceCockroachPtrOutput                                 `pulumi:"cockroach"`
-	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrOutput                         `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrOutput                            `pulumi:"couchbaseWebUi"`
-	Db2I                                      ResourceDb2IPtrOutput                                      `pulumi:"db2I"`
-	Db2Luw                                    ResourceDb2LuwPtrOutput                                    `pulumi:"db2Luw"`
-	DocumentDbHost                            ResourceDocumentDbHostPtrOutput                            `pulumi:"documentDbHost"`
-	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrOutput                         `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrOutput                      `pulumi:"documentDbReplicaSet"`
+	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureConsole                 ResourceAzureConsolePtrOutput                 `pulumi:"azureConsole"`
+	AzureMysql                   ResourceAzureMysqlPtrOutput                   `pulumi:"azureMysql"`
+	AzurePostgres                ResourceAzurePostgresPtrOutput                `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrOutput `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                     ResourceBigQueryPtrOutput                     `pulumi:"bigQuery"`
+	Cassandra                    ResourceCassandraPtrOutput                    `pulumi:"cassandra"`
+	Citus                        ResourceCitusPtrOutput                        `pulumi:"citus"`
+	ClickHouseHttp               ResourceClickHouseHttpPtrOutput               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              ResourceClickHouseMySqlPtrOutput              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                ResourceClickHouseTcpPtrOutput                `pulumi:"clickHouseTcp"`
+	Clustrix                     ResourceClustrixPtrOutput                     `pulumi:"clustrix"`
+	Cockroach                    ResourceCockroachPtrOutput                    `pulumi:"cockroach"`
+	CouchbaseDatabase            ResourceCouchbaseDatabasePtrOutput            `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi               ResourceCouchbaseWebUiPtrOutput               `pulumi:"couchbaseWebUi"`
+	Db2I                         ResourceDb2IPtrOutput                         `pulumi:"db2I"`
+	Db2Luw                       ResourceDb2LuwPtrOutput                       `pulumi:"db2Luw"`
+	DocumentDbHost               ResourceDocumentDbHostPtrOutput               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrOutput            `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrOutput         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
 	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrOutput    `pulumi:"documentDbReplicaSetIam"`
@@ -133,9 +134,8 @@ type Resource struct {
 	Sybase                ResourceSybasePtrOutput                `pulumi:"sybase"`
 	SybaseIq              ResourceSybaseIqPtrOutput              `pulumi:"sybaseIq"`
 	Teradata              ResourceTeradataPtrOutput              `pulumi:"teradata"`
-	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino   ResourceTrinoPtrOutput   `pulumi:"trino"`
-	Vertica ResourceVerticaPtrOutput `pulumi:"vertica"`
+	Trino                 ResourceTrinoPtrOutput                 `pulumi:"trino"`
+	Vertica               ResourceVerticaPtrOutput               `pulumi:"vertica"`
 }
 
 // NewResource registers a new resource with the given unique name, arguments, and options.
@@ -168,7 +168,6 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Aerospike *ResourceAerospike `pulumi:"aerospike"`
 	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -195,24 +194,26 @@ type resourceState struct {
 	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
-	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
-	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
-	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
-	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
-	ClickHouseHttp                            *ResourceClickHouseHttp                            `pulumi:"clickHouseHttp"`
-	ClickHouseMySql                           *ResourceClickHouseMySql                           `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                             *ResourceClickHouseTcp                             `pulumi:"clickHouseTcp"`
-	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
-	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
-	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
-	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
-	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
-	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
-	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
+	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureConsole                 *ResourceAzureConsole                 `pulumi:"azureConsole"`
+	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
+	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
+	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
+	Citus                        *ResourceCitus                        `pulumi:"citus"`
+	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
+	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
+	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
+	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
+	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
+	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
+	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
 	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
@@ -280,13 +281,11 @@ type resourceState struct {
 	Sybase                *ResourceSybase                `pulumi:"sybase"`
 	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
-	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino   *ResourceTrino   `pulumi:"trino"`
-	Vertica *ResourceVertica `pulumi:"vertica"`
+	Trino                 *ResourceTrino                 `pulumi:"trino"`
+	Vertica               *ResourceVertica               `pulumi:"vertica"`
 }
 
 type ResourceState struct {
-	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Aerospike ResourceAerospikePtrInput
 	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -313,24 +312,26 @@ type ResourceState struct {
 	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
-	AzureMysql                                ResourceAzureMysqlPtrInput
-	AzurePostgres                             ResourceAzurePostgresPtrInput
-	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
-	BigQuery                                  ResourceBigQueryPtrInput
-	Cassandra                                 ResourceCassandraPtrInput
-	Citus                                     ResourceCitusPtrInput
-	ClickHouseHttp                            ResourceClickHouseHttpPtrInput
-	ClickHouseMySql                           ResourceClickHouseMySqlPtrInput
-	ClickHouseTcp                             ResourceClickHouseTcpPtrInput
-	Clustrix                                  ResourceClustrixPtrInput
-	Cockroach                                 ResourceCockroachPtrInput
-	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
-	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
-	Db2I                                      ResourceDb2IPtrInput
-	Db2Luw                                    ResourceDb2LuwPtrInput
-	DocumentDbHost                            ResourceDocumentDbHostPtrInput
-	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
-	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
+	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureConsole                 ResourceAzureConsolePtrInput
+	AzureMysql                   ResourceAzureMysqlPtrInput
+	AzurePostgres                ResourceAzurePostgresPtrInput
+	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
+	BigQuery                     ResourceBigQueryPtrInput
+	Cassandra                    ResourceCassandraPtrInput
+	Citus                        ResourceCitusPtrInput
+	ClickHouseHttp               ResourceClickHouseHttpPtrInput
+	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                ResourceClickHouseTcpPtrInput
+	Clustrix                     ResourceClustrixPtrInput
+	Cockroach                    ResourceCockroachPtrInput
+	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
+	Db2I                         ResourceDb2IPtrInput
+	Db2Luw                       ResourceDb2LuwPtrInput
+	DocumentDbHost               ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
+	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
 	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
@@ -398,9 +399,8 @@ type ResourceState struct {
 	Sybase                ResourceSybasePtrInput
 	SybaseIq              ResourceSybaseIqPtrInput
 	Teradata              ResourceTeradataPtrInput
-	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino   ResourceTrinoPtrInput
-	Vertica ResourceVerticaPtrInput
+	Trino                 ResourceTrinoPtrInput
+	Vertica               ResourceVerticaPtrInput
 }
 
 func (ResourceState) ElementType() reflect.Type {
@@ -408,7 +408,6 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Aerospike *ResourceAerospike `pulumi:"aerospike"`
 	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -435,24 +434,26 @@ type resourceArgs struct {
 	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
-	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
-	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
-	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
-	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
-	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
-	ClickHouseHttp                            *ResourceClickHouseHttp                            `pulumi:"clickHouseHttp"`
-	ClickHouseMySql                           *ResourceClickHouseMySql                           `pulumi:"clickHouseMySql"`
-	ClickHouseTcp                             *ResourceClickHouseTcp                             `pulumi:"clickHouseTcp"`
-	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
-	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
-	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
-	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
-	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
-	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
-	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
-	DocumentDbHostIam                         *ResourceDocumentDbHostIam                         `pulumi:"documentDbHostIam"`
-	DocumentDbReplicaSet                      *ResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSet"`
+	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureConsole                 *ResourceAzureConsole                 `pulumi:"azureConsole"`
+	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
+	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
+	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
+	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
+	Citus                        *ResourceCitus                        `pulumi:"citus"`
+	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
+	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
+	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
+	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
+	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
+	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
+	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
+	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
 	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
@@ -520,14 +521,12 @@ type resourceArgs struct {
 	Sybase                *ResourceSybase                `pulumi:"sybase"`
 	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
 	Teradata              *ResourceTeradata              `pulumi:"teradata"`
-	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino   *ResourceTrino   `pulumi:"trino"`
-	Vertica *ResourceVertica `pulumi:"vertica"`
+	Trino                 *ResourceTrino                 `pulumi:"trino"`
+	Vertica               *ResourceVertica               `pulumi:"vertica"`
 }
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Aerospike ResourceAerospikePtrInput
 	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -554,24 +553,26 @@ type ResourceArgs struct {
 	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
-	AzureMysql                                ResourceAzureMysqlPtrInput
-	AzurePostgres                             ResourceAzurePostgresPtrInput
-	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
-	BigQuery                                  ResourceBigQueryPtrInput
-	Cassandra                                 ResourceCassandraPtrInput
-	Citus                                     ResourceCitusPtrInput
-	ClickHouseHttp                            ResourceClickHouseHttpPtrInput
-	ClickHouseMySql                           ResourceClickHouseMySqlPtrInput
-	ClickHouseTcp                             ResourceClickHouseTcpPtrInput
-	Clustrix                                  ResourceClustrixPtrInput
-	Cockroach                                 ResourceCockroachPtrInput
-	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
-	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
-	Db2I                                      ResourceDb2IPtrInput
-	Db2Luw                                    ResourceDb2LuwPtrInput
-	DocumentDbHost                            ResourceDocumentDbHostPtrInput
-	DocumentDbHostIam                         ResourceDocumentDbHostIamPtrInput
-	DocumentDbReplicaSet                      ResourceDocumentDbReplicaSetPtrInput
+	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureConsole                 ResourceAzureConsolePtrInput
+	AzureMysql                   ResourceAzureMysqlPtrInput
+	AzurePostgres                ResourceAzurePostgresPtrInput
+	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
+	BigQuery                     ResourceBigQueryPtrInput
+	Cassandra                    ResourceCassandraPtrInput
+	Citus                        ResourceCitusPtrInput
+	ClickHouseHttp               ResourceClickHouseHttpPtrInput
+	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                ResourceClickHouseTcpPtrInput
+	Clustrix                     ResourceClustrixPtrInput
+	Cockroach                    ResourceCockroachPtrInput
+	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
+	Db2I                         ResourceDb2IPtrInput
+	Db2Luw                       ResourceDb2LuwPtrInput
+	DocumentDbHost               ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
+	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
 	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
@@ -639,9 +640,8 @@ type ResourceArgs struct {
 	Sybase                ResourceSybasePtrInput
 	SybaseIq              ResourceSybaseIqPtrInput
 	Teradata              ResourceTeradataPtrInput
-	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Trino   ResourceTrinoPtrInput
-	Vertica ResourceVerticaPtrInput
+	Trino                 ResourceTrinoPtrInput
+	Vertica               ResourceVerticaPtrInput
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -731,7 +731,6 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
-// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Aerospike() ResourceAerospikePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAerospikePtrOutput { return v.Aerospike }).(ResourceAerospikePtrOutput)
 }
@@ -835,6 +834,11 @@ func (o ResourceOutput) Azure() ResourceAzurePtrOutput {
 
 func (o ResourceOutput) AzureCertificate() ResourceAzureCertificatePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureCertificatePtrOutput { return v.AzureCertificate }).(ResourceAzureCertificatePtrOutput)
+}
+
+// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AzureConsole() ResourceAzureConsolePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAzureConsolePtrOutput { return v.AzureConsole }).(ResourceAzureConsolePtrOutput)
 }
 
 func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
@@ -1161,7 +1165,6 @@ func (o ResourceOutput) Teradata() ResourceTeradataPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceTeradataPtrOutput { return v.Teradata }).(ResourceTeradataPtrOutput)
 }
 
-// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Trino() ResourceTrinoPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceTrinoPtrOutput { return v.Trino }).(ResourceTrinoPtrOutput)
 }

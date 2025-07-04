@@ -315,7 +315,7 @@ def get_secret_engine(binddn: Optional[builtins.str] = None,
     :param builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     :param builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param builtins.str url: The LDAP server to connect to.
     :param builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
@@ -400,7 +400,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[builtins.str
     :param builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, builtins.str] tags: Tags is a map of key, value pairs.
-    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
+    :param builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
     :param builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param builtins.str url: The LDAP server to connect to.
     :param builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com

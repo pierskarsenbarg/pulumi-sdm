@@ -11706,6 +11706,352 @@ func (o ResourceAzureCertificatePtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceAzureConsole struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The connector ID to authenticate through.
+	ConnectorId string `pulumi:"connectorId"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// The management group ID to authenticate scope Privileges to.
+	ManagementGroupId *string `pulumi:"managementGroupId"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels string `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// The subscription ID to authenticate scope Privileges to.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAzureConsoleInput is an input type that accepts ResourceAzureConsoleArgs and ResourceAzureConsoleOutput values.
+// You can construct a concrete instance of `ResourceAzureConsoleInput` via:
+//
+//	ResourceAzureConsoleArgs{...}
+type ResourceAzureConsoleInput interface {
+	pulumi.Input
+
+	ToResourceAzureConsoleOutput() ResourceAzureConsoleOutput
+	ToResourceAzureConsoleOutputWithContext(context.Context) ResourceAzureConsoleOutput
+}
+
+type ResourceAzureConsoleArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The connector ID to authenticate through.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// The management group ID to authenticate scope Privileges to.
+	ManagementGroupId pulumi.StringPtrInput `pulumi:"managementGroupId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels pulumi.StringInput `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// The subscription ID to authenticate scope Privileges to.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAzureConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureConsole)(nil)).Elem()
+}
+
+func (i ResourceAzureConsoleArgs) ToResourceAzureConsoleOutput() ResourceAzureConsoleOutput {
+	return i.ToResourceAzureConsoleOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureConsoleArgs) ToResourceAzureConsoleOutputWithContext(ctx context.Context) ResourceAzureConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureConsoleOutput)
+}
+
+func (i ResourceAzureConsoleArgs) ToResourceAzureConsolePtrOutput() ResourceAzureConsolePtrOutput {
+	return i.ToResourceAzureConsolePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureConsoleArgs) ToResourceAzureConsolePtrOutputWithContext(ctx context.Context) ResourceAzureConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureConsoleOutput).ToResourceAzureConsolePtrOutputWithContext(ctx)
+}
+
+// ResourceAzureConsolePtrInput is an input type that accepts ResourceAzureConsoleArgs, ResourceAzureConsolePtr and ResourceAzureConsolePtrOutput values.
+// You can construct a concrete instance of `ResourceAzureConsolePtrInput` via:
+//
+//	        ResourceAzureConsoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAzureConsolePtrInput interface {
+	pulumi.Input
+
+	ToResourceAzureConsolePtrOutput() ResourceAzureConsolePtrOutput
+	ToResourceAzureConsolePtrOutputWithContext(context.Context) ResourceAzureConsolePtrOutput
+}
+
+type resourceAzureConsolePtrType ResourceAzureConsoleArgs
+
+func ResourceAzureConsolePtr(v *ResourceAzureConsoleArgs) ResourceAzureConsolePtrInput {
+	return (*resourceAzureConsolePtrType)(v)
+}
+
+func (*resourceAzureConsolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureConsole)(nil)).Elem()
+}
+
+func (i *resourceAzureConsolePtrType) ToResourceAzureConsolePtrOutput() ResourceAzureConsolePtrOutput {
+	return i.ToResourceAzureConsolePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAzureConsolePtrType) ToResourceAzureConsolePtrOutputWithContext(ctx context.Context) ResourceAzureConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureConsolePtrOutput)
+}
+
+type ResourceAzureConsoleOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureConsole)(nil)).Elem()
+}
+
+func (o ResourceAzureConsoleOutput) ToResourceAzureConsoleOutput() ResourceAzureConsoleOutput {
+	return o
+}
+
+func (o ResourceAzureConsoleOutput) ToResourceAzureConsoleOutputWithContext(ctx context.Context) ResourceAzureConsoleOutput {
+	return o
+}
+
+func (o ResourceAzureConsoleOutput) ToResourceAzureConsolePtrOutput() ResourceAzureConsolePtrOutput {
+	return o.ToResourceAzureConsolePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAzureConsoleOutput) ToResourceAzureConsolePtrOutputWithContext(ctx context.Context) ResourceAzureConsolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzureConsole) *ResourceAzureConsole {
+		return &v
+	}).(ResourceAzureConsolePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAzureConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The connector ID to authenticate through.
+func (o ResourceAzureConsoleOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAzureConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// The management group ID to authenticate scope Privileges to.
+func (o ResourceAzureConsoleOutput) ManagementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.ManagementGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureConsoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o ResourceAzureConsoleOutput) PrivilegeLevels() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) string { return v.PrivilegeLevels }).(pulumi.StringOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAzureConsoleOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// The subscription ID to authenticate scope Privileges to.
+func (o ResourceAzureConsoleOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAzureConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAzureConsolePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureConsolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureConsole)(nil)).Elem()
+}
+
+func (o ResourceAzureConsolePtrOutput) ToResourceAzureConsolePtrOutput() ResourceAzureConsolePtrOutput {
+	return o
+}
+
+func (o ResourceAzureConsolePtrOutput) ToResourceAzureConsolePtrOutputWithContext(ctx context.Context) ResourceAzureConsolePtrOutput {
+	return o
+}
+
+func (o ResourceAzureConsolePtrOutput) Elem() ResourceAzureConsoleOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) ResourceAzureConsole {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAzureConsole
+		return ret
+	}).(ResourceAzureConsoleOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAzureConsolePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connector ID to authenticate through.
+func (o ResourceAzureConsolePtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureConsolePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAzureConsolePtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The management group ID to authenticate scope Privileges to.
+func (o ResourceAzureConsolePtrOutput) ManagementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureConsolePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o ResourceAzureConsolePtrOutput) PrivilegeLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivilegeLevels
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureConsolePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureConsolePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAzureConsolePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subscription ID to authenticate scope Privileges to.
+func (o ResourceAzureConsolePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureConsolePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAzureConsole) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceAzureMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -16982,6 +17328,8 @@ type ResourceDb2Luw struct {
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
 	// The username to authenticate with.
 	Username *string `pulumi:"username"`
 }
@@ -17022,6 +17370,8 @@ type ResourceDb2LuwArgs struct {
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
 	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -17161,6 +17511,11 @@ func (o ResourceDb2LuwOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceDb2LuwOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceDb2Luw) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceDb2LuwOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceDb2Luw) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
 }
 
 // The username to authenticate with.
@@ -17310,6 +17665,16 @@ func (o ResourceDb2LuwPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceDb2LuwPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceDb2Luw) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The username to authenticate with.
@@ -22803,6 +23168,8 @@ type ResourceHttpAuth struct {
 	HostOverride *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -22844,6 +23211,8 @@ type ResourceHttpAuthArgs struct {
 	HostOverride pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -22972,6 +23341,11 @@ func (o ResourceHttpAuthOutput) HostOverride() pulumi.StringPtrOutput {
 // Unique human-readable name of the Resource.
 func (o ResourceHttpAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceHttpAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -23104,6 +23478,16 @@ func (o ResourceHttpAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpAuth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceHttpAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpAuth) *string {
@@ -23172,6 +23556,8 @@ type ResourceHttpBasicAuth struct {
 	Name string `pulumi:"name"`
 	// The password to authenticate with.
 	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23215,6 +23601,8 @@ type ResourceHttpBasicAuthArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The password to authenticate with.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23345,6 +23733,11 @@ func (o ResourceHttpBasicAuthOutput) Name() pulumi.StringOutput {
 // The password to authenticate with.
 func (o ResourceHttpBasicAuthOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceHttpBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -23482,6 +23875,16 @@ func (o ResourceHttpBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpBasicAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpBasicAuth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceHttpBasicAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
@@ -23558,6 +23961,8 @@ type ResourceHttpNoAuth struct {
 	HostOverride *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23597,6 +24002,8 @@ type ResourceHttpNoAuthArgs struct {
 	HostOverride pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23722,6 +24129,11 @@ func (o ResourceHttpNoAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpNoAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceHttpNoAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceHttpNoAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
@@ -23840,6 +24252,16 @@ func (o ResourceHttpNoAuthPtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceHttpNoAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpNoAuth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -37166,6 +37588,8 @@ type ResourceSnowflake struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// The private key used to authenticate with the server.
+	PrivateKey *string `pulumi:"privateKey"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
@@ -37206,6 +37630,8 @@ type ResourceSnowflakeArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The private key used to authenticate with the server.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
@@ -37332,6 +37758,11 @@ func (o ResourceSnowflakeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSnowflake) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// The private key used to authenticate with the server.
+func (o ResourceSnowflakeOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowflake) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceSnowflakeOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSnowflake) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
@@ -37454,6 +37885,16 @@ func (o ResourceSnowflakePtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
+}
+
+// The private key used to authenticate with the server.
+func (o ResourceSnowflakePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowflake) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -52072,6 +52513,7 @@ type GetResourceResource struct {
 	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
 	AwsInstanceProfiles                        []GetResourceResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfiles"`
 	AzureCertificates                          []GetResourceResourceAzureCertificate                          `pulumi:"azureCertificates"`
+	AzureConsoles                              []GetResourceResourceAzureConsole                              `pulumi:"azureConsoles"`
 	AzureMysqls                                []GetResourceResourceAzureMysql                                `pulumi:"azureMysqls"`
 	AzurePostgres                              []GetResourceResourceAzurePostgre                              `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentities             []GetResourceResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentities"`
@@ -52192,6 +52634,7 @@ type GetResourceResourceArgs struct {
 	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
 	AwsInstanceProfiles                        GetResourceResourceAwsInstanceProfileArrayInput                        `pulumi:"awsInstanceProfiles"`
 	AzureCertificates                          GetResourceResourceAzureCertificateArrayInput                          `pulumi:"azureCertificates"`
+	AzureConsoles                              GetResourceResourceAzureConsoleArrayInput                              `pulumi:"azureConsoles"`
 	AzureMysqls                                GetResourceResourceAzureMysqlArrayInput                                `pulumi:"azureMysqls"`
 	AzurePostgres                              GetResourceResourceAzurePostgreArrayInput                              `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentities             GetResourceResourceAzurePostgresManagedIdentityArrayInput              `pulumi:"azurePostgresManagedIdentities"`
@@ -52431,6 +52874,10 @@ func (o GetResourceResourceOutput) AwsInstanceProfiles() GetResourceResourceAwsI
 
 func (o GetResourceResourceOutput) AzureCertificates() GetResourceResourceAzureCertificateArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureCertificate { return v.AzureCertificates }).(GetResourceResourceAzureCertificateArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AzureConsoles() GetResourceResourceAzureConsoleArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureConsole { return v.AzureConsoles }).(GetResourceResourceAzureConsoleArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AzureMysqls() GetResourceResourceAzureMysqlArrayOutput {
@@ -58516,6 +58963,211 @@ func (o GetResourceResourceAzureCertificateArrayOutput) Index(i pulumi.IntInput)
 	}).(GetResourceResourceAzureCertificateOutput)
 }
 
+type GetResourceResourceAzureConsole struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The connector ID to authenticate through.
+	ConnectorId *string `pulumi:"connectorId"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// The management group ID to authenticate scope Privileges to.
+	ManagementGroupId *string `pulumi:"managementGroupId"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels *string `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// The subscription ID to authenticate scope Privileges to.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAzureConsoleInput is an input type that accepts GetResourceResourceAzureConsoleArgs and GetResourceResourceAzureConsoleOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureConsoleInput` via:
+//
+//	GetResourceResourceAzureConsoleArgs{...}
+type GetResourceResourceAzureConsoleInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureConsoleOutput() GetResourceResourceAzureConsoleOutput
+	ToGetResourceResourceAzureConsoleOutputWithContext(context.Context) GetResourceResourceAzureConsoleOutput
+}
+
+type GetResourceResourceAzureConsoleArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The connector ID to authenticate through.
+	ConnectorId pulumi.StringPtrInput `pulumi:"connectorId"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// The management group ID to authenticate scope Privileges to.
+	ManagementGroupId pulumi.StringPtrInput `pulumi:"managementGroupId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels pulumi.StringPtrInput `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// The subscription ID to authenticate scope Privileges to.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAzureConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureConsoleArgs) ToGetResourceResourceAzureConsoleOutput() GetResourceResourceAzureConsoleOutput {
+	return i.ToGetResourceResourceAzureConsoleOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureConsoleArgs) ToGetResourceResourceAzureConsoleOutputWithContext(ctx context.Context) GetResourceResourceAzureConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureConsoleOutput)
+}
+
+// GetResourceResourceAzureConsoleArrayInput is an input type that accepts GetResourceResourceAzureConsoleArray and GetResourceResourceAzureConsoleArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureConsoleArrayInput` via:
+//
+//	GetResourceResourceAzureConsoleArray{ GetResourceResourceAzureConsoleArgs{...} }
+type GetResourceResourceAzureConsoleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureConsoleArrayOutput() GetResourceResourceAzureConsoleArrayOutput
+	ToGetResourceResourceAzureConsoleArrayOutputWithContext(context.Context) GetResourceResourceAzureConsoleArrayOutput
+}
+
+type GetResourceResourceAzureConsoleArray []GetResourceResourceAzureConsoleInput
+
+func (GetResourceResourceAzureConsoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureConsoleArray) ToGetResourceResourceAzureConsoleArrayOutput() GetResourceResourceAzureConsoleArrayOutput {
+	return i.ToGetResourceResourceAzureConsoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureConsoleArray) ToGetResourceResourceAzureConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureConsoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureConsoleArrayOutput)
+}
+
+type GetResourceResourceAzureConsoleOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureConsoleOutput) ToGetResourceResourceAzureConsoleOutput() GetResourceResourceAzureConsoleOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureConsoleOutput) ToGetResourceResourceAzureConsoleOutputWithContext(ctx context.Context) GetResourceResourceAzureConsoleOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAzureConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The connector ID to authenticate through.
+func (o GetResourceResourceAzureConsoleOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.ConnectorId }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAzureConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAzureConsoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAzureConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// The management group ID to authenticate scope Privileges to.
+func (o GetResourceResourceAzureConsoleOutput) ManagementGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.ManagementGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAzureConsoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o GetResourceResourceAzureConsoleOutput) PrivilegeLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.PrivilegeLevels }).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzureConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAzureConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAzureConsoleOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// The subscription ID to authenticate scope Privileges to.
+func (o GetResourceResourceAzureConsoleOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAzureConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAzureConsoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureConsoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureConsoleArrayOutput) ToGetResourceResourceAzureConsoleArrayOutput() GetResourceResourceAzureConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureConsoleArrayOutput) ToGetResourceResourceAzureConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureConsoleArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureConsoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzureConsole {
+		return vs[0].([]GetResourceResourceAzureConsole)[vs[1].(int)]
+	}).(GetResourceResourceAzureConsoleOutput)
+}
+
 type GetResourceResourceAzureMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -61608,6 +62260,8 @@ type GetResourceResourceDb2Luw struct {
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
 	// The username to authenticate with.
 	Username *string `pulumi:"username"`
 }
@@ -61650,6 +62304,8 @@ type GetResourceResourceDb2LuwArgs struct {
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
 	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -61768,6 +62424,11 @@ func (o GetResourceResourceDb2LuwOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceDb2LuwOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2Luw) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceDb2LuwOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDb2Luw) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
 }
 
 // The username to authenticate with.
@@ -65021,6 +65682,8 @@ type GetResourceResourceHttpAuth struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65064,6 +65727,8 @@ type GetResourceResourceHttpAuthArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65173,6 +65838,11 @@ func (o GetResourceResourceHttpAuthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceHttpAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o GetResourceResourceHttpAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
@@ -65238,6 +65908,8 @@ type GetResourceResourceHttpBasicAuth struct {
 	Name *string `pulumi:"name"`
 	// The password to authenticate with.
 	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65283,6 +65955,8 @@ type GetResourceResourceHttpBasicAuthArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The password to authenticate with.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65394,6 +66068,11 @@ func (o GetResourceResourceHttpBasicAuthOutput) Password() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceHttpBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o GetResourceResourceHttpBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
@@ -65462,6 +66141,8 @@ type GetResourceResourceHttpNoAuth struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65503,6 +66184,8 @@ type GetResourceResourceHttpNoAuthArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -65605,6 +66288,11 @@ func (o GetResourceResourceHttpNoAuthOutput) Id() pulumi.StringPtrOutput {
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceHttpNoAuthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceHttpNoAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -73350,9 +74038,11 @@ type GetResourceResourceSnowflake struct {
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The password to authenticate with.
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// The private key used to authenticate with the server.
+	PrivateKey *string `pulumi:"privateKey"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
@@ -73392,9 +74082,11 @@ type GetResourceResourceSnowflakeArgs struct {
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The password to authenticate with.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The private key used to authenticate with the server.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
@@ -73491,13 +74183,18 @@ func (o GetResourceResourceSnowflakeOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The password to authenticate with.
-func (o GetResourceResourceSnowflakeOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceSnowflake) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o GetResourceResourceSnowflakeOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowflake) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceSnowflakeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowflake) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The private key used to authenticate with the server.
+func (o GetResourceResourceSnowflakeOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowflake) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -81309,6 +82006,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePtrInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificateInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificatePtrInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureConsoleInput)(nil)).Elem(), ResourceAzureConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureConsolePtrInput)(nil)).Elem(), ResourceAzureConsoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlPtrInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresInput)(nil)).Elem(), ResourceAzurePostgresArgs{})
@@ -81629,6 +82328,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureArrayInput)(nil)).Elem(), GetResourceResourceAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateInput)(nil)).Elem(), GetResourceResourceAzureCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateArrayInput)(nil)).Elem(), GetResourceResourceAzureCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureConsoleInput)(nil)).Elem(), GetResourceResourceAzureConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureConsoleArrayInput)(nil)).Elem(), GetResourceResourceAzureConsoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlInput)(nil)).Elem(), GetResourceResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlArrayInput)(nil)).Elem(), GetResourceResourceAzureMysqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgreInput)(nil)).Elem(), GetResourceResourceAzurePostgreArgs{})
@@ -81923,6 +82624,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAzurePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificateOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ResourceAzureConsoleOutput{})
+	pulumi.RegisterOutputType(ResourceAzureConsolePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureMysqlOutput{})
 	pulumi.RegisterOutputType(ResourceAzureMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresOutput{})
@@ -82243,6 +82946,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAzureArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureConsoleOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureConsoleArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgreOutput{})

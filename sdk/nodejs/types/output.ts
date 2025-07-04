@@ -661,6 +661,7 @@ export interface GetResourceResource {
     awsConsoles: outputs.GetResourceResourceAwsConsole[];
     awsInstanceProfiles: outputs.GetResourceResourceAwsInstanceProfile[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
+    azureConsoles: outputs.GetResourceResourceAzureConsole[];
     azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
     azurePostgresManagedIdentities: outputs.GetResourceResourceAzurePostgresManagedIdentity[];
@@ -2380,6 +2381,61 @@ export interface GetResourceResourceAzureCertificate {
     tenantId?: string;
 }
 
+export interface GetResourceResourceAzureConsole {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The connector ID to authenticate through.
+     */
+    connectorId?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * The management group ID to authenticate scope Privileges to.
+     */
+    managementGroupId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * The subscription ID to authenticate scope Privileges to.
+     */
+    subscriptionId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceAzureMysql {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -3289,6 +3345,10 @@ export interface GetResourceResourceDb2Luw {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
     /**
      * The username to authenticate with.
      */
@@ -4216,6 +4276,10 @@ export interface GetResourceResourceHttpAuth {
      */
     name?: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -4276,6 +4340,10 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     password?: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -4335,6 +4403,10 @@ export interface GetResourceResourceHttpNoAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
     /**
      * ID of the proxy cluster for this resource, if any.
      */
@@ -6571,11 +6643,15 @@ export interface GetResourceResourceSnowflake {
     /**
      * The password to authenticate with.
      */
-    password?: string;
+    password: string;
     /**
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
+    privateKey?: string;
     /**
      * ID of the proxy cluster for this resource, if any.
      */
@@ -10017,6 +10093,57 @@ export interface ResourceAzureCertificate {
     tenantId?: string;
 }
 
+export interface ResourceAzureConsole {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The connector ID to authenticate through.
+     */
+    connectorId: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * The management group ID to authenticate scope Privileges to.
+     */
+    managementGroupId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * The subscription ID to authenticate scope Privileges to.
+     */
+    subscriptionId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceAzureMysql {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10866,6 +10993,10 @@ export interface ResourceDb2Luw {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
     /**
      * The username to authenticate with.
      */
@@ -11729,6 +11860,10 @@ export interface ResourceHttpAuth {
      */
     name: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -11785,6 +11920,10 @@ export interface ResourceHttpBasicAuth {
      */
     password?: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -11840,6 +11979,10 @@ export interface ResourceHttpNoAuth {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
     /**
      * ID of the proxy cluster for this resource, if any.
      */
@@ -13936,11 +14079,15 @@ export interface ResourceSnowflake {
     /**
      * The password to authenticate with.
      */
-    password?: string;
+    password: string;
     /**
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
+    privateKey?: string;
     /**
      * ID of the proxy cluster for this resource, if any.
      */

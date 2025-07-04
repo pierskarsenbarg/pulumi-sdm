@@ -43,9 +43,6 @@ export class Resource extends pulumi.CustomResource {
         return obj['__pulumiType'] === Resource.__pulumiType;
     }
 
-    /**
-     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly aerospike!: pulumi.Output<outputs.ResourceAerospike | undefined>;
     public readonly aks!: pulumi.Output<outputs.ResourceAks | undefined>;
     /**
@@ -74,6 +71,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly awsInstanceProfile!: pulumi.Output<outputs.ResourceAwsInstanceProfile | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
+    /**
+     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly azureConsole!: pulumi.Output<outputs.ResourceAzureConsole | undefined>;
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
     public readonly azurePostgresManagedIdentity!: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
@@ -169,9 +170,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly sybase!: pulumi.Output<outputs.ResourceSybase | undefined>;
     public readonly sybaseIq!: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
     public readonly teradata!: pulumi.Output<outputs.ResourceTeradata | undefined>;
-    /**
-     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly trino!: pulumi.Output<outputs.ResourceTrino | undefined>;
     public readonly vertica!: pulumi.Output<outputs.ResourceVertica | undefined>;
 
@@ -213,6 +211,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsInstanceProfile"] = state ? state.awsInstanceProfile : undefined;
             resourceInputs["azure"] = state ? state.azure : undefined;
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
+            resourceInputs["azureConsole"] = state ? state.azureConsole : undefined;
             resourceInputs["azureMysql"] = state ? state.azureMysql : undefined;
             resourceInputs["azurePostgres"] = state ? state.azurePostgres : undefined;
             resourceInputs["azurePostgresManagedIdentity"] = state ? state.azurePostgresManagedIdentity : undefined;
@@ -321,6 +320,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsInstanceProfile"] = args ? args.awsInstanceProfile : undefined;
             resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
+            resourceInputs["azureConsole"] = args ? args.azureConsole : undefined;
             resourceInputs["azureMysql"] = args ? args.azureMysql : undefined;
             resourceInputs["azurePostgres"] = args ? args.azurePostgres : undefined;
             resourceInputs["azurePostgresManagedIdentity"] = args ? args.azurePostgresManagedIdentity : undefined;
@@ -412,9 +412,6 @@ export class Resource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Resource resources.
  */
 export interface ResourceState {
-    /**
-     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     aerospike?: pulumi.Input<inputs.ResourceAerospike>;
     aks?: pulumi.Input<inputs.ResourceAks>;
     /**
@@ -443,6 +440,10 @@ export interface ResourceState {
     awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
+    /**
+     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
@@ -538,9 +539,6 @@ export interface ResourceState {
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;
-    /**
-     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     trino?: pulumi.Input<inputs.ResourceTrino>;
     vertica?: pulumi.Input<inputs.ResourceVertica>;
 }
@@ -549,9 +547,6 @@ export interface ResourceState {
  * The set of arguments for constructing a Resource resource.
  */
 export interface ResourceArgs {
-    /**
-     * Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     aerospike?: pulumi.Input<inputs.ResourceAerospike>;
     aks?: pulumi.Input<inputs.ResourceAks>;
     /**
@@ -580,6 +575,10 @@ export interface ResourceArgs {
     awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
+    /**
+     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
@@ -675,9 +674,6 @@ export interface ResourceArgs {
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;
-    /**
-     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     trino?: pulumi.Input<inputs.ResourceTrino>;
     vertica?: pulumi.Input<inputs.ResourceVertica>;
 }

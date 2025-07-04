@@ -22,9 +22,6 @@ namespace PiersKarsenbarg.Sdm
     [SdmResourceType("sdm:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("aerospike")]
         public Output<Outputs.ResourceAerospike?> Aerospike { get; private set; } = null!;
 
@@ -102,6 +99,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("azureCertificate")]
         public Output<Outputs.ResourceAzureCertificate?> AzureCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("azureConsole")]
+        public Output<Outputs.ResourceAzureConsole?> AzureConsole { get; private set; } = null!;
 
         [Output("azureMysql")]
         public Output<Outputs.ResourceAzureMysql?> AzureMysql { get; private set; } = null!;
@@ -356,9 +359,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("teradata")]
         public Output<Outputs.ResourceTeradata?> Teradata { get; private set; } = null!;
 
-        /// <summary>
-        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("trino")]
         public Output<Outputs.ResourceTrino?> Trino { get; private set; } = null!;
 
@@ -412,9 +412,6 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("aerospike")]
         public Input<Inputs.ResourceAerospikeArgs>? Aerospike { get; set; }
 
@@ -492,6 +489,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateArgs>? AzureCertificate { get; set; }
+
+        /// <summary>
+        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("azureConsole")]
+        public Input<Inputs.ResourceAzureConsoleArgs>? AzureConsole { get; set; }
 
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlArgs>? AzureMysql { get; set; }
@@ -746,9 +749,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("teradata")]
         public Input<Inputs.ResourceTeradataArgs>? Teradata { get; set; }
 
-        /// <summary>
-        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("trino")]
         public Input<Inputs.ResourceTrinoArgs>? Trino { get; set; }
 
@@ -763,9 +763,6 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("aerospike")]
         public Input<Inputs.ResourceAerospikeGetArgs>? Aerospike { get; set; }
 
@@ -843,6 +840,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateGetArgs>? AzureCertificate { get; set; }
+
+        /// <summary>
+        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("azureConsole")]
+        public Input<Inputs.ResourceAzureConsoleGetArgs>? AzureConsole { get; set; }
 
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlGetArgs>? AzureMysql { get; set; }
@@ -1097,9 +1100,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("teradata")]
         public Input<Inputs.ResourceTeradataGetArgs>? Teradata { get; set; }
 
-        /// <summary>
-        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("trino")]
         public Input<Inputs.ResourceTrinoGetArgs>? Trino { get; set; }
 

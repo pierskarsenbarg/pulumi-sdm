@@ -2254,8 +2254,8 @@ github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXl
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20250523235237-5af5eb614e9c h1:8pajbH3tpFd1vv/ZsvX6cLNRrOANmvST9ON8gi96G00=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20250523235237-5af5eb614e9c/go.mod h1:z2yNVlzxvH5bQh1pQY6lvCjyFqRm3X76RttjNxVd8Xk=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20250625004401-eef15607f77b h1:VWeXimUjekki8SAc541Y4bO9VatgPl1PXoxj/yV1eGE=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20250625004401-eef15607f77b/go.mod h1:z2yNVlzxvH5bQh1pQY6lvCjyFqRm3X76RttjNxVd8Xk=
 github.com/substrait-io/substrait-go v0.4.2/go.mod h1:qhpnLmrcvAnlZsUyPXZRqldiHapPTXC3t7xFgDi3aQg=
 github.com/teekennedy/goldmark-markdown v0.3.0 h1:ik9/biVGCwGWFg8dQ3KVm2pQ/wiiG0whYiUcz9xH0W8=
 github.com/teekennedy/goldmark-markdown v0.3.0/go.mod h1:kMhDz8La77A9UHvJGsxejd0QUflN9sS+QXCqnhmxmNo=

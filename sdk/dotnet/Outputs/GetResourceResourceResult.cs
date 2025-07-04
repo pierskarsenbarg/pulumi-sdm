@@ -38,6 +38,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> AwsInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> AzureConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgresManagedIdentityResult> AzurePostgresManagedIdentities;
@@ -170,6 +171,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> awsInstanceProfiles,
 
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
+
+            ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> azureConsoles,
 
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
 
@@ -359,6 +362,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AwsConsoles = awsConsoles;
             AwsInstanceProfiles = awsInstanceProfiles;
             AzureCertificates = azureCertificates;
+            AzureConsoles = azureConsoles;
             AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
             AzurePostgresManagedIdentities = azurePostgresManagedIdentities;

@@ -47,6 +47,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
+        public readonly int? PortOverride;
+        /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         public readonly string? ProxyClusterId;
@@ -90,6 +94,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? password,
 
+            int? portOverride,
+
             string? proxyClusterId,
 
             string? secretStoreId,
@@ -110,6 +116,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HostOverride = hostOverride;
             Name = name;
             Password = password;
+            PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
