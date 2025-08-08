@@ -61,6 +61,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEsiam")]
         public Output<Outputs.ResourceAmazonEsiam?> AmazonEsiam { get; private set; } = null!;
 
+        /// <summary>
+        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("amazonmqAmqp")]
+        public Output<Outputs.ResourceAmazonmqAmqp?> AmazonmqAmqp { get; private set; } = null!;
+
         [Output("amazonmqAmqp091")]
         public Output<Outputs.ResourceAmazonmqAmqp091?> AmazonmqAmqp091 { get; private set; } = null!;
 
@@ -108,6 +114,13 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("azureMysql")]
         public Output<Outputs.ResourceAzureMysql?> AzureMysql { get; private set; } = null!;
+
+        /// <summary>
+        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Output("azureMysqlManagedIdentity")]
+        public Output<Outputs.ResourceAzureMysqlManagedIdentity?> AzureMysqlManagedIdentity { get; private set; } = null!;
 
         [Output("azurePostgres")]
         public Output<Outputs.ResourceAzurePostgres?> AzurePostgres { get; private set; } = null!;
@@ -451,6 +464,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamArgs>? AmazonEsiam { get; set; }
 
+        /// <summary>
+        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("amazonmqAmqp")]
+        public Input<Inputs.ResourceAmazonmqAmqpArgs>? AmazonmqAmqp { get; set; }
+
         [Input("amazonmqAmqp091")]
         public Input<Inputs.ResourceAmazonmqAmqp091Args>? AmazonmqAmqp091 { get; set; }
 
@@ -498,6 +517,13 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlArgs>? AzureMysql { get; set; }
+
+        /// <summary>
+        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("azureMysqlManagedIdentity")]
+        public Input<Inputs.ResourceAzureMysqlManagedIdentityArgs>? AzureMysqlManagedIdentity { get; set; }
 
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresArgs>? AzurePostgres { get; set; }
@@ -802,6 +828,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamGetArgs>? AmazonEsiam { get; set; }
 
+        /// <summary>
+        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("amazonmqAmqp")]
+        public Input<Inputs.ResourceAmazonmqAmqpGetArgs>? AmazonmqAmqp { get; set; }
+
         [Input("amazonmqAmqp091")]
         public Input<Inputs.ResourceAmazonmqAmqp091GetArgs>? AmazonmqAmqp091 { get; set; }
 
@@ -849,6 +881,13 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlGetArgs>? AzureMysql { get; set; }
+
+        /// <summary>
+        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("azureMysqlManagedIdentity")]
+        public Input<Inputs.ResourceAzureMysqlManagedIdentityGetArgs>? AzureMysqlManagedIdentity { get; set; }
 
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresGetArgs>? AzurePostgres { get; set; }

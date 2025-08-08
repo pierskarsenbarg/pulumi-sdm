@@ -50,14 +50,30 @@ export class Resource extends pulumi.CustomResource {
      */
     public readonly aksBasicAuth!: pulumi.Output<outputs.ResourceAksBasicAuth | undefined>;
     public readonly aksServiceAccount!: pulumi.Output<outputs.ResourceAksServiceAccount | undefined>;
+    /**
+     * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
+     */
     public readonly aksServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceAksServiceAccountUserImpersonation | undefined>;
+    /**
+     * @deprecated aks_user_impersonation is deprecated, see docs for more info
+     */
     public readonly aksUserImpersonation!: pulumi.Output<outputs.ResourceAksUserImpersonation | undefined>;
     public readonly amazonEks!: pulumi.Output<outputs.ResourceAmazonEks | undefined>;
     public readonly amazonEksInstanceProfile!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfile | undefined>;
+    /**
+     * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
+     */
     public readonly amazonEksInstanceProfileUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
+    /**
+     * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
+     */
     public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
     public readonly amazonEsiam!: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
+    /**
+     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly amazonmqAmqp!: pulumi.Output<outputs.ResourceAmazonmqAmqp | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
     public readonly athenaIam!: pulumi.Output<outputs.ResourceAthenaIam | undefined>;
@@ -76,6 +92,11 @@ export class Resource extends pulumi.CustomResource {
      */
     public readonly azureConsole!: pulumi.Output<outputs.ResourceAzureConsole | undefined>;
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
+    /**
+     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    public readonly azureMysqlManagedIdentity!: pulumi.Output<outputs.ResourceAzureMysqlManagedIdentity | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
     public readonly azurePostgresManagedIdentity!: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
@@ -107,6 +128,9 @@ export class Resource extends pulumi.CustomResource {
     public readonly gcpConsole!: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
     public readonly gcpwif!: pulumi.Output<outputs.ResourceGcpwif | undefined>;
     public readonly googleGke!: pulumi.Output<outputs.ResourceGoogleGke | undefined>;
+    /**
+     * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
+     */
     public readonly googleGkeUserImpersonation!: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
     public readonly greenplum!: pulumi.Output<outputs.ResourceGreenplum | undefined>;
     public readonly httpAuth!: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
@@ -119,7 +143,13 @@ export class Resource extends pulumi.CustomResource {
     public readonly kubernetesBasicAuth!: pulumi.Output<outputs.ResourceKubernetesBasicAuth | undefined>;
     public readonly kubernetesPodIdentity!: pulumi.Output<outputs.ResourceKubernetesPodIdentity | undefined>;
     public readonly kubernetesServiceAccount!: pulumi.Output<outputs.ResourceKubernetesServiceAccount | undefined>;
+    /**
+     * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
+     */
     public readonly kubernetesServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
+    /**
+     * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
+     */
     public readonly kubernetesUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
     public readonly maria!: pulumi.Output<outputs.ResourceMaria | undefined>;
     public readonly memcached!: pulumi.Output<outputs.ResourceMemcached | undefined>;
@@ -198,6 +228,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEksUserImpersonation"] = state ? state.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = state ? state.amazonEs : undefined;
             resourceInputs["amazonEsiam"] = state ? state.amazonEsiam : undefined;
+            resourceInputs["amazonmqAmqp"] = state ? state.amazonmqAmqp : undefined;
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = state ? state.athena : undefined;
             resourceInputs["athenaIam"] = state ? state.athenaIam : undefined;
@@ -213,6 +244,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
             resourceInputs["azureConsole"] = state ? state.azureConsole : undefined;
             resourceInputs["azureMysql"] = state ? state.azureMysql : undefined;
+            resourceInputs["azureMysqlManagedIdentity"] = state ? state.azureMysqlManagedIdentity : undefined;
             resourceInputs["azurePostgres"] = state ? state.azurePostgres : undefined;
             resourceInputs["azurePostgresManagedIdentity"] = state ? state.azurePostgresManagedIdentity : undefined;
             resourceInputs["bigQuery"] = state ? state.bigQuery : undefined;
@@ -307,6 +339,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEksUserImpersonation"] = args ? args.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = args ? args.amazonEs : undefined;
             resourceInputs["amazonEsiam"] = args ? args.amazonEsiam : undefined;
+            resourceInputs["amazonmqAmqp"] = args ? args.amazonmqAmqp : undefined;
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = args ? args.athena : undefined;
             resourceInputs["athenaIam"] = args ? args.athenaIam : undefined;
@@ -322,6 +355,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
             resourceInputs["azureConsole"] = args ? args.azureConsole : undefined;
             resourceInputs["azureMysql"] = args ? args.azureMysql : undefined;
+            resourceInputs["azureMysqlManagedIdentity"] = args ? args.azureMysqlManagedIdentity : undefined;
             resourceInputs["azurePostgres"] = args ? args.azurePostgres : undefined;
             resourceInputs["azurePostgresManagedIdentity"] = args ? args.azurePostgresManagedIdentity : undefined;
             resourceInputs["bigQuery"] = args ? args.bigQuery : undefined;
@@ -419,14 +453,30 @@ export interface ResourceState {
      */
     aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
     aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
+    /**
+     * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
+     */
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
+    /**
+     * @deprecated aks_user_impersonation is deprecated, see docs for more info
+     */
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
     amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    /**
+     * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
+    /**
+     * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
+    /**
+     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
     athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
@@ -445,6 +495,11 @@ export interface ResourceState {
      */
     azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
+    /**
+     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
@@ -476,6 +531,9 @@ export interface ResourceState {
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
+    /**
+     * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
+     */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
@@ -488,7 +546,13 @@ export interface ResourceState {
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
     kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
+    /**
+     * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
+    /**
+     * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
@@ -554,14 +618,30 @@ export interface ResourceArgs {
      */
     aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
     aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
+    /**
+     * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
+     */
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
+    /**
+     * @deprecated aks_user_impersonation is deprecated, see docs for more info
+     */
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
     amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    /**
+     * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
+    /**
+     * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
+    /**
+     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
     athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
@@ -580,6 +660,11 @@ export interface ResourceArgs {
      */
     azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
+    /**
+     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
@@ -611,6 +696,9 @@ export interface ResourceArgs {
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
+    /**
+     * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
+     */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
@@ -623,7 +711,13 @@ export interface ResourceArgs {
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
     kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
+    /**
+     * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
+    /**
+     * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;

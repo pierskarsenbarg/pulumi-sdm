@@ -640,16 +640,29 @@ export interface GetResourceResource {
     aerospikes: outputs.GetResourceResourceAerospike[];
     aks: outputs.GetResourceResourceAk[];
     aksBasicAuths: outputs.GetResourceResourceAksBasicAuth[];
+    /**
+     * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
+     */
     aksServiceAccountUserImpersonations: outputs.GetResourceResourceAksServiceAccountUserImpersonation[];
     aksServiceAccounts: outputs.GetResourceResourceAksServiceAccount[];
+    /**
+     * @deprecated aks_user_impersonation is deprecated, see docs for more info
+     */
     aksUserImpersonations: outputs.GetResourceResourceAksUserImpersonation[];
     amazonEks: outputs.GetResourceResourceAmazonEk[];
+    /**
+     * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksInstanceProfileUserImpersonations: outputs.GetResourceResourceAmazonEksInstanceProfileUserImpersonation[];
     amazonEksInstanceProfiles: outputs.GetResourceResourceAmazonEksInstanceProfile[];
+    /**
+     * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
+     */
     amazonEksUserImpersonations: outputs.GetResourceResourceAmazonEksUserImpersonation[];
     amazonEs: outputs.GetResourceResourceAmazonE[];
     amazonEsiams: outputs.GetResourceResourceAmazonEsiam[];
     amazonmqAmqp091s: outputs.GetResourceResourceAmazonmqAmqp091[];
+    amazonmqAmqps: outputs.GetResourceResourceAmazonmqAmqp[];
     athenaIams: outputs.GetResourceResourceAthenaIam[];
     athenas: outputs.GetResourceResourceAthena[];
     auroraMysqlIams: outputs.GetResourceResourceAuroraMysqlIam[];
@@ -662,6 +675,7 @@ export interface GetResourceResource {
     awsInstanceProfiles: outputs.GetResourceResourceAwsInstanceProfile[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
     azureConsoles: outputs.GetResourceResourceAzureConsole[];
+    azureMysqlManagedIdentities: outputs.GetResourceResourceAzureMysqlManagedIdentity[];
     azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
     azurePostgresManagedIdentities: outputs.GetResourceResourceAzurePostgresManagedIdentity[];
@@ -690,6 +704,9 @@ export interface GetResourceResource {
     gcpConsoles: outputs.GetResourceResourceGcpConsole[];
     gcps: outputs.GetResourceResourceGcp[];
     gcpwifs: outputs.GetResourceResourceGcpwif[];
+    /**
+     * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
+     */
     googleGkeUserImpersonations: outputs.GetResourceResourceGoogleGkeUserImpersonation[];
     googleGkes: outputs.GetResourceResourceGoogleGke[];
     greenplums: outputs.GetResourceResourceGreenplum[];
@@ -699,8 +716,14 @@ export interface GetResourceResource {
     kubernetes: outputs.GetResourceResourceKubernete[];
     kubernetesBasicAuths: outputs.GetResourceResourceKubernetesBasicAuth[];
     kubernetesPodIdentities: outputs.GetResourceResourceKubernetesPodIdentity[];
+    /**
+     * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesServiceAccountUserImpersonations: outputs.GetResourceResourceKubernetesServiceAccountUserImpersonation[];
     kubernetesServiceAccounts: outputs.GetResourceResourceKubernetesServiceAccount[];
+    /**
+     * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
+     */
     kubernetesUserImpersonations: outputs.GetResourceResourceKubernetesUserImpersonation[];
     marias: outputs.GetResourceResourceMaria[];
     memcacheds: outputs.GetResourceResourceMemcached[];
@@ -1586,6 +1609,65 @@ export interface GetResourceResourceAmazonEsiam {
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
+}
+
+export interface GetResourceResourceAmazonmqAmqp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
 }
 
 export interface GetResourceResourceAmazonmqAmqp091 {
@@ -2481,6 +2563,69 @@ export interface GetResourceResourceAzureMysql {
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
+    useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceAzureMysqlManagedIdentity {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9352,6 +9497,61 @@ export interface ResourceAmazonEsiam {
     tlsRequired?: boolean;
 }
 
+export interface ResourceAmazonmqAmqp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface ResourceAmazonmqAmqp091 {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10185,6 +10385,65 @@ export interface ResourceAzureMysql {
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
+    useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceAzureMysqlManagedIdentity {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
