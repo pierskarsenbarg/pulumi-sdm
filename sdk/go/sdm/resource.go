@@ -24,32 +24,41 @@ type Resource struct {
 	Aerospike ResourceAerospikePtrOutput `pulumi:"aerospike"`
 	Aks       ResourceAksPtrOutput       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AksBasicAuth                              ResourceAksBasicAuthPtrOutput                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         ResourceAksServiceAccountPtrOutput                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrOutput        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrOutput                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 ResourceAmazonEksPtrOutput                                 `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrOutput                  `pulumi:"amazonEksInstanceProfile"`
+	AksBasicAuth      ResourceAksBasicAuthPtrOutput      `pulumi:"aksBasicAuth"`
+	AksServiceAccount ResourceAksServiceAccountPtrOutput `pulumi:"aksServiceAccount"`
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrOutput `pulumi:"aksServiceAccountUserImpersonation"`
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonation     ResourceAksUserImpersonationPtrOutput     `pulumi:"aksUserImpersonation"`
+	AmazonEks                ResourceAmazonEksPtrOutput                `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile ResourceAmazonEksInstanceProfilePtrOutput `pulumi:"amazonEksInstanceProfile"`
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput `pulumi:"amazonEksInstanceProfileUserImpersonation"`
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrOutput                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
-	AmazonEsiam                               ResourceAmazonEsiamPtrOutput                               `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
-	AthenaIam                                 ResourceAthenaIamPtrOutput                                 `pulumi:"athenaIam"`
-	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
-	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrOutput                            `pulumi:"auroraMysqlIam"`
-	AuroraPostgres                            ResourceAuroraPostgresPtrOutput                            `pulumi:"auroraPostgres"`
-	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrOutput                         `pulumi:"auroraPostgresIam"`
-	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
-	AwsConsole                                ResourceAwsConsolePtrOutput                                `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrOutput                        `pulumi:"awsInstanceProfile"`
-	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
-	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrOutput `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                   ResourceAmazonEsPtrOutput                   `pulumi:"amazonEs"`
+	AmazonEsiam                ResourceAmazonEsiamPtrOutput                `pulumi:"amazonEsiam"`
+	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonmqAmqp            ResourceAmazonmqAmqpPtrOutput            `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrOutput         `pulumi:"amazonmqAmqp091"`
+	Athena                  ResourceAthenaPtrOutput                  `pulumi:"athena"`
+	AthenaIam               ResourceAthenaIamPtrOutput               `pulumi:"athenaIam"`
+	AuroraMysql             ResourceAuroraMysqlPtrOutput             `pulumi:"auroraMysql"`
+	AuroraMysqlIam          ResourceAuroraMysqlIamPtrOutput          `pulumi:"auroraMysqlIam"`
+	AuroraPostgres          ResourceAuroraPostgresPtrOutput          `pulumi:"auroraPostgres"`
+	AuroraPostgresIam       ResourceAuroraPostgresIamPtrOutput       `pulumi:"auroraPostgresIam"`
+	Aws                     ResourceAwsPtrOutput                     `pulumi:"aws"`
+	AwsConsole              ResourceAwsConsolePtrOutput              `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile      ResourceAwsInstanceProfilePtrOutput      `pulumi:"awsInstanceProfile"`
+	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
+	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
 	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole                 ResourceAzureConsolePtrOutput                 `pulumi:"azureConsole"`
-	AzureMysql                   ResourceAzureMysqlPtrOutput                   `pulumi:"azureMysql"`
+	AzureConsole ResourceAzureConsolePtrOutput `pulumi:"azureConsole"`
+	AzureMysql   ResourceAzureMysqlPtrOutput   `pulumi:"azureMysql"`
+	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrOutput    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                ResourceAzurePostgresPtrOutput                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrOutput `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                     ResourceBigQueryPtrOutput                     `pulumi:"bigQuery"`
@@ -69,16 +78,17 @@ type Resource struct {
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrOutput         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrOutput    `pulumi:"documentDbReplicaSetIam"`
-	Druid                      ResourceDruidPtrOutput                      `pulumi:"druid"`
-	DynamoDb                   ResourceDynamoDbPtrOutput                   `pulumi:"dynamoDb"`
-	DynamoDbiam                ResourceDynamoDbiamPtrOutput                `pulumi:"dynamoDbiam"`
-	Elastic                    ResourceElasticPtrOutput                    `pulumi:"elastic"`
-	ElasticacheRedis           ResourceElasticacheRedisPtrOutput           `pulumi:"elasticacheRedis"`
-	Gcp                        ResourceGcpPtrOutput                        `pulumi:"gcp"`
-	GcpConsole                 ResourceGcpConsolePtrOutput                 `pulumi:"gcpConsole"`
-	Gcpwif                     ResourceGcpwifPtrOutput                     `pulumi:"gcpwif"`
-	GoogleGke                  ResourceGoogleGkePtrOutput                  `pulumi:"googleGke"`
+	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrOutput `pulumi:"documentDbReplicaSetIam"`
+	Druid                   ResourceDruidPtrOutput                   `pulumi:"druid"`
+	DynamoDb                ResourceDynamoDbPtrOutput                `pulumi:"dynamoDb"`
+	DynamoDbiam             ResourceDynamoDbiamPtrOutput             `pulumi:"dynamoDbiam"`
+	Elastic                 ResourceElasticPtrOutput                 `pulumi:"elastic"`
+	ElasticacheRedis        ResourceElasticacheRedisPtrOutput        `pulumi:"elasticacheRedis"`
+	Gcp                     ResourceGcpPtrOutput                     `pulumi:"gcp"`
+	GcpConsole              ResourceGcpConsolePtrOutput              `pulumi:"gcpConsole"`
+	Gcpwif                  ResourceGcpwifPtrOutput                  `pulumi:"gcpwif"`
+	GoogleGke               ResourceGoogleGkePtrOutput               `pulumi:"googleGke"`
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
 	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
@@ -86,15 +96,17 @@ type Resource struct {
 	HttpNoAuth                 ResourceHttpNoAuthPtrOutput                 `pulumi:"httpNoAuth"`
 	Kubernetes                 ResourceKubernetesPtrOutput                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
-	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrOutput                     `pulumi:"kubernetesPodIdentity"`
-	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrOutput                  `pulumi:"kubernetesServiceAccount"`
+	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrOutput      `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrOutput    `pulumi:"kubernetesPodIdentity"`
+	KubernetesServiceAccount ResourceKubernetesServiceAccountPtrOutput `pulumi:"kubernetesServiceAccount"`
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrOutput `pulumi:"kubernetesServiceAccountUserImpersonation"`
-	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrOutput               `pulumi:"kubernetesUserImpersonation"`
-	Maria                                     ResourceMariaPtrOutput                                     `pulumi:"maria"`
-	Memcached                                 ResourceMemcachedPtrOutput                                 `pulumi:"memcached"`
-	Memsql                                    ResourceMemsqlPtrOutput                                    `pulumi:"memsql"`
-	MongoHost                                 ResourceMongoHostPtrOutput                                 `pulumi:"mongoHost"`
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrOutput `pulumi:"kubernetesUserImpersonation"`
+	Maria                       ResourceMariaPtrOutput                       `pulumi:"maria"`
+	Memcached                   ResourceMemcachedPtrOutput                   `pulumi:"memcached"`
+	Memsql                      ResourceMemsqlPtrOutput                      `pulumi:"memsql"`
+	MongoHost                   ResourceMongoHostPtrOutput                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -171,32 +183,41 @@ type resourceState struct {
 	Aerospike *ResourceAerospike `pulumi:"aerospike"`
 	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile                  *ResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfile"`
+	AksBasicAuth      *ResourceAksBasicAuth      `pulumi:"aksBasicAuth"`
+	AksServiceAccount *ResourceAksServiceAccount `pulumi:"aksServiceAccount"`
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonation     *ResourceAksUserImpersonation     `pulumi:"aksUserImpersonation"`
+	AmazonEks                *ResourceAmazonEks                `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile *ResourceAmazonEksInstanceProfile `pulumi:"amazonEksInstanceProfile"`
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
-	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonEsiam                               *ResourceAmazonEsiam                               `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AthenaIam                                 *ResourceAthenaIam                                 `pulumi:"athenaIam"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	AuroraMysqlIam                            *ResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIam"`
-	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
-	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
-	Aws                                       *ResourceAws                                       `pulumi:"aws"`
-	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonation *ResourceAmazonEksUserImpersonation `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
+	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
+	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonmqAmqp            *ResourceAmazonmqAmqp            `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091         *ResourceAmazonmqAmqp091         `pulumi:"amazonmqAmqp091"`
+	Athena                  *ResourceAthena                  `pulumi:"athena"`
+	AthenaIam               *ResourceAthenaIam               `pulumi:"athenaIam"`
+	AuroraMysql             *ResourceAuroraMysql             `pulumi:"auroraMysql"`
+	AuroraMysqlIam          *ResourceAuroraMysqlIam          `pulumi:"auroraMysqlIam"`
+	AuroraPostgres          *ResourceAuroraPostgres          `pulumi:"auroraPostgres"`
+	AuroraPostgresIam       *ResourceAuroraPostgresIam       `pulumi:"auroraPostgresIam"`
+	Aws                     *ResourceAws                     `pulumi:"aws"`
+	AwsConsole              *ResourceAwsConsole              `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile      *ResourceAwsInstanceProfile      `pulumi:"awsInstanceProfile"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
 	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole                 *ResourceAzureConsole                 `pulumi:"azureConsole"`
-	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
+	AzureConsole *ResourceAzureConsole `pulumi:"azureConsole"`
+	AzureMysql   *ResourceAzureMysql   `pulumi:"azureMysql"`
+	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AzureMysqlManagedIdentity    *ResourceAzureMysqlManagedIdentity    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
@@ -216,16 +237,17 @@ type resourceState struct {
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
-	Druid                      *ResourceDruid                      `pulumi:"druid"`
-	DynamoDb                   *ResourceDynamoDb                   `pulumi:"dynamoDb"`
-	DynamoDbiam                *ResourceDynamoDbiam                `pulumi:"dynamoDbiam"`
-	Elastic                    *ResourceElastic                    `pulumi:"elastic"`
-	ElasticacheRedis           *ResourceElasticacheRedis           `pulumi:"elasticacheRedis"`
-	Gcp                        *ResourceGcp                        `pulumi:"gcp"`
-	GcpConsole                 *ResourceGcpConsole                 `pulumi:"gcpConsole"`
-	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
-	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	DocumentDbReplicaSetIam *ResourceDocumentDbReplicaSetIam `pulumi:"documentDbReplicaSetIam"`
+	Druid                   *ResourceDruid                   `pulumi:"druid"`
+	DynamoDb                *ResourceDynamoDb                `pulumi:"dynamoDb"`
+	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
+	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
+	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
+	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
+	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
+	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
+	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
 	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
@@ -233,15 +255,17 @@ type resourceState struct {
 	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
 	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
-	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
-	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
+	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
+	KubernetesServiceAccount *ResourceKubernetesServiceAccount `pulumi:"kubernetesServiceAccount"`
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
-	KubernetesUserImpersonation               *ResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonation"`
-	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
-	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
-	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
+	Maria                       *ResourceMaria                       `pulumi:"maria"`
+	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
+	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
+	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -289,32 +313,41 @@ type ResourceState struct {
 	Aerospike ResourceAerospikePtrInput
 	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AksBasicAuth                              ResourceAksBasicAuthPtrInput
-	AksServiceAccount                         ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
-	AmazonEks                                 ResourceAmazonEksPtrInput
-	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrInput
+	AksBasicAuth      ResourceAksBasicAuthPtrInput
+	AksServiceAccount ResourceAksServiceAccountPtrInput
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonation     ResourceAksUserImpersonationPtrInput
+	AmazonEks                ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile ResourceAmazonEksInstanceProfilePtrInput
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonEsiam                               ResourceAmazonEsiamPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	AthenaIam                                 ResourceAthenaIamPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres                            ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
-	Aws                                       ResourceAwsPtrInput
-	AwsConsole                                ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                   ResourceAmazonEsPtrInput
+	AmazonEsiam                ResourceAmazonEsiamPtrInput
+	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonmqAmqp            ResourceAmazonmqAmqpPtrInput
+	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrInput
+	Athena                  ResourceAthenaPtrInput
+	AthenaIam               ResourceAthenaIamPtrInput
+	AuroraMysql             ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam          ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres          ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam       ResourceAuroraPostgresIamPtrInput
+	Aws                     ResourceAwsPtrInput
+	AwsConsole              ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile      ResourceAwsInstanceProfilePtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
 	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole                 ResourceAzureConsolePtrInput
-	AzureMysql                   ResourceAzureMysqlPtrInput
+	AzureConsole ResourceAzureConsolePtrInput
+	AzureMysql   ResourceAzureMysqlPtrInput
+	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrInput
 	AzurePostgres                ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                     ResourceBigQueryPtrInput
@@ -334,16 +367,17 @@ type ResourceState struct {
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
-	Druid                      ResourceDruidPtrInput
-	DynamoDb                   ResourceDynamoDbPtrInput
-	DynamoDbiam                ResourceDynamoDbiamPtrInput
-	Elastic                    ResourceElasticPtrInput
-	ElasticacheRedis           ResourceElasticacheRedisPtrInput
-	Gcp                        ResourceGcpPtrInput
-	GcpConsole                 ResourceGcpConsolePtrInput
-	Gcpwif                     ResourceGcpwifPtrInput
-	GoogleGke                  ResourceGoogleGkePtrInput
+	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrInput
+	Druid                   ResourceDruidPtrInput
+	DynamoDb                ResourceDynamoDbPtrInput
+	DynamoDbiam             ResourceDynamoDbiamPtrInput
+	Elastic                 ResourceElasticPtrInput
+	ElasticacheRedis        ResourceElasticacheRedisPtrInput
+	Gcp                     ResourceGcpPtrInput
+	GcpConsole              ResourceGcpConsolePtrInput
+	Gcpwif                  ResourceGcpwifPtrInput
+	GoogleGke               ResourceGoogleGkePtrInput
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
 	HttpAuth                   ResourceHttpAuthPtrInput
@@ -351,15 +385,17 @@ type ResourceState struct {
 	HttpNoAuth                 ResourceHttpNoAuthPtrInput
 	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
-	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
-	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
+	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
+	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
+	KubernetesServiceAccount ResourceKubernetesServiceAccountPtrInput
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
-	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrInput
-	Maria                                     ResourceMariaPtrInput
-	Memcached                                 ResourceMemcachedPtrInput
-	Memsql                                    ResourceMemsqlPtrInput
-	MongoHost                                 ResourceMongoHostPtrInput
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
+	Maria                       ResourceMariaPtrInput
+	Memcached                   ResourceMemcachedPtrInput
+	Memsql                      ResourceMemsqlPtrInput
+	MongoHost                   ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -411,32 +447,41 @@ type resourceArgs struct {
 	Aerospike *ResourceAerospike `pulumi:"aerospike"`
 	Aks       *ResourceAks       `pulumi:"aks"`
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile                  *ResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfile"`
+	AksBasicAuth      *ResourceAksBasicAuth      `pulumi:"aksBasicAuth"`
+	AksServiceAccount *ResourceAksServiceAccount `pulumi:"aksServiceAccount"`
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonation     *ResourceAksUserImpersonation     `pulumi:"aksUserImpersonation"`
+	AmazonEks                *ResourceAmazonEks                `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile *ResourceAmazonEksInstanceProfile `pulumi:"amazonEksInstanceProfile"`
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
-	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonEsiam                               *ResourceAmazonEsiam                               `pulumi:"amazonEsiam"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AthenaIam                                 *ResourceAthenaIam                                 `pulumi:"athenaIam"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	AuroraMysqlIam                            *ResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIam"`
-	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
-	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
-	Aws                                       *ResourceAws                                       `pulumi:"aws"`
-	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonation *ResourceAmazonEksUserImpersonation `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
+	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
+	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonmqAmqp            *ResourceAmazonmqAmqp            `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091         *ResourceAmazonmqAmqp091         `pulumi:"amazonmqAmqp091"`
+	Athena                  *ResourceAthena                  `pulumi:"athena"`
+	AthenaIam               *ResourceAthenaIam               `pulumi:"athenaIam"`
+	AuroraMysql             *ResourceAuroraMysql             `pulumi:"auroraMysql"`
+	AuroraMysqlIam          *ResourceAuroraMysqlIam          `pulumi:"auroraMysqlIam"`
+	AuroraPostgres          *ResourceAuroraPostgres          `pulumi:"auroraPostgres"`
+	AuroraPostgresIam       *ResourceAuroraPostgresIam       `pulumi:"auroraPostgresIam"`
+	Aws                     *ResourceAws                     `pulumi:"aws"`
+	AwsConsole              *ResourceAwsConsole              `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile      *ResourceAwsInstanceProfile      `pulumi:"awsInstanceProfile"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
 	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole                 *ResourceAzureConsole                 `pulumi:"azureConsole"`
-	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
+	AzureConsole *ResourceAzureConsole `pulumi:"azureConsole"`
+	AzureMysql   *ResourceAzureMysql   `pulumi:"azureMysql"`
+	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AzureMysqlManagedIdentity    *ResourceAzureMysqlManagedIdentity    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
@@ -456,16 +501,17 @@ type resourceArgs struct {
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	DocumentDbReplicaSetIam    *ResourceDocumentDbReplicaSetIam    `pulumi:"documentDbReplicaSetIam"`
-	Druid                      *ResourceDruid                      `pulumi:"druid"`
-	DynamoDb                   *ResourceDynamoDb                   `pulumi:"dynamoDb"`
-	DynamoDbiam                *ResourceDynamoDbiam                `pulumi:"dynamoDbiam"`
-	Elastic                    *ResourceElastic                    `pulumi:"elastic"`
-	ElasticacheRedis           *ResourceElasticacheRedis           `pulumi:"elasticacheRedis"`
-	Gcp                        *ResourceGcp                        `pulumi:"gcp"`
-	GcpConsole                 *ResourceGcpConsole                 `pulumi:"gcpConsole"`
-	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
-	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	DocumentDbReplicaSetIam *ResourceDocumentDbReplicaSetIam `pulumi:"documentDbReplicaSetIam"`
+	Druid                   *ResourceDruid                   `pulumi:"druid"`
+	DynamoDb                *ResourceDynamoDb                `pulumi:"dynamoDb"`
+	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
+	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
+	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
+	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
+	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
+	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
+	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
 	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
@@ -473,15 +519,17 @@ type resourceArgs struct {
 	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
 	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
-	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
-	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
+	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
+	KubernetesServiceAccount *ResourceKubernetesServiceAccount `pulumi:"kubernetesServiceAccount"`
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
-	KubernetesUserImpersonation               *ResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonation"`
-	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
-	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
-	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
+	Maria                       *ResourceMaria                       `pulumi:"maria"`
+	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
+	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
+	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -530,32 +578,41 @@ type ResourceArgs struct {
 	Aerospike ResourceAerospikePtrInput
 	Aks       ResourceAksPtrInput
 	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AksBasicAuth                              ResourceAksBasicAuthPtrInput
-	AksServiceAccount                         ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
-	AmazonEks                                 ResourceAmazonEksPtrInput
-	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrInput
+	AksBasicAuth      ResourceAksBasicAuthPtrInput
+	AksServiceAccount ResourceAksServiceAccountPtrInput
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonation     ResourceAksUserImpersonationPtrInput
+	AmazonEks                ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile ResourceAmazonEksInstanceProfilePtrInput
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonEsiam                               ResourceAmazonEsiamPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	AthenaIam                                 ResourceAthenaIamPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam                            ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres                            ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
-	Aws                                       ResourceAwsPtrInput
-	AwsConsole                                ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                   ResourceAmazonEsPtrInput
+	AmazonEsiam                ResourceAmazonEsiamPtrInput
+	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonmqAmqp            ResourceAmazonmqAmqpPtrInput
+	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrInput
+	Athena                  ResourceAthenaPtrInput
+	AthenaIam               ResourceAthenaIamPtrInput
+	AuroraMysql             ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam          ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres          ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam       ResourceAuroraPostgresIamPtrInput
+	Aws                     ResourceAwsPtrInput
+	AwsConsole              ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile      ResourceAwsInstanceProfilePtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
 	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole                 ResourceAzureConsolePtrInput
-	AzureMysql                   ResourceAzureMysqlPtrInput
+	AzureConsole ResourceAzureConsolePtrInput
+	AzureMysql   ResourceAzureMysqlPtrInput
+	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrInput
 	AzurePostgres                ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                     ResourceBigQueryPtrInput
@@ -575,16 +632,17 @@ type ResourceArgs struct {
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	DocumentDbReplicaSetIam    ResourceDocumentDbReplicaSetIamPtrInput
-	Druid                      ResourceDruidPtrInput
-	DynamoDb                   ResourceDynamoDbPtrInput
-	DynamoDbiam                ResourceDynamoDbiamPtrInput
-	Elastic                    ResourceElasticPtrInput
-	ElasticacheRedis           ResourceElasticacheRedisPtrInput
-	Gcp                        ResourceGcpPtrInput
-	GcpConsole                 ResourceGcpConsolePtrInput
-	Gcpwif                     ResourceGcpwifPtrInput
-	GoogleGke                  ResourceGoogleGkePtrInput
+	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrInput
+	Druid                   ResourceDruidPtrInput
+	DynamoDb                ResourceDynamoDbPtrInput
+	DynamoDbiam             ResourceDynamoDbiamPtrInput
+	Elastic                 ResourceElasticPtrInput
+	ElasticacheRedis        ResourceElasticacheRedisPtrInput
+	Gcp                     ResourceGcpPtrInput
+	GcpConsole              ResourceGcpConsolePtrInput
+	Gcpwif                  ResourceGcpwifPtrInput
+	GoogleGke               ResourceGoogleGkePtrInput
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
 	HttpAuth                   ResourceHttpAuthPtrInput
@@ -592,15 +650,17 @@ type ResourceArgs struct {
 	HttpNoAuth                 ResourceHttpNoAuthPtrInput
 	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
-	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
-	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
+	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
+	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
+	KubernetesServiceAccount ResourceKubernetesServiceAccountPtrInput
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
-	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrInput
-	Maria                                     ResourceMariaPtrInput
-	Memcached                                 ResourceMemcachedPtrInput
-	Memsql                                    ResourceMemsqlPtrInput
-	MongoHost                                 ResourceMongoHostPtrInput
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
+	Maria                       ResourceMariaPtrInput
+	Memcached                   ResourceMemcachedPtrInput
+	Memsql                      ResourceMemsqlPtrInput
+	MongoHost                   ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -748,12 +808,14 @@ func (o ResourceOutput) AksServiceAccount() ResourceAksServiceAccountPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAksServiceAccountPtrOutput { return v.AksServiceAccount }).(ResourceAksServiceAccountPtrOutput)
 }
 
+// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) AksServiceAccountUserImpersonation() ResourceAksServiceAccountUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAksServiceAccountUserImpersonationPtrOutput {
 		return v.AksServiceAccountUserImpersonation
 	}).(ResourceAksServiceAccountUserImpersonationPtrOutput)
 }
 
+// Deprecated: aks_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) AksUserImpersonation() ResourceAksUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAksUserImpersonationPtrOutput { return v.AksUserImpersonation }).(ResourceAksUserImpersonationPtrOutput)
 }
@@ -766,12 +828,14 @@ func (o ResourceOutput) AmazonEksInstanceProfile() ResourceAmazonEksInstanceProf
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksInstanceProfilePtrOutput { return v.AmazonEksInstanceProfile }).(ResourceAmazonEksInstanceProfilePtrOutput)
 }
 
+// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) AmazonEksInstanceProfileUserImpersonation() ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
 		return v.AmazonEksInstanceProfileUserImpersonation
 	}).(ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput)
 }
 
+// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) AmazonEksUserImpersonation() ResourceAmazonEksUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksUserImpersonationPtrOutput { return v.AmazonEksUserImpersonation }).(ResourceAmazonEksUserImpersonationPtrOutput)
 }
@@ -782,6 +846,11 @@ func (o ResourceOutput) AmazonEs() ResourceAmazonEsPtrOutput {
 
 func (o ResourceOutput) AmazonEsiam() ResourceAmazonEsiamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEsiamPtrOutput { return v.AmazonEsiam }).(ResourceAmazonEsiamPtrOutput)
+}
+
+// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AmazonmqAmqp() ResourceAmazonmqAmqpPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAmazonmqAmqpPtrOutput { return v.AmazonmqAmqp }).(ResourceAmazonmqAmqpPtrOutput)
 }
 
 func (o ResourceOutput) AmazonmqAmqp091() ResourceAmazonmqAmqp091PtrOutput {
@@ -843,6 +912,12 @@ func (o ResourceOutput) AzureConsole() ResourceAzureConsolePtrOutput {
 
 func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureMysqlPtrOutput { return v.AzureMysql }).(ResourceAzureMysqlPtrOutput)
+}
+
+// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+// bump.
+func (o ResourceOutput) AzureMysqlManagedIdentity() ResourceAzureMysqlManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAzureMysqlManagedIdentityPtrOutput { return v.AzureMysqlManagedIdentity }).(ResourceAzureMysqlManagedIdentityPtrOutput)
 }
 
 func (o ResourceOutput) AzurePostgres() ResourceAzurePostgresPtrOutput {
@@ -955,6 +1030,7 @@ func (o ResourceOutput) GoogleGke() ResourceGoogleGkePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGoogleGkePtrOutput { return v.GoogleGke }).(ResourceGoogleGkePtrOutput)
 }
 
+// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) GoogleGkeUserImpersonation() ResourceGoogleGkeUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGoogleGkeUserImpersonationPtrOutput { return v.GoogleGkeUserImpersonation }).(ResourceGoogleGkeUserImpersonationPtrOutput)
 }
@@ -992,12 +1068,14 @@ func (o ResourceOutput) KubernetesServiceAccount() ResourceKubernetesServiceAcco
 	return o.ApplyT(func(v *Resource) ResourceKubernetesServiceAccountPtrOutput { return v.KubernetesServiceAccount }).(ResourceKubernetesServiceAccountPtrOutput)
 }
 
+// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) KubernetesServiceAccountUserImpersonation() ResourceKubernetesServiceAccountUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesServiceAccountUserImpersonationPtrOutput {
 		return v.KubernetesServiceAccountUserImpersonation
 	}).(ResourceKubernetesServiceAccountUserImpersonationPtrOutput)
 }
 
+// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) KubernetesUserImpersonation() ResourceKubernetesUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesUserImpersonationPtrOutput { return v.KubernetesUserImpersonation }).(ResourceKubernetesUserImpersonationPtrOutput)
 }
