@@ -33,6 +33,7 @@ class ResourceArgs:
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
+                 amazonmq_amqp: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
@@ -48,6 +49,7 @@ class ResourceArgs:
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_console: Optional[pulumi.Input['ResourceAzureConsoleArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
+                 azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
                  azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
@@ -131,7 +133,10 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAzureConsoleArgs'] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAzureMysqlManagedIdentityArgs'] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -148,7 +153,13 @@ class ResourceArgs:
         if aks_service_account is not None:
             pulumi.set(__self__, "aks_service_account", aks_service_account)
         if aks_service_account_user_impersonation is not None:
+            warnings.warn("""aks_service_account_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""aks_service_account_user_impersonation is deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info""")
+        if aks_service_account_user_impersonation is not None:
             pulumi.set(__self__, "aks_service_account_user_impersonation", aks_service_account_user_impersonation)
+        if aks_user_impersonation is not None:
+            warnings.warn("""aks_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""aks_user_impersonation is deprecated: aks_user_impersonation is deprecated, see docs for more info""")
         if aks_user_impersonation is not None:
             pulumi.set(__self__, "aks_user_impersonation", aks_user_impersonation)
         if amazon_eks is not None:
@@ -156,13 +167,21 @@ class ResourceArgs:
         if amazon_eks_instance_profile is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
         if amazon_eks_instance_profile_user_impersonation is not None:
+            warnings.warn("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""amazon_eks_instance_profile_user_impersonation is deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
+        if amazon_eks_instance_profile_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile_user_impersonation", amazon_eks_instance_profile_user_impersonation)
+        if amazon_eks_user_impersonation is not None:
+            warnings.warn("""amazon_eks_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""amazon_eks_user_impersonation is deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info""")
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
             pulumi.set(__self__, "amazon_es", amazon_es)
         if amazon_esiam is not None:
             pulumi.set(__self__, "amazon_esiam", amazon_esiam)
+        if amazonmq_amqp is not None:
+            pulumi.set(__self__, "amazonmq_amqp", amazonmq_amqp)
         if amazonmq_amqp091 is not None:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
@@ -193,6 +212,8 @@ class ResourceArgs:
             pulumi.set(__self__, "azure_console", azure_console)
         if azure_mysql is not None:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
+        if azure_mysql_managed_identity is not None:
+            pulumi.set(__self__, "azure_mysql_managed_identity", azure_mysql_managed_identity)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
         if azure_postgres_managed_identity is not None:
@@ -248,6 +269,9 @@ class ResourceArgs:
         if google_gke is not None:
             pulumi.set(__self__, "google_gke", google_gke)
         if google_gke_user_impersonation is not None:
+            warnings.warn("""google_gke_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
+        if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
         if greenplum is not None:
             pulumi.set(__self__, "greenplum", greenplum)
@@ -266,7 +290,13 @@ class ResourceArgs:
         if kubernetes_service_account is not None:
             pulumi.set(__self__, "kubernetes_service_account", kubernetes_service_account)
         if kubernetes_service_account_user_impersonation is not None:
+            warnings.warn("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""kubernetes_service_account_user_impersonation is deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
+        if kubernetes_service_account_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_service_account_user_impersonation", kubernetes_service_account_user_impersonation)
+        if kubernetes_user_impersonation is not None:
+            warnings.warn("""kubernetes_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""kubernetes_user_impersonation is deprecated: kubernetes_user_impersonation is deprecated, see docs for more info""")
         if kubernetes_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
@@ -395,6 +425,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccountUserImpersonation")
+    @_utilities.deprecated("""aks_service_account_user_impersonation is deprecated, see docs for more info""")
     def aks_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "aks_service_account_user_impersonation")
 
@@ -404,6 +435,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="aksUserImpersonation")
+    @_utilities.deprecated("""aks_user_impersonation is deprecated, see docs for more info""")
     def aks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]:
         return pulumi.get(self, "aks_user_impersonation")
 
@@ -431,6 +463,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
@@ -440,6 +473,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="amazonEksUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
 
@@ -464,6 +498,18 @@ class ResourceArgs:
     @amazon_esiam.setter
     def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
         pulumi.set(self, "amazon_esiam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amazonmqAmqp")
+    def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
+        """
+        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazonmq_amqp")
+
+    @amazonmq_amqp.setter
+    def amazonmq_amqp(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]):
+        pulumi.set(self, "amazonmq_amqp", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp091")
@@ -602,6 +648,19 @@ class ResourceArgs:
     @azure_mysql.setter
     def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
         pulumi.set(self, "azure_mysql", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureMysqlManagedIdentity")
+    def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
+        """
+        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "azure_mysql_managed_identity")
+
+    @azure_mysql_managed_identity.setter
+    def azure_mysql_managed_identity(self, value: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]):
+        pulumi.set(self, "azure_mysql_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgres")
@@ -852,6 +911,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="googleGkeUserImpersonation")
+    @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
     def google_gke_user_impersonation(self) -> Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]:
         return pulumi.get(self, "google_gke_user_impersonation")
 
@@ -936,6 +996,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonation")
+    @_utilities.deprecated("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_service_account_user_impersonation")
 
@@ -945,6 +1006,7 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="kubernetesUserImpersonation")
+    @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
 
@@ -1355,6 +1417,7 @@ class _ResourceState:
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
+                 amazonmq_amqp: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
@@ -1370,6 +1433,7 @@ class _ResourceState:
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_console: Optional[pulumi.Input['ResourceAzureConsoleArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
+                 azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
                  azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
@@ -1453,7 +1517,10 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAzureConsoleArgs'] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAzureMysqlManagedIdentityArgs'] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1470,7 +1537,13 @@ class _ResourceState:
         if aks_service_account is not None:
             pulumi.set(__self__, "aks_service_account", aks_service_account)
         if aks_service_account_user_impersonation is not None:
+            warnings.warn("""aks_service_account_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""aks_service_account_user_impersonation is deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info""")
+        if aks_service_account_user_impersonation is not None:
             pulumi.set(__self__, "aks_service_account_user_impersonation", aks_service_account_user_impersonation)
+        if aks_user_impersonation is not None:
+            warnings.warn("""aks_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""aks_user_impersonation is deprecated: aks_user_impersonation is deprecated, see docs for more info""")
         if aks_user_impersonation is not None:
             pulumi.set(__self__, "aks_user_impersonation", aks_user_impersonation)
         if amazon_eks is not None:
@@ -1478,13 +1551,21 @@ class _ResourceState:
         if amazon_eks_instance_profile is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
         if amazon_eks_instance_profile_user_impersonation is not None:
+            warnings.warn("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""amazon_eks_instance_profile_user_impersonation is deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
+        if amazon_eks_instance_profile_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile_user_impersonation", amazon_eks_instance_profile_user_impersonation)
+        if amazon_eks_user_impersonation is not None:
+            warnings.warn("""amazon_eks_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""amazon_eks_user_impersonation is deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info""")
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
             pulumi.set(__self__, "amazon_es", amazon_es)
         if amazon_esiam is not None:
             pulumi.set(__self__, "amazon_esiam", amazon_esiam)
+        if amazonmq_amqp is not None:
+            pulumi.set(__self__, "amazonmq_amqp", amazonmq_amqp)
         if amazonmq_amqp091 is not None:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
@@ -1515,6 +1596,8 @@ class _ResourceState:
             pulumi.set(__self__, "azure_console", azure_console)
         if azure_mysql is not None:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
+        if azure_mysql_managed_identity is not None:
+            pulumi.set(__self__, "azure_mysql_managed_identity", azure_mysql_managed_identity)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
         if azure_postgres_managed_identity is not None:
@@ -1570,6 +1653,9 @@ class _ResourceState:
         if google_gke is not None:
             pulumi.set(__self__, "google_gke", google_gke)
         if google_gke_user_impersonation is not None:
+            warnings.warn("""google_gke_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
+        if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
         if greenplum is not None:
             pulumi.set(__self__, "greenplum", greenplum)
@@ -1588,7 +1674,13 @@ class _ResourceState:
         if kubernetes_service_account is not None:
             pulumi.set(__self__, "kubernetes_service_account", kubernetes_service_account)
         if kubernetes_service_account_user_impersonation is not None:
+            warnings.warn("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""kubernetes_service_account_user_impersonation is deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
+        if kubernetes_service_account_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_service_account_user_impersonation", kubernetes_service_account_user_impersonation)
+        if kubernetes_user_impersonation is not None:
+            warnings.warn("""kubernetes_user_impersonation is deprecated, see docs for more info""", DeprecationWarning)
+            pulumi.log.warn("""kubernetes_user_impersonation is deprecated: kubernetes_user_impersonation is deprecated, see docs for more info""")
         if kubernetes_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
@@ -1717,6 +1809,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccountUserImpersonation")
+    @_utilities.deprecated("""aks_service_account_user_impersonation is deprecated, see docs for more info""")
     def aks_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "aks_service_account_user_impersonation")
 
@@ -1726,6 +1819,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="aksUserImpersonation")
+    @_utilities.deprecated("""aks_user_impersonation is deprecated, see docs for more info""")
     def aks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]:
         return pulumi.get(self, "aks_user_impersonation")
 
@@ -1753,6 +1847,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
@@ -1762,6 +1857,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="amazonEksUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
 
@@ -1786,6 +1882,18 @@ class _ResourceState:
     @amazon_esiam.setter
     def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
         pulumi.set(self, "amazon_esiam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amazonmqAmqp")
+    def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
+        """
+        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazonmq_amqp")
+
+    @amazonmq_amqp.setter
+    def amazonmq_amqp(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]):
+        pulumi.set(self, "amazonmq_amqp", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp091")
@@ -1924,6 +2032,19 @@ class _ResourceState:
     @azure_mysql.setter
     def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
         pulumi.set(self, "azure_mysql", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureMysqlManagedIdentity")
+    def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
+        """
+        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "azure_mysql_managed_identity")
+
+    @azure_mysql_managed_identity.setter
+    def azure_mysql_managed_identity(self, value: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]):
+        pulumi.set(self, "azure_mysql_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgres")
@@ -2174,6 +2295,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="googleGkeUserImpersonation")
+    @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
     def google_gke_user_impersonation(self) -> Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]:
         return pulumi.get(self, "google_gke_user_impersonation")
 
@@ -2258,6 +2380,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonation")
+    @_utilities.deprecated("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_service_account_user_impersonation")
 
@@ -2267,6 +2390,7 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="kubernetesUserImpersonation")
+    @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
 
@@ -2680,6 +2804,7 @@ class Resource(pulumi.CustomResource):
                  amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
                  amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+                 amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -2695,6 +2820,7 @@ class Resource(pulumi.CustomResource):
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
                  azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+                 azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
                  azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
                  azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
                  big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
@@ -2788,7 +2914,10 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2838,6 +2967,7 @@ class Resource(pulumi.CustomResource):
                  amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
                  amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+                 amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -2853,6 +2983,7 @@ class Resource(pulumi.CustomResource):
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
                  azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+                 azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
                  azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
                  azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
                  big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
@@ -2954,6 +3085,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
             __props__.__dict__["amazon_es"] = amazon_es
             __props__.__dict__["amazon_esiam"] = amazon_esiam
+            __props__.__dict__["amazonmq_amqp"] = amazonmq_amqp
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
             __props__.__dict__["athena"] = athena
             __props__.__dict__["athena_iam"] = athena_iam
@@ -2969,6 +3101,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["azure_certificate"] = azure_certificate
             __props__.__dict__["azure_console"] = azure_console
             __props__.__dict__["azure_mysql"] = azure_mysql
+            __props__.__dict__["azure_mysql_managed_identity"] = azure_mysql_managed_identity
             __props__.__dict__["azure_postgres"] = azure_postgres
             __props__.__dict__["azure_postgres_managed_identity"] = azure_postgres_managed_identity
             __props__.__dict__["big_query"] = big_query
@@ -3071,6 +3204,7 @@ class Resource(pulumi.CustomResource):
             amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
             amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
             amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+            amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
             amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
             athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
             athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -3086,6 +3220,7 @@ class Resource(pulumi.CustomResource):
             azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
             azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
             azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+            azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
             azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
             azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
             big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
@@ -3174,7 +3309,10 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3198,6 +3336,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
         __props__.__dict__["amazon_es"] = amazon_es
         __props__.__dict__["amazon_esiam"] = amazon_esiam
+        __props__.__dict__["amazonmq_amqp"] = amazonmq_amqp
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
         __props__.__dict__["athena"] = athena
         __props__.__dict__["athena_iam"] = athena_iam
@@ -3213,6 +3352,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["azure_certificate"] = azure_certificate
         __props__.__dict__["azure_console"] = azure_console
         __props__.__dict__["azure_mysql"] = azure_mysql
+        __props__.__dict__["azure_mysql_managed_identity"] = azure_mysql_managed_identity
         __props__.__dict__["azure_postgres"] = azure_postgres
         __props__.__dict__["azure_postgres_managed_identity"] = azure_postgres_managed_identity
         __props__.__dict__["big_query"] = big_query
@@ -3320,11 +3460,13 @@ class Resource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccountUserImpersonation")
+    @_utilities.deprecated("""aks_service_account_user_impersonation is deprecated, see docs for more info""")
     def aks_service_account_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAksServiceAccountUserImpersonation']]:
         return pulumi.get(self, "aks_service_account_user_impersonation")
 
     @_builtins.property
     @pulumi.getter(name="aksUserImpersonation")
+    @_utilities.deprecated("""aks_user_impersonation is deprecated, see docs for more info""")
     def aks_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAksUserImpersonation']]:
         return pulumi.get(self, "aks_user_impersonation")
 
@@ -3340,11 +3482,13 @@ class Resource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_instance_profile_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksInstanceProfileUserImpersonation']]:
         return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
     @_builtins.property
     @pulumi.getter(name="amazonEksUserImpersonation")
+    @_utilities.deprecated("""amazon_eks_user_impersonation is deprecated, see docs for more info""")
     def amazon_eks_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksUserImpersonation']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
 
@@ -3357,6 +3501,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="amazonEsiam")
     def amazon_esiam(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEsiam']]:
         return pulumi.get(self, "amazon_esiam")
+
+    @_builtins.property
+    @pulumi.getter(name="amazonmqAmqp")
+    def amazonmq_amqp(self) -> pulumi.Output[Optional['outputs.ResourceAmazonmqAmqp']]:
+        """
+        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazonmq_amqp")
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp091")
@@ -3435,6 +3587,15 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysql']]:
         return pulumi.get(self, "azure_mysql")
+
+    @_builtins.property
+    @pulumi.getter(name="azureMysqlManagedIdentity")
+    def azure_mysql_managed_identity(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysqlManagedIdentity']]:
+        """
+        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "azure_mysql_managed_identity")
 
     @_builtins.property
     @pulumi.getter(name="azurePostgres")
@@ -3577,6 +3738,7 @@ class Resource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="googleGkeUserImpersonation")
+    @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
     def google_gke_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceGoogleGkeUserImpersonation']]:
         return pulumi.get(self, "google_gke_user_impersonation")
 
@@ -3625,11 +3787,13 @@ class Resource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonation")
+    @_utilities.deprecated("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_service_account_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesServiceAccountUserImpersonation']]:
         return pulumi.get(self, "kubernetes_service_account_user_impersonation")
 
     @_builtins.property
     @pulumi.getter(name="kubernetesUserImpersonation")
+    @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesUserImpersonation']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
 

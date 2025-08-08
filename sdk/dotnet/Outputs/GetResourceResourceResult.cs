@@ -27,6 +27,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEsiamResult> AmazonEsiams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> AmazonmqAmqp091s;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqpResult> AmazonmqAmqps;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaIamResult> AthenaIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaResult> Athenas;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlIamResult> AuroraMysqlIams;
@@ -39,6 +40,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> AwsInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> AzureConsoles;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlManagedIdentityResult> AzureMysqlManagedIdentities;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgresManagedIdentityResult> AzurePostgresManagedIdentities;
@@ -150,6 +152,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> amazonmqAmqp091s,
 
+            ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqpResult> amazonmqAmqps,
+
             ImmutableArray<Outputs.GetResourceResourceAthenaIamResult> athenaIams,
 
             ImmutableArray<Outputs.GetResourceResourceAthenaResult> athenas,
@@ -173,6 +177,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
 
             ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> azureConsoles,
+
+            ImmutableArray<Outputs.GetResourceResourceAzureMysqlManagedIdentityResult> azureMysqlManagedIdentities,
 
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
 
@@ -351,6 +357,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AmazonEs = amazonEs;
             AmazonEsiams = amazonEsiams;
             AmazonmqAmqp091s = amazonmqAmqp091s;
+            AmazonmqAmqps = amazonmqAmqps;
             AthenaIams = athenaIams;
             Athenas = athenas;
             AuroraMysqlIams = auroraMysqlIams;
@@ -363,6 +370,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AwsInstanceProfiles = awsInstanceProfiles;
             AzureCertificates = azureCertificates;
             AzureConsoles = azureConsoles;
+            AzureMysqlManagedIdentities = azureMysqlManagedIdentities;
             AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
             AzurePostgresManagedIdentities = azurePostgresManagedIdentities;

@@ -1589,6 +1589,82 @@
                 }
             }
         },
+        "sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceAthena:ResourceAthena": {
             "properties": {
                 "accessKey": {
@@ -2640,6 +2716,86 @@
                 "requireNativeAuth": {
                     "type": "boolean",
                     "description": "Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean",
+                    "description": "If true, appends the hostname to the username when hitting a database.azure.com address\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAzureMysqlManagedIdentity:ResourceAzureMysqlManagedIdentity": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -10958,7 +11114,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAksServiceAccountUserImpersonation:getResourceResourceAksServiceAccountUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "aks_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "aksServiceAccounts": {
                     "type": "array",
@@ -10970,7 +11127,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAksUserImpersonation:getResourceResourceAksUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "aks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEks": {
                     "type": "array",
@@ -10982,7 +11140,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAmazonEksInstanceProfileUserImpersonation:getResourceResourceAmazonEksInstanceProfileUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEksInstanceProfiles": {
                     "type": "array",
@@ -10994,7 +11153,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAmazonEksUserImpersonation:getResourceResourceAmazonEksUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "amazon_eks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEs": {
                     "type": "array",
@@ -11012,6 +11172,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAmazonmqAmqp091:getResourceResourceAmazonmqAmqp091"
+                    }
+                },
+                "amazonmqAmqps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAmazonmqAmqp:getResourceResourceAmazonmqAmqp"
                     }
                 },
                 "athenaIams": {
@@ -11084,6 +11250,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAzureConsole:getResourceResourceAzureConsole"
+                    }
+                },
+                "azureMysqlManagedIdentities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAzureMysqlManagedIdentity:getResourceResourceAzureMysqlManagedIdentity"
                     }
                 },
                 "azureMysqls": {
@@ -11258,7 +11430,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceGoogleGkeUserImpersonation:getResourceResourceGoogleGkeUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
                 "googleGkes": {
                     "type": "array",
@@ -11312,7 +11485,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceKubernetesServiceAccountUserImpersonation:getResourceResourceKubernetesServiceAccountUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "kubernetes_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "kubernetesServiceAccounts": {
                     "type": "array",
@@ -11324,7 +11498,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceKubernetesUserImpersonation:getResourceResourceKubernetesUserImpersonation"
-                    }
+                    },
+                    "deprecationMessage": "kubernetes_user_impersonation is deprecated, see docs for more info"
                 },
                 "marias": {
                     "type": "array",
@@ -11593,6 +11768,7 @@
                 "amazonEksUserImpersonations",
                 "amazonEs",
                 "amazonEsiams",
+                "amazonmqAmqps",
                 "amazonmqAmqp091s",
                 "athenas",
                 "athenaIams",
@@ -11608,6 +11784,7 @@
                 "azureCertificates",
                 "azureConsoles",
                 "azureMysqls",
+                "azureMysqlManagedIdentities",
                 "azurePostgres",
                 "azurePostgresManagedIdentities",
                 "bigQueries",
@@ -12677,6 +12854,71 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceAmazonmqAmqp:getResourceResourceAmazonmqAmqp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceAthena:getResourceResourceAthena": {
             "properties": {
                 "accessKey": {
@@ -13582,6 +13824,75 @@
                 "requireNativeAuth": {
                     "type": "boolean",
                     "description": "Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean",
+                    "description": "If true, appends the hostname to the username when hitting a database.azure.com address\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAzureMysqlManagedIdentity:getResourceResourceAzureMysqlManagedIdentity": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -21226,10 +21537,12 @@
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
                 },
                 "aksServiceAccountUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation",
+                    "deprecationMessage": "aks_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "aksUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation",
+                    "deprecationMessage": "aks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEks": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
@@ -21238,16 +21551,22 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
                 },
                 "amazonEksInstanceProfileUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation",
+                    "deprecationMessage": "amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEksUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation",
+                    "deprecationMessage": "amazon_eks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEs": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
                 "amazonEsiam": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
+                },
+                "amazonmqAmqp": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
+                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -21294,6 +21613,10 @@
                 },
                 "azureMysql": {
                     "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
+                },
+                "azureMysqlManagedIdentity": {
+                    "$ref": "#/types/sdm:index/ResourceAzureMysqlManagedIdentity:ResourceAzureMysqlManagedIdentity",
+                    "description": "AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -21378,7 +21701,8 @@
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
                 },
                 "googleGkeUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
+                    "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -21406,10 +21730,12 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                 },
                 "kubernetesServiceAccountUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation",
+                    "deprecationMessage": "kubernetes_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "kubernetesUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation",
+                    "deprecationMessage": "kubernetes_user_impersonation is deprecated, see docs for more info"
                 },
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
@@ -21556,10 +21882,12 @@
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
                 },
                 "aksServiceAccountUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation",
+                    "deprecationMessage": "aks_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "aksUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation",
+                    "deprecationMessage": "aks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEks": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
@@ -21568,16 +21896,22 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
                 },
                 "amazonEksInstanceProfileUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation",
+                    "deprecationMessage": "amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEksUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation",
+                    "deprecationMessage": "amazon_eks_user_impersonation is deprecated, see docs for more info"
                 },
                 "amazonEs": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
                 "amazonEsiam": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
+                },
+                "amazonmqAmqp": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
+                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -21624,6 +21958,10 @@
                 },
                 "azureMysql": {
                     "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
+                },
+                "azureMysqlManagedIdentity": {
+                    "$ref": "#/types/sdm:index/ResourceAzureMysqlManagedIdentity:ResourceAzureMysqlManagedIdentity",
+                    "description": "AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -21708,7 +22046,8 @@
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
                 },
                 "googleGkeUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
+                    "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -21736,10 +22075,12 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                 },
                 "kubernetesServiceAccountUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation",
+                    "deprecationMessage": "kubernetes_service_account_user_impersonation is deprecated, see docs for more info"
                 },
                 "kubernetesUserImpersonation": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation",
+                    "deprecationMessage": "kubernetes_user_impersonation is deprecated, see docs for more info"
                 },
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
@@ -21888,10 +22229,12 @@
                         "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
                     },
                     "aksServiceAccountUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceAksServiceAccountUserImpersonation:ResourceAksServiceAccountUserImpersonation",
+                        "deprecationMessage": "aks_service_account_user_impersonation is deprecated, see docs for more info"
                     },
                     "aksUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceAksUserImpersonation:ResourceAksUserImpersonation",
+                        "deprecationMessage": "aks_user_impersonation is deprecated, see docs for more info"
                     },
                     "amazonEks": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
@@ -21900,16 +22243,22 @@
                         "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
                     },
                     "amazonEksInstanceProfileUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation",
+                        "deprecationMessage": "amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info"
                     },
                     "amazonEksUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation",
+                        "deprecationMessage": "amazon_eks_user_impersonation is deprecated, see docs for more info"
                     },
                     "amazonEs": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                     },
                     "amazonEsiam": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
+                    },
+                    "amazonmqAmqp": {
+                        "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
+                        "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "amazonmqAmqp091": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -21956,6 +22305,10 @@
                     },
                     "azureMysql": {
                         "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
+                    },
+                    "azureMysqlManagedIdentity": {
+                        "$ref": "#/types/sdm:index/ResourceAzureMysqlManagedIdentity:ResourceAzureMysqlManagedIdentity",
+                        "description": "AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
                     },
                     "azurePostgres": {
                         "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -22040,7 +22393,8 @@
                         "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
                     },
                     "googleGkeUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
+                        "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                     },
                     "greenplum": {
                         "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -22068,10 +22422,12 @@
                         "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                     },
                     "kubernetesServiceAccountUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccountUserImpersonation:ResourceKubernetesServiceAccountUserImpersonation",
+                        "deprecationMessage": "kubernetes_service_account_user_impersonation is deprecated, see docs for more info"
                     },
                     "kubernetesUserImpersonation": {
-                        "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation"
+                        "$ref": "#/types/sdm:index/ResourceKubernetesUserImpersonation:ResourceKubernetesUserImpersonation",
+                        "deprecationMessage": "kubernetes_user_impersonation is deprecated, see docs for more info"
                     },
                     "maria": {
                         "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"

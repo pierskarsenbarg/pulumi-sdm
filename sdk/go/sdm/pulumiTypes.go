@@ -7204,6 +7204,371 @@ func (o ResourceAmazonmqAmqp091PtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceAmazonmqAmqp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceAmazonmqAmqpInput is an input type that accepts ResourceAmazonmqAmqpArgs and ResourceAmazonmqAmqpOutput values.
+// You can construct a concrete instance of `ResourceAmazonmqAmqpInput` via:
+//
+//	ResourceAmazonmqAmqpArgs{...}
+type ResourceAmazonmqAmqpInput interface {
+	pulumi.Input
+
+	ToResourceAmazonmqAmqpOutput() ResourceAmazonmqAmqpOutput
+	ToResourceAmazonmqAmqpOutputWithContext(context.Context) ResourceAmazonmqAmqpOutput
+}
+
+type ResourceAmazonmqAmqpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAmazonmqAmqpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (i ResourceAmazonmqAmqpArgs) ToResourceAmazonmqAmqpOutput() ResourceAmazonmqAmqpOutput {
+	return i.ToResourceAmazonmqAmqpOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonmqAmqpArgs) ToResourceAmazonmqAmqpOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonmqAmqpOutput)
+}
+
+func (i ResourceAmazonmqAmqpArgs) ToResourceAmazonmqAmqpPtrOutput() ResourceAmazonmqAmqpPtrOutput {
+	return i.ToResourceAmazonmqAmqpPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonmqAmqpArgs) ToResourceAmazonmqAmqpPtrOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonmqAmqpOutput).ToResourceAmazonmqAmqpPtrOutputWithContext(ctx)
+}
+
+// ResourceAmazonmqAmqpPtrInput is an input type that accepts ResourceAmazonmqAmqpArgs, ResourceAmazonmqAmqpPtr and ResourceAmazonmqAmqpPtrOutput values.
+// You can construct a concrete instance of `ResourceAmazonmqAmqpPtrInput` via:
+//
+//	        ResourceAmazonmqAmqpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAmazonmqAmqpPtrInput interface {
+	pulumi.Input
+
+	ToResourceAmazonmqAmqpPtrOutput() ResourceAmazonmqAmqpPtrOutput
+	ToResourceAmazonmqAmqpPtrOutputWithContext(context.Context) ResourceAmazonmqAmqpPtrOutput
+}
+
+type resourceAmazonmqAmqpPtrType ResourceAmazonmqAmqpArgs
+
+func ResourceAmazonmqAmqpPtr(v *ResourceAmazonmqAmqpArgs) ResourceAmazonmqAmqpPtrInput {
+	return (*resourceAmazonmqAmqpPtrType)(v)
+}
+
+func (*resourceAmazonmqAmqpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (i *resourceAmazonmqAmqpPtrType) ToResourceAmazonmqAmqpPtrOutput() ResourceAmazonmqAmqpPtrOutput {
+	return i.ToResourceAmazonmqAmqpPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAmazonmqAmqpPtrType) ToResourceAmazonmqAmqpPtrOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonmqAmqpPtrOutput)
+}
+
+type ResourceAmazonmqAmqpOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonmqAmqpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (o ResourceAmazonmqAmqpOutput) ToResourceAmazonmqAmqpOutput() ResourceAmazonmqAmqpOutput {
+	return o
+}
+
+func (o ResourceAmazonmqAmqpOutput) ToResourceAmazonmqAmqpOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpOutput {
+	return o
+}
+
+func (o ResourceAmazonmqAmqpOutput) ToResourceAmazonmqAmqpPtrOutput() ResourceAmazonmqAmqpPtrOutput {
+	return o.ToResourceAmazonmqAmqpPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAmazonmqAmqpOutput) ToResourceAmazonmqAmqpPtrOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonmqAmqp) *ResourceAmazonmqAmqp {
+		return &v
+	}).(ResourceAmazonmqAmqpPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAmazonmqAmqpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonmqAmqpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAmazonmqAmqpOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonmqAmqpOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAmazonmqAmqpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAmazonmqAmqpOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAmazonmqAmqpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonmqAmqpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonmqAmqpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAmazonmqAmqpOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonmqAmqpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceAmazonmqAmqpOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAmazonmqAmqpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAmazonmqAmqpPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonmqAmqpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (o ResourceAmazonmqAmqpPtrOutput) ToResourceAmazonmqAmqpPtrOutput() ResourceAmazonmqAmqpPtrOutput {
+	return o
+}
+
+func (o ResourceAmazonmqAmqpPtrOutput) ToResourceAmazonmqAmqpPtrOutputWithContext(ctx context.Context) ResourceAmazonmqAmqpPtrOutput {
+	return o
+}
+
+func (o ResourceAmazonmqAmqpPtrOutput) Elem() ResourceAmazonmqAmqpOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) ResourceAmazonmqAmqp {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAmazonmqAmqp
+		return ret
+	}).(ResourceAmazonmqAmqpOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAmazonmqAmqpPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonmqAmqpPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAmazonmqAmqpPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonmqAmqpPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAmazonmqAmqpPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAmazonmqAmqpPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAmazonmqAmqpPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonmqAmqpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonmqAmqpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAmazonmqAmqpPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonmqAmqpPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceAmazonmqAmqpPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAmazonmqAmqpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceAthena struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey *string `pulumi:"accessKey"`
@@ -12448,6 +12813,390 @@ func (o ResourceAzureMysqlPtrOutput) UseAzureSingleServerUsernames() pulumi.Bool
 // The username to authenticate with.
 func (o ResourceAzureMysqlPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceAzureMysqlManagedIdentity struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If true, appends the hostname to the username when hitting a database.azure.com address
+	UseAzureSingleServerUsernames *bool `pulumi:"useAzureSingleServerUsernames"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceAzureMysqlManagedIdentityInput is an input type that accepts ResourceAzureMysqlManagedIdentityArgs and ResourceAzureMysqlManagedIdentityOutput values.
+// You can construct a concrete instance of `ResourceAzureMysqlManagedIdentityInput` via:
+//
+//	ResourceAzureMysqlManagedIdentityArgs{...}
+type ResourceAzureMysqlManagedIdentityInput interface {
+	pulumi.Input
+
+	ToResourceAzureMysqlManagedIdentityOutput() ResourceAzureMysqlManagedIdentityOutput
+	ToResourceAzureMysqlManagedIdentityOutputWithContext(context.Context) ResourceAzureMysqlManagedIdentityOutput
+}
+
+type ResourceAzureMysqlManagedIdentityArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If true, appends the hostname to the username when hitting a database.azure.com address
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput `pulumi:"useAzureSingleServerUsernames"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAzureMysqlManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (i ResourceAzureMysqlManagedIdentityArgs) ToResourceAzureMysqlManagedIdentityOutput() ResourceAzureMysqlManagedIdentityOutput {
+	return i.ToResourceAzureMysqlManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureMysqlManagedIdentityArgs) ToResourceAzureMysqlManagedIdentityOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlManagedIdentityOutput)
+}
+
+func (i ResourceAzureMysqlManagedIdentityArgs) ToResourceAzureMysqlManagedIdentityPtrOutput() ResourceAzureMysqlManagedIdentityPtrOutput {
+	return i.ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureMysqlManagedIdentityArgs) ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlManagedIdentityOutput).ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// ResourceAzureMysqlManagedIdentityPtrInput is an input type that accepts ResourceAzureMysqlManagedIdentityArgs, ResourceAzureMysqlManagedIdentityPtr and ResourceAzureMysqlManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `ResourceAzureMysqlManagedIdentityPtrInput` via:
+//
+//	        ResourceAzureMysqlManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAzureMysqlManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToResourceAzureMysqlManagedIdentityPtrOutput() ResourceAzureMysqlManagedIdentityPtrOutput
+	ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(context.Context) ResourceAzureMysqlManagedIdentityPtrOutput
+}
+
+type resourceAzureMysqlManagedIdentityPtrType ResourceAzureMysqlManagedIdentityArgs
+
+func ResourceAzureMysqlManagedIdentityPtr(v *ResourceAzureMysqlManagedIdentityArgs) ResourceAzureMysqlManagedIdentityPtrInput {
+	return (*resourceAzureMysqlManagedIdentityPtrType)(v)
+}
+
+func (*resourceAzureMysqlManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (i *resourceAzureMysqlManagedIdentityPtrType) ToResourceAzureMysqlManagedIdentityPtrOutput() ResourceAzureMysqlManagedIdentityPtrOutput {
+	return i.ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAzureMysqlManagedIdentityPtrType) ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlManagedIdentityPtrOutput)
+}
+
+type ResourceAzureMysqlManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureMysqlManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (o ResourceAzureMysqlManagedIdentityOutput) ToResourceAzureMysqlManagedIdentityOutput() ResourceAzureMysqlManagedIdentityOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlManagedIdentityOutput) ToResourceAzureMysqlManagedIdentityOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlManagedIdentityOutput) ToResourceAzureMysqlManagedIdentityPtrOutput() ResourceAzureMysqlManagedIdentityPtrOutput {
+	return o.ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAzureMysqlManagedIdentityOutput) ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzureMysqlManagedIdentity) *ResourceAzureMysqlManagedIdentity {
+		return &v
+	}).(ResourceAzureMysqlManagedIdentityPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAzureMysqlManagedIdentityOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAzureMysqlManagedIdentityOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureMysqlManagedIdentityOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAzureMysqlManagedIdentityOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureMysqlManagedIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAzureMysqlManagedIdentityOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAzureMysqlManagedIdentityOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAzureMysqlManagedIdentityOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureMysqlManagedIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureMysqlManagedIdentityOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAzureMysqlManagedIdentityOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureMysqlManagedIdentityOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If true, appends the hostname to the username when hitting a database.azure.com address
+func (o ResourceAzureMysqlManagedIdentityOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAzureMysqlManagedIdentityOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysqlManagedIdentity) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAzureMysqlManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureMysqlManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) ToResourceAzureMysqlManagedIdentityPtrOutput() ResourceAzureMysqlManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) ToResourceAzureMysqlManagedIdentityPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlManagedIdentityPtrOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Elem() ResourceAzureMysqlManagedIdentityOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) ResourceAzureMysqlManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAzureMysqlManagedIdentity
+		return ret
+	}).(ResourceAzureMysqlManagedIdentityOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If true, appends the hostname to the username when hitting a database.azure.com address
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAzureMysqlManagedIdentityPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysqlManagedIdentity) *string {
 		if v == nil {
 			return nil
 		}
@@ -52489,113 +53238,122 @@ func (o GetRemoteIdentityRemoteIdentityArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetResourceResource struct {
-	Aerospikes                                 []GetResourceResourceAerospike                                 `pulumi:"aerospikes"`
-	Aks                                        []GetResourceResourceAk                                        `pulumi:"aks"`
-	AksBasicAuths                              []GetResourceResourceAksBasicAuth                              `pulumi:"aksBasicAuths"`
-	AksServiceAccountUserImpersonations        []GetResourceResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonations"`
-	AksServiceAccounts                         []GetResourceResourceAksServiceAccount                         `pulumi:"aksServiceAccounts"`
-	AksUserImpersonations                      []GetResourceResourceAksUserImpersonation                      `pulumi:"aksUserImpersonations"`
-	AmazonEks                                  []GetResourceResourceAmazonEk                                  `pulumi:"amazonEks"`
+	Aerospikes    []GetResourceResourceAerospike    `pulumi:"aerospikes"`
+	Aks           []GetResourceResourceAk           `pulumi:"aks"`
+	AksBasicAuths []GetResourceResourceAksBasicAuth `pulumi:"aksBasicAuths"`
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonations []GetResourceResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonations"`
+	AksServiceAccounts                  []GetResourceResourceAksServiceAccount                  `pulumi:"aksServiceAccounts"`
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonations []GetResourceResourceAksUserImpersonation `pulumi:"aksUserImpersonations"`
+	AmazonEks             []GetResourceResourceAmazonEk             `pulumi:"amazonEks"`
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonations []GetResourceResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonations"`
 	AmazonEksInstanceProfiles                  []GetResourceResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfiles"`
-	AmazonEksUserImpersonations                []GetResourceResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonations"`
-	AmazonEs                                   []GetResourceResourceAmazonE                                   `pulumi:"amazonEs"`
-	AmazonEsiams                               []GetResourceResourceAmazonEsiam                               `pulumi:"amazonEsiams"`
-	AmazonmqAmqp091s                           []GetResourceResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091s"`
-	AthenaIams                                 []GetResourceResourceAthenaIam                                 `pulumi:"athenaIams"`
-	Athenas                                    []GetResourceResourceAthena                                    `pulumi:"athenas"`
-	AuroraMysqlIams                            []GetResourceResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIams"`
-	AuroraMysqls                               []GetResourceResourceAuroraMysql                               `pulumi:"auroraMysqls"`
-	AuroraPostgres                             []GetResourceResourceAuroraPostgre                             `pulumi:"auroraPostgres"`
-	AuroraPostgresIams                         []GetResourceResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIams"`
-	Aws                                        []GetResourceResourceAw                                        `pulumi:"aws"`
-	AwsConsoleStaticKeyPairs                   []GetResourceResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPairs"`
-	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
-	AwsInstanceProfiles                        []GetResourceResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfiles"`
-	AzureCertificates                          []GetResourceResourceAzureCertificate                          `pulumi:"azureCertificates"`
-	AzureConsoles                              []GetResourceResourceAzureConsole                              `pulumi:"azureConsoles"`
-	AzureMysqls                                []GetResourceResourceAzureMysql                                `pulumi:"azureMysqls"`
-	AzurePostgres                              []GetResourceResourceAzurePostgre                              `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentities             []GetResourceResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentities"`
-	Azures                                     []GetResourceResourceAzure                                     `pulumi:"azures"`
-	BigQueries                                 []GetResourceResourceBigQuery                                  `pulumi:"bigQueries"`
-	Cassandras                                 []GetResourceResourceCassandra                                 `pulumi:"cassandras"`
-	Cituses                                    []GetResourceResourceCitus                                     `pulumi:"cituses"`
-	ClickHouseHttps                            []GetResourceResourceClickHouseHttp                            `pulumi:"clickHouseHttps"`
-	ClickHouseMySqls                           []GetResourceResourceClickHouseMySql                           `pulumi:"clickHouseMySqls"`
-	ClickHouseTcps                             []GetResourceResourceClickHouseTcp                             `pulumi:"clickHouseTcps"`
-	Clustrixes                                 []GetResourceResourceClustrix                                  `pulumi:"clustrixes"`
-	Cockroaches                                []GetResourceResourceCockroach                                 `pulumi:"cockroaches"`
-	CouchbaseDatabases                         []GetResourceResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabases"`
-	CouchbaseWebUis                            []GetResourceResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUis"`
-	Db2Is                                      []GetResourceResourceDb2I                                      `pulumi:"db2Is"`
-	Db2Luws                                    []GetResourceResourceDb2Luw                                    `pulumi:"db2Luws"`
-	DocumentDbHostIams                         []GetResourceResourceDocumentDbHostIam                         `pulumi:"documentDbHostIams"`
-	DocumentDbHosts                            []GetResourceResourceDocumentDbHost                            `pulumi:"documentDbHosts"`
-	DocumentDbReplicaSetIams                   []GetResourceResourceDocumentDbReplicaSetIam                   `pulumi:"documentDbReplicaSetIams"`
-	DocumentDbReplicaSets                      []GetResourceResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSets"`
-	Druids                                     []GetResourceResourceDruid                                     `pulumi:"druids"`
-	DynamoDbiams                               []GetResourceResourceDynamoDbiam                               `pulumi:"dynamoDbiams"`
-	DynamoDbs                                  []GetResourceResourceDynamoDb                                  `pulumi:"dynamoDbs"`
-	ElasticacheRedis                           []GetResourceResourceElasticacheRedi                           `pulumi:"elasticacheRedis"`
-	Elastics                                   []GetResourceResourceElastic                                   `pulumi:"elastics"`
-	GcpConsoles                                []GetResourceResourceGcpConsole                                `pulumi:"gcpConsoles"`
-	Gcps                                       []GetResourceResourceGcp                                       `pulumi:"gcps"`
-	Gcpwifs                                    []GetResourceResourceGcpwif                                    `pulumi:"gcpwifs"`
-	GoogleGkeUserImpersonations                []GetResourceResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonations"`
-	GoogleGkes                                 []GetResourceResourceGoogleGke                                 `pulumi:"googleGkes"`
-	Greenplums                                 []GetResourceResourceGreenplum                                 `pulumi:"greenplums"`
-	HttpAuths                                  []GetResourceResourceHttpAuth                                  `pulumi:"httpAuths"`
-	HttpBasicAuths                             []GetResourceResourceHttpBasicAuth                             `pulumi:"httpBasicAuths"`
-	HttpNoAuths                                []GetResourceResourceHttpNoAuth                                `pulumi:"httpNoAuths"`
-	Kubernetes                                 []GetResourceResourceKubernete                                 `pulumi:"kubernetes"`
-	KubernetesBasicAuths                       []GetResourceResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuths"`
-	KubernetesPodIdentities                    []GetResourceResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentities"`
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonations    []GetResourceResourceAmazonEksUserImpersonation   `pulumi:"amazonEksUserImpersonations"`
+	AmazonEs                       []GetResourceResourceAmazonE                      `pulumi:"amazonEs"`
+	AmazonEsiams                   []GetResourceResourceAmazonEsiam                  `pulumi:"amazonEsiams"`
+	AmazonmqAmqp091s               []GetResourceResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091s"`
+	AmazonmqAmqps                  []GetResourceResourceAmazonmqAmqp                 `pulumi:"amazonmqAmqps"`
+	AthenaIams                     []GetResourceResourceAthenaIam                    `pulumi:"athenaIams"`
+	Athenas                        []GetResourceResourceAthena                       `pulumi:"athenas"`
+	AuroraMysqlIams                []GetResourceResourceAuroraMysqlIam               `pulumi:"auroraMysqlIams"`
+	AuroraMysqls                   []GetResourceResourceAuroraMysql                  `pulumi:"auroraMysqls"`
+	AuroraPostgres                 []GetResourceResourceAuroraPostgre                `pulumi:"auroraPostgres"`
+	AuroraPostgresIams             []GetResourceResourceAuroraPostgresIam            `pulumi:"auroraPostgresIams"`
+	Aws                            []GetResourceResourceAw                           `pulumi:"aws"`
+	AwsConsoleStaticKeyPairs       []GetResourceResourceAwsConsoleStaticKeyPair      `pulumi:"awsConsoleStaticKeyPairs"`
+	AwsConsoles                    []GetResourceResourceAwsConsole                   `pulumi:"awsConsoles"`
+	AwsInstanceProfiles            []GetResourceResourceAwsInstanceProfile           `pulumi:"awsInstanceProfiles"`
+	AzureCertificates              []GetResourceResourceAzureCertificate             `pulumi:"azureCertificates"`
+	AzureConsoles                  []GetResourceResourceAzureConsole                 `pulumi:"azureConsoles"`
+	AzureMysqlManagedIdentities    []GetResourceResourceAzureMysqlManagedIdentity    `pulumi:"azureMysqlManagedIdentities"`
+	AzureMysqls                    []GetResourceResourceAzureMysql                   `pulumi:"azureMysqls"`
+	AzurePostgres                  []GetResourceResourceAzurePostgre                 `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentities []GetResourceResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentities"`
+	Azures                         []GetResourceResourceAzure                        `pulumi:"azures"`
+	BigQueries                     []GetResourceResourceBigQuery                     `pulumi:"bigQueries"`
+	Cassandras                     []GetResourceResourceCassandra                    `pulumi:"cassandras"`
+	Cituses                        []GetResourceResourceCitus                        `pulumi:"cituses"`
+	ClickHouseHttps                []GetResourceResourceClickHouseHttp               `pulumi:"clickHouseHttps"`
+	ClickHouseMySqls               []GetResourceResourceClickHouseMySql              `pulumi:"clickHouseMySqls"`
+	ClickHouseTcps                 []GetResourceResourceClickHouseTcp                `pulumi:"clickHouseTcps"`
+	Clustrixes                     []GetResourceResourceClustrix                     `pulumi:"clustrixes"`
+	Cockroaches                    []GetResourceResourceCockroach                    `pulumi:"cockroaches"`
+	CouchbaseDatabases             []GetResourceResourceCouchbaseDatabase            `pulumi:"couchbaseDatabases"`
+	CouchbaseWebUis                []GetResourceResourceCouchbaseWebUi               `pulumi:"couchbaseWebUis"`
+	Db2Is                          []GetResourceResourceDb2I                         `pulumi:"db2Is"`
+	Db2Luws                        []GetResourceResourceDb2Luw                       `pulumi:"db2Luws"`
+	DocumentDbHostIams             []GetResourceResourceDocumentDbHostIam            `pulumi:"documentDbHostIams"`
+	DocumentDbHosts                []GetResourceResourceDocumentDbHost               `pulumi:"documentDbHosts"`
+	DocumentDbReplicaSetIams       []GetResourceResourceDocumentDbReplicaSetIam      `pulumi:"documentDbReplicaSetIams"`
+	DocumentDbReplicaSets          []GetResourceResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSets"`
+	Druids                         []GetResourceResourceDruid                        `pulumi:"druids"`
+	DynamoDbiams                   []GetResourceResourceDynamoDbiam                  `pulumi:"dynamoDbiams"`
+	DynamoDbs                      []GetResourceResourceDynamoDb                     `pulumi:"dynamoDbs"`
+	ElasticacheRedis               []GetResourceResourceElasticacheRedi              `pulumi:"elasticacheRedis"`
+	Elastics                       []GetResourceResourceElastic                      `pulumi:"elastics"`
+	GcpConsoles                    []GetResourceResourceGcpConsole                   `pulumi:"gcpConsoles"`
+	Gcps                           []GetResourceResourceGcp                          `pulumi:"gcps"`
+	Gcpwifs                        []GetResourceResourceGcpwif                       `pulumi:"gcpwifs"`
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
+	GoogleGkeUserImpersonations []GetResourceResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonations"`
+	GoogleGkes                  []GetResourceResourceGoogleGke                  `pulumi:"googleGkes"`
+	Greenplums                  []GetResourceResourceGreenplum                  `pulumi:"greenplums"`
+	HttpAuths                   []GetResourceResourceHttpAuth                   `pulumi:"httpAuths"`
+	HttpBasicAuths              []GetResourceResourceHttpBasicAuth              `pulumi:"httpBasicAuths"`
+	HttpNoAuths                 []GetResourceResourceHttpNoAuth                 `pulumi:"httpNoAuths"`
+	Kubernetes                  []GetResourceResourceKubernete                  `pulumi:"kubernetes"`
+	KubernetesBasicAuths        []GetResourceResourceKubernetesBasicAuth        `pulumi:"kubernetesBasicAuths"`
+	KubernetesPodIdentities     []GetResourceResourceKubernetesPodIdentity      `pulumi:"kubernetesPodIdentities"`
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonations []GetResourceResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonations"`
 	KubernetesServiceAccounts                  []GetResourceResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccounts"`
-	KubernetesUserImpersonations               []GetResourceResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonations"`
-	Marias                                     []GetResourceResourceMaria                                     `pulumi:"marias"`
-	Memcacheds                                 []GetResourceResourceMemcached                                 `pulumi:"memcacheds"`
-	Memsqls                                    []GetResourceResourceMemsql                                    `pulumi:"memsqls"`
-	MongoHosts                                 []GetResourceResourceMongoHost                                 `pulumi:"mongoHosts"`
-	MongoLegacyHosts                           []GetResourceResourceMongoLegacyHost                           `pulumi:"mongoLegacyHosts"`
-	MongoLegacyReplicasets                     []GetResourceResourceMongoLegacyReplicaset                     `pulumi:"mongoLegacyReplicasets"`
-	MongoReplicaSets                           []GetResourceResourceMongoReplicaSet                           `pulumi:"mongoReplicaSets"`
-	MongoShardedClusters                       []GetResourceResourceMongoShardedCluster                       `pulumi:"mongoShardedClusters"`
-	MtlsMysqls                                 []GetResourceResourceMtlsMysql                                 `pulumi:"mtlsMysqls"`
-	MtlsPostgres                               []GetResourceResourceMtlsPostgre                               `pulumi:"mtlsPostgres"`
-	Mysqls                                     []GetResourceResourceMysql                                     `pulumi:"mysqls"`
-	NeptuneIams                                []GetResourceResourceNeptuneIam                                `pulumi:"neptuneIams"`
-	Neptunes                                   []GetResourceResourceNeptune                                   `pulumi:"neptunes"`
-	OracleNnes                                 []GetResourceResourceOracleNne                                 `pulumi:"oracleNnes"`
-	Oracles                                    []GetResourceResourceOracle                                    `pulumi:"oracles"`
-	Postgres                                   []GetResourceResourcePostgre                                   `pulumi:"postgres"`
-	Prestos                                    []GetResourceResourcePresto                                    `pulumi:"prestos"`
-	RabbitmqAmqp091s                           []GetResourceResourceRabbitmqAmqp091                           `pulumi:"rabbitmqAmqp091s"`
-	RawTcps                                    []GetResourceResourceRawTcp                                    `pulumi:"rawTcps"`
-	RdpCerts                                   []GetResourceResourceRdpCert                                   `pulumi:"rdpCerts"`
-	Rdps                                       []GetResourceResourceRdp                                       `pulumi:"rdps"`
-	RdsPostgresIams                            []GetResourceResourceRdsPostgresIam                            `pulumi:"rdsPostgresIams"`
-	Redis                                      []GetResourceResourceRedi                                      `pulumi:"redis"`
-	RedisClusters                              []GetResourceResourceRedisCluster                              `pulumi:"redisClusters"`
-	RedshiftIams                               []GetResourceResourceRedshiftIam                               `pulumi:"redshiftIams"`
-	RedshiftServerlessIams                     []GetResourceResourceRedshiftServerlessIam                     `pulumi:"redshiftServerlessIams"`
-	Redshifts                                  []GetResourceResourceRedshift                                  `pulumi:"redshifts"`
-	SingleStores                               []GetResourceResourceSingleStore                               `pulumi:"singleStores"`
-	Snowflakes                                 []GetResourceResourceSnowflake                                 `pulumi:"snowflakes"`
-	Snowsights                                 []GetResourceResourceSnowsight                                 `pulumi:"snowsights"`
-	SqlServerAzureAds                          []GetResourceResourceSqlServerAzureAd                          `pulumi:"sqlServerAzureAds"`
-	SqlServerKerberosAds                       []GetResourceResourceSqlServerKerberosAd                       `pulumi:"sqlServerKerberosAds"`
-	SqlServers                                 []GetResourceResourceSqlServer                                 `pulumi:"sqlServers"`
-	SshCerts                                   []GetResourceResourceSshCert                                   `pulumi:"sshCerts"`
-	SshCustomerKeys                            []GetResourceResourceSshCustomerKey                            `pulumi:"sshCustomerKeys"`
-	SshPasswords                               []GetResourceResourceSshPassword                               `pulumi:"sshPasswords"`
-	Sshes                                      []GetResourceResourceSsh                                       `pulumi:"sshes"`
-	SybaseIqs                                  []GetResourceResourceSybaseIq                                  `pulumi:"sybaseIqs"`
-	Sybases                                    []GetResourceResourceSybase                                    `pulumi:"sybases"`
-	Teradatas                                  []GetResourceResourceTeradata                                  `pulumi:"teradatas"`
-	Trinos                                     []GetResourceResourceTrino                                     `pulumi:"trinos"`
-	Verticas                                   []GetResourceResourceVertica                                   `pulumi:"verticas"`
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonations []GetResourceResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonations"`
+	Marias                       []GetResourceResourceMaria                       `pulumi:"marias"`
+	Memcacheds                   []GetResourceResourceMemcached                   `pulumi:"memcacheds"`
+	Memsqls                      []GetResourceResourceMemsql                      `pulumi:"memsqls"`
+	MongoHosts                   []GetResourceResourceMongoHost                   `pulumi:"mongoHosts"`
+	MongoLegacyHosts             []GetResourceResourceMongoLegacyHost             `pulumi:"mongoLegacyHosts"`
+	MongoLegacyReplicasets       []GetResourceResourceMongoLegacyReplicaset       `pulumi:"mongoLegacyReplicasets"`
+	MongoReplicaSets             []GetResourceResourceMongoReplicaSet             `pulumi:"mongoReplicaSets"`
+	MongoShardedClusters         []GetResourceResourceMongoShardedCluster         `pulumi:"mongoShardedClusters"`
+	MtlsMysqls                   []GetResourceResourceMtlsMysql                   `pulumi:"mtlsMysqls"`
+	MtlsPostgres                 []GetResourceResourceMtlsPostgre                 `pulumi:"mtlsPostgres"`
+	Mysqls                       []GetResourceResourceMysql                       `pulumi:"mysqls"`
+	NeptuneIams                  []GetResourceResourceNeptuneIam                  `pulumi:"neptuneIams"`
+	Neptunes                     []GetResourceResourceNeptune                     `pulumi:"neptunes"`
+	OracleNnes                   []GetResourceResourceOracleNne                   `pulumi:"oracleNnes"`
+	Oracles                      []GetResourceResourceOracle                      `pulumi:"oracles"`
+	Postgres                     []GetResourceResourcePostgre                     `pulumi:"postgres"`
+	Prestos                      []GetResourceResourcePresto                      `pulumi:"prestos"`
+	RabbitmqAmqp091s             []GetResourceResourceRabbitmqAmqp091             `pulumi:"rabbitmqAmqp091s"`
+	RawTcps                      []GetResourceResourceRawTcp                      `pulumi:"rawTcps"`
+	RdpCerts                     []GetResourceResourceRdpCert                     `pulumi:"rdpCerts"`
+	Rdps                         []GetResourceResourceRdp                         `pulumi:"rdps"`
+	RdsPostgresIams              []GetResourceResourceRdsPostgresIam              `pulumi:"rdsPostgresIams"`
+	Redis                        []GetResourceResourceRedi                        `pulumi:"redis"`
+	RedisClusters                []GetResourceResourceRedisCluster                `pulumi:"redisClusters"`
+	RedshiftIams                 []GetResourceResourceRedshiftIam                 `pulumi:"redshiftIams"`
+	RedshiftServerlessIams       []GetResourceResourceRedshiftServerlessIam       `pulumi:"redshiftServerlessIams"`
+	Redshifts                    []GetResourceResourceRedshift                    `pulumi:"redshifts"`
+	SingleStores                 []GetResourceResourceSingleStore                 `pulumi:"singleStores"`
+	Snowflakes                   []GetResourceResourceSnowflake                   `pulumi:"snowflakes"`
+	Snowsights                   []GetResourceResourceSnowsight                   `pulumi:"snowsights"`
+	SqlServerAzureAds            []GetResourceResourceSqlServerAzureAd            `pulumi:"sqlServerAzureAds"`
+	SqlServerKerberosAds         []GetResourceResourceSqlServerKerberosAd         `pulumi:"sqlServerKerberosAds"`
+	SqlServers                   []GetResourceResourceSqlServer                   `pulumi:"sqlServers"`
+	SshCerts                     []GetResourceResourceSshCert                     `pulumi:"sshCerts"`
+	SshCustomerKeys              []GetResourceResourceSshCustomerKey              `pulumi:"sshCustomerKeys"`
+	SshPasswords                 []GetResourceResourceSshPassword                 `pulumi:"sshPasswords"`
+	Sshes                        []GetResourceResourceSsh                         `pulumi:"sshes"`
+	SybaseIqs                    []GetResourceResourceSybaseIq                    `pulumi:"sybaseIqs"`
+	Sybases                      []GetResourceResourceSybase                      `pulumi:"sybases"`
+	Teradatas                    []GetResourceResourceTeradata                    `pulumi:"teradatas"`
+	Trinos                       []GetResourceResourceTrino                       `pulumi:"trinos"`
+	Verticas                     []GetResourceResourceVertica                     `pulumi:"verticas"`
 }
 
 // GetResourceResourceInput is an input type that accepts GetResourceResourceArgs and GetResourceResourceOutput values.
@@ -52610,113 +53368,122 @@ type GetResourceResourceInput interface {
 }
 
 type GetResourceResourceArgs struct {
-	Aerospikes                                 GetResourceResourceAerospikeArrayInput                                 `pulumi:"aerospikes"`
-	Aks                                        GetResourceResourceAkArrayInput                                        `pulumi:"aks"`
-	AksBasicAuths                              GetResourceResourceAksBasicAuthArrayInput                              `pulumi:"aksBasicAuths"`
-	AksServiceAccountUserImpersonations        GetResourceResourceAksServiceAccountUserImpersonationArrayInput        `pulumi:"aksServiceAccountUserImpersonations"`
-	AksServiceAccounts                         GetResourceResourceAksServiceAccountArrayInput                         `pulumi:"aksServiceAccounts"`
-	AksUserImpersonations                      GetResourceResourceAksUserImpersonationArrayInput                      `pulumi:"aksUserImpersonations"`
-	AmazonEks                                  GetResourceResourceAmazonEkArrayInput                                  `pulumi:"amazonEks"`
+	Aerospikes    GetResourceResourceAerospikeArrayInput    `pulumi:"aerospikes"`
+	Aks           GetResourceResourceAkArrayInput           `pulumi:"aks"`
+	AksBasicAuths GetResourceResourceAksBasicAuthArrayInput `pulumi:"aksBasicAuths"`
+	// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
+	AksServiceAccountUserImpersonations GetResourceResourceAksServiceAccountUserImpersonationArrayInput `pulumi:"aksServiceAccountUserImpersonations"`
+	AksServiceAccounts                  GetResourceResourceAksServiceAccountArrayInput                  `pulumi:"aksServiceAccounts"`
+	// Deprecated: aks_user_impersonation is deprecated, see docs for more info
+	AksUserImpersonations GetResourceResourceAksUserImpersonationArrayInput `pulumi:"aksUserImpersonations"`
+	AmazonEks             GetResourceResourceAmazonEkArrayInput             `pulumi:"amazonEks"`
+	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonations GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayInput `pulumi:"amazonEksInstanceProfileUserImpersonations"`
 	AmazonEksInstanceProfiles                  GetResourceResourceAmazonEksInstanceProfileArrayInput                  `pulumi:"amazonEksInstanceProfiles"`
-	AmazonEksUserImpersonations                GetResourceResourceAmazonEksUserImpersonationArrayInput                `pulumi:"amazonEksUserImpersonations"`
-	AmazonEs                                   GetResourceResourceAmazonEArrayInput                                   `pulumi:"amazonEs"`
-	AmazonEsiams                               GetResourceResourceAmazonEsiamArrayInput                               `pulumi:"amazonEsiams"`
-	AmazonmqAmqp091s                           GetResourceResourceAmazonmqAmqp091ArrayInput                           `pulumi:"amazonmqAmqp091s"`
-	AthenaIams                                 GetResourceResourceAthenaIamArrayInput                                 `pulumi:"athenaIams"`
-	Athenas                                    GetResourceResourceAthenaArrayInput                                    `pulumi:"athenas"`
-	AuroraMysqlIams                            GetResourceResourceAuroraMysqlIamArrayInput                            `pulumi:"auroraMysqlIams"`
-	AuroraMysqls                               GetResourceResourceAuroraMysqlArrayInput                               `pulumi:"auroraMysqls"`
-	AuroraPostgres                             GetResourceResourceAuroraPostgreArrayInput                             `pulumi:"auroraPostgres"`
-	AuroraPostgresIams                         GetResourceResourceAuroraPostgresIamArrayInput                         `pulumi:"auroraPostgresIams"`
-	Aws                                        GetResourceResourceAwArrayInput                                        `pulumi:"aws"`
-	AwsConsoleStaticKeyPairs                   GetResourceResourceAwsConsoleStaticKeyPairArrayInput                   `pulumi:"awsConsoleStaticKeyPairs"`
-	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
-	AwsInstanceProfiles                        GetResourceResourceAwsInstanceProfileArrayInput                        `pulumi:"awsInstanceProfiles"`
-	AzureCertificates                          GetResourceResourceAzureCertificateArrayInput                          `pulumi:"azureCertificates"`
-	AzureConsoles                              GetResourceResourceAzureConsoleArrayInput                              `pulumi:"azureConsoles"`
-	AzureMysqls                                GetResourceResourceAzureMysqlArrayInput                                `pulumi:"azureMysqls"`
-	AzurePostgres                              GetResourceResourceAzurePostgreArrayInput                              `pulumi:"azurePostgres"`
-	AzurePostgresManagedIdentities             GetResourceResourceAzurePostgresManagedIdentityArrayInput              `pulumi:"azurePostgresManagedIdentities"`
-	Azures                                     GetResourceResourceAzureArrayInput                                     `pulumi:"azures"`
-	BigQueries                                 GetResourceResourceBigQueryArrayInput                                  `pulumi:"bigQueries"`
-	Cassandras                                 GetResourceResourceCassandraArrayInput                                 `pulumi:"cassandras"`
-	Cituses                                    GetResourceResourceCitusArrayInput                                     `pulumi:"cituses"`
-	ClickHouseHttps                            GetResourceResourceClickHouseHttpArrayInput                            `pulumi:"clickHouseHttps"`
-	ClickHouseMySqls                           GetResourceResourceClickHouseMySqlArrayInput                           `pulumi:"clickHouseMySqls"`
-	ClickHouseTcps                             GetResourceResourceClickHouseTcpArrayInput                             `pulumi:"clickHouseTcps"`
-	Clustrixes                                 GetResourceResourceClustrixArrayInput                                  `pulumi:"clustrixes"`
-	Cockroaches                                GetResourceResourceCockroachArrayInput                                 `pulumi:"cockroaches"`
-	CouchbaseDatabases                         GetResourceResourceCouchbaseDatabaseArrayInput                         `pulumi:"couchbaseDatabases"`
-	CouchbaseWebUis                            GetResourceResourceCouchbaseWebUiArrayInput                            `pulumi:"couchbaseWebUis"`
-	Db2Is                                      GetResourceResourceDb2IArrayInput                                      `pulumi:"db2Is"`
-	Db2Luws                                    GetResourceResourceDb2LuwArrayInput                                    `pulumi:"db2Luws"`
-	DocumentDbHostIams                         GetResourceResourceDocumentDbHostIamArrayInput                         `pulumi:"documentDbHostIams"`
-	DocumentDbHosts                            GetResourceResourceDocumentDbHostArrayInput                            `pulumi:"documentDbHosts"`
-	DocumentDbReplicaSetIams                   GetResourceResourceDocumentDbReplicaSetIamArrayInput                   `pulumi:"documentDbReplicaSetIams"`
-	DocumentDbReplicaSets                      GetResourceResourceDocumentDbReplicaSetArrayInput                      `pulumi:"documentDbReplicaSets"`
-	Druids                                     GetResourceResourceDruidArrayInput                                     `pulumi:"druids"`
-	DynamoDbiams                               GetResourceResourceDynamoDbiamArrayInput                               `pulumi:"dynamoDbiams"`
-	DynamoDbs                                  GetResourceResourceDynamoDbArrayInput                                  `pulumi:"dynamoDbs"`
-	ElasticacheRedis                           GetResourceResourceElasticacheRediArrayInput                           `pulumi:"elasticacheRedis"`
-	Elastics                                   GetResourceResourceElasticArrayInput                                   `pulumi:"elastics"`
-	GcpConsoles                                GetResourceResourceGcpConsoleArrayInput                                `pulumi:"gcpConsoles"`
-	Gcps                                       GetResourceResourceGcpArrayInput                                       `pulumi:"gcps"`
-	Gcpwifs                                    GetResourceResourceGcpwifArrayInput                                    `pulumi:"gcpwifs"`
-	GoogleGkeUserImpersonations                GetResourceResourceGoogleGkeUserImpersonationArrayInput                `pulumi:"googleGkeUserImpersonations"`
-	GoogleGkes                                 GetResourceResourceGoogleGkeArrayInput                                 `pulumi:"googleGkes"`
-	Greenplums                                 GetResourceResourceGreenplumArrayInput                                 `pulumi:"greenplums"`
-	HttpAuths                                  GetResourceResourceHttpAuthArrayInput                                  `pulumi:"httpAuths"`
-	HttpBasicAuths                             GetResourceResourceHttpBasicAuthArrayInput                             `pulumi:"httpBasicAuths"`
-	HttpNoAuths                                GetResourceResourceHttpNoAuthArrayInput                                `pulumi:"httpNoAuths"`
-	Kubernetes                                 GetResourceResourceKuberneteArrayInput                                 `pulumi:"kubernetes"`
-	KubernetesBasicAuths                       GetResourceResourceKubernetesBasicAuthArrayInput                       `pulumi:"kubernetesBasicAuths"`
-	KubernetesPodIdentities                    GetResourceResourceKubernetesPodIdentityArrayInput                     `pulumi:"kubernetesPodIdentities"`
+	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
+	AmazonEksUserImpersonations    GetResourceResourceAmazonEksUserImpersonationArrayInput   `pulumi:"amazonEksUserImpersonations"`
+	AmazonEs                       GetResourceResourceAmazonEArrayInput                      `pulumi:"amazonEs"`
+	AmazonEsiams                   GetResourceResourceAmazonEsiamArrayInput                  `pulumi:"amazonEsiams"`
+	AmazonmqAmqp091s               GetResourceResourceAmazonmqAmqp091ArrayInput              `pulumi:"amazonmqAmqp091s"`
+	AmazonmqAmqps                  GetResourceResourceAmazonmqAmqpArrayInput                 `pulumi:"amazonmqAmqps"`
+	AthenaIams                     GetResourceResourceAthenaIamArrayInput                    `pulumi:"athenaIams"`
+	Athenas                        GetResourceResourceAthenaArrayInput                       `pulumi:"athenas"`
+	AuroraMysqlIams                GetResourceResourceAuroraMysqlIamArrayInput               `pulumi:"auroraMysqlIams"`
+	AuroraMysqls                   GetResourceResourceAuroraMysqlArrayInput                  `pulumi:"auroraMysqls"`
+	AuroraPostgres                 GetResourceResourceAuroraPostgreArrayInput                `pulumi:"auroraPostgres"`
+	AuroraPostgresIams             GetResourceResourceAuroraPostgresIamArrayInput            `pulumi:"auroraPostgresIams"`
+	Aws                            GetResourceResourceAwArrayInput                           `pulumi:"aws"`
+	AwsConsoleStaticKeyPairs       GetResourceResourceAwsConsoleStaticKeyPairArrayInput      `pulumi:"awsConsoleStaticKeyPairs"`
+	AwsConsoles                    GetResourceResourceAwsConsoleArrayInput                   `pulumi:"awsConsoles"`
+	AwsInstanceProfiles            GetResourceResourceAwsInstanceProfileArrayInput           `pulumi:"awsInstanceProfiles"`
+	AzureCertificates              GetResourceResourceAzureCertificateArrayInput             `pulumi:"azureCertificates"`
+	AzureConsoles                  GetResourceResourceAzureConsoleArrayInput                 `pulumi:"azureConsoles"`
+	AzureMysqlManagedIdentities    GetResourceResourceAzureMysqlManagedIdentityArrayInput    `pulumi:"azureMysqlManagedIdentities"`
+	AzureMysqls                    GetResourceResourceAzureMysqlArrayInput                   `pulumi:"azureMysqls"`
+	AzurePostgres                  GetResourceResourceAzurePostgreArrayInput                 `pulumi:"azurePostgres"`
+	AzurePostgresManagedIdentities GetResourceResourceAzurePostgresManagedIdentityArrayInput `pulumi:"azurePostgresManagedIdentities"`
+	Azures                         GetResourceResourceAzureArrayInput                        `pulumi:"azures"`
+	BigQueries                     GetResourceResourceBigQueryArrayInput                     `pulumi:"bigQueries"`
+	Cassandras                     GetResourceResourceCassandraArrayInput                    `pulumi:"cassandras"`
+	Cituses                        GetResourceResourceCitusArrayInput                        `pulumi:"cituses"`
+	ClickHouseHttps                GetResourceResourceClickHouseHttpArrayInput               `pulumi:"clickHouseHttps"`
+	ClickHouseMySqls               GetResourceResourceClickHouseMySqlArrayInput              `pulumi:"clickHouseMySqls"`
+	ClickHouseTcps                 GetResourceResourceClickHouseTcpArrayInput                `pulumi:"clickHouseTcps"`
+	Clustrixes                     GetResourceResourceClustrixArrayInput                     `pulumi:"clustrixes"`
+	Cockroaches                    GetResourceResourceCockroachArrayInput                    `pulumi:"cockroaches"`
+	CouchbaseDatabases             GetResourceResourceCouchbaseDatabaseArrayInput            `pulumi:"couchbaseDatabases"`
+	CouchbaseWebUis                GetResourceResourceCouchbaseWebUiArrayInput               `pulumi:"couchbaseWebUis"`
+	Db2Is                          GetResourceResourceDb2IArrayInput                         `pulumi:"db2Is"`
+	Db2Luws                        GetResourceResourceDb2LuwArrayInput                       `pulumi:"db2Luws"`
+	DocumentDbHostIams             GetResourceResourceDocumentDbHostIamArrayInput            `pulumi:"documentDbHostIams"`
+	DocumentDbHosts                GetResourceResourceDocumentDbHostArrayInput               `pulumi:"documentDbHosts"`
+	DocumentDbReplicaSetIams       GetResourceResourceDocumentDbReplicaSetIamArrayInput      `pulumi:"documentDbReplicaSetIams"`
+	DocumentDbReplicaSets          GetResourceResourceDocumentDbReplicaSetArrayInput         `pulumi:"documentDbReplicaSets"`
+	Druids                         GetResourceResourceDruidArrayInput                        `pulumi:"druids"`
+	DynamoDbiams                   GetResourceResourceDynamoDbiamArrayInput                  `pulumi:"dynamoDbiams"`
+	DynamoDbs                      GetResourceResourceDynamoDbArrayInput                     `pulumi:"dynamoDbs"`
+	ElasticacheRedis               GetResourceResourceElasticacheRediArrayInput              `pulumi:"elasticacheRedis"`
+	Elastics                       GetResourceResourceElasticArrayInput                      `pulumi:"elastics"`
+	GcpConsoles                    GetResourceResourceGcpConsoleArrayInput                   `pulumi:"gcpConsoles"`
+	Gcps                           GetResourceResourceGcpArrayInput                          `pulumi:"gcps"`
+	Gcpwifs                        GetResourceResourceGcpwifArrayInput                       `pulumi:"gcpwifs"`
+	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
+	GoogleGkeUserImpersonations GetResourceResourceGoogleGkeUserImpersonationArrayInput `pulumi:"googleGkeUserImpersonations"`
+	GoogleGkes                  GetResourceResourceGoogleGkeArrayInput                  `pulumi:"googleGkes"`
+	Greenplums                  GetResourceResourceGreenplumArrayInput                  `pulumi:"greenplums"`
+	HttpAuths                   GetResourceResourceHttpAuthArrayInput                   `pulumi:"httpAuths"`
+	HttpBasicAuths              GetResourceResourceHttpBasicAuthArrayInput              `pulumi:"httpBasicAuths"`
+	HttpNoAuths                 GetResourceResourceHttpNoAuthArrayInput                 `pulumi:"httpNoAuths"`
+	Kubernetes                  GetResourceResourceKuberneteArrayInput                  `pulumi:"kubernetes"`
+	KubernetesBasicAuths        GetResourceResourceKubernetesBasicAuthArrayInput        `pulumi:"kubernetesBasicAuths"`
+	KubernetesPodIdentities     GetResourceResourceKubernetesPodIdentityArrayInput      `pulumi:"kubernetesPodIdentities"`
+	// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 	KubernetesServiceAccountUserImpersonations GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput `pulumi:"kubernetesServiceAccountUserImpersonations"`
 	KubernetesServiceAccounts                  GetResourceResourceKubernetesServiceAccountArrayInput                  `pulumi:"kubernetesServiceAccounts"`
-	KubernetesUserImpersonations               GetResourceResourceKubernetesUserImpersonationArrayInput               `pulumi:"kubernetesUserImpersonations"`
-	Marias                                     GetResourceResourceMariaArrayInput                                     `pulumi:"marias"`
-	Memcacheds                                 GetResourceResourceMemcachedArrayInput                                 `pulumi:"memcacheds"`
-	Memsqls                                    GetResourceResourceMemsqlArrayInput                                    `pulumi:"memsqls"`
-	MongoHosts                                 GetResourceResourceMongoHostArrayInput                                 `pulumi:"mongoHosts"`
-	MongoLegacyHosts                           GetResourceResourceMongoLegacyHostArrayInput                           `pulumi:"mongoLegacyHosts"`
-	MongoLegacyReplicasets                     GetResourceResourceMongoLegacyReplicasetArrayInput                     `pulumi:"mongoLegacyReplicasets"`
-	MongoReplicaSets                           GetResourceResourceMongoReplicaSetArrayInput                           `pulumi:"mongoReplicaSets"`
-	MongoShardedClusters                       GetResourceResourceMongoShardedClusterArrayInput                       `pulumi:"mongoShardedClusters"`
-	MtlsMysqls                                 GetResourceResourceMtlsMysqlArrayInput                                 `pulumi:"mtlsMysqls"`
-	MtlsPostgres                               GetResourceResourceMtlsPostgreArrayInput                               `pulumi:"mtlsPostgres"`
-	Mysqls                                     GetResourceResourceMysqlArrayInput                                     `pulumi:"mysqls"`
-	NeptuneIams                                GetResourceResourceNeptuneIamArrayInput                                `pulumi:"neptuneIams"`
-	Neptunes                                   GetResourceResourceNeptuneArrayInput                                   `pulumi:"neptunes"`
-	OracleNnes                                 GetResourceResourceOracleNneArrayInput                                 `pulumi:"oracleNnes"`
-	Oracles                                    GetResourceResourceOracleArrayInput                                    `pulumi:"oracles"`
-	Postgres                                   GetResourceResourcePostgreArrayInput                                   `pulumi:"postgres"`
-	Prestos                                    GetResourceResourcePrestoArrayInput                                    `pulumi:"prestos"`
-	RabbitmqAmqp091s                           GetResourceResourceRabbitmqAmqp091ArrayInput                           `pulumi:"rabbitmqAmqp091s"`
-	RawTcps                                    GetResourceResourceRawTcpArrayInput                                    `pulumi:"rawTcps"`
-	RdpCerts                                   GetResourceResourceRdpCertArrayInput                                   `pulumi:"rdpCerts"`
-	Rdps                                       GetResourceResourceRdpArrayInput                                       `pulumi:"rdps"`
-	RdsPostgresIams                            GetResourceResourceRdsPostgresIamArrayInput                            `pulumi:"rdsPostgresIams"`
-	Redis                                      GetResourceResourceRediArrayInput                                      `pulumi:"redis"`
-	RedisClusters                              GetResourceResourceRedisClusterArrayInput                              `pulumi:"redisClusters"`
-	RedshiftIams                               GetResourceResourceRedshiftIamArrayInput                               `pulumi:"redshiftIams"`
-	RedshiftServerlessIams                     GetResourceResourceRedshiftServerlessIamArrayInput                     `pulumi:"redshiftServerlessIams"`
-	Redshifts                                  GetResourceResourceRedshiftArrayInput                                  `pulumi:"redshifts"`
-	SingleStores                               GetResourceResourceSingleStoreArrayInput                               `pulumi:"singleStores"`
-	Snowflakes                                 GetResourceResourceSnowflakeArrayInput                                 `pulumi:"snowflakes"`
-	Snowsights                                 GetResourceResourceSnowsightArrayInput                                 `pulumi:"snowsights"`
-	SqlServerAzureAds                          GetResourceResourceSqlServerAzureAdArrayInput                          `pulumi:"sqlServerAzureAds"`
-	SqlServerKerberosAds                       GetResourceResourceSqlServerKerberosAdArrayInput                       `pulumi:"sqlServerKerberosAds"`
-	SqlServers                                 GetResourceResourceSqlServerArrayInput                                 `pulumi:"sqlServers"`
-	SshCerts                                   GetResourceResourceSshCertArrayInput                                   `pulumi:"sshCerts"`
-	SshCustomerKeys                            GetResourceResourceSshCustomerKeyArrayInput                            `pulumi:"sshCustomerKeys"`
-	SshPasswords                               GetResourceResourceSshPasswordArrayInput                               `pulumi:"sshPasswords"`
-	Sshes                                      GetResourceResourceSshArrayInput                                       `pulumi:"sshes"`
-	SybaseIqs                                  GetResourceResourceSybaseIqArrayInput                                  `pulumi:"sybaseIqs"`
-	Sybases                                    GetResourceResourceSybaseArrayInput                                    `pulumi:"sybases"`
-	Teradatas                                  GetResourceResourceTeradataArrayInput                                  `pulumi:"teradatas"`
-	Trinos                                     GetResourceResourceTrinoArrayInput                                     `pulumi:"trinos"`
-	Verticas                                   GetResourceResourceVerticaArrayInput                                   `pulumi:"verticas"`
+	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
+	KubernetesUserImpersonations GetResourceResourceKubernetesUserImpersonationArrayInput `pulumi:"kubernetesUserImpersonations"`
+	Marias                       GetResourceResourceMariaArrayInput                       `pulumi:"marias"`
+	Memcacheds                   GetResourceResourceMemcachedArrayInput                   `pulumi:"memcacheds"`
+	Memsqls                      GetResourceResourceMemsqlArrayInput                      `pulumi:"memsqls"`
+	MongoHosts                   GetResourceResourceMongoHostArrayInput                   `pulumi:"mongoHosts"`
+	MongoLegacyHosts             GetResourceResourceMongoLegacyHostArrayInput             `pulumi:"mongoLegacyHosts"`
+	MongoLegacyReplicasets       GetResourceResourceMongoLegacyReplicasetArrayInput       `pulumi:"mongoLegacyReplicasets"`
+	MongoReplicaSets             GetResourceResourceMongoReplicaSetArrayInput             `pulumi:"mongoReplicaSets"`
+	MongoShardedClusters         GetResourceResourceMongoShardedClusterArrayInput         `pulumi:"mongoShardedClusters"`
+	MtlsMysqls                   GetResourceResourceMtlsMysqlArrayInput                   `pulumi:"mtlsMysqls"`
+	MtlsPostgres                 GetResourceResourceMtlsPostgreArrayInput                 `pulumi:"mtlsPostgres"`
+	Mysqls                       GetResourceResourceMysqlArrayInput                       `pulumi:"mysqls"`
+	NeptuneIams                  GetResourceResourceNeptuneIamArrayInput                  `pulumi:"neptuneIams"`
+	Neptunes                     GetResourceResourceNeptuneArrayInput                     `pulumi:"neptunes"`
+	OracleNnes                   GetResourceResourceOracleNneArrayInput                   `pulumi:"oracleNnes"`
+	Oracles                      GetResourceResourceOracleArrayInput                      `pulumi:"oracles"`
+	Postgres                     GetResourceResourcePostgreArrayInput                     `pulumi:"postgres"`
+	Prestos                      GetResourceResourcePrestoArrayInput                      `pulumi:"prestos"`
+	RabbitmqAmqp091s             GetResourceResourceRabbitmqAmqp091ArrayInput             `pulumi:"rabbitmqAmqp091s"`
+	RawTcps                      GetResourceResourceRawTcpArrayInput                      `pulumi:"rawTcps"`
+	RdpCerts                     GetResourceResourceRdpCertArrayInput                     `pulumi:"rdpCerts"`
+	Rdps                         GetResourceResourceRdpArrayInput                         `pulumi:"rdps"`
+	RdsPostgresIams              GetResourceResourceRdsPostgresIamArrayInput              `pulumi:"rdsPostgresIams"`
+	Redis                        GetResourceResourceRediArrayInput                        `pulumi:"redis"`
+	RedisClusters                GetResourceResourceRedisClusterArrayInput                `pulumi:"redisClusters"`
+	RedshiftIams                 GetResourceResourceRedshiftIamArrayInput                 `pulumi:"redshiftIams"`
+	RedshiftServerlessIams       GetResourceResourceRedshiftServerlessIamArrayInput       `pulumi:"redshiftServerlessIams"`
+	Redshifts                    GetResourceResourceRedshiftArrayInput                    `pulumi:"redshifts"`
+	SingleStores                 GetResourceResourceSingleStoreArrayInput                 `pulumi:"singleStores"`
+	Snowflakes                   GetResourceResourceSnowflakeArrayInput                   `pulumi:"snowflakes"`
+	Snowsights                   GetResourceResourceSnowsightArrayInput                   `pulumi:"snowsights"`
+	SqlServerAzureAds            GetResourceResourceSqlServerAzureAdArrayInput            `pulumi:"sqlServerAzureAds"`
+	SqlServerKerberosAds         GetResourceResourceSqlServerKerberosAdArrayInput         `pulumi:"sqlServerKerberosAds"`
+	SqlServers                   GetResourceResourceSqlServerArrayInput                   `pulumi:"sqlServers"`
+	SshCerts                     GetResourceResourceSshCertArrayInput                     `pulumi:"sshCerts"`
+	SshCustomerKeys              GetResourceResourceSshCustomerKeyArrayInput              `pulumi:"sshCustomerKeys"`
+	SshPasswords                 GetResourceResourceSshPasswordArrayInput                 `pulumi:"sshPasswords"`
+	Sshes                        GetResourceResourceSshArrayInput                         `pulumi:"sshes"`
+	SybaseIqs                    GetResourceResourceSybaseIqArrayInput                    `pulumi:"sybaseIqs"`
+	Sybases                      GetResourceResourceSybaseArrayInput                      `pulumi:"sybases"`
+	Teradatas                    GetResourceResourceTeradataArrayInput                    `pulumi:"teradatas"`
+	Trinos                       GetResourceResourceTrinoArrayInput                       `pulumi:"trinos"`
+	Verticas                     GetResourceResourceVerticaArrayInput                     `pulumi:"verticas"`
 }
 
 func (GetResourceResourceArgs) ElementType() reflect.Type {
@@ -52782,6 +53549,7 @@ func (o GetResourceResourceOutput) AksBasicAuths() GetResourceResourceAksBasicAu
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAksBasicAuth { return v.AksBasicAuths }).(GetResourceResourceAksBasicAuthArrayOutput)
 }
 
+// Deprecated: aks_service_account_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) AksServiceAccountUserImpersonations() GetResourceResourceAksServiceAccountUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAksServiceAccountUserImpersonation {
 		return v.AksServiceAccountUserImpersonations
@@ -52792,6 +53560,7 @@ func (o GetResourceResourceOutput) AksServiceAccounts() GetResourceResourceAksSe
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAksServiceAccount { return v.AksServiceAccounts }).(GetResourceResourceAksServiceAccountArrayOutput)
 }
 
+// Deprecated: aks_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) AksUserImpersonations() GetResourceResourceAksUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAksUserImpersonation { return v.AksUserImpersonations }).(GetResourceResourceAksUserImpersonationArrayOutput)
 }
@@ -52800,6 +53569,7 @@ func (o GetResourceResourceOutput) AmazonEks() GetResourceResourceAmazonEkArrayO
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEk { return v.AmazonEks }).(GetResourceResourceAmazonEkArrayOutput)
 }
 
+// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) AmazonEksInstanceProfileUserImpersonations() GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
 		return v.AmazonEksInstanceProfileUserImpersonations
@@ -52812,6 +53582,7 @@ func (o GetResourceResourceOutput) AmazonEksInstanceProfiles() GetResourceResour
 	}).(GetResourceResourceAmazonEksInstanceProfileArrayOutput)
 }
 
+// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) AmazonEksUserImpersonations() GetResourceResourceAmazonEksUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEksUserImpersonation {
 		return v.AmazonEksUserImpersonations
@@ -52828,6 +53599,10 @@ func (o GetResourceResourceOutput) AmazonEsiams() GetResourceResourceAmazonEsiam
 
 func (o GetResourceResourceOutput) AmazonmqAmqp091s() GetResourceResourceAmazonmqAmqp091ArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonmqAmqp091 { return v.AmazonmqAmqp091s }).(GetResourceResourceAmazonmqAmqp091ArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AmazonmqAmqps() GetResourceResourceAmazonmqAmqpArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonmqAmqp { return v.AmazonmqAmqps }).(GetResourceResourceAmazonmqAmqpArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AthenaIams() GetResourceResourceAthenaIamArrayOutput {
@@ -52878,6 +53653,12 @@ func (o GetResourceResourceOutput) AzureCertificates() GetResourceResourceAzureC
 
 func (o GetResourceResourceOutput) AzureConsoles() GetResourceResourceAzureConsoleArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureConsole { return v.AzureConsoles }).(GetResourceResourceAzureConsoleArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AzureMysqlManagedIdentities() GetResourceResourceAzureMysqlManagedIdentityArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureMysqlManagedIdentity {
+		return v.AzureMysqlManagedIdentities
+	}).(GetResourceResourceAzureMysqlManagedIdentityArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AzureMysqls() GetResourceResourceAzureMysqlArrayOutput {
@@ -52996,6 +53777,7 @@ func (o GetResourceResourceOutput) Gcpwifs() GetResourceResourceGcpwifArrayOutpu
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGcpwif { return v.Gcpwifs }).(GetResourceResourceGcpwifArrayOutput)
 }
 
+// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) GoogleGkeUserImpersonations() GetResourceResourceGoogleGkeUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGoogleGkeUserImpersonation {
 		return v.GoogleGkeUserImpersonations
@@ -53036,6 +53818,7 @@ func (o GetResourceResourceOutput) KubernetesPodIdentities() GetResourceResource
 	}).(GetResourceResourceKubernetesPodIdentityArrayOutput)
 }
 
+// Deprecated: kubernetes_service_account_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) KubernetesServiceAccountUserImpersonations() GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceKubernetesServiceAccountUserImpersonation {
 		return v.KubernetesServiceAccountUserImpersonations
@@ -53048,6 +53831,7 @@ func (o GetResourceResourceOutput) KubernetesServiceAccounts() GetResourceResour
 	}).(GetResourceResourceKubernetesServiceAccountArrayOutput)
 }
 
+// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 func (o GetResourceResourceOutput) KubernetesUserImpersonations() GetResourceResourceKubernetesUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceKubernetesUserImpersonation {
 		return v.KubernetesUserImpersonations
@@ -56335,6 +57119,220 @@ func (o GetResourceResourceAmazonmqAmqp091ArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetResourceResourceAmazonmqAmqp091Output)
 }
 
+type GetResourceResourceAmazonmqAmqp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceAmazonmqAmqpInput is an input type that accepts GetResourceResourceAmazonmqAmqpArgs and GetResourceResourceAmazonmqAmqpOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonmqAmqpInput` via:
+//
+//	GetResourceResourceAmazonmqAmqpArgs{...}
+type GetResourceResourceAmazonmqAmqpInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonmqAmqpOutput() GetResourceResourceAmazonmqAmqpOutput
+	ToGetResourceResourceAmazonmqAmqpOutputWithContext(context.Context) GetResourceResourceAmazonmqAmqpOutput
+}
+
+type GetResourceResourceAmazonmqAmqpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAmazonmqAmqpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonmqAmqpArgs) ToGetResourceResourceAmazonmqAmqpOutput() GetResourceResourceAmazonmqAmqpOutput {
+	return i.ToGetResourceResourceAmazonmqAmqpOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonmqAmqpArgs) ToGetResourceResourceAmazonmqAmqpOutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonmqAmqpOutput)
+}
+
+// GetResourceResourceAmazonmqAmqpArrayInput is an input type that accepts GetResourceResourceAmazonmqAmqpArray and GetResourceResourceAmazonmqAmqpArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonmqAmqpArrayInput` via:
+//
+//	GetResourceResourceAmazonmqAmqpArray{ GetResourceResourceAmazonmqAmqpArgs{...} }
+type GetResourceResourceAmazonmqAmqpArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonmqAmqpArrayOutput() GetResourceResourceAmazonmqAmqpArrayOutput
+	ToGetResourceResourceAmazonmqAmqpArrayOutputWithContext(context.Context) GetResourceResourceAmazonmqAmqpArrayOutput
+}
+
+type GetResourceResourceAmazonmqAmqpArray []GetResourceResourceAmazonmqAmqpInput
+
+func (GetResourceResourceAmazonmqAmqpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonmqAmqpArray) ToGetResourceResourceAmazonmqAmqpArrayOutput() GetResourceResourceAmazonmqAmqpArrayOutput {
+	return i.ToGetResourceResourceAmazonmqAmqpArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonmqAmqpArray) ToGetResourceResourceAmazonmqAmqpArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonmqAmqpArrayOutput)
+}
+
+type GetResourceResourceAmazonmqAmqpOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonmqAmqpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonmqAmqpOutput) ToGetResourceResourceAmazonmqAmqpOutput() GetResourceResourceAmazonmqAmqpOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonmqAmqpOutput) ToGetResourceResourceAmazonmqAmqpOutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqpOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAmazonmqAmqpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAmazonmqAmqpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceAmazonmqAmqpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonmqAmqpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAmazonmqAmqpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAmazonmqAmqpOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAmazonmqAmqpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceAmazonmqAmqpOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceAmazonmqAmqpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAmazonmqAmqpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonmqAmqpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonmqAmqp)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonmqAmqpArrayOutput) ToGetResourceResourceAmazonmqAmqpArrayOutput() GetResourceResourceAmazonmqAmqpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonmqAmqpArrayOutput) ToGetResourceResourceAmazonmqAmqpArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonmqAmqpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonmqAmqpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonmqAmqp {
+		return vs[0].([]GetResourceResourceAmazonmqAmqp)[vs[1].(int)]
+	}).(GetResourceResourceAmazonmqAmqpOutput)
+}
+
 type GetResourceResourceAthena struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey *string `pulumi:"accessKey"`
@@ -59398,6 +60396,229 @@ func (o GetResourceResourceAzureMysqlArrayOutput) Index(i pulumi.IntInput) GetRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzureMysql {
 		return vs[0].([]GetResourceResourceAzureMysql)[vs[1].(int)]
 	}).(GetResourceResourceAzureMysqlOutput)
+}
+
+type GetResourceResourceAzureMysqlManagedIdentity struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If true, appends the hostname to the username when hitting a database.azure.com address
+	UseAzureSingleServerUsernames *bool `pulumi:"useAzureSingleServerUsernames"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceAzureMysqlManagedIdentityInput is an input type that accepts GetResourceResourceAzureMysqlManagedIdentityArgs and GetResourceResourceAzureMysqlManagedIdentityOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureMysqlManagedIdentityInput` via:
+//
+//	GetResourceResourceAzureMysqlManagedIdentityArgs{...}
+type GetResourceResourceAzureMysqlManagedIdentityInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureMysqlManagedIdentityOutput() GetResourceResourceAzureMysqlManagedIdentityOutput
+	ToGetResourceResourceAzureMysqlManagedIdentityOutputWithContext(context.Context) GetResourceResourceAzureMysqlManagedIdentityOutput
+}
+
+type GetResourceResourceAzureMysqlManagedIdentityArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If true, appends the hostname to the username when hitting a database.azure.com address
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput `pulumi:"useAzureSingleServerUsernames"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAzureMysqlManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureMysqlManagedIdentityArgs) ToGetResourceResourceAzureMysqlManagedIdentityOutput() GetResourceResourceAzureMysqlManagedIdentityOutput {
+	return i.ToGetResourceResourceAzureMysqlManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureMysqlManagedIdentityArgs) ToGetResourceResourceAzureMysqlManagedIdentityOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlManagedIdentityOutput)
+}
+
+// GetResourceResourceAzureMysqlManagedIdentityArrayInput is an input type that accepts GetResourceResourceAzureMysqlManagedIdentityArray and GetResourceResourceAzureMysqlManagedIdentityArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureMysqlManagedIdentityArrayInput` via:
+//
+//	GetResourceResourceAzureMysqlManagedIdentityArray{ GetResourceResourceAzureMysqlManagedIdentityArgs{...} }
+type GetResourceResourceAzureMysqlManagedIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureMysqlManagedIdentityArrayOutput() GetResourceResourceAzureMysqlManagedIdentityArrayOutput
+	ToGetResourceResourceAzureMysqlManagedIdentityArrayOutputWithContext(context.Context) GetResourceResourceAzureMysqlManagedIdentityArrayOutput
+}
+
+type GetResourceResourceAzureMysqlManagedIdentityArray []GetResourceResourceAzureMysqlManagedIdentityInput
+
+func (GetResourceResourceAzureMysqlManagedIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureMysqlManagedIdentityArray) ToGetResourceResourceAzureMysqlManagedIdentityArrayOutput() GetResourceResourceAzureMysqlManagedIdentityArrayOutput {
+	return i.ToGetResourceResourceAzureMysqlManagedIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureMysqlManagedIdentityArray) ToGetResourceResourceAzureMysqlManagedIdentityArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlManagedIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlManagedIdentityArrayOutput)
+}
+
+type GetResourceResourceAzureMysqlManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureMysqlManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) ToGetResourceResourceAzureMysqlManagedIdentityOutput() GetResourceResourceAzureMysqlManagedIdentityOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) ToGetResourceResourceAzureMysqlManagedIdentityOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlManagedIdentityOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If true, appends the hostname to the username when hitting a database.azure.com address
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceAzureMysqlManagedIdentityOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysqlManagedIdentity) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAzureMysqlManagedIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureMysqlManagedIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureMysqlManagedIdentity)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureMysqlManagedIdentityArrayOutput) ToGetResourceResourceAzureMysqlManagedIdentityArrayOutput() GetResourceResourceAzureMysqlManagedIdentityArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlManagedIdentityArrayOutput) ToGetResourceResourceAzureMysqlManagedIdentityArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlManagedIdentityArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlManagedIdentityArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureMysqlManagedIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzureMysqlManagedIdentity {
+		return vs[0].([]GetResourceResourceAzureMysqlManagedIdentity)[vs[1].(int)]
+	}).(GetResourceResourceAzureMysqlManagedIdentityOutput)
 }
 
 type GetResourceResourceAzurePostgre struct {
@@ -81982,6 +83203,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsiamPtrInput)(nil)).Elem(), ResourceAmazonEsiamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqp091Input)(nil)).Elem(), ResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqp091PtrInput)(nil)).Elem(), ResourceAmazonmqAmqp091Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqpInput)(nil)).Elem(), ResourceAmazonmqAmqpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqpPtrInput)(nil)).Elem(), ResourceAmazonmqAmqpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaInput)(nil)).Elem(), ResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaPtrInput)(nil)).Elem(), ResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaIamInput)(nil)).Elem(), ResourceAthenaIamArgs{})
@@ -82010,6 +83233,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureConsolePtrInput)(nil)).Elem(), ResourceAzureConsoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlPtrInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlManagedIdentityInput)(nil)).Elem(), ResourceAzureMysqlManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlManagedIdentityPtrInput)(nil)).Elem(), ResourceAzureMysqlManagedIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresInput)(nil)).Elem(), ResourceAzurePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresPtrInput)(nil)).Elem(), ResourceAzurePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresManagedIdentityInput)(nil)).Elem(), ResourceAzurePostgresManagedIdentityArgs{})
@@ -82304,6 +83529,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEsiamArrayInput)(nil)).Elem(), GetResourceResourceAmazonEsiamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091Input)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091ArrayInput)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqpInput)(nil)).Elem(), GetResourceResourceAmazonmqAmqpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqpArrayInput)(nil)).Elem(), GetResourceResourceAmazonmqAmqpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaInput)(nil)).Elem(), GetResourceResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaArrayInput)(nil)).Elem(), GetResourceResourceAthenaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaIamInput)(nil)).Elem(), GetResourceResourceAthenaIamArgs{})
@@ -82332,6 +83559,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureConsoleArrayInput)(nil)).Elem(), GetResourceResourceAzureConsoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlInput)(nil)).Elem(), GetResourceResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlArrayInput)(nil)).Elem(), GetResourceResourceAzureMysqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlManagedIdentityInput)(nil)).Elem(), GetResourceResourceAzureMysqlManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlManagedIdentityArrayInput)(nil)).Elem(), GetResourceResourceAzureMysqlManagedIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgreInput)(nil)).Elem(), GetResourceResourceAzurePostgreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgreArrayInput)(nil)).Elem(), GetResourceResourceAzurePostgreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgresManagedIdentityInput)(nil)).Elem(), GetResourceResourceAzurePostgresManagedIdentityArgs{})
@@ -82600,6 +83829,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAmazonEsiamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonmqAmqp091Output{})
 	pulumi.RegisterOutputType(ResourceAmazonmqAmqp091PtrOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonmqAmqpOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonmqAmqpPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaIamOutput{})
@@ -82628,6 +83859,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAzureConsolePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureMysqlOutput{})
 	pulumi.RegisterOutputType(ResourceAzureMysqlPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAzureMysqlManagedIdentityOutput{})
+	pulumi.RegisterOutputType(ResourceAzureMysqlManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresManagedIdentityOutput{})
@@ -82922,6 +84155,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEsiamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091Output{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091ArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqpOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqpArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaIamOutput{})
@@ -82950,6 +84185,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAzureConsoleArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlManagedIdentityOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlManagedIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgresManagedIdentityOutput{})
