@@ -39,25 +39,21 @@ type Resource struct {
 	AmazonEs                   ResourceAmazonEsPtrOutput                   `pulumi:"amazonEs"`
 	AmazonEsiam                ResourceAmazonEsiamPtrOutput                `pulumi:"amazonEsiam"`
 	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonmqAmqp            ResourceAmazonmqAmqpPtrOutput            `pulumi:"amazonmqAmqp"`
-	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrOutput         `pulumi:"amazonmqAmqp091"`
-	Athena                  ResourceAthenaPtrOutput                  `pulumi:"athena"`
-	AthenaIam               ResourceAthenaIamPtrOutput               `pulumi:"athenaIam"`
-	AuroraMysql             ResourceAuroraMysqlPtrOutput             `pulumi:"auroraMysql"`
-	AuroraMysqlIam          ResourceAuroraMysqlIamPtrOutput          `pulumi:"auroraMysqlIam"`
-	AuroraPostgres          ResourceAuroraPostgresPtrOutput          `pulumi:"auroraPostgres"`
-	AuroraPostgresIam       ResourceAuroraPostgresIamPtrOutput       `pulumi:"auroraPostgresIam"`
-	Aws                     ResourceAwsPtrOutput                     `pulumi:"aws"`
-	AwsConsole              ResourceAwsConsolePtrOutput              `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile      ResourceAwsInstanceProfilePtrOutput      `pulumi:"awsInstanceProfile"`
-	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
-	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
-	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole ResourceAzureConsolePtrOutput `pulumi:"azureConsole"`
-	AzureMysql   ResourceAzureMysqlPtrOutput   `pulumi:"azureMysql"`
-	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrOutput                 `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrOutput              `pulumi:"amazonmqAmqp091"`
+	Athena                       ResourceAthenaPtrOutput                       `pulumi:"athena"`
+	AthenaIam                    ResourceAthenaIamPtrOutput                    `pulumi:"athenaIam"`
+	AuroraMysql                  ResourceAuroraMysqlPtrOutput                  `pulumi:"auroraMysql"`
+	AuroraMysqlIam               ResourceAuroraMysqlIamPtrOutput               `pulumi:"auroraMysqlIam"`
+	AuroraPostgres               ResourceAuroraPostgresPtrOutput               `pulumi:"auroraPostgres"`
+	AuroraPostgresIam            ResourceAuroraPostgresIamPtrOutput            `pulumi:"auroraPostgresIam"`
+	Aws                          ResourceAwsPtrOutput                          `pulumi:"aws"`
+	AwsConsole                   ResourceAwsConsolePtrOutput                   `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrOutput      `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile           ResourceAwsInstanceProfilePtrOutput           `pulumi:"awsInstanceProfile"`
+	Azure                        ResourceAzurePtrOutput                        `pulumi:"azure"`
+	AzureCertificate             ResourceAzureCertificatePtrOutput             `pulumi:"azureCertificate"`
+	AzureMysql                   ResourceAzureMysqlPtrOutput                   `pulumi:"azureMysql"`
 	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrOutput    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                ResourceAzurePostgresPtrOutput                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrOutput `pulumi:"azurePostgresManagedIdentity"`
@@ -84,10 +80,12 @@ type Resource struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrOutput             `pulumi:"dynamoDbiam"`
 	Elastic                 ResourceElasticPtrOutput                 `pulumi:"elastic"`
 	ElasticacheRedis        ResourceElasticacheRedisPtrOutput        `pulumi:"elasticacheRedis"`
-	Gcp                     ResourceGcpPtrOutput                     `pulumi:"gcp"`
-	GcpConsole              ResourceGcpConsolePtrOutput              `pulumi:"gcpConsole"`
-	Gcpwif                  ResourceGcpwifPtrOutput                  `pulumi:"gcpwif"`
-	GoogleGke               ResourceGoogleGkePtrOutput               `pulumi:"googleGke"`
+	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	EntraId    ResourceEntraIdPtrOutput    `pulumi:"entraId"`
+	Gcp        ResourceGcpPtrOutput        `pulumi:"gcp"`
+	GcpConsole ResourceGcpConsolePtrOutput `pulumi:"gcpConsole"`
+	Gcpwif     ResourceGcpwifPtrOutput     `pulumi:"gcpwif"`
+	GoogleGke  ResourceGoogleGkePtrOutput  `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
@@ -198,25 +196,21 @@ type resourceState struct {
 	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
 	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
 	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonmqAmqp            *ResourceAmazonmqAmqp            `pulumi:"amazonmqAmqp"`
-	AmazonmqAmqp091         *ResourceAmazonmqAmqp091         `pulumi:"amazonmqAmqp091"`
-	Athena                  *ResourceAthena                  `pulumi:"athena"`
-	AthenaIam               *ResourceAthenaIam               `pulumi:"athenaIam"`
-	AuroraMysql             *ResourceAuroraMysql             `pulumi:"auroraMysql"`
-	AuroraMysqlIam          *ResourceAuroraMysqlIam          `pulumi:"auroraMysqlIam"`
-	AuroraPostgres          *ResourceAuroraPostgres          `pulumi:"auroraPostgres"`
-	AuroraPostgresIam       *ResourceAuroraPostgresIam       `pulumi:"auroraPostgresIam"`
-	Aws                     *ResourceAws                     `pulumi:"aws"`
-	AwsConsole              *ResourceAwsConsole              `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile      *ResourceAwsInstanceProfile      `pulumi:"awsInstanceProfile"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole *ResourceAzureConsole `pulumi:"azureConsole"`
-	AzureMysql   *ResourceAzureMysql   `pulumi:"azureMysql"`
-	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	AmazonmqAmqp                 *ResourceAmazonmqAmqp                 `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
+	Athena                       *ResourceAthena                       `pulumi:"athena"`
+	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
+	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
+	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
+	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
+	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
+	Aws                          *ResourceAws                          `pulumi:"aws"`
+	AwsConsole                   *ResourceAwsConsole                   `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair      *ResourceAwsConsoleStaticKeyPair      `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile           *ResourceAwsInstanceProfile           `pulumi:"awsInstanceProfile"`
+	Azure                        *ResourceAzure                        `pulumi:"azure"`
+	AzureCertificate             *ResourceAzureCertificate             `pulumi:"azureCertificate"`
+	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
 	AzureMysqlManagedIdentity    *ResourceAzureMysqlManagedIdentity    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
@@ -243,10 +237,12 @@ type resourceState struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
-	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
-	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
-	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	EntraId    *ResourceEntraId    `pulumi:"entraId"`
+	Gcp        *ResourceGcp        `pulumi:"gcp"`
+	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
+	Gcpwif     *ResourceGcpwif     `pulumi:"gcpwif"`
+	GoogleGke  *ResourceGoogleGke  `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
@@ -328,25 +324,21 @@ type ResourceState struct {
 	AmazonEs                   ResourceAmazonEsPtrInput
 	AmazonEsiam                ResourceAmazonEsiamPtrInput
 	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonmqAmqp            ResourceAmazonmqAmqpPtrInput
-	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrInput
-	Athena                  ResourceAthenaPtrInput
-	AthenaIam               ResourceAthenaIamPtrInput
-	AuroraMysql             ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam          ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres          ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam       ResourceAuroraPostgresIamPtrInput
-	Aws                     ResourceAwsPtrInput
-	AwsConsole              ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile      ResourceAwsInstanceProfilePtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole ResourceAzureConsolePtrInput
-	AzureMysql   ResourceAzureMysqlPtrInput
-	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrInput
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
+	Athena                       ResourceAthenaPtrInput
+	AthenaIam                    ResourceAthenaIamPtrInput
+	AuroraMysql                  ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres               ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
+	Aws                          ResourceAwsPtrInput
+	AwsConsole                   ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile           ResourceAwsInstanceProfilePtrInput
+	Azure                        ResourceAzurePtrInput
+	AzureCertificate             ResourceAzureCertificatePtrInput
+	AzureMysql                   ResourceAzureMysqlPtrInput
 	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrInput
 	AzurePostgres                ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
@@ -373,10 +365,12 @@ type ResourceState struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	Gcp                     ResourceGcpPtrInput
-	GcpConsole              ResourceGcpConsolePtrInput
-	Gcpwif                  ResourceGcpwifPtrInput
-	GoogleGke               ResourceGoogleGkePtrInput
+	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	EntraId    ResourceEntraIdPtrInput
+	Gcp        ResourceGcpPtrInput
+	GcpConsole ResourceGcpConsolePtrInput
+	Gcpwif     ResourceGcpwifPtrInput
+	GoogleGke  ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
@@ -462,25 +456,21 @@ type resourceArgs struct {
 	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
 	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
 	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonmqAmqp            *ResourceAmazonmqAmqp            `pulumi:"amazonmqAmqp"`
-	AmazonmqAmqp091         *ResourceAmazonmqAmqp091         `pulumi:"amazonmqAmqp091"`
-	Athena                  *ResourceAthena                  `pulumi:"athena"`
-	AthenaIam               *ResourceAthenaIam               `pulumi:"athenaIam"`
-	AuroraMysql             *ResourceAuroraMysql             `pulumi:"auroraMysql"`
-	AuroraMysqlIam          *ResourceAuroraMysqlIam          `pulumi:"auroraMysqlIam"`
-	AuroraPostgres          *ResourceAuroraPostgres          `pulumi:"auroraPostgres"`
-	AuroraPostgresIam       *ResourceAuroraPostgresIam       `pulumi:"auroraPostgresIam"`
-	Aws                     *ResourceAws                     `pulumi:"aws"`
-	AwsConsole              *ResourceAwsConsole              `pulumi:"awsConsole"`
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	AwsInstanceProfile      *ResourceAwsInstanceProfile      `pulumi:"awsInstanceProfile"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole *ResourceAzureConsole `pulumi:"azureConsole"`
-	AzureMysql   *ResourceAzureMysql   `pulumi:"azureMysql"`
-	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	AmazonmqAmqp                 *ResourceAmazonmqAmqp                 `pulumi:"amazonmqAmqp"`
+	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
+	Athena                       *ResourceAthena                       `pulumi:"athena"`
+	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
+	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
+	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
+	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
+	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
+	Aws                          *ResourceAws                          `pulumi:"aws"`
+	AwsConsole                   *ResourceAwsConsole                   `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair      *ResourceAwsConsoleStaticKeyPair      `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile           *ResourceAwsInstanceProfile           `pulumi:"awsInstanceProfile"`
+	Azure                        *ResourceAzure                        `pulumi:"azure"`
+	AzureCertificate             *ResourceAzureCertificate             `pulumi:"azureCertificate"`
+	AzureMysql                   *ResourceAzureMysql                   `pulumi:"azureMysql"`
 	AzureMysqlManagedIdentity    *ResourceAzureMysqlManagedIdentity    `pulumi:"azureMysqlManagedIdentity"`
 	AzurePostgres                *ResourceAzurePostgres                `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity *ResourceAzurePostgresManagedIdentity `pulumi:"azurePostgresManagedIdentity"`
@@ -507,10 +497,12 @@ type resourceArgs struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
-	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
-	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
-	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	EntraId    *ResourceEntraId    `pulumi:"entraId"`
+	Gcp        *ResourceGcp        `pulumi:"gcp"`
+	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
+	Gcpwif     *ResourceGcpwif     `pulumi:"gcpwif"`
+	GoogleGke  *ResourceGoogleGke  `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
@@ -593,25 +585,21 @@ type ResourceArgs struct {
 	AmazonEs                   ResourceAmazonEsPtrInput
 	AmazonEsiam                ResourceAmazonEsiamPtrInput
 	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AmazonmqAmqp            ResourceAmazonmqAmqpPtrInput
-	AmazonmqAmqp091         ResourceAmazonmqAmqp091PtrInput
-	Athena                  ResourceAthenaPtrInput
-	AthenaIam               ResourceAthenaIamPtrInput
-	AuroraMysql             ResourceAuroraMysqlPtrInput
-	AuroraMysqlIam          ResourceAuroraMysqlIamPtrInput
-	AuroraPostgres          ResourceAuroraPostgresPtrInput
-	AuroraPostgresIam       ResourceAuroraPostgresIamPtrInput
-	Aws                     ResourceAwsPtrInput
-	AwsConsole              ResourceAwsConsolePtrInput
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	AwsInstanceProfile      ResourceAwsInstanceProfilePtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AzureConsole ResourceAzureConsolePtrInput
-	AzureMysql   ResourceAzureMysqlPtrInput
-	// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrInput
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
+	Athena                       ResourceAthenaPtrInput
+	AthenaIam                    ResourceAthenaIamPtrInput
+	AuroraMysql                  ResourceAuroraMysqlPtrInput
+	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
+	AuroraPostgres               ResourceAuroraPostgresPtrInput
+	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
+	Aws                          ResourceAwsPtrInput
+	AwsConsole                   ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair      ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile           ResourceAwsInstanceProfilePtrInput
+	Azure                        ResourceAzurePtrInput
+	AzureCertificate             ResourceAzureCertificatePtrInput
+	AzureMysql                   ResourceAzureMysqlPtrInput
 	AzureMysqlManagedIdentity    ResourceAzureMysqlManagedIdentityPtrInput
 	AzurePostgres                ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity ResourceAzurePostgresManagedIdentityPtrInput
@@ -638,10 +626,12 @@ type ResourceArgs struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	Gcp                     ResourceGcpPtrInput
-	GcpConsole              ResourceGcpConsolePtrInput
-	Gcpwif                  ResourceGcpwifPtrInput
-	GoogleGke               ResourceGoogleGkePtrInput
+	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	EntraId    ResourceEntraIdPtrInput
+	Gcp        ResourceGcpPtrInput
+	GcpConsole ResourceGcpConsolePtrInput
+	Gcpwif     ResourceGcpwifPtrInput
+	GoogleGke  ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
@@ -905,17 +895,10 @@ func (o ResourceOutput) AzureCertificate() ResourceAzureCertificatePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureCertificatePtrOutput { return v.AzureCertificate }).(ResourceAzureCertificatePtrOutput)
 }
 
-// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-func (o ResourceOutput) AzureConsole() ResourceAzureConsolePtrOutput {
-	return o.ApplyT(func(v *Resource) ResourceAzureConsolePtrOutput { return v.AzureConsole }).(ResourceAzureConsolePtrOutput)
-}
-
 func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureMysqlPtrOutput { return v.AzureMysql }).(ResourceAzureMysqlPtrOutput)
 }
 
-// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-// bump.
 func (o ResourceOutput) AzureMysqlManagedIdentity() ResourceAzureMysqlManagedIdentityPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureMysqlManagedIdentityPtrOutput { return v.AzureMysqlManagedIdentity }).(ResourceAzureMysqlManagedIdentityPtrOutput)
 }
@@ -1012,6 +995,11 @@ func (o ResourceOutput) Elastic() ResourceElasticPtrOutput {
 
 func (o ResourceOutput) ElasticacheRedis() ResourceElasticacheRedisPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceElasticacheRedisPtrOutput { return v.ElasticacheRedis }).(ResourceElasticacheRedisPtrOutput)
+}
+
+// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) EntraId() ResourceEntraIdPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceEntraIdPtrOutput { return v.EntraId }).(ResourceEntraIdPtrOutput)
 }
 
 func (o ResourceOutput) Gcp() ResourceGcpPtrOutput {

@@ -87,15 +87,7 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly awsInstanceProfile: pulumi.Output<outputs.ResourceAwsInstanceProfile | undefined>;
     declare public readonly azure: pulumi.Output<outputs.ResourceAzure | undefined>;
     declare public readonly azureCertificate: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
-    /**
-     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
-    declare public readonly azureConsole: pulumi.Output<outputs.ResourceAzureConsole | undefined>;
     declare public readonly azureMysql: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
-    /**
-     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     declare public readonly azureMysqlManagedIdentity: pulumi.Output<outputs.ResourceAzureMysqlManagedIdentity | undefined>;
     declare public readonly azurePostgres: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
     declare public readonly azurePostgresManagedIdentity: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
@@ -124,6 +116,10 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly dynamoDbiam: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
     declare public readonly elastic: pulumi.Output<outputs.ResourceElastic | undefined>;
     declare public readonly elasticacheRedis: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
+    /**
+     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly entraId: pulumi.Output<outputs.ResourceEntraId | undefined>;
     declare public readonly gcp: pulumi.Output<outputs.ResourceGcp | undefined>;
     declare public readonly gcpConsole: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
     declare public readonly gcpwif: pulumi.Output<outputs.ResourceGcpwif | undefined>;
@@ -242,7 +238,6 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsInstanceProfile"] = state?.awsInstanceProfile;
             resourceInputs["azure"] = state?.azure;
             resourceInputs["azureCertificate"] = state?.azureCertificate;
-            resourceInputs["azureConsole"] = state?.azureConsole;
             resourceInputs["azureMysql"] = state?.azureMysql;
             resourceInputs["azureMysqlManagedIdentity"] = state?.azureMysqlManagedIdentity;
             resourceInputs["azurePostgres"] = state?.azurePostgres;
@@ -268,6 +263,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["dynamoDbiam"] = state?.dynamoDbiam;
             resourceInputs["elastic"] = state?.elastic;
             resourceInputs["elasticacheRedis"] = state?.elasticacheRedis;
+            resourceInputs["entraId"] = state?.entraId;
             resourceInputs["gcp"] = state?.gcp;
             resourceInputs["gcpConsole"] = state?.gcpConsole;
             resourceInputs["gcpwif"] = state?.gcpwif;
@@ -353,7 +349,6 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsInstanceProfile"] = args?.awsInstanceProfile;
             resourceInputs["azure"] = args?.azure;
             resourceInputs["azureCertificate"] = args?.azureCertificate;
-            resourceInputs["azureConsole"] = args?.azureConsole;
             resourceInputs["azureMysql"] = args?.azureMysql;
             resourceInputs["azureMysqlManagedIdentity"] = args?.azureMysqlManagedIdentity;
             resourceInputs["azurePostgres"] = args?.azurePostgres;
@@ -379,6 +374,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["dynamoDbiam"] = args?.dynamoDbiam;
             resourceInputs["elastic"] = args?.elastic;
             resourceInputs["elasticacheRedis"] = args?.elasticacheRedis;
+            resourceInputs["entraId"] = args?.entraId;
             resourceInputs["gcp"] = args?.gcp;
             resourceInputs["gcpConsole"] = args?.gcpConsole;
             resourceInputs["gcpwif"] = args?.gcpwif;
@@ -490,15 +486,7 @@ export interface ResourceState {
     awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    /**
-     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
-    azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
-    /**
-     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
@@ -527,6 +515,10 @@ export interface ResourceState {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    /**
+     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
@@ -655,15 +647,7 @@ export interface ResourceArgs {
     awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    /**
-     * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
-    azureConsole?: pulumi.Input<inputs.ResourceAzureConsole>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
-    /**
-     * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
@@ -692,6 +676,10 @@ export interface ResourceArgs {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    /**
+     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;

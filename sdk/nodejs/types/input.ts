@@ -266,7 +266,7 @@ export interface NodeRelayMaintenanceWindow {
 
 export interface ResourceAerospike {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -290,7 +290,7 @@ export interface ResourceAerospike {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -325,7 +325,7 @@ export interface ResourceAks {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -377,7 +377,7 @@ export interface ResourceAks {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -400,7 +400,7 @@ export interface ResourceAks {
 
 export interface ResourceAksBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -428,7 +428,7 @@ export interface ResourceAksBasicAuth {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -459,7 +459,7 @@ export interface ResourceAksServiceAccount {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -499,7 +499,7 @@ export interface ResourceAksServiceAccount {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -527,7 +527,7 @@ export interface ResourceAksServiceAccount {
 
 export interface ResourceAksServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -551,7 +551,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -579,7 +579,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
 
 export interface ResourceAksUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -615,7 +615,7 @@ export interface ResourceAksUserImpersonation {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -646,7 +646,7 @@ export interface ResourceAmazonEks {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -690,7 +690,7 @@ export interface ResourceAmazonEks {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -733,7 +733,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -777,7 +777,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -812,7 +812,7 @@ export interface ResourceAmazonEksInstanceProfile {
 
 export interface ResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -840,7 +840,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -879,7 +879,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -907,7 +907,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -950,7 +950,7 @@ export interface ResourceAmazonEs {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -966,7 +966,7 @@ export interface ResourceAmazonEs {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1005,7 +1005,7 @@ export interface ResourceAmazonEs {
 
 export interface ResourceAmazonEsiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1021,7 +1021,7 @@ export interface ResourceAmazonEsiam {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1060,7 +1060,7 @@ export interface ResourceAmazonEsiam {
 
 export interface ResourceAmazonmqAmqp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1084,7 +1084,7 @@ export interface ResourceAmazonmqAmqp {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1115,7 +1115,7 @@ export interface ResourceAmazonmqAmqp {
 
 export interface ResourceAmazonmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1139,7 +1139,7 @@ export interface ResourceAmazonmqAmqp091 {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1178,7 +1178,7 @@ export interface ResourceAthena {
      */
     athenaOutput: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1190,7 +1190,7 @@ export interface ResourceAthena {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1229,7 +1229,7 @@ export interface ResourceAthena {
 
 export interface ResourceAthenaIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1245,7 +1245,7 @@ export interface ResourceAthenaIam {
      */
     output: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1280,7 +1280,7 @@ export interface ResourceAthenaIam {
 
 export interface ResourceAuroraMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1308,7 +1308,7 @@ export interface ResourceAuroraMysql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1343,7 +1343,7 @@ export interface ResourceAuroraMysql {
 
 export interface ResourceAuroraMysqlIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1367,7 +1367,7 @@ export interface ResourceAuroraMysqlIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1402,7 +1402,7 @@ export interface ResourceAuroraMysqlIam {
 
 export interface ResourceAuroraPostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1434,7 +1434,7 @@ export interface ResourceAuroraPostgres {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1461,7 +1461,7 @@ export interface ResourceAuroraPostgres {
 
 export interface ResourceAuroraPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1489,7 +1489,7 @@ export interface ResourceAuroraPostgresIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1528,7 +1528,7 @@ export interface ResourceAws {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1544,7 +1544,7 @@ export interface ResourceAws {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1579,7 +1579,7 @@ export interface ResourceAws {
 
 export interface ResourceAwsConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1603,7 +1603,7 @@ export interface ResourceAwsConsole {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1646,7 +1646,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1666,7 +1666,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1709,7 +1709,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
 
 export interface ResourceAwsInstanceProfile {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1725,7 +1725,7 @@ export interface ResourceAwsInstanceProfile {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1764,7 +1764,7 @@ export interface ResourceAzure {
      */
     appId?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1780,7 +1780,7 @@ export interface ResourceAzure {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1812,7 +1812,7 @@ export interface ResourceAzureCertificate {
      */
     appId?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1828,7 +1828,7 @@ export interface ResourceAzureCertificate {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1854,60 +1854,9 @@ export interface ResourceAzureCertificate {
     tenantId?: pulumi.Input<string>;
 }
 
-export interface ResourceAzureConsole {
-    /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-     */
-    bindInterface?: pulumi.Input<string>;
-    /**
-     * The connector ID to authenticate through.
-     */
-    connectorId: pulumi.Input<string>;
-    /**
-     * A filter applied to the routing logic to pin datasource to nodes.
-     */
-    egressFilter?: pulumi.Input<string>;
-    /**
-     * The ID of the identity set to use for identity connections.
-     */
-    identitySetId?: pulumi.Input<string>;
-    /**
-     * The management group ID to authenticate scope Privileges to.
-     */
-    managementGroupId?: pulumi.Input<string>;
-    /**
-     * Unique human-readable name of the Resource.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * The privilege levels specify which Groups are managed externally
-     */
-    privilegeLevels: pulumi.Input<string>;
-    /**
-     * ID of the proxy cluster for this resource, if any.
-     */
-    proxyClusterId?: pulumi.Input<string>;
-    /**
-     * ID of the secret store containing credentials for this resource, if any.
-     */
-    secretStoreId?: pulumi.Input<string>;
-    /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-     */
-    subdomain?: pulumi.Input<string>;
-    /**
-     * The subscription ID to authenticate scope Privileges to.
-     */
-    subscriptionId?: pulumi.Input<string>;
-    /**
-     * Tags is a map of key, value pairs.
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-}
-
 export interface ResourceAzureMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1935,7 +1884,7 @@ export interface ResourceAzureMysql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -1970,7 +1919,7 @@ export interface ResourceAzureMysql {
 
 export interface ResourceAzureMysqlManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1998,7 +1947,7 @@ export interface ResourceAzureMysqlManagedIdentity {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2029,7 +1978,7 @@ export interface ResourceAzureMysqlManagedIdentity {
 
 export interface ResourceAzurePostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2061,7 +2010,7 @@ export interface ResourceAzurePostgres {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2088,7 +2037,7 @@ export interface ResourceAzurePostgres {
 
 export interface ResourceAzurePostgresManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2120,7 +2069,7 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2151,7 +2100,7 @@ export interface ResourceAzurePostgresManagedIdentity {
 
 export interface ResourceBigQuery {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2167,7 +2116,7 @@ export interface ResourceBigQuery {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2202,7 +2151,7 @@ export interface ResourceBigQuery {
 
 export interface ResourceCassandra {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2226,7 +2175,7 @@ export interface ResourceCassandra {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2257,7 +2206,7 @@ export interface ResourceCassandra {
 
 export interface ResourceCitus {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2289,7 +2238,7 @@ export interface ResourceCitus {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2316,7 +2265,7 @@ export interface ResourceCitus {
 
 export interface ResourceClickHouseHttp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2336,7 +2285,7 @@ export interface ResourceClickHouseHttp {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2364,7 +2313,7 @@ export interface ResourceClickHouseHttp {
 
 export interface ResourceClickHouseMySql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2392,7 +2341,7 @@ export interface ResourceClickHouseMySql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2423,7 +2372,7 @@ export interface ResourceClickHouseMySql {
 
 export interface ResourceClickHouseTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2451,7 +2400,7 @@ export interface ResourceClickHouseTcp {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2482,7 +2431,7 @@ export interface ResourceClickHouseTcp {
 
 export interface ResourceClustrix {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2510,7 +2459,7 @@ export interface ResourceClustrix {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2545,7 +2494,7 @@ export interface ResourceClustrix {
 
 export interface ResourceCockroach {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2577,7 +2526,7 @@ export interface ResourceCockroach {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2604,7 +2553,7 @@ export interface ResourceCockroach {
 
 export interface ResourceCouchbaseDatabase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2632,7 +2581,7 @@ export interface ResourceCouchbaseDatabase {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2663,7 +2612,7 @@ export interface ResourceCouchbaseDatabase {
 
 export interface ResourceCouchbaseWebUi {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2679,7 +2628,7 @@ export interface ResourceCouchbaseWebUi {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2711,7 +2660,7 @@ export interface ResourceCouchbaseWebUi {
 
 export interface ResourceDb2I {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2735,7 +2684,7 @@ export interface ResourceDb2I {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2766,7 +2715,7 @@ export interface ResourceDb2I {
 
 export interface ResourceDb2Luw {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2794,7 +2743,7 @@ export interface ResourceDb2Luw {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2829,7 +2778,7 @@ export interface ResourceDocumentDbHost {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2853,7 +2802,7 @@ export interface ResourceDocumentDbHost {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2880,7 +2829,7 @@ export interface ResourceDocumentDbHost {
 
 export interface ResourceDocumentDbHostIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2900,7 +2849,7 @@ export interface ResourceDocumentDbHostIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2931,7 +2880,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -2955,7 +2904,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -2986,7 +2935,7 @@ export interface ResourceDocumentDbReplicaSet {
 
 export interface ResourceDocumentDbReplicaSetIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3006,7 +2955,7 @@ export interface ResourceDocumentDbReplicaSetIam {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3033,7 +2982,7 @@ export interface ResourceDocumentDbReplicaSetIam {
 
 export interface ResourceDruid {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3057,7 +3006,7 @@ export interface ResourceDruid {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3088,7 +3037,7 @@ export interface ResourceDynamoDb {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3104,7 +3053,7 @@ export interface ResourceDynamoDb {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3143,7 +3092,7 @@ export interface ResourceDynamoDb {
 
 export interface ResourceDynamoDbiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3159,7 +3108,7 @@ export interface ResourceDynamoDbiam {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3194,7 +3143,7 @@ export interface ResourceDynamoDbiam {
 
 export interface ResourceElastic {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3218,7 +3167,7 @@ export interface ResourceElastic {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3249,7 +3198,7 @@ export interface ResourceElastic {
 
 export interface ResourceElasticacheRedis {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3273,7 +3222,7 @@ export interface ResourceElasticacheRedis {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3302,9 +3251,73 @@ export interface ResourceElasticacheRedis {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceEntraId {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: pulumi.Input<string>;
+    /**
+     * The management group ID to authenticate scope Privileges to.
+     */
+    managementGroupId?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * filters discovered groups to the specified Resource Group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * The subscription ID to authenticate scope Privileges to.
+     */
+    subscriptionId?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
+     * * sql_server_kerberos_ad:
+     */
+    tenantId: pulumi.Input<string>;
+}
+
 export interface ResourceGcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3320,7 +3333,7 @@ export interface ResourceGcp {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3347,7 +3360,7 @@ export interface ResourceGcp {
 
 export interface ResourceGcpConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3367,7 +3380,7 @@ export interface ResourceGcpConsole {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3403,7 +3416,7 @@ export interface ResourceGcpConsole {
 
 export interface ResourceGcpwif {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3423,7 +3436,7 @@ export interface ResourceGcpwif {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3471,7 +3484,7 @@ export interface ResourceGoogleGke {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3511,7 +3524,7 @@ export interface ResourceGoogleGke {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3538,7 +3551,7 @@ export interface ResourceGoogleGke {
 
 export interface ResourceGoogleGkeUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3562,7 +3575,7 @@ export interface ResourceGoogleGkeUserImpersonation {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3589,7 +3602,7 @@ export interface ResourceGoogleGkeUserImpersonation {
 
 export interface ResourceGreenplum {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3621,7 +3634,7 @@ export interface ResourceGreenplum {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3652,7 +3665,7 @@ export interface ResourceHttpAuth {
      */
     authHeader?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3680,7 +3693,7 @@ export interface ResourceHttpAuth {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3708,7 +3721,7 @@ export interface ResourceHttpAuth {
 
 export interface ResourceHttpBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3740,7 +3753,7 @@ export interface ResourceHttpBasicAuth {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3772,7 +3785,7 @@ export interface ResourceHttpBasicAuth {
 
 export interface ResourceHttpNoAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3800,7 +3813,7 @@ export interface ResourceHttpNoAuth {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3832,7 +3845,7 @@ export interface ResourceKubernetes {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3884,7 +3897,7 @@ export interface ResourceKubernetes {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3907,7 +3920,7 @@ export interface ResourceKubernetes {
 
 export interface ResourceKubernetesBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -3935,7 +3948,7 @@ export interface ResourceKubernetesBasicAuth {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -3966,7 +3979,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4002,7 +4015,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4029,7 +4042,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4069,7 +4082,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4097,7 +4110,7 @@ export interface ResourceKubernetesServiceAccount {
 
 export interface ResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4121,7 +4134,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4149,7 +4162,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
 
 export interface ResourceKubernetesUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4185,7 +4198,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4208,7 +4221,7 @@ export interface ResourceKubernetesUserImpersonation {
 
 export interface ResourceMaria {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4236,7 +4249,7 @@ export interface ResourceMaria {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4271,7 +4284,7 @@ export interface ResourceMaria {
 
 export interface ResourceMemcached {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4291,7 +4304,7 @@ export interface ResourceMemcached {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4314,7 +4327,7 @@ export interface ResourceMemcached {
 
 export interface ResourceMemsql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4342,7 +4355,7 @@ export interface ResourceMemsql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4381,7 +4394,7 @@ export interface ResourceMongoHost {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4405,7 +4418,7 @@ export interface ResourceMongoHost {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4440,7 +4453,7 @@ export interface ResourceMongoLegacyHost {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4464,7 +4477,7 @@ export interface ResourceMongoLegacyHost {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4499,7 +4512,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4527,7 +4540,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4566,7 +4579,7 @@ export interface ResourceMongoReplicaSet {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4594,7 +4607,7 @@ export interface ResourceMongoReplicaSet {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4633,7 +4646,7 @@ export interface ResourceMongoShardedCluster {
      */
     authDatabase: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4653,7 +4666,7 @@ export interface ResourceMongoShardedCluster {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4684,7 +4697,7 @@ export interface ResourceMongoShardedCluster {
 
 export interface ResourceMtlsMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4724,7 +4737,7 @@ export interface ResourceMtlsMysql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4763,7 +4776,7 @@ export interface ResourceMtlsMysql {
 
 export interface ResourceMtlsPostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4807,7 +4820,7 @@ export interface ResourceMtlsPostgres {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4838,7 +4851,7 @@ export interface ResourceMtlsPostgres {
 
 export interface ResourceMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4866,7 +4879,7 @@ export interface ResourceMysql {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4901,7 +4914,7 @@ export interface ResourceMysql {
 
 export interface ResourceNeptune {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4921,7 +4934,7 @@ export interface ResourceNeptune {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -4948,7 +4961,7 @@ export interface ResourceNeptuneIam {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -4968,7 +4981,7 @@ export interface ResourceNeptuneIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5007,7 +5020,7 @@ export interface ResourceNeptuneIam {
 
 export interface ResourceOracle {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5035,7 +5048,7 @@ export interface ResourceOracle {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5066,7 +5079,7 @@ export interface ResourceOracle {
 
 export interface ResourceOracleNne {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5094,7 +5107,7 @@ export interface ResourceOracleNne {
      */
     port: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5121,7 +5134,7 @@ export interface ResourceOracleNne {
 
 export interface ResourcePostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5153,7 +5166,7 @@ export interface ResourcePostgres {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5180,7 +5193,7 @@ export interface ResourcePostgres {
 
 export interface ResourcePresto {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5208,7 +5221,7 @@ export interface ResourcePresto {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5239,7 +5252,7 @@ export interface ResourcePresto {
 
 export interface ResourceRabbitmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5263,7 +5276,7 @@ export interface ResourceRabbitmqAmqp091 {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5294,7 +5307,7 @@ export interface ResourceRabbitmqAmqp091 {
 
 export interface ResourceRawTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5314,7 +5327,7 @@ export interface ResourceRawTcp {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5337,7 +5350,7 @@ export interface ResourceRawTcp {
 
 export interface ResourceRdp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5369,7 +5382,7 @@ export interface ResourceRdp {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5396,7 +5409,7 @@ export interface ResourceRdp {
 
 export interface ResourceRdpCert {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5428,7 +5441,7 @@ export interface ResourceRdpCert {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5439,6 +5452,10 @@ export interface ResourceRdpCert {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     */
+    sid?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5455,7 +5472,7 @@ export interface ResourceRdpCert {
 
 export interface ResourceRdsPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5483,7 +5500,7 @@ export interface ResourceRdsPostgresIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5518,7 +5535,7 @@ export interface ResourceRdsPostgresIam {
 
 export interface ResourceRedis {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5542,7 +5559,7 @@ export interface ResourceRedis {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5573,7 +5590,7 @@ export interface ResourceRedis {
 
 export interface ResourceRedisCluster {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5597,7 +5614,7 @@ export interface ResourceRedisCluster {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5628,7 +5645,7 @@ export interface ResourceRedisCluster {
 
 export interface ResourceRedshift {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5660,7 +5677,7 @@ export interface ResourceRedshift {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5687,7 +5704,7 @@ export interface ResourceRedshift {
 
 export interface ResourceRedshiftIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5719,7 +5736,7 @@ export interface ResourceRedshiftIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5750,7 +5767,7 @@ export interface ResourceRedshiftIam {
 
 export interface ResourceRedshiftServerlessIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5778,7 +5795,7 @@ export interface ResourceRedshiftServerlessIam {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5814,7 +5831,7 @@ export interface ResourceRedshiftServerlessIam {
 
 export interface ResourceSingleStore {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5842,7 +5859,7 @@ export interface ResourceSingleStore {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5877,7 +5894,7 @@ export interface ResourceSingleStore {
 
 export interface ResourceSnowflake {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5901,7 +5918,7 @@ export interface ResourceSnowflake {
      */
     password?: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5936,7 +5953,7 @@ export interface ResourceSnowflake {
 
 export interface ResourceSnowsight {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -5952,7 +5969,7 @@ export interface ResourceSnowsight {
      */
     name: pulumi.Input<string>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -5983,7 +6000,7 @@ export interface ResourceSqlServer {
      */
     allowDeprecatedEncryption?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6015,7 +6032,7 @@ export interface ResourceSqlServer {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6050,7 +6067,7 @@ export interface ResourceSqlServerAzureAd {
      */
     allowDeprecatedEncryption?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6082,7 +6099,7 @@ export interface ResourceSqlServerAzureAd {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6122,7 +6139,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     allowDeprecatedEncryption?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6158,7 +6175,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6201,7 +6218,7 @@ export interface ResourceSsh {
      */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6229,7 +6246,7 @@ export interface ResourceSsh {
      */
     portForwarding?: pulumi.Input<boolean>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6264,7 +6281,7 @@ export interface ResourceSshCert {
      */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6300,7 +6317,7 @@ export interface ResourceSshCert {
      */
     portForwarding?: pulumi.Input<boolean>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6331,7 +6348,7 @@ export interface ResourceSshCustomerKey {
      */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6363,7 +6380,7 @@ export interface ResourceSshCustomerKey {
      */
     portForwarding?: pulumi.Input<boolean>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6398,7 +6415,7 @@ export interface ResourceSshPassword {
      */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6426,7 +6443,7 @@ export interface ResourceSshPassword {
      */
     portForwarding?: pulumi.Input<boolean>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6453,7 +6470,7 @@ export interface ResourceSshPassword {
 
 export interface ResourceSybase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6477,7 +6494,7 @@ export interface ResourceSybase {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6504,7 +6521,7 @@ export interface ResourceSybase {
 
 export interface ResourceSybaseIq {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6528,7 +6545,7 @@ export interface ResourceSybaseIq {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6555,7 +6572,7 @@ export interface ResourceSybaseIq {
 
 export interface ResourceTeradata {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6579,7 +6596,7 @@ export interface ResourceTeradata {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6606,7 +6623,7 @@ export interface ResourceTeradata {
 
 export interface ResourceTrino {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6630,7 +6647,7 @@ export interface ResourceTrino {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**
@@ -6661,7 +6678,7 @@ export interface ResourceTrino {
 
 export interface ResourceVertica {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -6689,7 +6706,7 @@ export interface ResourceVertica {
      */
     port?: pulumi.Input<number>;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: pulumi.Input<number>;
     /**

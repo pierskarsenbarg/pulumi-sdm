@@ -11,19 +11,19 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAzureConsoleArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceEntraIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
-        /// The connector ID to authenticate through.
+        /// If true, configures discovery of a cluster to be run from a node.
         /// </summary>
-        [Input("connectorId", required: true)]
-        public Input<string> ConnectorId { get; set; } = null!;
+        [Input("discoveryEnabled")]
+        public Input<bool>? DiscoveryEnabled { get; set; }
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -32,10 +32,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
+        /// comma separated list of group names to filter by. Supports wildcards (*)
+        /// </summary>
+        [Input("groupNames")]
+        public Input<string>? GroupNames { get; set; }
+
+        /// <summary>
         /// The ID of the identity set to use for identity connections.
         /// </summary>
-        [Input("identitySetId")]
-        public Input<string>? IdentitySetId { get; set; }
+        [Input("identitySetId", required: true)]
+        public Input<string> IdentitySetId { get; set; } = null!;
 
         /// <summary>
         /// The management group ID to authenticate scope Privileges to.
@@ -52,14 +58,20 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The privilege levels specify which Groups are managed externally
         /// </summary>
-        [Input("privilegeLevels", required: true)]
-        public Input<string> PrivilegeLevels { get; set; } = null!;
+        [Input("privilegeLevels")]
+        public Input<string>? PrivilegeLevels { get; set; }
 
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         [Input("proxyClusterId")]
         public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
+        /// filters discovered groups to the specified Resource Group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -91,9 +103,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        public ResourceAzureConsoleArgs()
+        /// <summary>
+        /// The Azure AD directory (tenant) ID with which to authenticate.
+        /// * sql_server_kerberos_ad:
+        /// </summary>
+        [Input("tenantId", required: true)]
+        public Input<string> TenantId { get; set; } = null!;
+
+        public ResourceEntraIdArgs()
         {
         }
-        public static new ResourceAzureConsoleArgs Empty => new ResourceAzureConsoleArgs();
+        public static new ResourceEntraIdArgs Empty => new ResourceEntraIdArgs();
     }
 }

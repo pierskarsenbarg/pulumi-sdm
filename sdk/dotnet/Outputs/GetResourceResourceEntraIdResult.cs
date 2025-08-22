@@ -12,20 +12,24 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceAzureConsoleResult
+    public sealed class GetResourceResourceEntraIdResult
     {
         /// <summary>
-        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
-        /// The connector ID to authenticate through.
+        /// If true, configures discovery of a cluster to be run from a node.
         /// </summary>
-        public readonly string? ConnectorId;
+        public readonly bool? DiscoveryEnabled;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// comma separated list of group names to filter by. Supports wildcards (*)
+        /// </summary>
+        public readonly string? GroupNames;
         /// <summary>
         /// Unique identifier of the Resource.
         /// </summary>
@@ -51,6 +55,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ProxyClusterId;
         /// <summary>
+        /// filters discovered groups to the specified Resource Group
+        /// </summary>
+        public readonly string? ResourceGroupId;
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -66,14 +74,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The Azure AD directory (tenant) ID with which to authenticate.
+        /// * sql_server_kerberos_ad:
+        /// </summary>
+        public readonly string? TenantId;
 
         [OutputConstructor]
-        private GetResourceResourceAzureConsoleResult(
+        private GetResourceResourceEntraIdResult(
             string? bindInterface,
 
-            string? connectorId,
+            bool? discoveryEnabled,
 
             string? egressFilter,
+
+            string? groupNames,
 
             string? id,
 
@@ -87,27 +102,34 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? proxyClusterId,
 
+            string? resourceGroupId,
+
             string? secretStoreId,
 
             string? subdomain,
 
             string? subscriptionId,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            string? tenantId)
         {
             BindInterface = bindInterface;
-            ConnectorId = connectorId;
+            DiscoveryEnabled = discoveryEnabled;
             EgressFilter = egressFilter;
+            GroupNames = groupNames;
             Id = id;
             IdentitySetId = identitySetId;
             ManagementGroupId = managementGroupId;
             Name = name;
             PrivilegeLevels = privilegeLevels;
             ProxyClusterId = proxyClusterId;
+            ResourceGroupId = resourceGroupId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             SubscriptionId = subscriptionId;
             Tags = tags;
+            TenantId = tenantId;
         }
     }
 }
