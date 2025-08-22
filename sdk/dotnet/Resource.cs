@@ -106,19 +106,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("azureCertificate")]
         public Output<Outputs.ResourceAzureCertificate?> AzureCertificate { get; private set; } = null!;
 
-        /// <summary>
-        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
-        [Output("azureConsole")]
-        public Output<Outputs.ResourceAzureConsole?> AzureConsole { get; private set; } = null!;
-
         [Output("azureMysql")]
         public Output<Outputs.ResourceAzureMysql?> AzureMysql { get; private set; } = null!;
 
-        /// <summary>
-        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Output("azureMysqlManagedIdentity")]
         public Output<Outputs.ResourceAzureMysqlManagedIdentity?> AzureMysqlManagedIdentity { get; private set; } = null!;
 
@@ -194,6 +184,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("elasticacheRedis")]
         public Output<Outputs.ResourceElasticacheRedis?> ElasticacheRedis { get; private set; } = null!;
+
+        /// <summary>
+        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("entraId")]
+        public Output<Outputs.ResourceEntraId?> EntraId { get; private set; } = null!;
 
         [Output("gcp")]
         public Output<Outputs.ResourceGcp?> Gcp { get; private set; } = null!;
@@ -509,19 +505,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateArgs>? AzureCertificate { get; set; }
 
-        /// <summary>
-        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
-        [Input("azureConsole")]
-        public Input<Inputs.ResourceAzureConsoleArgs>? AzureConsole { get; set; }
-
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlArgs>? AzureMysql { get; set; }
 
-        /// <summary>
-        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Input("azureMysqlManagedIdentity")]
         public Input<Inputs.ResourceAzureMysqlManagedIdentityArgs>? AzureMysqlManagedIdentity { get; set; }
 
@@ -597,6 +583,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisArgs>? ElasticacheRedis { get; set; }
+
+        /// <summary>
+        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("entraId")]
+        public Input<Inputs.ResourceEntraIdArgs>? EntraId { get; set; }
 
         [Input("gcp")]
         public Input<Inputs.ResourceGcpArgs>? Gcp { get; set; }
@@ -873,19 +865,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateGetArgs>? AzureCertificate { get; set; }
 
-        /// <summary>
-        /// AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
-        [Input("azureConsole")]
-        public Input<Inputs.ResourceAzureConsoleGetArgs>? AzureConsole { get; set; }
-
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlGetArgs>? AzureMysql { get; set; }
 
-        /// <summary>
-        /// AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Input("azureMysqlManagedIdentity")]
         public Input<Inputs.ResourceAzureMysqlManagedIdentityGetArgs>? AzureMysqlManagedIdentity { get; set; }
 
@@ -961,6 +943,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisGetArgs>? ElasticacheRedis { get; set; }
+
+        /// <summary>
+        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("entraId")]
+        public Input<Inputs.ResourceEntraIdGetArgs>? EntraId { get; set; }
 
         [Input("gcp")]
         public Input<Inputs.ResourceGcpGetArgs>? Gcp { get; set; }

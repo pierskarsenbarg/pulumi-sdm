@@ -14,7 +14,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceRdpCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -62,7 +62,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The local port used by clients to connect to this resource.
+        /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
@@ -78,6 +78,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
+
+        /// <summary>
+        /// Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        /// </summary>
+        [Input("sid")]
+        public Input<string>? Sid { get; set; }
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

@@ -52,7 +52,6 @@ __all__ = [
     'ResourceAwsInstanceProfile',
     'ResourceAzure',
     'ResourceAzureCertificate',
-    'ResourceAzureConsole',
     'ResourceAzureMysql',
     'ResourceAzureMysqlManagedIdentity',
     'ResourceAzurePostgres',
@@ -78,6 +77,7 @@ __all__ = [
     'ResourceDynamoDbiam',
     'ResourceElastic',
     'ResourceElasticacheRedis',
+    'ResourceEntraId',
     'ResourceGcp',
     'ResourceGcpConsole',
     'ResourceGcpwif',
@@ -215,7 +215,6 @@ __all__ = [
     'GetResourceResourceAwsInstanceProfileResult',
     'GetResourceResourceAzureResult',
     'GetResourceResourceAzureCertificateResult',
-    'GetResourceResourceAzureConsoleResult',
     'GetResourceResourceAzureMysqlResult',
     'GetResourceResourceAzureMysqlManagedIdentityResult',
     'GetResourceResourceAzurePostgreResult',
@@ -241,6 +240,7 @@ __all__ = [
     'GetResourceResourceDynamoDbiamResult',
     'GetResourceResourceElasticResult',
     'GetResourceResourceElasticacheRediResult',
+    'GetResourceResourceEntraIdResult',
     'GetResourceResourceGcpResult',
     'GetResourceResourceGcpConsoleResult',
     'GetResourceResourceGcpwifResult',
@@ -1161,11 +1161,11 @@ class ResourceAerospike(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1218,7 +1218,7 @@ class ResourceAerospike(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1250,7 +1250,7 @@ class ResourceAerospike(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -1373,7 +1373,7 @@ class ResourceAks(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -1383,7 +1383,7 @@ class ResourceAks(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1461,7 +1461,7 @@ class ResourceAks(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1541,7 +1541,7 @@ class ResourceAks(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -1625,11 +1625,11 @@ class ResourceAksBasicAuth(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1688,7 +1688,7 @@ class ResourceAksBasicAuth(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1720,7 +1720,7 @@ class ResourceAksBasicAuth(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -1827,14 +1827,14 @@ class ResourceAksServiceAccount(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1910,7 +1910,7 @@ class ResourceAksServiceAccount(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1966,7 +1966,7 @@ class ResourceAksServiceAccount(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -2058,10 +2058,10 @@ class ResourceAksServiceAccountUserImpersonation(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2119,7 +2119,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2143,7 +2143,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -2243,13 +2243,13 @@ class ResourceAksUserImpersonation(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2309,7 +2309,7 @@ class ResourceAksUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2357,7 +2357,7 @@ class ResourceAksUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -2475,7 +2475,7 @@ class ResourceAmazonEks(dict):
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -2483,7 +2483,7 @@ class ResourceAmazonEks(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -2585,7 +2585,7 @@ class ResourceAmazonEks(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2649,7 +2649,7 @@ class ResourceAmazonEks(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -2784,7 +2784,7 @@ class ResourceAmazonEksInstanceProfile(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -2792,7 +2792,7 @@ class ResourceAmazonEksInstanceProfile(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -2881,7 +2881,7 @@ class ResourceAmazonEksInstanceProfile(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2945,7 +2945,7 @@ class ResourceAmazonEksInstanceProfile(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -3056,11 +3056,11 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3131,7 +3131,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3163,7 +3163,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -3281,11 +3281,11 @@ class ResourceAmazonEksUserImpersonation(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3369,7 +3369,7 @@ class ResourceAmazonEksUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3401,7 +3401,7 @@ class ResourceAmazonEksUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -3516,10 +3516,10 @@ class ResourceAmazonEs(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3583,7 +3583,7 @@ class ResourceAmazonEs(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3607,7 +3607,7 @@ class ResourceAmazonEs(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -3719,9 +3719,9 @@ class ResourceAmazonEsiam(dict):
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3782,7 +3782,7 @@ class ResourceAmazonEsiam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3798,7 +3798,7 @@ class ResourceAmazonEsiam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -3905,11 +3905,11 @@ class ResourceAmazonmqAmqp091(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3962,7 +3962,7 @@ class ResourceAmazonmqAmqp091(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3994,7 +3994,7 @@ class ResourceAmazonmqAmqp091(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -4093,11 +4093,11 @@ class ResourceAmazonmqAmqp(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4150,7 +4150,7 @@ class ResourceAmazonmqAmqp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4182,7 +4182,7 @@ class ResourceAmazonmqAmqp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -4291,9 +4291,9 @@ class ResourceAthena(dict):
         :param _builtins.str athena_output: The AWS S3 output location.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -4358,7 +4358,7 @@ class ResourceAthena(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4374,7 +4374,7 @@ class ResourceAthena(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -4490,9 +4490,9 @@ class ResourceAthenaIam(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str output: The AWS S3 output location.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -4544,7 +4544,7 @@ class ResourceAthenaIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4560,7 +4560,7 @@ class ResourceAthenaIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -4671,12 +4671,12 @@ class ResourceAuroraMysql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -4734,7 +4734,7 @@ class ResourceAuroraMysql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4774,7 +4774,7 @@ class ResourceAuroraMysql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -4883,11 +4883,11 @@ class ResourceAuroraMysqlIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -4949,7 +4949,7 @@ class ResourceAuroraMysqlIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4981,7 +4981,7 @@ class ResourceAuroraMysqlIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -5082,12 +5082,12 @@ class ResourceAuroraPostgres(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5148,7 +5148,7 @@ class ResourceAuroraPostgres(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5188,7 +5188,7 @@ class ResourceAuroraPostgres(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -5285,11 +5285,11 @@ class ResourceAuroraPostgresIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -5360,7 +5360,7 @@ class ResourceAuroraPostgresIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5392,7 +5392,7 @@ class ResourceAuroraPostgresIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -5500,9 +5500,9 @@ class ResourceAws(dict):
         :param _builtins.str healthcheck_region: The AWS region healthcheck requests should attempt to connect to.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -5564,7 +5564,7 @@ class ResourceAws(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5580,7 +5580,7 @@ class ResourceAws(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -5700,12 +5700,12 @@ class ResourceAwsConsole(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -5769,7 +5769,7 @@ class ResourceAwsConsole(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5809,7 +5809,7 @@ class ResourceAwsConsole(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -5925,11 +5925,11 @@ class ResourceAwsConsoleStaticKeyPair(dict):
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -6004,7 +6004,7 @@ class ResourceAwsConsoleStaticKeyPair(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6036,7 +6036,7 @@ class ResourceAwsConsoleStaticKeyPair(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -6146,10 +6146,10 @@ class ResourceAwsInstanceProfile(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -6200,7 +6200,7 @@ class ResourceAwsInstanceProfile(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6224,7 +6224,7 @@ class ResourceAwsInstanceProfile(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -6323,10 +6323,10 @@ class ResourceAzure(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str app_id: The application ID to authenticate with.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6376,7 +6376,7 @@ class ResourceAzure(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6400,7 +6400,7 @@ class ResourceAzure(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -6494,10 +6494,10 @@ class ResourceAzureCertificate(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str app_id: The application ID to authenticate with.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6547,7 +6547,7 @@ class ResourceAzureCertificate(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6571,7 +6571,7 @@ class ResourceAzureCertificate(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -6615,187 +6615,6 @@ class ResourceAzureCertificate(dict):
         * sql_server_kerberos_ad:
         """
         return pulumi.get(self, "tenant_id")
-
-
-@pulumi.output_type
-class ResourceAzureConsole(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectorId":
-            suggest = "connector_id"
-        elif key == "privilegeLevels":
-            suggest = "privilege_levels"
-        elif key == "bindInterface":
-            suggest = "bind_interface"
-        elif key == "egressFilter":
-            suggest = "egress_filter"
-        elif key == "identitySetId":
-            suggest = "identity_set_id"
-        elif key == "managementGroupId":
-            suggest = "management_group_id"
-        elif key == "proxyClusterId":
-            suggest = "proxy_cluster_id"
-        elif key == "secretStoreId":
-            suggest = "secret_store_id"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ResourceAzureConsole. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ResourceAzureConsole.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ResourceAzureConsole.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 connector_id: _builtins.str,
-                 name: _builtins.str,
-                 privilege_levels: _builtins.str,
-                 bind_interface: Optional[_builtins.str] = None,
-                 egress_filter: Optional[_builtins.str] = None,
-                 identity_set_id: Optional[_builtins.str] = None,
-                 management_group_id: Optional[_builtins.str] = None,
-                 proxy_cluster_id: Optional[_builtins.str] = None,
-                 secret_store_id: Optional[_builtins.str] = None,
-                 subdomain: Optional[_builtins.str] = None,
-                 subscription_id: Optional[_builtins.str] = None,
-                 tags: Optional[Mapping[str, _builtins.str]] = None):
-        """
-        :param _builtins.str connector_id: The connector ID to authenticate through.
-        :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str privilege_levels: The privilege levels specify which Groups are managed externally
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.str management_group_id: The management group ID to authenticate scope Privileges to.
-        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
-        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param _builtins.str subscription_id: The subscription ID to authenticate scope Privileges to.
-        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-        """
-        pulumi.set(__self__, "connector_id", connector_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "privilege_levels", privilege_levels)
-        if bind_interface is not None:
-            pulumi.set(__self__, "bind_interface", bind_interface)
-        if egress_filter is not None:
-            pulumi.set(__self__, "egress_filter", egress_filter)
-        if identity_set_id is not None:
-            pulumi.set(__self__, "identity_set_id", identity_set_id)
-        if management_group_id is not None:
-            pulumi.set(__self__, "management_group_id", management_group_id)
-        if proxy_cluster_id is not None:
-            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
-        if secret_store_id is not None:
-            pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if subdomain is not None:
-            pulumi.set(__self__, "subdomain", subdomain)
-        if subscription_id is not None:
-            pulumi.set(__self__, "subscription_id", subscription_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="connectorId")
-    def connector_id(self) -> _builtins.str:
-        """
-        The connector ID to authenticate through.
-        """
-        return pulumi.get(self, "connector_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Unique human-readable name of the Resource.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="privilegeLevels")
-    def privilege_levels(self) -> _builtins.str:
-        """
-        The privilege levels specify which Groups are managed externally
-        """
-        return pulumi.get(self, "privilege_levels")
-
-    @_builtins.property
-    @pulumi.getter(name="bindInterface")
-    def bind_interface(self) -> Optional[_builtins.str]:
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-        """
-        return pulumi.get(self, "bind_interface")
-
-    @_builtins.property
-    @pulumi.getter(name="egressFilter")
-    def egress_filter(self) -> Optional[_builtins.str]:
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        return pulumi.get(self, "egress_filter")
-
-    @_builtins.property
-    @pulumi.getter(name="identitySetId")
-    def identity_set_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        return pulumi.get(self, "identity_set_id")
-
-    @_builtins.property
-    @pulumi.getter(name="managementGroupId")
-    def management_group_id(self) -> Optional[_builtins.str]:
-        """
-        The management group ID to authenticate scope Privileges to.
-        """
-        return pulumi.get(self, "management_group_id")
-
-    @_builtins.property
-    @pulumi.getter(name="proxyClusterId")
-    def proxy_cluster_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        return pulumi.get(self, "proxy_cluster_id")
-
-    @_builtins.property
-    @pulumi.getter(name="secretStoreId")
-    def secret_store_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        return pulumi.get(self, "secret_store_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def subdomain(self) -> Optional[_builtins.str]:
-        """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        """
-        return pulumi.get(self, "subdomain")
-
-    @_builtins.property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[_builtins.str]:
-        """
-        The subscription ID to authenticate scope Privileges to.
-        """
-        return pulumi.get(self, "subscription_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Tags is a map of key, value pairs.
-        """
-        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -6848,12 +6667,12 @@ class ResourceAzureMysql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -6911,7 +6730,7 @@ class ResourceAzureMysql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6951,7 +6770,7 @@ class ResourceAzureMysql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -7059,12 +6878,12 @@ class ResourceAzureMysqlManagedIdentity(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7119,7 +6938,7 @@ class ResourceAzureMysqlManagedIdentity(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7159,7 +6978,7 @@ class ResourceAzureMysqlManagedIdentity(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -7260,12 +7079,12 @@ class ResourceAzurePostgres(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7326,7 +7145,7 @@ class ResourceAzurePostgres(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7366,7 +7185,7 @@ class ResourceAzurePostgres(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -7462,12 +7281,12 @@ class ResourceAzurePostgresManagedIdentity(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7531,7 +7350,7 @@ class ResourceAzurePostgresManagedIdentity(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7571,7 +7390,7 @@ class ResourceAzurePostgresManagedIdentity(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -7670,9 +7489,9 @@ class ResourceBigQuery(dict):
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str project: The project to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -7730,7 +7549,7 @@ class ResourceBigQuery(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7746,7 +7565,7 @@ class ResourceBigQuery(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -7845,11 +7664,11 @@ class ResourceCassandra(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7902,7 +7721,7 @@ class ResourceCassandra(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7934,7 +7753,7 @@ class ResourceCassandra(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -8035,12 +7854,12 @@ class ResourceCitus(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8101,7 +7920,7 @@ class ResourceCitus(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8141,7 +7960,7 @@ class ResourceCitus(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -8229,11 +8048,11 @@ class ResourceClickHouseHttp(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str url: The base address of your website without the path.
                * kubernetes:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -8281,7 +8100,7 @@ class ResourceClickHouseHttp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8313,7 +8132,7 @@ class ResourceClickHouseHttp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -8397,12 +8216,12 @@ class ResourceClickHouseMySql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -8457,7 +8276,7 @@ class ResourceClickHouseMySql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8497,7 +8316,7 @@ class ResourceClickHouseMySql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -8598,11 +8417,11 @@ class ResourceClickHouseTcp(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8664,7 +8483,7 @@ class ResourceClickHouseTcp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8696,7 +8515,7 @@ class ResourceClickHouseTcp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -8799,12 +8618,12 @@ class ResourceClustrix(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -8862,7 +8681,7 @@ class ResourceClustrix(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8902,7 +8721,7 @@ class ResourceClustrix(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9011,12 +8830,12 @@ class ResourceCockroach(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9077,7 +8896,7 @@ class ResourceCockroach(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9117,7 +8936,7 @@ class ResourceCockroach(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9212,11 +9031,11 @@ class ResourceCouchbaseDatabase(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.int n1_ql_port: The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9278,7 +9097,7 @@ class ResourceCouchbaseDatabase(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9310,7 +9129,7 @@ class ResourceCouchbaseDatabase(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9407,10 +9226,10 @@ class ResourceCouchbaseWebUi(dict):
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param _builtins.str url: The base address of your website without the path.
                * kubernetes:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -9465,7 +9284,7 @@ class ResourceCouchbaseWebUi(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9489,7 +9308,7 @@ class ResourceCouchbaseWebUi(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9573,10 +9392,10 @@ class ResourceDb2I(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9636,7 +9455,7 @@ class ResourceDb2I(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9660,7 +9479,7 @@ class ResourceDb2I(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9761,11 +9580,11 @@ class ResourceDb2Luw(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9827,7 +9646,7 @@ class ResourceDb2Luw(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9859,7 +9678,7 @@ class ResourceDb2Luw(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -9959,11 +9778,11 @@ class ResourceDocumentDbHost(dict):
         :param _builtins.str auth_database: The authentication database to use.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10022,7 +9841,7 @@ class ResourceDocumentDbHost(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10054,7 +9873,7 @@ class ResourceDocumentDbHost(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -10142,10 +9961,10 @@ class ResourceDocumentDbHostIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10199,7 +10018,7 @@ class ResourceDocumentDbHostIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10223,7 +10042,7 @@ class ResourceDocumentDbHostIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -10313,11 +10132,11 @@ class ResourceDocumentDbReplicaSet(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str replica_set: The name of the mongo replicaset.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10385,7 +10204,7 @@ class ResourceDocumentDbReplicaSet(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10417,7 +10236,7 @@ class ResourceDocumentDbReplicaSet(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -10507,10 +10326,10 @@ class ResourceDocumentDbReplicaSetIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10564,7 +10383,7 @@ class ResourceDocumentDbReplicaSetIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10588,7 +10407,7 @@ class ResourceDocumentDbReplicaSetIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -10668,11 +10487,11 @@ class ResourceDruid(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10722,7 +10541,7 @@ class ResourceDruid(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10754,7 +10573,7 @@ class ResourceDruid(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -10854,9 +10673,9 @@ class ResourceDynamoDb(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -10927,7 +10746,7 @@ class ResourceDynamoDb(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10943,7 +10762,7 @@ class ResourceDynamoDb(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11052,9 +10871,9 @@ class ResourceDynamoDbiam(dict):
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -11112,7 +10931,7 @@ class ResourceDynamoDbiam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11128,7 +10947,7 @@ class ResourceDynamoDbiam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11227,11 +11046,11 @@ class ResourceElastic(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11284,7 +11103,7 @@ class ResourceElastic(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11316,7 +11135,7 @@ class ResourceElastic(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11415,11 +11234,11 @@ class ResourceElasticacheRedis(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11472,7 +11291,7 @@ class ResourceElasticacheRedis(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11504,7 +11323,7 @@ class ResourceElasticacheRedis(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11558,6 +11377,231 @@ class ResourceElasticacheRedis(dict):
 
 
 @pulumi.output_type
+class ResourceEntraId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identitySetId":
+            suggest = "identity_set_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "discoveryEnabled":
+            suggest = "discovery_enabled"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "groupNames":
+            suggest = "group_names"
+        elif key == "managementGroupId":
+            suggest = "management_group_id"
+        elif key == "privilegeLevels":
+            suggest = "privilege_levels"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "resourceGroupId":
+            suggest = "resource_group_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceEntraId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceEntraId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceEntraId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_set_id: _builtins.str,
+                 name: _builtins.str,
+                 tenant_id: _builtins.str,
+                 bind_interface: Optional[_builtins.str] = None,
+                 discovery_enabled: Optional[_builtins.bool] = None,
+                 egress_filter: Optional[_builtins.str] = None,
+                 group_names: Optional[_builtins.str] = None,
+                 management_group_id: Optional[_builtins.str] = None,
+                 privilege_levels: Optional[_builtins.str] = None,
+                 proxy_cluster_id: Optional[_builtins.str] = None,
+                 resource_group_id: Optional[_builtins.str] = None,
+                 secret_store_id: Optional[_builtins.str] = None,
+                 subdomain: Optional[_builtins.str] = None,
+                 subscription_id: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
+        :param _builtins.str name: Unique human-readable name of the Resource.
+        :param _builtins.str tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
+               * sql_server_kerberos_ad:
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param _builtins.str group_names: comma separated list of group names to filter by. Supports wildcards (*)
+        :param _builtins.str management_group_id: The management group ID to authenticate scope Privileges to.
+        :param _builtins.str privilege_levels: The privilege levels specify which Groups are managed externally
+        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param _builtins.str resource_group_id: filters discovered groups to the specified Resource Group
+        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param _builtins.str subscription_id: The subscription ID to authenticate scope Privileges to.
+        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "identity_set_id", identity_set_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if group_names is not None:
+            pulumi.set(__self__, "group_names", group_names)
+        if management_group_id is not None:
+            pulumi.set(__self__, "management_group_id", management_group_id)
+        if privilege_levels is not None:
+            pulumi.set(__self__, "privilege_levels", privilege_levels)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> _builtins.str:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        The Azure AD directory (tenant) ID with which to authenticate.
+        * sql_server_kerberos_ad:
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[_builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[_builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="groupNames")
+    def group_names(self) -> Optional[_builtins.str]:
+        """
+        comma separated list of group names to filter by. Supports wildcards (*)
+        """
+        return pulumi.get(self, "group_names")
+
+    @_builtins.property
+    @pulumi.getter(name="managementGroupId")
+    def management_group_id(self) -> Optional[_builtins.str]:
+        """
+        The management group ID to authenticate scope Privileges to.
+        """
+        return pulumi.get(self, "management_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="privilegeLevels")
+    def privilege_levels(self) -> Optional[_builtins.str]:
+        """
+        The privilege levels specify which Groups are managed externally
+        """
+        return pulumi.get(self, "privilege_levels")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        filters discovered groups to the specified Resource Group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> Optional[_builtins.str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @_builtins.property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[_builtins.str]:
+        """
+        The subscription ID to authenticate scope Privileges to.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class ResourceGcp(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11598,10 +11642,10 @@ class ResourceGcp(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str scopes: Space separated scopes that this login should assume into when authenticating.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str keyfile: The service account keyfile to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11646,7 +11690,7 @@ class ResourceGcp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11670,7 +11714,7 @@ class ResourceGcp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11764,11 +11808,11 @@ class ResourceGcpConsole(dict):
         :param _builtins.str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
         :param _builtins.str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
                * google_gke:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
@@ -11834,7 +11878,7 @@ class ResourceGcpConsole(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11866,7 +11910,7 @@ class ResourceGcpConsole(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -11964,11 +12008,11 @@ class ResourceGcpwif(dict):
         :param _builtins.str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
         :param _builtins.str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
                * google_gke:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str project_id: When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -12040,7 +12084,7 @@ class ResourceGcpwif(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12072,7 +12116,7 @@ class ResourceGcpwif(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -12190,7 +12234,7 @@ class ResourceGoogleGke(dict):
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -12198,7 +12242,7 @@ class ResourceGoogleGke(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str service_account_key: The service account key to authenticate with.
@@ -12266,7 +12310,7 @@ class ResourceGoogleGke(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12330,7 +12374,7 @@ class ResourceGoogleGke(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -12424,11 +12468,11 @@ class ResourceGoogleGkeUserImpersonation(dict):
         """
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str service_account_key: The service account key to authenticate with.
@@ -12478,7 +12522,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12510,7 +12554,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -12603,12 +12647,12 @@ class ResourceGreenplum(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12669,7 +12713,7 @@ class ResourceGreenplum(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12709,7 +12753,7 @@ class ResourceGreenplum(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -12813,12 +12857,12 @@ class ResourceHttpAuth(dict):
         :param _builtins.str url: The base address of your website without the path.
                * kubernetes:
         :param _builtins.str auth_header: The content to set as the authorization header.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param _builtins.str host_override: The host header will be overwritten with this field if provided.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -12893,7 +12937,7 @@ class ResourceHttpAuth(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12933,7 +12977,7 @@ class ResourceHttpAuth(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -13019,13 +13063,13 @@ class ResourceHttpBasicAuth(dict):
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param _builtins.str url: The base address of your website without the path.
                * kubernetes:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param _builtins.str host_override: The host header will be overwritten with this field if provided.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -13095,7 +13139,7 @@ class ResourceHttpBasicAuth(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13143,7 +13187,7 @@ class ResourceHttpBasicAuth(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -13235,12 +13279,12 @@ class ResourceHttpNoAuth(dict):
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param _builtins.str url: The base address of your website without the path.
                * kubernetes:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param _builtins.str host_override: The host header will be overwritten with this field if provided.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -13305,7 +13349,7 @@ class ResourceHttpNoAuth(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13345,7 +13389,7 @@ class ResourceHttpNoAuth(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -13444,7 +13488,7 @@ class ResourceKubernetes(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -13454,7 +13498,7 @@ class ResourceKubernetes(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13532,7 +13576,7 @@ class ResourceKubernetes(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13612,7 +13656,7 @@ class ResourceKubernetes(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -13696,11 +13740,11 @@ class ResourceKubernetesBasicAuth(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13759,7 +13803,7 @@ class ResourceKubernetesBasicAuth(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13791,7 +13835,7 @@ class ResourceKubernetesBasicAuth(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -13896,7 +13940,7 @@ class ResourceKubernetesPodIdentity(dict):
         """
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -13904,7 +13948,7 @@ class ResourceKubernetesPodIdentity(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13960,7 +14004,7 @@ class ResourceKubernetesPodIdentity(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14024,7 +14068,7 @@ class ResourceKubernetesPodIdentity(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -14123,14 +14167,14 @@ class ResourceKubernetesServiceAccount(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14206,7 +14250,7 @@ class ResourceKubernetesServiceAccount(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14262,7 +14306,7 @@ class ResourceKubernetesServiceAccount(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -14354,10 +14398,10 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14415,7 +14459,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14439,7 +14483,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -14539,13 +14583,13 @@ class ResourceKubernetesUserImpersonation(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14605,7 +14649,7 @@ class ResourceKubernetesUserImpersonation(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14653,7 +14697,7 @@ class ResourceKubernetesUserImpersonation(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -14740,12 +14784,12 @@ class ResourceMaria(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -14803,7 +14847,7 @@ class ResourceMaria(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14843,7 +14887,7 @@ class ResourceMaria(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -14945,10 +14989,10 @@ class ResourceMemcached(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14993,7 +15037,7 @@ class ResourceMemcached(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15017,7 +15061,7 @@ class ResourceMemcached(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -15104,12 +15148,12 @@ class ResourceMemsql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -15167,7 +15211,7 @@ class ResourceMemsql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15207,7 +15251,7 @@ class ResourceMemsql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -15318,11 +15362,11 @@ class ResourceMongoHost(dict):
         :param _builtins.str auth_database: The authentication database to use.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15384,7 +15428,7 @@ class ResourceMongoHost(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15416,7 +15460,7 @@ class ResourceMongoHost(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -15519,11 +15563,11 @@ class ResourceMongoLegacyHost(dict):
         :param _builtins.str auth_database: The authentication database to use.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15585,7 +15629,7 @@ class ResourceMongoLegacyHost(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15617,7 +15661,7 @@ class ResourceMongoLegacyHost(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -15727,12 +15771,12 @@ class ResourceMongoLegacyReplicaset(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str replica_set: The name of the mongo replicaset.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15805,7 +15849,7 @@ class ResourceMongoLegacyReplicaset(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15845,7 +15889,7 @@ class ResourceMongoLegacyReplicaset(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -15955,12 +15999,12 @@ class ResourceMongoReplicaSet(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str replica_set: The name of the mongo replicaset.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16033,7 +16077,7 @@ class ResourceMongoReplicaSet(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -16073,7 +16117,7 @@ class ResourceMongoReplicaSet(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -16175,10 +16219,10 @@ class ResourceMongoShardedCluster(dict):
         :param _builtins.str auth_database: The authentication database to use.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16238,7 +16282,7 @@ class ResourceMongoShardedCluster(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -16262,7 +16306,7 @@ class ResourceMongoShardedCluster(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -16377,7 +16421,7 @@ class ResourceMtlsMysql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -16385,7 +16429,7 @@ class ResourceMtlsMysql(dict):
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -16452,7 +16496,7 @@ class ResourceMtlsMysql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -16516,7 +16560,7 @@ class ResourceMtlsMysql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -16645,7 +16689,7 @@ class ResourceMtlsPostgres(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -16653,7 +16697,7 @@ class ResourceMtlsPostgres(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str server_name: Server name for TLS verification (unverified by StrongDM if empty)
@@ -16723,7 +16767,7 @@ class ResourceMtlsPostgres(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -16787,7 +16831,7 @@ class ResourceMtlsPostgres(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -16890,12 +16934,12 @@ class ResourceMysql(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -16953,7 +16997,7 @@ class ResourceMysql(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -16993,7 +17037,7 @@ class ResourceMysql(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -17095,10 +17139,10 @@ class ResourceNeptune(dict):
         """
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17143,7 +17187,7 @@ class ResourceNeptune(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -17167,7 +17211,7 @@ class ResourceNeptune(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -17260,10 +17304,10 @@ class ResourceNeptuneIam(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -17336,7 +17380,7 @@ class ResourceNeptuneIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -17360,7 +17404,7 @@ class ResourceNeptuneIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -17470,10 +17514,10 @@ class ResourceOracle(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17542,7 +17586,7 @@ class ResourceOracle(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -17566,7 +17610,7 @@ class ResourceOracle(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -17665,10 +17709,10 @@ class ResourceOracleNne(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17734,7 +17778,7 @@ class ResourceOracleNne(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -17758,7 +17802,7 @@ class ResourceOracleNne(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -17851,12 +17895,12 @@ class ResourcePostgres(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17917,7 +17961,7 @@ class ResourcePostgres(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -17957,7 +18001,7 @@ class ResourcePostgres(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18050,11 +18094,11 @@ class ResourcePresto(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18116,7 +18160,7 @@ class ResourcePresto(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -18148,7 +18192,7 @@ class ResourcePresto(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18247,11 +18291,11 @@ class ResourceRabbitmqAmqp091(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18304,7 +18348,7 @@ class ResourceRabbitmqAmqp091(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -18336,7 +18380,7 @@ class ResourceRabbitmqAmqp091(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18430,10 +18474,10 @@ class ResourceRawTcp(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18478,7 +18522,7 @@ class ResourceRawTcp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -18502,7 +18546,7 @@ class ResourceRawTcp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18588,13 +18632,13 @@ class ResourceRdp(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool downgrade_nla_connections: When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18648,7 +18692,7 @@ class ResourceRdp(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -18696,7 +18740,7 @@ class ResourceRdp(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18786,21 +18830,23 @@ class ResourceRdpCert(dict):
                  port_override: Optional[_builtins.int] = None,
                  proxy_cluster_id: Optional[_builtins.str] = None,
                  secret_store_id: Optional[_builtins.str] = None,
+                 sid: Optional[_builtins.str] = None,
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.bool lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str sid: Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.str username: The username to authenticate with.
@@ -18825,6 +18871,8 @@ class ResourceRdpCert(dict):
             pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18852,7 +18900,7 @@ class ResourceRdpCert(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -18900,7 +18948,7 @@ class ResourceRdpCert(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -18919,6 +18967,14 @@ class ResourceRdpCert(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sid(self) -> Optional[_builtins.str]:
+        """
+        Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        """
+        return pulumi.get(self, "sid")
 
     @_builtins.property
     @pulumi.getter
@@ -18997,11 +19053,11 @@ class ResourceRdsPostgresIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -19072,7 +19128,7 @@ class ResourceRdsPostgresIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -19104,7 +19160,7 @@ class ResourceRdsPostgresIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -19203,11 +19259,11 @@ class ResourceRedis(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19260,7 +19316,7 @@ class ResourceRedis(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -19292,7 +19348,7 @@ class ResourceRedis(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -19391,11 +19447,11 @@ class ResourceRedisCluster(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19448,7 +19504,7 @@ class ResourceRedisCluster(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -19480,7 +19536,7 @@ class ResourceRedisCluster(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -19581,12 +19637,12 @@ class ResourceRedshift(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19647,7 +19703,7 @@ class ResourceRedshift(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -19687,7 +19743,7 @@ class ResourceRedshift(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -19787,11 +19843,11 @@ class ResourceRedshiftIam(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str region: The AWS region to connect to.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -19868,7 +19924,7 @@ class ResourceRedshiftIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -19900,7 +19956,7 @@ class ResourceRedshiftIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -19999,11 +20055,11 @@ class ResourceRedshiftServerlessIam(dict):
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str workgroup: Workgroup name in the serverless Redshift
                * single_store:
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -20081,7 +20137,7 @@ class ResourceRedshiftServerlessIam(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -20113,7 +20169,7 @@ class ResourceRedshiftServerlessIam(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -20208,12 +20264,12 @@ class ResourceSingleStore(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -20271,7 +20327,7 @@ class ResourceSingleStore(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -20311,7 +20367,7 @@ class ResourceSingleStore(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -20420,10 +20476,10 @@ class ResourceSnowflake(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
@@ -20486,7 +20542,7 @@ class ResourceSnowflake(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -20510,7 +20566,7 @@ class ResourceSnowflake(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -20617,9 +20673,9 @@ class ResourceSnowsight(dict):
         :param _builtins.str healthcheck_username: The StrongDM user email to use for healthchecks.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str saml_metadata: The Metadata for your snowflake IDP integration
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -20671,7 +20727,7 @@ class ResourceSnowsight(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -20687,7 +20743,7 @@ class ResourceSnowsight(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -20776,13 +20832,13 @@ class ResourceSqlServer(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -20849,7 +20905,7 @@ class ResourceSqlServer(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -20897,7 +20953,7 @@ class ResourceSqlServer(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -21007,13 +21063,13 @@ class ResourceSqlServerAzureAd(dict):
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str client_id: The Azure AD application (client) ID with which to authenticate.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
         :param _builtins.str secret: The Azure AD client secret (application password) with which to authenticate.
@@ -21084,7 +21140,7 @@ class ResourceSqlServerAzureAd(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -21132,7 +21188,7 @@ class ResourceSqlServerAzureAd(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -21254,14 +21310,14 @@ class ResourceSqlServerKerberosAd(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str server_spn: The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str keytab: The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
         :param _builtins.str krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str realm: The Active Directory domain (realm) to which the configured username belongs.
         :param _builtins.str schema: The Schema to use to direct initial requests.
@@ -21342,7 +21398,7 @@ class ResourceSqlServerKerberosAd(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -21398,7 +21454,7 @@ class ResourceSqlServerKerberosAd(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -21515,11 +21571,11 @@ class ResourceSsh(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str key_type: The key type to use e.g. rsa-2048 or ed25519
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str public_key: The public key to append to a server's authorized keys. This will be generated after resource creation.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -21591,7 +21647,7 @@ class ResourceSsh(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -21623,7 +21679,7 @@ class ResourceSsh(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -21735,13 +21791,13 @@ class ResourceSshCert(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str key_type: The key type to use e.g. rsa-2048 or ed25519
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21814,7 +21870,7 @@ class ResourceSshCert(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -21862,7 +21918,7 @@ class ResourceSshCert(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -21966,12 +22022,12 @@ class ResourceSshCustomerKey(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -22045,7 +22101,7 @@ class ResourceSshCustomerKey(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22085,7 +22141,7 @@ class ResourceSshCustomerKey(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -22189,11 +22245,11 @@ class ResourceSshPassword(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22262,7 +22318,7 @@ class ResourceSshPassword(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22294,7 +22350,7 @@ class ResourceSshPassword(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -22382,11 +22438,11 @@ class ResourceSybase(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22436,7 +22492,7 @@ class ResourceSybase(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22468,7 +22524,7 @@ class ResourceSybase(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -22556,11 +22612,11 @@ class ResourceSybaseIq(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22610,7 +22666,7 @@ class ResourceSybaseIq(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22642,7 +22698,7 @@ class ResourceSybaseIq(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -22730,11 +22786,11 @@ class ResourceTeradata(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22784,7 +22840,7 @@ class ResourceTeradata(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22816,7 +22872,7 @@ class ResourceTeradata(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -22907,11 +22963,11 @@ class ResourceTrino(dict):
         """
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22964,7 +23020,7 @@ class ResourceTrino(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -22996,7 +23052,7 @@ class ResourceTrino(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -23094,11 +23150,11 @@ class ResourceVertica(dict):
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -23157,7 +23213,7 @@ class ResourceVertica(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -23189,7 +23245,7 @@ class ResourceVertica(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -27334,7 +27390,6 @@ class GetResourceResourceResult(dict):
                  aws_consoles: Sequence['outputs.GetResourceResourceAwsConsoleResult'],
                  aws_instance_profiles: Sequence['outputs.GetResourceResourceAwsInstanceProfileResult'],
                  azure_certificates: Sequence['outputs.GetResourceResourceAzureCertificateResult'],
-                 azure_consoles: Sequence['outputs.GetResourceResourceAzureConsoleResult'],
                  azure_mysql_managed_identities: Sequence['outputs.GetResourceResourceAzureMysqlManagedIdentityResult'],
                  azure_mysqls: Sequence['outputs.GetResourceResourceAzureMysqlResult'],
                  azure_postgres: Sequence['outputs.GetResourceResourceAzurePostgreResult'],
@@ -27361,6 +27416,7 @@ class GetResourceResourceResult(dict):
                  dynamo_dbs: Sequence['outputs.GetResourceResourceDynamoDbResult'],
                  elasticache_redis: Sequence['outputs.GetResourceResourceElasticacheRediResult'],
                  elastics: Sequence['outputs.GetResourceResourceElasticResult'],
+                 entra_ids: Sequence['outputs.GetResourceResourceEntraIdResult'],
                  gcp_consoles: Sequence['outputs.GetResourceResourceGcpConsoleResult'],
                  gcps: Sequence['outputs.GetResourceResourceGcpResult'],
                  gcpwifs: Sequence['outputs.GetResourceResourceGcpwifResult'],
@@ -27443,7 +27499,6 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "aws_consoles", aws_consoles)
         pulumi.set(__self__, "aws_instance_profiles", aws_instance_profiles)
         pulumi.set(__self__, "azure_certificates", azure_certificates)
-        pulumi.set(__self__, "azure_consoles", azure_consoles)
         pulumi.set(__self__, "azure_mysql_managed_identities", azure_mysql_managed_identities)
         pulumi.set(__self__, "azure_mysqls", azure_mysqls)
         pulumi.set(__self__, "azure_postgres", azure_postgres)
@@ -27470,6 +27525,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "dynamo_dbs", dynamo_dbs)
         pulumi.set(__self__, "elasticache_redis", elasticache_redis)
         pulumi.set(__self__, "elastics", elastics)
+        pulumi.set(__self__, "entra_ids", entra_ids)
         pulumi.set(__self__, "gcp_consoles", gcp_consoles)
         pulumi.set(__self__, "gcps", gcps)
         pulumi.set(__self__, "gcpwifs", gcpwifs)
@@ -27658,11 +27714,6 @@ class GetResourceResourceResult(dict):
         return pulumi.get(self, "azure_certificates")
 
     @_builtins.property
-    @pulumi.getter(name="azureConsoles")
-    def azure_consoles(self) -> Sequence['outputs.GetResourceResourceAzureConsoleResult']:
-        return pulumi.get(self, "azure_consoles")
-
-    @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentities")
     def azure_mysql_managed_identities(self) -> Sequence['outputs.GetResourceResourceAzureMysqlManagedIdentityResult']:
         return pulumi.get(self, "azure_mysql_managed_identities")
@@ -27791,6 +27842,11 @@ class GetResourceResourceResult(dict):
     @pulumi.getter
     def elastics(self) -> Sequence['outputs.GetResourceResourceElasticResult']:
         return pulumi.get(self, "elastics")
+
+    @_builtins.property
+    @pulumi.getter(name="entraIds")
+    def entra_ids(self) -> Sequence['outputs.GetResourceResourceEntraIdResult']:
+        return pulumi.get(self, "entra_ids")
 
     @_builtins.property
     @pulumi.getter(name="gcpConsoles")
@@ -28099,14 +28155,14 @@ class GetResourceResourceAerospikeResult(dict):
                  use_services_alternate: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28147,7 +28203,7 @@ class GetResourceResourceAerospikeResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -28203,7 +28259,7 @@ class GetResourceResourceAerospikeResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -28281,7 +28337,7 @@ class GetResourceResourceAkResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -28295,7 +28351,7 @@ class GetResourceResourceAkResult(dict):
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28354,7 +28410,7 @@ class GetResourceResourceAkResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -28466,7 +28522,7 @@ class GetResourceResourceAkResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -28521,7 +28577,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -28529,7 +28585,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28569,7 +28625,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -28633,7 +28689,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -28701,7 +28757,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
                  token: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -28712,7 +28768,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28769,7 +28825,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -28857,7 +28913,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -28920,14 +28976,14 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  token: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28966,7 +29022,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -29022,7 +29078,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -29087,7 +29143,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -29097,7 +29153,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -29138,7 +29194,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -29218,7 +29274,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -29275,12 +29331,12 @@ class GetResourceResourceAmazonEResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -29333,7 +29389,7 @@ class GetResourceResourceAmazonEResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -29373,7 +29429,7 @@ class GetResourceResourceAmazonEResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -29471,7 +29527,7 @@ class GetResourceResourceAmazonEkResult(dict):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
@@ -29483,7 +29539,7 @@ class GetResourceResourceAmazonEkResult(dict):
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -29560,7 +29616,7 @@ class GetResourceResourceAmazonEkResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -29656,7 +29712,7 @@ class GetResourceResourceAmazonEkResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -29751,7 +29807,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
@@ -29763,7 +29819,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -29827,7 +29883,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -29923,7 +29979,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30004,7 +30060,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -30012,7 +30068,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -30058,7 +30114,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -30122,7 +30178,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30206,7 +30262,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -30214,7 +30270,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -30273,7 +30329,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -30337,7 +30393,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30424,12 +30480,12 @@ class GetResourceResourceAmazonEsiamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  tls_required: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -30472,7 +30528,7 @@ class GetResourceResourceAmazonEsiamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -30512,7 +30568,7 @@ class GetResourceResourceAmazonEsiamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30599,14 +30655,14 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30647,7 +30703,7 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -30703,7 +30759,7 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30774,14 +30830,14 @@ class GetResourceResourceAmazonmqAmqpResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30822,7 +30878,7 @@ class GetResourceResourceAmazonmqAmqpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -30878,7 +30934,7 @@ class GetResourceResourceAmazonmqAmqpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -30951,12 +31007,12 @@ class GetResourceResourceAthenaResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str output: The AWS S3 output location.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -31009,7 +31065,7 @@ class GetResourceResourceAthenaResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31049,7 +31105,7 @@ class GetResourceResourceAthenaResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -31135,12 +31191,12 @@ class GetResourceResourceAthenaIamResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str output: The AWS S3 output location.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -31180,7 +31236,7 @@ class GetResourceResourceAthenaIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31220,7 +31276,7 @@ class GetResourceResourceAthenaIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -31301,7 +31357,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -31309,7 +31365,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -31355,7 +31411,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31419,7 +31475,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -31499,14 +31555,14 @@ class GetResourceResourceAuroraMysqlIamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -31550,7 +31606,7 @@ class GetResourceResourceAuroraMysqlIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31606,7 +31662,7 @@ class GetResourceResourceAuroraMysqlIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -31686,7 +31742,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -31695,7 +31751,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31737,7 +31793,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31809,7 +31865,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -31874,7 +31930,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -31882,7 +31938,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -31928,7 +31984,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -31992,7 +32048,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32072,12 +32128,12 @@ class GetResourceResourceAwResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_region: The AWS region healthcheck requests should attempt to connect to.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
         :param _builtins.str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -32127,7 +32183,7 @@ class GetResourceResourceAwResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -32167,7 +32223,7 @@ class GetResourceResourceAwResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32248,14 +32304,14 @@ class GetResourceResourceAwsConsoleResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -32302,7 +32358,7 @@ class GetResourceResourceAwsConsoleResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -32358,7 +32414,7 @@ class GetResourceResourceAwsConsoleResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32449,13 +32505,13 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -32513,7 +32569,7 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -32561,7 +32617,7 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32655,12 +32711,12 @@ class GetResourceResourceAwsInstanceProfileResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -32700,7 +32756,7 @@ class GetResourceResourceAwsInstanceProfileResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -32740,7 +32796,7 @@ class GetResourceResourceAwsInstanceProfileResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32818,12 +32874,12 @@ class GetResourceResourceAzureResult(dict):
                  tenant_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str app_id: The application ID to authenticate with.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32868,7 +32924,7 @@ class GetResourceResourceAzureResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -32908,7 +32964,7 @@ class GetResourceResourceAzureResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -32971,12 +33027,12 @@ class GetResourceResourceAzureCertificateResult(dict):
                  tenant_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str app_id: The application ID to authenticate with.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33021,7 +33077,7 @@ class GetResourceResourceAzureCertificateResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -33061,7 +33117,7 @@ class GetResourceResourceAzureCertificateResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -33108,169 +33164,6 @@ class GetResourceResourceAzureCertificateResult(dict):
 
 
 @pulumi.output_type
-class GetResourceResourceAzureConsoleResult(dict):
-    def __init__(__self__, *,
-                 bind_interface: Optional[_builtins.str] = None,
-                 connector_id: Optional[_builtins.str] = None,
-                 egress_filter: Optional[_builtins.str] = None,
-                 id: Optional[_builtins.str] = None,
-                 identity_set_id: Optional[_builtins.str] = None,
-                 management_group_id: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 privilege_levels: Optional[_builtins.str] = None,
-                 proxy_cluster_id: Optional[_builtins.str] = None,
-                 secret_store_id: Optional[_builtins.str] = None,
-                 subdomain: Optional[_builtins.str] = None,
-                 subscription_id: Optional[_builtins.str] = None,
-                 tags: Optional[Mapping[str, _builtins.str]] = None):
-        """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-        :param _builtins.str connector_id: The connector ID to authenticate through.
-        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str id: Unique identifier of the Resource.
-        :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
-        :param _builtins.str management_group_id: The management group ID to authenticate scope Privileges to.
-        :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.str privilege_levels: The privilege levels specify which Groups are managed externally
-        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
-        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param _builtins.str subscription_id: The subscription ID to authenticate scope Privileges to.
-        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-        """
-        if bind_interface is not None:
-            pulumi.set(__self__, "bind_interface", bind_interface)
-        if connector_id is not None:
-            pulumi.set(__self__, "connector_id", connector_id)
-        if egress_filter is not None:
-            pulumi.set(__self__, "egress_filter", egress_filter)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if identity_set_id is not None:
-            pulumi.set(__self__, "identity_set_id", identity_set_id)
-        if management_group_id is not None:
-            pulumi.set(__self__, "management_group_id", management_group_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if privilege_levels is not None:
-            pulumi.set(__self__, "privilege_levels", privilege_levels)
-        if proxy_cluster_id is not None:
-            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
-        if secret_store_id is not None:
-            pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if subdomain is not None:
-            pulumi.set(__self__, "subdomain", subdomain)
-        if subscription_id is not None:
-            pulumi.set(__self__, "subscription_id", subscription_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="bindInterface")
-    def bind_interface(self) -> Optional[_builtins.str]:
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-        """
-        return pulumi.get(self, "bind_interface")
-
-    @_builtins.property
-    @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[_builtins.str]:
-        """
-        The connector ID to authenticate through.
-        """
-        return pulumi.get(self, "connector_id")
-
-    @_builtins.property
-    @pulumi.getter(name="egressFilter")
-    def egress_filter(self) -> Optional[_builtins.str]:
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        return pulumi.get(self, "egress_filter")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        """
-        Unique identifier of the Resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="identitySetId")
-    def identity_set_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        return pulumi.get(self, "identity_set_id")
-
-    @_builtins.property
-    @pulumi.getter(name="managementGroupId")
-    def management_group_id(self) -> Optional[_builtins.str]:
-        """
-        The management group ID to authenticate scope Privileges to.
-        """
-        return pulumi.get(self, "management_group_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        Unique human-readable name of the Resource.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="privilegeLevels")
-    def privilege_levels(self) -> Optional[_builtins.str]:
-        """
-        The privilege levels specify which Groups are managed externally
-        """
-        return pulumi.get(self, "privilege_levels")
-
-    @_builtins.property
-    @pulumi.getter(name="proxyClusterId")
-    def proxy_cluster_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        return pulumi.get(self, "proxy_cluster_id")
-
-    @_builtins.property
-    @pulumi.getter(name="secretStoreId")
-    def secret_store_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        return pulumi.get(self, "secret_store_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def subdomain(self) -> Optional[_builtins.str]:
-        """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        """
-        return pulumi.get(self, "subdomain")
-
-    @_builtins.property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[_builtins.str]:
-        """
-        The subscription ID to authenticate scope Privileges to.
-        """
-        return pulumi.get(self, "subscription_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Tags is a map of key, value pairs.
-        """
-        return pulumi.get(self, "tags")
-
-
-@pulumi.output_type
 class GetResourceResourceAzureMysqlResult(dict):
     def __init__(__self__, *,
                  bind_interface: Optional[_builtins.str] = None,
@@ -33290,7 +33183,7 @@ class GetResourceResourceAzureMysqlResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -33298,7 +33191,7 @@ class GetResourceResourceAzureMysqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -33344,7 +33237,7 @@ class GetResourceResourceAzureMysqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -33408,7 +33301,7 @@ class GetResourceResourceAzureMysqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -33488,7 +33381,7 @@ class GetResourceResourceAzureMysqlManagedIdentityResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -33496,7 +33389,7 @@ class GetResourceResourceAzureMysqlManagedIdentityResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33539,7 +33432,7 @@ class GetResourceResourceAzureMysqlManagedIdentityResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -33603,7 +33496,7 @@ class GetResourceResourceAzureMysqlManagedIdentityResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -33675,7 +33568,7 @@ class GetResourceResourceAzurePostgreResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -33684,7 +33577,7 @@ class GetResourceResourceAzurePostgreResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33726,7 +33619,7 @@ class GetResourceResourceAzurePostgreResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -33798,7 +33691,7 @@ class GetResourceResourceAzurePostgreResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -33863,7 +33756,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -33872,7 +33765,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33917,7 +33810,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -33989,7 +33882,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34059,12 +33952,12 @@ class GetResourceResourceBigQueryResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str project: The project to connect to.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -34104,7 +33997,7 @@ class GetResourceResourceBigQueryResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -34144,7 +34037,7 @@ class GetResourceResourceBigQueryResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34223,14 +34116,14 @@ class GetResourceResourceCassandraResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34271,7 +34164,7 @@ class GetResourceResourceCassandraResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -34327,7 +34220,7 @@ class GetResourceResourceCassandraResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34399,7 +34292,7 @@ class GetResourceResourceCitusResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -34408,7 +34301,7 @@ class GetResourceResourceCitusResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34450,7 +34343,7 @@ class GetResourceResourceCitusResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -34522,7 +34415,7 @@ class GetResourceResourceCitusResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34583,13 +34476,13 @@ class GetResourceResourceClickHouseHttpResult(dict):
                  url: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -34626,7 +34519,7 @@ class GetResourceResourceClickHouseHttpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -34674,7 +34567,7 @@ class GetResourceResourceClickHouseHttpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34739,7 +34632,7 @@ class GetResourceResourceClickHouseMySqlResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -34747,7 +34640,7 @@ class GetResourceResourceClickHouseMySqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -34790,7 +34683,7 @@ class GetResourceResourceClickHouseMySqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -34854,7 +34747,7 @@ class GetResourceResourceClickHouseMySqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -34926,7 +34819,7 @@ class GetResourceResourceClickHouseTcpResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -34934,7 +34827,7 @@ class GetResourceResourceClickHouseTcpResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34977,7 +34870,7 @@ class GetResourceResourceClickHouseTcpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35041,7 +34934,7 @@ class GetResourceResourceClickHouseTcpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -35114,7 +35007,7 @@ class GetResourceResourceClustrixResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -35122,7 +35015,7 @@ class GetResourceResourceClustrixResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -35168,7 +35061,7 @@ class GetResourceResourceClustrixResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35232,7 +35125,7 @@ class GetResourceResourceClustrixResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -35312,7 +35205,7 @@ class GetResourceResourceCockroachResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -35321,7 +35214,7 @@ class GetResourceResourceCockroachResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35363,7 +35256,7 @@ class GetResourceResourceCockroachResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35435,7 +35328,7 @@ class GetResourceResourceCockroachResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -35499,7 +35392,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -35507,7 +35400,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35550,7 +35443,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35614,7 +35507,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -35683,12 +35576,12 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
                  url: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35726,7 +35619,7 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35766,7 +35659,7 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -35838,14 +35731,14 @@ class GetResourceResourceDb2IResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35886,7 +35779,7 @@ class GetResourceResourceDb2IResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -35942,7 +35835,7 @@ class GetResourceResourceDb2IResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36014,7 +35907,7 @@ class GetResourceResourceDb2LuwResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -36022,7 +35915,7 @@ class GetResourceResourceDb2LuwResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -36065,7 +35958,7 @@ class GetResourceResourceDb2LuwResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36129,7 +36022,7 @@ class GetResourceResourceDb2LuwResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36201,14 +36094,14 @@ class GetResourceResourceDocumentDbHostResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -36256,7 +36149,7 @@ class GetResourceResourceDocumentDbHostResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36312,7 +36205,7 @@ class GetResourceResourceDocumentDbHostResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36373,13 +36266,13 @@ class GetResourceResourceDocumentDbHostIamResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -36415,7 +36308,7 @@ class GetResourceResourceDocumentDbHostIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36463,7 +36356,7 @@ class GetResourceResourceDocumentDbHostIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36528,14 +36421,14 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str replica_set: The name of the mongo replicaset.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -36586,7 +36479,7 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36642,7 +36535,7 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36711,13 +36604,13 @@ class GetResourceResourceDocumentDbReplicaSetIamResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -36753,7 +36646,7 @@ class GetResourceResourceDocumentDbReplicaSetIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36801,7 +36694,7 @@ class GetResourceResourceDocumentDbReplicaSetIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -36863,14 +36756,14 @@ class GetResourceResourceDruidResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -36908,7 +36801,7 @@ class GetResourceResourceDruidResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -36964,7 +36857,7 @@ class GetResourceResourceDruidResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37029,12 +36922,12 @@ class GetResourceResourceDynamoDbResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -37087,7 +36980,7 @@ class GetResourceResourceDynamoDbResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37127,7 +37020,7 @@ class GetResourceResourceDynamoDbResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37213,12 +37106,12 @@ class GetResourceResourceDynamoDbiamResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -37258,7 +37151,7 @@ class GetResourceResourceDynamoDbiamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37298,7 +37191,7 @@ class GetResourceResourceDynamoDbiamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37377,14 +37270,14 @@ class GetResourceResourceElasticResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -37425,7 +37318,7 @@ class GetResourceResourceElasticResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37481,7 +37374,7 @@ class GetResourceResourceElasticResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37552,14 +37445,14 @@ class GetResourceResourceElasticacheRediResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -37600,7 +37493,7 @@ class GetResourceResourceElasticacheRediResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37656,7 +37549,7 @@ class GetResourceResourceElasticacheRediResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37710,6 +37603,207 @@ class GetResourceResourceElasticacheRediResult(dict):
 
 
 @pulumi.output_type
+class GetResourceResourceEntraIdResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[_builtins.str] = None,
+                 discovery_enabled: Optional[_builtins.bool] = None,
+                 egress_filter: Optional[_builtins.str] = None,
+                 group_names: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 identity_set_id: Optional[_builtins.str] = None,
+                 management_group_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 privilege_levels: Optional[_builtins.str] = None,
+                 proxy_cluster_id: Optional[_builtins.str] = None,
+                 resource_group_id: Optional[_builtins.str] = None,
+                 secret_store_id: Optional[_builtins.str] = None,
+                 subdomain: Optional[_builtins.str] = None,
+                 subscription_id: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param _builtins.str group_names: comma separated list of group names to filter by. Supports wildcards (*)
+        :param _builtins.str id: Unique identifier of the Resource.
+        :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
+        :param _builtins.str management_group_id: The management group ID to authenticate scope Privileges to.
+        :param _builtins.str name: Unique human-readable name of the Resource.
+        :param _builtins.str privilege_levels: The privilege levels specify which Groups are managed externally
+        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param _builtins.str resource_group_id: filters discovered groups to the specified Resource Group
+        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param _builtins.str subscription_id: The subscription ID to authenticate scope Privileges to.
+        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
+        :param _builtins.str tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
+               * sql_server_kerberos_ad:
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if group_names is not None:
+            pulumi.set(__self__, "group_names", group_names)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if management_group_id is not None:
+            pulumi.set(__self__, "management_group_id", management_group_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if privilege_levels is not None:
+            pulumi.set(__self__, "privilege_levels", privilege_levels)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[_builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[_builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="groupNames")
+    def group_names(self) -> Optional[_builtins.str]:
+        """
+        comma separated list of group names to filter by. Supports wildcards (*)
+        """
+        return pulumi.get(self, "group_names")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @_builtins.property
+    @pulumi.getter(name="managementGroupId")
+    def management_group_id(self) -> Optional[_builtins.str]:
+        """
+        The management group ID to authenticate scope Privileges to.
+        """
+        return pulumi.get(self, "management_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="privilegeLevels")
+    def privilege_levels(self) -> Optional[_builtins.str]:
+        """
+        The privilege levels specify which Groups are managed externally
+        """
+        return pulumi.get(self, "privilege_levels")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        filters discovered groups to the specified Resource Group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> Optional[_builtins.str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @_builtins.property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[_builtins.str]:
+        """
+        The subscription ID to authenticate scope Privileges to.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        The Azure AD directory (tenant) ID with which to authenticate.
+        * sql_server_kerberos_ad:
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
 class GetResourceResourceGcpResult(dict):
     def __init__(__self__, *,
                  bind_interface: Optional[_builtins.str] = None,
@@ -37724,12 +37818,12 @@ class GetResourceResourceGcpResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str keyfile: The service account keyfile to authenticate with.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str scopes: Space separated scopes that this login should assume into when authenticating.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -37763,7 +37857,7 @@ class GetResourceResourceGcpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37803,7 +37897,7 @@ class GetResourceResourceGcpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -37866,13 +37960,13 @@ class GetResourceResourceGcpConsoleResult(dict):
                  workforce_pool_id: Optional[_builtins.str] = None,
                  workforce_provider_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
@@ -37915,7 +38009,7 @@ class GetResourceResourceGcpConsoleResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -37963,7 +38057,7 @@ class GetResourceResourceGcpConsoleResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -38045,13 +38139,13 @@ class GetResourceResourceGcpwifResult(dict):
                  workforce_pool_id: Optional[_builtins.str] = None,
                  workforce_provider_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str project_id: When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str scopes: Space separated scopes that this login should assume into when authenticating.
@@ -38100,7 +38194,7 @@ class GetResourceResourceGcpwifResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -38148,7 +38242,7 @@ class GetResourceResourceGcpwifResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -38249,7 +38343,7 @@ class GetResourceResourceGoogleGkeResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -38260,7 +38354,7 @@ class GetResourceResourceGoogleGkeResult(dict):
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str service_account_key: The service account key to authenticate with.
@@ -38316,7 +38410,7 @@ class GetResourceResourceGoogleGkeResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -38404,7 +38498,7 @@ class GetResourceResourceGoogleGkeResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -38466,14 +38560,14 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str service_account_key: The service account key to authenticate with.
@@ -38511,7 +38605,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -38567,7 +38661,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -38631,7 +38725,7 @@ class GetResourceResourceGreenplumResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -38640,7 +38734,7 @@ class GetResourceResourceGreenplumResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -38682,7 +38776,7 @@ class GetResourceResourceGreenplumResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -38754,7 +38848,7 @@ class GetResourceResourceGreenplumResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -38819,7 +38913,7 @@ class GetResourceResourceHttpAuthResult(dict):
                  url: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_header: The content to set as the authorization header.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
@@ -38827,7 +38921,7 @@ class GetResourceResourceHttpAuthResult(dict):
         :param _builtins.str host_override: The host header will be overwritten with this field if provided.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -38878,7 +38972,7 @@ class GetResourceResourceHttpAuthResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -38942,7 +39036,7 @@ class GetResourceResourceHttpAuthResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -39008,7 +39102,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
                  url: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
@@ -39017,7 +39111,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39063,7 +39157,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -39135,7 +39229,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -39207,7 +39301,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  url: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str default_path: Automatically redirect to this path upon connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
@@ -39215,7 +39309,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
         :param _builtins.str host_override: The host header will be overwritten with this field if provided.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39256,7 +39350,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -39320,7 +39414,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -39391,7 +39485,7 @@ class GetResourceResourceKuberneteResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -39405,7 +39499,7 @@ class GetResourceResourceKuberneteResult(dict):
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39464,7 +39558,7 @@ class GetResourceResourceKuberneteResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -39576,7 +39670,7 @@ class GetResourceResourceKuberneteResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -39631,7 +39725,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -39639,7 +39733,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39679,7 +39773,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -39743,7 +39837,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -39809,7 +39903,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -39819,7 +39913,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39870,7 +39964,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -39950,7 +40044,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40010,7 +40104,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
                  token: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -40021,7 +40115,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -40078,7 +40172,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -40166,7 +40260,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40229,14 +40323,14 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  token: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -40275,7 +40369,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -40331,7 +40425,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40396,7 +40490,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -40406,7 +40500,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -40447,7 +40541,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -40527,7 +40621,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40584,7 +40678,7 @@ class GetResourceResourceMariaResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -40592,7 +40686,7 @@ class GetResourceResourceMariaResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -40638,7 +40732,7 @@ class GetResourceResourceMariaResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -40702,7 +40796,7 @@ class GetResourceResourceMariaResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40778,13 +40872,13 @@ class GetResourceResourceMemcachedResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -40817,7 +40911,7 @@ class GetResourceResourceMemcachedResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -40865,7 +40959,7 @@ class GetResourceResourceMemcachedResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -40922,7 +41016,7 @@ class GetResourceResourceMemsqlResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -40930,7 +41024,7 @@ class GetResourceResourceMemsqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -40976,7 +41070,7 @@ class GetResourceResourceMemsqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -41040,7 +41134,7 @@ class GetResourceResourceMemsqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -41121,14 +41215,14 @@ class GetResourceResourceMongoHostResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -41179,7 +41273,7 @@ class GetResourceResourceMongoHostResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -41235,7 +41329,7 @@ class GetResourceResourceMongoHostResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -41308,14 +41402,14 @@ class GetResourceResourceMongoLegacyHostResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -41366,7 +41460,7 @@ class GetResourceResourceMongoLegacyHostResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -41422,7 +41516,7 @@ class GetResourceResourceMongoLegacyHostResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -41497,7 +41591,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -41505,7 +41599,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str replica_set: The name of the mongo replicaset.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -41561,7 +41655,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -41625,7 +41719,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -41708,7 +41802,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool connect_to_replica: Set to connect to a replica instead of the primary node.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -41716,7 +41810,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str replica_set: The name of the mongo replicaset.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -41772,7 +41866,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -41836,7 +41930,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -41916,13 +42010,13 @@ class GetResourceResourceMongoShardedClusterResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str auth_database: The authentication database to use.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -41971,7 +42065,7 @@ class GetResourceResourceMongoShardedClusterResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -42019,7 +42113,7 @@ class GetResourceResourceMongoShardedClusterResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -42096,7 +42190,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -42107,7 +42201,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -42162,7 +42256,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -42250,7 +42344,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -42342,7 +42436,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
@@ -42354,7 +42448,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str server_name: Server name for TLS verification (unverified by StrongDM if empty)
@@ -42405,7 +42499,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -42501,7 +42595,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -42574,7 +42668,7 @@ class GetResourceResourceMysqlResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -42582,7 +42676,7 @@ class GetResourceResourceMysqlResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -42628,7 +42722,7 @@ class GetResourceResourceMysqlResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -42692,7 +42786,7 @@ class GetResourceResourceMysqlResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -42768,13 +42862,13 @@ class GetResourceResourceNeptuneResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -42807,7 +42901,7 @@ class GetResourceResourceNeptuneResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -42855,7 +42949,7 @@ class GetResourceResourceNeptuneResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -42913,13 +43007,13 @@ class GetResourceResourceNeptuneIamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str access_key: The Access Key ID to use to authenticate.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -42974,7 +43068,7 @@ class GetResourceResourceNeptuneIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43022,7 +43116,7 @@ class GetResourceResourceNeptuneIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -43110,7 +43204,7 @@ class GetResourceResourceOracleResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -43118,7 +43212,7 @@ class GetResourceResourceOracleResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43161,7 +43255,7 @@ class GetResourceResourceOracleResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43225,7 +43319,7 @@ class GetResourceResourceOracleResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -43296,7 +43390,7 @@ class GetResourceResourceOracleNneResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -43304,7 +43398,7 @@ class GetResourceResourceOracleNneResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43344,7 +43438,7 @@ class GetResourceResourceOracleNneResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43408,7 +43502,7 @@ class GetResourceResourceOracleNneResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -43472,7 +43566,7 @@ class GetResourceResourcePostgreResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -43481,7 +43575,7 @@ class GetResourceResourcePostgreResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43523,7 +43617,7 @@ class GetResourceResourcePostgreResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43595,7 +43689,7 @@ class GetResourceResourcePostgreResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -43659,7 +43753,7 @@ class GetResourceResourcePrestoResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -43667,7 +43761,7 @@ class GetResourceResourcePrestoResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43710,7 +43804,7 @@ class GetResourceResourcePrestoResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43774,7 +43868,7 @@ class GetResourceResourcePrestoResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -43845,14 +43939,14 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43893,7 +43987,7 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -43949,7 +44043,7 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44017,13 +44111,13 @@ class GetResourceResourceRawTcpResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -44056,7 +44150,7 @@ class GetResourceResourceRawTcpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -44104,7 +44198,7 @@ class GetResourceResourceRawTcpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44160,7 +44254,7 @@ class GetResourceResourceRdpResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.bool downgrade_nla_connections: When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -44169,7 +44263,7 @@ class GetResourceResourceRdpResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -44211,7 +44305,7 @@ class GetResourceResourceRdpResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -44283,7 +44377,7 @@ class GetResourceResourceRdpResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44343,11 +44437,12 @@ class GetResourceResourceRdpCertResult(dict):
                  port_override: Optional[_builtins.int] = None,
                  proxy_cluster_id: Optional[_builtins.str] = None,
                  secret_store_id: Optional[_builtins.str] = None,
+                 sid: Optional[_builtins.str] = None,
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -44356,9 +44451,10 @@ class GetResourceResourceRdpCertResult(dict):
         :param _builtins.bool lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str sid: Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.str username: The username to authenticate with.
@@ -44387,6 +44483,8 @@ class GetResourceResourceRdpCertResult(dict):
             pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -44398,7 +44496,7 @@ class GetResourceResourceRdpCertResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -44470,7 +44568,7 @@ class GetResourceResourceRdpCertResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44489,6 +44587,14 @@ class GetResourceResourceRdpCertResult(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sid(self) -> Optional[_builtins.str]:
+        """
+        Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        """
+        return pulumi.get(self, "sid")
 
     @_builtins.property
     @pulumi.getter
@@ -44535,7 +44641,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -44543,7 +44649,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -44589,7 +44695,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -44653,7 +44759,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44732,14 +44838,14 @@ class GetResourceResourceRediResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -44780,7 +44886,7 @@ class GetResourceResourceRediResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -44836,7 +44942,7 @@ class GetResourceResourceRediResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -44907,14 +45013,14 @@ class GetResourceResourceRedisClusterResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -44955,7 +45061,7 @@ class GetResourceResourceRedisClusterResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45011,7 +45117,7 @@ class GetResourceResourceRedisClusterResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -45083,7 +45189,7 @@ class GetResourceResourceRedshiftResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -45092,7 +45198,7 @@ class GetResourceResourceRedshiftResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -45134,7 +45240,7 @@ class GetResourceResourceRedshiftResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45206,7 +45312,7 @@ class GetResourceResourceRedshiftResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -45271,7 +45377,7 @@ class GetResourceResourceRedshiftIamResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str cluster_id: Cluster Identified of Redshift cluster
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -45280,7 +45386,7 @@ class GetResourceResourceRedshiftIamResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -45325,7 +45431,7 @@ class GetResourceResourceRedshiftIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45397,7 +45503,7 @@ class GetResourceResourceRedshiftIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -45470,7 +45576,7 @@ class GetResourceResourceRedshiftServerlessIamResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  workgroup: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -45478,7 +45584,7 @@ class GetResourceResourceRedshiftServerlessIamResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str region: The AWS region to connect to.
         :param _builtins.str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -45525,7 +45631,7 @@ class GetResourceResourceRedshiftServerlessIamResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45589,7 +45695,7 @@ class GetResourceResourceRedshiftServerlessIamResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -45671,7 +45777,7 @@ class GetResourceResourceSingleStoreResult(dict):
                  use_azure_single_server_usernames: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -45679,7 +45785,7 @@ class GetResourceResourceSingleStoreResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -45725,7 +45831,7 @@ class GetResourceResourceSingleStoreResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45789,7 +45895,7 @@ class GetResourceResourceSingleStoreResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -45870,13 +45976,13 @@ class GetResourceResourceSnowflakeResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str password: The password to authenticate with.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
@@ -45927,7 +46033,7 @@ class GetResourceResourceSnowflakeResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -45975,7 +46081,7 @@ class GetResourceResourceSnowflakeResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -46051,12 +46157,12 @@ class GetResourceResourceSnowsightResult(dict):
                  subdomain: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str healthcheck_username: The StrongDM user email to use for healthchecks.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str saml_metadata: The Metadata for your snowflake IDP integration
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -46090,7 +46196,7 @@ class GetResourceResourceSnowsightResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -46130,7 +46236,7 @@ class GetResourceResourceSnowsightResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -46197,7 +46303,7 @@ class GetResourceResourceSqlServerResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -46206,7 +46312,7 @@ class GetResourceResourceSqlServerResult(dict):
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -46261,7 +46367,7 @@ class GetResourceResourceSqlServerResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -46333,7 +46439,7 @@ class GetResourceResourceSqlServerResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -46409,7 +46515,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
                  tenant_id: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str client_id: The Azure AD application (client) ID with which to authenticate.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -46418,7 +46524,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str schema: The Schema to use to direct initial requests.
         :param _builtins.str secret: The Azure AD client secret (application password) with which to authenticate.
@@ -46477,7 +46583,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -46549,7 +46655,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -46636,7 +46742,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -46646,7 +46752,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str realm: The Active Directory domain (realm) to which the configured username belongs.
         :param _builtins.str schema: The Schema to use to direct initial requests.
@@ -46709,7 +46815,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -46789,7 +46895,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -46880,7 +46986,7 @@ class GetResourceResourceSshResult(dict):
         """
         :param _builtins.str public_key: The public key to append to a server's authorized keys. This will be generated after resource creation.
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -46888,7 +46994,7 @@ class GetResourceResourceSshResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -46947,7 +47053,7 @@ class GetResourceResourceSshResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47011,7 +47117,7 @@ class GetResourceResourceSshResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -47078,7 +47184,7 @@ class GetResourceResourceSshCertResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -47088,7 +47194,7 @@ class GetResourceResourceSshCertResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47142,7 +47248,7 @@ class GetResourceResourceSshCertResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47222,7 +47328,7 @@ class GetResourceResourceSshCertResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -47289,7 +47395,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -47298,7 +47404,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str private_key: The private key used to authenticate with the server.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -47353,7 +47459,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47425,7 +47531,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -47498,7 +47604,7 @@ class GetResourceResourceSshPasswordResult(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
@@ -47506,7 +47612,7 @@ class GetResourceResourceSshPasswordResult(dict):
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.bool port_forwarding: Whether port forwarding is allowed through this server.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47556,7 +47662,7 @@ class GetResourceResourceSshPasswordResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47620,7 +47726,7 @@ class GetResourceResourceSshPasswordResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -47682,14 +47788,14 @@ class GetResourceResourceSybaseResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47727,7 +47833,7 @@ class GetResourceResourceSybaseResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47783,7 +47889,7 @@ class GetResourceResourceSybaseResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -47845,14 +47951,14 @@ class GetResourceResourceSybaseIqResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47890,7 +47996,7 @@ class GetResourceResourceSybaseIqResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -47946,7 +48052,7 @@ class GetResourceResourceSybaseIqResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -48008,14 +48114,14 @@ class GetResourceResourceTeradataResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48053,7 +48159,7 @@ class GetResourceResourceTeradataResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -48109,7 +48215,7 @@ class GetResourceResourceTeradataResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -48172,14 +48278,14 @@ class GetResourceResourceTrinoResult(dict):
                  tls_required: Optional[_builtins.bool] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48220,7 +48326,7 @@ class GetResourceResourceTrinoResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -48276,7 +48382,7 @@ class GetResourceResourceTrinoResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 
@@ -48347,7 +48453,7 @@ class GetResourceResourceVerticaResult(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -48355,7 +48461,7 @@ class GetResourceResourceVerticaResult(dict):
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
-        :param _builtins.int port_override: The local port used by clients to connect to this resource.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param _builtins.str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48395,7 +48501,7 @@ class GetResourceResourceVerticaResult(dict):
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[_builtins.str]:
         """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -48459,7 +48565,7 @@ class GetResourceResourceVerticaResult(dict):
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[_builtins.int]:
         """
-        The local port used by clients to connect to this resource.
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         """
         return pulumi.get(self, "port_override")
 

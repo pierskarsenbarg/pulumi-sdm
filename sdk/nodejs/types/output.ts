@@ -674,7 +674,6 @@ export interface GetResourceResource {
     awsConsoles: outputs.GetResourceResourceAwsConsole[];
     awsInstanceProfiles: outputs.GetResourceResourceAwsInstanceProfile[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
-    azureConsoles: outputs.GetResourceResourceAzureConsole[];
     azureMysqlManagedIdentities: outputs.GetResourceResourceAzureMysqlManagedIdentity[];
     azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
@@ -701,6 +700,7 @@ export interface GetResourceResource {
     dynamoDbs: outputs.GetResourceResourceDynamoDb[];
     elasticacheRedis: outputs.GetResourceResourceElasticacheRedi[];
     elastics: outputs.GetResourceResourceElastic[];
+    entraIds: outputs.GetResourceResourceEntraId[];
     gcpConsoles: outputs.GetResourceResourceGcpConsole[];
     gcps: outputs.GetResourceResourceGcp[];
     gcpwifs: outputs.GetResourceResourceGcpwif[];
@@ -771,7 +771,7 @@ export interface GetResourceResource {
 
 export interface GetResourceResourceAerospike {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -799,7 +799,7 @@ export interface GetResourceResourceAerospike {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -834,7 +834,7 @@ export interface GetResourceResourceAk {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -890,7 +890,7 @@ export interface GetResourceResourceAk {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -913,7 +913,7 @@ export interface GetResourceResourceAk {
 
 export interface GetResourceResourceAksBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -945,7 +945,7 @@ export interface GetResourceResourceAksBasicAuth {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -976,7 +976,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1020,7 +1020,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1048,7 +1048,7 @@ export interface GetResourceResourceAksServiceAccount {
 
 export interface GetResourceResourceAksServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1076,7 +1076,7 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1104,7 +1104,7 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
 
 export interface GetResourceResourceAksUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1144,7 +1144,7 @@ export interface GetResourceResourceAksUserImpersonation {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1171,7 +1171,7 @@ export interface GetResourceResourceAmazonE {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1191,7 +1191,7 @@ export interface GetResourceResourceAmazonE {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1238,7 +1238,7 @@ export interface GetResourceResourceAmazonEk {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1286,7 +1286,7 @@ export interface GetResourceResourceAmazonEk {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1329,7 +1329,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1377,7 +1377,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1412,7 +1412,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
 
 export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1444,7 +1444,7 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1483,7 +1483,7 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1515,7 +1515,7 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1554,7 +1554,7 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
 
 export interface GetResourceResourceAmazonEsiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1574,7 +1574,7 @@ export interface GetResourceResourceAmazonEsiam {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1613,7 +1613,7 @@ export interface GetResourceResourceAmazonEsiam {
 
 export interface GetResourceResourceAmazonmqAmqp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1641,7 +1641,7 @@ export interface GetResourceResourceAmazonmqAmqp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1672,7 +1672,7 @@ export interface GetResourceResourceAmazonmqAmqp {
 
 export interface GetResourceResourceAmazonmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1700,7 +1700,7 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1735,7 +1735,7 @@ export interface GetResourceResourceAthena {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1755,7 +1755,7 @@ export interface GetResourceResourceAthena {
      */
     output?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1794,7 +1794,7 @@ export interface GetResourceResourceAthena {
 
 export interface GetResourceResourceAthenaIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1814,7 +1814,7 @@ export interface GetResourceResourceAthenaIam {
      */
     output?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1849,7 +1849,7 @@ export interface GetResourceResourceAthenaIam {
 
 export interface GetResourceResourceAuroraMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1881,7 +1881,7 @@ export interface GetResourceResourceAuroraMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1916,7 +1916,7 @@ export interface GetResourceResourceAuroraMysql {
 
 export interface GetResourceResourceAuroraMysqlIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -1944,7 +1944,7 @@ export interface GetResourceResourceAuroraMysqlIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -1979,7 +1979,7 @@ export interface GetResourceResourceAuroraMysqlIam {
 
 export interface GetResourceResourceAuroraPostgre {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2015,7 +2015,7 @@ export interface GetResourceResourceAuroraPostgre {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2042,7 +2042,7 @@ export interface GetResourceResourceAuroraPostgre {
 
 export interface GetResourceResourceAuroraPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2074,7 +2074,7 @@ export interface GetResourceResourceAuroraPostgresIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2113,7 +2113,7 @@ export interface GetResourceResourceAw {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2133,7 +2133,7 @@ export interface GetResourceResourceAw {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2168,7 +2168,7 @@ export interface GetResourceResourceAw {
 
 export interface GetResourceResourceAwsConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2196,7 +2196,7 @@ export interface GetResourceResourceAwsConsole {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2239,7 +2239,7 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2263,7 +2263,7 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2306,7 +2306,7 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
 
 export interface GetResourceResourceAwsInstanceProfile {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2326,7 +2326,7 @@ export interface GetResourceResourceAwsInstanceProfile {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2365,7 +2365,7 @@ export interface GetResourceResourceAzure {
      */
     appId?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2385,7 +2385,7 @@ export interface GetResourceResourceAzure {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2417,7 +2417,7 @@ export interface GetResourceResourceAzureCertificate {
      */
     appId?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2437,7 +2437,7 @@ export interface GetResourceResourceAzureCertificate {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2463,64 +2463,9 @@ export interface GetResourceResourceAzureCertificate {
     tenantId?: string;
 }
 
-export interface GetResourceResourceAzureConsole {
-    /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-     */
-    bindInterface?: string;
-    /**
-     * The connector ID to authenticate through.
-     */
-    connectorId?: string;
-    /**
-     * A filter applied to the routing logic to pin datasource to nodes.
-     */
-    egressFilter?: string;
-    /**
-     * Unique identifier of the Resource.
-     */
-    id?: string;
-    /**
-     * The ID of the identity set to use for identity connections.
-     */
-    identitySetId?: string;
-    /**
-     * The management group ID to authenticate scope Privileges to.
-     */
-    managementGroupId?: string;
-    /**
-     * Unique human-readable name of the Resource.
-     */
-    name?: string;
-    /**
-     * The privilege levels specify which Groups are managed externally
-     */
-    privilegeLevels?: string;
-    /**
-     * ID of the proxy cluster for this resource, if any.
-     */
-    proxyClusterId?: string;
-    /**
-     * ID of the secret store containing credentials for this resource, if any.
-     */
-    secretStoreId?: string;
-    /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-     */
-    subdomain?: string;
-    /**
-     * The subscription ID to authenticate scope Privileges to.
-     */
-    subscriptionId?: string;
-    /**
-     * Tags is a map of key, value pairs.
-     */
-    tags?: {[key: string]: string};
-}
-
 export interface GetResourceResourceAzureMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2552,7 +2497,7 @@ export interface GetResourceResourceAzureMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2587,7 +2532,7 @@ export interface GetResourceResourceAzureMysql {
 
 export interface GetResourceResourceAzureMysqlManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2619,7 +2564,7 @@ export interface GetResourceResourceAzureMysqlManagedIdentity {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2650,7 +2595,7 @@ export interface GetResourceResourceAzureMysqlManagedIdentity {
 
 export interface GetResourceResourceAzurePostgre {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2686,7 +2631,7 @@ export interface GetResourceResourceAzurePostgre {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2713,7 +2658,7 @@ export interface GetResourceResourceAzurePostgre {
 
 export interface GetResourceResourceAzurePostgresManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2749,7 +2694,7 @@ export interface GetResourceResourceAzurePostgresManagedIdentity {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2780,7 +2725,7 @@ export interface GetResourceResourceAzurePostgresManagedIdentity {
 
 export interface GetResourceResourceBigQuery {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2800,7 +2745,7 @@ export interface GetResourceResourceBigQuery {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2835,7 +2780,7 @@ export interface GetResourceResourceBigQuery {
 
 export interface GetResourceResourceCassandra {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2863,7 +2808,7 @@ export interface GetResourceResourceCassandra {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2894,7 +2839,7 @@ export interface GetResourceResourceCassandra {
 
 export interface GetResourceResourceCitus {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2930,7 +2875,7 @@ export interface GetResourceResourceCitus {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -2957,7 +2902,7 @@ export interface GetResourceResourceCitus {
 
 export interface GetResourceResourceClickHouseHttp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -2981,7 +2926,7 @@ export interface GetResourceResourceClickHouseHttp {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3009,7 +2954,7 @@ export interface GetResourceResourceClickHouseHttp {
 
 export interface GetResourceResourceClickHouseMySql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3041,7 +2986,7 @@ export interface GetResourceResourceClickHouseMySql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3072,7 +3017,7 @@ export interface GetResourceResourceClickHouseMySql {
 
 export interface GetResourceResourceClickHouseTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3104,7 +3049,7 @@ export interface GetResourceResourceClickHouseTcp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3135,7 +3080,7 @@ export interface GetResourceResourceClickHouseTcp {
 
 export interface GetResourceResourceClustrix {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3167,7 +3112,7 @@ export interface GetResourceResourceClustrix {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3202,7 +3147,7 @@ export interface GetResourceResourceClustrix {
 
 export interface GetResourceResourceCockroach {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3238,7 +3183,7 @@ export interface GetResourceResourceCockroach {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3265,7 +3210,7 @@ export interface GetResourceResourceCockroach {
 
 export interface GetResourceResourceCouchbaseDatabase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3297,7 +3242,7 @@ export interface GetResourceResourceCouchbaseDatabase {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3328,7 +3273,7 @@ export interface GetResourceResourceCouchbaseDatabase {
 
 export interface GetResourceResourceCouchbaseWebUi {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3348,7 +3293,7 @@ export interface GetResourceResourceCouchbaseWebUi {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3380,7 +3325,7 @@ export interface GetResourceResourceCouchbaseWebUi {
 
 export interface GetResourceResourceDb2I {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3408,7 +3353,7 @@ export interface GetResourceResourceDb2I {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3439,7 +3384,7 @@ export interface GetResourceResourceDb2I {
 
 export interface GetResourceResourceDb2Luw {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3471,7 +3416,7 @@ export interface GetResourceResourceDb2Luw {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3506,7 +3451,7 @@ export interface GetResourceResourceDocumentDbHost {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3534,7 +3479,7 @@ export interface GetResourceResourceDocumentDbHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3561,7 +3506,7 @@ export interface GetResourceResourceDocumentDbHost {
 
 export interface GetResourceResourceDocumentDbHostIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3585,7 +3530,7 @@ export interface GetResourceResourceDocumentDbHostIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3616,7 +3561,7 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3644,7 +3589,7 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3675,7 +3620,7 @@ export interface GetResourceResourceDocumentDbReplicaSet {
 
 export interface GetResourceResourceDocumentDbReplicaSetIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3699,7 +3644,7 @@ export interface GetResourceResourceDocumentDbReplicaSetIam {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3726,7 +3671,7 @@ export interface GetResourceResourceDocumentDbReplicaSetIam {
 
 export interface GetResourceResourceDruid {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3754,7 +3699,7 @@ export interface GetResourceResourceDruid {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3785,7 +3730,7 @@ export interface GetResourceResourceDynamoDb {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3805,7 +3750,7 @@ export interface GetResourceResourceDynamoDb {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3844,7 +3789,7 @@ export interface GetResourceResourceDynamoDb {
 
 export interface GetResourceResourceDynamoDbiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3864,7 +3809,7 @@ export interface GetResourceResourceDynamoDbiam {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3899,7 +3844,7 @@ export interface GetResourceResourceDynamoDbiam {
 
 export interface GetResourceResourceElastic {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3927,7 +3872,7 @@ export interface GetResourceResourceElastic {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -3958,7 +3903,7 @@ export interface GetResourceResourceElastic {
 
 export interface GetResourceResourceElasticacheRedi {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -3986,7 +3931,7 @@ export interface GetResourceResourceElasticacheRedi {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4015,9 +3960,77 @@ export interface GetResourceResourceElasticacheRedi {
     username?: string;
 }
 
+export interface GetResourceResourceEntraId {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * The management group ID to authenticate scope Privileges to.
+     */
+    managementGroupId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * filters discovered groups to the specified Resource Group
+     */
+    resourceGroupId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * The subscription ID to authenticate scope Privileges to.
+     */
+    subscriptionId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
+     * * sql_server_kerberos_ad:
+     */
+    tenantId?: string;
+}
+
 export interface GetResourceResourceGcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4037,7 +4050,7 @@ export interface GetResourceResourceGcp {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4064,7 +4077,7 @@ export interface GetResourceResourceGcp {
 
 export interface GetResourceResourceGcpConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4088,7 +4101,7 @@ export interface GetResourceResourceGcpConsole {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4124,7 +4137,7 @@ export interface GetResourceResourceGcpConsole {
 
 export interface GetResourceResourceGcpwif {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4148,7 +4161,7 @@ export interface GetResourceResourceGcpwif {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4196,7 +4209,7 @@ export interface GetResourceResourceGoogleGke {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4240,7 +4253,7 @@ export interface GetResourceResourceGoogleGke {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4267,7 +4280,7 @@ export interface GetResourceResourceGoogleGke {
 
 export interface GetResourceResourceGoogleGkeUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4295,7 +4308,7 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4322,7 +4335,7 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
 
 export interface GetResourceResourceGreenplum {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4358,7 +4371,7 @@ export interface GetResourceResourceGreenplum {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4389,7 +4402,7 @@ export interface GetResourceResourceHttpAuth {
      */
     authHeader?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4421,7 +4434,7 @@ export interface GetResourceResourceHttpAuth {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4449,7 +4462,7 @@ export interface GetResourceResourceHttpAuth {
 
 export interface GetResourceResourceHttpBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4485,7 +4498,7 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4517,7 +4530,7 @@ export interface GetResourceResourceHttpBasicAuth {
 
 export interface GetResourceResourceHttpNoAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4549,7 +4562,7 @@ export interface GetResourceResourceHttpNoAuth {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4581,7 +4594,7 @@ export interface GetResourceResourceKubernete {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4637,7 +4650,7 @@ export interface GetResourceResourceKubernete {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4660,7 +4673,7 @@ export interface GetResourceResourceKubernete {
 
 export interface GetResourceResourceKubernetesBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4692,7 +4705,7 @@ export interface GetResourceResourceKubernetesBasicAuth {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4723,7 +4736,7 @@ export interface GetResourceResourceKubernetesPodIdentity {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4763,7 +4776,7 @@ export interface GetResourceResourceKubernetesPodIdentity {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4790,7 +4803,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4834,7 +4847,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4862,7 +4875,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
 
 export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4890,7 +4903,7 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4918,7 +4931,7 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
 
 export interface GetResourceResourceKubernetesUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -4958,7 +4971,7 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -4981,7 +4994,7 @@ export interface GetResourceResourceKubernetesUserImpersonation {
 
 export interface GetResourceResourceMaria {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5013,7 +5026,7 @@ export interface GetResourceResourceMaria {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5048,7 +5061,7 @@ export interface GetResourceResourceMaria {
 
 export interface GetResourceResourceMemcached {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5072,7 +5085,7 @@ export interface GetResourceResourceMemcached {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5095,7 +5108,7 @@ export interface GetResourceResourceMemcached {
 
 export interface GetResourceResourceMemsql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5127,7 +5140,7 @@ export interface GetResourceResourceMemsql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5166,7 +5179,7 @@ export interface GetResourceResourceMongoHost {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5194,7 +5207,7 @@ export interface GetResourceResourceMongoHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5229,7 +5242,7 @@ export interface GetResourceResourceMongoLegacyHost {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5257,7 +5270,7 @@ export interface GetResourceResourceMongoLegacyHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5292,7 +5305,7 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5324,7 +5337,7 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5363,7 +5376,7 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5395,7 +5408,7 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5434,7 +5447,7 @@ export interface GetResourceResourceMongoShardedCluster {
      */
     authDatabase?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5458,7 +5471,7 @@ export interface GetResourceResourceMongoShardedCluster {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5489,7 +5502,7 @@ export interface GetResourceResourceMongoShardedCluster {
 
 export interface GetResourceResourceMtlsMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5533,7 +5546,7 @@ export interface GetResourceResourceMtlsMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5572,7 +5585,7 @@ export interface GetResourceResourceMtlsMysql {
 
 export interface GetResourceResourceMtlsPostgre {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5620,7 +5633,7 @@ export interface GetResourceResourceMtlsPostgre {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5651,7 +5664,7 @@ export interface GetResourceResourceMtlsPostgre {
 
 export interface GetResourceResourceMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5683,7 +5696,7 @@ export interface GetResourceResourceMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5718,7 +5731,7 @@ export interface GetResourceResourceMysql {
 
 export interface GetResourceResourceNeptune {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5742,7 +5755,7 @@ export interface GetResourceResourceNeptune {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5769,7 +5782,7 @@ export interface GetResourceResourceNeptuneIam {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5793,7 +5806,7 @@ export interface GetResourceResourceNeptuneIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5832,7 +5845,7 @@ export interface GetResourceResourceNeptuneIam {
 
 export interface GetResourceResourceOracle {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5864,7 +5877,7 @@ export interface GetResourceResourceOracle {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5895,7 +5908,7 @@ export interface GetResourceResourceOracle {
 
 export interface GetResourceResourceOracleNne {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5927,7 +5940,7 @@ export interface GetResourceResourceOracleNne {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -5954,7 +5967,7 @@ export interface GetResourceResourceOracleNne {
 
 export interface GetResourceResourcePostgre {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -5990,7 +6003,7 @@ export interface GetResourceResourcePostgre {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6017,7 +6030,7 @@ export interface GetResourceResourcePostgre {
 
 export interface GetResourceResourcePresto {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6049,7 +6062,7 @@ export interface GetResourceResourcePresto {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6080,7 +6093,7 @@ export interface GetResourceResourcePresto {
 
 export interface GetResourceResourceRabbitmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6108,7 +6121,7 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6139,7 +6152,7 @@ export interface GetResourceResourceRabbitmqAmqp091 {
 
 export interface GetResourceResourceRawTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6163,7 +6176,7 @@ export interface GetResourceResourceRawTcp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6186,7 +6199,7 @@ export interface GetResourceResourceRawTcp {
 
 export interface GetResourceResourceRdp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6222,7 +6235,7 @@ export interface GetResourceResourceRdp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6249,7 +6262,7 @@ export interface GetResourceResourceRdp {
 
 export interface GetResourceResourceRdpCert {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6285,7 +6298,7 @@ export interface GetResourceResourceRdpCert {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6296,6 +6309,10 @@ export interface GetResourceResourceRdpCert {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     */
+    sid?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6312,7 +6329,7 @@ export interface GetResourceResourceRdpCert {
 
 export interface GetResourceResourceRdsPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6344,7 +6361,7 @@ export interface GetResourceResourceRdsPostgresIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6379,7 +6396,7 @@ export interface GetResourceResourceRdsPostgresIam {
 
 export interface GetResourceResourceRedi {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6407,7 +6424,7 @@ export interface GetResourceResourceRedi {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6438,7 +6455,7 @@ export interface GetResourceResourceRedi {
 
 export interface GetResourceResourceRedisCluster {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6466,7 +6483,7 @@ export interface GetResourceResourceRedisCluster {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6497,7 +6514,7 @@ export interface GetResourceResourceRedisCluster {
 
 export interface GetResourceResourceRedshift {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6533,7 +6550,7 @@ export interface GetResourceResourceRedshift {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6560,7 +6577,7 @@ export interface GetResourceResourceRedshift {
 
 export interface GetResourceResourceRedshiftIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6596,7 +6613,7 @@ export interface GetResourceResourceRedshiftIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6627,7 +6644,7 @@ export interface GetResourceResourceRedshiftIam {
 
 export interface GetResourceResourceRedshiftServerlessIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6659,7 +6676,7 @@ export interface GetResourceResourceRedshiftServerlessIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6695,7 +6712,7 @@ export interface GetResourceResourceRedshiftServerlessIam {
 
 export interface GetResourceResourceSingleStore {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6727,7 +6744,7 @@ export interface GetResourceResourceSingleStore {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6762,7 +6779,7 @@ export interface GetResourceResourceSingleStore {
 
 export interface GetResourceResourceSnowflake {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6790,7 +6807,7 @@ export interface GetResourceResourceSnowflake {
      */
     password: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6825,7 +6842,7 @@ export interface GetResourceResourceSnowflake {
 
 export interface GetResourceResourceSnowsight {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6845,7 +6862,7 @@ export interface GetResourceResourceSnowsight {
      */
     name?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6876,7 +6893,7 @@ export interface GetResourceResourceSqlServer {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6912,7 +6929,7 @@ export interface GetResourceResourceSqlServer {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -6947,7 +6964,7 @@ export interface GetResourceResourceSqlServerAzureAd {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -6983,7 +7000,7 @@ export interface GetResourceResourceSqlServerAzureAd {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7023,7 +7040,7 @@ export interface GetResourceResourceSqlServerKerberosAd {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7063,7 +7080,7 @@ export interface GetResourceResourceSqlServerKerberosAd {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7106,7 +7123,7 @@ export interface GetResourceResourceSsh {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7138,7 +7155,7 @@ export interface GetResourceResourceSsh {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7173,7 +7190,7 @@ export interface GetResourceResourceSshCert {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7213,7 +7230,7 @@ export interface GetResourceResourceSshCert {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7244,7 +7261,7 @@ export interface GetResourceResourceSshCustomerKey {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7280,7 +7297,7 @@ export interface GetResourceResourceSshCustomerKey {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7315,7 +7332,7 @@ export interface GetResourceResourceSshPassword {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7347,7 +7364,7 @@ export interface GetResourceResourceSshPassword {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7374,7 +7391,7 @@ export interface GetResourceResourceSshPassword {
 
 export interface GetResourceResourceSybase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7402,7 +7419,7 @@ export interface GetResourceResourceSybase {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7429,7 +7446,7 @@ export interface GetResourceResourceSybase {
 
 export interface GetResourceResourceSybaseIq {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7457,7 +7474,7 @@ export interface GetResourceResourceSybaseIq {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7484,7 +7501,7 @@ export interface GetResourceResourceSybaseIq {
 
 export interface GetResourceResourceTeradata {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7512,7 +7529,7 @@ export interface GetResourceResourceTeradata {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7539,7 +7556,7 @@ export interface GetResourceResourceTeradata {
 
 export interface GetResourceResourceTrino {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7567,7 +7584,7 @@ export interface GetResourceResourceTrino {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -7598,7 +7615,7 @@ export interface GetResourceResourceTrino {
 
 export interface GetResourceResourceVertica {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
@@ -7630,7 +7647,7 @@ export interface GetResourceResourceVertica {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride?: number;
     /**
@@ -8705,7 +8722,7 @@ export interface NodeRelayMaintenanceWindow {
 
 export interface ResourceAerospike {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -8729,7 +8746,7 @@ export interface ResourceAerospike {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -8764,7 +8781,7 @@ export interface ResourceAks {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -8816,7 +8833,7 @@ export interface ResourceAks {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -8839,7 +8856,7 @@ export interface ResourceAks {
 
 export interface ResourceAksBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -8867,7 +8884,7 @@ export interface ResourceAksBasicAuth {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -8898,7 +8915,7 @@ export interface ResourceAksServiceAccount {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -8938,7 +8955,7 @@ export interface ResourceAksServiceAccount {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -8966,7 +8983,7 @@ export interface ResourceAksServiceAccount {
 
 export interface ResourceAksServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -8990,7 +9007,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9018,7 +9035,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
 
 export interface ResourceAksUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9054,7 +9071,7 @@ export interface ResourceAksUserImpersonation {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9085,7 +9102,7 @@ export interface ResourceAmazonEks {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9129,7 +9146,7 @@ export interface ResourceAmazonEks {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9172,7 +9189,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9216,7 +9233,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9251,7 +9268,7 @@ export interface ResourceAmazonEksInstanceProfile {
 
 export interface ResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9279,7 +9296,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9318,7 +9335,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9346,7 +9363,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9389,7 +9406,7 @@ export interface ResourceAmazonEs {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9405,7 +9422,7 @@ export interface ResourceAmazonEs {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9444,7 +9461,7 @@ export interface ResourceAmazonEs {
 
 export interface ResourceAmazonEsiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9460,7 +9477,7 @@ export interface ResourceAmazonEsiam {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9499,7 +9516,7 @@ export interface ResourceAmazonEsiam {
 
 export interface ResourceAmazonmqAmqp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9523,7 +9540,7 @@ export interface ResourceAmazonmqAmqp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9554,7 +9571,7 @@ export interface ResourceAmazonmqAmqp {
 
 export interface ResourceAmazonmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9578,7 +9595,7 @@ export interface ResourceAmazonmqAmqp091 {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9617,7 +9634,7 @@ export interface ResourceAthena {
      */
     athenaOutput: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9629,7 +9646,7 @@ export interface ResourceAthena {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9668,7 +9685,7 @@ export interface ResourceAthena {
 
 export interface ResourceAthenaIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9684,7 +9701,7 @@ export interface ResourceAthenaIam {
      */
     output: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9719,7 +9736,7 @@ export interface ResourceAthenaIam {
 
 export interface ResourceAuroraMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9747,7 +9764,7 @@ export interface ResourceAuroraMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9782,7 +9799,7 @@ export interface ResourceAuroraMysql {
 
 export interface ResourceAuroraMysqlIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9806,7 +9823,7 @@ export interface ResourceAuroraMysqlIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9841,7 +9858,7 @@ export interface ResourceAuroraMysqlIam {
 
 export interface ResourceAuroraPostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9873,7 +9890,7 @@ export interface ResourceAuroraPostgres {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9900,7 +9917,7 @@ export interface ResourceAuroraPostgres {
 
 export interface ResourceAuroraPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9928,7 +9945,7 @@ export interface ResourceAuroraPostgresIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -9967,7 +9984,7 @@ export interface ResourceAws {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -9983,7 +10000,7 @@ export interface ResourceAws {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10018,7 +10035,7 @@ export interface ResourceAws {
 
 export interface ResourceAwsConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10042,7 +10059,7 @@ export interface ResourceAwsConsole {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10085,7 +10102,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10105,7 +10122,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10148,7 +10165,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
 
 export interface ResourceAwsInstanceProfile {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10164,7 +10181,7 @@ export interface ResourceAwsInstanceProfile {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10203,7 +10220,7 @@ export interface ResourceAzure {
      */
     appId?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10219,7 +10236,7 @@ export interface ResourceAzure {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10251,7 +10268,7 @@ export interface ResourceAzureCertificate {
      */
     appId?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10267,7 +10284,7 @@ export interface ResourceAzureCertificate {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10293,60 +10310,9 @@ export interface ResourceAzureCertificate {
     tenantId?: string;
 }
 
-export interface ResourceAzureConsole {
-    /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-     */
-    bindInterface: string;
-    /**
-     * The connector ID to authenticate through.
-     */
-    connectorId: string;
-    /**
-     * A filter applied to the routing logic to pin datasource to nodes.
-     */
-    egressFilter?: string;
-    /**
-     * The ID of the identity set to use for identity connections.
-     */
-    identitySetId?: string;
-    /**
-     * The management group ID to authenticate scope Privileges to.
-     */
-    managementGroupId?: string;
-    /**
-     * Unique human-readable name of the Resource.
-     */
-    name: string;
-    /**
-     * The privilege levels specify which Groups are managed externally
-     */
-    privilegeLevels: string;
-    /**
-     * ID of the proxy cluster for this resource, if any.
-     */
-    proxyClusterId?: string;
-    /**
-     * ID of the secret store containing credentials for this resource, if any.
-     */
-    secretStoreId?: string;
-    /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-     */
-    subdomain: string;
-    /**
-     * The subscription ID to authenticate scope Privileges to.
-     */
-    subscriptionId?: string;
-    /**
-     * Tags is a map of key, value pairs.
-     */
-    tags?: {[key: string]: string};
-}
-
 export interface ResourceAzureMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10374,7 +10340,7 @@ export interface ResourceAzureMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10409,7 +10375,7 @@ export interface ResourceAzureMysql {
 
 export interface ResourceAzureMysqlManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10437,7 +10403,7 @@ export interface ResourceAzureMysqlManagedIdentity {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10468,7 +10434,7 @@ export interface ResourceAzureMysqlManagedIdentity {
 
 export interface ResourceAzurePostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10500,7 +10466,7 @@ export interface ResourceAzurePostgres {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10527,7 +10493,7 @@ export interface ResourceAzurePostgres {
 
 export interface ResourceAzurePostgresManagedIdentity {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10559,7 +10525,7 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10590,7 +10556,7 @@ export interface ResourceAzurePostgresManagedIdentity {
 
 export interface ResourceBigQuery {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10606,7 +10572,7 @@ export interface ResourceBigQuery {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10641,7 +10607,7 @@ export interface ResourceBigQuery {
 
 export interface ResourceCassandra {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10665,7 +10631,7 @@ export interface ResourceCassandra {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10696,7 +10662,7 @@ export interface ResourceCassandra {
 
 export interface ResourceCitus {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10728,7 +10694,7 @@ export interface ResourceCitus {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10755,7 +10721,7 @@ export interface ResourceCitus {
 
 export interface ResourceClickHouseHttp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10775,7 +10741,7 @@ export interface ResourceClickHouseHttp {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10803,7 +10769,7 @@ export interface ResourceClickHouseHttp {
 
 export interface ResourceClickHouseMySql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10831,7 +10797,7 @@ export interface ResourceClickHouseMySql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10862,7 +10828,7 @@ export interface ResourceClickHouseMySql {
 
 export interface ResourceClickHouseTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10890,7 +10856,7 @@ export interface ResourceClickHouseTcp {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10921,7 +10887,7 @@ export interface ResourceClickHouseTcp {
 
 export interface ResourceClustrix {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -10949,7 +10915,7 @@ export interface ResourceClustrix {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -10984,7 +10950,7 @@ export interface ResourceClustrix {
 
 export interface ResourceCockroach {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11016,7 +10982,7 @@ export interface ResourceCockroach {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11043,7 +11009,7 @@ export interface ResourceCockroach {
 
 export interface ResourceCouchbaseDatabase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11071,7 +11037,7 @@ export interface ResourceCouchbaseDatabase {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11102,7 +11068,7 @@ export interface ResourceCouchbaseDatabase {
 
 export interface ResourceCouchbaseWebUi {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11118,7 +11084,7 @@ export interface ResourceCouchbaseWebUi {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11150,7 +11116,7 @@ export interface ResourceCouchbaseWebUi {
 
 export interface ResourceDb2I {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11174,7 +11140,7 @@ export interface ResourceDb2I {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11205,7 +11171,7 @@ export interface ResourceDb2I {
 
 export interface ResourceDb2Luw {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11233,7 +11199,7 @@ export interface ResourceDb2Luw {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11268,7 +11234,7 @@ export interface ResourceDocumentDbHost {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11292,7 +11258,7 @@ export interface ResourceDocumentDbHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11319,7 +11285,7 @@ export interface ResourceDocumentDbHost {
 
 export interface ResourceDocumentDbHostIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11339,7 +11305,7 @@ export interface ResourceDocumentDbHostIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11370,7 +11336,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11394,7 +11360,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11425,7 +11391,7 @@ export interface ResourceDocumentDbReplicaSet {
 
 export interface ResourceDocumentDbReplicaSetIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11445,7 +11411,7 @@ export interface ResourceDocumentDbReplicaSetIam {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11472,7 +11438,7 @@ export interface ResourceDocumentDbReplicaSetIam {
 
 export interface ResourceDruid {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11496,7 +11462,7 @@ export interface ResourceDruid {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11527,7 +11493,7 @@ export interface ResourceDynamoDb {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11543,7 +11509,7 @@ export interface ResourceDynamoDb {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11582,7 +11548,7 @@ export interface ResourceDynamoDb {
 
 export interface ResourceDynamoDbiam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11598,7 +11564,7 @@ export interface ResourceDynamoDbiam {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11633,7 +11599,7 @@ export interface ResourceDynamoDbiam {
 
 export interface ResourceElastic {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11657,7 +11623,7 @@ export interface ResourceElastic {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11688,7 +11654,7 @@ export interface ResourceElastic {
 
 export interface ResourceElasticacheRedis {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11712,7 +11678,7 @@ export interface ResourceElasticacheRedis {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11741,9 +11707,73 @@ export interface ResourceElasticacheRedis {
     username?: string;
 }
 
+export interface ResourceEntraId {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: string;
+    /**
+     * The management group ID to authenticate scope Privileges to.
+     */
+    managementGroupId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * filters discovered groups to the specified Resource Group
+     */
+    resourceGroupId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * The subscription ID to authenticate scope Privileges to.
+     */
+    subscriptionId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
+     * * sql_server_kerberos_ad:
+     */
+    tenantId: string;
+}
+
 export interface ResourceGcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11759,7 +11789,7 @@ export interface ResourceGcp {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11786,7 +11816,7 @@ export interface ResourceGcp {
 
 export interface ResourceGcpConsole {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11806,7 +11836,7 @@ export interface ResourceGcpConsole {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11842,7 +11872,7 @@ export interface ResourceGcpConsole {
 
 export interface ResourceGcpwif {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11862,7 +11892,7 @@ export interface ResourceGcpwif {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11910,7 +11940,7 @@ export interface ResourceGoogleGke {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -11950,7 +11980,7 @@ export interface ResourceGoogleGke {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -11977,7 +12007,7 @@ export interface ResourceGoogleGke {
 
 export interface ResourceGoogleGkeUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12001,7 +12031,7 @@ export interface ResourceGoogleGkeUserImpersonation {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12028,7 +12058,7 @@ export interface ResourceGoogleGkeUserImpersonation {
 
 export interface ResourceGreenplum {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12060,7 +12090,7 @@ export interface ResourceGreenplum {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12091,7 +12121,7 @@ export interface ResourceHttpAuth {
      */
     authHeader?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12119,7 +12149,7 @@ export interface ResourceHttpAuth {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12147,7 +12177,7 @@ export interface ResourceHttpAuth {
 
 export interface ResourceHttpBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12179,7 +12209,7 @@ export interface ResourceHttpBasicAuth {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12211,7 +12241,7 @@ export interface ResourceHttpBasicAuth {
 
 export interface ResourceHttpNoAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12239,7 +12269,7 @@ export interface ResourceHttpNoAuth {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12271,7 +12301,7 @@ export interface ResourceKubernetes {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12323,7 +12353,7 @@ export interface ResourceKubernetes {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12346,7 +12376,7 @@ export interface ResourceKubernetes {
 
 export interface ResourceKubernetesBasicAuth {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12374,7 +12404,7 @@ export interface ResourceKubernetesBasicAuth {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12405,7 +12435,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12441,7 +12471,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12468,7 +12498,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     allowResourceRoleBypass?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12508,7 +12538,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12536,7 +12566,7 @@ export interface ResourceKubernetesServiceAccount {
 
 export interface ResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12560,7 +12590,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12588,7 +12618,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
 
 export interface ResourceKubernetesUserImpersonation {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12624,7 +12654,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12647,7 +12677,7 @@ export interface ResourceKubernetesUserImpersonation {
 
 export interface ResourceMaria {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12675,7 +12705,7 @@ export interface ResourceMaria {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12710,7 +12740,7 @@ export interface ResourceMaria {
 
 export interface ResourceMemcached {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12730,7 +12760,7 @@ export interface ResourceMemcached {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12753,7 +12783,7 @@ export interface ResourceMemcached {
 
 export interface ResourceMemsql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12781,7 +12811,7 @@ export interface ResourceMemsql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12820,7 +12850,7 @@ export interface ResourceMongoHost {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12844,7 +12874,7 @@ export interface ResourceMongoHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12879,7 +12909,7 @@ export interface ResourceMongoLegacyHost {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12903,7 +12933,7 @@ export interface ResourceMongoLegacyHost {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -12938,7 +12968,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -12966,7 +12996,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13005,7 +13035,7 @@ export interface ResourceMongoReplicaSet {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13033,7 +13063,7 @@ export interface ResourceMongoReplicaSet {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13072,7 +13102,7 @@ export interface ResourceMongoShardedCluster {
      */
     authDatabase: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13092,7 +13122,7 @@ export interface ResourceMongoShardedCluster {
      */
     password?: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13123,7 +13153,7 @@ export interface ResourceMongoShardedCluster {
 
 export interface ResourceMtlsMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13163,7 +13193,7 @@ export interface ResourceMtlsMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13202,7 +13232,7 @@ export interface ResourceMtlsMysql {
 
 export interface ResourceMtlsPostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13246,7 +13276,7 @@ export interface ResourceMtlsPostgres {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13277,7 +13307,7 @@ export interface ResourceMtlsPostgres {
 
 export interface ResourceMysql {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13305,7 +13335,7 @@ export interface ResourceMysql {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13340,7 +13370,7 @@ export interface ResourceMysql {
 
 export interface ResourceNeptune {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13360,7 +13390,7 @@ export interface ResourceNeptune {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13387,7 +13417,7 @@ export interface ResourceNeptuneIam {
      */
     accessKey?: string;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13407,7 +13437,7 @@ export interface ResourceNeptuneIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13446,7 +13476,7 @@ export interface ResourceNeptuneIam {
 
 export interface ResourceOracle {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13474,7 +13504,7 @@ export interface ResourceOracle {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13505,7 +13535,7 @@ export interface ResourceOracle {
 
 export interface ResourceOracleNne {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13533,7 +13563,7 @@ export interface ResourceOracleNne {
      */
     port: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13560,7 +13590,7 @@ export interface ResourceOracleNne {
 
 export interface ResourcePostgres {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13592,7 +13622,7 @@ export interface ResourcePostgres {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13619,7 +13649,7 @@ export interface ResourcePostgres {
 
 export interface ResourcePresto {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13647,7 +13677,7 @@ export interface ResourcePresto {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13678,7 +13708,7 @@ export interface ResourcePresto {
 
 export interface ResourceRabbitmqAmqp091 {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13702,7 +13732,7 @@ export interface ResourceRabbitmqAmqp091 {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13733,7 +13763,7 @@ export interface ResourceRabbitmqAmqp091 {
 
 export interface ResourceRawTcp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13753,7 +13783,7 @@ export interface ResourceRawTcp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13776,7 +13806,7 @@ export interface ResourceRawTcp {
 
 export interface ResourceRdp {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13808,7 +13838,7 @@ export interface ResourceRdp {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13835,7 +13865,7 @@ export interface ResourceRdp {
 
 export interface ResourceRdpCert {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13867,7 +13897,7 @@ export interface ResourceRdpCert {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13878,6 +13908,10 @@ export interface ResourceRdpCert {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     */
+    sid?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -13894,7 +13928,7 @@ export interface ResourceRdpCert {
 
 export interface ResourceRdsPostgresIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13922,7 +13956,7 @@ export interface ResourceRdsPostgresIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -13957,7 +13991,7 @@ export interface ResourceRdsPostgresIam {
 
 export interface ResourceRedis {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -13981,7 +14015,7 @@ export interface ResourceRedis {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14012,7 +14046,7 @@ export interface ResourceRedis {
 
 export interface ResourceRedisCluster {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14036,7 +14070,7 @@ export interface ResourceRedisCluster {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14067,7 +14101,7 @@ export interface ResourceRedisCluster {
 
 export interface ResourceRedshift {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14099,7 +14133,7 @@ export interface ResourceRedshift {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14126,7 +14160,7 @@ export interface ResourceRedshift {
 
 export interface ResourceRedshiftIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14158,7 +14192,7 @@ export interface ResourceRedshiftIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14189,7 +14223,7 @@ export interface ResourceRedshiftIam {
 
 export interface ResourceRedshiftServerlessIam {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14217,7 +14251,7 @@ export interface ResourceRedshiftServerlessIam {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14253,7 +14287,7 @@ export interface ResourceRedshiftServerlessIam {
 
 export interface ResourceSingleStore {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14281,7 +14315,7 @@ export interface ResourceSingleStore {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14316,7 +14350,7 @@ export interface ResourceSingleStore {
 
 export interface ResourceSnowflake {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14340,7 +14374,7 @@ export interface ResourceSnowflake {
      */
     password: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14375,7 +14409,7 @@ export interface ResourceSnowflake {
 
 export interface ResourceSnowsight {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14391,7 +14425,7 @@ export interface ResourceSnowsight {
      */
     name: string;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14422,7 +14456,7 @@ export interface ResourceSqlServer {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14454,7 +14488,7 @@ export interface ResourceSqlServer {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14489,7 +14523,7 @@ export interface ResourceSqlServerAzureAd {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14521,7 +14555,7 @@ export interface ResourceSqlServerAzureAd {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14561,7 +14595,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     allowDeprecatedEncryption?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14597,7 +14631,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14640,7 +14674,7 @@ export interface ResourceSsh {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14668,7 +14702,7 @@ export interface ResourceSsh {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14703,7 +14737,7 @@ export interface ResourceSshCert {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14739,7 +14773,7 @@ export interface ResourceSshCert {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14770,7 +14804,7 @@ export interface ResourceSshCustomerKey {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14802,7 +14836,7 @@ export interface ResourceSshCustomerKey {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14837,7 +14871,7 @@ export interface ResourceSshPassword {
      */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14865,7 +14899,7 @@ export interface ResourceSshPassword {
      */
     portForwarding?: boolean;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14892,7 +14926,7 @@ export interface ResourceSshPassword {
 
 export interface ResourceSybase {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14916,7 +14950,7 @@ export interface ResourceSybase {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14943,7 +14977,7 @@ export interface ResourceSybase {
 
 export interface ResourceSybaseIq {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -14967,7 +15001,7 @@ export interface ResourceSybaseIq {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -14994,7 +15028,7 @@ export interface ResourceSybaseIq {
 
 export interface ResourceTeradata {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -15018,7 +15052,7 @@ export interface ResourceTeradata {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -15045,7 +15079,7 @@ export interface ResourceTeradata {
 
 export interface ResourceTrino {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -15069,7 +15103,7 @@ export interface ResourceTrino {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**
@@ -15100,7 +15134,7 @@ export interface ResourceTrino {
 
 export interface ResourceVertica {
     /**
-     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
@@ -15128,7 +15162,7 @@ export interface ResourceVertica {
      */
     port?: number;
     /**
-     * The local port used by clients to connect to this resource.
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
     portOverride: number;
     /**

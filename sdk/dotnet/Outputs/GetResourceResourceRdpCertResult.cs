@@ -15,7 +15,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceRdpCertResult
     {
         /// <summary>
-        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
@@ -51,7 +51,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// The local port used by clients to connect to this resource.
+        /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
@@ -62,6 +62,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        /// </summary>
+        public readonly string? Sid;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -101,6 +105,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
+            string? sid,
+
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
@@ -119,6 +125,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
+            Sid = sid;
             Subdomain = subdomain;
             Tags = tags;
             Username = username;

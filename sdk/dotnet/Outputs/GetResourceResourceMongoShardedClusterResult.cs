@@ -19,7 +19,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? AuthDatabase;
         /// <summary>
-        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
@@ -43,7 +43,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// The local port used by clients to connect to this resource.
+        /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>

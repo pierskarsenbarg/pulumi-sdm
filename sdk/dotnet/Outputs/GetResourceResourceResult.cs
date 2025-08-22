@@ -39,7 +39,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> AwsInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
-        public readonly ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> AzureConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlManagedIdentityResult> AzureMysqlManagedIdentities;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
@@ -66,6 +65,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbResult> DynamoDbs;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> ElasticacheRedis;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticResult> Elastics;
+        public readonly ImmutableArray<Outputs.GetResourceResourceEntraIdResult> EntraIds;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> GcpConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpResult> Gcps;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpwifResult> Gcpwifs;
@@ -176,8 +176,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
 
-            ImmutableArray<Outputs.GetResourceResourceAzureConsoleResult> azureConsoles,
-
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlManagedIdentityResult> azureMysqlManagedIdentities,
 
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
@@ -229,6 +227,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> elasticacheRedis,
 
             ImmutableArray<Outputs.GetResourceResourceElasticResult> elastics,
+
+            ImmutableArray<Outputs.GetResourceResourceEntraIdResult> entraIds,
 
             ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> gcpConsoles,
 
@@ -369,7 +369,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AwsConsoles = awsConsoles;
             AwsInstanceProfiles = awsInstanceProfiles;
             AzureCertificates = azureCertificates;
-            AzureConsoles = azureConsoles;
             AzureMysqlManagedIdentities = azureMysqlManagedIdentities;
             AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
@@ -396,6 +395,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             DynamoDbs = dynamoDbs;
             ElasticacheRedis = elasticacheRedis;
             Elastics = elastics;
+            EntraIds = entraIds;
             GcpConsoles = gcpConsoles;
             Gcps = gcps;
             Gcpwifs = gcpwifs;

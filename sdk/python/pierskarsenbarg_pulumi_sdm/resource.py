@@ -47,7 +47,6 @@ class ResourceArgs:
                  aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
-                 azure_console: Optional[pulumi.Input['ResourceAzureConsoleArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
@@ -73,6 +72,7 @@ class ResourceArgs:
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
+                 entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
                  gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
                  gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
@@ -134,11 +134,9 @@ class ResourceArgs:
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAzureConsoleArgs'] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAzureMysqlManagedIdentityArgs'] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceEntraIdArgs'] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -208,8 +206,6 @@ class ResourceArgs:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
             pulumi.set(__self__, "azure_certificate", azure_certificate)
-        if azure_console is not None:
-            pulumi.set(__self__, "azure_console", azure_console)
         if azure_mysql is not None:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_mysql_managed_identity is not None:
@@ -260,6 +256,8 @@ class ResourceArgs:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
+        if entra_id is not None:
+            pulumi.set(__self__, "entra_id", entra_id)
         if gcp is not None:
             pulumi.set(__self__, "gcp", gcp)
         if gcp_console is not None:
@@ -629,18 +627,6 @@ class ResourceArgs:
         pulumi.set(self, "azure_certificate", value)
 
     @_builtins.property
-    @pulumi.getter(name="azureConsole")
-    def azure_console(self) -> Optional[pulumi.Input['ResourceAzureConsoleArgs']]:
-        """
-        AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
-        return pulumi.get(self, "azure_console")
-
-    @azure_console.setter
-    def azure_console(self, value: Optional[pulumi.Input['ResourceAzureConsoleArgs']]):
-        pulumi.set(self, "azure_console", value)
-
-    @_builtins.property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
         return pulumi.get(self, "azure_mysql")
@@ -652,10 +638,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentity")
     def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
-        """
-        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "azure_mysql_managed_identity")
 
     @azure_mysql_managed_identity.setter
@@ -872,6 +854,18 @@ class ResourceArgs:
     @elasticache_redis.setter
     def elasticache_redis(self, value: Optional[pulumi.Input['ResourceElasticacheRedisArgs']]):
         pulumi.set(self, "elasticache_redis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entraId")
+    def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
+        """
+        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "entra_id")
+
+    @entra_id.setter
+    def entra_id(self, value: Optional[pulumi.Input['ResourceEntraIdArgs']]):
+        pulumi.set(self, "entra_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1431,7 +1425,6 @@ class _ResourceState:
                  aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
-                 azure_console: Optional[pulumi.Input['ResourceAzureConsoleArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
@@ -1457,6 +1450,7 @@ class _ResourceState:
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
+                 entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
                  gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
                  gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
@@ -1518,11 +1512,9 @@ class _ResourceState:
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAzureConsoleArgs'] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAzureMysqlManagedIdentityArgs'] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceEntraIdArgs'] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1592,8 +1584,6 @@ class _ResourceState:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
             pulumi.set(__self__, "azure_certificate", azure_certificate)
-        if azure_console is not None:
-            pulumi.set(__self__, "azure_console", azure_console)
         if azure_mysql is not None:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_mysql_managed_identity is not None:
@@ -1644,6 +1634,8 @@ class _ResourceState:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
+        if entra_id is not None:
+            pulumi.set(__self__, "entra_id", entra_id)
         if gcp is not None:
             pulumi.set(__self__, "gcp", gcp)
         if gcp_console is not None:
@@ -2013,18 +2005,6 @@ class _ResourceState:
         pulumi.set(self, "azure_certificate", value)
 
     @_builtins.property
-    @pulumi.getter(name="azureConsole")
-    def azure_console(self) -> Optional[pulumi.Input['ResourceAzureConsoleArgs']]:
-        """
-        AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
-        return pulumi.get(self, "azure_console")
-
-    @azure_console.setter
-    def azure_console(self, value: Optional[pulumi.Input['ResourceAzureConsoleArgs']]):
-        pulumi.set(self, "azure_console", value)
-
-    @_builtins.property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
         return pulumi.get(self, "azure_mysql")
@@ -2036,10 +2016,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentity")
     def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
-        """
-        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "azure_mysql_managed_identity")
 
     @azure_mysql_managed_identity.setter
@@ -2256,6 +2232,18 @@ class _ResourceState:
     @elasticache_redis.setter
     def elasticache_redis(self, value: Optional[pulumi.Input['ResourceElasticacheRedisArgs']]):
         pulumi.set(self, "elasticache_redis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entraId")
+    def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
+        """
+        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "entra_id")
+
+    @entra_id.setter
+    def entra_id(self, value: Optional[pulumi.Input['ResourceEntraIdArgs']]):
+        pulumi.set(self, "entra_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2818,7 +2806,6 @@ class Resource(pulumi.CustomResource):
                  aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
                  azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-                 azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
                  azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
                  azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
@@ -2844,6 +2831,7 @@ class Resource(pulumi.CustomResource):
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
                  gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
                  gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
@@ -2915,11 +2903,9 @@ class Resource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2981,7 +2967,6 @@ class Resource(pulumi.CustomResource):
                  aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
                  azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-                 azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
                  azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
                  azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
@@ -3007,6 +2992,7 @@ class Resource(pulumi.CustomResource):
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
                  gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
                  gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
@@ -3099,7 +3085,6 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aws_instance_profile"] = aws_instance_profile
             __props__.__dict__["azure"] = azure
             __props__.__dict__["azure_certificate"] = azure_certificate
-            __props__.__dict__["azure_console"] = azure_console
             __props__.__dict__["azure_mysql"] = azure_mysql
             __props__.__dict__["azure_mysql_managed_identity"] = azure_mysql_managed_identity
             __props__.__dict__["azure_postgres"] = azure_postgres
@@ -3125,6 +3110,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
             __props__.__dict__["elastic"] = elastic
             __props__.__dict__["elasticache_redis"] = elasticache_redis
+            __props__.__dict__["entra_id"] = entra_id
             __props__.__dict__["gcp"] = gcp
             __props__.__dict__["gcp_console"] = gcp_console
             __props__.__dict__["gcpwif"] = gcpwif
@@ -3218,7 +3204,6 @@ class Resource(pulumi.CustomResource):
             aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
             azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
             azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-            azure_console: Optional[pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']]] = None,
             azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
             azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
             azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
@@ -3244,6 +3229,7 @@ class Resource(pulumi.CustomResource):
             dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
             elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
             elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+            entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
             gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
             gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
             gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
@@ -3310,11 +3296,9 @@ class Resource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAzureConsoleArgs', 'ResourceAzureConsoleArgsDict']] azure_console: AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']] azure_mysql_managed_identity: AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3350,7 +3334,6 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aws_instance_profile"] = aws_instance_profile
         __props__.__dict__["azure"] = azure
         __props__.__dict__["azure_certificate"] = azure_certificate
-        __props__.__dict__["azure_console"] = azure_console
         __props__.__dict__["azure_mysql"] = azure_mysql
         __props__.__dict__["azure_mysql_managed_identity"] = azure_mysql_managed_identity
         __props__.__dict__["azure_postgres"] = azure_postgres
@@ -3376,6 +3359,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
         __props__.__dict__["elastic"] = elastic
         __props__.__dict__["elasticache_redis"] = elasticache_redis
+        __props__.__dict__["entra_id"] = entra_id
         __props__.__dict__["gcp"] = gcp
         __props__.__dict__["gcp_console"] = gcp_console
         __props__.__dict__["gcpwif"] = gcpwif
@@ -3576,14 +3560,6 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "azure_certificate")
 
     @_builtins.property
-    @pulumi.getter(name="azureConsole")
-    def azure_console(self) -> pulumi.Output[Optional['outputs.ResourceAzureConsole']]:
-        """
-        AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
-        return pulumi.get(self, "azure_console")
-
-    @_builtins.property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysql']]:
         return pulumi.get(self, "azure_mysql")
@@ -3591,10 +3567,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentity")
     def azure_mysql_managed_identity(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysqlManagedIdentity']]:
-        """
-        AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "azure_mysql_managed_identity")
 
     @_builtins.property
@@ -3715,6 +3687,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="elasticacheRedis")
     def elasticache_redis(self) -> pulumi.Output[Optional['outputs.ResourceElasticacheRedis']]:
         return pulumi.get(self, "elasticache_redis")
+
+    @_builtins.property
+    @pulumi.getter(name="entraId")
+    def entra_id(self) -> pulumi.Output[Optional['outputs.ResourceEntraId']]:
+        """
+        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "entra_id")
 
     @_builtins.property
     @pulumi.getter
