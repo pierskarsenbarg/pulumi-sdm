@@ -78,18 +78,18 @@ export class WorkflowRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowRoleState | undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["workflowId"] = state ? state.workflowId : undefined;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["workflowId"] = state?.workflowId;
         } else {
             const args = argsOrState as WorkflowRoleArgs | undefined;
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            if ((!args || args.workflowId === undefined) && !opts.urn) {
+            if (args?.workflowId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["workflowId"] = args ? args.workflowId : undefined;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["workflowId"] = args?.workflowId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowRole.__pulumiType, name, resourceInputs, opts);

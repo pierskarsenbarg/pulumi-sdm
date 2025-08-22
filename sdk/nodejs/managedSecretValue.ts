@@ -58,19 +58,19 @@ export class ManagedSecretValue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedSecretValueState | undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ManagedSecretValueArgs | undefined;
-            if ((!args || args.publicKey === undefined) && !opts.urn) {
+            if (args?.publicKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicKey'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["value"] = args?.value;
             resourceInputs["encrypted"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -71,17 +71,17 @@ export class WorkflowApprover extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowApproverState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["workflowId"] = state ? state.workflowId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["workflowId"] = state?.workflowId;
         } else {
             const args = argsOrState as WorkflowApproverArgs | undefined;
-            if ((!args || args.workflowId === undefined) && !opts.urn) {
+            if (args?.workflowId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["workflowId"] = args ? args.workflowId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["workflowId"] = args?.workflowId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowApprover.__pulumiType, name, resourceInputs, opts);

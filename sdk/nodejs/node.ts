@@ -98,14 +98,14 @@ export class Node extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["proxyCluster"] = state ? state.proxyCluster : undefined;
-            resourceInputs["relay"] = state ? state.relay : undefined;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["proxyCluster"] = state?.proxyCluster;
+            resourceInputs["relay"] = state?.relay;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            resourceInputs["gateway"] = args ? args.gateway : undefined;
-            resourceInputs["proxyCluster"] = args ? args.proxyCluster : undefined;
-            resourceInputs["relay"] = args ? args.relay : undefined;
+            resourceInputs["gateway"] = args?.gateway;
+            resourceInputs["proxyCluster"] = args?.proxyCluster;
+            resourceInputs["relay"] = args?.relay;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);

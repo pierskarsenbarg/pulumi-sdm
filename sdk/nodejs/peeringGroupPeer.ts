@@ -66,12 +66,12 @@ export class PeeringGroupPeer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringGroupPeerState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["peersWithGroupId"] = state ? state.peersWithGroupId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["peersWithGroupId"] = state?.peersWithGroupId;
         } else {
             const args = argsOrState as PeeringGroupPeerArgs | undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["peersWithGroupId"] = args ? args.peersWithGroupId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["peersWithGroupId"] = args?.peersWithGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PeeringGroupPeer.__pulumiType, name, resourceInputs, opts);

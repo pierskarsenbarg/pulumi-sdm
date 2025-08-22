@@ -97,12 +97,12 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
