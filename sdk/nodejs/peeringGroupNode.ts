@@ -47,11 +47,11 @@ export class PeeringGroupNode extends pulumi.CustomResource {
     /**
      * Peering Group ID to which the node will be attached to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Node ID to be attached.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
 
     /**
      * Create a PeeringGroupNode resource with the given unique name, arguments, and options.

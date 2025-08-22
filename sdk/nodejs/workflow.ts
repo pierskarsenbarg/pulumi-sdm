@@ -47,41 +47,41 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    public readonly accessRequestFixedDuration!: pulumi.Output<string | undefined>;
+    declare public readonly accessRequestFixedDuration: pulumi.Output<string | undefined>;
     /**
      * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    public readonly accessRequestMaxDuration!: pulumi.Output<string | undefined>;
+    declare public readonly accessRequestMaxDuration: pulumi.Output<string | undefined>;
     /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
-    public readonly accessRules!: pulumi.Output<string>;
+    declare public readonly accessRules: pulumi.Output<string>;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */
-    public readonly approvalFlowId!: pulumi.Output<string | undefined>;
+    declare public readonly approvalFlowId: pulumi.Output<string | undefined>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      *
      * @deprecated auto_grant is deprecated, see docs for more info
      */
-    public readonly autoGrant!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoGrant: pulumi.Output<boolean | undefined>;
     /**
      * Optional description of the Workflow.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Unique human-readable name of the Workflow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Optional weight for workflow to specify it's priority in matching a request.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.

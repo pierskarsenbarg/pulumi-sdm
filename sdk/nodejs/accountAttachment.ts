@@ -58,11 +58,11 @@ export class AccountAttachment extends pulumi.CustomResource {
     /**
      * The id of the account of this AccountAttachment.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The id of the attached role of this AccountAttachment.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a AccountAttachment resource with the given unique name, arguments, and options.

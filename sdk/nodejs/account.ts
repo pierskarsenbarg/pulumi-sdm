@@ -78,11 +78,11 @@ export class Account extends pulumi.CustomResource {
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
      * are typically automated jobs.
      */
-    public readonly service!: pulumi.Output<outputs.AccountService | undefined>;
+    declare public readonly service: pulumi.Output<outputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    public readonly user!: pulumi.Output<outputs.AccountUser | undefined>;
+    declare public readonly user: pulumi.Output<outputs.AccountUser | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.

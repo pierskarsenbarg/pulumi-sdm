@@ -46,15 +46,15 @@ export class RemoteIdentity extends pulumi.CustomResource {
     /**
      * The account for this remote identity.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The remote identity group.
      */
-    public readonly remoteIdentityGroupId!: pulumi.Output<string>;
+    declare public readonly remoteIdentityGroupId: pulumi.Output<string>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a RemoteIdentity resource with the given unique name, arguments, and options.

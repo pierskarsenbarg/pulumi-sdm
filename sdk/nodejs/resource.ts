@@ -43,165 +43,165 @@ export class Resource extends pulumi.CustomResource {
         return obj['__pulumiType'] === Resource.__pulumiType;
     }
 
-    public readonly aerospike!: pulumi.Output<outputs.ResourceAerospike | undefined>;
-    public readonly aks!: pulumi.Output<outputs.ResourceAks | undefined>;
+    declare public readonly aerospike: pulumi.Output<outputs.ResourceAerospike | undefined>;
+    declare public readonly aks: pulumi.Output<outputs.ResourceAks | undefined>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly aksBasicAuth!: pulumi.Output<outputs.ResourceAksBasicAuth | undefined>;
-    public readonly aksServiceAccount!: pulumi.Output<outputs.ResourceAksServiceAccount | undefined>;
+    declare public readonly aksBasicAuth: pulumi.Output<outputs.ResourceAksBasicAuth | undefined>;
+    declare public readonly aksServiceAccount: pulumi.Output<outputs.ResourceAksServiceAccount | undefined>;
     /**
      * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
      */
-    public readonly aksServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceAksServiceAccountUserImpersonation | undefined>;
+    declare public readonly aksServiceAccountUserImpersonation: pulumi.Output<outputs.ResourceAksServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated aks_user_impersonation is deprecated, see docs for more info
      */
-    public readonly aksUserImpersonation!: pulumi.Output<outputs.ResourceAksUserImpersonation | undefined>;
-    public readonly amazonEks!: pulumi.Output<outputs.ResourceAmazonEks | undefined>;
-    public readonly amazonEksInstanceProfile!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfile | undefined>;
+    declare public readonly aksUserImpersonation: pulumi.Output<outputs.ResourceAksUserImpersonation | undefined>;
+    declare public readonly amazonEks: pulumi.Output<outputs.ResourceAmazonEks | undefined>;
+    declare public readonly amazonEksInstanceProfile: pulumi.Output<outputs.ResourceAmazonEksInstanceProfile | undefined>;
     /**
      * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
      */
-    public readonly amazonEksInstanceProfileUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
+    declare public readonly amazonEksInstanceProfileUserImpersonation: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     /**
      * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
      */
-    public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
-    public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
-    public readonly amazonEsiam!: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
+    declare public readonly amazonEksUserImpersonation: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
+    declare public readonly amazonEs: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
+    declare public readonly amazonEsiam: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
     /**
      * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly amazonmqAmqp!: pulumi.Output<outputs.ResourceAmazonmqAmqp | undefined>;
-    public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
-    public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
-    public readonly athenaIam!: pulumi.Output<outputs.ResourceAthenaIam | undefined>;
-    public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
-    public readonly auroraMysqlIam!: pulumi.Output<outputs.ResourceAuroraMysqlIam | undefined>;
-    public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
-    public readonly auroraPostgresIam!: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
-    public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
-    public readonly awsConsole!: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
-    public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
-    public readonly awsInstanceProfile!: pulumi.Output<outputs.ResourceAwsInstanceProfile | undefined>;
-    public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
-    public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
+    declare public readonly amazonmqAmqp: pulumi.Output<outputs.ResourceAmazonmqAmqp | undefined>;
+    declare public readonly amazonmqAmqp091: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
+    declare public readonly athena: pulumi.Output<outputs.ResourceAthena | undefined>;
+    declare public readonly athenaIam: pulumi.Output<outputs.ResourceAthenaIam | undefined>;
+    declare public readonly auroraMysql: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
+    declare public readonly auroraMysqlIam: pulumi.Output<outputs.ResourceAuroraMysqlIam | undefined>;
+    declare public readonly auroraPostgres: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
+    declare public readonly auroraPostgresIam: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
+    declare public readonly aws: pulumi.Output<outputs.ResourceAws | undefined>;
+    declare public readonly awsConsole: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
+    declare public readonly awsConsoleStaticKeyPair: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
+    declare public readonly awsInstanceProfile: pulumi.Output<outputs.ResourceAwsInstanceProfile | undefined>;
+    declare public readonly azure: pulumi.Output<outputs.ResourceAzure | undefined>;
+    declare public readonly azureCertificate: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
     /**
      * AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly azureConsole!: pulumi.Output<outputs.ResourceAzureConsole | undefined>;
-    public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
+    declare public readonly azureConsole: pulumi.Output<outputs.ResourceAzureConsole | undefined>;
+    declare public readonly azureMysql: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     /**
      * AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version
      * bump.
      */
-    public readonly azureMysqlManagedIdentity!: pulumi.Output<outputs.ResourceAzureMysqlManagedIdentity | undefined>;
-    public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
-    public readonly azurePostgresManagedIdentity!: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
-    public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
-    public readonly cassandra!: pulumi.Output<outputs.ResourceCassandra | undefined>;
-    public readonly citus!: pulumi.Output<outputs.ResourceCitus | undefined>;
-    public readonly clickHouseHttp!: pulumi.Output<outputs.ResourceClickHouseHttp | undefined>;
-    public readonly clickHouseMySql!: pulumi.Output<outputs.ResourceClickHouseMySql | undefined>;
-    public readonly clickHouseTcp!: pulumi.Output<outputs.ResourceClickHouseTcp | undefined>;
-    public readonly clustrix!: pulumi.Output<outputs.ResourceClustrix | undefined>;
-    public readonly cockroach!: pulumi.Output<outputs.ResourceCockroach | undefined>;
-    public readonly couchbaseDatabase!: pulumi.Output<outputs.ResourceCouchbaseDatabase | undefined>;
-    public readonly couchbaseWebUi!: pulumi.Output<outputs.ResourceCouchbaseWebUi | undefined>;
-    public readonly db2I!: pulumi.Output<outputs.ResourceDb2I | undefined>;
-    public readonly db2Luw!: pulumi.Output<outputs.ResourceDb2Luw | undefined>;
-    public readonly documentDbHost!: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
-    public readonly documentDbHostIam!: pulumi.Output<outputs.ResourceDocumentDbHostIam | undefined>;
-    public readonly documentDbReplicaSet!: pulumi.Output<outputs.ResourceDocumentDbReplicaSet | undefined>;
+    declare public readonly azureMysqlManagedIdentity: pulumi.Output<outputs.ResourceAzureMysqlManagedIdentity | undefined>;
+    declare public readonly azurePostgres: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
+    declare public readonly azurePostgresManagedIdentity: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
+    declare public readonly bigQuery: pulumi.Output<outputs.ResourceBigQuery | undefined>;
+    declare public readonly cassandra: pulumi.Output<outputs.ResourceCassandra | undefined>;
+    declare public readonly citus: pulumi.Output<outputs.ResourceCitus | undefined>;
+    declare public readonly clickHouseHttp: pulumi.Output<outputs.ResourceClickHouseHttp | undefined>;
+    declare public readonly clickHouseMySql: pulumi.Output<outputs.ResourceClickHouseMySql | undefined>;
+    declare public readonly clickHouseTcp: pulumi.Output<outputs.ResourceClickHouseTcp | undefined>;
+    declare public readonly clustrix: pulumi.Output<outputs.ResourceClustrix | undefined>;
+    declare public readonly cockroach: pulumi.Output<outputs.ResourceCockroach | undefined>;
+    declare public readonly couchbaseDatabase: pulumi.Output<outputs.ResourceCouchbaseDatabase | undefined>;
+    declare public readonly couchbaseWebUi: pulumi.Output<outputs.ResourceCouchbaseWebUi | undefined>;
+    declare public readonly db2I: pulumi.Output<outputs.ResourceDb2I | undefined>;
+    declare public readonly db2Luw: pulumi.Output<outputs.ResourceDb2Luw | undefined>;
+    declare public readonly documentDbHost: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
+    declare public readonly documentDbHostIam: pulumi.Output<outputs.ResourceDocumentDbHostIam | undefined>;
+    declare public readonly documentDbReplicaSet: pulumi.Output<outputs.ResourceDocumentDbReplicaSet | undefined>;
     /**
      * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
      * bump.
      */
-    public readonly documentDbReplicaSetIam!: pulumi.Output<outputs.ResourceDocumentDbReplicaSetIam | undefined>;
-    public readonly druid!: pulumi.Output<outputs.ResourceDruid | undefined>;
-    public readonly dynamoDb!: pulumi.Output<outputs.ResourceDynamoDb | undefined>;
-    public readonly dynamoDbiam!: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
-    public readonly elastic!: pulumi.Output<outputs.ResourceElastic | undefined>;
-    public readonly elasticacheRedis!: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
-    public readonly gcp!: pulumi.Output<outputs.ResourceGcp | undefined>;
-    public readonly gcpConsole!: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
-    public readonly gcpwif!: pulumi.Output<outputs.ResourceGcpwif | undefined>;
-    public readonly googleGke!: pulumi.Output<outputs.ResourceGoogleGke | undefined>;
+    declare public readonly documentDbReplicaSetIam: pulumi.Output<outputs.ResourceDocumentDbReplicaSetIam | undefined>;
+    declare public readonly druid: pulumi.Output<outputs.ResourceDruid | undefined>;
+    declare public readonly dynamoDb: pulumi.Output<outputs.ResourceDynamoDb | undefined>;
+    declare public readonly dynamoDbiam: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
+    declare public readonly elastic: pulumi.Output<outputs.ResourceElastic | undefined>;
+    declare public readonly elasticacheRedis: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
+    declare public readonly gcp: pulumi.Output<outputs.ResourceGcp | undefined>;
+    declare public readonly gcpConsole: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
+    declare public readonly gcpwif: pulumi.Output<outputs.ResourceGcpwif | undefined>;
+    declare public readonly googleGke: pulumi.Output<outputs.ResourceGoogleGke | undefined>;
     /**
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
-    public readonly googleGkeUserImpersonation!: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
-    public readonly greenplum!: pulumi.Output<outputs.ResourceGreenplum | undefined>;
-    public readonly httpAuth!: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
-    public readonly httpBasicAuth!: pulumi.Output<outputs.ResourceHttpBasicAuth | undefined>;
-    public readonly httpNoAuth!: pulumi.Output<outputs.ResourceHttpNoAuth | undefined>;
-    public readonly kubernetes!: pulumi.Output<outputs.ResourceKubernetes | undefined>;
+    declare public readonly googleGkeUserImpersonation: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    declare public readonly greenplum: pulumi.Output<outputs.ResourceGreenplum | undefined>;
+    declare public readonly httpAuth: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
+    declare public readonly httpBasicAuth: pulumi.Output<outputs.ResourceHttpBasicAuth | undefined>;
+    declare public readonly httpNoAuth: pulumi.Output<outputs.ResourceHttpNoAuth | undefined>;
+    declare public readonly kubernetes: pulumi.Output<outputs.ResourceKubernetes | undefined>;
     /**
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly kubernetesBasicAuth!: pulumi.Output<outputs.ResourceKubernetesBasicAuth | undefined>;
-    public readonly kubernetesPodIdentity!: pulumi.Output<outputs.ResourceKubernetesPodIdentity | undefined>;
-    public readonly kubernetesServiceAccount!: pulumi.Output<outputs.ResourceKubernetesServiceAccount | undefined>;
+    declare public readonly kubernetesBasicAuth: pulumi.Output<outputs.ResourceKubernetesBasicAuth | undefined>;
+    declare public readonly kubernetesPodIdentity: pulumi.Output<outputs.ResourceKubernetesPodIdentity | undefined>;
+    declare public readonly kubernetesServiceAccount: pulumi.Output<outputs.ResourceKubernetesServiceAccount | undefined>;
     /**
      * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
      */
-    public readonly kubernetesServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
+    declare public readonly kubernetesServiceAccountUserImpersonation: pulumi.Output<outputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
-    public readonly kubernetesUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
-    public readonly maria!: pulumi.Output<outputs.ResourceMaria | undefined>;
-    public readonly memcached!: pulumi.Output<outputs.ResourceMemcached | undefined>;
-    public readonly memsql!: pulumi.Output<outputs.ResourceMemsql | undefined>;
-    public readonly mongoHost!: pulumi.Output<outputs.ResourceMongoHost | undefined>;
+    declare public readonly kubernetesUserImpersonation: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
+    declare public readonly maria: pulumi.Output<outputs.ResourceMaria | undefined>;
+    declare public readonly memcached: pulumi.Output<outputs.ResourceMemcached | undefined>;
+    declare public readonly memsql: pulumi.Output<outputs.ResourceMemsql | undefined>;
+    declare public readonly mongoHost: pulumi.Output<outputs.ResourceMongoHost | undefined>;
     /**
      * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly mongoLegacyHost!: pulumi.Output<outputs.ResourceMongoLegacyHost | undefined>;
+    declare public readonly mongoLegacyHost: pulumi.Output<outputs.ResourceMongoLegacyHost | undefined>;
     /**
      * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly mongoLegacyReplicaset!: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
-    public readonly mongoReplicaSet!: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
-    public readonly mongoShardedCluster!: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
+    declare public readonly mongoLegacyReplicaset: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
+    declare public readonly mongoReplicaSet: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
+    declare public readonly mongoShardedCluster: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
     /**
      * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly mtlsMysql!: pulumi.Output<outputs.ResourceMtlsMysql | undefined>;
-    public readonly mtlsPostgres!: pulumi.Output<outputs.ResourceMtlsPostgres | undefined>;
-    public readonly mysql!: pulumi.Output<outputs.ResourceMysql | undefined>;
-    public readonly neptune!: pulumi.Output<outputs.ResourceNeptune | undefined>;
-    public readonly neptuneIam!: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
-    public readonly oracle!: pulumi.Output<outputs.ResourceOracle | undefined>;
-    public readonly oracleNne!: pulumi.Output<outputs.ResourceOracleNne | undefined>;
-    public readonly postgres!: pulumi.Output<outputs.ResourcePostgres | undefined>;
-    public readonly presto!: pulumi.Output<outputs.ResourcePresto | undefined>;
-    public readonly rabbitmqAmqp091!: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
-    public readonly rawTcp!: pulumi.Output<outputs.ResourceRawTcp | undefined>;
-    public readonly rdp!: pulumi.Output<outputs.ResourceRdp | undefined>;
-    public readonly rdpCert!: pulumi.Output<outputs.ResourceRdpCert | undefined>;
-    public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
-    public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
-    public readonly redisCluster!: pulumi.Output<outputs.ResourceRedisCluster | undefined>;
-    public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
-    public readonly redshiftIam!: pulumi.Output<outputs.ResourceRedshiftIam | undefined>;
-    public readonly redshiftServerlessIam!: pulumi.Output<outputs.ResourceRedshiftServerlessIam | undefined>;
-    public readonly singleStore!: pulumi.Output<outputs.ResourceSingleStore | undefined>;
-    public readonly snowflake!: pulumi.Output<outputs.ResourceSnowflake | undefined>;
-    public readonly snowsight!: pulumi.Output<outputs.ResourceSnowsight | undefined>;
-    public readonly sqlServer!: pulumi.Output<outputs.ResourceSqlServer | undefined>;
-    public readonly sqlServerAzureAd!: pulumi.Output<outputs.ResourceSqlServerAzureAd | undefined>;
-    public readonly sqlServerKerberosAd!: pulumi.Output<outputs.ResourceSqlServerKerberosAd | undefined>;
-    public readonly ssh!: pulumi.Output<outputs.ResourceSsh | undefined>;
-    public readonly sshCert!: pulumi.Output<outputs.ResourceSshCert | undefined>;
-    public readonly sshCustomerKey!: pulumi.Output<outputs.ResourceSshCustomerKey | undefined>;
-    public readonly sshPassword!: pulumi.Output<outputs.ResourceSshPassword | undefined>;
-    public readonly sybase!: pulumi.Output<outputs.ResourceSybase | undefined>;
-    public readonly sybaseIq!: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
-    public readonly teradata!: pulumi.Output<outputs.ResourceTeradata | undefined>;
-    public readonly trino!: pulumi.Output<outputs.ResourceTrino | undefined>;
-    public readonly vertica!: pulumi.Output<outputs.ResourceVertica | undefined>;
+    declare public readonly mtlsMysql: pulumi.Output<outputs.ResourceMtlsMysql | undefined>;
+    declare public readonly mtlsPostgres: pulumi.Output<outputs.ResourceMtlsPostgres | undefined>;
+    declare public readonly mysql: pulumi.Output<outputs.ResourceMysql | undefined>;
+    declare public readonly neptune: pulumi.Output<outputs.ResourceNeptune | undefined>;
+    declare public readonly neptuneIam: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
+    declare public readonly oracle: pulumi.Output<outputs.ResourceOracle | undefined>;
+    declare public readonly oracleNne: pulumi.Output<outputs.ResourceOracleNne | undefined>;
+    declare public readonly postgres: pulumi.Output<outputs.ResourcePostgres | undefined>;
+    declare public readonly presto: pulumi.Output<outputs.ResourcePresto | undefined>;
+    declare public readonly rabbitmqAmqp091: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
+    declare public readonly rawTcp: pulumi.Output<outputs.ResourceRawTcp | undefined>;
+    declare public readonly rdp: pulumi.Output<outputs.ResourceRdp | undefined>;
+    declare public readonly rdpCert: pulumi.Output<outputs.ResourceRdpCert | undefined>;
+    declare public readonly rdsPostgresIam: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
+    declare public readonly redis: pulumi.Output<outputs.ResourceRedis | undefined>;
+    declare public readonly redisCluster: pulumi.Output<outputs.ResourceRedisCluster | undefined>;
+    declare public readonly redshift: pulumi.Output<outputs.ResourceRedshift | undefined>;
+    declare public readonly redshiftIam: pulumi.Output<outputs.ResourceRedshiftIam | undefined>;
+    declare public readonly redshiftServerlessIam: pulumi.Output<outputs.ResourceRedshiftServerlessIam | undefined>;
+    declare public readonly singleStore: pulumi.Output<outputs.ResourceSingleStore | undefined>;
+    declare public readonly snowflake: pulumi.Output<outputs.ResourceSnowflake | undefined>;
+    declare public readonly snowsight: pulumi.Output<outputs.ResourceSnowsight | undefined>;
+    declare public readonly sqlServer: pulumi.Output<outputs.ResourceSqlServer | undefined>;
+    declare public readonly sqlServerAzureAd: pulumi.Output<outputs.ResourceSqlServerAzureAd | undefined>;
+    declare public readonly sqlServerKerberosAd: pulumi.Output<outputs.ResourceSqlServerKerberosAd | undefined>;
+    declare public readonly ssh: pulumi.Output<outputs.ResourceSsh | undefined>;
+    declare public readonly sshCert: pulumi.Output<outputs.ResourceSshCert | undefined>;
+    declare public readonly sshCustomerKey: pulumi.Output<outputs.ResourceSshCustomerKey | undefined>;
+    declare public readonly sshPassword: pulumi.Output<outputs.ResourceSshPassword | undefined>;
+    declare public readonly sybase: pulumi.Output<outputs.ResourceSybase | undefined>;
+    declare public readonly sybaseIq: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
+    declare public readonly teradata: pulumi.Output<outputs.ResourceTeradata | undefined>;
+    declare public readonly trino: pulumi.Output<outputs.ResourceTrino | undefined>;
+    declare public readonly vertica: pulumi.Output<outputs.ResourceVertica | undefined>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.

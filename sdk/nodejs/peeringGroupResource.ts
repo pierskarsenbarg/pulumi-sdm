@@ -47,11 +47,11 @@ export class PeeringGroupResource extends pulumi.CustomResource {
     /**
      * Peering Group ID to which the resource will be attached to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Resource ID to be attached.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
 
     /**
      * Create a PeeringGroupResource resource with the given unique name, arguments, and options.
