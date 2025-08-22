@@ -47,11 +47,11 @@ export class PeeringGroupNode extends pulumi.CustomResource {
     /**
      * Peering Group ID to which the node will be attached to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Node ID to be attached.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
 
     /**
      * Create a PeeringGroupNode resource with the given unique name, arguments, and options.
@@ -66,12 +66,12 @@ export class PeeringGroupNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringGroupNodeState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["nodeId"] = state?.nodeId;
         } else {
             const args = argsOrState as PeeringGroupNodeArgs | undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["nodeId"] = args?.nodeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PeeringGroupNode.__pulumiType, name, resourceInputs, opts);

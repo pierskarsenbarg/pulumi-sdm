@@ -75,15 +75,15 @@ export class Node extends pulumi.CustomResource {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    public readonly gateway!: pulumi.Output<outputs.NodeGateway | undefined>;
+    declare public readonly gateway: pulumi.Output<outputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    public readonly proxyCluster!: pulumi.Output<outputs.NodeProxyCluster | undefined>;
+    declare public readonly proxyCluster: pulumi.Output<outputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    public readonly relay!: pulumi.Output<outputs.NodeRelay | undefined>;
+    declare public readonly relay: pulumi.Output<outputs.NodeRelay | undefined>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -98,14 +98,14 @@ export class Node extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["proxyCluster"] = state ? state.proxyCluster : undefined;
-            resourceInputs["relay"] = state ? state.relay : undefined;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["proxyCluster"] = state?.proxyCluster;
+            resourceInputs["relay"] = state?.relay;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            resourceInputs["gateway"] = args ? args.gateway : undefined;
-            resourceInputs["proxyCluster"] = args ? args.proxyCluster : undefined;
-            resourceInputs["relay"] = args ? args.relay : undefined;
+            resourceInputs["gateway"] = args?.gateway;
+            resourceInputs["proxyCluster"] = args?.proxyCluster;
+            resourceInputs["relay"] = args?.relay;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);

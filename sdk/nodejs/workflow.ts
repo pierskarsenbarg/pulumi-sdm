@@ -47,41 +47,41 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    public readonly accessRequestFixedDuration!: pulumi.Output<string | undefined>;
+    declare public readonly accessRequestFixedDuration: pulumi.Output<string | undefined>;
     /**
      * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    public readonly accessRequestMaxDuration!: pulumi.Output<string | undefined>;
+    declare public readonly accessRequestMaxDuration: pulumi.Output<string | undefined>;
     /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
-    public readonly accessRules!: pulumi.Output<string>;
+    declare public readonly accessRules: pulumi.Output<string>;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */
-    public readonly approvalFlowId!: pulumi.Output<string | undefined>;
+    declare public readonly approvalFlowId: pulumi.Output<string | undefined>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      *
      * @deprecated auto_grant is deprecated, see docs for more info
      */
-    public readonly autoGrant!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoGrant: pulumi.Output<boolean | undefined>;
     /**
      * Optional description of the Workflow.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Unique human-readable name of the Workflow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Optional weight for workflow to specify it's priority in matching a request.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.
@@ -96,26 +96,26 @@ export class Workflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
-            resourceInputs["accessRequestFixedDuration"] = state ? state.accessRequestFixedDuration : undefined;
-            resourceInputs["accessRequestMaxDuration"] = state ? state.accessRequestMaxDuration : undefined;
-            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
-            resourceInputs["approvalFlowId"] = state ? state.approvalFlowId : undefined;
-            resourceInputs["autoGrant"] = state ? state.autoGrant : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["accessRequestFixedDuration"] = state?.accessRequestFixedDuration;
+            resourceInputs["accessRequestMaxDuration"] = state?.accessRequestMaxDuration;
+            resourceInputs["accessRules"] = state?.accessRules;
+            resourceInputs["approvalFlowId"] = state?.approvalFlowId;
+            resourceInputs["autoGrant"] = state?.autoGrant;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
-            resourceInputs["accessRequestFixedDuration"] = args ? args.accessRequestFixedDuration : undefined;
-            resourceInputs["accessRequestMaxDuration"] = args ? args.accessRequestMaxDuration : undefined;
-            resourceInputs["accessRules"] = args ? args.accessRules : undefined;
-            resourceInputs["approvalFlowId"] = args ? args.approvalFlowId : undefined;
-            resourceInputs["autoGrant"] = args ? args.autoGrant : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["accessRequestFixedDuration"] = args?.accessRequestFixedDuration;
+            resourceInputs["accessRequestMaxDuration"] = args?.accessRequestMaxDuration;
+            resourceInputs["accessRules"] = args?.accessRules;
+            resourceInputs["approvalFlowId"] = args?.approvalFlowId;
+            resourceInputs["autoGrant"] = args?.autoGrant;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workflow.__pulumiType, name, resourceInputs, opts);

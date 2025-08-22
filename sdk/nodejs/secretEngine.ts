@@ -49,11 +49,11 @@ export class SecretEngine extends pulumi.CustomResource {
     /**
      * ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly activeDirectory!: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
+    declare public readonly activeDirectory: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
     /**
      * KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly keyValue!: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
+    declare public readonly keyValue: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
 
     /**
      * Create a SecretEngine resource with the given unique name, arguments, and options.
@@ -68,12 +68,12 @@ export class SecretEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretEngineState | undefined;
-            resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
-            resourceInputs["keyValue"] = state ? state.keyValue : undefined;
+            resourceInputs["activeDirectory"] = state?.activeDirectory;
+            resourceInputs["keyValue"] = state?.keyValue;
         } else {
             const args = argsOrState as SecretEngineArgs | undefined;
-            resourceInputs["activeDirectory"] = args ? args.activeDirectory : undefined;
-            resourceInputs["keyValue"] = args ? args.keyValue : undefined;
+            resourceInputs["activeDirectory"] = args?.activeDirectory;
+            resourceInputs["keyValue"] = args?.keyValue;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretEngine.__pulumiType, name, resourceInputs, opts);

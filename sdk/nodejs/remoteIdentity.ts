@@ -46,15 +46,15 @@ export class RemoteIdentity extends pulumi.CustomResource {
     /**
      * The account for this remote identity.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The remote identity group.
      */
-    public readonly remoteIdentityGroupId!: pulumi.Output<string>;
+    declare public readonly remoteIdentityGroupId: pulumi.Output<string>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a RemoteIdentity resource with the given unique name, arguments, and options.
@@ -69,23 +69,23 @@ export class RemoteIdentity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RemoteIdentityState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["remoteIdentityGroupId"] = state ? state.remoteIdentityGroupId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["remoteIdentityGroupId"] = state?.remoteIdentityGroupId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as RemoteIdentityArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.remoteIdentityGroupId === undefined) && !opts.urn) {
+            if (args?.remoteIdentityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteIdentityGroupId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["remoteIdentityGroupId"] = args ? args.remoteIdentityGroupId : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["remoteIdentityGroupId"] = args?.remoteIdentityGroupId;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RemoteIdentity.__pulumiType, name, resourceInputs, opts);

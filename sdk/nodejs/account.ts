@@ -78,11 +78,11 @@ export class Account extends pulumi.CustomResource {
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
      * are typically automated jobs.
      */
-    public readonly service!: pulumi.Output<outputs.AccountService | undefined>;
+    declare public readonly service: pulumi.Output<outputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    public readonly user!: pulumi.Output<outputs.AccountUser | undefined>;
+    declare public readonly user: pulumi.Output<outputs.AccountUser | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -97,12 +97,12 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);

@@ -28,15 +28,15 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * A GUID identifying the API key used to authenticate with the StrongDM API.
      */
-    public readonly apiAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly apiAccessKey: pulumi.Output<string | undefined>;
     /**
      * A base64 encoded secret key used to authenticate with the StrongDM API.
      */
-    public readonly apiSecretKey!: pulumi.Output<string | undefined>;
+    declare public readonly apiSecretKey: pulumi.Output<string | undefined>;
     /**
      * The host and port of the StrongDM API endpoint.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -49,10 +49,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiAccessKey"] = args ? args.apiAccessKey : undefined;
-            resourceInputs["apiSecretKey"] = args ? args.apiSecretKey : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["retryRateLimitErrors"] = pulumi.output(args ? args.retryRateLimitErrors : undefined).apply(JSON.stringify);
+            resourceInputs["apiAccessKey"] = args?.apiAccessKey;
+            resourceInputs["apiSecretKey"] = args?.apiSecretKey;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["retryRateLimitErrors"] = pulumi.output(args?.retryRateLimitErrors).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

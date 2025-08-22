@@ -57,8 +57,8 @@ export class ProxyClusterKey extends pulumi.CustomResource {
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    public readonly proxyClusterId!: pulumi.Output<string>;
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    declare public readonly proxyClusterId: pulumi.Output<string>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
 
     /**
      * Create a ProxyClusterKey resource with the given unique name, arguments, and options.
@@ -73,14 +73,14 @@ export class ProxyClusterKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProxyClusterKeyState | undefined;
-            resourceInputs["proxyClusterId"] = state ? state.proxyClusterId : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["proxyClusterId"] = state?.proxyClusterId;
+            resourceInputs["secretKey"] = state?.secretKey;
         } else {
             const args = argsOrState as ProxyClusterKeyArgs | undefined;
-            if ((!args || args.proxyClusterId === undefined) && !opts.urn) {
+            if (args?.proxyClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proxyClusterId'");
             }
-            resourceInputs["proxyClusterId"] = args ? args.proxyClusterId : undefined;
+            resourceInputs["proxyClusterId"] = args?.proxyClusterId;
             resourceInputs["secretKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

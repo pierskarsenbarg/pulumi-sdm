@@ -47,35 +47,35 @@ export class ManagedSecret extends pulumi.CustomResource {
     /**
      * public part of the secret value
      */
-    public /*out*/ readonly config!: pulumi.Output<string>;
+    declare public /*out*/ readonly config: pulumi.Output<string>;
     /**
      * Timestamp of when secret is going to be rotated
      */
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * Timestamp of when secret was last rotated
      */
-    public /*out*/ readonly lastRotatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastRotatedAt: pulumi.Output<string>;
     /**
      * Unique human-readable name of the Managed Secret.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An ID of a Secret Engine linked with the Managed Secret.
      */
-    public readonly secretEngineId!: pulumi.Output<string>;
+    declare public readonly secretEngineId: pulumi.Output<string>;
     /**
      * Path in a secret store.
      */
-    public /*out*/ readonly secretStorePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretStorePath: pulumi.Output<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Sensitive value of the secret.
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedSecret resource with the given unique name, arguments, and options.
@@ -90,22 +90,22 @@ export class ManagedSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedSecretState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["lastRotatedAt"] = state ? state.lastRotatedAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secretEngineId"] = state ? state.secretEngineId : undefined;
-            resourceInputs["secretStorePath"] = state ? state.secretStorePath : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["lastRotatedAt"] = state?.lastRotatedAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secretEngineId"] = state?.secretEngineId;
+            resourceInputs["secretStorePath"] = state?.secretStorePath;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ManagedSecretArgs | undefined;
-            if ((!args || args.secretEngineId === undefined) && !opts.urn) {
+            if (args?.secretEngineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretEngineId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secretEngineId"] = args ? args.secretEngineId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secretEngineId"] = args?.secretEngineId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;

@@ -76,19 +76,19 @@ export class Role extends pulumi.CustomResource {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    public readonly accessRules!: pulumi.Output<string>;
+    declare public readonly accessRules: pulumi.Output<string>;
     /**
      * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
      */
-    public /*out*/ readonly managedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
     /**
      * Unique human-readable name of the Role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -103,15 +103,15 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
-            resourceInputs["managedBy"] = state ? state.managedBy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accessRules"] = state?.accessRules;
+            resourceInputs["managedBy"] = state?.managedBy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            resourceInputs["accessRules"] = args ? args.accessRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accessRules"] = args?.accessRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
