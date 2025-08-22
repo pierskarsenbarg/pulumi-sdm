@@ -35,15 +35,15 @@ export class ManagedSecretValue extends pulumi.CustomResource {
     /**
      * encrypted value
      */
-    public /*out*/ readonly encrypted!: pulumi.Output<string>;
+    declare public /*out*/ readonly encrypted: pulumi.Output<string>;
     /**
      * secret engine's public key used for encryption in PEM format
      */
-    public readonly publicKey!: pulumi.Output<string>;
+    declare public readonly publicKey: pulumi.Output<string>;
     /**
      * value object
      */
-    public readonly value!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly value: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ManagedSecretValue resource with the given unique name, arguments, and options.

@@ -48,15 +48,15 @@ export class WorkflowApprover extends pulumi.CustomResource {
     /**
      * The approver account id.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The approver role id
      */
-    public readonly roleId!: pulumi.Output<string | undefined>;
+    declare public readonly roleId: pulumi.Output<string | undefined>;
     /**
      * The workflow id.
      */
-    public readonly workflowId!: pulumi.Output<string>;
+    declare public readonly workflowId: pulumi.Output<string>;
 
     /**
      * Create a WorkflowApprover resource with the given unique name, arguments, and options.

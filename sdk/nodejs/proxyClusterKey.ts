@@ -57,8 +57,8 @@ export class ProxyClusterKey extends pulumi.CustomResource {
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    public readonly proxyClusterId!: pulumi.Output<string>;
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    declare public readonly proxyClusterId: pulumi.Output<string>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
 
     /**
      * Create a ProxyClusterKey resource with the given unique name, arguments, and options.

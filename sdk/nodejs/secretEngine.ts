@@ -49,11 +49,11 @@ export class SecretEngine extends pulumi.CustomResource {
     /**
      * ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly activeDirectory!: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
+    declare public readonly activeDirectory: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
     /**
      * KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    public readonly keyValue!: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
+    declare public readonly keyValue: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
 
     /**
      * Create a SecretEngine resource with the given unique name, arguments, and options.

@@ -61,15 +61,15 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Optional description of the Policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique human-readable name of the Policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    public readonly policyContent!: pulumi.Output<string | undefined>;
+    declare public readonly policyContent: pulumi.Output<string | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.

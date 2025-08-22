@@ -76,19 +76,19 @@ export class Role extends pulumi.CustomResource {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    public readonly accessRules!: pulumi.Output<string>;
+    declare public readonly accessRules: pulumi.Output<string>;
     /**
      * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
      */
-    public /*out*/ readonly managedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
     /**
      * Unique human-readable name of the Role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.

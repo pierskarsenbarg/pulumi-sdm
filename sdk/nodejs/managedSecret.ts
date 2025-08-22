@@ -47,35 +47,35 @@ export class ManagedSecret extends pulumi.CustomResource {
     /**
      * public part of the secret value
      */
-    public /*out*/ readonly config!: pulumi.Output<string>;
+    declare public /*out*/ readonly config: pulumi.Output<string>;
     /**
      * Timestamp of when secret is going to be rotated
      */
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * Timestamp of when secret was last rotated
      */
-    public /*out*/ readonly lastRotatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastRotatedAt: pulumi.Output<string>;
     /**
      * Unique human-readable name of the Managed Secret.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An ID of a Secret Engine linked with the Managed Secret.
      */
-    public readonly secretEngineId!: pulumi.Output<string>;
+    declare public readonly secretEngineId: pulumi.Output<string>;
     /**
      * Path in a secret store.
      */
-    public /*out*/ readonly secretStorePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretStorePath: pulumi.Output<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Sensitive value of the secret.
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a ManagedSecret resource with the given unique name, arguments, and options.

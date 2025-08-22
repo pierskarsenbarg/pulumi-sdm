@@ -59,11 +59,11 @@ export class WorkflowRole extends pulumi.CustomResource {
     /**
      * The role id.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * The workflow id.
      */
-    public readonly workflowId!: pulumi.Output<string>;
+    declare public readonly workflowId: pulumi.Output<string>;
 
     /**
      * Create a WorkflowRole resource with the given unique name, arguments, and options.

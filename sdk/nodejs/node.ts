@@ -75,15 +75,15 @@ export class Node extends pulumi.CustomResource {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    public readonly gateway!: pulumi.Output<outputs.NodeGateway | undefined>;
+    declare public readonly gateway: pulumi.Output<outputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    public readonly proxyCluster!: pulumi.Output<outputs.NodeProxyCluster | undefined>;
+    declare public readonly proxyCluster: pulumi.Output<outputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    public readonly relay!: pulumi.Output<outputs.NodeRelay | undefined>;
+    declare public readonly relay: pulumi.Output<outputs.NodeRelay | undefined>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.

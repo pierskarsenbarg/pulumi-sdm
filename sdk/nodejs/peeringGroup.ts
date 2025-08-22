@@ -48,7 +48,7 @@ export class PeeringGroup extends pulumi.CustomResource {
     /**
      * Unique human-readable name of the PeeringGroup.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a PeeringGroup resource with the given unique name, arguments, and options.

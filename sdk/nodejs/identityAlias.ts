@@ -46,15 +46,15 @@ export class IdentityAlias extends pulumi.CustomResource {
     /**
      * The account for this identity alias.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The identity set.
      */
-    public readonly identitySetId!: pulumi.Output<string>;
+    declare public readonly identitySetId: pulumi.Output<string>;
     /**
      * The username to be used as the identity alias for this account.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a IdentityAlias resource with the given unique name, arguments, and options.

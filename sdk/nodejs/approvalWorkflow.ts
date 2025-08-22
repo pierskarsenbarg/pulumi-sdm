@@ -90,19 +90,19 @@ export class ApprovalWorkflow extends pulumi.CustomResource {
     /**
      * Approval mode of the ApprovalWorkflow
      */
-    public readonly approvalMode!: pulumi.Output<string>;
+    declare public readonly approvalMode: pulumi.Output<string>;
     /**
      * The approval steps of this approval workflow
      */
-    public readonly approvalSteps!: pulumi.Output<outputs.ApprovalWorkflowApprovalStep[] | undefined>;
+    declare public readonly approvalSteps: pulumi.Output<outputs.ApprovalWorkflowApprovalStep[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a ApprovalWorkflow resource with the given unique name, arguments, and options.

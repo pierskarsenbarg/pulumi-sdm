@@ -55,7 +55,7 @@ export class IdentitySet extends pulumi.CustomResource {
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a IdentitySet resource with the given unique name, arguments, and options.

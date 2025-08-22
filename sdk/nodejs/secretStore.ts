@@ -47,33 +47,33 @@ export class SecretStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretStore.__pulumiType;
     }
 
-    public readonly activeDirectoryStore!: pulumi.Output<outputs.SecretStoreActiveDirectoryStore | undefined>;
-    public readonly aws!: pulumi.Output<outputs.SecretStoreAws | undefined>;
-    public readonly awsCertX509!: pulumi.Output<outputs.SecretStoreAwsCertX509 | undefined>;
-    public readonly azureStore!: pulumi.Output<outputs.SecretStoreAzureStore | undefined>;
-    public readonly cyberarkConjur!: pulumi.Output<outputs.SecretStoreCyberarkConjur | undefined>;
-    public readonly cyberarkPam!: pulumi.Output<outputs.SecretStoreCyberarkPam | undefined>;
+    declare public readonly activeDirectoryStore: pulumi.Output<outputs.SecretStoreActiveDirectoryStore | undefined>;
+    declare public readonly aws: pulumi.Output<outputs.SecretStoreAws | undefined>;
+    declare public readonly awsCertX509: pulumi.Output<outputs.SecretStoreAwsCertX509 | undefined>;
+    declare public readonly azureStore: pulumi.Output<outputs.SecretStoreAzureStore | undefined>;
+    declare public readonly cyberarkConjur: pulumi.Output<outputs.SecretStoreCyberarkConjur | undefined>;
+    declare public readonly cyberarkPam: pulumi.Output<outputs.SecretStoreCyberarkPam | undefined>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
      * version bump.
      */
-    public readonly cyberarkPamExperimental!: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
-    public readonly delineaStore!: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
-    public readonly gcpCertX509Store!: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
-    public readonly gcpStore!: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
-    public readonly keyfactorSshStore!: pulumi.Output<outputs.SecretStoreKeyfactorSshStore | undefined>;
-    public readonly keyfactorX509Store!: pulumi.Output<outputs.SecretStoreKeyfactorX509Store | undefined>;
-    public readonly vaultApprole!: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
-    public readonly vaultApproleCertSsh!: pulumi.Output<outputs.SecretStoreVaultApproleCertSsh | undefined>;
-    public readonly vaultApproleCertX509!: pulumi.Output<outputs.SecretStoreVaultApproleCertX509 | undefined>;
-    public readonly vaultAwsEc2!: pulumi.Output<outputs.SecretStoreVaultAwsEc2 | undefined>;
-    public readonly vaultAwsIam!: pulumi.Output<outputs.SecretStoreVaultAwsIam | undefined>;
-    public readonly vaultTls!: pulumi.Output<outputs.SecretStoreVaultTls | undefined>;
-    public readonly vaultTlsCertSsh!: pulumi.Output<outputs.SecretStoreVaultTlsCertSsh | undefined>;
-    public readonly vaultTlsCertX509!: pulumi.Output<outputs.SecretStoreVaultTlsCertX509 | undefined>;
-    public readonly vaultToken!: pulumi.Output<outputs.SecretStoreVaultToken | undefined>;
-    public readonly vaultTokenCertSsh!: pulumi.Output<outputs.SecretStoreVaultTokenCertSsh | undefined>;
-    public readonly vaultTokenCertX509!: pulumi.Output<outputs.SecretStoreVaultTokenCertX509 | undefined>;
+    declare public readonly cyberarkPamExperimental: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
+    declare public readonly delineaStore: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
+    declare public readonly gcpCertX509Store: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
+    declare public readonly gcpStore: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
+    declare public readonly keyfactorSshStore: pulumi.Output<outputs.SecretStoreKeyfactorSshStore | undefined>;
+    declare public readonly keyfactorX509Store: pulumi.Output<outputs.SecretStoreKeyfactorX509Store | undefined>;
+    declare public readonly vaultApprole: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
+    declare public readonly vaultApproleCertSsh: pulumi.Output<outputs.SecretStoreVaultApproleCertSsh | undefined>;
+    declare public readonly vaultApproleCertX509: pulumi.Output<outputs.SecretStoreVaultApproleCertX509 | undefined>;
+    declare public readonly vaultAwsEc2: pulumi.Output<outputs.SecretStoreVaultAwsEc2 | undefined>;
+    declare public readonly vaultAwsIam: pulumi.Output<outputs.SecretStoreVaultAwsIam | undefined>;
+    declare public readonly vaultTls: pulumi.Output<outputs.SecretStoreVaultTls | undefined>;
+    declare public readonly vaultTlsCertSsh: pulumi.Output<outputs.SecretStoreVaultTlsCertSsh | undefined>;
+    declare public readonly vaultTlsCertX509: pulumi.Output<outputs.SecretStoreVaultTlsCertX509 | undefined>;
+    declare public readonly vaultToken: pulumi.Output<outputs.SecretStoreVaultToken | undefined>;
+    declare public readonly vaultTokenCertSsh: pulumi.Output<outputs.SecretStoreVaultTokenCertSsh | undefined>;
+    declare public readonly vaultTokenCertX509: pulumi.Output<outputs.SecretStoreVaultTokenCertX509 | undefined>;
 
     /**
      * Create a SecretStore resource with the given unique name, arguments, and options.
