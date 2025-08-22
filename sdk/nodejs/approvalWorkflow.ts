@@ -117,19 +117,19 @@ export class ApprovalWorkflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApprovalWorkflowState | undefined;
-            resourceInputs["approvalMode"] = state ? state.approvalMode : undefined;
-            resourceInputs["approvalSteps"] = state ? state.approvalSteps : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["approvalMode"] = state?.approvalMode;
+            resourceInputs["approvalSteps"] = state?.approvalSteps;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ApprovalWorkflowArgs | undefined;
-            if ((!args || args.approvalMode === undefined) && !opts.urn) {
+            if (args?.approvalMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'approvalMode'");
             }
-            resourceInputs["approvalMode"] = args ? args.approvalMode : undefined;
-            resourceInputs["approvalSteps"] = args ? args.approvalSteps : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["approvalMode"] = args?.approvalMode;
+            resourceInputs["approvalSteps"] = args?.approvalSteps;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApprovalWorkflow.__pulumiType, name, resourceInputs, opts);

@@ -68,12 +68,12 @@ export class SecretEngine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretEngineState | undefined;
-            resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
-            resourceInputs["keyValue"] = state ? state.keyValue : undefined;
+            resourceInputs["activeDirectory"] = state?.activeDirectory;
+            resourceInputs["keyValue"] = state?.keyValue;
         } else {
             const args = argsOrState as SecretEngineArgs | undefined;
-            resourceInputs["activeDirectory"] = args ? args.activeDirectory : undefined;
-            resourceInputs["keyValue"] = args ? args.keyValue : undefined;
+            resourceInputs["activeDirectory"] = args?.activeDirectory;
+            resourceInputs["keyValue"] = args?.keyValue;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretEngine.__pulumiType, name, resourceInputs, opts);

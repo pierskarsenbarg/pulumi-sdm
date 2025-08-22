@@ -69,23 +69,23 @@ export class IdentityAlias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityAliasState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["identitySetId"] = state ? state.identitySetId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["identitySetId"] = state?.identitySetId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as IdentityAliasArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.identitySetId === undefined) && !opts.urn) {
+            if (args?.identitySetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identitySetId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["identitySetId"] = args ? args.identitySetId : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["identitySetId"] = args?.identitySetId;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityAlias.__pulumiType, name, resourceInputs, opts);

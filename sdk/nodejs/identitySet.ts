@@ -70,10 +70,10 @@ export class IdentitySet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentitySetState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as IdentitySetArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentitySet.__pulumiType, name, resourceInputs, opts);

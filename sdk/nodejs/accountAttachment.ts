@@ -77,18 +77,18 @@ export class AccountAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountAttachmentState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as AccountAttachmentArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountAttachment.__pulumiType, name, resourceInputs, opts);

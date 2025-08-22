@@ -96,26 +96,26 @@ export class Workflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
-            resourceInputs["accessRequestFixedDuration"] = state ? state.accessRequestFixedDuration : undefined;
-            resourceInputs["accessRequestMaxDuration"] = state ? state.accessRequestMaxDuration : undefined;
-            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
-            resourceInputs["approvalFlowId"] = state ? state.approvalFlowId : undefined;
-            resourceInputs["autoGrant"] = state ? state.autoGrant : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["accessRequestFixedDuration"] = state?.accessRequestFixedDuration;
+            resourceInputs["accessRequestMaxDuration"] = state?.accessRequestMaxDuration;
+            resourceInputs["accessRules"] = state?.accessRules;
+            resourceInputs["approvalFlowId"] = state?.approvalFlowId;
+            resourceInputs["autoGrant"] = state?.autoGrant;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
-            resourceInputs["accessRequestFixedDuration"] = args ? args.accessRequestFixedDuration : undefined;
-            resourceInputs["accessRequestMaxDuration"] = args ? args.accessRequestMaxDuration : undefined;
-            resourceInputs["accessRules"] = args ? args.accessRules : undefined;
-            resourceInputs["approvalFlowId"] = args ? args.approvalFlowId : undefined;
-            resourceInputs["autoGrant"] = args ? args.autoGrant : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["accessRequestFixedDuration"] = args?.accessRequestFixedDuration;
+            resourceInputs["accessRequestMaxDuration"] = args?.accessRequestMaxDuration;
+            resourceInputs["accessRules"] = args?.accessRules;
+            resourceInputs["approvalFlowId"] = args?.approvalFlowId;
+            resourceInputs["autoGrant"] = args?.autoGrant;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workflow.__pulumiType, name, resourceInputs, opts);
