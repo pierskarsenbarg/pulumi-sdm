@@ -302,7 +302,7 @@ export interface ResourceAerospike {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -389,7 +389,7 @@ export interface ResourceAks {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -440,7 +440,7 @@ export interface ResourceAksBasicAuth {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -511,7 +511,7 @@ export interface ResourceAksServiceAccount {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -563,7 +563,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -627,7 +627,7 @@ export interface ResourceAksUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -718,7 +718,7 @@ export interface ResourceAmazonEks {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -801,7 +801,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -864,7 +864,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -935,7 +935,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -994,7 +994,7 @@ export interface ResourceAmazonEs {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1045,7 +1045,7 @@ export interface ResourceAmazonEsiam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1096,7 +1096,7 @@ export interface ResourceAmazonmqAmqp {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1151,7 +1151,7 @@ export interface ResourceAmazonmqAmqp091 {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1218,7 +1218,7 @@ export interface ResourceAthena {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1269,7 +1269,7 @@ export interface ResourceAthenaIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1324,7 +1324,7 @@ export interface ResourceAuroraMysql {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1387,7 +1387,7 @@ export interface ResourceAuroraMysqlIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1446,7 +1446,7 @@ export interface ResourceAuroraPostgres {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1509,7 +1509,7 @@ export interface ResourceAuroraPostgresIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1568,7 +1568,7 @@ export interface ResourceAws {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1631,7 +1631,7 @@ export interface ResourceAwsConsole {
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -1698,7 +1698,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -1749,7 +1749,7 @@ export interface ResourceAwsInstanceProfile {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1792,7 +1792,7 @@ export interface ResourceAzure {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1840,7 +1840,7 @@ export interface ResourceAzureCertificate {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1900,7 +1900,7 @@ export interface ResourceAzureMysql {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -1959,7 +1959,7 @@ export interface ResourceAzureMysqlManagedIdentity {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2022,7 +2022,7 @@ export interface ResourceAzurePostgres {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2081,7 +2081,7 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2136,7 +2136,7 @@ export interface ResourceBigQuery {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2187,7 +2187,7 @@ export interface ResourceCassandra {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2250,7 +2250,7 @@ export interface ResourceCitus {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2357,7 +2357,7 @@ export interface ResourceClickHouseMySql {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2412,7 +2412,7 @@ export interface ResourceClickHouseTcp {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2475,7 +2475,7 @@ export interface ResourceClustrix {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2538,7 +2538,7 @@ export interface ResourceCockroach {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2593,7 +2593,7 @@ export interface ResourceCouchbaseDatabase {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2640,7 +2640,7 @@ export interface ResourceCouchbaseWebUi {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -2696,7 +2696,7 @@ export interface ResourceDb2I {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2755,7 +2755,7 @@ export interface ResourceDb2Luw {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2814,7 +2814,7 @@ export interface ResourceDocumentDbHost {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2865,7 +2865,7 @@ export interface ResourceDocumentDbHostIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2920,7 +2920,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -2971,7 +2971,7 @@ export interface ResourceDocumentDbReplicaSetIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3018,7 +3018,7 @@ export interface ResourceDruid {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3081,7 +3081,7 @@ export interface ResourceDynamoDb {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3132,7 +3132,7 @@ export interface ResourceDynamoDbiam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3179,7 +3179,7 @@ export interface ResourceElastic {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3234,7 +3234,7 @@ export interface ResourceElasticacheRedis {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3297,7 +3297,7 @@ export interface ResourceEntraId {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3349,7 +3349,7 @@ export interface ResourceGcp {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3396,7 +3396,7 @@ export interface ResourceGcpConsole {
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -3460,7 +3460,7 @@ export interface ResourceGcpwif {
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3540,7 +3540,7 @@ export interface ResourceGoogleGke {
      */
     serviceAccountKey?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3591,7 +3591,7 @@ export interface ResourceGoogleGkeUserImpersonation {
      */
     serviceAccountKey?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3646,7 +3646,7 @@ export interface ResourceGreenplum {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3705,7 +3705,7 @@ export interface ResourceHttpAuth {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -3765,7 +3765,7 @@ export interface ResourceHttpBasicAuth {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -3825,7 +3825,7 @@ export interface ResourceHttpNoAuth {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -3909,7 +3909,7 @@ export interface ResourceKubernetes {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -3960,7 +3960,7 @@ export interface ResourceKubernetesBasicAuth {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4027,7 +4027,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4094,7 +4094,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4146,7 +4146,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4210,7 +4210,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4265,7 +4265,7 @@ export interface ResourceMaria {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4316,7 +4316,7 @@ export interface ResourceMemcached {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4371,7 +4371,7 @@ export interface ResourceMemsql {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4430,7 +4430,7 @@ export interface ResourceMongoHost {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4489,7 +4489,7 @@ export interface ResourceMongoLegacyHost {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4556,7 +4556,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4623,7 +4623,7 @@ export interface ResourceMongoReplicaSet {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4678,7 +4678,7 @@ export interface ResourceMongoShardedCluster {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4757,7 +4757,7 @@ export interface ResourceMtlsMysql {
      */
     serverName?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4836,7 +4836,7 @@ export interface ResourceMtlsPostgres {
      */
     serverName?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4895,7 +4895,7 @@ export interface ResourceMysql {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -4946,7 +4946,7 @@ export interface ResourceNeptune {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5009,7 +5009,7 @@ export interface ResourceNeptuneIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5060,7 +5060,7 @@ export interface ResourceOracle {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5119,7 +5119,7 @@ export interface ResourceOracleNne {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5178,7 +5178,7 @@ export interface ResourcePostgres {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5233,7 +5233,7 @@ export interface ResourcePresto {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5288,7 +5288,7 @@ export interface ResourceRabbitmqAmqp091 {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5339,7 +5339,7 @@ export interface ResourceRawTcp {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5394,7 +5394,7 @@ export interface ResourceRdp {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5457,7 +5457,7 @@ export interface ResourceRdpCert {
      */
     sid?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5520,7 +5520,7 @@ export interface ResourceRdsPostgresIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5571,7 +5571,7 @@ export interface ResourceRedis {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5626,7 +5626,7 @@ export interface ResourceRedisCluster {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5689,7 +5689,7 @@ export interface ResourceRedshift {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5756,7 +5756,7 @@ export interface ResourceRedshiftIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5815,7 +5815,7 @@ export interface ResourceRedshiftServerlessIam {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5875,7 +5875,7 @@ export interface ResourceSingleStore {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5938,7 +5938,7 @@ export interface ResourceSnowflake {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -5956,6 +5956,10 @@ export interface ResourceSnowsight {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * If true, select the ACS with isDefault=true
+     */
+    connectToDefault?: pulumi.Input<boolean>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -5985,7 +5989,7 @@ export interface ResourceSnowsight {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: pulumi.Input<string>;
     /**
@@ -6048,7 +6052,7 @@ export interface ResourceSqlServer {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6119,7 +6123,7 @@ export interface ResourceSqlServerAzureAd {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6199,7 +6203,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     serverSpn: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6262,7 +6266,7 @@ export interface ResourceSsh {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6329,7 +6333,7 @@ export interface ResourceSshCert {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6396,7 +6400,7 @@ export interface ResourceSshCustomerKey {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6455,7 +6459,7 @@ export interface ResourceSshPassword {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6506,7 +6510,7 @@ export interface ResourceSybase {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6557,7 +6561,7 @@ export interface ResourceSybaseIq {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6608,7 +6612,7 @@ export interface ResourceTeradata {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6659,7 +6663,7 @@ export interface ResourceTrino {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**
@@ -6718,7 +6722,7 @@ export interface ResourceVertica {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: pulumi.Input<string>;
     /**

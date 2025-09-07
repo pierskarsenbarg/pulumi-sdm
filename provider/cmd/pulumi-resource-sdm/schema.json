@@ -468,7 +468,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -578,7 +578,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -653,7 +653,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -747,7 +747,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -822,7 +822,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -912,7 +912,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1028,7 +1028,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1137,7 +1137,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1226,7 +1226,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1324,7 +1324,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1409,7 +1409,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1480,7 +1480,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1554,7 +1554,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1630,7 +1630,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1718,7 +1718,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1789,7 +1789,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1865,7 +1865,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -1948,7 +1948,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2030,7 +2030,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2115,7 +2115,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2199,7 +2199,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2282,7 +2282,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2371,7 +2371,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2443,7 +2443,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2507,7 +2507,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2573,7 +2573,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2651,7 +2651,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2731,7 +2731,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2815,7 +2815,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2897,7 +2897,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -2975,7 +2975,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3049,7 +3049,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3133,7 +3133,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3282,7 +3282,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3358,7 +3358,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3444,7 +3444,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3528,7 +3528,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3606,7 +3606,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3676,7 +3676,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3753,7 +3753,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3835,7 +3835,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3917,7 +3917,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3990,7 +3990,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4068,7 +4068,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4143,7 +4143,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4213,7 +4213,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4297,7 +4297,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4370,7 +4370,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4440,7 +4440,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4516,7 +4516,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4599,7 +4599,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "subscriptionId": {
                     "type": "string",
@@ -4672,7 +4672,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4739,7 +4739,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4825,7 +4825,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -4930,7 +4930,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5004,7 +5004,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5081,7 +5081,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5163,7 +5163,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5246,7 +5246,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5328,7 +5328,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5437,7 +5437,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5512,7 +5512,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5603,7 +5603,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5689,7 +5689,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5764,7 +5764,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5854,7 +5854,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -5933,7 +5933,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6004,7 +6004,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6080,7 +6080,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6160,7 +6160,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6242,7 +6242,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6332,7 +6332,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6424,7 +6424,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6504,7 +6504,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6609,7 +6609,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6712,7 +6712,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6794,7 +6794,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6865,7 +6865,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -6949,7 +6949,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7023,7 +7023,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7107,7 +7107,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7191,7 +7191,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7269,7 +7269,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7347,7 +7347,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7418,7 +7418,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7494,7 +7494,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7577,7 +7577,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7660,7 +7660,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7736,7 +7736,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7812,7 +7812,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7896,7 +7896,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7985,7 +7985,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8070,7 +8070,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8156,7 +8156,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8241,7 +8241,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8281,6 +8281,10 @@
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
                 },
+                "connectToDefault": {
+                    "type": "boolean",
+                    "description": "If true, select the ACS with isDefault=true\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -8311,7 +8315,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8396,7 +8400,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8488,7 +8492,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8589,7 +8593,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8674,7 +8678,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8765,7 +8769,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8856,7 +8860,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8938,7 +8942,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9012,7 +9016,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9084,7 +9088,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9156,7 +9160,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9228,7 +9232,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9308,7 +9312,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -11933,7 +11937,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12032,7 +12036,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12093,7 +12097,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12173,7 +12177,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12234,7 +12238,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12310,7 +12314,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12379,7 +12383,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12481,7 +12485,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12574,7 +12578,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12647,7 +12651,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12729,7 +12733,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12789,7 +12793,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12850,7 +12854,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12915,7 +12919,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12992,7 +12996,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13052,7 +13056,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13117,7 +13121,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13189,7 +13193,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13258,7 +13262,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13330,7 +13334,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13399,7 +13403,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13471,7 +13475,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13548,7 +13552,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13608,7 +13612,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13661,7 +13665,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13718,7 +13722,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13787,7 +13791,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13856,7 +13860,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13929,7 +13933,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13998,7 +14002,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14063,7 +14067,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14124,7 +14128,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14197,7 +14201,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14323,7 +14327,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14388,7 +14392,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14461,7 +14465,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14534,7 +14538,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14599,7 +14603,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14656,7 +14660,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14721,7 +14725,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14790,7 +14794,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14859,7 +14863,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14919,7 +14923,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14984,7 +14988,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15044,7 +15048,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15101,7 +15105,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15174,7 +15178,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15234,7 +15238,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15291,7 +15295,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15356,7 +15360,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15428,7 +15432,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "subscriptionId": {
                     "type": "string",
@@ -15489,7 +15493,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15545,7 +15549,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15617,7 +15621,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15707,7 +15711,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15769,7 +15773,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15834,7 +15838,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15903,7 +15907,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15972,7 +15976,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16040,7 +16044,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16135,7 +16139,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16196,7 +16200,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16273,7 +16277,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16349,7 +16353,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16410,7 +16414,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16486,7 +16490,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16551,7 +16555,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16611,7 +16615,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16676,7 +16680,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16745,7 +16749,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16814,7 +16818,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16891,7 +16895,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -16968,7 +16972,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17033,7 +17037,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17125,7 +17129,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17217,7 +17221,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17286,7 +17290,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17346,7 +17350,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17419,7 +17423,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17480,7 +17484,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17549,7 +17553,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17618,7 +17622,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17683,7 +17687,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17748,7 +17752,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17808,7 +17812,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17873,7 +17877,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -17945,7 +17949,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18017,7 +18021,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18078,7 +18082,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18143,7 +18147,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18216,7 +18220,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18292,7 +18296,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18360,7 +18364,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18429,7 +18433,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18503,7 +18507,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18532,6 +18536,10 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "connectToDefault": {
+                    "type": "boolean",
+                    "description": "If true, select the ACS with isDefault=true\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -18567,7 +18575,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18640,7 +18648,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18721,7 +18729,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18811,7 +18819,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18883,7 +18891,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -18967,7 +18975,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19044,7 +19052,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19113,7 +19121,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19174,7 +19182,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19235,7 +19243,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19296,7 +19304,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19357,7 +19365,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -19426,7 +19434,7 @@
                 },
                 "subdomain": {
                     "type": "string",
-                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -21716,8 +21724,7 @@
                     "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                 },
                 "entraId": {
-                    "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId",
-                    "description": "EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                 },
                 "gcp": {
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
@@ -22060,8 +22067,7 @@
                     "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                 },
                 "entraId": {
-                    "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId",
-                    "description": "EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                 },
                 "gcp": {
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
@@ -22406,8 +22412,7 @@
                         "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                     },
                     "entraId": {
-                        "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId",
-                        "description": "EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                     },
                     "gcp": {
                         "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"

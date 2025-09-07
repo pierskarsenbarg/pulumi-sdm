@@ -20,6 +20,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
+        /// If true, select the ACS with isDefault=true
+        /// </summary>
+        [Input("connectToDefault")]
+        public Input<bool>? ConnectToDefault { get; set; }
+
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         [Input("egressFilter")]
@@ -62,7 +68,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         /// </summary>
         [Input("subdomain", required: true)]
         public Input<string> Subdomain { get; set; } = null!;

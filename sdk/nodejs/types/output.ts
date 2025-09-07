@@ -811,7 +811,7 @@ export interface GetResourceResourceAerospike {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -902,7 +902,7 @@ export interface GetResourceResourceAk {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -957,7 +957,7 @@ export interface GetResourceResourceAksBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1032,7 +1032,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1088,7 +1088,7 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1156,7 +1156,7 @@ export interface GetResourceResourceAksUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1219,7 +1219,7 @@ export interface GetResourceResourceAmazonE {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1314,7 +1314,7 @@ export interface GetResourceResourceAmazonEk {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1401,7 +1401,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1468,7 +1468,7 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1543,7 +1543,7 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1598,7 +1598,7 @@ export interface GetResourceResourceAmazonEsiam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1653,7 +1653,7 @@ export interface GetResourceResourceAmazonmqAmqp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1712,7 +1712,7 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1783,7 +1783,7 @@ export interface GetResourceResourceAthena {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1838,7 +1838,7 @@ export interface GetResourceResourceAthenaIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1897,7 +1897,7 @@ export interface GetResourceResourceAuroraMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -1964,7 +1964,7 @@ export interface GetResourceResourceAuroraMysqlIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2027,7 +2027,7 @@ export interface GetResourceResourceAuroraPostgre {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2094,7 +2094,7 @@ export interface GetResourceResourceAuroraPostgresIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2157,7 +2157,7 @@ export interface GetResourceResourceAw {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2224,7 +2224,7 @@ export interface GetResourceResourceAwsConsole {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2295,7 +2295,7 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2350,7 +2350,7 @@ export interface GetResourceResourceAwsInstanceProfile {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2397,7 +2397,7 @@ export interface GetResourceResourceAzure {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2449,7 +2449,7 @@ export interface GetResourceResourceAzureCertificate {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2513,7 +2513,7 @@ export interface GetResourceResourceAzureMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2576,7 +2576,7 @@ export interface GetResourceResourceAzureMysqlManagedIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2643,7 +2643,7 @@ export interface GetResourceResourceAzurePostgre {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2706,7 +2706,7 @@ export interface GetResourceResourceAzurePostgresManagedIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2765,7 +2765,7 @@ export interface GetResourceResourceBigQuery {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2820,7 +2820,7 @@ export interface GetResourceResourceCassandra {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -2887,7 +2887,7 @@ export interface GetResourceResourceCitus {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3002,7 +3002,7 @@ export interface GetResourceResourceClickHouseMySql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3061,7 +3061,7 @@ export interface GetResourceResourceClickHouseTcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3128,7 +3128,7 @@ export interface GetResourceResourceClustrix {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3195,7 +3195,7 @@ export interface GetResourceResourceCockroach {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3254,7 +3254,7 @@ export interface GetResourceResourceCouchbaseDatabase {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3305,7 +3305,7 @@ export interface GetResourceResourceCouchbaseWebUi {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3365,7 +3365,7 @@ export interface GetResourceResourceDb2I {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3428,7 +3428,7 @@ export interface GetResourceResourceDb2Luw {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3491,7 +3491,7 @@ export interface GetResourceResourceDocumentDbHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3546,7 +3546,7 @@ export interface GetResourceResourceDocumentDbHostIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3605,7 +3605,7 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3660,7 +3660,7 @@ export interface GetResourceResourceDocumentDbReplicaSetIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3711,7 +3711,7 @@ export interface GetResourceResourceDruid {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3778,7 +3778,7 @@ export interface GetResourceResourceDynamoDb {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3833,7 +3833,7 @@ export interface GetResourceResourceDynamoDbiam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3884,7 +3884,7 @@ export interface GetResourceResourceElastic {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -3943,7 +3943,7 @@ export interface GetResourceResourceElasticacheRedi {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4010,7 +4010,7 @@ export interface GetResourceResourceEntraId {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4066,7 +4066,7 @@ export interface GetResourceResourceGcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4117,7 +4117,7 @@ export interface GetResourceResourceGcpConsole {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4185,7 +4185,7 @@ export interface GetResourceResourceGcpwif {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4269,7 +4269,7 @@ export interface GetResourceResourceGoogleGke {
      */
     serviceAccountKey?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4324,7 +4324,7 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      */
     serviceAccountKey?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4383,7 +4383,7 @@ export interface GetResourceResourceGreenplum {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4446,7 +4446,7 @@ export interface GetResourceResourceHttpAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4510,7 +4510,7 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4574,7 +4574,7 @@ export interface GetResourceResourceHttpNoAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4662,7 +4662,7 @@ export interface GetResourceResourceKubernete {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4717,7 +4717,7 @@ export interface GetResourceResourceKubernetesBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4788,7 +4788,7 @@ export interface GetResourceResourceKubernetesPodIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4859,7 +4859,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4915,7 +4915,7 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -4983,7 +4983,7 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5042,7 +5042,7 @@ export interface GetResourceResourceMaria {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5097,7 +5097,7 @@ export interface GetResourceResourceMemcached {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5156,7 +5156,7 @@ export interface GetResourceResourceMemsql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5219,7 +5219,7 @@ export interface GetResourceResourceMongoHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5282,7 +5282,7 @@ export interface GetResourceResourceMongoLegacyHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5353,7 +5353,7 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5424,7 +5424,7 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5483,7 +5483,7 @@ export interface GetResourceResourceMongoShardedCluster {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5566,7 +5566,7 @@ export interface GetResourceResourceMtlsMysql {
      */
     serverName?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5649,7 +5649,7 @@ export interface GetResourceResourceMtlsPostgre {
      */
     serverName?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5712,7 +5712,7 @@ export interface GetResourceResourceMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5767,7 +5767,7 @@ export interface GetResourceResourceNeptune {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5834,7 +5834,7 @@ export interface GetResourceResourceNeptuneIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5889,7 +5889,7 @@ export interface GetResourceResourceOracle {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -5952,7 +5952,7 @@ export interface GetResourceResourceOracleNne {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6015,7 +6015,7 @@ export interface GetResourceResourcePostgre {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6074,7 +6074,7 @@ export interface GetResourceResourcePresto {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6133,7 +6133,7 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6188,7 +6188,7 @@ export interface GetResourceResourceRawTcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6247,7 +6247,7 @@ export interface GetResourceResourceRdp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6314,7 +6314,7 @@ export interface GetResourceResourceRdpCert {
      */
     sid?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6381,7 +6381,7 @@ export interface GetResourceResourceRdsPostgresIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6436,7 +6436,7 @@ export interface GetResourceResourceRedi {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6495,7 +6495,7 @@ export interface GetResourceResourceRedisCluster {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6562,7 +6562,7 @@ export interface GetResourceResourceRedshift {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6633,7 +6633,7 @@ export interface GetResourceResourceRedshiftIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6696,7 +6696,7 @@ export interface GetResourceResourceRedshiftServerlessIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6760,7 +6760,7 @@ export interface GetResourceResourceSingleStore {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6827,7 +6827,7 @@ export interface GetResourceResourceSnowflake {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6845,6 +6845,10 @@ export interface GetResourceResourceSnowsight {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
+    /**
+     * If true, select the ACS with isDefault=true
+     */
+    connectToDefault?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6878,7 +6882,7 @@ export interface GetResourceResourceSnowsight {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -6945,7 +6949,7 @@ export interface GetResourceResourceSqlServer {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7020,7 +7024,7 @@ export interface GetResourceResourceSqlServerAzureAd {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7104,7 +7108,7 @@ export interface GetResourceResourceSqlServerKerberosAd {
      */
     serverSpn?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7171,7 +7175,7 @@ export interface GetResourceResourceSsh {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7242,7 +7246,7 @@ export interface GetResourceResourceSshCert {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7313,7 +7317,7 @@ export interface GetResourceResourceSshCustomerKey {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7376,7 +7380,7 @@ export interface GetResourceResourceSshPassword {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7431,7 +7435,7 @@ export interface GetResourceResourceSybase {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7486,7 +7490,7 @@ export interface GetResourceResourceSybaseIq {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7541,7 +7545,7 @@ export interface GetResourceResourceTeradata {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7596,7 +7600,7 @@ export interface GetResourceResourceTrino {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -7659,7 +7663,7 @@ export interface GetResourceResourceVertica {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain?: string;
     /**
@@ -8758,7 +8762,7 @@ export interface ResourceAerospike {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -8845,7 +8849,7 @@ export interface ResourceAks {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -8896,7 +8900,7 @@ export interface ResourceAksBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -8967,7 +8971,7 @@ export interface ResourceAksServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9019,7 +9023,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9083,7 +9087,7 @@ export interface ResourceAksUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9174,7 +9178,7 @@ export interface ResourceAmazonEks {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9257,7 +9261,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9320,7 +9324,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9391,7 +9395,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9450,7 +9454,7 @@ export interface ResourceAmazonEs {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9501,7 +9505,7 @@ export interface ResourceAmazonEsiam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9552,7 +9556,7 @@ export interface ResourceAmazonmqAmqp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9607,7 +9611,7 @@ export interface ResourceAmazonmqAmqp091 {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9674,7 +9678,7 @@ export interface ResourceAthena {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9725,7 +9729,7 @@ export interface ResourceAthenaIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9780,7 +9784,7 @@ export interface ResourceAuroraMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9843,7 +9847,7 @@ export interface ResourceAuroraMysqlIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9902,7 +9906,7 @@ export interface ResourceAuroraPostgres {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -9965,7 +9969,7 @@ export interface ResourceAuroraPostgresIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10024,7 +10028,7 @@ export interface ResourceAws {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10087,7 +10091,7 @@ export interface ResourceAwsConsole {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10154,7 +10158,7 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10205,7 +10209,7 @@ export interface ResourceAwsInstanceProfile {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10248,7 +10252,7 @@ export interface ResourceAzure {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10296,7 +10300,7 @@ export interface ResourceAzureCertificate {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10356,7 +10360,7 @@ export interface ResourceAzureMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10415,7 +10419,7 @@ export interface ResourceAzureMysqlManagedIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10478,7 +10482,7 @@ export interface ResourceAzurePostgres {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10537,7 +10541,7 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10592,7 +10596,7 @@ export interface ResourceBigQuery {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10643,7 +10647,7 @@ export interface ResourceCassandra {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10706,7 +10710,7 @@ export interface ResourceCitus {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10813,7 +10817,7 @@ export interface ResourceClickHouseMySql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10868,7 +10872,7 @@ export interface ResourceClickHouseTcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10931,7 +10935,7 @@ export interface ResourceClustrix {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -10994,7 +10998,7 @@ export interface ResourceCockroach {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11049,7 +11053,7 @@ export interface ResourceCouchbaseDatabase {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11096,7 +11100,7 @@ export interface ResourceCouchbaseWebUi {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11152,7 +11156,7 @@ export interface ResourceDb2I {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11211,7 +11215,7 @@ export interface ResourceDb2Luw {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11270,7 +11274,7 @@ export interface ResourceDocumentDbHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11321,7 +11325,7 @@ export interface ResourceDocumentDbHostIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11376,7 +11380,7 @@ export interface ResourceDocumentDbReplicaSet {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11427,7 +11431,7 @@ export interface ResourceDocumentDbReplicaSetIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11474,7 +11478,7 @@ export interface ResourceDruid {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11537,7 +11541,7 @@ export interface ResourceDynamoDb {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11588,7 +11592,7 @@ export interface ResourceDynamoDbiam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11635,7 +11639,7 @@ export interface ResourceElastic {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11690,7 +11694,7 @@ export interface ResourceElasticacheRedis {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11753,7 +11757,7 @@ export interface ResourceEntraId {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11805,7 +11809,7 @@ export interface ResourceGcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11852,7 +11856,7 @@ export interface ResourceGcpConsole {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11916,7 +11920,7 @@ export interface ResourceGcpwif {
      */
     sessionExpiry?: number;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -11996,7 +12000,7 @@ export interface ResourceGoogleGke {
      */
     serviceAccountKey?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12047,7 +12051,7 @@ export interface ResourceGoogleGkeUserImpersonation {
      */
     serviceAccountKey?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12102,7 +12106,7 @@ export interface ResourceGreenplum {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12161,7 +12165,7 @@ export interface ResourceHttpAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12221,7 +12225,7 @@ export interface ResourceHttpBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12281,7 +12285,7 @@ export interface ResourceHttpNoAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12365,7 +12369,7 @@ export interface ResourceKubernetes {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12416,7 +12420,7 @@ export interface ResourceKubernetesBasicAuth {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12483,7 +12487,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12550,7 +12554,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12602,7 +12606,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12666,7 +12670,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12721,7 +12725,7 @@ export interface ResourceMaria {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12772,7 +12776,7 @@ export interface ResourceMemcached {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12827,7 +12831,7 @@ export interface ResourceMemsql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12886,7 +12890,7 @@ export interface ResourceMongoHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -12945,7 +12949,7 @@ export interface ResourceMongoLegacyHost {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13012,7 +13016,7 @@ export interface ResourceMongoLegacyReplicaset {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13079,7 +13083,7 @@ export interface ResourceMongoReplicaSet {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13134,7 +13138,7 @@ export interface ResourceMongoShardedCluster {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13213,7 +13217,7 @@ export interface ResourceMtlsMysql {
      */
     serverName?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13292,7 +13296,7 @@ export interface ResourceMtlsPostgres {
      */
     serverName?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13351,7 +13355,7 @@ export interface ResourceMysql {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13402,7 +13406,7 @@ export interface ResourceNeptune {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13465,7 +13469,7 @@ export interface ResourceNeptuneIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13516,7 +13520,7 @@ export interface ResourceOracle {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13575,7 +13579,7 @@ export interface ResourceOracleNne {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13634,7 +13638,7 @@ export interface ResourcePostgres {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13689,7 +13693,7 @@ export interface ResourcePresto {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13744,7 +13748,7 @@ export interface ResourceRabbitmqAmqp091 {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13795,7 +13799,7 @@ export interface ResourceRawTcp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13850,7 +13854,7 @@ export interface ResourceRdp {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13913,7 +13917,7 @@ export interface ResourceRdpCert {
      */
     sid?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -13976,7 +13980,7 @@ export interface ResourceRdsPostgresIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14027,7 +14031,7 @@ export interface ResourceRedis {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14082,7 +14086,7 @@ export interface ResourceRedisCluster {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14145,7 +14149,7 @@ export interface ResourceRedshift {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14212,7 +14216,7 @@ export interface ResourceRedshiftIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14271,7 +14275,7 @@ export interface ResourceRedshiftServerlessIam {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14331,7 +14335,7 @@ export interface ResourceSingleStore {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14394,7 +14398,7 @@ export interface ResourceSnowflake {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14412,6 +14416,10 @@ export interface ResourceSnowsight {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
+    /**
+     * If true, select the ACS with isDefault=true
+     */
+    connectToDefault?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -14441,7 +14449,7 @@ export interface ResourceSnowsight {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14504,7 +14512,7 @@ export interface ResourceSqlServer {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14575,7 +14583,7 @@ export interface ResourceSqlServerAzureAd {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14655,7 +14663,7 @@ export interface ResourceSqlServerKerberosAd {
      */
     serverSpn: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14718,7 +14726,7 @@ export interface ResourceSsh {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14785,7 +14793,7 @@ export interface ResourceSshCert {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14852,7 +14860,7 @@ export interface ResourceSshCustomerKey {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14911,7 +14919,7 @@ export interface ResourceSshPassword {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -14962,7 +14970,7 @@ export interface ResourceSybase {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -15013,7 +15021,7 @@ export interface ResourceSybaseIq {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -15064,7 +15072,7 @@ export interface ResourceTeradata {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -15115,7 +15123,7 @@ export interface ResourceTrino {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**
@@ -15174,7 +15182,7 @@ export interface ResourceVertica {
      */
     secretStoreId?: string;
     /**
-     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
     subdomain: string;
     /**

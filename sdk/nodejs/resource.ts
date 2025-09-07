@@ -116,9 +116,6 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly dynamoDbiam: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
     declare public readonly elastic: pulumi.Output<outputs.ResourceElastic | undefined>;
     declare public readonly elasticacheRedis: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
-    /**
-     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly entraId: pulumi.Output<outputs.ResourceEntraId | undefined>;
     declare public readonly gcp: pulumi.Output<outputs.ResourceGcp | undefined>;
     declare public readonly gcpConsole: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
@@ -515,9 +512,6 @@ export interface ResourceState {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
-    /**
-     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
@@ -676,9 +670,6 @@ export interface ResourceArgs {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
-    /**
-     * EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
