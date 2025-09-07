@@ -75,8 +75,7 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-	// are typically automated jobs.
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Service AccountServicePtrOutput `pulumi:"service"`
 	// A User can connect to resources they are granted directly, or granted via roles.
 	User AccountUserPtrOutput `pulumi:"user"`
@@ -112,16 +111,14 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-	// are typically automated jobs.
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Service *AccountService `pulumi:"service"`
 	// A User can connect to resources they are granted directly, or granted via roles.
 	User *AccountUser `pulumi:"user"`
 }
 
 type AccountState struct {
-	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-	// are typically automated jobs.
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Service AccountServicePtrInput
 	// A User can connect to resources they are granted directly, or granted via roles.
 	User AccountUserPtrInput
@@ -132,8 +129,7 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-	// are typically automated jobs.
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Service *AccountService `pulumi:"service"`
 	// A User can connect to resources they are granted directly, or granted via roles.
 	User *AccountUser `pulumi:"user"`
@@ -141,8 +137,7 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-	// are typically automated jobs.
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Service AccountServicePtrInput
 	// A User can connect to resources they are granted directly, or granted via roles.
 	User AccountUserPtrInput
@@ -235,8 +230,7 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
-// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-// are typically automated jobs.
+// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 func (o AccountOutput) Service() AccountServicePtrOutput {
 	return o.ApplyT(func(v *Account) AccountServicePtrOutput { return v.Service }).(AccountServicePtrOutput)
 }

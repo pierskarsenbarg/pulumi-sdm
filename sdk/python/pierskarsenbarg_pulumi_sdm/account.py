@@ -25,8 +25,7 @@ class AccountArgs:
                  user: Optional[pulumi.Input['AccountUserArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-               are typically automated jobs.
+        :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input['AccountUserArgs'] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         if service is not None:
@@ -38,8 +37,7 @@ class AccountArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input['AccountServiceArgs']]:
         """
-        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        are typically automated jobs.
+        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "service")
 
@@ -67,8 +65,7 @@ class _AccountState:
                  user: Optional[pulumi.Input['AccountUserArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-               are typically automated jobs.
+        :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input['AccountUserArgs'] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         if service is not None:
@@ -80,8 +77,7 @@ class _AccountState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input['AccountServiceArgs']]:
         """
-        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        are typically automated jobs.
+        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "service")
 
@@ -153,8 +149,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-               are typically automated jobs.
+        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         ...
@@ -250,8 +245,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-               are typically automated jobs.
+        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -266,8 +260,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[Optional['outputs.AccountService']]:
         """
-        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        are typically automated jobs.
+        A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "service")
 

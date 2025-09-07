@@ -164,8 +164,7 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.ResourceDocumentDbReplicaSet?> DocumentDbReplicaSet { get; private set; } = null!;
 
         /// <summary>
-        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Output("documentDbReplicaSetIam")]
         public Output<Outputs.ResourceDocumentDbReplicaSetIam?> DocumentDbReplicaSetIam { get; private set; } = null!;
@@ -560,8 +559,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceDocumentDbReplicaSetArgs>? DocumentDbReplicaSet { get; set; }
 
         /// <summary>
-        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Input("documentDbReplicaSetIam")]
         public Input<Inputs.ResourceDocumentDbReplicaSetIamArgs>? DocumentDbReplicaSetIam { get; set; }
@@ -917,8 +915,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceDocumentDbReplicaSetGetArgs>? DocumentDbReplicaSet { get; set; }
 
         /// <summary>
-        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
+        /// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Input("documentDbReplicaSetIam")]
         public Input<Inputs.ResourceDocumentDbReplicaSetIamGetArgs>? DocumentDbReplicaSetIam { get; set; }

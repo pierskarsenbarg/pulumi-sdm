@@ -71,8 +71,7 @@ namespace PiersKarsenbarg.Sdm
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        /// are typically automated jobs.
+        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         /// </summary>
         [Output("service")]
         public Output<Outputs.AccountService?> Service { get; private set; } = null!;
@@ -131,8 +130,7 @@ namespace PiersKarsenbarg.Sdm
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        /// are typically automated jobs.
+        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         /// </summary>
         [Input("service")]
         public Input<Inputs.AccountServiceArgs>? Service { get; set; }
@@ -152,8 +150,7 @@ namespace PiersKarsenbarg.Sdm
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-        /// are typically automated jobs.
+        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         /// </summary>
         [Input("service")]
         public Input<Inputs.AccountServiceGetArgs>? Service { get; set; }

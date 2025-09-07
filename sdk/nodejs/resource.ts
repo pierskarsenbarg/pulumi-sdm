@@ -107,8 +107,7 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly documentDbHostIam: pulumi.Output<outputs.ResourceDocumentDbHostIam | undefined>;
     declare public readonly documentDbReplicaSet: pulumi.Output<outputs.ResourceDocumentDbReplicaSet | undefined>;
     /**
-     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     declare public readonly documentDbReplicaSetIam: pulumi.Output<outputs.ResourceDocumentDbReplicaSetIam | undefined>;
     declare public readonly druid: pulumi.Output<outputs.ResourceDruid | undefined>;
@@ -503,8 +502,7 @@ export interface ResourceState {
     documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
     /**
-     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
     druid?: pulumi.Input<inputs.ResourceDruid>;
@@ -661,8 +659,7 @@ export interface ResourceArgs {
     documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
     /**
-     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
+     * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
     druid?: pulumi.Input<inputs.ResourceDruid>;

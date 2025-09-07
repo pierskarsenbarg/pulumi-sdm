@@ -46,8 +46,7 @@ class SecretStoreArgs:
                  vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         The set of arguments for constructing a SecretStore resource.
-        :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -154,8 +153,7 @@ class SecretStoreArgs:
     @pulumi.getter(name="cyberarkPamExperimental")
     def cyberark_pam_experimental(self) -> Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']]:
         """
-        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
+        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "cyberark_pam_experimental")
 
@@ -336,8 +334,7 @@ class _SecretStoreState:
                  vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         Input properties used for looking up and filtering SecretStore resources.
-        :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -444,8 +441,7 @@ class _SecretStoreState:
     @pulumi.getter(name="cyberarkPamExperimental")
     def cyberark_pam_experimental(self) -> Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']]:
         """
-        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
+        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "cyberark_pam_experimental")
 
@@ -643,8 +639,7 @@ class SecretStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -775,8 +770,7 @@ class SecretStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -841,8 +835,7 @@ class SecretStore(pulumi.CustomResource):
     @pulumi.getter(name="cyberarkPamExperimental")
     def cyberark_pam_experimental(self) -> pulumi.Output[Optional['outputs.SecretStoreCyberarkPamExperimental']]:
         """
-        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
+        CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "cyberark_pam_experimental")
 

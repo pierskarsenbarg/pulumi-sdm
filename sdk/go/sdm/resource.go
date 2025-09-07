@@ -72,8 +72,7 @@ type Resource struct {
 	DocumentDbHost               ResourceDocumentDbHostPtrOutput               `pulumi:"documentDbHost"`
 	DocumentDbHostIam            ResourceDocumentDbHostIamPtrOutput            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrOutput         `pulumi:"documentDbReplicaSet"`
-	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrOutput `pulumi:"documentDbReplicaSetIam"`
 	Druid                   ResourceDruidPtrOutput                   `pulumi:"druid"`
 	DynamoDb                ResourceDynamoDbPtrOutput                `pulumi:"dynamoDb"`
@@ -228,8 +227,7 @@ type resourceState struct {
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
 	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
-	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	DocumentDbReplicaSetIam *ResourceDocumentDbReplicaSetIam `pulumi:"documentDbReplicaSetIam"`
 	Druid                   *ResourceDruid                   `pulumi:"druid"`
 	DynamoDb                *ResourceDynamoDb                `pulumi:"dynamoDb"`
@@ -355,8 +353,7 @@ type ResourceState struct {
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
 	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
-	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrInput
 	Druid                   ResourceDruidPtrInput
 	DynamoDb                ResourceDynamoDbPtrInput
@@ -486,8 +483,7 @@ type resourceArgs struct {
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
 	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
-	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	DocumentDbReplicaSetIam *ResourceDocumentDbReplicaSetIam `pulumi:"documentDbReplicaSetIam"`
 	Druid                   *ResourceDruid                   `pulumi:"druid"`
 	DynamoDb                *ResourceDynamoDb                `pulumi:"dynamoDb"`
@@ -614,8 +610,7 @@ type ResourceArgs struct {
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
 	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
-	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
+	// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	DocumentDbReplicaSetIam ResourceDocumentDbReplicaSetIamPtrInput
 	Druid                   ResourceDruidPtrInput
 	DynamoDb                ResourceDynamoDbPtrInput
@@ -966,8 +961,7 @@ func (o ResourceOutput) DocumentDbReplicaSet() ResourceDocumentDbReplicaSetPtrOu
 	return o.ApplyT(func(v *Resource) ResourceDocumentDbReplicaSetPtrOutput { return v.DocumentDbReplicaSet }).(ResourceDocumentDbReplicaSetPtrOutput)
 }
 
-// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
-// bump.
+// DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) DocumentDbReplicaSetIam() ResourceDocumentDbReplicaSetIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDocumentDbReplicaSetIamPtrOutput { return v.DocumentDbReplicaSetIam }).(ResourceDocumentDbReplicaSetIamPtrOutput)
 }

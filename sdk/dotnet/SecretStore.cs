@@ -45,8 +45,7 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.SecretStoreCyberarkPam?> CyberarkPam { get; private set; } = null!;
 
         /// <summary>
-        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
+        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Output("cyberarkPamExperimental")]
         public Output<Outputs.SecretStoreCyberarkPamExperimental?> CyberarkPamExperimental { get; private set; } = null!;
@@ -165,8 +164,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.SecretStoreCyberarkPamArgs>? CyberarkPam { get; set; }
 
         /// <summary>
-        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
+        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalArgs>? CyberarkPamExperimental { get; set; }
@@ -246,8 +244,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.SecretStoreCyberarkPamGetArgs>? CyberarkPam { get; set; }
 
         /// <summary>
-        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
+        /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalGetArgs>? CyberarkPamExperimental { get; set; }
