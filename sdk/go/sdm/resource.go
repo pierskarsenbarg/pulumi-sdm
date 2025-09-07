@@ -80,12 +80,11 @@ type Resource struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrOutput             `pulumi:"dynamoDbiam"`
 	Elastic                 ResourceElasticPtrOutput                 `pulumi:"elastic"`
 	ElasticacheRedis        ResourceElasticacheRedisPtrOutput        `pulumi:"elasticacheRedis"`
-	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	EntraId    ResourceEntraIdPtrOutput    `pulumi:"entraId"`
-	Gcp        ResourceGcpPtrOutput        `pulumi:"gcp"`
-	GcpConsole ResourceGcpConsolePtrOutput `pulumi:"gcpConsole"`
-	Gcpwif     ResourceGcpwifPtrOutput     `pulumi:"gcpwif"`
-	GoogleGke  ResourceGoogleGkePtrOutput  `pulumi:"googleGke"`
+	EntraId                 ResourceEntraIdPtrOutput                 `pulumi:"entraId"`
+	Gcp                     ResourceGcpPtrOutput                     `pulumi:"gcp"`
+	GcpConsole              ResourceGcpConsolePtrOutput              `pulumi:"gcpConsole"`
+	Gcpwif                  ResourceGcpwifPtrOutput                  `pulumi:"gcpwif"`
+	GoogleGke               ResourceGoogleGkePtrOutput               `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
@@ -237,12 +236,11 @@ type resourceState struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	EntraId    *ResourceEntraId    `pulumi:"entraId"`
-	Gcp        *ResourceGcp        `pulumi:"gcp"`
-	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
-	Gcpwif     *ResourceGcpwif     `pulumi:"gcpwif"`
-	GoogleGke  *ResourceGoogleGke  `pulumi:"googleGke"`
+	EntraId                 *ResourceEntraId                 `pulumi:"entraId"`
+	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
+	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
+	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
+	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
@@ -365,12 +363,11 @@ type ResourceState struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	EntraId    ResourceEntraIdPtrInput
-	Gcp        ResourceGcpPtrInput
-	GcpConsole ResourceGcpConsolePtrInput
-	Gcpwif     ResourceGcpwifPtrInput
-	GoogleGke  ResourceGoogleGkePtrInput
+	EntraId                 ResourceEntraIdPtrInput
+	Gcp                     ResourceGcpPtrInput
+	GcpConsole              ResourceGcpConsolePtrInput
+	Gcpwif                  ResourceGcpwifPtrInput
+	GoogleGke               ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
@@ -497,12 +494,11 @@ type resourceArgs struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	EntraId    *ResourceEntraId    `pulumi:"entraId"`
-	Gcp        *ResourceGcp        `pulumi:"gcp"`
-	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
-	Gcpwif     *ResourceGcpwif     `pulumi:"gcpwif"`
-	GoogleGke  *ResourceGoogleGke  `pulumi:"googleGke"`
+	EntraId                 *ResourceEntraId                 `pulumi:"entraId"`
+	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
+	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
+	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
+	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
@@ -626,12 +622,11 @@ type ResourceArgs struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	EntraId    ResourceEntraIdPtrInput
-	Gcp        ResourceGcpPtrInput
-	GcpConsole ResourceGcpConsolePtrInput
-	Gcpwif     ResourceGcpwifPtrInput
-	GoogleGke  ResourceGoogleGkePtrInput
+	EntraId                 ResourceEntraIdPtrInput
+	Gcp                     ResourceGcpPtrInput
+	GcpConsole              ResourceGcpConsolePtrInput
+	Gcpwif                  ResourceGcpwifPtrInput
+	GoogleGke               ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
@@ -997,7 +992,6 @@ func (o ResourceOutput) ElasticacheRedis() ResourceElasticacheRedisPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceElasticacheRedisPtrOutput { return v.ElasticacheRedis }).(ResourceElasticacheRedisPtrOutput)
 }
 
-// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) EntraId() ResourceEntraIdPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceEntraIdPtrOutput { return v.EntraId }).(ResourceEntraIdPtrOutput)
 }

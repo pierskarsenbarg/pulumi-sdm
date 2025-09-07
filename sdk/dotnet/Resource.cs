@@ -185,9 +185,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("elasticacheRedis")]
         public Output<Outputs.ResourceElasticacheRedis?> ElasticacheRedis { get; private set; } = null!;
 
-        /// <summary>
-        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("entraId")]
         public Output<Outputs.ResourceEntraId?> EntraId { get; private set; } = null!;
 
@@ -584,9 +581,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisArgs>? ElasticacheRedis { get; set; }
 
-        /// <summary>
-        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("entraId")]
         public Input<Inputs.ResourceEntraIdArgs>? EntraId { get; set; }
 
@@ -944,9 +938,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisGetArgs>? ElasticacheRedis { get; set; }
 
-        /// <summary>
-        /// EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("entraId")]
         public Input<Inputs.ResourceEntraIdGetArgs>? EntraId { get; set; }
 

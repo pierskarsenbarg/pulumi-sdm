@@ -1369,7 +1369,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -1412,7 +1412,7 @@ class ResourceAerospikeArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_services_alternate: If true, uses UseServicesAlternates directive for Aerospike connection
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -1554,7 +1554,7 @@ class ResourceAerospikeArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -1671,7 +1671,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -1720,7 +1720,7 @@ class ResourceAksArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -1967,7 +1967,7 @@ class ResourceAksArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -2032,7 +2032,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -2072,7 +2072,7 @@ class ResourceAksBasicAuthArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -2224,7 +2224,7 @@ class ResourceAksBasicAuthArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -2317,7 +2317,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -2366,7 +2366,7 @@ class ResourceAksServiceAccountArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] token: The API token to authenticate with.
                * kubernetes_user_impersonation:
@@ -2575,7 +2575,7 @@ class ResourceAksServiceAccountArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -2649,7 +2649,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -2688,7 +2688,7 @@ class ResourceAksServiceAccountUserImpersonationArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] token: The API token to authenticate with.
                * kubernetes_user_impersonation:
@@ -2827,7 +2827,7 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -2913,7 +2913,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -2952,7 +2952,7 @@ class ResourceAksUserImpersonationArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -3129,7 +3129,7 @@ class ResourceAksUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -3234,7 +3234,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -3289,7 +3289,7 @@ class ResourceAmazonEksArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -3577,7 +3577,7 @@ class ResourceAmazonEksArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -3674,7 +3674,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -3725,7 +3725,7 @@ class ResourceAmazonEksInstanceProfileArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -3985,7 +3985,7 @@ class ResourceAmazonEksInstanceProfileArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -4062,7 +4062,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -4103,7 +4103,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -4293,7 +4293,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -4378,7 +4378,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -4423,7 +4423,7 @@ class ResourceAmazonEksUserImpersonationArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -4641,7 +4641,7 @@ class ResourceAmazonEksUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -4714,7 +4714,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -4753,7 +4753,7 @@ class ResourceAmazonEsArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4931,7 +4931,7 @@ class ResourceAmazonEsArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -4996,7 +4996,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -5036,7 +5036,7 @@ class ResourceAmazonEsiamArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         """
@@ -5188,7 +5188,7 @@ class ResourceAmazonEsiamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -5261,7 +5261,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -5304,7 +5304,7 @@ class ResourceAmazonmqAmqp091Args:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -5446,7 +5446,7 @@ class ResourceAmazonmqAmqp091Args:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -5531,7 +5531,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -5574,7 +5574,7 @@ class ResourceAmazonmqAmqpArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -5716,7 +5716,7 @@ class ResourceAmazonmqAmqpArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -5813,7 +5813,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -5852,7 +5852,7 @@ class ResourceAthenaArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "athena_output", athena_output)
@@ -6030,7 +6030,7 @@ class ResourceAthenaArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -6095,7 +6095,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -6130,7 +6130,7 @@ class ResourceAthenaIamArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -6280,7 +6280,7 @@ class ResourceAthenaIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -6349,7 +6349,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -6396,7 +6396,7 @@ class ResourceAuroraMysqlArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -6566,7 +6566,7 @@ class ResourceAuroraMysqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -6659,7 +6659,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -6701,7 +6701,7 @@ class ResourceAuroraMysqlIamArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -6867,7 +6867,7 @@ class ResourceAuroraMysqlIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -6948,7 +6948,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -6990,7 +6990,7 @@ class ResourceAuroraPostgresArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -7156,7 +7156,7 @@ class ResourceAuroraPostgresArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -7241,7 +7241,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -7285,7 +7285,7 @@ class ResourceAuroraPostgresIamArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -7464,7 +7464,7 @@ class ResourceAuroraPostgresIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -7545,7 +7545,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -7582,7 +7582,7 @@ class ResourceAwsArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "healthcheck_region", healthcheck_region)
@@ -7746,7 +7746,7 @@ class ResourceAwsArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -7779,7 +7779,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         bind_interface: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7853,7 +7853,7 @@ class ResourceAwsConsoleArgs:
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] region: The AWS region to connect to.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param pulumi.Input[_builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[_builtins.bool] enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
@@ -7923,7 +7923,7 @@ class ResourceAwsConsoleArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -8088,7 +8088,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         access_key: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8167,7 +8167,7 @@ class ResourceAwsConsoleStaticKeyPairArgs:
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] region: The AWS region to connect to.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] access_key: The Access Key ID to use to authenticate.
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param pulumi.Input[_builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -8240,7 +8240,7 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -8449,7 +8449,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -8484,7 +8484,7 @@ class ResourceAwsInstanceProfileArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -8634,7 +8634,7 @@ class ResourceAwsInstanceProfileArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -8691,7 +8691,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -8728,7 +8728,7 @@ class ResourceAzureArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
@@ -8855,7 +8855,7 @@ class ResourceAzureArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -8925,7 +8925,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -8962,7 +8962,7 @@ class ResourceAzureCertificateArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
@@ -9089,7 +9089,7 @@ class ResourceAzureCertificateArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -9171,7 +9171,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -9218,7 +9218,7 @@ class ResourceAzureMysqlArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -9388,7 +9388,7 @@ class ResourceAzureMysqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -9477,7 +9477,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -9522,7 +9522,7 @@ class ResourceAzureMysqlManagedIdentityArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -9678,7 +9678,7 @@ class ResourceAzureMysqlManagedIdentityArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -9771,7 +9771,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -9813,7 +9813,7 @@ class ResourceAzurePostgresArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -9979,7 +9979,7 @@ class ResourceAzurePostgresArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -10060,7 +10060,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -10107,7 +10107,7 @@ class ResourceAzurePostgresManagedIdentityArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -10276,7 +10276,7 @@ class ResourceAzurePostgresManagedIdentityArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -10361,7 +10361,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -10399,7 +10399,7 @@ class ResourceBigQueryArgs:
         :param pulumi.Input[_builtins.str] private_key: The private key used to authenticate with the server.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -10537,7 +10537,7 @@ class ResourceBigQueryArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -10610,7 +10610,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -10653,7 +10653,7 @@ class ResourceCassandraArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -10795,7 +10795,7 @@ class ResourceCassandraArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -10888,7 +10888,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -10930,7 +10930,7 @@ class ResourceCitusArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -11096,7 +11096,7 @@ class ResourceCitusArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -11410,7 +11410,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -11452,7 +11452,7 @@ class ResourceClickHouseMySqlArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -11619,7 +11619,7 @@ class ResourceClickHouseMySqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -11696,7 +11696,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -11741,7 +11741,7 @@ class ResourceClickHouseTcpArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -11896,7 +11896,7 @@ class ResourceClickHouseTcpArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -11989,7 +11989,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -12036,7 +12036,7 @@ class ResourceClustrixArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -12206,7 +12206,7 @@ class ResourceClustrixArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -12299,7 +12299,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -12341,7 +12341,7 @@ class ResourceCockroachArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -12507,7 +12507,7 @@ class ResourceCockroachArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -12584,7 +12584,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -12629,7 +12629,7 @@ class ResourceCouchbaseDatabaseArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -12784,7 +12784,7 @@ class ResourceCouchbaseDatabaseArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -12837,7 +12837,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         url: pulumi.Input[_builtins.str]
         """
@@ -12895,7 +12895,7 @@ class ResourceCouchbaseWebUiArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] url: The base address of your website without the path.
                * kubernetes:
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -12943,7 +12943,7 @@ class ResourceCouchbaseWebUiArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -13101,7 +13101,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -13144,7 +13144,7 @@ class ResourceDb2IArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -13285,7 +13285,7 @@ class ResourceDb2IArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -13374,7 +13374,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -13419,7 +13419,7 @@ class ResourceDb2LuwArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -13574,7 +13574,7 @@ class ResourceDb2LuwArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -13663,7 +13663,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -13703,7 +13703,7 @@ class ResourceDocumentDbHostArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -13855,7 +13855,7 @@ class ResourceDocumentDbHostArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -13928,7 +13928,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -13961,7 +13961,7 @@ class ResourceDocumentDbHostIamArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -14096,7 +14096,7 @@ class ResourceDocumentDbHostIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -14165,7 +14165,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -14207,7 +14207,7 @@ class ResourceDocumentDbReplicaSetArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -14372,7 +14372,7 @@ class ResourceDocumentDbReplicaSetArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -14445,7 +14445,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -14478,7 +14478,7 @@ class ResourceDocumentDbReplicaSetIamArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -14613,7 +14613,7 @@ class ResourceDocumentDbReplicaSetIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -14674,7 +14674,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -14712,7 +14712,7 @@ class ResourceDruidArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -14851,7 +14851,7 @@ class ResourceDruidArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -14936,7 +14936,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -14975,7 +14975,7 @@ class ResourceDynamoDbArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -15152,7 +15152,7 @@ class ResourceDynamoDbArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -15217,7 +15217,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -15252,7 +15252,7 @@ class ResourceDynamoDbiamArgs:
         :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -15401,7 +15401,7 @@ class ResourceDynamoDbiamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -15462,7 +15462,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -15505,7 +15505,7 @@ class ResourceElasticArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -15647,7 +15647,7 @@ class ResourceElasticArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -15732,7 +15732,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -15775,7 +15775,7 @@ class ResourceElasticacheRedisArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -15917,7 +15917,7 @@ class ResourceElasticacheRedisArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -16015,7 +16015,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         subscription_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -16060,7 +16060,7 @@ class ResourceEntraIdArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] resource_group_id: filters discovered groups to the specified Resource Group
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] subscription_id: The subscription ID to authenticate scope Privileges to.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
@@ -16241,7 +16241,7 @@ class ResourceEntraIdArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -16310,7 +16310,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -16341,7 +16341,7 @@ class ResourceGcpArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -16463,7 +16463,7 @@ class ResourceGcpArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -16492,7 +16492,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         workforce_pool_id: pulumi.Input[_builtins.str]
         """
@@ -16560,7 +16560,7 @@ class ResourceGcpConsoleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
         :param pulumi.Input[_builtins.str] workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
                * google_gke:
@@ -16613,7 +16613,7 @@ class ResourceGcpConsoleArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -16812,7 +16812,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -16854,7 +16854,7 @@ class ResourceGcpwifArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.int] session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -17045,7 +17045,7 @@ class ResourceGcpwifArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -17130,7 +17130,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -17175,7 +17175,7 @@ class ResourceGoogleGkeArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] service_account_key: The service account key to authenticate with.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -17395,7 +17395,7 @@ class ResourceGoogleGkeArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -17460,7 +17460,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -17495,7 +17495,7 @@ class ResourceGoogleGkeUserImpersonationArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] service_account_key: The service account key to authenticate with.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -17645,7 +17645,7 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -17714,7 +17714,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -17756,7 +17756,7 @@ class ResourceGreenplumArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -17922,7 +17922,7 @@ class ResourceGreenplumArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -17967,7 +17967,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         url: pulumi.Input[_builtins.str]
         """
@@ -18037,7 +18037,7 @@ class ResourceHttpAuthArgs:
         """
         :param pulumi.Input[_builtins.str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] url: The base address of your website without the path.
                * kubernetes:
         :param pulumi.Input[_builtins.str] auth_header: The content to set as the authorization header.
@@ -18104,7 +18104,7 @@ class ResourceHttpAuthArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -18258,7 +18258,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         url: pulumi.Input[_builtins.str]
         """
@@ -18333,7 +18333,7 @@ class ResourceHttpBasicAuthArgs:
         """
         :param pulumi.Input[_builtins.str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] url: The base address of your website without the path.
                * kubernetes:
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -18403,7 +18403,7 @@ class ResourceHttpBasicAuthArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -18569,7 +18569,7 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         url: pulumi.Input[_builtins.str]
         """
@@ -18634,7 +18634,7 @@ class ResourceHttpNoAuthArgs:
         """
         :param pulumi.Input[_builtins.str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] url: The base address of your website without the path.
                * kubernetes:
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -18698,7 +18698,7 @@ class ResourceHttpNoAuthArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -18900,7 +18900,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -18949,7 +18949,7 @@ class ResourceKubernetesArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -19196,7 +19196,7 @@ class ResourceKubernetesArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -19261,7 +19261,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -19301,7 +19301,7 @@ class ResourceKubernetesBasicAuthArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -19453,7 +19453,7 @@ class ResourceKubernetesBasicAuthArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -19542,7 +19542,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -19583,7 +19583,7 @@ class ResourceKubernetesPodIdentityArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -19776,7 +19776,7 @@ class ResourceKubernetesPodIdentityArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -19857,7 +19857,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -19906,7 +19906,7 @@ class ResourceKubernetesServiceAccountArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] token: The API token to authenticate with.
                * kubernetes_user_impersonation:
@@ -20115,7 +20115,7 @@ class ResourceKubernetesServiceAccountArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -20189,7 +20189,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -20228,7 +20228,7 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] token: The API token to authenticate with.
                * kubernetes_user_impersonation:
@@ -20367,7 +20367,7 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -20453,7 +20453,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -20492,7 +20492,7 @@ class ResourceKubernetesUserImpersonationArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -20669,7 +20669,7 @@ class ResourceKubernetesUserImpersonationArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -20738,7 +20738,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -20785,7 +20785,7 @@ class ResourceMariaArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -20955,7 +20955,7 @@ class ResourceMariaArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -21036,7 +21036,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -21067,7 +21067,7 @@ class ResourceMemcachedArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -21189,7 +21189,7 @@ class ResourceMemcachedArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -21258,7 +21258,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -21305,7 +21305,7 @@ class ResourceMemsqlArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -21475,7 +21475,7 @@ class ResourceMemsqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -21564,7 +21564,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -21609,7 +21609,7 @@ class ResourceMongoHostArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -21764,7 +21764,7 @@ class ResourceMongoHostArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -21853,7 +21853,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -21898,7 +21898,7 @@ class ResourceMongoLegacyHostArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -22053,7 +22053,7 @@ class ResourceMongoLegacyHostArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -22150,7 +22150,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -22199,7 +22199,7 @@ class ResourceMongoLegacyReplicasetArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -22381,7 +22381,7 @@ class ResourceMongoLegacyReplicasetArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -22478,7 +22478,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -22527,7 +22527,7 @@ class ResourceMongoReplicaSetArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -22709,7 +22709,7 @@ class ResourceMongoReplicaSetArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -22794,7 +22794,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -22837,7 +22837,7 @@ class ResourceMongoShardedClusterArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -22978,7 +22978,7 @@ class ResourceMongoShardedClusterArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -23087,7 +23087,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -23142,7 +23142,7 @@ class ResourceMtlsMysqlArgs:
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] server_name: Server name for TLS verification (unverified by StrongDM if empty)
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -23368,7 +23368,7 @@ class ResourceMtlsMysqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -23477,7 +23477,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -23527,7 +23527,7 @@ class ResourceMtlsPostgresArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] server_name: Server name for TLS verification (unverified by StrongDM if empty)
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -23749,7 +23749,7 @@ class ResourceMtlsPostgresArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -23830,7 +23830,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -23877,7 +23877,7 @@ class ResourceMysqlArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -24047,7 +24047,7 @@ class ResourceMysqlArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -24128,7 +24128,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -24159,7 +24159,7 @@ class ResourceNeptuneArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -24281,7 +24281,7 @@ class ResourceNeptuneArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -24358,7 +24358,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -24399,7 +24399,7 @@ class ResourceNeptuneIamArgs:
         :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[_builtins.str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -24590,7 +24590,7 @@ class ResourceNeptuneIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -24655,7 +24655,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -24700,7 +24700,7 @@ class ResourceOracleArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -24854,7 +24854,7 @@ class ResourceOracleArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -24943,7 +24943,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -24983,7 +24983,7 @@ class ResourceOracleNneArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -25134,7 +25134,7 @@ class ResourceOracleNneArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -25215,7 +25215,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -25257,7 +25257,7 @@ class ResourcePostgresArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -25423,7 +25423,7 @@ class ResourcePostgresArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -25500,7 +25500,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -25545,7 +25545,7 @@ class ResourcePrestoArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -25700,7 +25700,7 @@ class ResourcePrestoArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -25785,7 +25785,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -25828,7 +25828,7 @@ class ResourceRabbitmqAmqp091Args:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -25970,7 +25970,7 @@ class ResourceRabbitmqAmqp091Args:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -26051,7 +26051,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -26082,7 +26082,7 @@ class ResourceRawTcpArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -26204,7 +26204,7 @@ class ResourceRawTcpArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -26273,7 +26273,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -26315,7 +26315,7 @@ class ResourceRdpArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -26482,7 +26482,7 @@ class ResourceRdpArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -26567,7 +26567,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -26611,7 +26611,7 @@ class ResourceRdpCertArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] sid: Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -26792,7 +26792,7 @@ class ResourceRdpCertArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -26877,7 +26877,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -26921,7 +26921,7 @@ class ResourceRdsPostgresIamArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -27100,7 +27100,7 @@ class ResourceRdsPostgresIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -27173,7 +27173,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -27216,7 +27216,7 @@ class ResourceRedisArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -27358,7 +27358,7 @@ class ResourceRedisArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -27443,7 +27443,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -27486,7 +27486,7 @@ class ResourceRedisClusterArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -27628,7 +27628,7 @@ class ResourceRedisClusterArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -27721,7 +27721,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -27763,7 +27763,7 @@ class ResourceRedshiftArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -27929,7 +27929,7 @@ class ResourceRedshiftArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -28018,7 +28018,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -28059,7 +28059,7 @@ class ResourceRedshiftIamArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -28248,7 +28248,7 @@ class ResourceRedshiftIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -28326,7 +28326,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -28368,7 +28368,7 @@ class ResourceRedshiftServerlessIamArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "database", database)
@@ -28558,7 +28558,7 @@ class ResourceRedshiftServerlessIamArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -28627,7 +28627,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -28674,7 +28674,7 @@ class ResourceSingleStoreArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -28844,7 +28844,7 @@ class ResourceSingleStoreArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -28937,7 +28937,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -28979,7 +28979,7 @@ class ResourceSnowflakeArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -29145,7 +29145,7 @@ class ResourceSnowflakeArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -29190,11 +29190,15 @@ if not MYPY:
         """
         subdomain: pulumi.Input[_builtins.str]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         bind_interface: NotRequired[pulumi.Input[_builtins.str]]
         """
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        """
+        connect_to_default: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, select the ACS with isDefault=true
         """
         egress_filter: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -29230,6 +29234,7 @@ class ResourceSnowsightArgs:
                  name: pulumi.Input[_builtins.str],
                  subdomain: pulumi.Input[_builtins.str],
                  bind_interface: Optional[pulumi.Input[_builtins.str]] = None,
+                 connect_to_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  egress_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  port_override: Optional[pulumi.Input[_builtins.int]] = None,
                  proxy_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -29239,8 +29244,9 @@ class ResourceSnowsightArgs:
         """
         :param pulumi.Input[_builtins.str] healthcheck_username: The StrongDM user email to use for healthchecks.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        :param pulumi.Input[_builtins.bool] connect_to_default: If true, select the ACS with isDefault=true
         :param pulumi.Input[_builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -29253,6 +29259,8 @@ class ResourceSnowsightArgs:
         pulumi.set(__self__, "subdomain", subdomain)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if connect_to_default is not None:
+            pulumi.set(__self__, "connect_to_default", connect_to_default)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
@@ -29294,7 +29302,7 @@ class ResourceSnowsightArgs:
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[_builtins.str]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -29313,6 +29321,18 @@ class ResourceSnowsightArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectToDefault")
+    def connect_to_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, select the ACS with isDefault=true
+        """
+        return pulumi.get(self, "connect_to_default")
+
+    @connect_to_default.setter
+    def connect_to_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "connect_to_default", value)
 
     @_builtins.property
     @pulumi.getter(name="egressFilter")
@@ -29443,7 +29463,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -29489,7 +29509,7 @@ class ResourceSqlServerArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -29684,7 +29704,7 @@ class ResourceSqlServerArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -29777,7 +29797,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -29826,7 +29846,7 @@ class ResourceSqlServerAzureAdArgs:
         :param pulumi.Input[_builtins.str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[_builtins.str] secret: The Azure AD client secret (application password) with which to authenticate.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
@@ -30036,7 +30056,7 @@ class ResourceSqlServerAzureAdArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -30138,7 +30158,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -30190,7 +30210,7 @@ class ResourceSqlServerKerberosAdArgs:
         :param pulumi.Input[_builtins.str] realm: The Active Directory domain (realm) to which the configured username belongs.
         :param pulumi.Input[_builtins.str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -30426,7 +30446,7 @@ class ResourceSqlServerKerberosAdArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -30511,7 +30531,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -30555,7 +30575,7 @@ class ResourceSshArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] public_key: The public key to append to a server's authorized keys. This will be generated after resource creation.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -30735,7 +30755,7 @@ class ResourceSshArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -30824,7 +30844,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -30870,7 +30890,7 @@ class ResourceSshCertArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -31064,7 +31084,7 @@ class ResourceSshCertArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -31153,7 +31173,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -31199,7 +31219,7 @@ class ResourceSshCustomerKeyArgs:
         :param pulumi.Input[_builtins.str] private_key: The private key used to authenticate with the server.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -31393,7 +31413,7 @@ class ResourceSshCustomerKeyArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -31474,7 +31494,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -31516,7 +31536,7 @@ class ResourceSshPasswordArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -31682,7 +31702,7 @@ class ResourceSshPasswordArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -31755,7 +31775,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -31793,7 +31813,7 @@ class ResourceSybaseArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -31932,7 +31952,7 @@ class ResourceSybaseArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -32005,7 +32025,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -32043,7 +32063,7 @@ class ResourceSybaseIqArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -32182,7 +32202,7 @@ class ResourceSybaseIqArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -32255,7 +32275,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -32293,7 +32313,7 @@ class ResourceTeradataArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -32432,7 +32452,7 @@ class ResourceTeradataArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -32505,7 +32525,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -32548,7 +32568,7 @@ class ResourceTrinoArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
@@ -32690,7 +32710,7 @@ class ResourceTrinoArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 
@@ -32779,7 +32799,7 @@ if not MYPY:
         """
         subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -32819,7 +32839,7 @@ class ResourceVerticaArgs:
         :param pulumi.Input[_builtins.int] port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[_builtins.str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -32971,7 +32991,7 @@ class ResourceVerticaArgs:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         """
         return pulumi.get(self, "subdomain")
 

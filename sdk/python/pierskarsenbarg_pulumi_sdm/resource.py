@@ -136,7 +136,6 @@ class ResourceArgs:
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input['ResourceEntraIdArgs'] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -858,9 +857,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
-        """
-        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "entra_id")
 
     @entra_id.setter
@@ -1514,7 +1510,6 @@ class _ResourceState:
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input['ResourceEntraIdArgs'] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2236,9 +2231,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
-        """
-        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "entra_id")
 
     @entra_id.setter
@@ -2905,7 +2897,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3298,7 +3289,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']] entra_id: EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3691,9 +3681,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> pulumi.Output[Optional['outputs.ResourceEntraId']]:
-        """
-        EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "entra_id")
 
     @_builtins.property
