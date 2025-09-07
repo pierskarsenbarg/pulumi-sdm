@@ -75,8 +75,7 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-     * are typically automated jobs.
+     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
     declare public readonly service: pulumi.Output<outputs.AccountService | undefined>;
     /**
@@ -114,8 +113,7 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-     * are typically automated jobs.
+     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
     service?: pulumi.Input<inputs.AccountService>;
     /**
@@ -129,8 +127,7 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services
-     * are typically automated jobs.
+     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
     service?: pulumi.Input<inputs.AccountService>;
     /**

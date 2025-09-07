@@ -54,8 +54,7 @@ export class SecretStore extends pulumi.CustomResource {
     declare public readonly cyberarkConjur: pulumi.Output<outputs.SecretStoreCyberarkConjur | undefined>;
     declare public readonly cyberarkPam: pulumi.Output<outputs.SecretStoreCyberarkPam | undefined>;
     /**
-     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
+     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     declare public readonly cyberarkPamExperimental: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
     declare public readonly delineaStore: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
@@ -153,8 +152,7 @@ export interface SecretStoreState {
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
     cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
-     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
+     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
@@ -186,8 +184,7 @@ export interface SecretStoreArgs {
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
     cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
-     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
+     * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;

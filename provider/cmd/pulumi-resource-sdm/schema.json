@@ -58,19 +58,19 @@
         "variables": {
             "apiAccessKey": {
                 "type": "string",
-                "description": "A GUID identifying the API key used to authenticate with the StrongDM API.\n"
+                "description": "A GUID identifying the API key used to authenticate with the StrongDM API."
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.\n"
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
             },
             "host": {
                 "type": "string",
-                "description": "The host and port of the StrongDM API endpoint.\n"
+                "description": "The host and port of the StrongDM API endpoint."
             },
             "retryRateLimitErrors": {
                 "type": "boolean",
-                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out\n"
+                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out"
             }
         }
     },
@@ -20723,37 +20723,37 @@
         "properties": {
             "apiAccessKey": {
                 "type": "string",
-                "description": "A GUID identifying the API key used to authenticate with the StrongDM API.\n"
+                "description": "A GUID identifying the API key used to authenticate with the StrongDM API."
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.\n"
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
             },
             "host": {
                 "type": "string",
-                "description": "The host and port of the StrongDM API endpoint.\n"
+                "description": "The host and port of the StrongDM API endpoint."
             },
             "retryRateLimitErrors": {
                 "type": "boolean",
-                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out\n"
+                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out"
             }
         },
         "inputProperties": {
             "apiAccessKey": {
                 "type": "string",
-                "description": "A GUID identifying the API key used to authenticate with the StrongDM API.\n"
+                "description": "A GUID identifying the API key used to authenticate with the StrongDM API."
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.\n"
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
             },
             "host": {
                 "type": "string",
-                "description": "The host and port of the StrongDM API endpoint.\n"
+                "description": "The host and port of the StrongDM API endpoint."
             },
             "retryRateLimitErrors": {
                 "type": "boolean",
-                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out\n"
+                "description": "Whether experienced rate limits should cause the client to sleep instead of erroring out"
             }
         },
         "methods": {
@@ -20766,21 +20766,21 @@
             "properties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
-                    "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services\nare typically automated jobs.\n"
+                    "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs."
                 },
                 "user": {
                     "$ref": "#/types/sdm:index/AccountUser:AccountUser",
-                    "description": "A User can connect to resources they are granted directly, or granted via roles.\n"
+                    "description": "A User can connect to resources they are granted directly, or granted via roles."
                 }
             },
             "inputProperties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
-                    "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services\nare typically automated jobs.\n"
+                    "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs."
                 },
                 "user": {
                     "$ref": "#/types/sdm:index/AccountUser:AccountUser",
-                    "description": "A User can connect to resources they are granted directly, or granted via roles.\n"
+                    "description": "A User can connect to resources they are granted directly, or granted via roles."
                 }
             },
             "stateInputs": {
@@ -20788,11 +20788,11 @@
                 "properties": {
                     "service": {
                         "$ref": "#/types/sdm:index/AccountService:AccountService",
-                        "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services\nare typically automated jobs.\n"
+                        "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs."
                     },
                     "user": {
                         "$ref": "#/types/sdm:index/AccountUser:AccountUser",
-                        "description": "A User can connect to resources they are granted directly, or granted via roles.\n"
+                        "description": "A User can connect to resources they are granted directly, or granted via roles."
                     }
                 },
                 "type": "object"
@@ -21016,15 +21016,15 @@
             "properties": {
                 "config": {
                     "type": "string",
-                    "description": "public part of the secret value\n"
+                    "description": "public part of the secret value"
                 },
                 "expiresAt": {
                     "type": "string",
-                    "description": "Timestamp of when secret is going to be rotated\n"
+                    "description": "Timestamp of when secret is going to be rotated"
                 },
                 "lastRotatedAt": {
                     "type": "string",
-                    "description": "Timestamp of when secret was last rotated\n"
+                    "description": "Timestamp of when secret was last rotated"
                 },
                 "name": {
                     "type": "string",
@@ -21036,7 +21036,7 @@
                 },
                 "secretStorePath": {
                     "type": "string",
-                    "description": "Path in a secret store.\n"
+                    "description": "Path in a secret store."
                 },
                 "tags": {
                     "type": "object",
@@ -21089,15 +21089,15 @@
                 "properties": {
                     "config": {
                         "type": "string",
-                        "description": "public part of the secret value\n"
+                        "description": "public part of the secret value"
                     },
                     "expiresAt": {
                         "type": "string",
-                        "description": "Timestamp of when secret is going to be rotated\n"
+                        "description": "Timestamp of when secret is going to be rotated"
                     },
                     "lastRotatedAt": {
                         "type": "string",
-                        "description": "Timestamp of when secret was last rotated\n"
+                        "description": "Timestamp of when secret was last rotated"
                     },
                     "name": {
                         "type": "string",
@@ -21109,7 +21109,7 @@
                     },
                     "secretStorePath": {
                         "type": "string",
-                        "description": "Path in a secret store.\n"
+                        "description": "Path in a secret store."
                     },
                     "tags": {
                         "type": "object",
@@ -21131,18 +21131,18 @@
             "properties": {
                 "encrypted": {
                     "type": "string",
-                    "description": "encrypted value\n"
+                    "description": "encrypted value"
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "secret engine's public key used for encryption in PEM format\n"
+                    "description": "secret engine's public key used for encryption in PEM format"
                 },
                 "value": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "value object\n"
+                    "description": "value object"
                 }
             },
             "required": [
@@ -21153,7 +21153,7 @@
             "inputProperties": {
                 "publicKey": {
                     "type": "string",
-                    "description": "secret engine's public key used for encryption in PEM format\n",
+                    "description": "secret engine's public key used for encryption in PEM format",
                     "willReplaceOnChanges": true
                 },
                 "value": {
@@ -21161,7 +21161,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "value object\n",
+                    "description": "value object",
                     "willReplaceOnChanges": true
                 }
             },
@@ -21174,11 +21174,11 @@
                 "properties": {
                     "encrypted": {
                         "type": "string",
-                        "description": "encrypted value\n"
+                        "description": "encrypted value"
                     },
                     "publicKey": {
                         "type": "string",
-                        "description": "secret engine's public key used for encryption in PEM format\n",
+                        "description": "secret engine's public key used for encryption in PEM format",
                         "willReplaceOnChanges": true
                     },
                     "value": {
@@ -21186,7 +21186,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "value object\n",
+                        "description": "value object",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -21198,29 +21198,29 @@
             "properties": {
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
-                    "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
+                    "description": "Gateway represents a StrongDM CLI installation running in gateway mode."
                 },
                 "proxyCluster": {
                     "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
-                    "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
+                    "description": "ProxyCluster represents a cluster of StrongDM proxies."
                 },
                 "relay": {
                     "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
-                    "description": "Relay represents a StrongDM CLI installation running in relay mode.\n"
+                    "description": "Relay represents a StrongDM CLI installation running in relay mode."
                 }
             },
             "inputProperties": {
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
-                    "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
+                    "description": "Gateway represents a StrongDM CLI installation running in gateway mode."
                 },
                 "proxyCluster": {
                     "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
-                    "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
+                    "description": "ProxyCluster represents a cluster of StrongDM proxies."
                 },
                 "relay": {
                     "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
-                    "description": "Relay represents a StrongDM CLI installation running in relay mode.\n"
+                    "description": "Relay represents a StrongDM CLI installation running in relay mode."
                 }
             },
             "stateInputs": {
@@ -21228,15 +21228,15 @@
                 "properties": {
                     "gateway": {
                         "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
-                        "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
+                        "description": "Gateway represents a StrongDM CLI installation running in gateway mode."
                     },
                     "proxyCluster": {
                         "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
-                        "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
+                        "description": "ProxyCluster represents a cluster of StrongDM proxies."
                     },
                     "relay": {
                         "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
-                        "description": "Relay represents a StrongDM CLI installation running in relay mode.\n"
+                        "description": "Relay represents a StrongDM CLI installation running in relay mode."
                     }
                 },
                 "type": "object"
@@ -21571,7 +21571,7 @@
                 },
                 "aksBasicAuth": {
                     "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
-                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "aksServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -21606,7 +21606,7 @@
                 },
                 "amazonmqAmqp": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -21706,7 +21706,7 @@
                 },
                 "documentDbReplicaSetIam": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
-                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "druid": {
                     "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
@@ -21759,7 +21759,7 @@
                 },
                 "kubernetesBasicAuth": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
-                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "kubernetesPodIdentity": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
@@ -21789,11 +21789,11 @@
                 },
                 "mongoLegacyHost": {
                     "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
-                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mongoLegacyReplicaset": {
                     "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
-                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mongoReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
@@ -21803,7 +21803,7 @@
                 },
                 "mtlsMysql": {
                     "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mtlsPostgres": {
                     "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -21914,7 +21914,7 @@
                 },
                 "aksBasicAuth": {
                     "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
-                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "aksServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -21949,7 +21949,7 @@
                 },
                 "amazonmqAmqp": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -22049,7 +22049,7 @@
                 },
                 "documentDbReplicaSetIam": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
-                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                    "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "druid": {
                     "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
@@ -22102,7 +22102,7 @@
                 },
                 "kubernetesBasicAuth": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
-                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "kubernetesPodIdentity": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
@@ -22132,11 +22132,11 @@
                 },
                 "mongoLegacyHost": {
                     "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
-                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mongoLegacyReplicaset": {
                     "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
-                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mongoReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
@@ -22146,7 +22146,7 @@
                 },
                 "mtlsMysql": {
                     "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "mtlsPostgres": {
                     "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -22259,7 +22259,7 @@
                     },
                     "aksBasicAuth": {
                         "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
-                        "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "aksServiceAccount": {
                         "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -22294,7 +22294,7 @@
                     },
                     "amazonmqAmqp": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                        "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "amazonmqAmqp091": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -22394,7 +22394,7 @@
                     },
                     "documentDbReplicaSetIam": {
                         "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSetIam:ResourceDocumentDbReplicaSetIam",
-                        "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                        "description": "DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "druid": {
                         "$ref": "#/types/sdm:index/ResourceDruid:ResourceDruid"
@@ -22447,7 +22447,7 @@
                     },
                     "kubernetesBasicAuth": {
                         "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
-                        "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "kubernetesPodIdentity": {
                         "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
@@ -22477,11 +22477,11 @@
                     },
                     "mongoLegacyHost": {
                         "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
-                        "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "mongoLegacyReplicaset": {
                         "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
-                        "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "mongoReplicaSet": {
                         "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
@@ -22491,7 +22491,7 @@
                     },
                     "mtlsMysql": {
                         "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                        "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "mtlsPostgres": {
                         "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -22605,7 +22605,7 @@
                 },
                 "managedBy": {
                     "type": "string",
-                    "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n"
+                    "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure."
                 },
                 "name": {
                     "type": "string",
@@ -22650,7 +22650,7 @@
                     },
                     "managedBy": {
                         "type": "string",
-                        "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n"
+                        "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure."
                     },
                     "name": {
                         "type": "string",
@@ -22672,21 +22672,21 @@
             "properties": {
                 "activeDirectory": {
                     "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "keyValue": {
                     "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 }
             },
             "inputProperties": {
                 "activeDirectory": {
                     "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "keyValue": {
                     "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 }
             },
             "stateInputs": {
@@ -22694,11 +22694,11 @@
                 "properties": {
                     "activeDirectory": {
                         "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                        "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "keyValue": {
                         "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                        "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     }
                 },
                 "type": "object"
@@ -22727,7 +22727,7 @@
                 },
                 "cyberarkPamExperimental": {
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
-                    "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                    "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "delineaStore": {
                     "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
@@ -22799,7 +22799,7 @@
                 },
                 "cyberarkPamExperimental": {
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
-                    "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                    "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "delineaStore": {
                     "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
@@ -22873,7 +22873,7 @@
                     },
                     "cyberarkPamExperimental": {
                         "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
-                        "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                        "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "delineaStore": {
                         "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
@@ -23174,7 +23174,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:sdm"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:sdm/terraformConfig",
