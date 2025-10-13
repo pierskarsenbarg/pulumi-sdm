@@ -8,6 +8,48 @@ import * as utilities from "./utilities";
  * Workflows are the collection of rules that define the resources to which access can be requested,
  *  the users that can request that access, and the mechanism for approving those requests which can either
  *  but automatic approval or a set of users authorized to approve the requests.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * // Create approval workflows first
+ * const autoGrant = new sdm.ApprovalWorkflow("autoGrant", {approvalMode: "automatic"});
+ * const manualApproval = new sdm.ApprovalWorkflow("manualApproval", {
+ *     approvalMode: "manual",
+ *     approvalSteps: [{
+ *         quantifier: "any",
+ *         skipAfter: "2h0m0s",
+ *         approvers: [{
+ *             reference: "manager-of-requester",
+ *         }],
+ *     }],
+ * });
+ * // Create workflows that reference the approval workflows
+ * const autoGrantWorkflow = new sdm.Workflow("autoGrantWorkflow", {
+ *     approvalFlowId: autoGrant.id,
+ *     enabled: true,
+ *     accessRules: JSON.stringify([{
+ *         type: "redis",
+ *         tags: {
+ *             region: "us-east",
+ *         },
+ *     }]),
+ * });
+ * const manualApprovalWorkflow = new sdm.Workflow("manualApprovalWorkflow", {
+ *     approvalFlowId: manualApproval.id,
+ *     enabled: true,
+ *     accessRules: JSON.stringify([{
+ *         type: "redis",
+ *         tags: {
+ *             region: "us-east",
+ *         },
+ *     }]),
+ * });
+ * ```
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * A Workflow can be imported using the id, e.g.,

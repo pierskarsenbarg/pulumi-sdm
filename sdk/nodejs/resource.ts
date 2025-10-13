@@ -144,6 +144,10 @@ export class Resource extends pulumi.CustomResource {
      */
     declare public readonly kubernetesUserImpersonation: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
     declare public readonly maria: pulumi.Output<outputs.ResourceMaria | undefined>;
+    /**
+     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly mcp: pulumi.Output<outputs.ResourceMcp | undefined>;
     declare public readonly memcached: pulumi.Output<outputs.ResourceMemcached | undefined>;
     declare public readonly memsql: pulumi.Output<outputs.ResourceMemsql | undefined>;
     declare public readonly mongoHost: pulumi.Output<outputs.ResourceMongoHost | undefined>;
@@ -157,9 +161,6 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly mongoLegacyReplicaset: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
     declare public readonly mongoReplicaSet: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
     declare public readonly mongoShardedCluster: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
-    /**
-     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly mtlsMysql: pulumi.Output<outputs.ResourceMtlsMysql | undefined>;
     declare public readonly mtlsPostgres: pulumi.Output<outputs.ResourceMtlsPostgres | undefined>;
     declare public readonly mysql: pulumi.Output<outputs.ResourceMysql | undefined>;
@@ -276,6 +277,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = state?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = state?.kubernetesUserImpersonation;
             resourceInputs["maria"] = state?.maria;
+            resourceInputs["mcp"] = state?.mcp;
             resourceInputs["memcached"] = state?.memcached;
             resourceInputs["memsql"] = state?.memsql;
             resourceInputs["mongoHost"] = state?.mongoHost;
@@ -387,6 +389,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = args?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = args?.kubernetesUserImpersonation;
             resourceInputs["maria"] = args?.maria;
+            resourceInputs["mcp"] = args?.mcp;
             resourceInputs["memcached"] = args?.memcached;
             resourceInputs["memsql"] = args?.memsql;
             resourceInputs["mongoHost"] = args?.mongoHost;
@@ -539,6 +542,10 @@ export interface ResourceState {
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
+    /**
+     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    mcp?: pulumi.Input<inputs.ResourceMcp>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
@@ -552,9 +559,6 @@ export interface ResourceState {
     mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
-    /**
-     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
     mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
     mysql?: pulumi.Input<inputs.ResourceMysql>;
@@ -696,6 +700,10 @@ export interface ResourceArgs {
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
+    /**
+     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    mcp?: pulumi.Input<inputs.ResourceMcp>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
@@ -709,9 +717,6 @@ export interface ResourceArgs {
     mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
-    /**
-     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
     mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
     mysql?: pulumi.Input<inputs.ResourceMysql>;

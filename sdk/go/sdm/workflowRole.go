@@ -31,8 +31,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.NewWorkflowRole(ctx, "workflowRoleExample", &sdm.WorkflowRoleArgs{
-//				RoleId:     pulumi.String("r-243561"),
-//				WorkflowId: pulumi.String("aw-343865"),
+//				WorkflowId: pulumi.Any(sdm_workflow.Manual_approval_workflow.Id),
+//				RoleId:     pulumi.Any(sdm_role.Developers.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewWorkflowRole(ctx, "workflowRoleWithIds", &sdm.WorkflowRoleArgs{
+//				WorkflowId: pulumi.String("w-1234567890abcdef"),
+//				RoleId:     pulumi.String("r-1234567890abcdef"),
 //			})
 //			if err != nil {
 //				return err

@@ -25,17 +25,17 @@ namespace PiersKarsenbarg.Sdm
     [SdmResourceType("sdm:index/secretEngine:SecretEngine")]
     public partial class SecretEngine : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("activeDirectory")]
         public Output<Outputs.SecretEngineActiveDirectory?> ActiveDirectory { get; private set; } = null!;
 
-        /// <summary>
-        /// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("keyValue")]
         public Output<Outputs.SecretEngineKeyValue?> KeyValue { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("postgresSecretEngine")]
+        public Output<Outputs.SecretEnginePostgresSecretEngine?> PostgresSecretEngine { get; private set; } = null!;
 
 
         /// <summary>
@@ -84,17 +84,17 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class SecretEngineArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("activeDirectory")]
         public Input<Inputs.SecretEngineActiveDirectoryArgs>? ActiveDirectory { get; set; }
 
-        /// <summary>
-        /// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("keyValue")]
         public Input<Inputs.SecretEngineKeyValueArgs>? KeyValue { get; set; }
+
+        /// <summary>
+        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("postgresSecretEngine")]
+        public Input<Inputs.SecretEnginePostgresSecretEngineArgs>? PostgresSecretEngine { get; set; }
 
         public SecretEngineArgs()
         {
@@ -104,17 +104,17 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class SecretEngineState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("activeDirectory")]
         public Input<Inputs.SecretEngineActiveDirectoryGetArgs>? ActiveDirectory { get; set; }
 
-        /// <summary>
-        /// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("keyValue")]
         public Input<Inputs.SecretEngineKeyValueGetArgs>? KeyValue { get; set; }
+
+        /// <summary>
+        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("postgresSecretEngine")]
+        public Input<Inputs.SecretEnginePostgresSecretEngineGetArgs>? PostgresSecretEngine { get; set; }
 
         public SecretEngineState()
         {

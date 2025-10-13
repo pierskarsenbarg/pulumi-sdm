@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
+        /// Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+        /// </summary>
+        public readonly string? DcHostnames;
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
@@ -79,6 +83,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private ResourceRdpCert(
             string? bindInterface,
 
+            string? dcHostnames,
+
             string? egressFilter,
 
             string hostname,
@@ -108,6 +114,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? username)
         {
             BindInterface = bindInterface;
+            DcHostnames = dcHostnames;
             EgressFilter = egressFilter;
             Hostname = hostname;
             IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;

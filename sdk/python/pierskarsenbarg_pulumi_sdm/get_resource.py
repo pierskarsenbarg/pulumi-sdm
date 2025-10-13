@@ -175,7 +175,7 @@ def get_resource(hostname: Optional[_builtins.str] = None,
     :param _builtins.str name: Unique human-readable name of the Resource.
     :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str username: The username to authenticate with.
     """
     __args__ = dict()
@@ -230,7 +230,7 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str name: Unique human-readable name of the Resource.
     :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str username: The username to authenticate with.
     """
     __args__ = dict()

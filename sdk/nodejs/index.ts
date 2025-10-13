@@ -15,6 +15,11 @@ export type AccountAttachment = import("./accountAttachment").AccountAttachment;
 export const AccountAttachment: typeof import("./accountAttachment").AccountAttachment = null as any;
 utilities.lazyLoad(exports, ["AccountAttachment"], () => require("./accountAttachment"));
 
+export { AccountGroupArgs, AccountGroupState } from "./accountGroup";
+export type AccountGroup = import("./accountGroup").AccountGroup;
+export const AccountGroup: typeof import("./accountGroup").AccountGroup = null as any;
+utilities.lazyLoad(exports, ["AccountGroup"], () => require("./accountGroup"));
+
 export { ApprovalWorkflowArgs, ApprovalWorkflowState } from "./approvalWorkflow";
 export type ApprovalWorkflow = import("./approvalWorkflow").ApprovalWorkflow;
 export const ApprovalWorkflow: typeof import("./approvalWorkflow").ApprovalWorkflow = null as any;
@@ -30,10 +35,25 @@ export const getAccountAttachment: typeof import("./getAccountAttachment").getAc
 export const getAccountAttachmentOutput: typeof import("./getAccountAttachment").getAccountAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountAttachment","getAccountAttachmentOutput"], () => require("./getAccountAttachment"));
 
+export { GetAccountGroupArgs, GetAccountGroupResult, GetAccountGroupOutputArgs } from "./getAccountGroup";
+export const getAccountGroup: typeof import("./getAccountGroup").getAccountGroup = null as any;
+export const getAccountGroupOutput: typeof import("./getAccountGroup").getAccountGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountGroup","getAccountGroupOutput"], () => require("./getAccountGroup"));
+
 export { GetApprovalWorkflowArgs, GetApprovalWorkflowResult, GetApprovalWorkflowOutputArgs } from "./getApprovalWorkflow";
 export const getApprovalWorkflow: typeof import("./getApprovalWorkflow").getApprovalWorkflow = null as any;
 export const getApprovalWorkflowOutput: typeof import("./getApprovalWorkflow").getApprovalWorkflowOutput = null as any;
 utilities.lazyLoad(exports, ["getApprovalWorkflow","getApprovalWorkflowOutput"], () => require("./getApprovalWorkflow"));
+
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetGroupRoleArgs, GetGroupRoleResult, GetGroupRoleOutputArgs } from "./getGroupRole";
+export const getGroupRole: typeof import("./getGroupRole").getGroupRole = null as any;
+export const getGroupRoleOutput: typeof import("./getGroupRole").getGroupRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupRole","getGroupRoleOutput"], () => require("./getGroupRole"));
 
 export { GetIdentityAliasArgs, GetIdentityAliasResult, GetIdentityAliasOutputArgs } from "./getIdentityAlias";
 export const getIdentityAlias: typeof import("./getIdentityAlias").getIdentityAlias = null as any;
@@ -139,6 +159,16 @@ export { GetWorkflowRoleArgs, GetWorkflowRoleResult, GetWorkflowRoleOutputArgs }
 export const getWorkflowRole: typeof import("./getWorkflowRole").getWorkflowRole = null as any;
 export const getWorkflowRoleOutput: typeof import("./getWorkflowRole").getWorkflowRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkflowRole","getWorkflowRoleOutput"], () => require("./getWorkflowRole"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupRoleArgs, GroupRoleState } from "./groupRole";
+export type GroupRole = import("./groupRole").GroupRole;
+export const GroupRole: typeof import("./groupRole").GroupRole = null as any;
+utilities.lazyLoad(exports, ["GroupRole"], () => require("./groupRole"));
 
 export { IdentityAliasArgs, IdentityAliasState } from "./identityAlias";
 export type IdentityAlias = import("./identityAlias").IdentityAlias;
@@ -256,8 +286,14 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "sdm:index/accountAttachment:AccountAttachment":
                 return new AccountAttachment(name, <any>undefined, { urn })
+            case "sdm:index/accountGroup:AccountGroup":
+                return new AccountGroup(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflow:ApprovalWorkflow":
                 return new ApprovalWorkflow(name, <any>undefined, { urn })
+            case "sdm:index/group:Group":
+                return new Group(name, <any>undefined, { urn })
+            case "sdm:index/groupRole:GroupRole":
+                return new GroupRole(name, <any>undefined, { urn })
             case "sdm:index/identityAlias:IdentityAlias":
                 return new IdentityAlias(name, <any>undefined, { urn })
             case "sdm:index/identitySet:IdentitySet":
@@ -303,7 +339,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/accountGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/group", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/groupRole", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/identityAlias", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/identitySet", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/managedSecret", _module)

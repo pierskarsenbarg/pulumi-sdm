@@ -8,10 +8,14 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .account_attachment import *
+from .account_group import *
 from .approval_workflow import *
 from .get_account import *
 from .get_account_attachment import *
+from .get_account_group import *
 from .get_approval_workflow import *
+from .get_group import *
+from .get_group_role import *
 from .get_identity_alias import *
 from .get_identity_set import *
 from .get_managed_secret import *
@@ -33,6 +37,8 @@ from .get_ssh_ca_pubkey import *
 from .get_workflow import *
 from .get_workflow_approver import *
 from .get_workflow_role import *
+from .group import *
+from .group_role import *
 from .identity_alias import *
 from .identity_set import *
 from .managed_secret import *
@@ -84,10 +90,34 @@ _utilities.register(
  },
  {
   "pkg": "sdm",
+  "mod": "index/accountGroup",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/accountGroup:AccountGroup": "AccountGroup"
+  }
+ },
+ {
+  "pkg": "sdm",
   "mod": "index/approvalWorkflow",
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/approvalWorkflow:ApprovalWorkflow": "ApprovalWorkflow"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/group",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/groupRole",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/groupRole:GroupRole": "GroupRole"
   }
  },
  {

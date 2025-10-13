@@ -82,6 +82,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> KubernetesServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> KubernetesUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceMariaResult> Marias;
+        public readonly ImmutableArray<Outputs.GetResourceResourceMcpResult> Mcps;
         public readonly ImmutableArray<Outputs.GetResourceResourceMemcachedResult> Memcacheds;
         public readonly ImmutableArray<Outputs.GetResourceResourceMemsqlResult> Memsqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceMongoHostResult> MongoHosts;
@@ -262,6 +263,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceMariaResult> marias,
 
+            ImmutableArray<Outputs.GetResourceResourceMcpResult> mcps,
+
             ImmutableArray<Outputs.GetResourceResourceMemcachedResult> memcacheds,
 
             ImmutableArray<Outputs.GetResourceResourceMemsqlResult> memsqls,
@@ -412,6 +415,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             KubernetesServiceAccounts = kubernetesServiceAccounts;
             KubernetesUserImpersonations = kubernetesUserImpersonations;
             Marias = marias;
+            Mcps = mcps;
             Memcacheds = memcacheds;
             Memsqls = memsqls;
             MongoHosts = mongoHosts;

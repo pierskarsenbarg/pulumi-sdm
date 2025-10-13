@@ -32,8 +32,12 @@ type LookupSecretEngineArgs struct {
 	Certificate *string `pulumi:"certificate"`
 	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
 	ConnectionTimeout *int `pulumi:"connectionTimeout"`
+	// Database is the database to verify credential against.
+	Database *string `pulumi:"database"`
 	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
 	DoNotValidateTimestamps *bool `pulumi:"doNotValidateTimestamps"`
+	// Hostname is the hostname or IP address of the Postgres server.
+	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Secret Engine.
 	Id *string `pulumi:"id"`
 	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
@@ -42,6 +46,10 @@ type LookupSecretEngineArgs struct {
 	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name *string `pulumi:"name"`
+	// Password is the password to connect to the Postgres server.
+	Password *string `pulumi:"password"`
+	// Port is the port number of the Postgres server.
+	Port *int `pulumi:"port"`
 	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Backing secret store identifier
@@ -52,7 +60,9 @@ type LookupSecretEngineArgs struct {
 	StartTls *bool `pulumi:"startTls"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+	// TLS enables TLS/SSL when connecting to the Postgres server.
+	Tls *bool `pulumi:"tls"`
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
 	Type *string `pulumi:"type"`
 	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
 	Upndomain *string `pulumi:"upndomain"`
@@ -60,6 +70,8 @@ type LookupSecretEngineArgs struct {
 	Url *string `pulumi:"url"`
 	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
 	Userdn *string `pulumi:"userdn"`
+	// Username is the username to connect to the Postgres server.
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getSecretEngine.
@@ -72,8 +84,12 @@ type LookupSecretEngineResult struct {
 	Certificate *string `pulumi:"certificate"`
 	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
 	ConnectionTimeout *int `pulumi:"connectionTimeout"`
+	// Database is the database to verify credential against.
+	Database *string `pulumi:"database"`
 	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
 	DoNotValidateTimestamps *bool `pulumi:"doNotValidateTimestamps"`
+	// Hostname is the hostname or IP address of the Postgres server.
+	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Secret Engine.
 	Id *string `pulumi:"id"`
 	// a list of strings of ids of data sources that match the given arguments.
@@ -84,6 +100,10 @@ type LookupSecretEngineResult struct {
 	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name *string `pulumi:"name"`
+	// Password is the password to connect to the Postgres server.
+	Password *string `pulumi:"password"`
+	// Port is the port number of the Postgres server.
+	Port *int `pulumi:"port"`
 	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// A single element list containing a map, where each key lists one of the following objects:
@@ -97,7 +117,9 @@ type LookupSecretEngineResult struct {
 	StartTls *bool `pulumi:"startTls"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	Type *string           `pulumi:"type"`
+	// TLS enables TLS/SSL when connecting to the Postgres server.
+	Tls  *bool   `pulumi:"tls"`
+	Type *string `pulumi:"type"`
 	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
 	Upndomain *string `pulumi:"upndomain"`
 	// The LDAP server to connect to.
@@ -105,6 +127,8 @@ type LookupSecretEngineResult struct {
 	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
 	// * key_value:
 	Userdn *string `pulumi:"userdn"`
+	// Username is the username to connect to the Postgres server.
+	Username *string `pulumi:"username"`
 }
 
 func LookupSecretEngineOutput(ctx *pulumi.Context, args LookupSecretEngineOutputArgs, opts ...pulumi.InvokeOption) LookupSecretEngineResultOutput {
@@ -126,8 +150,12 @@ type LookupSecretEngineOutputArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
 	ConnectionTimeout pulumi.IntPtrInput `pulumi:"connectionTimeout"`
+	// Database is the database to verify credential against.
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
 	DoNotValidateTimestamps pulumi.BoolPtrInput `pulumi:"doNotValidateTimestamps"`
+	// Hostname is the hostname or IP address of the Postgres server.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Secret Engine.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// If true, skips LDAP server SSL certificate verification - insecure, use with caution!
@@ -136,6 +164,10 @@ type LookupSecretEngineOutputArgs struct {
 	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Password is the password to connect to the Postgres server.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port is the port number of the Postgres server.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
 	RequestTimeout pulumi.IntPtrInput `pulumi:"requestTimeout"`
 	// Backing secret store identifier
@@ -146,7 +178,9 @@ type LookupSecretEngineOutputArgs struct {
 	StartTls pulumi.BoolPtrInput `pulumi:"startTls"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+	// TLS enables TLS/SSL when connecting to the Postgres server.
+	Tls pulumi.BoolPtrInput `pulumi:"tls"`
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
 	Upndomain pulumi.StringPtrInput `pulumi:"upndomain"`
@@ -154,6 +188,8 @@ type LookupSecretEngineOutputArgs struct {
 	Url pulumi.StringPtrInput `pulumi:"url"`
 	// Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
 	Userdn pulumi.StringPtrInput `pulumi:"userdn"`
+	// Username is the username to connect to the Postgres server.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (LookupSecretEngineOutputArgs) ElementType() reflect.Type {
@@ -195,9 +231,19 @@ func (o LookupSecretEngineResultOutput) ConnectionTimeout() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v LookupSecretEngineResult) *int { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Database is the database to verify credential against.
+func (o LookupSecretEngineResultOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
 // If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
 func (o LookupSecretEngineResultOutput) DoNotValidateTimestamps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) *bool { return v.DoNotValidateTimestamps }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname is the hostname or IP address of the Postgres server.
+func (o LookupSecretEngineResultOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the Secret Engine.
@@ -223,6 +269,16 @@ func (o LookupSecretEngineResultOutput) KeyRotationIntervalDays() pulumi.IntPtrO
 // Unique human-readable name of the Secret Engine.
 func (o LookupSecretEngineResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Password is the password to connect to the Postgres server.
+func (o LookupSecretEngineResultOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port is the port number of the Postgres server.
+func (o LookupSecretEngineResultOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Timeout, in seconds, for the connection when making requests against the server before returning back an error.
@@ -256,6 +312,11 @@ func (o LookupSecretEngineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// TLS enables TLS/SSL when connecting to the Postgres server.
+func (o LookupSecretEngineResultOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+}
+
 func (o LookupSecretEngineResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -274,6 +335,11 @@ func (o LookupSecretEngineResultOutput) Url() pulumi.StringPtrOutput {
 // * key_value:
 func (o LookupSecretEngineResultOutput) Userdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Userdn }).(pulumi.StringPtrOutput)
+}
+
+// Username is the username to connect to the Postgres server.
+func (o LookupSecretEngineResultOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 func init() {

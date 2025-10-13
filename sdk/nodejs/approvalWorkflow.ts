@@ -24,6 +24,9 @@ import * as utilities from "./utilities";
  *                     accountId: "a-1234abc",
  *                 },
  *                 {
+ *                     groupId: "group-1234abc",
+ *                 },
+ *                 {
  *                     reference: "manager-of-requester",
  *                 },
  *             ],
@@ -37,6 +40,9 @@ import * as utilities from "./utilities";
  *                 },
  *                 {
  *                     accountId: "a-5678def",
+ *                 },
+ *                 {
+ *                     groupId: "group-5678def",
  *                 },
  *                 {
  *                     reference: "manager-of-manager-of-requester",

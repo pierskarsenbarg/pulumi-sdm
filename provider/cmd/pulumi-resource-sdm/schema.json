@@ -208,15 +208,19 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "reference": {
                     "type": "string",
-                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -5968,6 +5972,74 @@
                 }
             }
         },
+        "sdm:index/ResourceMcp:ResourceMcp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceMemcached:ResourceMemcached": {
             "properties": {
                 "bindInterface": {
@@ -7116,6 +7188,10 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "username": {
                     "type": "string",
                     "description": "The username to authenticate with.\n"
@@ -7530,6 +7606,10 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "dcHostnames": {
+                    "type": "string",
+                    "description": "Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -9501,6 +9581,95 @@
                 }
             }
         },
+        "sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the Postgres server.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the Postgres server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the Postgres server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the Postgres server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "password",
+                "port",
+                "secretStoreId",
+                "secretStoreRootPath",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "database",
+                        "hostname",
+                        "name",
+                        "password",
+                        "port",
+                        "publicKey",
+                        "secretStoreId",
+                        "secretStoreRootPath",
+                        "username"
+                    ]
+                }
+            }
+        },
         "sdm:index/SecretStoreActiveDirectoryStore:SecretStoreActiveDirectoryStore": {
             "properties": {
                 "name": {
@@ -10534,6 +10703,23 @@
             },
             "type": "object"
         },
+        "sdm:index/getAccountGroupAccountsGroup:getAccountGroupAccountsGroup": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Account.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Group.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the AccountGroup.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getApprovalWorkflowApprovalStep:getApprovalWorkflowApprovalStep": {
             "properties": {
                 "approvers": {
@@ -10561,15 +10747,19 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "reference": {
                     "type": "string",
-                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 }
             },
             "type": "object"
@@ -10634,15 +10824,72 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "reference": {
                     "type": "string",
-                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)\n"
+                    "description": "The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getGroupGroup:getGroupGroup": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Group.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Group.\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "source"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getGroupRoleGroupsRole:getGroupRoleGroupsRole": {
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The assigned Group ID.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the GroupRole.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The assigned Role ID.\n"
                 }
             },
             "type": "object"
@@ -11527,6 +11774,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceMaria:getResourceResourceMaria"
                     }
                 },
+                "mcps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceMcp:getResourceResourceMcp"
+                    }
+                },
                 "memcacheds": {
                     "type": "array",
                     "items": {
@@ -11844,6 +12097,7 @@
                 "kubernetesServiceAccountUserImpersonations",
                 "kubernetesUserImpersonations",
                 "marias",
+                "mcps",
                 "memcacheds",
                 "memsqls",
                 "mongoHosts",
@@ -16575,6 +16829,63 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceMcp:getResourceResourceMcp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceMemcached:getResourceResourceMemcached": {
             "properties": {
                 "bindInterface": {
@@ -17562,6 +17873,10 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "username": {
                     "type": "string",
                     "description": "The username to authenticate with.\n"
@@ -17898,6 +18213,10 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "dcHostnames": {
+                    "type": "string",
+                    "description": "Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -19499,12 +19818,19 @@
                     "items": {
                         "$ref": "#/types/sdm:index/getSecretEngineSecretEngineKeyValue:getSecretEngineSecretEngineKeyValue"
                     }
+                },
+                "postgresSecretEngines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretEngineSecretEnginePostgresSecretEngine:getSecretEngineSecretEnginePostgresSecretEngine"
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "activeDirectories",
-                "keyValues"
+                "keyValues",
+                "postgresSecretEngines"
             ],
             "language": {
                 "nodejs": {
@@ -19644,6 +19970,82 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEnginePostgresSecretEngine:getSecretEngineSecretEnginePostgresSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the Postgres server.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Secret Engine.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the Postgres server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the Postgres server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the Postgres server.\n"
                 }
             },
             "type": "object",
@@ -20847,8 +21249,57 @@
                 "type": "object"
             }
         },
+        "sdm:index/accountGroup:AccountGroup": {
+            "description": "An AccountGroup is a link between an Account and a Group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityLeadToSecurityTeam = new sdm.AccountGroup(\"securityLeadToSecurityTeam\", {\n    accountId: sdm_account.security_lead.id,\n    groupId: sdm_group.security_team.id,\n});\nconst adminUserToAdministrators = new sdm.AccountGroup(\"adminUserToAdministrators\", {\n    accountId: \"a-1234567890abcdef\",\n    groupId: \"group-1234567890abcdef\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nsecurity_lead_to_security_team = sdm.AccountGroup(\"securityLeadToSecurityTeam\",\n    account_id=sdm_account[\"security_lead\"][\"id\"],\n    group_id=sdm_group[\"security_team\"][\"id\"])\nadmin_user_to_administrators = sdm.AccountGroup(\"adminUserToAdministrators\",\n    account_id=\"a-1234567890abcdef\",\n    group_id=\"group-1234567890abcdef\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityLeadToSecurityTeam = new Sdm.AccountGroup(\"securityLeadToSecurityTeam\", new()\n    {\n        AccountId = sdm_account.Security_lead.Id,\n        GroupId = sdm_group.Security_team.Id,\n    });\n\n    var adminUserToAdministrators = new Sdm.AccountGroup(\"adminUserToAdministrators\", new()\n    {\n        AccountId = \"a-1234567890abcdef\",\n        GroupId = \"group-1234567890abcdef\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccountGroup(ctx, \"securityLeadToSecurityTeam\", \u0026sdm.AccountGroupArgs{\n\t\t\tAccountId: pulumi.Any(sdm_account.Security_lead.Id),\n\t\t\tGroupId:   pulumi.Any(sdm_group.Security_team.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccountGroup(ctx, \"adminUserToAdministrators\", \u0026sdm.AccountGroupArgs{\n\t\t\tAccountId: pulumi.String(\"a-1234567890abcdef\"),\n\t\t\tGroupId:   pulumi.String(\"group-1234567890abcdef\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.AccountGroup;\nimport com.pulumi.sdm.AccountGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var securityLeadToSecurityTeam = new AccountGroup(\"securityLeadToSecurityTeam\", AccountGroupArgs.builder()\n            .accountId(sdm_account.security_lead().id())\n            .groupId(sdm_group.security_team().id())\n            .build());\n\n        var adminUserToAdministrators = new AccountGroup(\"adminUserToAdministrators\", AccountGroupArgs.builder()\n            .accountId(\"a-1234567890abcdef\")\n            .groupId(\"group-1234567890abcdef\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  securityLeadToSecurityTeam:\n    type: sdm:AccountGroup\n    properties:\n      accountId: ${sdm_account.security_lead.id}\n      groupId: ${sdm_group.security_team.id}\n  adminUserToAdministrators:\n    type: sdm:AccountGroup\n    properties:\n      accountId: a-1234567890abcdef\n      groupId: group-1234567890abcdef\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA AccountGroup can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/accountGroup:AccountGroup example accountgroup-12345678\n```\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Account.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Group.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "groupId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Account.\n",
+                    "willReplaceOnChanges": true
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Unique identifier of the Group.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "groupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccountGroup resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Account.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Group.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/approvalWorkflow:ApprovalWorkflow": {
-            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {\n    approvalMode: \"manual\",\n    approvalSteps: [\n        {\n            approvers: [\n                {\n                    accountId: \"a-1234abc\",\n                },\n                {\n                    reference: \"manager-of-requester\",\n                },\n            ],\n            quantifier: \"any\",\n            skipAfter: \"1h0m0s\",\n        },\n        {\n            approvers: [\n                {\n                    roleId: \"r-1234abc\",\n                },\n                {\n                    accountId: \"a-5678def\",\n                },\n                {\n                    reference: \"manager-of-manager-of-requester\",\n                },\n            ],\n            quantifier: \"all\",\n            skipAfter: \"0s\",\n        },\n    ],\n});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\",\n    approval_mode=\"manual\",\n    approval_steps=[\n        {\n            \"approvers\": [\n                {\n                    \"account_id\": \"a-1234abc\",\n                },\n                {\n                    \"reference\": \"manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"any\",\n            \"skip_after\": \"1h0m0s\",\n        },\n        {\n            \"approvers\": [\n                {\n                    \"role_id\": \"r-1234abc\",\n                },\n                {\n                    \"account_id\": \"a-5678def\",\n                },\n                {\n                    \"reference\": \"manager-of-manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"all\",\n            \"skip_after\": \"0s\",\n        },\n    ])\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n        ApprovalSteps = new[]\n        {\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-requester\",\n                    },\n                },\n                Quantifier = \"any\",\n                SkipAfter = \"1h0m0s\",\n            },\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        RoleId = \"r-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-5678def\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-manager-of-requester\",\n                    },\n                },\n                Quantifier = \"all\",\n                SkipAfter = \"0s\",\n            },\n        },\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t\tApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"any\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"1h0m0s\"),\n\t\t\t\t},\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tRoleId: pulumi.String(\"r-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-5678def\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"all\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"0s\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport com.pulumi.sdm.inputs.ApprovalWorkflowApprovalStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .approvalSteps(            \n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-requester\")\n                            .build())\n                    .quantifier(\"any\")\n                    .skipAfter(\"1h0m0s\")\n                    .build(),\n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .roleId(\"r-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-5678def\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-manager-of-requester\")\n                            .build())\n                    .quantifier(\"all\")\n                    .skipAfter(\"0s\")\n                    .build())\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n      approvalSteps:\n        - approvers:\n            - accountId: a-1234abc\n            - reference: manager-of-requester\n          quantifier: any\n          skipAfter: 1h0m0s\n        - approvers:\n            - roleId: r-1234abc\n            - accountId: a-5678def\n            - reference: manager-of-manager-of-requester\n          quantifier: all\n          skipAfter: 0s\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
+            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {\n    approvalMode: \"manual\",\n    approvalSteps: [\n        {\n            approvers: [\n                {\n                    accountId: \"a-1234abc\",\n                },\n                {\n                    groupId: \"group-1234abc\",\n                },\n                {\n                    reference: \"manager-of-requester\",\n                },\n            ],\n            quantifier: \"any\",\n            skipAfter: \"1h0m0s\",\n        },\n        {\n            approvers: [\n                {\n                    roleId: \"r-1234abc\",\n                },\n                {\n                    accountId: \"a-5678def\",\n                },\n                {\n                    groupId: \"group-5678def\",\n                },\n                {\n                    reference: \"manager-of-manager-of-requester\",\n                },\n            ],\n            quantifier: \"all\",\n            skipAfter: \"0s\",\n        },\n    ],\n});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\",\n    approval_mode=\"manual\",\n    approval_steps=[\n        {\n            \"approvers\": [\n                {\n                    \"account_id\": \"a-1234abc\",\n                },\n                {\n                    \"group_id\": \"group-1234abc\",\n                },\n                {\n                    \"reference\": \"manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"any\",\n            \"skip_after\": \"1h0m0s\",\n        },\n        {\n            \"approvers\": [\n                {\n                    \"role_id\": \"r-1234abc\",\n                },\n                {\n                    \"account_id\": \"a-5678def\",\n                },\n                {\n                    \"group_id\": \"group-5678def\",\n                },\n                {\n                    \"reference\": \"manager-of-manager-of-requester\",\n                },\n            ],\n            \"quantifier\": \"all\",\n            \"skip_after\": \"0s\",\n        },\n    ])\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n        ApprovalSteps = new[]\n        {\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        GroupId = \"group-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-requester\",\n                    },\n                },\n                Quantifier = \"any\",\n                SkipAfter = \"1h0m0s\",\n            },\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        RoleId = \"r-1234abc\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        AccountId = \"a-5678def\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        GroupId = \"group-5678def\",\n                    },\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-manager-of-requester\",\n                    },\n                },\n                Quantifier = \"all\",\n                SkipAfter = \"0s\",\n            },\n        },\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t\tApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tGroupId: pulumi.String(\"group-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"any\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"1h0m0s\"),\n\t\t\t\t},\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tRoleId: pulumi.String(\"r-1234abc\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tAccountId: pulumi.String(\"a-5678def\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tGroupId: pulumi.String(\"group-5678def\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tQuantifier: pulumi.String(\"all\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"0s\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport com.pulumi.sdm.inputs.ApprovalWorkflowApprovalStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .approvalSteps(            \n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .groupId(\"group-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-requester\")\n                            .build())\n                    .quantifier(\"any\")\n                    .skipAfter(\"1h0m0s\")\n                    .build(),\n                ApprovalWorkflowApprovalStepArgs.builder()\n                    .approvers(                    \n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .roleId(\"r-1234abc\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .accountId(\"a-5678def\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .groupId(\"group-5678def\")\n                            .build(),\n                        ApprovalWorkflowApprovalStepApproverArgs.builder()\n                            .reference(\"manager-of-manager-of-requester\")\n                            .build())\n                    .quantifier(\"all\")\n                    .skipAfter(\"0s\")\n                    .build())\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n      approvalSteps:\n        - approvers:\n            - accountId: a-1234abc\n            - groupId: group-1234abc\n            - reference: manager-of-requester\n          quantifier: any\n          skipAfter: 1h0m0s\n        - approvers:\n            - roleId: r-1234abc\n            - accountId: a-5678def\n            - groupId: group-5678def\n            - reference: manager-of-manager-of-requester\n          quantifier: all\n          skipAfter: 0s\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
             "properties": {
                 "approvalMode": {
                     "type": "string",
@@ -20919,6 +21370,125 @@
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the ApprovalWorkflow.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/group:Group": {
+            "description": "A Group is a named set of principals.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityTeam = new sdm.Group(\"securityTeam\", {tags: {\n    admin: \"true\",\n}});\nconst administrators = new sdm.Group(\"administrators\", {});\nconst devopsTeam = new sdm.Group(\"devopsTeam\", {});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nsecurity_team = sdm.Group(\"securityTeam\", tags={\n    \"admin\": \"true\",\n})\nadministrators = sdm.Group(\"administrators\")\ndevops_team = sdm.Group(\"devopsTeam\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityTeam = new Sdm.Group(\"securityTeam\", new()\n    {\n        Tags = \n        {\n            { \"admin\", \"true\" },\n        },\n    });\n\n    var administrators = new Sdm.Group(\"administrators\");\n\n    var devopsTeam = new Sdm.Group(\"devopsTeam\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewGroup(ctx, \"securityTeam\", \u0026sdm.GroupArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"admin\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewGroup(ctx, \"administrators\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewGroup(ctx, \"devopsTeam\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Group;\nimport com.pulumi.sdm.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var securityTeam = new Group(\"securityTeam\", GroupArgs.builder()\n            .tags(Map.of(\"admin\", \"true\"))\n            .build());\n\n        var administrators = new Group(\"administrators\");\n\n        var devopsTeam = new Group(\"devopsTeam\");\n\n    }\n}\n```\n```yaml\nresources:\n  securityTeam:\n    type: sdm:Group\n    properties:\n      tags:\n        admin: 'true'\n  administrators:\n    type: sdm:Group\n  devopsTeam:\n    type: sdm:Group\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Group can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/group:Group example group-12345678\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Group.\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                }
+            },
+            "required": [
+                "name",
+                "source"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Group.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Group resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the Group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Group.\n"
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure."
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/groupRole:GroupRole": {
+            "description": "A GroupRole assigns a Group to a Role.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityTeamToProductionAccess = new sdm.GroupRole(\"securityTeamToProductionAccess\", {\n    groupId: sdm_group.security_team.id,\n    roleId: sdm_role.production_access.id,\n});\nconst administratorsToAdminAccess = new sdm.GroupRole(\"administratorsToAdminAccess\", {\n    groupId: \"group-1234567890abcdef\",\n    roleId: \"r-1234567890abcdef\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nsecurity_team_to_production_access = sdm.GroupRole(\"securityTeamToProductionAccess\",\n    group_id=sdm_group[\"security_team\"][\"id\"],\n    role_id=sdm_role[\"production_access\"][\"id\"])\nadministrators_to_admin_access = sdm.GroupRole(\"administratorsToAdminAccess\",\n    group_id=\"group-1234567890abcdef\",\n    role_id=\"r-1234567890abcdef\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityTeamToProductionAccess = new Sdm.GroupRole(\"securityTeamToProductionAccess\", new()\n    {\n        GroupId = sdm_group.Security_team.Id,\n        RoleId = sdm_role.Production_access.Id,\n    });\n\n    var administratorsToAdminAccess = new Sdm.GroupRole(\"administratorsToAdminAccess\", new()\n    {\n        GroupId = \"group-1234567890abcdef\",\n        RoleId = \"r-1234567890abcdef\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewGroupRole(ctx, \"securityTeamToProductionAccess\", \u0026sdm.GroupRoleArgs{\n\t\t\tGroupId: pulumi.Any(sdm_group.Security_team.Id),\n\t\t\tRoleId:  pulumi.Any(sdm_role.Production_access.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewGroupRole(ctx, \"administratorsToAdminAccess\", \u0026sdm.GroupRoleArgs{\n\t\t\tGroupId: pulumi.String(\"group-1234567890abcdef\"),\n\t\t\tRoleId:  pulumi.String(\"r-1234567890abcdef\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.GroupRole;\nimport com.pulumi.sdm.GroupRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var securityTeamToProductionAccess = new GroupRole(\"securityTeamToProductionAccess\", GroupRoleArgs.builder()\n            .groupId(sdm_group.security_team().id())\n            .roleId(sdm_role.production_access().id())\n            .build());\n\n        var administratorsToAdminAccess = new GroupRole(\"administratorsToAdminAccess\", GroupRoleArgs.builder()\n            .groupId(\"group-1234567890abcdef\")\n            .roleId(\"r-1234567890abcdef\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  securityTeamToProductionAccess:\n    type: sdm:GroupRole\n    properties:\n      groupId: ${sdm_group.security_team.id}\n      roleId: ${sdm_role.production_access.id}\n  administratorsToAdminAccess:\n    type: sdm:GroupRole\n    properties:\n      groupId: group-1234567890abcdef\n      roleId: r-1234567890abcdef\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA GroupRole can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/groupRole:GroupRole example grouprole-12345678\n```\n",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The assigned Group ID.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The assigned Role ID.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "roleId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "The assigned Group ID.\n",
+                    "willReplaceOnChanges": true
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The assigned Role ID.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "roleId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupRole resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The assigned Group ID.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The assigned Role ID.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -21778,6 +22348,10 @@
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                 },
+                "mcp": {
+                    "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
+                    "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "memcached": {
                     "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
                 },
@@ -21802,8 +22376,7 @@
                     "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                 },
                 "mtlsMysql": {
-                    "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql"
                 },
                 "mtlsPostgres": {
                     "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -22121,6 +22694,10 @@
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                 },
+                "mcp": {
+                    "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
+                    "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "memcached": {
                     "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
                 },
@@ -22145,8 +22722,7 @@
                     "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                 },
                 "mtlsMysql": {
-                    "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                    "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql"
                 },
                 "mtlsPostgres": {
                     "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -22466,6 +23042,10 @@
                     "maria": {
                         "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                     },
+                    "mcp": {
+                        "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
+                        "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
                     "memcached": {
                         "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
                     },
@@ -22490,8 +23070,7 @@
                         "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                     },
                     "mtlsMysql": {
-                        "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
-                        "description": "MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql"
                     },
                     "mtlsPostgres": {
                         "$ref": "#/types/sdm:index/ResourceMtlsPostgres:ResourceMtlsPostgres"
@@ -22597,7 +23176,7 @@
             }
         },
         "sdm:index/role:Role": {
-            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()\n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()\n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Role can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/role:Role example r-12345678\n```\n",
+            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\nconst k8s_admin = new sdm.Role(\"k8s-admin\", {accessRules: JSON.stringify([{\n    tags: {\n        env: \"production\",\n    },\n    privileges: {\n        k8s: {\n            groups: [\"system:masters\"],\n        },\n    },\n}])});\nconst k8s_developers = new sdm.Role(\"k8s-developers\", {accessRules: JSON.stringify([\n    {\n        type: \"amazon_eks\",\n        tags: {\n            env: \"dev\",\n        },\n        privileges: {\n            k8s: {\n                groups: [\n                    \"developers\",\n                    \"viewers\",\n                ],\n            },\n        },\n    },\n    {\n        type: \"kubernetes\",\n        tags: {\n            region: \"us-west\",\n        },\n        privileges: {\n            k8s: {\n                groups: [\"edit\"],\n            },\n        },\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\nk8s_admin = sdm.Role(\"k8s-admin\", access_rules=json.dumps([{\n    \"tags\": {\n        \"env\": \"production\",\n    },\n    \"privileges\": {\n        \"k8s\": {\n            \"groups\": [\"system:masters\"],\n        },\n    },\n}]))\nk8s_developers = sdm.Role(\"k8s-developers\", access_rules=json.dumps([\n    {\n        \"type\": \"amazon_eks\",\n        \"tags\": {\n            \"env\": \"dev\",\n        },\n        \"privileges\": {\n            \"k8s\": {\n                \"groups\": [\n                    \"developers\",\n                    \"viewers\",\n                ],\n            },\n        },\n    },\n    {\n        \"type\": \"kubernetes\",\n        \"tags\": {\n            \"region\": \"us-west\",\n        },\n        \"privileges\": {\n            \"k8s\": {\n                \"groups\": [\"edit\"],\n            },\n        },\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n    var k8s_admin = new Sdm.Role(\"k8s-admin\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"production\",\n                },\n                [\"privileges\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"k8s\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"groups\"] = new[]\n                        {\n                            \"system:masters\",\n                        },\n                    },\n                },\n            },\n        }),\n    });\n\n    var k8s_developers = new Sdm.Role(\"k8s-developers\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"amazon_eks\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"dev\",\n                },\n                [\"privileges\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"k8s\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"groups\"] = new[]\n                        {\n                            \"developers\",\n                            \"viewers\",\n                        },\n                    },\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"kubernetes\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                },\n                [\"privileges\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"k8s\"] = new Dictionary\u003cstring, object?\u003e\n                    {\n                        [\"groups\"] = new[]\n                        {\n                            \"edit\",\n                        },\n                    },\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"production\",\n\t\t\t\t},\n\t\t\t\t\"privileges\": map[string]interface{}{\n\t\t\t\t\t\"k8s\": map[string]interface{}{\n\t\t\t\t\t\t\"groups\": []string{\n\t\t\t\t\t\t\t\"system:masters\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewRole(ctx, \"k8s-admin\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON2, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"amazon_eks\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"dev\",\n\t\t\t\t},\n\t\t\t\t\"privileges\": map[string]interface{}{\n\t\t\t\t\t\"k8s\": map[string]interface{}{\n\t\t\t\t\t\t\"groups\": []string{\n\t\t\t\t\t\t\t\"developers\",\n\t\t\t\t\t\t\t\"viewers\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"kubernetes\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t},\n\t\t\t\t\"privileges\": map[string]interface{}{\n\t\t\t\t\t\"k8s\": map[string]interface{}{\n\t\t\t\t\t\t\"groups\": []string{\n\t\t\t\t\t\t\t\"edit\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\t_, err = sdm.NewRole(ctx, \"k8s-developers\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()\n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()\n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n        var k8s_admin = new Role(\"k8s-admin\", RoleArgs.builder()\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"env\", \"production\")\n                    )),\n                    jsonProperty(\"privileges\", jsonObject(\n                        jsonProperty(\"k8s\", jsonObject(\n                            jsonProperty(\"groups\", jsonArray(\"system:masters\"))\n                        ))\n                    ))\n                ))))\n            .build());\n\n        var k8s_developers = new Role(\"k8s-developers\", RoleArgs.builder()\n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"type\", \"amazon_eks\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"dev\")\n                        )),\n                        jsonProperty(\"privileges\", jsonObject(\n                            jsonProperty(\"k8s\", jsonObject(\n                                jsonProperty(\"groups\", jsonArray(\n                                    \"developers\", \n                                    \"viewers\"\n                                ))\n                            ))\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"kubernetes\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\")\n                        )),\n                        jsonProperty(\"privileges\", jsonObject(\n                            jsonProperty(\"k8s\", jsonObject(\n                                jsonProperty(\"groups\", jsonArray(\"edit\"))\n                            ))\n                        ))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n  k8s-admin:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: production\n            privileges:\n              k8s:\n                groups:\n                  - system:masters\n  k8s-developers:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - type: amazon_eks\n            tags:\n              env: dev\n            privileges:\n              k8s:\n                groups:\n                  - developers\n                  - viewers\n          - type: kubernetes\n            tags:\n              region: us-west\n            privileges:\n              k8s:\n                groups:\n                  - edit\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Role can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/role:Role example r-12345678\n```\n",
             "properties": {
                 "accessRules": {
                     "type": "string",
@@ -22671,34 +23250,40 @@
             "description": "A SecretEngine is managing secrets in SecretStores.\nThis resource can be imported using the import command.\n\n## Import\n\nA SecretEngine can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/secretEngine:SecretEngine example eng-12345678\n```\n",
             "properties": {
                 "activeDirectory": {
-                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory"
                 },
                 "keyValue": {
-                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
+                },
+                "postgresSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
+                    "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 }
             },
             "inputProperties": {
                 "activeDirectory": {
-                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                    "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory"
                 },
                 "keyValue": {
-                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                    "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
+                },
+                "postgresSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
+                    "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 }
             },
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SecretEngine resources.\n",
                 "properties": {
                     "activeDirectory": {
-                        "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory",
-                        "description": "ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretEngineActiveDirectory:SecretEngineActiveDirectory"
                     },
                     "keyValue": {
-                        "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue",
-                        "description": "KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
+                    },
+                    "postgresSecretEngine": {
+                        "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
+                        "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     }
                 },
                 "type": "object"
@@ -22928,7 +23513,7 @@
             }
         },
         "sdm:index/workflow:Workflow": {
-            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  autoGrantApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: automatic\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: manual\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\n// Create approval workflows first\nconst autoGrant = new sdm.ApprovalWorkflow(\"autoGrant\", {approvalMode: \"automatic\"});\nconst manualApproval = new sdm.ApprovalWorkflow(\"manualApproval\", {\n    approvalMode: \"manual\",\n    approvalSteps: [{\n        quantifier: \"any\",\n        skipAfter: \"2h0m0s\",\n        approvers: [{\n            reference: \"manager-of-requester\",\n        }],\n    }],\n});\n// Create workflows that reference the approval workflows\nconst autoGrantWorkflow = new sdm.Workflow(\"autoGrantWorkflow\", {\n    approvalFlowId: autoGrant.id,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\nconst manualApprovalWorkflow = new sdm.Workflow(\"manualApprovalWorkflow\", {\n    approvalFlowId: manualApproval.id,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\n# Create approval workflows first\nauto_grant = sdm.ApprovalWorkflow(\"autoGrant\", approval_mode=\"automatic\")\nmanual_approval = sdm.ApprovalWorkflow(\"manualApproval\",\n    approval_mode=\"manual\",\n    approval_steps=[{\n        \"quantifier\": \"any\",\n        \"skip_after\": \"2h0m0s\",\n        \"approvers\": [{\n            \"reference\": \"manager-of-requester\",\n        }],\n    }])\n# Create workflows that reference the approval workflows\nauto_grant_workflow = sdm.Workflow(\"autoGrantWorkflow\",\n    approval_flow_id=auto_grant.id,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\nmanual_approval_workflow = sdm.Workflow(\"manualApprovalWorkflow\",\n    approval_flow_id=manual_approval.id,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create approval workflows first\n    var autoGrant = new Sdm.ApprovalWorkflow(\"autoGrant\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n    var manualApproval = new Sdm.ApprovalWorkflow(\"manualApproval\", new()\n    {\n        ApprovalMode = \"manual\",\n        ApprovalSteps = new[]\n        {\n            new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs\n            {\n                Quantifier = \"any\",\n                SkipAfter = \"2h0m0s\",\n                Approvers = new[]\n                {\n                    new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs\n                    {\n                        Reference = \"manager-of-requester\",\n                    },\n                },\n            },\n        },\n    });\n\n    // Create workflows that reference the approval workflows\n    var autoGrantWorkflow = new Sdm.Workflow(\"autoGrantWorkflow\", new()\n    {\n        ApprovalFlowId = autoGrant.Id,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n    var manualApprovalWorkflow = new Sdm.Workflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalFlowId = manualApproval.Id,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create approval workflows first\n\t\tautoGrant, err := sdm.NewApprovalWorkflow(ctx, \"autoGrant\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmanualApproval, err := sdm.NewApprovalWorkflow(ctx, \"manualApproval\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t\tApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{\n\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepArgs{\n\t\t\t\t\tQuantifier: pulumi.String(\"any\"),\n\t\t\t\t\tSkipAfter:  pulumi.String(\"2h0m0s\"),\n\t\t\t\t\tApprovers: sdm.ApprovalWorkflowApprovalStepApproverArray{\n\t\t\t\t\t\t\u0026sdm.ApprovalWorkflowApprovalStepApproverArgs{\n\t\t\t\t\t\t\tReference: pulumi.String(\"manager-of-requester\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t// Create workflows that reference the approval workflows\n\t\t_, err = sdm.NewWorkflow(ctx, \"autoGrantWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tApprovalFlowId: autoGrant.ID(),\n\t\t\tEnabled:        pulumi.Bool(true),\n\t\t\tAccessRules:    pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tApprovalFlowId: manualApproval.ID(),\n\t\t\tEnabled:        pulumi.Bool(true),\n\t\t\tAccessRules:    pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport com.pulumi.sdm.inputs.ApprovalWorkflowApprovalStepArgs;\nimport com.pulumi.sdm.Workflow;\nimport com.pulumi.sdm.WorkflowArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create approval workflows first\n        var autoGrant = new ApprovalWorkflow(\"autoGrant\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n        var manualApproval = new ApprovalWorkflow(\"manualApproval\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .approvalSteps(ApprovalWorkflowApprovalStepArgs.builder()\n                .quantifier(\"any\")\n                .skipAfter(\"2h0m0s\")\n                .approvers(ApprovalWorkflowApprovalStepApproverArgs.builder()\n                    .reference(\"manager-of-requester\")\n                    .build())\n                .build())\n            .build());\n\n        // Create workflows that reference the approval workflows\n        var autoGrantWorkflow = new Workflow(\"autoGrantWorkflow\", WorkflowArgs.builder()\n            .approvalFlowId(autoGrant.id())\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n        var manualApprovalWorkflow = new Workflow(\"manualApprovalWorkflow\", WorkflowArgs.builder()\n            .approvalFlowId(manualApproval.id())\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create approval workflows first\n  autoGrant:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n  manualApproval:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n      approvalSteps:\n        - quantifier: any\n          skipAfter: 2h0m0s\n          approvers:\n            - reference: manager-of-requester\n  # Create workflows that reference the approval workflows\n  autoGrantWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalFlowId: ${autoGrant.id}\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalFlowId: ${manualApproval.id}\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
             "properties": {
                 "accessRequestFixedDuration": {
                     "type": "string",
@@ -23118,7 +23703,7 @@
             }
         },
         "sdm:index/workflowRole:WorkflowRole": {
-            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleExample = new sdm.WorkflowRole(\"workflowRoleExample\", {\n    roleId: \"r-243561\",\n    workflowId: \"aw-343865\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_role_example = sdm.WorkflowRole(\"workflowRoleExample\",\n    role_id=\"r-243561\",\n    workflow_id=\"aw-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleExample = new Sdm.WorkflowRole(\"workflowRoleExample\", new()\n    {\n        RoleId = \"r-243561\",\n        WorkflowId = \"aw-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowRole(ctx, \"workflowRoleExample\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.String(\"r-243561\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowRole;\nimport com.pulumi.sdm.WorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowRoleExample = new WorkflowRole(\"workflowRoleExample\", WorkflowRoleArgs.builder()\n            .roleId(\"r-243561\")\n            .workflowId(\"aw-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowRoleExample:\n    type: sdm:WorkflowRole\n    properties:\n      roleId: r-243561\n      workflowId: aw-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowRole can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678\n```\n",
+            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleExample = new sdm.WorkflowRole(\"workflowRoleExample\", {\n    workflowId: sdm_workflow.manual_approval_workflow.id,\n    roleId: sdm_role.developers.id,\n});\nconst workflowRoleWithIds = new sdm.WorkflowRole(\"workflowRoleWithIds\", {\n    workflowId: \"w-1234567890abcdef\",\n    roleId: \"r-1234567890abcdef\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_role_example = sdm.WorkflowRole(\"workflowRoleExample\",\n    workflow_id=sdm_workflow[\"manual_approval_workflow\"][\"id\"],\n    role_id=sdm_role[\"developers\"][\"id\"])\nworkflow_role_with_ids = sdm.WorkflowRole(\"workflowRoleWithIds\",\n    workflow_id=\"w-1234567890abcdef\",\n    role_id=\"r-1234567890abcdef\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleExample = new Sdm.WorkflowRole(\"workflowRoleExample\", new()\n    {\n        WorkflowId = sdm_workflow.Manual_approval_workflow.Id,\n        RoleId = sdm_role.Developers.Id,\n    });\n\n    var workflowRoleWithIds = new Sdm.WorkflowRole(\"workflowRoleWithIds\", new()\n    {\n        WorkflowId = \"w-1234567890abcdef\",\n        RoleId = \"r-1234567890abcdef\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowRole(ctx, \"workflowRoleExample\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tWorkflowId: pulumi.Any(sdm_workflow.Manual_approval_workflow.Id),\n\t\t\tRoleId:     pulumi.Any(sdm_role.Developers.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewWorkflowRole(ctx, \"workflowRoleWithIds\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tWorkflowId: pulumi.String(\"w-1234567890abcdef\"),\n\t\t\tRoleId:     pulumi.String(\"r-1234567890abcdef\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowRole;\nimport com.pulumi.sdm.WorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowRoleExample = new WorkflowRole(\"workflowRoleExample\", WorkflowRoleArgs.builder()\n            .workflowId(sdm_workflow.manual_approval_workflow().id())\n            .roleId(sdm_role.developers().id())\n            .build());\n\n        var workflowRoleWithIds = new WorkflowRole(\"workflowRoleWithIds\", WorkflowRoleArgs.builder()\n            .workflowId(\"w-1234567890abcdef\")\n            .roleId(\"r-1234567890abcdef\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowRoleExample:\n    type: sdm:WorkflowRole\n    properties:\n      workflowId: ${sdm_workflow.manual_approval_workflow.id}\n      roleId: ${sdm_role.developers.id}\n  workflowRoleWithIds:\n    type: sdm:WorkflowRole\n    properties:\n      workflowId: w-1234567890abcdef\n      roleId: r-1234567890abcdef\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowRole can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678\n```\n",
             "properties": {
                 "roleId": {
                     "type": "string",
@@ -23255,7 +23840,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"
@@ -23396,6 +23981,63 @@
                 ]
             }
         },
+        "sdm:index/getAccountGroup:getAccountGroup": {
+            "description": "An AccountGroup is a link between an Account and a Group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityLeadGroups = sdm.getAccountGroup({\n    accountId: sdm_account.security_lead.id,\n});\nconst specificRelationship = sdm.getAccountGroup({\n    id: \"accountgroup-1234567890abcdef\",\n});\nconst usersInGroup = sdm.getAccountGroup({\n    groupId: sdm_group.devops_group.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nsecurity_lead_groups = sdm.get_account_group(account_id=sdm_account[\"security_lead\"][\"id\"])\nspecific_relationship = sdm.get_account_group(id=\"accountgroup-1234567890abcdef\")\nusers_in_group = sdm.get_account_group(group_id=sdm_group[\"devops_group\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()\n    {\n        AccountId = sdm_account.Security_lead.Id,\n    });\n\n    var specificRelationship = Sdm.GetAccountGroup.Invoke(new()\n    {\n        Id = \"accountgroup-1234567890abcdef\",\n    });\n\n    var usersInGroup = Sdm.GetAccountGroup.Invoke(new()\n    {\n        GroupId = sdm_group.Devops_group.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupAccountGroup(ctx, \u0026sdm.LookupAccountGroupArgs{\n\t\t\tAccountId: pulumi.StringRef(sdm_account.Security_lead.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupAccountGroup(ctx, \u0026sdm.LookupAccountGroupArgs{\n\t\t\tId: pulumi.StringRef(\"accountgroup-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupAccountGroup(ctx, \u0026sdm.LookupAccountGroupArgs{\n\t\t\tGroupId: pulumi.StringRef(sdm_group.Devops_group.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetAccountGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()\n            .accountId(sdm_account.security_lead().id())\n            .build());\n\n        final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()\n            .id(\"accountgroup-1234567890abcdef\")\n            .build());\n\n        final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()\n            .groupId(sdm_group.devops_group().id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  securityLeadGroups:\n    fn::invoke:\n      function: sdm:getAccountGroup\n      arguments:\n        accountId: ${sdm_account.security_lead.id}\n  specificRelationship:\n    fn::invoke:\n      function: sdm:getAccountGroup\n      arguments:\n        id: accountgroup-1234567890abcdef\n  usersInGroup:\n    fn::invoke:\n      function: sdm:getAccountGroup\n      arguments:\n        groupId: ${sdm_group.devops_group.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccountGroup.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Account.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Group.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the AccountGroup.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccountGroup.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Account.\n"
+                    },
+                    "accountsGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getAccountGroupAccountsGroup:getAccountGroupAccountsGroup"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Unique identifier of the Group.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the AccountGroup.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountsGroups",
+                    "ids"
+                ]
+            }
+        },
         "sdm:index/getApprovalWorkflow:getApprovalWorkflow": {
             "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({\n    approvalMode: \"manual\",\n    name: \"approval workflow manual\",\n});\nconst autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({\n    approvalMode: \"automatic\",\n    name: \"approval workflow auto\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nmanual_approval_workflow_query = sdm.get_approval_workflow(approval_mode=\"manual\",\n    name=\"approval workflow manual\")\nauto_grant_approval_workflow_query = sdm.get_approval_workflow(approval_mode=\"automatic\",\n    name=\"approval workflow auto\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()\n    {\n        ApprovalMode = \"manual\",\n        Name = \"approval workflow manual\",\n    });\n\n    var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()\n    {\n        ApprovalMode = \"automatic\",\n        Name = \"approval workflow auto\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupApprovalWorkflow(ctx, \u0026sdm.LookupApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.StringRef(\"manual\"),\n\t\t\tName:         pulumi.StringRef(\"approval workflow manual\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupApprovalWorkflow(ctx, \u0026sdm.LookupApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.StringRef(\"automatic\"),\n\t\t\tName:         pulumi.StringRef(\"approval workflow auto\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetApprovalWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var manualApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .name(\"approval workflow manual\")\n            .build());\n\n        final var autoGrantApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .name(\"approval workflow auto\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  manualApprovalWorkflowQuery:\n    fn::invoke:\n      function: sdm:getApprovalWorkflow\n      arguments:\n        approvalMode: manual\n        name: approval workflow manual\n  autoGrantApprovalWorkflowQuery:\n    fn::invoke:\n      function: sdm:getApprovalWorkflow\n      arguments:\n        approvalMode: automatic\n        name: approval workflow auto\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -23471,6 +24113,139 @@
                 "type": "object",
                 "required": [
                     "approvalWorkflows",
+                    "ids"
+                ]
+            }
+        },
+        "sdm:index/getGroup:getGroup": {
+            "description": "A Group is a named set of principals.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityTeam = sdm.getGroup({\n    name: \"Security Team\",\n});\nconst administrators = sdm.getGroup({\n    id: \"group-1234567890abcdef\",\n});\nconst adminTeams = sdm.getGroup({\n    tags: {\n        admin: \"true\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nsecurity_team = sdm.get_group(name=\"Security Team\")\nadministrators = sdm.get_group(id=\"group-1234567890abcdef\")\nadmin_teams = sdm.get_group(tags={\n    \"admin\": \"true\",\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityTeam = Sdm.GetGroup.Invoke(new()\n    {\n        Name = \"Security Team\",\n    });\n\n    var administrators = Sdm.GetGroup.Invoke(new()\n    {\n        Id = \"group-1234567890abcdef\",\n    });\n\n    var adminTeams = Sdm.GetGroup.Invoke(new()\n    {\n        Tags = \n        {\n            { \"admin\", \"true\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupGroup(ctx, \u0026sdm.LookupGroupArgs{\n\t\t\tName: pulumi.StringRef(\"Security Team\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupGroup(ctx, \u0026sdm.LookupGroupArgs{\n\t\t\tId: pulumi.StringRef(\"group-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupGroup(ctx, \u0026sdm.LookupGroupArgs{\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"admin\": \"true\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var securityTeam = SdmFunctions.getGroup(GetGroupArgs.builder()\n            .name(\"Security Team\")\n            .build());\n\n        final var administrators = SdmFunctions.getGroup(GetGroupArgs.builder()\n            .id(\"group-1234567890abcdef\")\n            .build());\n\n        final var adminTeams = SdmFunctions.getGroup(GetGroupArgs.builder()\n            .tags(Map.of(\"admin\", \"true\"))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  securityTeam:\n    fn::invoke:\n      function: sdm:getGroup\n      arguments:\n        name: Security Team\n  administrators:\n    fn::invoke:\n      function: sdm:getGroup\n      arguments:\n        id: group-1234567890abcdef\n  adminTeams:\n    fn::invoke:\n      function: sdm:getGroup\n      arguments:\n        tags:\n          admin: 'true'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the Group.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Group.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the Group.\n"
+                    },
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getGroupGroup:getGroupGroup"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Group.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Group.\n"
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Tags is a map of key/value pairs that can be attached to a Group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groups",
+                    "ids",
+                    "source"
+                ]
+            }
+        },
+        "sdm:index/getGroupRole:getGroupRole": {
+            "description": "A GroupRole assigns a Group to a Role.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityTeamRoles = sdm.getGroupRole({\n    groupId: sdm_group.security_team.id,\n});\nconst specificRelationship = sdm.getGroupRole({\n    id: \"grouprole-1234567890abcdef\",\n});\nconst groupsWithRole = sdm.getGroupRole({\n    roleId: sdm_role.admin_role.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nsecurity_team_roles = sdm.get_group_role(group_id=sdm_group[\"security_team\"][\"id\"])\nspecific_relationship = sdm.get_group_role(id=\"grouprole-1234567890abcdef\")\ngroups_with_role = sdm.get_group_role(role_id=sdm_role[\"admin_role\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()\n    {\n        GroupId = sdm_group.Security_team.Id,\n    });\n\n    var specificRelationship = Sdm.GetGroupRole.Invoke(new()\n    {\n        Id = \"grouprole-1234567890abcdef\",\n    });\n\n    var groupsWithRole = Sdm.GetGroupRole.Invoke(new()\n    {\n        RoleId = sdm_role.Admin_role.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupGroupRole(ctx, \u0026sdm.LookupGroupRoleArgs{\n\t\t\tGroupId: pulumi.StringRef(sdm_group.Security_team.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupGroupRole(ctx, \u0026sdm.LookupGroupRoleArgs{\n\t\t\tId: pulumi.StringRef(\"grouprole-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupGroupRole(ctx, \u0026sdm.LookupGroupRoleArgs{\n\t\t\tRoleId: pulumi.StringRef(sdm_role.Admin_role.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetGroupRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()\n            .groupId(sdm_group.security_team().id())\n            .build());\n\n        final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()\n            .id(\"grouprole-1234567890abcdef\")\n            .build());\n\n        final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()\n            .roleId(sdm_role.admin_role().id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  securityTeamRoles:\n    fn::invoke:\n      function: sdm:getGroupRole\n      arguments:\n        groupId: ${sdm_group.security_team.id}\n  specificRelationship:\n    fn::invoke:\n      function: sdm:getGroupRole\n      arguments:\n        id: grouprole-1234567890abcdef\n  groupsWithRole:\n    fn::invoke:\n      function: sdm:getGroupRole\n      arguments:\n        roleId: ${sdm_role.admin_role.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupRole.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The assigned Group ID.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the GroupRole.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The assigned Role ID.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupRole.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The assigned Group ID.\n"
+                    },
+                    "groupsRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getGroupRoleGroupsRole:getGroupRoleGroupsRole"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the GroupRole.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The assigned Role ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groupsRoles",
                     "ids"
                 ]
             }
@@ -23720,7 +24495,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"
@@ -24285,7 +25060,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
                     },
                     "username": {
                         "type": "string",
@@ -24438,9 +25213,17 @@
                         "type": "integer",
                         "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
                     },
+                    "database": {
+                        "type": "string",
+                        "description": "Database is the database to verify credential against.\n"
+                    },
                     "doNotValidateTimestamps": {
                         "type": "boolean",
                         "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname is the hostname or IP address of the Postgres server.\n"
                     },
                     "id": {
                         "type": "string",
@@ -24457,6 +25240,14 @@
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Secret Engine.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password is the password to connect to the Postgres server.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Port is the port number of the Postgres server.\n"
                     },
                     "requestTimeout": {
                         "type": "integer",
@@ -24481,9 +25272,13 @@
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
+                    "tls": {
+                        "type": "boolean",
+                        "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                    },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
                     },
                     "upndomain": {
                         "type": "string",
@@ -24496,6 +25291,10 @@
                     "userdn": {
                         "type": "string",
                         "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username is the username to connect to the Postgres server.\n"
                     }
                 },
                 "type": "object"
@@ -24519,9 +25318,17 @@
                         "type": "integer",
                         "description": "Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.\n"
                     },
+                    "database": {
+                        "type": "string",
+                        "description": "Database is the database to verify credential against.\n"
+                    },
                     "doNotValidateTimestamps": {
                         "type": "boolean",
                         "description": "If set to true this will prevent password change timestamp validation in Active Directory when validating credentials\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname is the hostname or IP address of the Postgres server.\n"
                     },
                     "id": {
                         "type": "string",
@@ -24545,6 +25352,14 @@
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Secret Engine.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password is the password to connect to the Postgres server.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Port is the port number of the Postgres server.\n"
                     },
                     "requestTimeout": {
                         "type": "integer",
@@ -24576,6 +25391,10 @@
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
+                    "tls": {
+                        "type": "boolean",
+                        "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                    },
                     "type": {
                         "type": "string"
                     },
@@ -24590,6 +25409,10 @@
                     "userdn": {
                         "type": "string",
                         "description": "Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com\n* key_value:\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username is the username to connect to the Postgres server.\n"
                     }
                 },
                 "type": "object",
@@ -24621,7 +25444,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.\n"
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
                     }
                 },
                 "type": "object"
@@ -24701,7 +25524,7 @@
             }
         },
         "sdm:index/getWorkflow:getWorkflow": {
-            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  workflowQuery:\n    fn::invoke:\n      function: sdm:getWorkflow\n      arguments:\n        approvalMode: automatic\n        name: workflow example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowByName = sdm.getWorkflow({\n    name: \"workflow example\",\n});\nconst workflowById = sdm.getWorkflow({\n    id: \"w-1234567890abcdef\",\n});\nconst workflowByApprovalFlow = sdm.getWorkflow({\n    approvalFlowId: \"aw-1234567890abcdef\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_by_name = sdm.get_workflow(name=\"workflow example\")\nworkflow_by_id = sdm.get_workflow(id=\"w-1234567890abcdef\")\nworkflow_by_approval_flow = sdm.get_workflow(approval_flow_id=\"aw-1234567890abcdef\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowByName = Sdm.GetWorkflow.Invoke(new()\n    {\n        Name = \"workflow example\",\n    });\n\n    var workflowById = Sdm.GetWorkflow.Invoke(new()\n    {\n        Id = \"w-1234567890abcdef\",\n    });\n\n    var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()\n    {\n        ApprovalFlowId = \"aw-1234567890abcdef\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflow(ctx, \u0026sdm.LookupWorkflowArgs{\n\t\t\tName: pulumi.StringRef(\"workflow example\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupWorkflow(ctx, \u0026sdm.LookupWorkflowArgs{\n\t\t\tId: pulumi.StringRef(\"w-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupWorkflow(ctx, \u0026sdm.LookupWorkflowArgs{\n\t\t\tApprovalFlowId: pulumi.StringRef(\"aw-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowByName = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .name(\"workflow example\")\n            .build());\n\n        final var workflowById = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .id(\"w-1234567890abcdef\")\n            .build());\n\n        final var workflowByApprovalFlow = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .approvalFlowId(\"aw-1234567890abcdef\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowByName:\n    fn::invoke:\n      function: sdm:getWorkflow\n      arguments:\n        name: workflow example\n  workflowById:\n    fn::invoke:\n      function: sdm:getWorkflow\n      arguments:\n        id: w-1234567890abcdef\n  workflowByApprovalFlow:\n    fn::invoke:\n      function: sdm:getWorkflow\n      arguments:\n        approvalFlowId: aw-1234567890abcdef\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflow.\n",
                 "properties": {
@@ -24873,7 +25696,7 @@
             }
         },
         "sdm:index/getWorkflowRole:getWorkflowRole": {
-            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleQuery = sdm.getWorkflowRole({\n    roleId: \"r-9862923\",\n    workflowId: \"aw-7935485\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_role_query = sdm.get_workflow_role(role_id=\"r-9862923\",\n    workflow_id=\"aw-7935485\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()\n    {\n        RoleId = \"r-9862923\",\n        WorkflowId = \"aw-7935485\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflowRole(ctx, \u0026sdm.LookupWorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.StringRef(\"r-9862923\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"aw-7935485\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()\n            .roleId(\"r-9862923\")\n            .workflowId(\"aw-7935485\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowRoleQuery:\n    fn::invoke:\n      function: sdm:getWorkflowRole\n      arguments:\n        roleId: r-9862923\n        workflowId: aw-7935485\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleQuery = sdm.getWorkflowRole({\n    roleId: \"r-1234567890abcdef\",\n    workflowId: \"w-1234567890abcdef\",\n});\nconst workflowRoleById = sdm.getWorkflowRole({\n    id: \"wr-1234567890abcdef\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_role_query = sdm.get_workflow_role(role_id=\"r-1234567890abcdef\",\n    workflow_id=\"w-1234567890abcdef\")\nworkflow_role_by_id = sdm.get_workflow_role(id=\"wr-1234567890abcdef\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()\n    {\n        RoleId = \"r-1234567890abcdef\",\n        WorkflowId = \"w-1234567890abcdef\",\n    });\n\n    var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()\n    {\n        Id = \"wr-1234567890abcdef\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflowRole(ctx, \u0026sdm.LookupWorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.StringRef(\"r-1234567890abcdef\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"w-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupWorkflowRole(ctx, \u0026sdm.LookupWorkflowRoleArgs{\n\t\t\tId: pulumi.StringRef(\"wr-1234567890abcdef\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()\n            .roleId(\"r-1234567890abcdef\")\n            .workflowId(\"w-1234567890abcdef\")\n            .build());\n\n        final var workflowRoleById = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()\n            .id(\"wr-1234567890abcdef\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowRoleQuery:\n    fn::invoke:\n      function: sdm:getWorkflowRole\n      arguments:\n        roleId: r-1234567890abcdef\n        workflowId: w-1234567890abcdef\n  workflowRoleById:\n    fn::invoke:\n      function: sdm:getWorkflowRole\n      arguments:\n        id: wr-1234567890abcdef\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflowRole.\n",
                 "properties": {

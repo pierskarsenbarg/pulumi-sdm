@@ -30,8 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupWorkflowRole(ctx, &sdm.LookupWorkflowRoleArgs{
-//				RoleId:     pulumi.StringRef("r-9862923"),
-//				WorkflowId: pulumi.StringRef("aw-7935485"),
+//				RoleId:     pulumi.StringRef("r-1234567890abcdef"),
+//				WorkflowId: pulumi.StringRef("w-1234567890abcdef"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.LookupWorkflowRole(ctx, &sdm.LookupWorkflowRoleArgs{
+//				Id: pulumi.StringRef("wr-1234567890abcdef"),
 //			}, nil)
 //			if err != nil {
 //				return err

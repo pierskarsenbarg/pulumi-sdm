@@ -15,15 +15,19 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ApprovalWorkflowApprovalStepApprover
     {
         /// <summary>
-        /// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        /// The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        /// The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+        /// </summary>
+        public readonly string? GroupId;
+        /// <summary>
+        /// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         public readonly string? Reference;
         /// <summary>
-        /// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        /// The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         public readonly string? RoleId;
 
@@ -31,11 +35,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private ApprovalWorkflowApprovalStepApprover(
             string? accountId,
 
+            string? groupId,
+
             string? reference,
 
             string? roleId)
         {
             AccountId = accountId;
+            GroupId = groupId;
             Reference = reference;
             RoleId = roleId;
         }

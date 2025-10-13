@@ -14,8 +14,12 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const workflowRoleExample = new sdm.WorkflowRole("workflowRoleExample", {
- *     roleId: "r-243561",
- *     workflowId: "aw-343865",
+ *     workflowId: sdm_workflow.manual_approval_workflow.id,
+ *     roleId: sdm_role.developers.id,
+ * });
+ * const workflowRoleWithIds = new sdm.WorkflowRole("workflowRoleWithIds", {
+ *     workflowId: "w-1234567890abcdef",
+ *     roleId: "r-1234567890abcdef",
  * });
  * ```
  * This resource can be imported using the import command.

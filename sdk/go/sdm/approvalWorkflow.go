@@ -39,6 +39,9 @@ import (
 //								AccountId: pulumi.String("a-1234abc"),
 //							},
 //							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								GroupId: pulumi.String("group-1234abc"),
+//							},
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
 //								Reference: pulumi.String("manager-of-requester"),
 //							},
 //						},
@@ -52,6 +55,9 @@ import (
 //							},
 //							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
 //								AccountId: pulumi.String("a-5678def"),
+//							},
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								GroupId: pulumi.String("group-5678def"),
 //							},
 //							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
 //								Reference: pulumi.String("manager-of-manager-of-requester"),

@@ -238,6 +238,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("maria")]
         public Output<Outputs.ResourceMaria?> Maria { get; private set; } = null!;
 
+        /// <summary>
+        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("mcp")]
+        public Output<Outputs.ResourceMcp?> Mcp { get; private set; } = null!;
+
         [Output("memcached")]
         public Output<Outputs.ResourceMemcached?> Memcached { get; private set; } = null!;
 
@@ -265,9 +271,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("mongoShardedCluster")]
         public Output<Outputs.ResourceMongoShardedCluster?> MongoShardedCluster { get; private set; } = null!;
 
-        /// <summary>
-        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("mtlsMysql")]
         public Output<Outputs.ResourceMtlsMysql?> MtlsMysql { get; private set; } = null!;
 
@@ -633,6 +636,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("maria")]
         public Input<Inputs.ResourceMariaArgs>? Maria { get; set; }
 
+        /// <summary>
+        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("mcp")]
+        public Input<Inputs.ResourceMcpArgs>? Mcp { get; set; }
+
         [Input("memcached")]
         public Input<Inputs.ResourceMemcachedArgs>? Memcached { get; set; }
 
@@ -660,9 +669,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterArgs>? MongoShardedCluster { get; set; }
 
-        /// <summary>
-        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mtlsMysql")]
         public Input<Inputs.ResourceMtlsMysqlArgs>? MtlsMysql { get; set; }
 
@@ -989,6 +995,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("maria")]
         public Input<Inputs.ResourceMariaGetArgs>? Maria { get; set; }
 
+        /// <summary>
+        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("mcp")]
+        public Input<Inputs.ResourceMcpGetArgs>? Mcp { get; set; }
+
         [Input("memcached")]
         public Input<Inputs.ResourceMemcachedGetArgs>? Memcached { get; set; }
 
@@ -1016,9 +1028,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterGetArgs>? MongoShardedCluster { get; set; }
 
-        /// <summary>
-        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mtlsMysql")]
         public Input<Inputs.ResourceMtlsMysqlGetArgs>? MtlsMysql { get; set; }
 

@@ -25,8 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "sdm:index/accountAttachment:AccountAttachment":
 		r = &AccountAttachment{}
+	case "sdm:index/accountGroup:AccountGroup":
+		r = &AccountGroup{}
 	case "sdm:index/approvalWorkflow:ApprovalWorkflow":
 		r = &ApprovalWorkflow{}
+	case "sdm:index/group:Group":
+		r = &Group{}
+	case "sdm:index/groupRole:GroupRole":
+		r = &GroupRole{}
 	case "sdm:index/identityAlias:IdentityAlias":
 		r = &IdentityAlias{}
 	case "sdm:index/identitySet:IdentitySet":
@@ -108,7 +114,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sdm",
+		"index/accountGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
 		"index/approvalWorkflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/groupRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

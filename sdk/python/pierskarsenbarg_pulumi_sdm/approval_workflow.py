@@ -190,6 +190,9 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "account_id": "a-1234abc",
                         },
                         {
+                            "group_id": "group-1234abc",
+                        },
+                        {
                             "reference": "manager-of-requester",
                         },
                     ],
@@ -203,6 +206,9 @@ class ApprovalWorkflow(pulumi.CustomResource):
                         },
                         {
                             "account_id": "a-5678def",
+                        },
+                        {
+                            "group_id": "group-5678def",
                         },
                         {
                             "reference": "manager-of-manager-of-requester",
@@ -255,6 +261,9 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "account_id": "a-1234abc",
                         },
                         {
+                            "group_id": "group-1234abc",
+                        },
+                        {
                             "reference": "manager-of-requester",
                         },
                     ],
@@ -268,6 +277,9 @@ class ApprovalWorkflow(pulumi.CustomResource):
                         },
                         {
                             "account_id": "a-5678def",
+                        },
+                        {
+                            "group_id": "group-5678def",
                         },
                         {
                             "reference": "manager-of-manager-of-requester",

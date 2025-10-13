@@ -16,8 +16,11 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const workflowRoleQuery = sdm.getWorkflowRole({
- *     roleId: "r-9862923",
- *     workflowId: "aw-7935485",
+ *     roleId: "r-1234567890abcdef",
+ *     workflowId: "w-1234567890abcdef",
+ * });
+ * const workflowRoleById = sdm.getWorkflowRole({
+ *     id: "wr-1234567890abcdef",
  * });
  * ```
  */
@@ -84,8 +87,11 @@ export interface GetWorkflowRoleResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const workflowRoleQuery = sdm.getWorkflowRole({
- *     roleId: "r-9862923",
- *     workflowId: "aw-7935485",
+ *     roleId: "r-1234567890abcdef",
+ *     workflowId: "w-1234567890abcdef",
+ * });
+ * const workflowRoleById = sdm.getWorkflowRole({
+ *     id: "wr-1234567890abcdef",
  * });
  * ```
  */

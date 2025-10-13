@@ -16,15 +16,19 @@ namespace PiersKarsenbarg.Sdm.Outputs
     {
         public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineActiveDirectoryResult> ActiveDirectories;
         public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineKeyValueResult> KeyValues;
+        public readonly ImmutableArray<Outputs.GetSecretEngineSecretEnginePostgresSecretEngineResult> PostgresSecretEngines;
 
         [OutputConstructor]
         private GetSecretEngineSecretEngineResult(
             ImmutableArray<Outputs.GetSecretEngineSecretEngineActiveDirectoryResult> activeDirectories,
 
-            ImmutableArray<Outputs.GetSecretEngineSecretEngineKeyValueResult> keyValues)
+            ImmutableArray<Outputs.GetSecretEngineSecretEngineKeyValueResult> keyValues,
+
+            ImmutableArray<Outputs.GetSecretEngineSecretEnginePostgresSecretEngineResult> postgresSecretEngines)
         {
             ActiveDirectories = activeDirectories;
             KeyValues = keyValues;
+            PostgresSecretEngines = postgresSecretEngines;
         }
     }
 }

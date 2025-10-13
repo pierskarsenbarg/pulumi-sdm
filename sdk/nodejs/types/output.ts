@@ -85,15 +85,19 @@ export interface ApprovalWorkflowApprovalStep {
 
 export interface ApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: string;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: string;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: string;
 }
@@ -237,6 +241,21 @@ export interface GetAccountAttachmentAccountAttachment {
     roleId?: string;
 }
 
+export interface GetAccountGroupAccountsGroup {
+    /**
+     * Unique identifier of the Account.
+     */
+    accountId?: string;
+    /**
+     * Unique identifier of the Group.
+     */
+    groupId?: string;
+    /**
+     * Unique identifier of the AccountGroup.
+     */
+    id?: string;
+}
+
 export interface GetApprovalWorkflowApprovalStep {
     /**
      * The approvers for this approval step
@@ -254,15 +273,19 @@ export interface GetApprovalWorkflowApprovalStep {
 
 export interface GetApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: string;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: string;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: string;
 }
@@ -307,15 +330,57 @@ export interface GetApprovalWorkflowApprovalWorkflowApprovalStep {
 
 export interface GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: string;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: string;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    roleId?: string;
+}
+
+export interface GetGroupGroup {
+    /**
+     * Description of the Group.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the Group.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Group.
+     */
+    name?: string;
+    /**
+     * Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.
+     */
+    source: string;
+    /**
+     * Tags is a map of key/value pairs that can be attached to a Group.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetGroupRoleGroupsRole {
+    /**
+     * The assigned Group ID.
+     */
+    groupId?: string;
+    /**
+     * Unique identifier of the GroupRole.
+     */
+    id?: string;
+    /**
+     * The assigned Role ID.
      */
     roleId?: string;
 }
@@ -726,6 +791,7 @@ export interface GetResourceResource {
      */
     kubernetesUserImpersonations: outputs.GetResourceResourceKubernetesUserImpersonation[];
     marias: outputs.GetResourceResourceMaria[];
+    mcps: outputs.GetResourceResourceMcp[];
     memcacheds: outputs.GetResourceResourceMemcached[];
     memsqls: outputs.GetResourceResourceMemsql[];
     mongoHosts: outputs.GetResourceResourceMongoHost[];
@@ -5059,6 +5125,57 @@ export interface GetResourceResourceMaria {
     username?: string;
 }
 
+export interface GetResourceResourceMcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceMemcached {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -5960,6 +6077,10 @@ export interface GetResourceResourceOracleNne {
      */
     tags?: {[key: string]: string};
     /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
      * The username to authenticate with.
      */
     username?: string;
@@ -6265,6 +6386,10 @@ export interface GetResourceResourceRdpCert {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
+    /**
+     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     */
+    dcHostnames?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -7702,6 +7827,7 @@ export interface GetRoleRole {
 export interface GetSecretEngineSecretEngine {
     activeDirectories: outputs.GetSecretEngineSecretEngineActiveDirectory[];
     keyValues: outputs.GetSecretEngineSecretEngineKeyValue[];
+    postgresSecretEngines: outputs.GetSecretEngineSecretEnginePostgresSecretEngine[];
 }
 
 export interface GetSecretEngineSecretEngineActiveDirectory {
@@ -7820,6 +7946,69 @@ export interface GetSecretEngineSecretEngineKeyValue {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface GetSecretEngineSecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database?: string;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Secret Engine.
+     */
+    id?: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name?: string;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    password?: string;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    port?: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId?: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    tls?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    username?: string;
 }
 
 export interface GetSecretStoreSecretStore {
@@ -12742,6 +12931,53 @@ export interface ResourceMaria {
     username?: string;
 }
 
+export interface ResourceMcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceMemcached {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -13587,6 +13823,10 @@ export interface ResourceOracleNne {
      */
     tags?: {[key: string]: string};
     /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
      * The username to authenticate with.
      */
     username?: string;
@@ -13872,6 +14112,10 @@ export interface ResourceRdpCert {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
+    /**
+     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     */
+    dcHostnames?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -15304,6 +15548,65 @@ export interface SecretEngineKeyValue {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface SecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: string;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    hostname: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: string;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    password: string;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    port: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    tls?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    username: string;
 }
 
 export interface SecretStoreActiveDirectoryStore {

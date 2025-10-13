@@ -63,6 +63,74 @@ namespace PiersKarsenbarg.Sdm
     ///         }),
     ///     });
     /// 
+    ///     var k8s_admin = new Sdm.Role("k8s-admin", new()
+    ///     {
+    ///         AccessRules = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["env"] = "production",
+    ///                 },
+    ///                 ["privileges"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["k8s"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["groups"] = new[]
+    ///                         {
+    ///                             "system:masters",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var k8s_developers = new Sdm.Role("k8s-developers", new()
+    ///     {
+    ///         AccessRules = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "amazon_eks",
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["env"] = "dev",
+    ///                 },
+    ///                 ["privileges"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["k8s"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["groups"] = new[]
+    ///                         {
+    ///                             "developers",
+    ///                             "viewers",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "kubernetes",
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["region"] = "us-west",
+    ///                 },
+    ///                 ["privileges"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["k8s"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["groups"] = new[]
+    ///                         {
+    ///                             "edit",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
     /// });
     /// ```
     /// This resource can be imported using the import command.

@@ -185,6 +185,16 @@ def get_workflow(access_request_fixed_duration: Optional[_builtins.str] = None,
     Workflows are the collection of rules that define the resources to which access can be requested,
      the users that can request that access, and the mechanism for approving those requests which can either
      but automatic approval or a set of users authorized to approve the requests.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sdm as sdm
+
+    workflow_by_name = sdm.get_workflow(name="workflow example")
+    workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+    workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
+    ```
 
 
     :param _builtins.str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
@@ -236,6 +246,16 @@ def get_workflow_output(access_request_fixed_duration: Optional[pulumi.Input[Opt
     Workflows are the collection of rules that define the resources to which access can be requested,
      the users that can request that access, and the mechanism for approving those requests which can either
      but automatic approval or a set of users authorized to approve the requests.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sdm as sdm
+
+    workflow_by_name = sdm.get_workflow(name="workflow example")
+    workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+    workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
+    ```
 
 
     :param _builtins.str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.

@@ -185,6 +185,43 @@ class Role(pulumi.CustomResource):
                 "ids": ["rs-093e6f3061eb4dad"],
             },
         ]))
+        k8s_admin = sdm.Role("k8s-admin", access_rules=json.dumps([{
+            "tags": {
+                "env": "production",
+            },
+            "privileges": {
+                "k8s": {
+                    "groups": ["system:masters"],
+                },
+            },
+        }]))
+        k8s_developers = sdm.Role("k8s-developers", access_rules=json.dumps([
+            {
+                "type": "amazon_eks",
+                "tags": {
+                    "env": "dev",
+                },
+                "privileges": {
+                    "k8s": {
+                        "groups": [
+                            "developers",
+                            "viewers",
+                        ],
+                    },
+                },
+            },
+            {
+                "type": "kubernetes",
+                "tags": {
+                    "region": "us-west",
+                },
+                "privileges": {
+                    "k8s": {
+                        "groups": ["edit"],
+                    },
+                },
+            },
+        ]))
         ```
         This resource can be imported using the import command.
 
@@ -237,6 +274,43 @@ class Role(pulumi.CustomResource):
             },
             {
                 "ids": ["rs-093e6f3061eb4dad"],
+            },
+        ]))
+        k8s_admin = sdm.Role("k8s-admin", access_rules=json.dumps([{
+            "tags": {
+                "env": "production",
+            },
+            "privileges": {
+                "k8s": {
+                    "groups": ["system:masters"],
+                },
+            },
+        }]))
+        k8s_developers = sdm.Role("k8s-developers", access_rules=json.dumps([
+            {
+                "type": "amazon_eks",
+                "tags": {
+                    "env": "dev",
+                },
+                "privileges": {
+                    "k8s": {
+                        "groups": [
+                            "developers",
+                            "viewers",
+                        ],
+                    },
+                },
+            },
+            {
+                "type": "kubernetes",
+                "tags": {
+                    "region": "us-west",
+                },
+                "privileges": {
+                    "k8s": {
+                        "groups": ["edit"],
+                    },
+                },
             },
         ]))
         ```

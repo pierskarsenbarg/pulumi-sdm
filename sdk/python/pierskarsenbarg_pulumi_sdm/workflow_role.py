@@ -113,8 +113,11 @@ class WorkflowRole(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         workflow_role_example = sdm.WorkflowRole("workflowRoleExample",
-            role_id="r-243561",
-            workflow_id="aw-343865")
+            workflow_id=sdm_workflow["manual_approval_workflow"]["id"],
+            role_id=sdm_role["developers"]["id"])
+        workflow_role_with_ids = sdm.WorkflowRole("workflowRoleWithIds",
+            workflow_id="w-1234567890abcdef",
+            role_id="r-1234567890abcdef")
         ```
         This resource can be imported using the import command.
 
@@ -147,8 +150,11 @@ class WorkflowRole(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         workflow_role_example = sdm.WorkflowRole("workflowRoleExample",
-            role_id="r-243561",
-            workflow_id="aw-343865")
+            workflow_id=sdm_workflow["manual_approval_workflow"]["id"],
+            role_id=sdm_role["developers"]["id"])
+        workflow_role_with_ids = sdm.WorkflowRole("workflowRoleWithIds",
+            workflow_id="w-1234567890abcdef",
+            role_id="r-1234567890abcdef")
         ```
         This resource can be imported using the import command.
 

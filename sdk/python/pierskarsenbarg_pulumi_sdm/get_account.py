@@ -266,7 +266,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
     :param _builtins.str permissions: Permissions assigned to the token, e.g. role:create.
     :param _builtins.bool suspended: Reserved for future use.  Always false for tokens.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['accountType'] = account_type
@@ -351,7 +351,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
     :param _builtins.str permissions: Permissions assigned to the token, e.g. role:create.
     :param _builtins.bool suspended: Reserved for future use.  Always false for tokens.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     """
     __args__ = dict()
     __args__['accountType'] = account_type

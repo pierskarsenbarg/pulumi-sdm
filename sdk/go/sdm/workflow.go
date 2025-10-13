@@ -16,6 +16,94 @@ import (
 //	the users that can request that access, and the mechanism for approving those requests which can either
 //	but automatic approval or a set of users authorized to approve the requests.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create approval workflows first
+//			autoGrant, err := sdm.NewApprovalWorkflow(ctx, "autoGrant", &sdm.ApprovalWorkflowArgs{
+//				ApprovalMode: pulumi.String("automatic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			manualApproval, err := sdm.NewApprovalWorkflow(ctx, "manualApproval", &sdm.ApprovalWorkflowArgs{
+//				ApprovalMode: pulumi.String("manual"),
+//				ApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{
+//					&sdm.ApprovalWorkflowApprovalStepArgs{
+//						Quantifier: pulumi.String("any"),
+//						SkipAfter:  pulumi.String("2h0m0s"),
+//						Approvers: sdm.ApprovalWorkflowApprovalStepApproverArray{
+//							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
+//								Reference: pulumi.String("manager-of-requester"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
+//				map[string]interface{}{
+//					"type": "redis",
+//					"tags": map[string]interface{}{
+//						"region": "us-east",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			// Create workflows that reference the approval workflows
+//			_, err = sdm.NewWorkflow(ctx, "autoGrantWorkflow", &sdm.WorkflowArgs{
+//				ApprovalFlowId: autoGrant.ID(),
+//				Enabled:        pulumi.Bool(true),
+//				AccessRules:    pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
+//				map[string]interface{}{
+//					"type": "redis",
+//					"tags": map[string]interface{}{
+//						"region": "us-east",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = sdm.NewWorkflow(ctx, "manualApprovalWorkflow", &sdm.WorkflowArgs{
+//				ApprovalFlowId: manualApproval.ID(),
+//				Enabled:        pulumi.Bool(true),
+//				AccessRules:    pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // A Workflow can be imported using the id, e.g.,
