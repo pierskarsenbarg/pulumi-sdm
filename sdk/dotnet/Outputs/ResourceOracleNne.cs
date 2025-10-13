@@ -63,6 +63,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// If set, TLS must be used to connect to this resource.
+        /// </summary>
+        public readonly bool? TlsRequired;
+        /// <summary>
         /// The username to authenticate with.
         /// </summary>
         public readonly string? Username;
@@ -93,6 +97,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
+            bool? tlsRequired,
+
             string? username)
         {
             BindInterface = bindInterface;
@@ -107,6 +113,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
+            TlsRequired = tlsRequired;
             Username = username;
         }
     }

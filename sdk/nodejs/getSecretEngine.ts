@@ -17,20 +17,26 @@ export function getSecretEngine(args?: GetSecretEngineArgs, opts?: pulumi.Invoke
         "bindpass": args.bindpass,
         "certificate": args.certificate,
         "connectionTimeout": args.connectionTimeout,
+        "database": args.database,
         "doNotValidateTimestamps": args.doNotValidateTimestamps,
+        "hostname": args.hostname,
         "id": args.id,
         "insecureTls": args.insecureTls,
         "keyRotationIntervalDays": args.keyRotationIntervalDays,
         "name": args.name,
+        "password": args.password,
+        "port": args.port,
         "requestTimeout": args.requestTimeout,
         "secretStoreId": args.secretStoreId,
         "secretStoreRootPath": args.secretStoreRootPath,
         "startTls": args.startTls,
         "tags": args.tags,
+        "tls": args.tls,
         "type": args.type,
         "upndomain": args.upndomain,
         "url": args.url,
         "userdn": args.userdn,
+        "username": args.username,
     }, opts);
 }
 
@@ -55,9 +61,17 @@ export interface GetSecretEngineArgs {
      */
     connectionTimeout?: number;
     /**
+     * Database is the database to verify credential against.
+     */
+    database?: string;
+    /**
      * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
      */
     doNotValidateTimestamps?: boolean;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    hostname?: string;
     /**
      * Unique identifier of the Secret Engine.
      */
@@ -74,6 +88,14 @@ export interface GetSecretEngineArgs {
      * Unique human-readable name of the Secret Engine.
      */
     name?: string;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    password?: string;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    port?: number;
     /**
      * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
      */
@@ -95,7 +117,11 @@ export interface GetSecretEngineArgs {
      */
     tags?: {[key: string]: string};
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    tls?: boolean;
+    /**
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
     type?: string;
     /**
@@ -110,6 +136,10 @@ export interface GetSecretEngineArgs {
      * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
      */
     userdn?: string;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    username?: string;
 }
 
 /**
@@ -133,9 +163,17 @@ export interface GetSecretEngineResult {
      */
     readonly connectionTimeout?: number;
     /**
+     * Database is the database to verify credential against.
+     */
+    readonly database?: string;
+    /**
      * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
      */
     readonly doNotValidateTimestamps?: boolean;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    readonly hostname?: string;
     /**
      * Unique identifier of the Secret Engine.
      */
@@ -156,6 +194,14 @@ export interface GetSecretEngineResult {
      * Unique human-readable name of the Secret Engine.
      */
     readonly name?: string;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    readonly password?: string;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    readonly port?: number;
     /**
      * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
      */
@@ -181,6 +227,10 @@ export interface GetSecretEngineResult {
      * Tags is a map of key, value pairs.
      */
     readonly tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    readonly tls?: boolean;
     readonly type?: string;
     /**
      * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
@@ -195,6 +245,10 @@ export interface GetSecretEngineResult {
      * * key_value:
      */
     readonly userdn?: string;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    readonly username?: string;
 }
 /**
  * A SecretEngine is managing secrets in SecretStores.
@@ -207,20 +261,26 @@ export function getSecretEngineOutput(args?: GetSecretEngineOutputArgs, opts?: p
         "bindpass": args.bindpass,
         "certificate": args.certificate,
         "connectionTimeout": args.connectionTimeout,
+        "database": args.database,
         "doNotValidateTimestamps": args.doNotValidateTimestamps,
+        "hostname": args.hostname,
         "id": args.id,
         "insecureTls": args.insecureTls,
         "keyRotationIntervalDays": args.keyRotationIntervalDays,
         "name": args.name,
+        "password": args.password,
+        "port": args.port,
         "requestTimeout": args.requestTimeout,
         "secretStoreId": args.secretStoreId,
         "secretStoreRootPath": args.secretStoreRootPath,
         "startTls": args.startTls,
         "tags": args.tags,
+        "tls": args.tls,
         "type": args.type,
         "upndomain": args.upndomain,
         "url": args.url,
         "userdn": args.userdn,
+        "username": args.username,
     }, opts);
 }
 
@@ -245,9 +305,17 @@ export interface GetSecretEngineOutputArgs {
      */
     connectionTimeout?: pulumi.Input<number>;
     /**
+     * Database is the database to verify credential against.
+     */
+    database?: pulumi.Input<string>;
+    /**
      * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
      */
     doNotValidateTimestamps?: pulumi.Input<boolean>;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * Unique identifier of the Secret Engine.
      */
@@ -264,6 +332,14 @@ export interface GetSecretEngineOutputArgs {
      * Unique human-readable name of the Secret Engine.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    port?: pulumi.Input<number>;
     /**
      * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
      */
@@ -285,7 +361,11 @@ export interface GetSecretEngineOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    tls?: pulumi.Input<boolean>;
+    /**
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
     type?: pulumi.Input<string>;
     /**
@@ -300,4 +380,8 @@ export interface GetSecretEngineOutputArgs {
      * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
      */
     userdn?: pulumi.Input<string>;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    username?: pulumi.Input<string>;
 }

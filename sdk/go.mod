@@ -1,6 +1,6 @@
 module github.com/pierskarsenbarg/pulumi-sdm/sdk
 
-go 1.23.11
+go 1.24.1
 
 toolchain go1.24.1
 

@@ -34,6 +34,43 @@ import * as utilities from "./utilities";
  *         ids: ["rs-093e6f3061eb4dad"],
  *     },
  * ])});
+ * const k8s_admin = new sdm.Role("k8s-admin", {accessRules: JSON.stringify([{
+ *     tags: {
+ *         env: "production",
+ *     },
+ *     privileges: {
+ *         k8s: {
+ *             groups: ["system:masters"],
+ *         },
+ *     },
+ * }])});
+ * const k8s_developers = new sdm.Role("k8s-developers", {accessRules: JSON.stringify([
+ *     {
+ *         type: "amazon_eks",
+ *         tags: {
+ *             env: "dev",
+ *         },
+ *         privileges: {
+ *             k8s: {
+ *                 groups: [
+ *                     "developers",
+ *                     "viewers",
+ *                 ],
+ *             },
+ *         },
+ *     },
+ *     {
+ *         type: "kubernetes",
+ *         tags: {
+ *             region: "us-west",
+ *         },
+ *         privileges: {
+ *             k8s: {
+ *                 groups: ["edit"],
+ *             },
+ *         },
+ *     },
+ * ])});
  * ```
  * This resource can be imported using the import command.
  *

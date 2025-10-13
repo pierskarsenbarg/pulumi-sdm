@@ -100,16 +100,17 @@ type Resource struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrOutput `pulumi:"kubernetesUserImpersonation"`
 	Maria                       ResourceMariaPtrOutput                       `pulumi:"maria"`
-	Memcached                   ResourceMemcachedPtrOutput                   `pulumi:"memcached"`
-	Memsql                      ResourceMemsqlPtrOutput                      `pulumi:"memsql"`
-	MongoHost                   ResourceMongoHostPtrOutput                   `pulumi:"mongoHost"`
+	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Mcp       ResourceMcpPtrOutput       `pulumi:"mcp"`
+	Memcached ResourceMemcachedPtrOutput `pulumi:"memcached"`
+	Memsql    ResourceMemsqlPtrOutput    `pulumi:"memsql"`
+	MongoHost ResourceMongoHostPtrOutput `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrOutput `pulumi:"mongoLegacyReplicaset"`
 	MongoReplicaSet       ResourceMongoReplicaSetPtrOutput       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   ResourceMongoShardedClusterPtrOutput   `pulumi:"mongoShardedCluster"`
-	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql             ResourceMtlsMysqlPtrOutput             `pulumi:"mtlsMysql"`
 	MtlsPostgres          ResourceMtlsPostgresPtrOutput          `pulumi:"mtlsPostgres"`
 	Mysql                 ResourceMysqlPtrOutput                 `pulumi:"mysql"`
@@ -255,16 +256,17 @@ type resourceState struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
-	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
-	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
+	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Mcp       *ResourceMcp       `pulumi:"mcp"`
+	Memcached *ResourceMemcached `pulumi:"memcached"`
+	Memsql    *ResourceMemsql    `pulumi:"memsql"`
+	MongoHost *ResourceMongoHost `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
-	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql             *ResourceMtlsMysql             `pulumi:"mtlsMysql"`
 	MtlsPostgres          *ResourceMtlsPostgres          `pulumi:"mtlsPostgres"`
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
@@ -381,16 +383,17 @@ type ResourceState struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
 	Maria                       ResourceMariaPtrInput
-	Memcached                   ResourceMemcachedPtrInput
-	Memsql                      ResourceMemsqlPtrInput
-	MongoHost                   ResourceMongoHostPtrInput
+	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Mcp       ResourceMcpPtrInput
+	Memcached ResourceMemcachedPtrInput
+	Memsql    ResourceMemsqlPtrInput
+	MongoHost ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
-	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql             ResourceMtlsMysqlPtrInput
 	MtlsPostgres          ResourceMtlsPostgresPtrInput
 	Mysql                 ResourceMysqlPtrInput
@@ -511,16 +514,17 @@ type resourceArgs struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
-	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
-	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
+	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Mcp       *ResourceMcp       `pulumi:"mcp"`
+	Memcached *ResourceMemcached `pulumi:"memcached"`
+	Memsql    *ResourceMemsql    `pulumi:"memsql"`
+	MongoHost *ResourceMongoHost `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
-	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql             *ResourceMtlsMysql             `pulumi:"mtlsMysql"`
 	MtlsPostgres          *ResourceMtlsPostgres          `pulumi:"mtlsPostgres"`
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
@@ -638,16 +642,17 @@ type ResourceArgs struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
 	Maria                       ResourceMariaPtrInput
-	Memcached                   ResourceMemcachedPtrInput
-	Memsql                      ResourceMemsqlPtrInput
-	MongoHost                   ResourceMongoHostPtrInput
+	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Mcp       ResourceMcpPtrInput
+	Memcached ResourceMemcachedPtrInput
+	Memsql    ResourceMemsqlPtrInput
+	MongoHost ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
-	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql             ResourceMtlsMysqlPtrInput
 	MtlsPostgres          ResourceMtlsPostgresPtrInput
 	Mysql                 ResourceMysqlPtrInput
@@ -1060,6 +1065,11 @@ func (o ResourceOutput) Maria() ResourceMariaPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMariaPtrOutput { return v.Maria }).(ResourceMariaPtrOutput)
 }
 
+// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Mcp() ResourceMcpPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceMcpPtrOutput { return v.Mcp }).(ResourceMcpPtrOutput)
+}
+
 func (o ResourceOutput) Memcached() ResourceMemcachedPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMemcachedPtrOutput { return v.Memcached }).(ResourceMemcachedPtrOutput)
 }
@@ -1090,7 +1100,6 @@ func (o ResourceOutput) MongoShardedCluster() ResourceMongoShardedClusterPtrOutp
 	return o.ApplyT(func(v *Resource) ResourceMongoShardedClusterPtrOutput { return v.MongoShardedCluster }).(ResourceMongoShardedClusterPtrOutput)
 }
 
-// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MtlsMysql() ResourceMtlsMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMtlsMysqlPtrOutput { return v.MtlsMysql }).(ResourceMtlsMysqlPtrOutput)
 }

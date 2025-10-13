@@ -20,6 +20,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
+        /// Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+        /// </summary>
+        [Input("dcHostnames")]
+        public Input<string>? DcHostnames { get; set; }
+
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         [Input("egressFilter")]

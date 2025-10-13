@@ -38,6 +38,10 @@ namespace PiersKarsenbarg.Sdm
     ///                     },
     ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
     ///                     {
+    ///                         GroupId = "group-1234abc",
+    ///                     },
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
     ///                         Reference = "manager-of-requester",
     ///                     },
     ///                 },
@@ -55,6 +59,10 @@ namespace PiersKarsenbarg.Sdm
     ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
     ///                     {
     ///                         AccountId = "a-5678def",
+    ///                     },
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         GroupId = "group-5678def",
     ///                     },
     ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
     ///                     {

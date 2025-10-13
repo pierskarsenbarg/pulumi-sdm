@@ -62,7 +62,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -100,7 +100,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -14,6 +14,82 @@ namespace PiersKarsenbarg.Sdm
     /// Workflows are the collection of rules that define the resources to which access can be requested,
     ///  the users that can request that access, and the mechanism for approving those requests which can either
     ///  but automatic approval or a set of users authorized to approve the requests.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create approval workflows first
+    ///     var autoGrant = new Sdm.ApprovalWorkflow("autoGrant", new()
+    ///     {
+    ///         ApprovalMode = "automatic",
+    ///     });
+    /// 
+    ///     var manualApproval = new Sdm.ApprovalWorkflow("manualApproval", new()
+    ///     {
+    ///         ApprovalMode = "manual",
+    ///         ApprovalSteps = new[]
+    ///         {
+    ///             new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs
+    ///             {
+    ///                 Quantifier = "any",
+    ///                 SkipAfter = "2h0m0s",
+    ///                 Approvers = new[]
+    ///                 {
+    ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
+    ///                     {
+    ///                         Reference = "manager-of-requester",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Create workflows that reference the approval workflows
+    ///     var autoGrantWorkflow = new Sdm.Workflow("autoGrantWorkflow", new()
+    ///     {
+    ///         ApprovalFlowId = autoGrant.Id,
+    ///         Enabled = true,
+    ///         AccessRules = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "redis",
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["region"] = "us-east",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var manualApprovalWorkflow = new Sdm.Workflow("manualApprovalWorkflow", new()
+    ///     {
+    ///         ApprovalFlowId = manualApproval.Id,
+    ///         Enabled = true,
+    ///         AccessRules = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "redis",
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["region"] = "us-east",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// This resource can be imported using the import command.
+    /// 
     /// ## Import
     /// 
     /// A Workflow can be imported using the id, e.g.,

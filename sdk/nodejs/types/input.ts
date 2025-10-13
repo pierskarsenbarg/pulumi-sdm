@@ -85,15 +85,19 @@ export interface ApprovalWorkflowApprovalStep {
 
 export interface ApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: pulumi.Input<string>;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: pulumi.Input<string>;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: pulumi.Input<string>;
 }
@@ -130,30 +134,38 @@ export interface GetApprovalWorkflowApprovalStepArgs {
 
 export interface GetApprovalWorkflowApprovalStepApprover {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: string;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: string;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: string;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: string;
 }
 
 export interface GetApprovalWorkflowApprovalStepApproverArgs {
     /**
-     * The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     accountId?: pulumi.Input<string>;
     /**
-     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+     * The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     reference?: pulumi.Input<string>;
     /**
-     * The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+     * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: pulumi.Input<string>;
 }
@@ -4282,6 +4294,53 @@ export interface ResourceMaria {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceMcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ResourceMemcached {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -5127,6 +5186,10 @@ export interface ResourceOracleNne {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: pulumi.Input<boolean>;
+    /**
      * The username to authenticate with.
      */
     username?: pulumi.Input<string>;
@@ -5412,6 +5475,10 @@ export interface ResourceRdpCert {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     */
+    dcHostnames?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6844,6 +6911,65 @@ export interface SecretEngineKeyValue {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: pulumi.Input<string>;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * Hostname is the hostname or IP address of the Postgres server.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Password is the password to connect to the Postgres server.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Port is the port number of the Postgres server.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: pulumi.Input<string>;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * TLS enables TLS/SSL when connecting to the Postgres server.
+     */
+    tls?: pulumi.Input<boolean>;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: pulumi.Input<string>;
+    /**
+     * Username is the username to connect to the Postgres server.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface SecretStoreActiveDirectoryStore {

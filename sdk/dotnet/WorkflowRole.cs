@@ -25,8 +25,14 @@ namespace PiersKarsenbarg.Sdm
     /// {
     ///     var workflowRoleExample = new Sdm.WorkflowRole("workflowRoleExample", new()
     ///     {
-    ///         RoleId = "r-243561",
-    ///         WorkflowId = "aw-343865",
+    ///         WorkflowId = sdm_workflow.Manual_approval_workflow.Id,
+    ///         RoleId = sdm_role.Developers.Id,
+    ///     });
+    /// 
+    ///     var workflowRoleWithIds = new Sdm.WorkflowRole("workflowRoleWithIds", new()
+    ///     {
+    ///         WorkflowId = "w-1234567890abcdef",
+    ///         RoleId = "r-1234567890abcdef",
     ///     });
     /// 
     /// });

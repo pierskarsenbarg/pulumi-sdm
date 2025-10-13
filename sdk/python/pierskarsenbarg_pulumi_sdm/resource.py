@@ -89,6 +89,7 @@ class ResourceArgs:
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
                  maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
+                 mcp: Optional[pulumi.Input['ResourceMcpArgs']] = None,
                  memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
                  memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
                  mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
@@ -136,9 +137,9 @@ class ResourceArgs:
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -297,6 +298,8 @@ class ResourceArgs:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
+        if mcp is not None:
+            pulumi.set(__self__, "mcp", mcp)
         if memcached is not None:
             pulumi.set(__self__, "memcached", memcached)
         if memsql is not None:
@@ -1013,6 +1016,18 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def mcp(self) -> Optional[pulumi.Input['ResourceMcpArgs']]:
+        """
+        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "mcp")
+
+    @mcp.setter
+    def mcp(self, value: Optional[pulumi.Input['ResourceMcpArgs']]):
+        pulumi.set(self, "mcp", value)
+
+    @_builtins.property
+    @pulumi.getter
     def memcached(self) -> Optional[pulumi.Input['ResourceMemcachedArgs']]:
         return pulumi.get(self, "memcached")
 
@@ -1083,9 +1098,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
-        """
-        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
@@ -1461,6 +1473,7 @@ class _ResourceState:
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
                  maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
+                 mcp: Optional[pulumi.Input['ResourceMcpArgs']] = None,
                  memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
                  memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
                  mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
@@ -1508,9 +1521,9 @@ class _ResourceState:
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -1669,6 +1682,8 @@ class _ResourceState:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
+        if mcp is not None:
+            pulumi.set(__self__, "mcp", mcp)
         if memcached is not None:
             pulumi.set(__self__, "memcached", memcached)
         if memsql is not None:
@@ -2385,6 +2400,18 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter
+    def mcp(self) -> Optional[pulumi.Input['ResourceMcpArgs']]:
+        """
+        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "mcp")
+
+    @mcp.setter
+    def mcp(self, value: Optional[pulumi.Input['ResourceMcpArgs']]):
+        pulumi.set(self, "mcp", value)
+
+    @_builtins.property
+    @pulumi.getter
     def memcached(self) -> Optional[pulumi.Input['ResourceMemcachedArgs']]:
         return pulumi.get(self, "memcached")
 
@@ -2455,9 +2482,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
-        """
-        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
@@ -2836,6 +2860,7 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
                  maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+                 mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
                  memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
                  memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
                  mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -2893,9 +2918,9 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -2995,6 +3020,7 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
                  maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+                 mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
                  memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
                  memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
                  mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -3113,6 +3139,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
             __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
             __props__.__dict__["maria"] = maria
+            __props__.__dict__["mcp"] = mcp
             __props__.__dict__["memcached"] = memcached
             __props__.__dict__["memsql"] = memsql
             __props__.__dict__["mongo_host"] = mongo_host
@@ -3232,6 +3259,7 @@ class Resource(pulumi.CustomResource):
             kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
             kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
             maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+            mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
             memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
             memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
             mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -3284,9 +3312,9 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3360,6 +3388,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
         __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
         __props__.__dict__["maria"] = maria
+        __props__.__dict__["mcp"] = mcp
         __props__.__dict__["memcached"] = memcached
         __props__.__dict__["memsql"] = memsql
         __props__.__dict__["mongo_host"] = mongo_host
@@ -3764,6 +3793,14 @@ class Resource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def mcp(self) -> pulumi.Output[Optional['outputs.ResourceMcp']]:
+        """
+        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "mcp")
+
+    @_builtins.property
+    @pulumi.getter
     def memcached(self) -> pulumi.Output[Optional['outputs.ResourceMemcached']]:
         return pulumi.get(self, "memcached")
 
@@ -3806,9 +3843,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> pulumi.Output[Optional['outputs.ResourceMtlsMysql']]:
-        """
-        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mtls_mysql")
 
     @_builtins.property

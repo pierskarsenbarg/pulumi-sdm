@@ -46,14 +46,12 @@ export class SecretEngine extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretEngine.__pulumiType;
     }
 
-    /**
-     * ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly activeDirectory: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
-    /**
-     * KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly keyValue: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
+    /**
+     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly postgresSecretEngine: pulumi.Output<outputs.SecretEnginePostgresSecretEngine | undefined>;
 
     /**
      * Create a SecretEngine resource with the given unique name, arguments, and options.
@@ -70,10 +68,12 @@ export class SecretEngine extends pulumi.CustomResource {
             const state = argsOrState as SecretEngineState | undefined;
             resourceInputs["activeDirectory"] = state?.activeDirectory;
             resourceInputs["keyValue"] = state?.keyValue;
+            resourceInputs["postgresSecretEngine"] = state?.postgresSecretEngine;
         } else {
             const args = argsOrState as SecretEngineArgs | undefined;
             resourceInputs["activeDirectory"] = args?.activeDirectory;
             resourceInputs["keyValue"] = args?.keyValue;
+            resourceInputs["postgresSecretEngine"] = args?.postgresSecretEngine;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretEngine.__pulumiType, name, resourceInputs, opts);
@@ -84,26 +84,22 @@ export class SecretEngine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretEngine resources.
  */
 export interface SecretEngineState {
-    /**
-     * ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
-    /**
-     * KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
+    /**
+     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
 }
 
 /**
  * The set of arguments for constructing a SecretEngine resource.
  */
 export interface SecretEngineArgs {
-    /**
-     * ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
-    /**
-     * KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
+    /**
+     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
 }

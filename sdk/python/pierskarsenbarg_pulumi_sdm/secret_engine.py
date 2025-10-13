@@ -22,23 +22,22 @@ __all__ = ['SecretEngineArgs', 'SecretEngine']
 class SecretEngineArgs:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
-                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None):
+                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
+                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None):
         """
         The set of arguments for constructing a SecretEngine resource.
-        :param pulumi.Input['SecretEngineActiveDirectoryArgs'] active_directory: ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretEngineKeyValueArgs'] key_value: KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretEnginePostgresSecretEngineArgs'] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
         if key_value is not None:
             pulumi.set(__self__, "key_value", key_value)
+        if postgres_secret_engine is not None:
+            pulumi.set(__self__, "postgres_secret_engine", postgres_secret_engine)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
     def active_directory(self) -> Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]:
-        """
-        ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
@@ -48,37 +47,45 @@ class SecretEngineArgs:
     @_builtins.property
     @pulumi.getter(name="keyValue")
     def key_value(self) -> Optional[pulumi.Input['SecretEngineKeyValueArgs']]:
-        """
-        KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "key_value")
 
     @key_value.setter
     def key_value(self, value: Optional[pulumi.Input['SecretEngineKeyValueArgs']]):
         pulumi.set(self, "key_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postgresSecretEngine")
+    def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
+        """
+        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "postgres_secret_engine")
+
+    @postgres_secret_engine.setter
+    def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
+        pulumi.set(self, "postgres_secret_engine", value)
 
 
 @pulumi.input_type
 class _SecretEngineState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
-                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None):
+                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
+                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None):
         """
         Input properties used for looking up and filtering SecretEngine resources.
-        :param pulumi.Input['SecretEngineActiveDirectoryArgs'] active_directory: ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretEngineKeyValueArgs'] key_value: KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretEnginePostgresSecretEngineArgs'] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
         if key_value is not None:
             pulumi.set(__self__, "key_value", key_value)
+        if postgres_secret_engine is not None:
+            pulumi.set(__self__, "postgres_secret_engine", postgres_secret_engine)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
     def active_directory(self) -> Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]:
-        """
-        ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
@@ -88,14 +95,23 @@ class _SecretEngineState:
     @_builtins.property
     @pulumi.getter(name="keyValue")
     def key_value(self) -> Optional[pulumi.Input['SecretEngineKeyValueArgs']]:
-        """
-        KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "key_value")
 
     @key_value.setter
     def key_value(self, value: Optional[pulumi.Input['SecretEngineKeyValueArgs']]):
         pulumi.set(self, "key_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="postgresSecretEngine")
+    def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
+        """
+        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "postgres_secret_engine")
+
+    @postgres_secret_engine.setter
+    def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
+        pulumi.set(self, "postgres_secret_engine", value)
 
 
 @pulumi.type_token("sdm:index/secretEngine:SecretEngine")
@@ -106,6 +122,7 @@ class SecretEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
                  key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
                  __props__=None):
         """
         A SecretEngine is managing secrets in SecretStores.
@@ -121,8 +138,7 @@ class SecretEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']] active_directory: ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']] key_value: KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -159,6 +175,7 @@ class SecretEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
                  key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -170,6 +187,7 @@ class SecretEngine(pulumi.CustomResource):
 
             __props__.__dict__["active_directory"] = active_directory
             __props__.__dict__["key_value"] = key_value
+            __props__.__dict__["postgres_secret_engine"] = postgres_secret_engine
         super(SecretEngine, __self__).__init__(
             'sdm:index/secretEngine:SecretEngine',
             resource_name,
@@ -181,7 +199,8 @@ class SecretEngine(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-            key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None) -> 'SecretEngine':
+            key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+            postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None) -> 'SecretEngine':
         """
         Get an existing SecretEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -189,8 +208,7 @@ class SecretEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']] active_directory: ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']] key_value: KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -198,21 +216,24 @@ class SecretEngine(pulumi.CustomResource):
 
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["key_value"] = key_value
+        __props__.__dict__["postgres_secret_engine"] = postgres_secret_engine
         return SecretEngine(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
     def active_directory(self) -> pulumi.Output[Optional['outputs.SecretEngineActiveDirectory']]:
-        """
-        ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "active_directory")
 
     @_builtins.property
     @pulumi.getter(name="keyValue")
     def key_value(self) -> pulumi.Output[Optional['outputs.SecretEngineKeyValue']]:
-        """
-        KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "key_value")
+
+    @_builtins.property
+    @pulumi.getter(name="postgresSecretEngine")
+    def postgres_secret_engine(self) -> pulumi.Output[Optional['outputs.SecretEnginePostgresSecretEngine']]:
+        """
+        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "postgres_secret_engine")
 

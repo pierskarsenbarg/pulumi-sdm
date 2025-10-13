@@ -59,10 +59,22 @@ namespace PiersKarsenbarg.Sdm
         public int? ConnectionTimeout { get; set; }
 
         /// <summary>
+        /// Database is the database to verify credential against.
+        /// </summary>
+        [Input("database")]
+        public string? Database { get; set; }
+
+        /// <summary>
         /// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
         /// </summary>
         [Input("doNotValidateTimestamps")]
         public bool? DoNotValidateTimestamps { get; set; }
+
+        /// <summary>
+        /// Hostname is the hostname or IP address of the Postgres server.
+        /// </summary>
+        [Input("hostname")]
+        public string? Hostname { get; set; }
 
         /// <summary>
         /// Unique identifier of the Secret Engine.
@@ -87,6 +99,18 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Password is the password to connect to the Postgres server.
+        /// </summary>
+        [Input("password")]
+        public string? Password { get; set; }
+
+        /// <summary>
+        /// Port is the port number of the Postgres server.
+        /// </summary>
+        [Input("port")]
+        public int? Port { get; set; }
 
         /// <summary>
         /// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
@@ -125,7 +149,13 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// </summary>
+        [Input("tls")]
+        public bool? Tls { get; set; }
+
+        /// <summary>
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -147,6 +177,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("userdn")]
         public string? Userdn { get; set; }
+
+        /// <summary>
+        /// Username is the username to connect to the Postgres server.
+        /// </summary>
+        [Input("username")]
+        public string? Username { get; set; }
 
         public GetSecretEngineArgs()
         {
@@ -181,10 +217,22 @@ namespace PiersKarsenbarg.Sdm
         public Input<int>? ConnectionTimeout { get; set; }
 
         /// <summary>
+        /// Database is the database to verify credential against.
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
+
+        /// <summary>
         /// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
         /// </summary>
         [Input("doNotValidateTimestamps")]
         public Input<bool>? DoNotValidateTimestamps { get; set; }
+
+        /// <summary>
+        /// Hostname is the hostname or IP address of the Postgres server.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Unique identifier of the Secret Engine.
@@ -209,6 +257,18 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Password is the password to connect to the Postgres server.
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Port is the port number of the Postgres server.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
@@ -247,7 +307,13 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// </summary>
+        [Input("tls")]
+        public Input<bool>? Tls { get; set; }
+
+        /// <summary>
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -269,6 +335,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("userdn")]
         public Input<string>? Userdn { get; set; }
+
+        /// <summary>
+        /// Username is the username to connect to the Postgres server.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public GetSecretEngineInvokeArgs()
         {
@@ -297,9 +369,17 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly int? ConnectionTimeout;
         /// <summary>
+        /// Database is the database to verify credential against.
+        /// </summary>
+        public readonly string? Database;
+        /// <summary>
         /// If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
         /// </summary>
         public readonly bool? DoNotValidateTimestamps;
+        /// <summary>
+        /// Hostname is the hostname or IP address of the Postgres server.
+        /// </summary>
+        public readonly string? Hostname;
         /// <summary>
         /// Unique identifier of the Secret Engine.
         /// </summary>
@@ -320,6 +400,14 @@ namespace PiersKarsenbarg.Sdm
         /// Unique human-readable name of the Secret Engine.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Password is the password to connect to the Postgres server.
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// Port is the port number of the Postgres server.
+        /// </summary>
+        public readonly int? Port;
         /// <summary>
         /// Timeout, in seconds, for the connection when making requests against the server before returning back an error.
         /// </summary>
@@ -345,6 +433,10 @@ namespace PiersKarsenbarg.Sdm
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// </summary>
+        public readonly bool? Tls;
         public readonly string? Type;
         /// <summary>
         /// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
@@ -359,6 +451,10 @@ namespace PiersKarsenbarg.Sdm
         /// * key_value:
         /// </summary>
         public readonly string? Userdn;
+        /// <summary>
+        /// Username is the username to connect to the Postgres server.
+        /// </summary>
+        public readonly string? Username;
 
         [OutputConstructor]
         private GetSecretEngineResult(
@@ -370,7 +466,11 @@ namespace PiersKarsenbarg.Sdm
 
             int? connectionTimeout,
 
+            string? database,
+
             bool? doNotValidateTimestamps,
+
+            string? hostname,
 
             string? id,
 
@@ -381,6 +481,10 @@ namespace PiersKarsenbarg.Sdm
             int? keyRotationIntervalDays,
 
             string? name,
+
+            string? password,
+
+            int? port,
 
             int? requestTimeout,
 
@@ -394,34 +498,44 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableDictionary<string, string>? tags,
 
+            bool? tls,
+
             string? type,
 
             string? upndomain,
 
             string? url,
 
-            string? userdn)
+            string? userdn,
+
+            string? username)
         {
             Binddn = binddn;
             Bindpass = bindpass;
             Certificate = certificate;
             ConnectionTimeout = connectionTimeout;
+            Database = database;
             DoNotValidateTimestamps = doNotValidateTimestamps;
+            Hostname = hostname;
             Id = id;
             Ids = ids;
             InsecureTls = insecureTls;
             KeyRotationIntervalDays = keyRotationIntervalDays;
             Name = name;
+            Password = password;
+            Port = port;
             RequestTimeout = requestTimeout;
             SecretEngines = secretEngines;
             SecretStoreId = secretStoreId;
             SecretStoreRootPath = secretStoreRootPath;
             StartTls = startTls;
             Tags = tags;
+            Tls = tls;
             Type = type;
             Upndomain = upndomain;
             Url = url;
             Userdn = userdn;
+            Username = username;
         }
     }
 }

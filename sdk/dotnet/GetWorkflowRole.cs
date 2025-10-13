@@ -27,8 +27,13 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
-        ///         RoleId = "r-9862923",
-        ///         WorkflowId = "aw-7935485",
+        ///         RoleId = "r-1234567890abcdef",
+        ///         WorkflowId = "w-1234567890abcdef",
+        ///     });
+        /// 
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     {
+        ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });
@@ -52,8 +57,13 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
-        ///         RoleId = "r-9862923",
-        ///         WorkflowId = "aw-7935485",
+        ///         RoleId = "r-1234567890abcdef",
+        ///         WorkflowId = "w-1234567890abcdef",
+        ///     });
+        /// 
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     {
+        ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });
@@ -77,8 +87,13 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
-        ///         RoleId = "r-9862923",
-        ///         WorkflowId = "aw-7935485",
+        ///         RoleId = "r-1234567890abcdef",
+        ///         WorkflowId = "w-1234567890abcdef",
+        ///     });
+        /// 
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     {
+        ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });

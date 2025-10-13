@@ -24,10 +24,10 @@ import (
 type SecretEngine struct {
 	pulumi.CustomResourceState
 
-	// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	ActiveDirectory SecretEngineActiveDirectoryPtrOutput `pulumi:"activeDirectory"`
-	// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KeyValue SecretEngineKeyValuePtrOutput `pulumi:"keyValue"`
+	KeyValue        SecretEngineKeyValuePtrOutput        `pulumi:"keyValue"`
+	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrOutput `pulumi:"postgresSecretEngine"`
 }
 
 // NewSecretEngine registers a new resource with the given unique name, arguments, and options.
@@ -60,17 +60,17 @@ func GetSecretEngine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretEngine resources.
 type secretEngineState struct {
-	// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	ActiveDirectory *SecretEngineActiveDirectory `pulumi:"activeDirectory"`
-	// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KeyValue *SecretEngineKeyValue `pulumi:"keyValue"`
+	KeyValue        *SecretEngineKeyValue        `pulumi:"keyValue"`
+	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	PostgresSecretEngine *SecretEnginePostgresSecretEngine `pulumi:"postgresSecretEngine"`
 }
 
 type SecretEngineState struct {
-	// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	ActiveDirectory SecretEngineActiveDirectoryPtrInput
-	// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KeyValue SecretEngineKeyValuePtrInput
+	KeyValue        SecretEngineKeyValuePtrInput
+	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrInput
 }
 
 func (SecretEngineState) ElementType() reflect.Type {
@@ -78,18 +78,18 @@ func (SecretEngineState) ElementType() reflect.Type {
 }
 
 type secretEngineArgs struct {
-	// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	ActiveDirectory *SecretEngineActiveDirectory `pulumi:"activeDirectory"`
-	// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KeyValue *SecretEngineKeyValue `pulumi:"keyValue"`
+	KeyValue        *SecretEngineKeyValue        `pulumi:"keyValue"`
+	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	PostgresSecretEngine *SecretEnginePostgresSecretEngine `pulumi:"postgresSecretEngine"`
 }
 
 // The set of arguments for constructing a SecretEngine resource.
 type SecretEngineArgs struct {
-	// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	ActiveDirectory SecretEngineActiveDirectoryPtrInput
-	// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	KeyValue SecretEngineKeyValuePtrInput
+	KeyValue        SecretEngineKeyValuePtrInput
+	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrInput
 }
 
 func (SecretEngineArgs) ElementType() reflect.Type {
@@ -179,14 +179,17 @@ func (o SecretEngineOutput) ToSecretEngineOutputWithContext(ctx context.Context)
 	return o
 }
 
-// ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o SecretEngineOutput) ActiveDirectory() SecretEngineActiveDirectoryPtrOutput {
 	return o.ApplyT(func(v *SecretEngine) SecretEngineActiveDirectoryPtrOutput { return v.ActiveDirectory }).(SecretEngineActiveDirectoryPtrOutput)
 }
 
-// KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o SecretEngineOutput) KeyValue() SecretEngineKeyValuePtrOutput {
 	return o.ApplyT(func(v *SecretEngine) SecretEngineKeyValuePtrOutput { return v.KeyValue }).(SecretEngineKeyValuePtrOutput)
+}
+
+// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretEngineOutput) PostgresSecretEngine() SecretEnginePostgresSecretEnginePtrOutput {
+	return o.ApplyT(func(v *SecretEngine) SecretEnginePostgresSecretEnginePtrOutput { return v.PostgresSecretEngine }).(SecretEnginePostgresSecretEnginePtrOutput)
 }
 
 type SecretEngineArrayOutput struct{ *pulumi.OutputState }

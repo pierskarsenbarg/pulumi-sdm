@@ -27,7 +27,7 @@ class GetSecretEngineResult:
     """
     A collection of values returned by getSecretEngine.
     """
-    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, do_not_validate_timestamps=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, type=None, upndomain=None, url=None, userdn=None):
+    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, database=None, do_not_validate_timestamps=None, hostname=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, password=None, port=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, tls=None, type=None, upndomain=None, url=None, userdn=None, username=None):
         if binddn and not isinstance(binddn, str):
             raise TypeError("Expected argument 'binddn' to be a str")
         pulumi.set(__self__, "binddn", binddn)
@@ -40,9 +40,15 @@ class GetSecretEngineResult:
         if connection_timeout and not isinstance(connection_timeout, int):
             raise TypeError("Expected argument 'connection_timeout' to be a int")
         pulumi.set(__self__, "connection_timeout", connection_timeout)
+        if database and not isinstance(database, str):
+            raise TypeError("Expected argument 'database' to be a str")
+        pulumi.set(__self__, "database", database)
         if do_not_validate_timestamps and not isinstance(do_not_validate_timestamps, bool):
             raise TypeError("Expected argument 'do_not_validate_timestamps' to be a bool")
         pulumi.set(__self__, "do_not_validate_timestamps", do_not_validate_timestamps)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -58,6 +64,12 @@ class GetSecretEngineResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if password and not isinstance(password, str):
+            raise TypeError("Expected argument 'password' to be a str")
+        pulumi.set(__self__, "password", password)
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
+        pulumi.set(__self__, "port", port)
         if request_timeout and not isinstance(request_timeout, int):
             raise TypeError("Expected argument 'request_timeout' to be a int")
         pulumi.set(__self__, "request_timeout", request_timeout)
@@ -76,6 +88,9 @@ class GetSecretEngineResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if tls and not isinstance(tls, bool):
+            raise TypeError("Expected argument 'tls' to be a bool")
+        pulumi.set(__self__, "tls", tls)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -88,6 +103,9 @@ class GetSecretEngineResult:
         if userdn and not isinstance(userdn, str):
             raise TypeError("Expected argument 'userdn' to be a str")
         pulumi.set(__self__, "userdn", userdn)
+        if username and not isinstance(username, str):
+            raise TypeError("Expected argument 'username' to be a str")
+        pulumi.set(__self__, "username", username)
 
     @_builtins.property
     @pulumi.getter
@@ -122,12 +140,28 @@ class GetSecretEngineResult:
         return pulumi.get(self, "connection_timeout")
 
     @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        Database is the database to verify credential against.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
     @pulumi.getter(name="doNotValidateTimestamps")
     def do_not_validate_timestamps(self) -> Optional[_builtins.bool]:
         """
         If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
         """
         return pulumi.get(self, "do_not_validate_timestamps")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        Hostname is the hostname or IP address of the Postgres server.
+        """
+        return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter
@@ -168,6 +202,22 @@ class GetSecretEngineResult:
         Unique human-readable name of the Secret Engine.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Password is the password to connect to the Postgres server.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port is the port number of the Postgres server.
+        """
+        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
@@ -220,6 +270,14 @@ class GetSecretEngineResult:
 
     @_builtins.property
     @pulumi.getter
+    def tls(self) -> Optional[_builtins.bool]:
+        """
+        TLS enables TLS/SSL when connecting to the Postgres server.
+        """
+        return pulumi.get(self, "tls")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "type")
 
@@ -248,6 +306,14 @@ class GetSecretEngineResult:
         """
         return pulumi.get(self, "userdn")
 
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        Username is the username to connect to the Postgres server.
+        """
+        return pulumi.get(self, "username")
+
 
 class AwaitableGetSecretEngineResult(GetSecretEngineResult):
     # pylint: disable=using-constant-test
@@ -259,42 +325,54 @@ class AwaitableGetSecretEngineResult(GetSecretEngineResult):
             bindpass=self.bindpass,
             certificate=self.certificate,
             connection_timeout=self.connection_timeout,
+            database=self.database,
             do_not_validate_timestamps=self.do_not_validate_timestamps,
+            hostname=self.hostname,
             id=self.id,
             ids=self.ids,
             insecure_tls=self.insecure_tls,
             key_rotation_interval_days=self.key_rotation_interval_days,
             name=self.name,
+            password=self.password,
+            port=self.port,
             request_timeout=self.request_timeout,
             secret_engines=self.secret_engines,
             secret_store_id=self.secret_store_id,
             secret_store_root_path=self.secret_store_root_path,
             start_tls=self.start_tls,
             tags=self.tags,
+            tls=self.tls,
             type=self.type,
             upndomain=self.upndomain,
             url=self.url,
-            userdn=self.userdn)
+            userdn=self.userdn,
+            username=self.username)
 
 
 def get_secret_engine(binddn: Optional[_builtins.str] = None,
                       bindpass: Optional[_builtins.str] = None,
                       certificate: Optional[_builtins.str] = None,
                       connection_timeout: Optional[_builtins.int] = None,
+                      database: Optional[_builtins.str] = None,
                       do_not_validate_timestamps: Optional[_builtins.bool] = None,
+                      hostname: Optional[_builtins.str] = None,
                       id: Optional[_builtins.str] = None,
                       insecure_tls: Optional[_builtins.bool] = None,
                       key_rotation_interval_days: Optional[_builtins.int] = None,
                       name: Optional[_builtins.str] = None,
+                      password: Optional[_builtins.str] = None,
+                      port: Optional[_builtins.int] = None,
                       request_timeout: Optional[_builtins.int] = None,
                       secret_store_id: Optional[_builtins.str] = None,
                       secret_store_root_path: Optional[_builtins.str] = None,
                       start_tls: Optional[_builtins.bool] = None,
                       tags: Optional[Mapping[str, _builtins.str]] = None,
+                      tls: Optional[_builtins.bool] = None,
                       type: Optional[_builtins.str] = None,
                       upndomain: Optional[_builtins.str] = None,
                       url: Optional[_builtins.str] = None,
                       userdn: Optional[_builtins.str] = None,
+                      username: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretEngineResult:
     """
     A SecretEngine is managing secrets in SecretStores.
@@ -304,40 +382,52 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
     :param _builtins.str bindpass: Password to use along with binddn when performing user search.
     :param _builtins.str certificate: CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
     :param _builtins.int connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+    :param _builtins.str database: Database is the database to verify credential against.
     :param _builtins.bool do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+    :param _builtins.str hostname: Hostname is the hostname or IP address of the Postgres server.
     :param _builtins.str id: Unique identifier of the Secret Engine.
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
+    :param _builtins.str password: Password is the password to connect to the Postgres server.
+    :param _builtins.int port: Port is the port number of the Postgres server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
     :param _builtins.str secret_store_id: Backing secret store identifier
     :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param _builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the Postgres server.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param _builtins.str url: The LDAP server to connect to.
     :param _builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+    :param _builtins.str username: Username is the username to connect to the Postgres server.
     """
     __args__ = dict()
     __args__['binddn'] = binddn
     __args__['bindpass'] = bindpass
     __args__['certificate'] = certificate
     __args__['connectionTimeout'] = connection_timeout
+    __args__['database'] = database
     __args__['doNotValidateTimestamps'] = do_not_validate_timestamps
+    __args__['hostname'] = hostname
     __args__['id'] = id
     __args__['insecureTls'] = insecure_tls
     __args__['keyRotationIntervalDays'] = key_rotation_interval_days
     __args__['name'] = name
+    __args__['password'] = password
+    __args__['port'] = port
     __args__['requestTimeout'] = request_timeout
     __args__['secretStoreId'] = secret_store_id
     __args__['secretStoreRootPath'] = secret_store_root_path
     __args__['startTls'] = start_tls
     __args__['tags'] = tags
+    __args__['tls'] = tls
     __args__['type'] = type
     __args__['upndomain'] = upndomain
     __args__['url'] = url
     __args__['userdn'] = userdn
+    __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('sdm:index/getSecretEngine:getSecretEngine', __args__, opts=opts, typ=GetSecretEngineResult).value
 
@@ -346,40 +436,52 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
         bindpass=pulumi.get(__ret__, 'bindpass'),
         certificate=pulumi.get(__ret__, 'certificate'),
         connection_timeout=pulumi.get(__ret__, 'connection_timeout'),
+        database=pulumi.get(__ret__, 'database'),
         do_not_validate_timestamps=pulumi.get(__ret__, 'do_not_validate_timestamps'),
+        hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         insecure_tls=pulumi.get(__ret__, 'insecure_tls'),
         key_rotation_interval_days=pulumi.get(__ret__, 'key_rotation_interval_days'),
         name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
+        port=pulumi.get(__ret__, 'port'),
         request_timeout=pulumi.get(__ret__, 'request_timeout'),
         secret_engines=pulumi.get(__ret__, 'secret_engines'),
         secret_store_id=pulumi.get(__ret__, 'secret_store_id'),
         secret_store_root_path=pulumi.get(__ret__, 'secret_store_root_path'),
         start_tls=pulumi.get(__ret__, 'start_tls'),
         tags=pulumi.get(__ret__, 'tags'),
+        tls=pulumi.get(__ret__, 'tls'),
         type=pulumi.get(__ret__, 'type'),
         upndomain=pulumi.get(__ret__, 'upndomain'),
         url=pulumi.get(__ret__, 'url'),
-        userdn=pulumi.get(__ret__, 'userdn'))
+        userdn=pulumi.get(__ret__, 'userdn'),
+        username=pulumi.get(__ret__, 'username'))
 def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              bindpass: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              certificate: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              connection_timeout: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                             database: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              do_not_validate_timestamps: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                             hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              insecure_tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              key_rotation_interval_days: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             password: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              request_timeout: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              secret_store_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              secret_store_root_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              start_tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+                             tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              upndomain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              userdn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretEngineResult]:
     """
     A SecretEngine is managing secrets in SecretStores.
@@ -389,40 +491,52 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
     :param _builtins.str bindpass: Password to use along with binddn when performing user search.
     :param _builtins.str certificate: CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
     :param _builtins.int connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+    :param _builtins.str database: Database is the database to verify credential against.
     :param _builtins.bool do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+    :param _builtins.str hostname: Hostname is the hostname or IP address of the Postgres server.
     :param _builtins.str id: Unique identifier of the Secret Engine.
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
+    :param _builtins.str password: Password is the password to connect to the Postgres server.
+    :param _builtins.int port: Port is the port number of the Postgres server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
     :param _builtins.str secret_store_id: Backing secret store identifier
     :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param _builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the Postgres server.
+    :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param _builtins.str url: The LDAP server to connect to.
     :param _builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+    :param _builtins.str username: Username is the username to connect to the Postgres server.
     """
     __args__ = dict()
     __args__['binddn'] = binddn
     __args__['bindpass'] = bindpass
     __args__['certificate'] = certificate
     __args__['connectionTimeout'] = connection_timeout
+    __args__['database'] = database
     __args__['doNotValidateTimestamps'] = do_not_validate_timestamps
+    __args__['hostname'] = hostname
     __args__['id'] = id
     __args__['insecureTls'] = insecure_tls
     __args__['keyRotationIntervalDays'] = key_rotation_interval_days
     __args__['name'] = name
+    __args__['password'] = password
+    __args__['port'] = port
     __args__['requestTimeout'] = request_timeout
     __args__['secretStoreId'] = secret_store_id
     __args__['secretStoreRootPath'] = secret_store_root_path
     __args__['startTls'] = start_tls
     __args__['tags'] = tags
+    __args__['tls'] = tls
     __args__['type'] = type
     __args__['upndomain'] = upndomain
     __args__['url'] = url
     __args__['userdn'] = userdn
+    __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getSecretEngine:getSecretEngine', __args__, opts=opts, typ=GetSecretEngineResult)
     return __ret__.apply(lambda __response__: GetSecretEngineResult(
@@ -430,19 +544,25 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
         bindpass=pulumi.get(__response__, 'bindpass'),
         certificate=pulumi.get(__response__, 'certificate'),
         connection_timeout=pulumi.get(__response__, 'connection_timeout'),
+        database=pulumi.get(__response__, 'database'),
         do_not_validate_timestamps=pulumi.get(__response__, 'do_not_validate_timestamps'),
+        hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         insecure_tls=pulumi.get(__response__, 'insecure_tls'),
         key_rotation_interval_days=pulumi.get(__response__, 'key_rotation_interval_days'),
         name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        port=pulumi.get(__response__, 'port'),
         request_timeout=pulumi.get(__response__, 'request_timeout'),
         secret_engines=pulumi.get(__response__, 'secret_engines'),
         secret_store_id=pulumi.get(__response__, 'secret_store_id'),
         secret_store_root_path=pulumi.get(__response__, 'secret_store_root_path'),
         start_tls=pulumi.get(__response__, 'start_tls'),
         tags=pulumi.get(__response__, 'tags'),
+        tls=pulumi.get(__response__, 'tls'),
         type=pulumi.get(__response__, 'type'),
         upndomain=pulumi.get(__response__, 'upndomain'),
         url=pulumi.get(__response__, 'url'),
-        userdn=pulumi.get(__response__, 'userdn')))
+        userdn=pulumi.get(__response__, 'userdn'),
+        username=pulumi.get(__response__, 'username')))

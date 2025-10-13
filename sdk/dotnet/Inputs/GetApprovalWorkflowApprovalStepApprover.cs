@@ -14,19 +14,25 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class GetApprovalWorkflowApprovalStepApproverArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        /// The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, or reference may be present for one approver)
+        /// The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+        /// </summary>
+        [Input("groupId")]
+        public string? GroupId { get; set; }
+
+        /// <summary>
+        /// A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         [Input("reference")]
         public string? Reference { get; set; }
 
         /// <summary>
-        /// The role id of the approver (only one of account_id, role_id, or reference may be present for one approver)
+        /// The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
         /// </summary>
         [Input("roleId")]
         public string? RoleId { get; set; }

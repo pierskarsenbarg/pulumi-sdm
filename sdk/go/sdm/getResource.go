@@ -67,7 +67,7 @@ type LookupResourceArgs struct {
 	Port *int `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
 	Type *string `pulumi:"type"`
 	// The username to authenticate with.
 	Username *string `pulumi:"username"`
@@ -116,7 +116,7 @@ type LookupResourceOutputArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/cli/filters/) for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`

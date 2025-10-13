@@ -69,6 +69,69 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
+//				map[string]interface{}{
+//					"tags": map[string]interface{}{
+//						"env": "production",
+//					},
+//					"privileges": map[string]interface{}{
+//						"k8s": map[string]interface{}{
+//							"groups": []string{
+//								"system:masters",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = sdm.NewRole(ctx, "k8s-admin", &sdm.RoleArgs{
+//				AccessRules: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON2, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"type": "amazon_eks",
+//					"tags": map[string]interface{}{
+//						"env": "dev",
+//					},
+//					"privileges": map[string]interface{}{
+//						"k8s": map[string]interface{}{
+//							"groups": []string{
+//								"developers",
+//								"viewers",
+//							},
+//						},
+//					},
+//				},
+//				map[string]interface{}{
+//					"type": "kubernetes",
+//					"tags": map[string]interface{}{
+//						"region": "us-west",
+//					},
+//					"privileges": map[string]interface{}{
+//						"k8s": map[string]interface{}{
+//							"groups": []string{
+//								"edit",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			_, err = sdm.NewRole(ctx, "k8s-developers", &sdm.RoleArgs{
+//				AccessRules: pulumi.String(json2),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
