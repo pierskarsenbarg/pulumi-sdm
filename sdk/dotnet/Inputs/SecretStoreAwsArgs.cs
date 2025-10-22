@@ -25,6 +25,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
+        [Input("roleExternalId")]
+        public Input<string>? RoleExternalId { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 

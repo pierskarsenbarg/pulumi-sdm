@@ -27,6 +27,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
+        public readonly string? RoleArn;
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
+        public readonly string? RoleExternalId;
+        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
@@ -39,11 +47,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? region,
 
+            string? roleArn,
+
+            string? roleExternalId,
+
             ImmutableDictionary<string, string>? tags)
         {
             Id = id;
             Name = name;
             Region = region;
+            RoleArn = roleArn;
+            RoleExternalId = roleExternalId;
             Tags = tags;
         }
     }

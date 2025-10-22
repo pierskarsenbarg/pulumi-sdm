@@ -40,17 +40,27 @@ type SecretStore struct {
 	GcpStore                SecretStoreGcpStorePtrOutput                `pulumi:"gcpStore"`
 	KeyfactorSshStore       SecretStoreKeyfactorSshStorePtrOutput       `pulumi:"keyfactorSshStore"`
 	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrOutput      `pulumi:"keyfactorX509Store"`
-	VaultApprole            SecretStoreVaultApprolePtrOutput            `pulumi:"vaultApprole"`
-	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrOutput     `pulumi:"vaultApproleCertSsh"`
-	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrOutput    `pulumi:"vaultApproleCertX509"`
-	VaultAwsEc2             SecretStoreVaultAwsEc2PtrOutput             `pulumi:"vaultAwsEc2"`
-	VaultAwsIam             SecretStoreVaultAwsIamPtrOutput             `pulumi:"vaultAwsIam"`
-	VaultTls                SecretStoreVaultTlsPtrOutput                `pulumi:"vaultTls"`
-	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrOutput         `pulumi:"vaultTlsCertSsh"`
-	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrOutput        `pulumi:"vaultTlsCertX509"`
-	VaultToken              SecretStoreVaultTokenPtrOutput              `pulumi:"vaultToken"`
-	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrOutput       `pulumi:"vaultTokenCertSsh"`
-	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrOutput      `pulumi:"vaultTokenCertX509"`
+	// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	StrongVault          SecretStoreStrongVaultPtrOutput          `pulumi:"strongVault"`
+	VaultApprole         SecretStoreVaultApprolePtrOutput         `pulumi:"vaultApprole"`
+	VaultApproleCertSsh  SecretStoreVaultApproleCertSshPtrOutput  `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509 SecretStoreVaultApproleCertX509PtrOutput `pulumi:"vaultApproleCertX509"`
+	VaultAwsEc2          SecretStoreVaultAwsEc2PtrOutput          `pulumi:"vaultAwsEc2"`
+	// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertSsh SecretStoreVaultAwsEc2CertSshPtrOutput `pulumi:"vaultAwsEc2CertSsh"`
+	// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertX509 SecretStoreVaultAwsEc2CertX509PtrOutput `pulumi:"vaultAwsEc2CertX509"`
+	VaultAwsIam         SecretStoreVaultAwsIamPtrOutput         `pulumi:"vaultAwsIam"`
+	// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertSsh SecretStoreVaultAwsIamCertSshPtrOutput `pulumi:"vaultAwsIamCertSsh"`
+	// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertX509 SecretStoreVaultAwsIamCertX509PtrOutput `pulumi:"vaultAwsIamCertX509"`
+	VaultTls            SecretStoreVaultTlsPtrOutput            `pulumi:"vaultTls"`
+	VaultTlsCertSsh     SecretStoreVaultTlsCertSshPtrOutput     `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509    SecretStoreVaultTlsCertX509PtrOutput    `pulumi:"vaultTlsCertX509"`
+	VaultToken          SecretStoreVaultTokenPtrOutput          `pulumi:"vaultToken"`
+	VaultTokenCertSsh   SecretStoreVaultTokenCertSshPtrOutput   `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509  SecretStoreVaultTokenCertX509PtrOutput  `pulumi:"vaultTokenCertX509"`
 }
 
 // NewSecretStore registers a new resource with the given unique name, arguments, and options.
@@ -96,17 +106,27 @@ type secretStoreState struct {
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
 	KeyfactorSshStore       *SecretStoreKeyfactorSshStore       `pulumi:"keyfactorSshStore"`
 	KeyfactorX509Store      *SecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Store"`
-	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
-	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
-	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
-	VaultAwsEc2             *SecretStoreVaultAwsEc2             `pulumi:"vaultAwsEc2"`
-	VaultAwsIam             *SecretStoreVaultAwsIam             `pulumi:"vaultAwsIam"`
-	VaultTls                *SecretStoreVaultTls                `pulumi:"vaultTls"`
-	VaultTlsCertSsh         *SecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSsh"`
-	VaultTlsCertX509        *SecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509"`
-	VaultToken              *SecretStoreVaultToken              `pulumi:"vaultToken"`
-	VaultTokenCertSsh       *SecretStoreVaultTokenCertSsh       `pulumi:"vaultTokenCertSsh"`
-	VaultTokenCertX509      *SecretStoreVaultTokenCertX509      `pulumi:"vaultTokenCertX509"`
+	// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	StrongVault          *SecretStoreStrongVault          `pulumi:"strongVault"`
+	VaultApprole         *SecretStoreVaultApprole         `pulumi:"vaultApprole"`
+	VaultApproleCertSsh  *SecretStoreVaultApproleCertSsh  `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509 *SecretStoreVaultApproleCertX509 `pulumi:"vaultApproleCertX509"`
+	VaultAwsEc2          *SecretStoreVaultAwsEc2          `pulumi:"vaultAwsEc2"`
+	// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertSsh *SecretStoreVaultAwsEc2CertSsh `pulumi:"vaultAwsEc2CertSsh"`
+	// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertX509 *SecretStoreVaultAwsEc2CertX509 `pulumi:"vaultAwsEc2CertX509"`
+	VaultAwsIam         *SecretStoreVaultAwsIam         `pulumi:"vaultAwsIam"`
+	// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertSsh *SecretStoreVaultAwsIamCertSsh `pulumi:"vaultAwsIamCertSsh"`
+	// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertX509 *SecretStoreVaultAwsIamCertX509 `pulumi:"vaultAwsIamCertX509"`
+	VaultTls            *SecretStoreVaultTls            `pulumi:"vaultTls"`
+	VaultTlsCertSsh     *SecretStoreVaultTlsCertSsh     `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509    *SecretStoreVaultTlsCertX509    `pulumi:"vaultTlsCertX509"`
+	VaultToken          *SecretStoreVaultToken          `pulumi:"vaultToken"`
+	VaultTokenCertSsh   *SecretStoreVaultTokenCertSsh   `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509  *SecretStoreVaultTokenCertX509  `pulumi:"vaultTokenCertX509"`
 }
 
 type SecretStoreState struct {
@@ -123,17 +143,27 @@ type SecretStoreState struct {
 	GcpStore                SecretStoreGcpStorePtrInput
 	KeyfactorSshStore       SecretStoreKeyfactorSshStorePtrInput
 	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrInput
-	VaultApprole            SecretStoreVaultApprolePtrInput
-	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
-	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
-	VaultAwsEc2             SecretStoreVaultAwsEc2PtrInput
-	VaultAwsIam             SecretStoreVaultAwsIamPtrInput
-	VaultTls                SecretStoreVaultTlsPtrInput
-	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrInput
-	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrInput
-	VaultToken              SecretStoreVaultTokenPtrInput
-	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrInput
-	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrInput
+	// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	StrongVault          SecretStoreStrongVaultPtrInput
+	VaultApprole         SecretStoreVaultApprolePtrInput
+	VaultApproleCertSsh  SecretStoreVaultApproleCertSshPtrInput
+	VaultApproleCertX509 SecretStoreVaultApproleCertX509PtrInput
+	VaultAwsEc2          SecretStoreVaultAwsEc2PtrInput
+	// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertSsh SecretStoreVaultAwsEc2CertSshPtrInput
+	// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertX509 SecretStoreVaultAwsEc2CertX509PtrInput
+	VaultAwsIam         SecretStoreVaultAwsIamPtrInput
+	// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertSsh SecretStoreVaultAwsIamCertSshPtrInput
+	// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertX509 SecretStoreVaultAwsIamCertX509PtrInput
+	VaultTls            SecretStoreVaultTlsPtrInput
+	VaultTlsCertSsh     SecretStoreVaultTlsCertSshPtrInput
+	VaultTlsCertX509    SecretStoreVaultTlsCertX509PtrInput
+	VaultToken          SecretStoreVaultTokenPtrInput
+	VaultTokenCertSsh   SecretStoreVaultTokenCertSshPtrInput
+	VaultTokenCertX509  SecretStoreVaultTokenCertX509PtrInput
 }
 
 func (SecretStoreState) ElementType() reflect.Type {
@@ -154,17 +184,27 @@ type secretStoreArgs struct {
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
 	KeyfactorSshStore       *SecretStoreKeyfactorSshStore       `pulumi:"keyfactorSshStore"`
 	KeyfactorX509Store      *SecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Store"`
-	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
-	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
-	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
-	VaultAwsEc2             *SecretStoreVaultAwsEc2             `pulumi:"vaultAwsEc2"`
-	VaultAwsIam             *SecretStoreVaultAwsIam             `pulumi:"vaultAwsIam"`
-	VaultTls                *SecretStoreVaultTls                `pulumi:"vaultTls"`
-	VaultTlsCertSsh         *SecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSsh"`
-	VaultTlsCertX509        *SecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509"`
-	VaultToken              *SecretStoreVaultToken              `pulumi:"vaultToken"`
-	VaultTokenCertSsh       *SecretStoreVaultTokenCertSsh       `pulumi:"vaultTokenCertSsh"`
-	VaultTokenCertX509      *SecretStoreVaultTokenCertX509      `pulumi:"vaultTokenCertX509"`
+	// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	StrongVault          *SecretStoreStrongVault          `pulumi:"strongVault"`
+	VaultApprole         *SecretStoreVaultApprole         `pulumi:"vaultApprole"`
+	VaultApproleCertSsh  *SecretStoreVaultApproleCertSsh  `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509 *SecretStoreVaultApproleCertX509 `pulumi:"vaultApproleCertX509"`
+	VaultAwsEc2          *SecretStoreVaultAwsEc2          `pulumi:"vaultAwsEc2"`
+	// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertSsh *SecretStoreVaultAwsEc2CertSsh `pulumi:"vaultAwsEc2CertSsh"`
+	// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertX509 *SecretStoreVaultAwsEc2CertX509 `pulumi:"vaultAwsEc2CertX509"`
+	VaultAwsIam         *SecretStoreVaultAwsIam         `pulumi:"vaultAwsIam"`
+	// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertSsh *SecretStoreVaultAwsIamCertSsh `pulumi:"vaultAwsIamCertSsh"`
+	// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertX509 *SecretStoreVaultAwsIamCertX509 `pulumi:"vaultAwsIamCertX509"`
+	VaultTls            *SecretStoreVaultTls            `pulumi:"vaultTls"`
+	VaultTlsCertSsh     *SecretStoreVaultTlsCertSsh     `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509    *SecretStoreVaultTlsCertX509    `pulumi:"vaultTlsCertX509"`
+	VaultToken          *SecretStoreVaultToken          `pulumi:"vaultToken"`
+	VaultTokenCertSsh   *SecretStoreVaultTokenCertSsh   `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509  *SecretStoreVaultTokenCertX509  `pulumi:"vaultTokenCertX509"`
 }
 
 // The set of arguments for constructing a SecretStore resource.
@@ -182,17 +222,27 @@ type SecretStoreArgs struct {
 	GcpStore                SecretStoreGcpStorePtrInput
 	KeyfactorSshStore       SecretStoreKeyfactorSshStorePtrInput
 	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrInput
-	VaultApprole            SecretStoreVaultApprolePtrInput
-	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
-	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
-	VaultAwsEc2             SecretStoreVaultAwsEc2PtrInput
-	VaultAwsIam             SecretStoreVaultAwsIamPtrInput
-	VaultTls                SecretStoreVaultTlsPtrInput
-	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrInput
-	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrInput
-	VaultToken              SecretStoreVaultTokenPtrInput
-	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrInput
-	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrInput
+	// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	StrongVault          SecretStoreStrongVaultPtrInput
+	VaultApprole         SecretStoreVaultApprolePtrInput
+	VaultApproleCertSsh  SecretStoreVaultApproleCertSshPtrInput
+	VaultApproleCertX509 SecretStoreVaultApproleCertX509PtrInput
+	VaultAwsEc2          SecretStoreVaultAwsEc2PtrInput
+	// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertSsh SecretStoreVaultAwsEc2CertSshPtrInput
+	// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsEc2CertX509 SecretStoreVaultAwsEc2CertX509PtrInput
+	VaultAwsIam         SecretStoreVaultAwsIamPtrInput
+	// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertSsh SecretStoreVaultAwsIamCertSshPtrInput
+	// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	VaultAwsIamCertX509 SecretStoreVaultAwsIamCertX509PtrInput
+	VaultTls            SecretStoreVaultTlsPtrInput
+	VaultTlsCertSsh     SecretStoreVaultTlsCertSshPtrInput
+	VaultTlsCertX509    SecretStoreVaultTlsCertX509PtrInput
+	VaultToken          SecretStoreVaultTokenPtrInput
+	VaultTokenCertSsh   SecretStoreVaultTokenCertSshPtrInput
+	VaultTokenCertX509  SecretStoreVaultTokenCertX509PtrInput
 }
 
 func (SecretStoreArgs) ElementType() reflect.Type {
@@ -331,6 +381,11 @@ func (o SecretStoreOutput) KeyfactorX509Store() SecretStoreKeyfactorX509StorePtr
 	return o.ApplyT(func(v *SecretStore) SecretStoreKeyfactorX509StorePtrOutput { return v.KeyfactorX509Store }).(SecretStoreKeyfactorX509StorePtrOutput)
 }
 
+// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) StrongVault() SecretStoreStrongVaultPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreStrongVaultPtrOutput { return v.StrongVault }).(SecretStoreStrongVaultPtrOutput)
+}
+
 func (o SecretStoreOutput) VaultApprole() SecretStoreVaultApprolePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultApprolePtrOutput { return v.VaultApprole }).(SecretStoreVaultApprolePtrOutput)
 }
@@ -347,8 +402,28 @@ func (o SecretStoreOutput) VaultAwsEc2() SecretStoreVaultAwsEc2PtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsEc2PtrOutput { return v.VaultAwsEc2 }).(SecretStoreVaultAwsEc2PtrOutput)
 }
 
+// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) VaultAwsEc2CertSsh() SecretStoreVaultAwsEc2CertSshPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsEc2CertSshPtrOutput { return v.VaultAwsEc2CertSsh }).(SecretStoreVaultAwsEc2CertSshPtrOutput)
+}
+
+// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) VaultAwsEc2CertX509() SecretStoreVaultAwsEc2CertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsEc2CertX509PtrOutput { return v.VaultAwsEc2CertX509 }).(SecretStoreVaultAwsEc2CertX509PtrOutput)
+}
+
 func (o SecretStoreOutput) VaultAwsIam() SecretStoreVaultAwsIamPtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsIamPtrOutput { return v.VaultAwsIam }).(SecretStoreVaultAwsIamPtrOutput)
+}
+
+// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) VaultAwsIamCertSsh() SecretStoreVaultAwsIamCertSshPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsIamCertSshPtrOutput { return v.VaultAwsIamCertSsh }).(SecretStoreVaultAwsIamCertSshPtrOutput)
+}
+
+// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) VaultAwsIamCertX509() SecretStoreVaultAwsIamCertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultAwsIamCertX509PtrOutput { return v.VaultAwsIamCertX509 }).(SecretStoreVaultAwsIamCertX509PtrOutput)
 }
 
 func (o SecretStoreOutput) VaultTls() SecretStoreVaultTlsPtrOutput {

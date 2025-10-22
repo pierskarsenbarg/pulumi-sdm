@@ -65,6 +65,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("keyfactorX509Store")]
         public Output<Outputs.SecretStoreKeyfactorX509Store?> KeyfactorX509Store { get; private set; } = null!;
 
+        /// <summary>
+        /// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("strongVault")]
+        public Output<Outputs.SecretStoreStrongVault?> StrongVault { get; private set; } = null!;
+
         [Output("vaultApprole")]
         public Output<Outputs.SecretStoreVaultApprole?> VaultApprole { get; private set; } = null!;
 
@@ -77,8 +83,32 @@ namespace PiersKarsenbarg.Sdm
         [Output("vaultAwsEc2")]
         public Output<Outputs.SecretStoreVaultAwsEc2?> VaultAwsEc2 { get; private set; } = null!;
 
+        /// <summary>
+        /// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsEc2CertSsh")]
+        public Output<Outputs.SecretStoreVaultAwsEc2CertSsh?> VaultAwsEc2CertSsh { get; private set; } = null!;
+
+        /// <summary>
+        /// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsEc2CertX509")]
+        public Output<Outputs.SecretStoreVaultAwsEc2CertX509?> VaultAwsEc2CertX509 { get; private set; } = null!;
+
         [Output("vaultAwsIam")]
         public Output<Outputs.SecretStoreVaultAwsIam?> VaultAwsIam { get; private set; } = null!;
+
+        /// <summary>
+        /// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsIamCertSsh")]
+        public Output<Outputs.SecretStoreVaultAwsIamCertSsh?> VaultAwsIamCertSsh { get; private set; } = null!;
+
+        /// <summary>
+        /// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsIamCertX509")]
+        public Output<Outputs.SecretStoreVaultAwsIamCertX509?> VaultAwsIamCertX509 { get; private set; } = null!;
 
         [Output("vaultTls")]
         public Output<Outputs.SecretStoreVaultTls?> VaultTls { get; private set; } = null!;
@@ -184,6 +214,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("keyfactorX509Store")]
         public Input<Inputs.SecretStoreKeyfactorX509StoreArgs>? KeyfactorX509Store { get; set; }
 
+        /// <summary>
+        /// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("strongVault")]
+        public Input<Inputs.SecretStoreStrongVaultArgs>? StrongVault { get; set; }
+
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleArgs>? VaultApprole { get; set; }
 
@@ -196,8 +232,32 @@ namespace PiersKarsenbarg.Sdm
         [Input("vaultAwsEc2")]
         public Input<Inputs.SecretStoreVaultAwsEc2Args>? VaultAwsEc2 { get; set; }
 
+        /// <summary>
+        /// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2CertSsh")]
+        public Input<Inputs.SecretStoreVaultAwsEc2CertSshArgs>? VaultAwsEc2CertSsh { get; set; }
+
+        /// <summary>
+        /// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2CertX509")]
+        public Input<Inputs.SecretStoreVaultAwsEc2CertX509Args>? VaultAwsEc2CertX509 { get; set; }
+
         [Input("vaultAwsIam")]
         public Input<Inputs.SecretStoreVaultAwsIamArgs>? VaultAwsIam { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIamCertSsh")]
+        public Input<Inputs.SecretStoreVaultAwsIamCertSshArgs>? VaultAwsIamCertSsh { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIamCertX509")]
+        public Input<Inputs.SecretStoreVaultAwsIamCertX509Args>? VaultAwsIamCertX509 { get; set; }
 
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsArgs>? VaultTls { get; set; }
@@ -264,6 +324,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("keyfactorX509Store")]
         public Input<Inputs.SecretStoreKeyfactorX509StoreGetArgs>? KeyfactorX509Store { get; set; }
 
+        /// <summary>
+        /// StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("strongVault")]
+        public Input<Inputs.SecretStoreStrongVaultGetArgs>? StrongVault { get; set; }
+
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleGetArgs>? VaultApprole { get; set; }
 
@@ -276,8 +342,32 @@ namespace PiersKarsenbarg.Sdm
         [Input("vaultAwsEc2")]
         public Input<Inputs.SecretStoreVaultAwsEc2GetArgs>? VaultAwsEc2 { get; set; }
 
+        /// <summary>
+        /// VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2CertSsh")]
+        public Input<Inputs.SecretStoreVaultAwsEc2CertSshGetArgs>? VaultAwsEc2CertSsh { get; set; }
+
+        /// <summary>
+        /// VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2CertX509")]
+        public Input<Inputs.SecretStoreVaultAwsEc2CertX509GetArgs>? VaultAwsEc2CertX509 { get; set; }
+
         [Input("vaultAwsIam")]
         public Input<Inputs.SecretStoreVaultAwsIamGetArgs>? VaultAwsIam { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIamCertSsh")]
+        public Input<Inputs.SecretStoreVaultAwsIamCertSshGetArgs>? VaultAwsIamCertSsh { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIamCertX509")]
+        public Input<Inputs.SecretStoreVaultAwsIamCertX509GetArgs>? VaultAwsIamCertX509 { get; set; }
 
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsGetArgs>? VaultTls { get; set; }

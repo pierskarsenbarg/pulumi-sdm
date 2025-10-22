@@ -8024,10 +8024,15 @@ export interface GetSecretStoreSecretStore {
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
     keyfactorSshStores: outputs.GetSecretStoreSecretStoreKeyfactorSshStore[];
     keyfactorX509Stores: outputs.GetSecretStoreSecretStoreKeyfactorX509Store[];
+    strongVaults: outputs.GetSecretStoreSecretStoreStrongVault[];
     vaultApproleCertSshes: outputs.GetSecretStoreSecretStoreVaultApproleCertSsh[];
     vaultApproleCertX509s: outputs.GetSecretStoreSecretStoreVaultApproleCertX509[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
+    vaultAwsEc2CertSshes: outputs.GetSecretStoreSecretStoreVaultAwsEc2CertSsh[];
+    vaultAwsEc2CertX509s: outputs.GetSecretStoreSecretStoreVaultAwsEc2CertX509[];
     vaultAwsEc2s: outputs.GetSecretStoreSecretStoreVaultAwsEc2[];
+    vaultAwsIamCertSshes: outputs.GetSecretStoreSecretStoreVaultAwsIamCertSsh[];
+    vaultAwsIamCertX509s: outputs.GetSecretStoreSecretStoreVaultAwsIamCertX509[];
     vaultAwsIams: outputs.GetSecretStoreSecretStoreVaultAwsIam[];
     vaultTls: outputs.GetSecretStoreSecretStoreVaultTl[];
     vaultTlsCertSshes: outputs.GetSecretStoreSecretStoreVaultTlsCertSsh[];
@@ -8069,6 +8074,14 @@ export interface GetSecretStoreSecretStoreAw {
      * The AWS region to target e.g. us-east-1
      */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -8367,6 +8380,21 @@ export interface GetSecretStoreSecretStoreKeyfactorX509Store {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreStrongVault {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetSecretStoreSecretStoreVaultApprole {
     /**
      * Unique identifier of the SecretStore.
@@ -8483,6 +8511,76 @@ export interface GetSecretStoreSecretStoreVaultAwsEc2 {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreVaultAwsEc2CertSsh {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultAwsEc2CertX509 {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetSecretStoreSecretStoreVaultAwsIam {
     /**
      * Unique identifier of the SecretStore.
@@ -8500,6 +8598,76 @@ export interface GetSecretStoreSecretStoreVaultAwsIam {
      * The URL of the Vault to target
      */
     serverAddress?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultAwsIamCertSsh {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultAwsIamCertX509 {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -15634,6 +15802,14 @@ export interface SecretStoreAws {
      */
     region: string;
     /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -15891,6 +16067,17 @@ export interface SecretStoreKeyfactorX509Store {
     tags?: {[key: string]: string};
 }
 
+export interface SecretStoreStrongVault {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface SecretStoreVaultApprole {
     /**
      * Unique human-readable name of the SecretStore.
@@ -15991,6 +16178,68 @@ export interface SecretStoreVaultAwsEc2 {
     tags?: {[key: string]: string};
 }
 
+export interface SecretStoreVaultAwsEc2CertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultAwsEc2CertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface SecretStoreVaultAwsIam {
     /**
      * Unique human-readable name of the SecretStore.
@@ -16004,6 +16253,68 @@ export interface SecretStoreVaultAwsIam {
      * The URL of the Vault to target
      */
     serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultAwsIamCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultAwsIamCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
     /**
      * Tags is a map of key, value pairs.
      */

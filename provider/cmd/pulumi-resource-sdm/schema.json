@@ -9704,6 +9704,14 @@
                     "type": "string",
                     "description": "The AWS region to target e.g. us-east-1\n"
                 },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10072,6 +10080,25 @@
                 "serverAddress"
             ]
         },
+        "sdm:index/SecretStoreStrongVault:SecretStoreStrongVault": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole": {
             "properties": {
                 "name": {
@@ -10214,6 +10241,92 @@
                 "serverAddress"
             ]
         },
+        "sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh": {
+            "properties": {
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "sshMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the SSH engine configured with the desired CA\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "issuedCertTtlMinutes",
+                "name",
+                "serverAddress",
+                "signingRole",
+                "sshMountPoint"
+            ]
+        },
+        "sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509": {
+            "properties": {
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "pkiMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the PKI engine configured with the desired CA\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "issuedCertTtlMinutes",
+                "name",
+                "pkiMountPoint",
+                "serverAddress",
+                "signingRole"
+            ]
+        },
         "sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam": {
             "properties": {
                 "name": {
@@ -10240,6 +10353,92 @@
             "required": [
                 "name",
                 "serverAddress"
+            ]
+        },
+        "sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh": {
+            "properties": {
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "sshMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the SSH engine configured with the desired CA\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "issuedCertTtlMinutes",
+                "name",
+                "serverAddress",
+                "signingRole",
+                "sshMountPoint"
+            ]
+        },
+        "sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509": {
+            "properties": {
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "pkiMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the PKI engine configured with the desired CA\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "issuedCertTtlMinutes",
+                "name",
+                "pkiMountPoint",
+                "serverAddress",
+                "signingRole"
             ]
         },
         "sdm:index/SecretStoreVaultTls:SecretStoreVaultTls": {
@@ -20132,6 +20331,12 @@
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreKeyfactorX509Store:getSecretStoreSecretStoreKeyfactorX509Store"
                     }
                 },
+                "strongVaults": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreStrongVault:getSecretStoreSecretStoreStrongVault"
+                    }
+                },
                 "vaultApproleCertSshes": {
                     "type": "array",
                     "items": {
@@ -20150,10 +20355,34 @@
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultApprole:getSecretStoreSecretStoreVaultApprole"
                     }
                 },
+                "vaultAwsEc2CertSshes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsEc2CertSsh:getSecretStoreSecretStoreVaultAwsEc2CertSsh"
+                    }
+                },
+                "vaultAwsEc2CertX509s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsEc2CertX509:getSecretStoreSecretStoreVaultAwsEc2CertX509"
+                    }
+                },
                 "vaultAwsEc2s": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsEc2:getSecretStoreSecretStoreVaultAwsEc2"
+                    }
+                },
+                "vaultAwsIamCertSshes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsIamCertSsh:getSecretStoreSecretStoreVaultAwsIamCertSsh"
+                    }
+                },
+                "vaultAwsIamCertX509s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsIamCertX509:getSecretStoreSecretStoreVaultAwsIamCertX509"
                     }
                 },
                 "vaultAwsIams": {
@@ -20213,11 +20442,16 @@
                 "gcpStores",
                 "keyfactorSshStores",
                 "keyfactorX509Stores",
+                "strongVaults",
                 "vaultApproles",
                 "vaultApproleCertSshes",
                 "vaultApproleCertX509s",
                 "vaultAwsEc2s",
+                "vaultAwsEc2CertSshes",
+                "vaultAwsEc2CertX509s",
                 "vaultAwsIams",
+                "vaultAwsIamCertSshes",
+                "vaultAwsIamCertX509s",
                 "vaultTls",
                 "vaultTlsCertSshes",
                 "vaultTlsCertX509s",
@@ -20268,6 +20502,14 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to target e.g. us-east-1\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -20619,6 +20861,26 @@
             },
             "type": "object"
         },
+        "sdm:index/getSecretStoreSecretStoreStrongVault:getSecretStoreSecretStoreStrongVault": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getSecretStoreSecretStoreVaultApprole:getSecretStoreSecretStoreVaultApprole": {
             "properties": {
                 "id": {
@@ -20755,6 +21017,86 @@
             },
             "type": "object"
         },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsEc2CertSsh:getSecretStoreSecretStoreVaultAwsEc2CertSsh": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "sshMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the SSH engine configured with the desired CA\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsEc2CertX509:getSecretStoreSecretStoreVaultAwsEc2CertX509": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "pkiMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the PKI engine configured with the desired CA\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getSecretStoreSecretStoreVaultAwsIam:getSecretStoreSecretStoreVaultAwsIam": {
             "properties": {
                 "id": {
@@ -20772,6 +21114,86 @@
                 "serverAddress": {
                     "type": "string",
                     "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsIamCertSsh:getSecretStoreSecretStoreVaultAwsIamCertSsh": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
+                },
+                "sshMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the SSH engine configured with the desired CA\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsIamCertX509:getSecretStoreSecretStoreVaultAwsIamCertX509": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "issuedCertTtlMinutes": {
+                    "type": "integer",
+                    "description": "The lifetime of certificates issued by this CA represented in minutes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "pkiMountPoint": {
+                    "type": "string",
+                    "description": "The mount point of the PKI engine configured with the desired CA\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "signingRole": {
+                    "type": "string",
+                    "description": "The signing role to be used for signing certificates\n"
                 },
                 "tags": {
                     "type": "object",
@@ -23329,6 +23751,10 @@
                 "keyfactorX509Store": {
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
+                "strongVault": {
+                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
+                    "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
                 },
@@ -23341,8 +23767,24 @@
                 "vaultAwsEc2": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                 },
+                "vaultAwsEc2CertSsh": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
+                    "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "vaultAwsEc2CertX509": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
+                    "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "vaultAwsIam": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
+                },
+                "vaultAwsIamCertSsh": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
+                    "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "vaultAwsIamCertX509": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
+                    "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -23401,6 +23843,10 @@
                 "keyfactorX509Store": {
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
+                "strongVault": {
+                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
+                    "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
                 },
@@ -23413,8 +23859,24 @@
                 "vaultAwsEc2": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                 },
+                "vaultAwsEc2CertSsh": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
+                    "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "vaultAwsEc2CertX509": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
+                    "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "vaultAwsIam": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
+                },
+                "vaultAwsIamCertSsh": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
+                    "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "vaultAwsIamCertX509": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
+                    "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -23475,6 +23937,10 @@
                     "keyfactorX509Store": {
                         "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                     },
+                    "strongVault": {
+                        "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
+                        "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
                     "vaultApprole": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
                     },
@@ -23487,8 +23953,24 @@
                     "vaultAwsEc2": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                     },
+                    "vaultAwsEc2CertSsh": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
+                        "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
+                    "vaultAwsEc2CertX509": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
+                        "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
                     "vaultAwsIam": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
+                    },
+                    "vaultAwsIamCertSsh": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
+                        "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
+                    "vaultAwsIamCertX509": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
+                        "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "vaultTls": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
