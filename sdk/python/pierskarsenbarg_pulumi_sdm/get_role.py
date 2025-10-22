@@ -118,6 +118,7 @@ def get_role(id: Optional[_builtins.str] = None,
     A Role has a list of access rules which determine which Resources the members
      of the Role have access to. An Account can be a member of multiple Roles via
      AccountAttachments.
+    ## Example Usage
 
 
     :param _builtins.str id: Unique identifier of the Role.
@@ -146,6 +147,7 @@ def get_role_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
     A Role has a list of access rules which determine which Resources the members
      of the Role have access to. An Account can be a member of multiple Roles via
      AccountAttachments.
+    ## Example Usage
 
 
     :param _builtins.str id: Unique identifier of the Role.

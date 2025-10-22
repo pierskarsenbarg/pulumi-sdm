@@ -546,7 +546,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -624,7 +624,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -715,7 +715,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -798,7 +798,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -888,7 +888,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -987,7 +987,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "identityAliasHealthcheckUsername": {
                     "type": "string",
@@ -1101,7 +1101,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "identityAliasHealthcheckUsername": {
                     "type": "string",
@@ -1198,7 +1198,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1291,7 +1291,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "name": {
                     "type": "string",
@@ -4901,7 +4901,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "identityAliasHealthcheckUsername": {
                     "type": "string",
@@ -4983,7 +4983,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "name": {
                     "type": "string",
@@ -5405,7 +5405,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -5483,7 +5483,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -5579,7 +5579,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "identityAliasHealthcheckUsername": {
                     "type": "string",
@@ -5657,7 +5657,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -5740,7 +5740,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -5830,7 +5830,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12449,7 +12449,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12513,7 +12513,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12590,7 +12590,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12659,7 +12659,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12735,7 +12735,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -12889,7 +12889,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -12987,7 +12987,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -13068,7 +13068,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -13145,7 +13145,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -16127,7 +16127,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -16197,7 +16197,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -16552,7 +16552,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -16616,7 +16616,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -16698,7 +16698,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "id": {
                     "type": "string",
@@ -16766,7 +16766,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -16835,7 +16835,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -16911,7 +16911,7 @@
                 },
                 "healthcheckNamespace": {
                     "type": "string",
-                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                    "description": "The path used to check the health of your connection.  Defaults to \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
                 "hostname": {
                     "type": "string",

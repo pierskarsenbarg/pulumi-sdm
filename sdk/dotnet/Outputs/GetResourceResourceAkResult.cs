@@ -47,7 +47,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? EgressFilter;
         /// <summary>
-        /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        /// The path used to check the health of your connection.  Defaults to `Default`.  This field is required, and is only marked as optional for backwards compatibility.
         /// </summary>
         public readonly string? HealthcheckNamespace;
         /// <summary>

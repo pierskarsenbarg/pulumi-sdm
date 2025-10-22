@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * A Role has a list of access rules which determine which Resources the members
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
+ * ## Example Usage
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
@@ -72,6 +73,7 @@ export interface GetRoleResult {
  * A Role has a list of access rules which determine which Resources the members
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
+ * ## Example Usage
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};

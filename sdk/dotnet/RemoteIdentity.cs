@@ -13,6 +13,10 @@ namespace PiersKarsenbarg.Sdm
     /// <summary>
     /// RemoteIdentities define the username to be used for a specific account
     ///  when connecting to a remote resource using that group.
+    /// ## Example Usage
+    /// 
+    /// This resource can be imported using the import command.
+    /// 
     /// ## Import
     /// 
     /// A RemoteIdentity can be imported using the id, e.g.,
