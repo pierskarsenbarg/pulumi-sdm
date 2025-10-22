@@ -60,7 +60,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
-        /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        /// The path used to check the health of your connection.  Defaults to `Default`.  This field is required, and is only marked as optional for backwards compatibility.
         /// </summary>
         [Input("healthcheckNamespace")]
         public Input<string>? HealthcheckNamespace { get; set; }

@@ -16,6 +16,7 @@ namespace PiersKarsenbarg.Sdm
         /// A Role has a list of access rules which determine which Resources the members
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
+        /// ## Example Usage
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
@@ -24,6 +25,7 @@ namespace PiersKarsenbarg.Sdm
         /// A Role has a list of access rules which determine which Resources the members
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
+        /// ## Example Usage
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
@@ -32,6 +34,7 @@ namespace PiersKarsenbarg.Sdm
         /// A Role has a list of access rules which determine which Resources the members
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
+        /// ## Example Usage
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());

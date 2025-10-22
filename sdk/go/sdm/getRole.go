@@ -15,6 +15,8 @@ import (
 //
 //	of the Role have access to. An Account can be a member of multiple Roles via
 //	AccountAttachments.
+//
+// ## Example Usage
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
