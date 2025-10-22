@@ -33,11 +33,16 @@ class SecretStoreArgs:
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
                  keyfactor_ssh_store: Optional[pulumi.Input['SecretStoreKeyfactorSshStoreArgs']] = None,
                  keyfactor_x509_store: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']] = None,
+                 strong_vault: Optional[pulumi.Input['SecretStoreStrongVaultArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
                  vault_aws_ec2: Optional[pulumi.Input['SecretStoreVaultAwsEc2Args']] = None,
+                 vault_aws_ec2_cert_ssh: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']] = None,
+                 vault_aws_ec2_cert_x509: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']] = None,
                  vault_aws_iam: Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']] = None,
+                 vault_aws_iam_cert_ssh: Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']] = None,
+                 vault_aws_iam_cert_x509: Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']] = None,
                  vault_tls: Optional[pulumi.Input['SecretStoreVaultTlsArgs']] = None,
                  vault_tls_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']] = None,
                  vault_tls_cert_x509: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']] = None,
@@ -47,6 +52,11 @@ class SecretStoreArgs:
         """
         The set of arguments for constructing a SecretStore resource.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreStrongVaultArgs'] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs'] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsEc2CertX509Args'] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsIamCertSshArgs'] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsIamCertX509Args'] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -72,6 +82,8 @@ class SecretStoreArgs:
             pulumi.set(__self__, "keyfactor_ssh_store", keyfactor_ssh_store)
         if keyfactor_x509_store is not None:
             pulumi.set(__self__, "keyfactor_x509_store", keyfactor_x509_store)
+        if strong_vault is not None:
+            pulumi.set(__self__, "strong_vault", strong_vault)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
         if vault_approle_cert_ssh is not None:
@@ -80,8 +92,16 @@ class SecretStoreArgs:
             pulumi.set(__self__, "vault_approle_cert_x509", vault_approle_cert_x509)
         if vault_aws_ec2 is not None:
             pulumi.set(__self__, "vault_aws_ec2", vault_aws_ec2)
+        if vault_aws_ec2_cert_ssh is not None:
+            pulumi.set(__self__, "vault_aws_ec2_cert_ssh", vault_aws_ec2_cert_ssh)
+        if vault_aws_ec2_cert_x509 is not None:
+            pulumi.set(__self__, "vault_aws_ec2_cert_x509", vault_aws_ec2_cert_x509)
         if vault_aws_iam is not None:
             pulumi.set(__self__, "vault_aws_iam", vault_aws_iam)
+        if vault_aws_iam_cert_ssh is not None:
+            pulumi.set(__self__, "vault_aws_iam_cert_ssh", vault_aws_iam_cert_ssh)
+        if vault_aws_iam_cert_x509 is not None:
+            pulumi.set(__self__, "vault_aws_iam_cert_x509", vault_aws_iam_cert_x509)
         if vault_tls is not None:
             pulumi.set(__self__, "vault_tls", vault_tls)
         if vault_tls_cert_ssh is not None:
@@ -207,6 +227,18 @@ class SecretStoreArgs:
         pulumi.set(self, "keyfactor_x509_store", value)
 
     @_builtins.property
+    @pulumi.getter(name="strongVault")
+    def strong_vault(self) -> Optional[pulumi.Input['SecretStoreStrongVaultArgs']]:
+        """
+        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "strong_vault")
+
+    @strong_vault.setter
+    def strong_vault(self, value: Optional[pulumi.Input['SecretStoreStrongVaultArgs']]):
+        pulumi.set(self, "strong_vault", value)
+
+    @_builtins.property
     @pulumi.getter(name="vaultApprole")
     def vault_approle(self) -> Optional[pulumi.Input['SecretStoreVaultApproleArgs']]:
         return pulumi.get(self, "vault_approle")
@@ -243,6 +275,30 @@ class SecretStoreArgs:
         pulumi.set(self, "vault_aws_ec2", value)
 
     @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertSsh")
+    def vault_aws_ec2_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]:
+        """
+        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_ssh")
+
+    @vault_aws_ec2_cert_ssh.setter
+    def vault_aws_ec2_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]):
+        pulumi.set(self, "vault_aws_ec2_cert_ssh", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertX509")
+    def vault_aws_ec2_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]:
+        """
+        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_x509")
+
+    @vault_aws_ec2_cert_x509.setter
+    def vault_aws_ec2_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]):
+        pulumi.set(self, "vault_aws_ec2_cert_x509", value)
+
+    @_builtins.property
     @pulumi.getter(name="vaultAwsIam")
     def vault_aws_iam(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']]:
         return pulumi.get(self, "vault_aws_iam")
@@ -250,6 +306,30 @@ class SecretStoreArgs:
     @vault_aws_iam.setter
     def vault_aws_iam(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']]):
         pulumi.set(self, "vault_aws_iam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertSsh")
+    def vault_aws_iam_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]:
+        """
+        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_ssh")
+
+    @vault_aws_iam_cert_ssh.setter
+    def vault_aws_iam_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]):
+        pulumi.set(self, "vault_aws_iam_cert_ssh", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertX509")
+    def vault_aws_iam_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]:
+        """
+        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_x509")
+
+    @vault_aws_iam_cert_x509.setter
+    def vault_aws_iam_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]):
+        pulumi.set(self, "vault_aws_iam_cert_x509", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultTls")
@@ -321,11 +401,16 @@ class _SecretStoreState:
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
                  keyfactor_ssh_store: Optional[pulumi.Input['SecretStoreKeyfactorSshStoreArgs']] = None,
                  keyfactor_x509_store: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']] = None,
+                 strong_vault: Optional[pulumi.Input['SecretStoreStrongVaultArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
                  vault_aws_ec2: Optional[pulumi.Input['SecretStoreVaultAwsEc2Args']] = None,
+                 vault_aws_ec2_cert_ssh: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']] = None,
+                 vault_aws_ec2_cert_x509: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']] = None,
                  vault_aws_iam: Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']] = None,
+                 vault_aws_iam_cert_ssh: Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']] = None,
+                 vault_aws_iam_cert_x509: Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']] = None,
                  vault_tls: Optional[pulumi.Input['SecretStoreVaultTlsArgs']] = None,
                  vault_tls_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']] = None,
                  vault_tls_cert_x509: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']] = None,
@@ -335,6 +420,11 @@ class _SecretStoreState:
         """
         Input properties used for looking up and filtering SecretStore resources.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreStrongVaultArgs'] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs'] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsEc2CertX509Args'] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsIamCertSshArgs'] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['SecretStoreVaultAwsIamCertX509Args'] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -360,6 +450,8 @@ class _SecretStoreState:
             pulumi.set(__self__, "keyfactor_ssh_store", keyfactor_ssh_store)
         if keyfactor_x509_store is not None:
             pulumi.set(__self__, "keyfactor_x509_store", keyfactor_x509_store)
+        if strong_vault is not None:
+            pulumi.set(__self__, "strong_vault", strong_vault)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
         if vault_approle_cert_ssh is not None:
@@ -368,8 +460,16 @@ class _SecretStoreState:
             pulumi.set(__self__, "vault_approle_cert_x509", vault_approle_cert_x509)
         if vault_aws_ec2 is not None:
             pulumi.set(__self__, "vault_aws_ec2", vault_aws_ec2)
+        if vault_aws_ec2_cert_ssh is not None:
+            pulumi.set(__self__, "vault_aws_ec2_cert_ssh", vault_aws_ec2_cert_ssh)
+        if vault_aws_ec2_cert_x509 is not None:
+            pulumi.set(__self__, "vault_aws_ec2_cert_x509", vault_aws_ec2_cert_x509)
         if vault_aws_iam is not None:
             pulumi.set(__self__, "vault_aws_iam", vault_aws_iam)
+        if vault_aws_iam_cert_ssh is not None:
+            pulumi.set(__self__, "vault_aws_iam_cert_ssh", vault_aws_iam_cert_ssh)
+        if vault_aws_iam_cert_x509 is not None:
+            pulumi.set(__self__, "vault_aws_iam_cert_x509", vault_aws_iam_cert_x509)
         if vault_tls is not None:
             pulumi.set(__self__, "vault_tls", vault_tls)
         if vault_tls_cert_ssh is not None:
@@ -495,6 +595,18 @@ class _SecretStoreState:
         pulumi.set(self, "keyfactor_x509_store", value)
 
     @_builtins.property
+    @pulumi.getter(name="strongVault")
+    def strong_vault(self) -> Optional[pulumi.Input['SecretStoreStrongVaultArgs']]:
+        """
+        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "strong_vault")
+
+    @strong_vault.setter
+    def strong_vault(self, value: Optional[pulumi.Input['SecretStoreStrongVaultArgs']]):
+        pulumi.set(self, "strong_vault", value)
+
+    @_builtins.property
     @pulumi.getter(name="vaultApprole")
     def vault_approle(self) -> Optional[pulumi.Input['SecretStoreVaultApproleArgs']]:
         return pulumi.get(self, "vault_approle")
@@ -531,6 +643,30 @@ class _SecretStoreState:
         pulumi.set(self, "vault_aws_ec2", value)
 
     @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertSsh")
+    def vault_aws_ec2_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]:
+        """
+        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_ssh")
+
+    @vault_aws_ec2_cert_ssh.setter
+    def vault_aws_ec2_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]):
+        pulumi.set(self, "vault_aws_ec2_cert_ssh", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertX509")
+    def vault_aws_ec2_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]:
+        """
+        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_x509")
+
+    @vault_aws_ec2_cert_x509.setter
+    def vault_aws_ec2_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]):
+        pulumi.set(self, "vault_aws_ec2_cert_x509", value)
+
+    @_builtins.property
     @pulumi.getter(name="vaultAwsIam")
     def vault_aws_iam(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']]:
         return pulumi.get(self, "vault_aws_iam")
@@ -538,6 +674,30 @@ class _SecretStoreState:
     @vault_aws_iam.setter
     def vault_aws_iam(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamArgs']]):
         pulumi.set(self, "vault_aws_iam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertSsh")
+    def vault_aws_iam_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]:
+        """
+        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_ssh")
+
+    @vault_aws_iam_cert_ssh.setter
+    def vault_aws_iam_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]):
+        pulumi.set(self, "vault_aws_iam_cert_ssh", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertX509")
+    def vault_aws_iam_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]:
+        """
+        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_x509")
+
+    @vault_aws_iam_cert_x509.setter
+    def vault_aws_iam_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]):
+        pulumi.set(self, "vault_aws_iam_cert_x509", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultTls")
@@ -612,11 +772,16 @@ class SecretStore(pulumi.CustomResource):
                  gcp_store: Optional[pulumi.Input[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict']]] = None,
                  keyfactor_ssh_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorSshStoreArgs', 'SecretStoreKeyfactorSshStoreArgsDict']]] = None,
                  keyfactor_x509_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorX509StoreArgs', 'SecretStoreKeyfactorX509StoreArgsDict']]] = None,
+                 strong_vault: Optional[pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']]] = None,
                  vault_approle: Optional[pulumi.Input[Union['SecretStoreVaultApproleArgs', 'SecretStoreVaultApproleArgsDict']]] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertSshArgs', 'SecretStoreVaultApproleCertSshArgsDict']]] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertX509Args', 'SecretStoreVaultApproleCertX509ArgsDict']]] = None,
                  vault_aws_ec2: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2Args', 'SecretStoreVaultAwsEc2ArgsDict']]] = None,
+                 vault_aws_ec2_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']]] = None,
+                 vault_aws_ec2_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']]] = None,
                  vault_aws_iam: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamArgs', 'SecretStoreVaultAwsIamArgsDict']]] = None,
+                 vault_aws_iam_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']]] = None,
+                 vault_aws_iam_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']]] = None,
                  vault_tls: Optional[pulumi.Input[Union['SecretStoreVaultTlsArgs', 'SecretStoreVaultTlsArgsDict']]] = None,
                  vault_tls_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertSshArgs', 'SecretStoreVaultTlsCertSshArgsDict']]] = None,
                  vault_tls_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertX509Args', 'SecretStoreVaultTlsCertX509ArgsDict']]] = None,
@@ -640,6 +805,11 @@ class SecretStore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -687,11 +857,16 @@ class SecretStore(pulumi.CustomResource):
                  gcp_store: Optional[pulumi.Input[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict']]] = None,
                  keyfactor_ssh_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorSshStoreArgs', 'SecretStoreKeyfactorSshStoreArgsDict']]] = None,
                  keyfactor_x509_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorX509StoreArgs', 'SecretStoreKeyfactorX509StoreArgsDict']]] = None,
+                 strong_vault: Optional[pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']]] = None,
                  vault_approle: Optional[pulumi.Input[Union['SecretStoreVaultApproleArgs', 'SecretStoreVaultApproleArgsDict']]] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertSshArgs', 'SecretStoreVaultApproleCertSshArgsDict']]] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertX509Args', 'SecretStoreVaultApproleCertX509ArgsDict']]] = None,
                  vault_aws_ec2: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2Args', 'SecretStoreVaultAwsEc2ArgsDict']]] = None,
+                 vault_aws_ec2_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']]] = None,
+                 vault_aws_ec2_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']]] = None,
                  vault_aws_iam: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamArgs', 'SecretStoreVaultAwsIamArgsDict']]] = None,
+                 vault_aws_iam_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']]] = None,
+                 vault_aws_iam_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']]] = None,
                  vault_tls: Optional[pulumi.Input[Union['SecretStoreVaultTlsArgs', 'SecretStoreVaultTlsArgsDict']]] = None,
                  vault_tls_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertSshArgs', 'SecretStoreVaultTlsCertSshArgsDict']]] = None,
                  vault_tls_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertX509Args', 'SecretStoreVaultTlsCertX509ArgsDict']]] = None,
@@ -719,11 +894,16 @@ class SecretStore(pulumi.CustomResource):
             __props__.__dict__["gcp_store"] = gcp_store
             __props__.__dict__["keyfactor_ssh_store"] = keyfactor_ssh_store
             __props__.__dict__["keyfactor_x509_store"] = keyfactor_x509_store
+            __props__.__dict__["strong_vault"] = strong_vault
             __props__.__dict__["vault_approle"] = vault_approle
             __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
             __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
             __props__.__dict__["vault_aws_ec2"] = vault_aws_ec2
+            __props__.__dict__["vault_aws_ec2_cert_ssh"] = vault_aws_ec2_cert_ssh
+            __props__.__dict__["vault_aws_ec2_cert_x509"] = vault_aws_ec2_cert_x509
             __props__.__dict__["vault_aws_iam"] = vault_aws_iam
+            __props__.__dict__["vault_aws_iam_cert_ssh"] = vault_aws_iam_cert_ssh
+            __props__.__dict__["vault_aws_iam_cert_x509"] = vault_aws_iam_cert_x509
             __props__.__dict__["vault_tls"] = vault_tls
             __props__.__dict__["vault_tls_cert_ssh"] = vault_tls_cert_ssh
             __props__.__dict__["vault_tls_cert_x509"] = vault_tls_cert_x509
@@ -752,11 +932,16 @@ class SecretStore(pulumi.CustomResource):
             gcp_store: Optional[pulumi.Input[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict']]] = None,
             keyfactor_ssh_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorSshStoreArgs', 'SecretStoreKeyfactorSshStoreArgsDict']]] = None,
             keyfactor_x509_store: Optional[pulumi.Input[Union['SecretStoreKeyfactorX509StoreArgs', 'SecretStoreKeyfactorX509StoreArgsDict']]] = None,
+            strong_vault: Optional[pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']]] = None,
             vault_approle: Optional[pulumi.Input[Union['SecretStoreVaultApproleArgs', 'SecretStoreVaultApproleArgsDict']]] = None,
             vault_approle_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertSshArgs', 'SecretStoreVaultApproleCertSshArgsDict']]] = None,
             vault_approle_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultApproleCertX509Args', 'SecretStoreVaultApproleCertX509ArgsDict']]] = None,
             vault_aws_ec2: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2Args', 'SecretStoreVaultAwsEc2ArgsDict']]] = None,
+            vault_aws_ec2_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']]] = None,
+            vault_aws_ec2_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']]] = None,
             vault_aws_iam: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamArgs', 'SecretStoreVaultAwsIamArgsDict']]] = None,
+            vault_aws_iam_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']]] = None,
+            vault_aws_iam_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']]] = None,
             vault_tls: Optional[pulumi.Input[Union['SecretStoreVaultTlsArgs', 'SecretStoreVaultTlsArgsDict']]] = None,
             vault_tls_cert_ssh: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertSshArgs', 'SecretStoreVaultTlsCertSshArgsDict']]] = None,
             vault_tls_cert_x509: Optional[pulumi.Input[Union['SecretStoreVaultTlsCertX509Args', 'SecretStoreVaultTlsCertX509ArgsDict']]] = None,
@@ -771,6 +956,11 @@ class SecretStore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -788,11 +978,16 @@ class SecretStore(pulumi.CustomResource):
         __props__.__dict__["gcp_store"] = gcp_store
         __props__.__dict__["keyfactor_ssh_store"] = keyfactor_ssh_store
         __props__.__dict__["keyfactor_x509_store"] = keyfactor_x509_store
+        __props__.__dict__["strong_vault"] = strong_vault
         __props__.__dict__["vault_approle"] = vault_approle
         __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
         __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
         __props__.__dict__["vault_aws_ec2"] = vault_aws_ec2
+        __props__.__dict__["vault_aws_ec2_cert_ssh"] = vault_aws_ec2_cert_ssh
+        __props__.__dict__["vault_aws_ec2_cert_x509"] = vault_aws_ec2_cert_x509
         __props__.__dict__["vault_aws_iam"] = vault_aws_iam
+        __props__.__dict__["vault_aws_iam_cert_ssh"] = vault_aws_iam_cert_ssh
+        __props__.__dict__["vault_aws_iam_cert_x509"] = vault_aws_iam_cert_x509
         __props__.__dict__["vault_tls"] = vault_tls
         __props__.__dict__["vault_tls_cert_ssh"] = vault_tls_cert_ssh
         __props__.__dict__["vault_tls_cert_x509"] = vault_tls_cert_x509
@@ -865,6 +1060,14 @@ class SecretStore(pulumi.CustomResource):
         return pulumi.get(self, "keyfactor_x509_store")
 
     @_builtins.property
+    @pulumi.getter(name="strongVault")
+    def strong_vault(self) -> pulumi.Output[Optional['outputs.SecretStoreStrongVault']]:
+        """
+        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "strong_vault")
+
+    @_builtins.property
     @pulumi.getter(name="vaultApprole")
     def vault_approle(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultApprole']]:
         return pulumi.get(self, "vault_approle")
@@ -885,9 +1088,41 @@ class SecretStore(pulumi.CustomResource):
         return pulumi.get(self, "vault_aws_ec2")
 
     @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertSsh")
+    def vault_aws_ec2_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsEc2CertSsh']]:
+        """
+        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_ssh")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsEc2CertX509")
+    def vault_aws_ec2_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsEc2CertX509']]:
+        """
+        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_ec2_cert_x509")
+
+    @_builtins.property
     @pulumi.getter(name="vaultAwsIam")
     def vault_aws_iam(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsIam']]:
         return pulumi.get(self, "vault_aws_iam")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertSsh")
+    def vault_aws_iam_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsIamCertSsh']]:
+        """
+        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_ssh")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultAwsIamCertX509")
+    def vault_aws_iam_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsIamCertX509']]:
+        """
+        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "vault_aws_iam_cert_x509")
 
     @_builtins.property
     @pulumi.getter(name="vaultTls")

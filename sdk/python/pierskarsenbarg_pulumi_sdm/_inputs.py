@@ -285,6 +285,8 @@ __all__ = [
     'SecretStoreKeyfactorSshStoreArgsDict',
     'SecretStoreKeyfactorX509StoreArgs',
     'SecretStoreKeyfactorX509StoreArgsDict',
+    'SecretStoreStrongVaultArgs',
+    'SecretStoreStrongVaultArgsDict',
     'SecretStoreVaultApproleArgs',
     'SecretStoreVaultApproleArgsDict',
     'SecretStoreVaultApproleCertSshArgs',
@@ -293,8 +295,16 @@ __all__ = [
     'SecretStoreVaultApproleCertX509ArgsDict',
     'SecretStoreVaultAwsEc2Args',
     'SecretStoreVaultAwsEc2ArgsDict',
+    'SecretStoreVaultAwsEc2CertSshArgs',
+    'SecretStoreVaultAwsEc2CertSshArgsDict',
+    'SecretStoreVaultAwsEc2CertX509Args',
+    'SecretStoreVaultAwsEc2CertX509ArgsDict',
     'SecretStoreVaultAwsIamArgs',
     'SecretStoreVaultAwsIamArgsDict',
+    'SecretStoreVaultAwsIamCertSshArgs',
+    'SecretStoreVaultAwsIamCertSshArgsDict',
+    'SecretStoreVaultAwsIamCertX509Args',
+    'SecretStoreVaultAwsIamCertX509ArgsDict',
     'SecretStoreVaultTlsArgs',
     'SecretStoreVaultTlsArgsDict',
     'SecretStoreVaultTlsCertSshArgs',
@@ -34220,6 +34230,14 @@ if not MYPY:
         """
         The AWS region to target e.g. us-east-1
         """
+        role_arn: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The role to assume after logging in.
+        """
+        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Tags is a map of key, value pairs.
@@ -34232,14 +34250,22 @@ class SecretStoreAwsArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
+                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
         :param pulumi.Input[_builtins.str] region: The AWS region to target e.g. us-east-1
+        :param pulumi.Input[_builtins.str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[_builtins.str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -34266,6 +34292,30 @@ class SecretStoreAwsArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The role to assume after logging in.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
+        return pulumi.get(self, "role_external_id")
+
+    @role_external_id.setter
+    def role_external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_external_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -35473,6 +35523,57 @@ class SecretStoreKeyfactorX509StoreArgs:
 
 
 if not MYPY:
+    class SecretStoreStrongVaultArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretStoreStrongVaultArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretStoreStrongVaultArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
     class SecretStoreVaultApproleArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -35947,6 +36048,300 @@ class SecretStoreVaultAwsEc2Args:
 
 
 if not MYPY:
+    class SecretStoreVaultAwsEc2CertSshArgsDict(TypedDict):
+        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        server_address: pulumi.Input[_builtins.str]
+        """
+        The URL of the Vault to target
+        """
+        signing_role: pulumi.Input[_builtins.str]
+        """
+        The signing role to be used for signing certificates
+        """
+        ssh_mount_point: pulumi.Input[_builtins.str]
+        """
+        The mount point of the SSH engine configured with the desired CA
+        """
+        namespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The namespace to make requests within
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretStoreVaultAwsEc2CertSshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretStoreVaultAwsEc2CertSshArgs:
+    def __init__(__self__, *,
+                 issued_cert_ttl_minutes: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[_builtins.str],
+                 server_address: pulumi.Input[_builtins.str],
+                 signing_role: pulumi.Input[_builtins.str],
+                 ssh_mount_point: pulumi.Input[_builtins.str],
+                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] issued_cert_ttl_minutes: The lifetime of certificates issued by this CA represented in minutes.
+        :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[_builtins.str] server_address: The URL of the Vault to target
+        :param pulumi.Input[_builtins.str] signing_role: The signing role to be used for signing certificates
+        :param pulumi.Input[_builtins.str] ssh_mount_point: The mount point of the SSH engine configured with the desired CA
+        :param pulumi.Input[_builtins.str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "issued_cert_ttl_minutes", issued_cert_ttl_minutes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        pulumi.set(__self__, "signing_role", signing_role)
+        pulumi.set(__self__, "ssh_mount_point", ssh_mount_point)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="issuedCertTtlMinutes")
+    def issued_cert_ttl_minutes(self) -> pulumi.Input[_builtins.int]:
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        return pulumi.get(self, "issued_cert_ttl_minutes")
+
+    @issued_cert_ttl_minutes.setter
+    def issued_cert_ttl_minutes(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "issued_cert_ttl_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingRole")
+    def signing_role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The signing role to be used for signing certificates
+        """
+        return pulumi.get(self, "signing_role")
+
+    @signing_role.setter
+    def signing_role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "signing_role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sshMountPoint")
+    def ssh_mount_point(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mount point of the SSH engine configured with the desired CA
+        """
+        return pulumi.get(self, "ssh_mount_point")
+
+    @ssh_mount_point.setter
+    def ssh_mount_point(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ssh_mount_point", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class SecretStoreVaultAwsEc2CertX509ArgsDict(TypedDict):
+        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        pki_mount_point: pulumi.Input[_builtins.str]
+        """
+        The mount point of the PKI engine configured with the desired CA
+        """
+        server_address: pulumi.Input[_builtins.str]
+        """
+        The URL of the Vault to target
+        """
+        signing_role: pulumi.Input[_builtins.str]
+        """
+        The signing role to be used for signing certificates
+        """
+        namespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The namespace to make requests within
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretStoreVaultAwsEc2CertX509ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretStoreVaultAwsEc2CertX509Args:
+    def __init__(__self__, *,
+                 issued_cert_ttl_minutes: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[_builtins.str],
+                 pki_mount_point: pulumi.Input[_builtins.str],
+                 server_address: pulumi.Input[_builtins.str],
+                 signing_role: pulumi.Input[_builtins.str],
+                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] issued_cert_ttl_minutes: The lifetime of certificates issued by this CA represented in minutes.
+        :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[_builtins.str] pki_mount_point: The mount point of the PKI engine configured with the desired CA
+        :param pulumi.Input[_builtins.str] server_address: The URL of the Vault to target
+        :param pulumi.Input[_builtins.str] signing_role: The signing role to be used for signing certificates
+        :param pulumi.Input[_builtins.str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "issued_cert_ttl_minutes", issued_cert_ttl_minutes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pki_mount_point", pki_mount_point)
+        pulumi.set(__self__, "server_address", server_address)
+        pulumi.set(__self__, "signing_role", signing_role)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="issuedCertTtlMinutes")
+    def issued_cert_ttl_minutes(self) -> pulumi.Input[_builtins.int]:
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        return pulumi.get(self, "issued_cert_ttl_minutes")
+
+    @issued_cert_ttl_minutes.setter
+    def issued_cert_ttl_minutes(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "issued_cert_ttl_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pkiMountPoint")
+    def pki_mount_point(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mount point of the PKI engine configured with the desired CA
+        """
+        return pulumi.get(self, "pki_mount_point")
+
+    @pki_mount_point.setter
+    def pki_mount_point(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pki_mount_point", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingRole")
+    def signing_role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The signing role to be used for signing certificates
+        """
+        return pulumi.get(self, "signing_role")
+
+    @signing_role.setter
+    def signing_role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "signing_role", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
     class SecretStoreVaultAwsIamArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -36010,6 +36405,300 @@ class SecretStoreVaultAwsIamArgs:
     @server_address.setter
     def server_address(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class SecretStoreVaultAwsIamCertSshArgsDict(TypedDict):
+        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        server_address: pulumi.Input[_builtins.str]
+        """
+        The URL of the Vault to target
+        """
+        signing_role: pulumi.Input[_builtins.str]
+        """
+        The signing role to be used for signing certificates
+        """
+        ssh_mount_point: pulumi.Input[_builtins.str]
+        """
+        The mount point of the SSH engine configured with the desired CA
+        """
+        namespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The namespace to make requests within
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretStoreVaultAwsIamCertSshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretStoreVaultAwsIamCertSshArgs:
+    def __init__(__self__, *,
+                 issued_cert_ttl_minutes: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[_builtins.str],
+                 server_address: pulumi.Input[_builtins.str],
+                 signing_role: pulumi.Input[_builtins.str],
+                 ssh_mount_point: pulumi.Input[_builtins.str],
+                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] issued_cert_ttl_minutes: The lifetime of certificates issued by this CA represented in minutes.
+        :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[_builtins.str] server_address: The URL of the Vault to target
+        :param pulumi.Input[_builtins.str] signing_role: The signing role to be used for signing certificates
+        :param pulumi.Input[_builtins.str] ssh_mount_point: The mount point of the SSH engine configured with the desired CA
+        :param pulumi.Input[_builtins.str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "issued_cert_ttl_minutes", issued_cert_ttl_minutes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        pulumi.set(__self__, "signing_role", signing_role)
+        pulumi.set(__self__, "ssh_mount_point", ssh_mount_point)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="issuedCertTtlMinutes")
+    def issued_cert_ttl_minutes(self) -> pulumi.Input[_builtins.int]:
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        return pulumi.get(self, "issued_cert_ttl_minutes")
+
+    @issued_cert_ttl_minutes.setter
+    def issued_cert_ttl_minutes(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "issued_cert_ttl_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingRole")
+    def signing_role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The signing role to be used for signing certificates
+        """
+        return pulumi.get(self, "signing_role")
+
+    @signing_role.setter
+    def signing_role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "signing_role", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sshMountPoint")
+    def ssh_mount_point(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mount point of the SSH engine configured with the desired CA
+        """
+        return pulumi.get(self, "ssh_mount_point")
+
+    @ssh_mount_point.setter
+    def ssh_mount_point(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ssh_mount_point", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class SecretStoreVaultAwsIamCertX509ArgsDict(TypedDict):
+        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        pki_mount_point: pulumi.Input[_builtins.str]
+        """
+        The mount point of the PKI engine configured with the desired CA
+        """
+        server_address: pulumi.Input[_builtins.str]
+        """
+        The URL of the Vault to target
+        """
+        signing_role: pulumi.Input[_builtins.str]
+        """
+        The signing role to be used for signing certificates
+        """
+        namespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The namespace to make requests within
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Tags is a map of key, value pairs.
+        """
+elif False:
+    SecretStoreVaultAwsIamCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecretStoreVaultAwsIamCertX509Args:
+    def __init__(__self__, *,
+                 issued_cert_ttl_minutes: pulumi.Input[_builtins.int],
+                 name: pulumi.Input[_builtins.str],
+                 pki_mount_point: pulumi.Input[_builtins.str],
+                 server_address: pulumi.Input[_builtins.str],
+                 signing_role: pulumi.Input[_builtins.str],
+                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] issued_cert_ttl_minutes: The lifetime of certificates issued by this CA represented in minutes.
+        :param pulumi.Input[_builtins.str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[_builtins.str] pki_mount_point: The mount point of the PKI engine configured with the desired CA
+        :param pulumi.Input[_builtins.str] server_address: The URL of the Vault to target
+        :param pulumi.Input[_builtins.str] signing_role: The signing role to be used for signing certificates
+        :param pulumi.Input[_builtins.str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "issued_cert_ttl_minutes", issued_cert_ttl_minutes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pki_mount_point", pki_mount_point)
+        pulumi.set(__self__, "server_address", server_address)
+        pulumi.set(__self__, "signing_role", signing_role)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="issuedCertTtlMinutes")
+    def issued_cert_ttl_minutes(self) -> pulumi.Input[_builtins.int]:
+        """
+        The lifetime of certificates issued by this CA represented in minutes.
+        """
+        return pulumi.get(self, "issued_cert_ttl_minutes")
+
+    @issued_cert_ttl_minutes.setter
+    def issued_cert_ttl_minutes(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "issued_cert_ttl_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pkiMountPoint")
+    def pki_mount_point(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mount point of the PKI engine configured with the desired CA
+        """
+        return pulumi.get(self, "pki_mount_point")
+
+    @pki_mount_point.setter
+    def pki_mount_point(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pki_mount_point", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "server_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingRole")
+    def signing_role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The signing role to be used for signing certificates
+        """
+        return pulumi.get(self, "signing_role")
+
+    @signing_role.setter
+    def signing_role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "signing_role", value)
 
     @_builtins.property
     @pulumi.getter

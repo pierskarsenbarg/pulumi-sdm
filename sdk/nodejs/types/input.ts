@@ -6997,6 +6997,14 @@ export interface SecretStoreAws {
      */
     region: pulumi.Input<string>;
     /**
+     * The role to assume after logging in.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -7254,6 +7262,17 @@ export interface SecretStoreKeyfactorX509Store {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface SecretStoreStrongVault {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreVaultApprole {
     /**
      * Unique human-readable name of the SecretStore.
@@ -7354,6 +7373,68 @@ export interface SecretStoreVaultAwsEc2 {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface SecretStoreVaultAwsEc2CertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultAwsEc2CertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreVaultAwsIam {
     /**
      * Unique human-readable name of the SecretStore.
@@ -7367,6 +7448,68 @@ export interface SecretStoreVaultAwsIam {
      * The URL of the Vault to target
      */
     serverAddress: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultAwsIamCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultAwsIamCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
