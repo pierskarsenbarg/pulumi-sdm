@@ -24,9 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
@@ -104,9 +104,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
@@ -172,7 +172,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -212,9 +212,9 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #   - name: Checkout Repo
-  #     uses: actions/checkout@v5
+  #     uses: actions/checkout@v6
   #   - name: Checkout Scripts Repo
-  #     uses: actions/checkout@v5
+  #     uses: actions/checkout@v6
   #     with:
   #       path: ci-scripts
   #       repository: jaxxstorm/scripts
@@ -287,9 +287,9 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #   - name: Checkout Repo
-  #     uses: actions/checkout@v5
+  #     uses: actions/checkout@v6
   #   - name: Checkout Scripts Repo
-  #     uses: actions/checkout@v5
+  #     uses: actions/checkout@v6
   #     with:
   #       path: ci-scripts
   #       repository: jaxxstorm/scripts
