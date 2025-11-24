@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const securityTeamRoles = sdm.getGroupRole({
- *     groupId: sdm_group.security_team.id,
+ *     groupId: securityTeam.id,
  * });
  * const specificRelationship = sdm.getGroupRole({
  *     id: "grouprole-1234567890abcdef",
  * });
  * const groupsWithRole = sdm.getGroupRole({
- *     roleId: sdm_role.admin_role.id,
+ *     roleId: adminRole.id,
  * });
  * ```
  */
@@ -87,13 +87,13 @@ export interface GetGroupRoleResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const securityTeamRoles = sdm.getGroupRole({
- *     groupId: sdm_group.security_team.id,
+ *     groupId: securityTeam.id,
  * });
  * const specificRelationship = sdm.getGroupRole({
  *     id: "grouprole-1234567890abcdef",
  * });
  * const groupsWithRole = sdm.getGroupRole({
- *     roleId: sdm_role.admin_role.id,
+ *     roleId: adminRole.id,
  * });
  * ```
  */

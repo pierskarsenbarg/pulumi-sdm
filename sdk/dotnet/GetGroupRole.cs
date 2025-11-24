@@ -26,7 +26,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Security_team.Id,
+        ///         GroupId = securityTeam.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
@@ -36,7 +36,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         RoleId = sdm_role.Admin_role.Id,
+        ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });
@@ -59,7 +59,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Security_team.Id,
+        ///         GroupId = securityTeam.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
@@ -69,7 +69,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         RoleId = sdm_role.Admin_role.Id,
+        ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });
@@ -92,7 +92,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Security_team.Id,
+        ///         GroupId = securityTeam.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
@@ -102,7 +102,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
-        ///         RoleId = sdm_role.Admin_role.Id,
+        ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });

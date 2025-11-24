@@ -26,7 +26,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         AccountId = sdm_account.Security_lead.Id,
+        ///         AccountId = securityLead.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
@@ -36,7 +36,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Devops_group.Id,
+        ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });
@@ -59,7 +59,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         AccountId = sdm_account.Security_lead.Id,
+        ///         AccountId = securityLead.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
@@ -69,7 +69,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Devops_group.Id,
+        ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });
@@ -92,7 +92,7 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         AccountId = sdm_account.Security_lead.Id,
+        ///         AccountId = securityLead.Id,
         ///     });
         /// 
         ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
@@ -102,7 +102,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
-        ///         GroupId = sdm_group.Devops_group.Id,
+        ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });

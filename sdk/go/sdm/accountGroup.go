@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewAccountGroup(ctx, "securityLeadToSecurityTeam", &sdm.AccountGroupArgs{
-//				AccountId: pulumi.Any(sdm_account.Security_lead.Id),
-//				GroupId:   pulumi.Any(sdm_group.Security_team.Id),
+//			_, err := sdm.NewAccountGroup(ctx, "security_lead_to_security_team", &sdm.AccountGroupArgs{
+//				AccountId: pulumi.Any(securityLead.Id),
+//				GroupId:   pulumi.Any(securityTeam.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.NewAccountGroup(ctx, "adminUserToAdministrators", &sdm.AccountGroupArgs{
+//			_, err = sdm.NewAccountGroup(ctx, "admin_user_to_administrators", &sdm.AccountGroupArgs{
 //				AccountId: pulumi.String("a-1234567890abcdef"),
 //				GroupId:   pulumi.String("group-1234567890abcdef"),
 //			})

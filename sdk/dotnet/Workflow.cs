@@ -26,13 +26,15 @@ namespace PiersKarsenbarg.Sdm
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create approval workflows first
-    ///     var autoGrant = new Sdm.ApprovalWorkflow("autoGrant", new()
+    ///     var autoGrant = new Sdm.ApprovalWorkflow("auto_grant", new()
     ///     {
+    ///         Name = "Auto Grant Example",
     ///         ApprovalMode = "automatic",
     ///     });
     /// 
-    ///     var manualApproval = new Sdm.ApprovalWorkflow("manualApproval", new()
+    ///     var manualApproval = new Sdm.ApprovalWorkflow("manual_approval", new()
     ///     {
+    ///         Name = "Manual Approval Example",
     ///         ApprovalMode = "manual",
     ///         ApprovalSteps = new[]
     ///         {
@@ -52,8 +54,9 @@ namespace PiersKarsenbarg.Sdm
     ///     });
     /// 
     ///     // Create workflows that reference the approval workflows
-    ///     var autoGrantWorkflow = new Sdm.Workflow("autoGrantWorkflow", new()
+    ///     var autoGrantWorkflow = new Sdm.Workflow("auto_grant_workflow", new()
     ///     {
+    ///         Name = "auto grant workflow example",
     ///         ApprovalFlowId = autoGrant.Id,
     ///         Enabled = true,
     ///         AccessRules = JsonSerializer.Serialize(new[]
@@ -69,8 +72,9 @@ namespace PiersKarsenbarg.Sdm
     ///         }),
     ///     });
     /// 
-    ///     var manualApprovalWorkflow = new Sdm.Workflow("manualApprovalWorkflow", new()
+    ///     var manualApprovalWorkflow = new Sdm.Workflow("manual_approval_workflow", new()
     ///     {
+    ///         Name = "manual approval workflow example",
     ///         ApprovalFlowId = manualApproval.Id,
     ///         Enabled = true,
     ///         AccessRules = JsonSerializer.Serialize(new[]

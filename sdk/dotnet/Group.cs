@@ -22,17 +22,24 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityTeam = new Sdm.Group("securityTeam", new()
+    ///     var securityTeam = new Sdm.Group("security_team", new()
     ///     {
+    ///         Name = "Security Team",
     ///         Tags = 
     ///         {
     ///             { "admin", "true" },
     ///         },
     ///     });
     /// 
-    ///     var administrators = new Sdm.Group("administrators");
+    ///     var administrators = new Sdm.Group("administrators", new()
+    ///     {
+    ///         Name = "Administrators",
+    ///     });
     /// 
-    ///     var devopsTeam = new Sdm.Group("devopsTeam");
+    ///     var devopsTeam = new Sdm.Group("devops_team", new()
+    ///     {
+    ///         Name = "DevOps Team",
+    ///     });
     /// 
     /// });
     /// ```

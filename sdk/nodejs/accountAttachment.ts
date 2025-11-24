@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const testAccountAttachment = new sdm.AccountAttachment("testAccountAttachment", {
+ * const testAccountAttachment = new sdm.AccountAttachment("test_account_attachment", {
  *     accountId: "a-00000054",
  *     roleId: "r-12355562",
  * });

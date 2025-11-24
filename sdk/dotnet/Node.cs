@@ -29,13 +29,13 @@ namespace PiersKarsenbarg.Sdm
     ///     {
     ///         Gateway = new Sdm.Inputs.NodeGatewayArgs
     ///         {
-    ///             BindAddress = "0.0.0.0:21222",
-    ///             ListenAddress = "165.23.40.1:21222",
     ///             Name = "test-gateway",
+    ///             ListenAddress = "165.23.40.1:21222",
+    ///             BindAddress = "0.0.0.0:21222",
     ///             Tags = 
     ///             {
-    ///                 { "env", "dev" },
     ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
     ///             },
     ///         },
     ///     });
@@ -47,8 +47,8 @@ namespace PiersKarsenbarg.Sdm
     ///             Name = "test-relay",
     ///             Tags = 
     ///             {
-    ///                 { "env", "dev" },
     ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
     ///             },
     ///         },
     ///     });

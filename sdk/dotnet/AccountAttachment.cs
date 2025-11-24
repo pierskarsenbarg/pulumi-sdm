@@ -22,7 +22,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testAccountAttachment = new Sdm.AccountAttachment("testAccountAttachment", new()
+    ///     var testAccountAttachment = new Sdm.AccountAttachment("test_account_attachment", new()
     ///     {
     ///         AccountId = "a-00000054",
     ///         RoleId = "r-12355562",

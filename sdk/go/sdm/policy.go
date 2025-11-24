@@ -29,9 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewPolicy(ctx, "permitEverything", &sdm.PolicyArgs{
+//			_, err := sdm.NewPolicy(ctx, "permit_everything", &sdm.PolicyArgs{
+//				Name:          pulumi.String("permit-everything"),
 //				Description:   pulumi.String("this policy permits everything"),
-//				PolicyContent: pulumi.String("permit(principal, action, resource);\n\n"),
+//				PolicyContent: pulumi.String("permit(principal, action, resource);\n"),
 //			})
 //			if err != nil {
 //				return err

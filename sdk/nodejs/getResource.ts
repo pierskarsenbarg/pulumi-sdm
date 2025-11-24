@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  *
  * const mysqlDatasources = sdm.getResource({
  *     name: "us-west*",
- *     tags: {
- *         env: "dev",
- *         region: "us-west",
- *     },
  *     type: "mysql",
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
  * });
  * ```
  */
@@ -123,11 +123,11 @@ export interface GetResourceResult {
  *
  * const mysqlDatasources = sdm.getResource({
  *     name: "us-west*",
- *     tags: {
- *         env: "dev",
- *         region: "us-west",
- *     },
  *     type: "mysql",
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
  * });
  * ```
  */

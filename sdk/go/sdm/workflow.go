@@ -33,13 +33,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create approval workflows first
-//			autoGrant, err := sdm.NewApprovalWorkflow(ctx, "autoGrant", &sdm.ApprovalWorkflowArgs{
+//			autoGrant, err := sdm.NewApprovalWorkflow(ctx, "auto_grant", &sdm.ApprovalWorkflowArgs{
+//				Name:         pulumi.String("Auto Grant Example"),
 //				ApprovalMode: pulumi.String("automatic"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			manualApproval, err := sdm.NewApprovalWorkflow(ctx, "manualApproval", &sdm.ApprovalWorkflowArgs{
+//			manualApproval, err := sdm.NewApprovalWorkflow(ctx, "manual_approval", &sdm.ApprovalWorkflowArgs{
+//				Name:         pulumi.String("Manual Approval Example"),
 //				ApprovalMode: pulumi.String("manual"),
 //				ApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{
 //					&sdm.ApprovalWorkflowApprovalStepArgs{
@@ -69,7 +71,8 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			// Create workflows that reference the approval workflows
-//			_, err = sdm.NewWorkflow(ctx, "autoGrantWorkflow", &sdm.WorkflowArgs{
+//			_, err = sdm.NewWorkflow(ctx, "auto_grant_workflow", &sdm.WorkflowArgs{
+//				Name:           pulumi.String("auto grant workflow example"),
 //				ApprovalFlowId: autoGrant.ID(),
 //				Enabled:        pulumi.Bool(true),
 //				AccessRules:    pulumi.String(json0),
@@ -89,7 +92,8 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			_, err = sdm.NewWorkflow(ctx, "manualApprovalWorkflow", &sdm.WorkflowArgs{
+//			_, err = sdm.NewWorkflow(ctx, "manual_approval_workflow", &sdm.WorkflowArgs{
+//				Name:           pulumi.String("manual approval workflow example"),
 //				ApprovalFlowId: manualApproval.ID(),
 //				Enabled:        pulumi.Bool(true),
 //				AccessRules:    pulumi.String(json1),

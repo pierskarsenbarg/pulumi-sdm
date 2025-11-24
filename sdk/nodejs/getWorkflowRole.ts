@@ -15,10 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
+ * // Query workflow role by workflow and role IDs
  * const workflowRoleQuery = sdm.getWorkflowRole({
- *     roleId: "r-1234567890abcdef",
  *     workflowId: "w-1234567890abcdef",
+ *     roleId: "r-1234567890abcdef",
  * });
+ * // Query workflow role by specific ID
  * const workflowRoleById = sdm.getWorkflowRole({
  *     id: "wr-1234567890abcdef",
  * });
@@ -86,10 +88,12 @@ export interface GetWorkflowRoleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
+ * // Query workflow role by workflow and role IDs
  * const workflowRoleQuery = sdm.getWorkflowRole({
- *     roleId: "r-1234567890abcdef",
  *     workflowId: "w-1234567890abcdef",
+ *     roleId: "r-1234567890abcdef",
  * });
+ * // Query workflow role by specific ID
  * const workflowRoleById = sdm.getWorkflowRole({
  *     id: "wr-1234567890abcdef",
  * });

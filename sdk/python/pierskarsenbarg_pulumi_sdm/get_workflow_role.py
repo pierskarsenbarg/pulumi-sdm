@@ -111,8 +111,10 @@ def get_workflow_role(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    workflow_role_query = sdm.get_workflow_role(role_id="r-1234567890abcdef",
-        workflow_id="w-1234567890abcdef")
+    # Query workflow role by workflow and role IDs
+    workflow_role_query = sdm.get_workflow_role(workflow_id="w-1234567890abcdef",
+        role_id="r-1234567890abcdef")
+    # Query workflow role by specific ID
     workflow_role_by_id = sdm.get_workflow_role(id="wr-1234567890abcdef")
     ```
 
@@ -147,8 +149,10 @@ def get_workflow_role_output(id: Optional[pulumi.Input[Optional[_builtins.str]]]
     import pulumi
     import pulumi_sdm as sdm
 
-    workflow_role_query = sdm.get_workflow_role(role_id="r-1234567890abcdef",
-        workflow_id="w-1234567890abcdef")
+    # Query workflow role by workflow and role IDs
+    workflow_role_query = sdm.get_workflow_role(workflow_id="w-1234567890abcdef",
+        role_id="r-1234567890abcdef")
+    # Query workflow role by specific ID
     workflow_role_by_id = sdm.get_workflow_role(id="wr-1234567890abcdef")
     ```
 

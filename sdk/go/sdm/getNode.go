@@ -32,11 +32,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupNode(ctx, &sdm.LookupNodeArgs{
-//				Tags: map[string]interface{}{
-//					"env":    "dev",
-//					"region": "us-west",
-//				},
 //				Type: pulumi.StringRef("gateway"),
+//				Tags: map[string]interface{}{
+//					"region": "us-west",
+//					"env":    "dev",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err

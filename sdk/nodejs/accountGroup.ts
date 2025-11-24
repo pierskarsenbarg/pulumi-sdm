@@ -12,11 +12,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const securityLeadToSecurityTeam = new sdm.AccountGroup("securityLeadToSecurityTeam", {
- *     accountId: sdm_account.security_lead.id,
- *     groupId: sdm_group.security_team.id,
+ * const securityLeadToSecurityTeam = new sdm.AccountGroup("security_lead_to_security_team", {
+ *     accountId: securityLead.id,
+ *     groupId: securityTeam.id,
  * });
- * const adminUserToAdministrators = new sdm.AccountGroup("adminUserToAdministrators", {
+ * const adminUserToAdministrators = new sdm.AccountGroup("admin_user_to_administrators", {
  *     accountId: "a-1234567890abcdef",
  *     groupId: "group-1234567890abcdef",
  * });

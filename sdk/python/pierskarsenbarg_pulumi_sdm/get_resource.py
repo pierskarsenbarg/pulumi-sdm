@@ -162,11 +162,11 @@ def get_resource(hostname: Optional[_builtins.str] = None,
     import pulumi_sdm as sdm
 
     mysql_datasources = sdm.get_resource(name="us-west*",
+        type="mysql",
         tags={
-            "env": "dev",
             "region": "us-west",
-        },
-        type="mysql")
+            "env": "dev",
+        })
     ```
 
 
@@ -217,11 +217,11 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]
     import pulumi_sdm as sdm
 
     mysql_datasources = sdm.get_resource(name="us-west*",
+        type="mysql",
         tags={
-            "env": "dev",
             "region": "us-west",
-        },
-        type="mysql")
+            "env": "dev",
+        })
     ```
 
 

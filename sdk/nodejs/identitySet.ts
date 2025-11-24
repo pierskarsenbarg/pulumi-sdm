@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const _default = new sdm.IdentitySet("default", {});
+ * const _default = new sdm.IdentitySet("default", {name: "default"});
  * ```
  * This resource can be imported using the import command.
  *

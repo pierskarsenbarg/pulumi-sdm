@@ -29,15 +29,15 @@ namespace PiersKarsenbarg.Sdm
     ///     {
     ///         User = new Sdm.Inputs.AccountUserArgs
     ///         {
-    ///             Email = "albob@strongdm.com",
     ///             FirstName = "al",
     ///             LastName = "bob",
-    ///             ManagerId = "a-1234abc",
+    ///             Email = "albob@strongdm.com",
     ///             PermissionLevel = "database-admin",
+    ///             ManagerId = "a-1234abc",
     ///             Tags = 
     ///             {
-    ///                 { "env", "dev" },
     ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
     ///             },
     ///         },
     ///     });
@@ -49,8 +49,8 @@ namespace PiersKarsenbarg.Sdm
     ///             Name = "test-service",
     ///             Tags = 
     ///             {
-    ///                 { "env", "dev" },
     ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
     ///             },
     ///         },
     ///     });

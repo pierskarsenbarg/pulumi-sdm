@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const securityLeadGroups = sdm.getAccountGroup({
- *     accountId: sdm_account.security_lead.id,
+ *     accountId: securityLead.id,
  * });
  * const specificRelationship = sdm.getAccountGroup({
  *     id: "accountgroup-1234567890abcdef",
  * });
  * const usersInGroup = sdm.getAccountGroup({
- *     groupId: sdm_group.devops_group.id,
+ *     groupId: devopsGroup.id,
  * });
  * ```
  */
@@ -87,13 +87,13 @@ export interface GetAccountGroupResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const securityLeadGroups = sdm.getAccountGroup({
- *     accountId: sdm_account.security_lead.id,
+ *     accountId: securityLead.id,
  * });
  * const specificRelationship = sdm.getAccountGroup({
  *     id: "accountgroup-1234567890abcdef",
  * });
  * const usersInGroup = sdm.getAccountGroup({
- *     groupId: sdm_group.devops_group.id,
+ *     groupId: devopsGroup.id,
  * });
  * ```
  */

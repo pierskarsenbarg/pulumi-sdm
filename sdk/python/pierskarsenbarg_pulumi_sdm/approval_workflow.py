@@ -181,10 +181,13 @@ class ApprovalWorkflow(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        manual_approval_workflow = sdm.ApprovalWorkflow("manualApprovalWorkflow",
+        manual_approval_workflow = sdm.ApprovalWorkflow("manual_approval_workflow",
+            name="manual approval workflow example",
             approval_mode="manual",
             approval_steps=[
                 {
+                    "quantifier": "any",
+                    "skip_after": "1h0m0s",
                     "approvers": [
                         {
                             "account_id": "a-1234abc",
@@ -196,10 +199,10 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "reference": "manager-of-requester",
                         },
                     ],
-                    "quantifier": "any",
-                    "skip_after": "1h0m0s",
                 },
                 {
+                    "quantifier": "all",
+                    "skip_after": "0s",
                     "approvers": [
                         {
                             "role_id": "r-1234abc",
@@ -214,11 +217,11 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "reference": "manager-of-manager-of-requester",
                         },
                     ],
-                    "quantifier": "all",
-                    "skip_after": "0s",
                 },
             ])
-        auto_grant_approval_workflow = sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", approval_mode="automatic")
+        auto_grant_approval_workflow = sdm.ApprovalWorkflow("auto_grant_approval_workflow",
+            name="auto approval workflow example",
+            approval_mode="automatic")
         ```
         This resource can be imported using the import command.
 
@@ -252,10 +255,13 @@ class ApprovalWorkflow(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        manual_approval_workflow = sdm.ApprovalWorkflow("manualApprovalWorkflow",
+        manual_approval_workflow = sdm.ApprovalWorkflow("manual_approval_workflow",
+            name="manual approval workflow example",
             approval_mode="manual",
             approval_steps=[
                 {
+                    "quantifier": "any",
+                    "skip_after": "1h0m0s",
                     "approvers": [
                         {
                             "account_id": "a-1234abc",
@@ -267,10 +273,10 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "reference": "manager-of-requester",
                         },
                     ],
-                    "quantifier": "any",
-                    "skip_after": "1h0m0s",
                 },
                 {
+                    "quantifier": "all",
+                    "skip_after": "0s",
                     "approvers": [
                         {
                             "role_id": "r-1234abc",
@@ -285,11 +291,11 @@ class ApprovalWorkflow(pulumi.CustomResource):
                             "reference": "manager-of-manager-of-requester",
                         },
                     ],
-                    "quantifier": "all",
-                    "skip_after": "0s",
                 },
             ])
-        auto_grant_approval_workflow = sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", approval_mode="automatic")
+        auto_grant_approval_workflow = sdm.ApprovalWorkflow("auto_grant_approval_workflow",
+            name="auto approval workflow example",
+            approval_mode="automatic")
         ```
         This resource can be imported using the import command.
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewAccountAttachment(ctx, "testAccountAttachment", &sdm.AccountAttachmentArgs{
+//			_, err := sdm.NewAccountAttachment(ctx, "test_account_attachment", &sdm.AccountAttachmentArgs{
 //				AccountId: pulumi.String("a-00000054"),
 //				RoleId:    pulumi.String("r-12355562"),
 //			})

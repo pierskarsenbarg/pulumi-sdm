@@ -15,8 +15,12 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * // Create approval workflows first
- * const autoGrant = new sdm.ApprovalWorkflow("autoGrant", {approvalMode: "automatic"});
- * const manualApproval = new sdm.ApprovalWorkflow("manualApproval", {
+ * const autoGrant = new sdm.ApprovalWorkflow("auto_grant", {
+ *     name: "Auto Grant Example",
+ *     approvalMode: "automatic",
+ * });
+ * const manualApproval = new sdm.ApprovalWorkflow("manual_approval", {
+ *     name: "Manual Approval Example",
  *     approvalMode: "manual",
  *     approvalSteps: [{
  *         quantifier: "any",
@@ -27,7 +31,8 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Create workflows that reference the approval workflows
- * const autoGrantWorkflow = new sdm.Workflow("autoGrantWorkflow", {
+ * const autoGrantWorkflow = new sdm.Workflow("auto_grant_workflow", {
+ *     name: "auto grant workflow example",
  *     approvalFlowId: autoGrant.id,
  *     enabled: true,
  *     accessRules: JSON.stringify([{
@@ -37,7 +42,8 @@ import * as utilities from "./utilities";
  *         },
  *     }]),
  * });
- * const manualApprovalWorkflow = new sdm.Workflow("manualApprovalWorkflow", {
+ * const manualApprovalWorkflow = new sdm.Workflow("manual_approval_workflow", {
+ *     name: "manual approval workflow example",
  *     approvalFlowId: manualApproval.id,
  *     enabled: true,
  *     accessRules: JSON.stringify([{

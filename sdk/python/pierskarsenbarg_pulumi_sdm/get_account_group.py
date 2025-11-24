@@ -110,9 +110,9 @@ def get_account_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    security_lead_groups = sdm.get_account_group(account_id=sdm_account["security_lead"]["id"])
+    security_lead_groups = sdm.get_account_group(account_id=security_lead["id"])
     specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
-    users_in_group = sdm.get_account_group(group_id=sdm_group["devops_group"]["id"])
+    users_in_group = sdm.get_account_group(group_id=devops_group["id"])
     ```
 
 
@@ -145,9 +145,9 @@ def get_account_group_output(account_id: Optional[pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_sdm as sdm
 
-    security_lead_groups = sdm.get_account_group(account_id=sdm_account["security_lead"]["id"])
+    security_lead_groups = sdm.get_account_group(account_id=security_lead["id"])
     specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
-    users_in_group = sdm.get_account_group(group_id=sdm_group["devops_group"]["id"])
+    users_in_group = sdm.get_account_group(group_id=devops_group["id"])
     ```
 
 

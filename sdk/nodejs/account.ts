@@ -18,21 +18,21 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const test_user = new sdm.Account("test-user", {user: {
- *     email: "albob@strongdm.com",
  *     firstName: "al",
  *     lastName: "bob",
- *     managerId: "a-1234abc",
+ *     email: "albob@strongdm.com",
  *     permissionLevel: "database-admin",
+ *     managerId: "a-1234abc",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
  * }});
  * const test_service = new sdm.Account("test-service", {service: {
  *     name: "test-service",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
  * }});
  * ```

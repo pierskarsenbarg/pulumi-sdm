@@ -191,8 +191,11 @@ def get_workflow(access_request_fixed_duration: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
+    # Query workflow by name
     workflow_by_name = sdm.get_workflow(name="workflow example")
+    # Query workflow by ID
     workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+    # Query workflow by approval flow ID
     workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
     ```
 
@@ -252,8 +255,11 @@ def get_workflow_output(access_request_fixed_duration: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_sdm as sdm
 
+    # Query workflow by name
     workflow_by_name = sdm.get_workflow(name="workflow example")
+    # Query workflow by ID
     workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+    # Query workflow by approval flow ID
     workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
     ```
 

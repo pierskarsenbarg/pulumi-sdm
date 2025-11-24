@@ -150,11 +150,11 @@ def get_node(bind_address: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    gateway_query = sdm.get_node(tags={
-            "env": "dev",
+    gateway_query = sdm.get_node(type="gateway",
+        tags={
             "region": "us-west",
-        },
-        type="gateway")
+            "env": "dev",
+        })
     ```
 
 
@@ -202,11 +202,11 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_sdm as sdm
 
-    gateway_query = sdm.get_node(tags={
-            "env": "dev",
+    gateway_query = sdm.get_node(type="gateway",
+        tags={
             "region": "us-west",
-        },
-        type="gateway")
+            "env": "dev",
+        })
     ```
 
 

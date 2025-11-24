@@ -119,21 +119,21 @@ class Account(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         test_user = sdm.Account("test-user", user={
-            "email": "albob@strongdm.com",
             "first_name": "al",
             "last_name": "bob",
-            "manager_id": "a-1234abc",
+            "email": "albob@strongdm.com",
             "permission_level": "database-admin",
+            "manager_id": "a-1234abc",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         test_service = sdm.Account("test-service", service={
             "name": "test-service",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         ```
@@ -170,21 +170,21 @@ class Account(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         test_user = sdm.Account("test-user", user={
-            "email": "albob@strongdm.com",
             "first_name": "al",
             "last_name": "bob",
-            "manager_id": "a-1234abc",
+            "email": "albob@strongdm.com",
             "permission_level": "database-admin",
+            "manager_id": "a-1234abc",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         test_service = sdm.Account("test-service", service={
             "name": "test-service",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         ```

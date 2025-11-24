@@ -30,18 +30,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Query workflow by name
 //			_, err := sdm.LookupWorkflow(ctx, &sdm.LookupWorkflowArgs{
 //				Name: pulumi.StringRef("workflow example"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Query workflow by ID
 //			_, err = sdm.LookupWorkflow(ctx, &sdm.LookupWorkflowArgs{
 //				Id: pulumi.StringRef("w-1234567890abcdef"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Query workflow by approval flow ID
 //			_, err = sdm.LookupWorkflow(ctx, &sdm.LookupWorkflowArgs{
 //				ApprovalFlowId: pulumi.StringRef("aw-1234567890abcdef"),
 //			}, nil)

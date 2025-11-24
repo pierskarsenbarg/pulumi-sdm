@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const testProxyClusterKey = new sdm.ProxyClusterKey("testProxyClusterKey", {proxyClusterId: "n-12345123"});
+ * const testProxyClusterKey = new sdm.ProxyClusterKey("test_proxy_cluster_key", {proxyClusterId: "n-12345123"});
  * ```
  * This resource can be imported using the import command.
  *

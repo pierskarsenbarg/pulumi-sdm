@@ -112,10 +112,10 @@ class WorkflowRole(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        workflow_role_example = sdm.WorkflowRole("workflowRoleExample",
-            workflow_id=sdm_workflow["manual_approval_workflow"]["id"],
-            role_id=sdm_role["developers"]["id"])
-        workflow_role_with_ids = sdm.WorkflowRole("workflowRoleWithIds",
+        workflow_role_example = sdm.WorkflowRole("workflow_role_example",
+            workflow_id=manual_approval_workflow["id"],
+            role_id=developers["id"])
+        workflow_role_with_ids = sdm.WorkflowRole("workflow_role_with_ids",
             workflow_id="w-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```
@@ -149,10 +149,10 @@ class WorkflowRole(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        workflow_role_example = sdm.WorkflowRole("workflowRoleExample",
-            workflow_id=sdm_workflow["manual_approval_workflow"]["id"],
-            role_id=sdm_role["developers"]["id"])
-        workflow_role_with_ids = sdm.WorkflowRole("workflowRoleWithIds",
+        workflow_role_example = sdm.WorkflowRole("workflow_role_example",
+            workflow_id=manual_approval_workflow["id"],
+            role_id=developers["id"])
+        workflow_role_with_ids = sdm.WorkflowRole("workflow_role_with_ids",
             workflow_id="w-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```
