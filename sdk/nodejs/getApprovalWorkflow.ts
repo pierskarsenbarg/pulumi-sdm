@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({
- *     approvalMode: "manual",
  *     name: "approval workflow manual",
+ *     approvalMode: "manual",
  * });
  * const autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({
- *     approvalMode: "automatic",
  *     name: "approval workflow auto",
+ *     approvalMode: "automatic",
  * });
  * ```
  */
@@ -106,12 +106,12 @@ export interface GetApprovalWorkflowResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({
- *     approvalMode: "manual",
  *     name: "approval workflow manual",
+ *     approvalMode: "manual",
  * });
  * const autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({
- *     approvalMode: "automatic",
  *     name: "approval workflow auto",
+ *     approvalMode: "automatic",
  * });
  * ```
  */

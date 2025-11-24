@@ -18,20 +18,20 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const user_queries = sdm.getAccount({
+ *     type: "user",
  *     email: "*@strongdm.com",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
- *     type: "user",
  * });
  * const api_key_queries = sdm.getAccount({
- *     name: "*-dev",
  *     type: "api",
+ *     name: "*-dev",
  * });
  * const admin_token_queries = sdm.getAccount({
- *     name: "*-prod",
  *     type: "admin-token",
+ *     name: "*-prod",
  * });
  * ```
  */
@@ -188,20 +188,20 @@ export interface GetAccountResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const user_queries = sdm.getAccount({
+ *     type: "user",
  *     email: "*@strongdm.com",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
- *     type: "user",
  * });
  * const api_key_queries = sdm.getAccount({
- *     name: "*-dev",
  *     type: "api",
+ *     name: "*-dev",
  * });
  * const admin_token_queries = sdm.getAccount({
- *     name: "*-prod",
  *     type: "admin-token",
+ *     name: "*-prod",
  * });
  * ```
  */

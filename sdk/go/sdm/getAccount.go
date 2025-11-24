@@ -31,26 +31,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//				Type:  pulumi.StringRef("user"),
 //				Email: pulumi.StringRef("*@strongdm.com"),
 //				Tags: map[string]interface{}{
-//					"env":    "dev",
 //					"region": "us-west",
+//					"env":    "dev",
 //				},
-//				Type: pulumi.StringRef("user"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
-//				Name: pulumi.StringRef("*-dev"),
 //				Type: pulumi.StringRef("api"),
+//				Name: pulumi.StringRef("*-dev"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
-//				Name: pulumi.StringRef("*-prod"),
 //				Type: pulumi.StringRef("admin-token"),
+//				Name: pulumi.StringRef("*-prod"),
 //			}, nil)
 //			if err != nil {
 //				return err

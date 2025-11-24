@@ -147,11 +147,10 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        permit_everything = sdm.Policy("permitEverything",
+        permit_everything = sdm.Policy("permit_everything",
+            name="permit-everything",
             description="this policy permits everything",
-            policy_content=\"\"\"permit(principal, action, resource);
-
-        \"\"\")
+            policy_content="permit(principal, action, resource);\\n")
         ```
         This resource can be imported using the import command.
 
@@ -184,11 +183,10 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        permit_everything = sdm.Policy("permitEverything",
+        permit_everything = sdm.Policy("permit_everything",
+            name="permit-everything",
             description="this policy permits everything",
-            policy_content=\"\"\"permit(principal, action, resource);
-
-        \"\"\")
+            policy_content="permit(principal, action, resource);\\n")
         ```
         This resource can be imported using the import command.
 

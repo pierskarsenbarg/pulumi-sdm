@@ -32,14 +32,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.NewAccount(ctx, "test-user", &sdm.AccountArgs{
 //				User: &sdm.AccountUserArgs{
-//					Email:           pulumi.String("albob@strongdm.com"),
 //					FirstName:       pulumi.String("al"),
 //					LastName:        pulumi.String("bob"),
-//					ManagerId:       pulumi.String("a-1234abc"),
+//					Email:           pulumi.String("albob@strongdm.com"),
 //					PermissionLevel: pulumi.String("database-admin"),
+//					ManagerId:       pulumi.String("a-1234abc"),
 //					Tags: pulumi.StringMap{
-//						"env":    pulumi.String("dev"),
 //						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
 //					},
 //				},
 //			})
@@ -50,8 +50,8 @@ import (
 //				Service: &sdm.AccountServiceArgs{
 //					Name: pulumi.String("test-service"),
 //					Tags: pulumi.StringMap{
-//						"env":    pulumi.String("dev"),
 //						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
 //					},
 //				},
 //			})

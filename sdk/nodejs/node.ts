@@ -18,19 +18,19 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const gateway = new sdm.Node("gateway", {gateway: {
- *     bindAddress: "0.0.0.0:21222",
- *     listenAddress: "165.23.40.1:21222",
  *     name: "test-gateway",
+ *     listenAddress: "165.23.40.1:21222",
+ *     bindAddress: "0.0.0.0:21222",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
  * }});
  * const relay = new sdm.Node("relay", {relay: {
  *     name: "test-relay",
  *     tags: {
- *         env: "dev",
  *         region: "us-west",
+ *         env: "dev",
  *     },
  * }});
  * ```

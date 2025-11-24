@@ -241,16 +241,16 @@ def get_account(account_type: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    user_queries = sdm.get_account(email="*@strongdm.com",
+    user_queries = sdm.get_account(type="user",
+        email="*@strongdm.com",
         tags={
-            "env": "dev",
             "region": "us-west",
-        },
-        type="user")
-    api_key_queries = sdm.get_account(name="*-dev",
-        type="api")
-    admin_token_queries = sdm.get_account(name="*-prod",
-        type="admin-token")
+            "env": "dev",
+        })
+    api_key_queries = sdm.get_account(type="api",
+        name="*-dev")
+    admin_token_queries = sdm.get_account(type="admin-token",
+        name="*-prod")
     ```
 
 
@@ -326,16 +326,16 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_sdm as sdm
 
-    user_queries = sdm.get_account(email="*@strongdm.com",
+    user_queries = sdm.get_account(type="user",
+        email="*@strongdm.com",
         tags={
-            "env": "dev",
             "region": "us-west",
-        },
-        type="user")
-    api_key_queries = sdm.get_account(name="*-dev",
-        type="api")
-    admin_token_queries = sdm.get_account(name="*-prod",
-        type="admin-token")
+            "env": "dev",
+        })
+    api_key_queries = sdm.get_account(type="api",
+        name="*-dev")
+    admin_token_queries = sdm.get_account(type="admin-token",
+        name="*-prod")
     ```
 
 

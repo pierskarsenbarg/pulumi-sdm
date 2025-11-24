@@ -26,7 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewIdentitySet(ctx, "default", nil)
+//			_, err := sdm.NewIdentitySet(ctx, "default", &sdm.IdentitySetArgs{
+//				Name: pulumi.String("default"),
+//			})
 //			if err != nil {
 //				return err
 //			}

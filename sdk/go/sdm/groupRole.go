@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewGroupRole(ctx, "securityTeamToProductionAccess", &sdm.GroupRoleArgs{
-//				GroupId: pulumi.Any(sdm_group.Security_team.Id),
-//				RoleId:  pulumi.Any(sdm_role.Production_access.Id),
+//			_, err := sdm.NewGroupRole(ctx, "security_team_to_production_access", &sdm.GroupRoleArgs{
+//				GroupId: pulumi.Any(securityTeam.Id),
+//				RoleId:  pulumi.Any(productionAccess.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.NewGroupRole(ctx, "administratorsToAdminAccess", &sdm.GroupRoleArgs{
+//			_, err = sdm.NewGroupRole(ctx, "administrators_to_admin_access", &sdm.GroupRoleArgs{
 //				GroupId: pulumi.String("group-1234567890abcdef"),
 //				RoleId:  pulumi.String("r-1234567890abcdef"),
 //			})

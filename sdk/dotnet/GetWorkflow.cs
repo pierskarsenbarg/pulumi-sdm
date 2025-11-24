@@ -26,16 +26,19 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query workflow by name
         ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
+        ///     // Query workflow by ID
         ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
+        ///     // Query workflow by approval flow ID
         ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",
@@ -61,16 +64,19 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query workflow by name
         ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
+        ///     // Query workflow by ID
         ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
+        ///     // Query workflow by approval flow ID
         ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",
@@ -96,16 +102,19 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query workflow by name
         ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
+        ///     // Query workflow by ID
         ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
+        ///     // Query workflow by approval flow ID
         ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",

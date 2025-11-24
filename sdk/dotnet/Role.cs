@@ -27,6 +27,7 @@ namespace PiersKarsenbarg.Sdm
     /// {
     ///     var engineers = new Sdm.Role("engineers", new()
     ///     {
+    ///         Name = "engineers",
     ///         Tags = 
     ///         {
     ///             { "foo", "bar" },
@@ -35,6 +36,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     ///     var example_role = new Sdm.Role("example-role", new()
     ///     {
+    ///         Name = "example-role",
     ///         AccessRules = JsonSerializer.Serialize(new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
@@ -65,6 +67,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     ///     var k8s_admin = new Sdm.Role("k8s-admin", new()
     ///     {
+    ///         Name = "k8s-admin",
     ///         AccessRules = JsonSerializer.Serialize(new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
@@ -89,6 +92,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     ///     var k8s_developers = new Sdm.Role("k8s-developers", new()
     ///     {
+    ///         Name = "k8s-developers",
     ///         AccessRules = JsonSerializer.Serialize(new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;

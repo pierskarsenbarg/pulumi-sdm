@@ -110,9 +110,9 @@ def get_group_role(group_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    security_team_roles = sdm.get_group_role(group_id=sdm_group["security_team"]["id"])
+    security_team_roles = sdm.get_group_role(group_id=security_team["id"])
     specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
-    groups_with_role = sdm.get_group_role(role_id=sdm_role["admin_role"]["id"])
+    groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
     ```
 
 
@@ -145,9 +145,9 @@ def get_group_role_output(group_id: Optional[pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_sdm as sdm
 
-    security_team_roles = sdm.get_group_role(group_id=sdm_group["security_team"]["id"])
+    security_team_roles = sdm.get_group_role(group_id=security_team["id"])
     specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
-    groups_with_role = sdm.get_group_role(role_id=sdm_role["admin_role"]["id"])
+    groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
     ```
 
 

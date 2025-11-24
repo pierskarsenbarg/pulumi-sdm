@@ -33,12 +33,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.NewNode(ctx, "gateway", &sdm.NodeArgs{
 //				Gateway: &sdm.NodeGatewayArgs{
-//					BindAddress:   pulumi.String("0.0.0.0:21222"),
-//					ListenAddress: pulumi.String("165.23.40.1:21222"),
 //					Name:          pulumi.String("test-gateway"),
+//					ListenAddress: pulumi.String("165.23.40.1:21222"),
+//					BindAddress:   pulumi.String("0.0.0.0:21222"),
 //					Tags: pulumi.StringMap{
-//						"env":    pulumi.String("dev"),
 //						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
 //					},
 //				},
 //			})
@@ -49,8 +49,8 @@ import (
 //				Relay: &sdm.NodeRelayArgs{
 //					Name: pulumi.String("test-relay"),
 //					Tags: pulumi.StringMap{
-//						"env":    pulumi.String("dev"),
 //						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
 //					},
 //				},
 //			})

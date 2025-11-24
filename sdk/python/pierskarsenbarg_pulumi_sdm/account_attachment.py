@@ -111,7 +111,7 @@ class AccountAttachment(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        test_account_attachment = sdm.AccountAttachment("testAccountAttachment",
+        test_account_attachment = sdm.AccountAttachment("test_account_attachment",
             account_id="a-00000054",
             role_id="r-12355562")
         ```
@@ -144,7 +144,7 @@ class AccountAttachment(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        test_account_attachment = sdm.AccountAttachment("testAccountAttachment",
+        test_account_attachment = sdm.AccountAttachment("test_account_attachment",
             account_id="a-00000054",
             role_id="r-12355562")
         ```

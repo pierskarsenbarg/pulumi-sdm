@@ -13,11 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const permitEverything = new sdm.Policy("permitEverything", {
+ * const permitEverything = new sdm.Policy("permit_everything", {
+ *     name: "permit-everything",
  *     description: "this policy permits everything",
- *     policyContent: `permit(principal, action, resource);
- *
- * `,
+ *     policyContent: "permit(principal, action, resource);\n",
  * });
  * ```
  * This resource can be imported using the import command.

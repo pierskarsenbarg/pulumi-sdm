@@ -29,25 +29,25 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
+        ///         Type = "user",
         ///         Email = "*@strongdm.com",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "user",
         ///     });
         /// 
         ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-dev",
         ///         Type = "api",
+        ///         Name = "*-dev",
         ///     });
         /// 
         ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-prod",
         ///         Type = "admin-token",
+        ///         Name = "*-prod",
         ///     });
         /// 
         /// });
@@ -73,25 +73,25 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
+        ///         Type = "user",
         ///         Email = "*@strongdm.com",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "user",
         ///     });
         /// 
         ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-dev",
         ///         Type = "api",
+        ///         Name = "*-dev",
         ///     });
         /// 
         ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-prod",
         ///         Type = "admin-token",
+        ///         Name = "*-prod",
         ///     });
         /// 
         /// });
@@ -117,25 +117,25 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
+        ///         Type = "user",
         ///         Email = "*@strongdm.com",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "user",
         ///     });
         /// 
         ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-dev",
         ///         Type = "api",
+        ///         Name = "*-dev",
         ///     });
         /// 
         ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         Name = "*-prod",
         ///         Type = "admin-token",
+        ///         Name = "*-prod",
         ///     });
         /// 
         /// });

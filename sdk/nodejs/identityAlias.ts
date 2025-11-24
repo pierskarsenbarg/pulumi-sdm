@@ -9,6 +9,15 @@ import * as utilities from "./utilities";
  *  when connecting to a remote resource using that identity set.
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const user = new sdm.IdentityAlias("user", {
+ *     id: "i-0900909",
+ *     username: "user",
+ * });
+ * ```
  * This resource can be imported using the import command.
  *
  * ## Import

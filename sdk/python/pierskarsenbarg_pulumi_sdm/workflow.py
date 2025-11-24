@@ -356,8 +356,11 @@ class Workflow(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         # Create approval workflows first
-        auto_grant = sdm.ApprovalWorkflow("autoGrant", approval_mode="automatic")
-        manual_approval = sdm.ApprovalWorkflow("manualApproval",
+        auto_grant = sdm.ApprovalWorkflow("auto_grant",
+            name="Auto Grant Example",
+            approval_mode="automatic")
+        manual_approval = sdm.ApprovalWorkflow("manual_approval",
+            name="Manual Approval Example",
             approval_mode="manual",
             approval_steps=[{
                 "quantifier": "any",
@@ -367,7 +370,8 @@ class Workflow(pulumi.CustomResource):
                 }],
             }])
         # Create workflows that reference the approval workflows
-        auto_grant_workflow = sdm.Workflow("autoGrantWorkflow",
+        auto_grant_workflow = sdm.Workflow("auto_grant_workflow",
+            name="auto grant workflow example",
             approval_flow_id=auto_grant.id,
             enabled=True,
             access_rules=json.dumps([{
@@ -376,7 +380,8 @@ class Workflow(pulumi.CustomResource):
                     "region": "us-east",
                 },
             }]))
-        manual_approval_workflow = sdm.Workflow("manualApprovalWorkflow",
+        manual_approval_workflow = sdm.Workflow("manual_approval_workflow",
+            name="manual approval workflow example",
             approval_flow_id=manual_approval.id,
             enabled=True,
             access_rules=json.dumps([{
@@ -426,8 +431,11 @@ class Workflow(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         # Create approval workflows first
-        auto_grant = sdm.ApprovalWorkflow("autoGrant", approval_mode="automatic")
-        manual_approval = sdm.ApprovalWorkflow("manualApproval",
+        auto_grant = sdm.ApprovalWorkflow("auto_grant",
+            name="Auto Grant Example",
+            approval_mode="automatic")
+        manual_approval = sdm.ApprovalWorkflow("manual_approval",
+            name="Manual Approval Example",
             approval_mode="manual",
             approval_steps=[{
                 "quantifier": "any",
@@ -437,7 +445,8 @@ class Workflow(pulumi.CustomResource):
                 }],
             }])
         # Create workflows that reference the approval workflows
-        auto_grant_workflow = sdm.Workflow("autoGrantWorkflow",
+        auto_grant_workflow = sdm.Workflow("auto_grant_workflow",
+            name="auto grant workflow example",
             approval_flow_id=auto_grant.id,
             enabled=True,
             access_rules=json.dumps([{
@@ -446,7 +455,8 @@ class Workflow(pulumi.CustomResource):
                     "region": "us-east",
                 },
             }]))
-        manual_approval_workflow = sdm.Workflow("manualApprovalWorkflow",
+        manual_approval_workflow = sdm.Workflow("manual_approval_workflow",
+            name="manual approval workflow example",
             approval_flow_id=manual_approval.id,
             enabled=True,
             access_rules=json.dumps([{

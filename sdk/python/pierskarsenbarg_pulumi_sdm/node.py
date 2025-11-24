@@ -152,19 +152,19 @@ class Node(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         gateway = sdm.Node("gateway", gateway={
-            "bind_address": "0.0.0.0:21222",
-            "listen_address": "165.23.40.1:21222",
             "name": "test-gateway",
+            "listen_address": "165.23.40.1:21222",
+            "bind_address": "0.0.0.0:21222",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         relay = sdm.Node("relay", relay={
             "name": "test-relay",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         ```
@@ -202,19 +202,19 @@ class Node(pulumi.CustomResource):
         import pierskarsenbarg_pulumi_sdm as sdm
 
         gateway = sdm.Node("gateway", gateway={
-            "bind_address": "0.0.0.0:21222",
-            "listen_address": "165.23.40.1:21222",
             "name": "test-gateway",
+            "listen_address": "165.23.40.1:21222",
+            "bind_address": "0.0.0.0:21222",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         relay = sdm.Node("relay", relay={
             "name": "test-relay",
             "tags": {
-                "env": "dev",
                 "region": "us-west",
+                "env": "dev",
             },
         })
         ```

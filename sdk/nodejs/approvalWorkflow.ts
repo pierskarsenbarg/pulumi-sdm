@@ -15,10 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const manualApprovalWorkflow = new sdm.ApprovalWorkflow("manualApprovalWorkflow", {
+ * const manualApprovalWorkflow = new sdm.ApprovalWorkflow("manual_approval_workflow", {
+ *     name: "manual approval workflow example",
  *     approvalMode: "manual",
  *     approvalSteps: [
  *         {
+ *             quantifier: "any",
+ *             skipAfter: "1h0m0s",
  *             approvers: [
  *                 {
  *                     accountId: "a-1234abc",
@@ -30,10 +33,10 @@ import * as utilities from "./utilities";
  *                     reference: "manager-of-requester",
  *                 },
  *             ],
- *             quantifier: "any",
- *             skipAfter: "1h0m0s",
  *         },
  *         {
+ *             quantifier: "all",
+ *             skipAfter: "0s",
  *             approvers: [
  *                 {
  *                     roleId: "r-1234abc",
@@ -48,12 +51,13 @@ import * as utilities from "./utilities";
  *                     reference: "manager-of-manager-of-requester",
  *                 },
  *             ],
- *             quantifier: "all",
- *             skipAfter: "0s",
  *         },
  *     ],
  * });
- * const autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", {approvalMode: "automatic"});
+ * const autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow("auto_grant_approval_workflow", {
+ *     name: "auto approval workflow example",
+ *     approvalMode: "automatic",
+ * });
  * ```
  * This resource can be imported using the import command.
  *

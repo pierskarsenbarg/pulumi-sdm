@@ -30,10 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewApprovalWorkflow(ctx, "manualApprovalWorkflow", &sdm.ApprovalWorkflowArgs{
+//			_, err := sdm.NewApprovalWorkflow(ctx, "manual_approval_workflow", &sdm.ApprovalWorkflowArgs{
+//				Name:         pulumi.String("manual approval workflow example"),
 //				ApprovalMode: pulumi.String("manual"),
 //				ApprovalSteps: sdm.ApprovalWorkflowApprovalStepArray{
 //					&sdm.ApprovalWorkflowApprovalStepArgs{
+//						Quantifier: pulumi.String("any"),
+//						SkipAfter:  pulumi.String("1h0m0s"),
 //						Approvers: sdm.ApprovalWorkflowApprovalStepApproverArray{
 //							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
 //								AccountId: pulumi.String("a-1234abc"),
@@ -45,10 +48,10 @@ import (
 //								Reference: pulumi.String("manager-of-requester"),
 //							},
 //						},
-//						Quantifier: pulumi.String("any"),
-//						SkipAfter:  pulumi.String("1h0m0s"),
 //					},
 //					&sdm.ApprovalWorkflowApprovalStepArgs{
+//						Quantifier: pulumi.String("all"),
+//						SkipAfter:  pulumi.String("0s"),
 //						Approvers: sdm.ApprovalWorkflowApprovalStepApproverArray{
 //							&sdm.ApprovalWorkflowApprovalStepApproverArgs{
 //								RoleId: pulumi.String("r-1234abc"),
@@ -63,15 +66,14 @@ import (
 //								Reference: pulumi.String("manager-of-manager-of-requester"),
 //							},
 //						},
-//						Quantifier: pulumi.String("all"),
-//						SkipAfter:  pulumi.String("0s"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.NewApprovalWorkflow(ctx, "autoGrantApprovalWorkflow", &sdm.ApprovalWorkflowArgs{
+//			_, err = sdm.NewApprovalWorkflow(ctx, "auto_grant_approval_workflow", &sdm.ApprovalWorkflowArgs{
+//				Name:         pulumi.String("auto approval workflow example"),
 //				ApprovalMode: pulumi.String("automatic"),
 //			})
 //			if err != nil {

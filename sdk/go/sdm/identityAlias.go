@@ -18,6 +18,30 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewIdentityAlias(ctx, "user", &sdm.IdentityAliasArgs{
+//				Id:       "i-0900909",
+//				Username: pulumi.String("user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // This resource can be imported using the import command.
 //
 // ## Import

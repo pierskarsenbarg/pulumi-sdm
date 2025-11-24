@@ -27,14 +27,14 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "manual",
         ///         Name = "approval workflow manual",
+        ///         ApprovalMode = "manual",
         ///     });
         /// 
         ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "automatic",
         ///         Name = "approval workflow auto",
+        ///         ApprovalMode = "automatic",
         ///     });
         /// 
         /// });
@@ -58,14 +58,14 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "manual",
         ///         Name = "approval workflow manual",
+        ///         ApprovalMode = "manual",
         ///     });
         /// 
         ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "automatic",
         ///         Name = "approval workflow auto",
+        ///         ApprovalMode = "automatic",
         ///     });
         /// 
         /// });
@@ -89,14 +89,14 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "manual",
         ///         Name = "approval workflow manual",
+        ///         ApprovalMode = "manual",
         ///     });
         /// 
         ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
-        ///         ApprovalMode = "automatic",
         ///         Name = "approval workflow auto",
+        ///         ApprovalMode = "automatic",
         ///     });
         /// 
         /// });

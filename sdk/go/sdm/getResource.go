@@ -31,11 +31,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupResource(ctx, &sdm.LookupResourceArgs{
 //				Name: pulumi.StringRef("us-west*"),
-//				Tags: map[string]interface{}{
-//					"env":    "dev",
-//					"region": "us-west",
-//				},
 //				Type: pulumi.StringRef("mysql"),
+//				Tags: map[string]interface{}{
+//					"region": "us-west",
+//					"env":    "dev",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err

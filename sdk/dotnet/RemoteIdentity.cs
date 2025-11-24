@@ -15,6 +15,22 @@ namespace PiersKarsenbarg.Sdm
     ///  when connecting to a remote resource using that group.
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new Sdm.RemoteIdentity("user", new()
+    ///     {
+    ///         Id = "i-0900909",
+    ///         Username = "user",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

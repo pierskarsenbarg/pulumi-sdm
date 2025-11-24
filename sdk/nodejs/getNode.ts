@@ -18,11 +18,11 @@ import * as utilities from "./utilities";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const gatewayQuery = sdm.getNode({
- *     tags: {
- *         env: "dev",
- *         region: "us-west",
- *     },
  *     type: "gateway",
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
  * });
  * ```
  */
@@ -116,11 +116,11 @@ export interface GetNodeResult {
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const gatewayQuery = sdm.getNode({
- *     tags: {
- *         env: "dev",
- *         region: "us-west",
- *     },
  *     type: "gateway",
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
  * });
  * ```
  */

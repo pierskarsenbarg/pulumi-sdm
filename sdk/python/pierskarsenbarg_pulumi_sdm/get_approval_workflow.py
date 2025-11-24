@@ -138,10 +138,10 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_sdm as sdm
 
-    manual_approval_workflow_query = sdm.get_approval_workflow(approval_mode="manual",
-        name="approval workflow manual")
-    auto_grant_approval_workflow_query = sdm.get_approval_workflow(approval_mode="automatic",
-        name="approval workflow auto")
+    manual_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow manual",
+        approval_mode="manual")
+    auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
+        approval_mode="automatic")
     ```
 
 
@@ -183,10 +183,10 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[_
     import pulumi
     import pulumi_sdm as sdm
 
-    manual_approval_workflow_query = sdm.get_approval_workflow(approval_mode="manual",
-        name="approval workflow manual")
-    auto_grant_approval_workflow_query = sdm.get_approval_workflow(approval_mode="automatic",
-        name="approval workflow auto")
+    manual_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow manual",
+        approval_mode="manual")
+    auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
+        approval_mode="automatic")
     ```
 
 

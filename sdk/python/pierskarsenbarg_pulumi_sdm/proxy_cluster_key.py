@@ -93,7 +93,7 @@ class ProxyClusterKey(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        test_proxy_cluster_key = sdm.ProxyClusterKey("testProxyClusterKey", proxy_cluster_id="n-12345123")
+        test_proxy_cluster_key = sdm.ProxyClusterKey("test_proxy_cluster_key", proxy_cluster_id="n-12345123")
         ```
         This resource can be imported using the import command.
 
@@ -125,7 +125,7 @@ class ProxyClusterKey(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        test_proxy_cluster_key = sdm.ProxyClusterKey("testProxyClusterKey", proxy_cluster_id="n-12345123")
+        test_proxy_cluster_key = sdm.ProxyClusterKey("test_proxy_cluster_key", proxy_cluster_id="n-12345123")
         ```
         This resource can be imported using the import command.
 

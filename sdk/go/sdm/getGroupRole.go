@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupGroupRole(ctx, &sdm.LookupGroupRoleArgs{
-//				GroupId: pulumi.StringRef(sdm_group.Security_team.Id),
+//				GroupId: pulumi.StringRef(securityTeam.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = sdm.LookupGroupRole(ctx, &sdm.LookupGroupRoleArgs{
-//				RoleId: pulumi.StringRef(sdm_role.Admin_role.Id),
+//				RoleId: pulumi.StringRef(adminRole.Id),
 //			}, nil)
 //			if err != nil {
 //				return err

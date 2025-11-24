@@ -13,11 +13,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const workflowRoleExample = new sdm.WorkflowRole("workflowRoleExample", {
- *     workflowId: sdm_workflow.manual_approval_workflow.id,
- *     roleId: sdm_role.developers.id,
+ * const workflowRoleExample = new sdm.WorkflowRole("workflow_role_example", {
+ *     workflowId: manualApprovalWorkflow.id,
+ *     roleId: developers.id,
  * });
- * const workflowRoleWithIds = new sdm.WorkflowRole("workflowRoleWithIds", {
+ * const workflowRoleWithIds = new sdm.WorkflowRole("workflow_role_with_ids", {
  *     workflowId: "w-1234567890abcdef",
  *     roleId: "r-1234567890abcdef",
  * });

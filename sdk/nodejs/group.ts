@@ -12,11 +12,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const securityTeam = new sdm.Group("securityTeam", {tags: {
- *     admin: "true",
- * }});
- * const administrators = new sdm.Group("administrators", {});
- * const devopsTeam = new sdm.Group("devopsTeam", {});
+ * const securityTeam = new sdm.Group("security_team", {
+ *     name: "Security Team",
+ *     tags: {
+ *         admin: "true",
+ *     },
+ * });
+ * const administrators = new sdm.Group("administrators", {name: "Administrators"});
+ * const devopsTeam = new sdm.Group("devops_team", {name: "DevOps Team"});
  * ```
  * This resource can be imported using the import command.
  *

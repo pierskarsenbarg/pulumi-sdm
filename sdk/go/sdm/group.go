@@ -26,7 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewGroup(ctx, "securityTeam", &sdm.GroupArgs{
+//			_, err := sdm.NewGroup(ctx, "security_team", &sdm.GroupArgs{
+//				Name: pulumi.String("Security Team"),
 //				Tags: pulumi.StringMap{
 //					"admin": pulumi.String("true"),
 //				},
@@ -34,11 +35,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.NewGroup(ctx, "administrators", nil)
+//			_, err = sdm.NewGroup(ctx, "administrators", &sdm.GroupArgs{
+//				Name: pulumi.String("Administrators"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.NewGroup(ctx, "devopsTeam", nil)
+//			_, err = sdm.NewGroup(ctx, "devops_team", &sdm.GroupArgs{
+//				Name: pulumi.String("DevOps Team"),
+//			})
 //			if err != nil {
 //				return err
 //			}

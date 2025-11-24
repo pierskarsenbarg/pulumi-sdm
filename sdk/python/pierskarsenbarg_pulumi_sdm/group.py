@@ -162,11 +162,13 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_team = sdm.Group("securityTeam", tags={
-            "admin": "true",
-        })
-        administrators = sdm.Group("administrators")
-        devops_team = sdm.Group("devopsTeam")
+        security_team = sdm.Group("security_team",
+            name="Security Team",
+            tags={
+                "admin": "true",
+            })
+        administrators = sdm.Group("administrators", name="Administrators")
+        devops_team = sdm.Group("devops_team", name="DevOps Team")
         ```
         This resource can be imported using the import command.
 
@@ -198,11 +200,13 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_team = sdm.Group("securityTeam", tags={
-            "admin": "true",
-        })
-        administrators = sdm.Group("administrators")
-        devops_team = sdm.Group("devopsTeam")
+        security_team = sdm.Group("security_team",
+            name="Security Team",
+            tags={
+                "admin": "true",
+            })
+        administrators = sdm.Group("administrators", name="Administrators")
+        devops_team = sdm.Group("devops_team", name="DevOps Team")
         ```
         This resource can be imported using the import command.
 

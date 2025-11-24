@@ -111,10 +111,10 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_team_to_production_access = sdm.GroupRole("securityTeamToProductionAccess",
-            group_id=sdm_group["security_team"]["id"],
-            role_id=sdm_role["production_access"]["id"])
-        administrators_to_admin_access = sdm.GroupRole("administratorsToAdminAccess",
+        security_team_to_production_access = sdm.GroupRole("security_team_to_production_access",
+            group_id=security_team["id"],
+            role_id=production_access["id"])
+        administrators_to_admin_access = sdm.GroupRole("administrators_to_admin_access",
             group_id="group-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```
@@ -147,10 +147,10 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_team_to_production_access = sdm.GroupRole("securityTeamToProductionAccess",
-            group_id=sdm_group["security_team"]["id"],
-            role_id=sdm_role["production_access"]["id"])
-        administrators_to_admin_access = sdm.GroupRole("administratorsToAdminAccess",
+        security_team_to_production_access = sdm.GroupRole("security_team_to_production_access",
+            group_id=security_team["id"],
+            role_id=production_access["id"])
+        administrators_to_admin_access = sdm.GroupRole("administrators_to_admin_access",
             group_id="group-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```

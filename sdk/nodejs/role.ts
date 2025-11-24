@@ -14,63 +14,75 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const engineers = new sdm.Role("engineers", {tags: {
- *     foo: "bar",
- * }});
- * const example_role = new sdm.Role("example-role", {accessRules: JSON.stringify([
- *     {
- *         tags: {
- *             env: "staging",
- *         },
- *     },
- *     {
- *         type: "postgres",
- *         tags: {
- *             region: "us-west",
- *             env: "dev",
- *         },
- *     },
- *     {
- *         ids: ["rs-093e6f3061eb4dad"],
- *     },
- * ])});
- * const k8s_admin = new sdm.Role("k8s-admin", {accessRules: JSON.stringify([{
+ * const engineers = new sdm.Role("engineers", {
+ *     name: "engineers",
  *     tags: {
- *         env: "production",
+ *         foo: "bar",
  *     },
- *     privileges: {
- *         k8s: {
- *             groups: ["system:masters"],
+ * });
+ * const example_role = new sdm.Role("example-role", {
+ *     name: "example-role",
+ *     accessRules: JSON.stringify([
+ *         {
+ *             tags: {
+ *                 env: "staging",
+ *             },
  *         },
- *     },
- * }])});
- * const k8s_developers = new sdm.Role("k8s-developers", {accessRules: JSON.stringify([
- *     {
- *         type: "amazon_eks",
+ *         {
+ *             type: "postgres",
+ *             tags: {
+ *                 region: "us-west",
+ *                 env: "dev",
+ *             },
+ *         },
+ *         {
+ *             ids: ["rs-093e6f3061eb4dad"],
+ *         },
+ *     ]),
+ * });
+ * const k8s_admin = new sdm.Role("k8s-admin", {
+ *     name: "k8s-admin",
+ *     accessRules: JSON.stringify([{
  *         tags: {
- *             env: "dev",
+ *             env: "production",
  *         },
  *         privileges: {
  *             k8s: {
- *                 groups: [
- *                     "developers",
- *                     "viewers",
- *                 ],
+ *                 groups: ["system:masters"],
  *             },
  *         },
- *     },
- *     {
- *         type: "kubernetes",
- *         tags: {
- *             region: "us-west",
- *         },
- *         privileges: {
- *             k8s: {
- *                 groups: ["edit"],
+ *     }]),
+ * });
+ * const k8s_developers = new sdm.Role("k8s-developers", {
+ *     name: "k8s-developers",
+ *     accessRules: JSON.stringify([
+ *         {
+ *             type: "amazon_eks",
+ *             tags: {
+ *                 env: "dev",
+ *             },
+ *             privileges: {
+ *                 k8s: {
+ *                     groups: [
+ *                         "developers",
+ *                         "viewers",
+ *                     ],
+ *                 },
  *             },
  *         },
- *     },
- * ])});
+ *         {
+ *             type: "kubernetes",
+ *             tags: {
+ *                 region: "us-west",
+ *             },
+ *             privileges: {
+ *                 k8s: {
+ *                     groups: ["edit"],
+ *                 },
+ *             },
+ *         },
+ *     ]),
+ * });
  * ```
  * This resource can be imported using the import command.
  *

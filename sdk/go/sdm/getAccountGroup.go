@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
-//				AccountId: pulumi.StringRef(sdm_account.Security_lead.Id),
+//				AccountId: pulumi.StringRef(securityLead.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = sdm.LookupAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
-//				GroupId: pulumi.StringRef(sdm_group.Devops_group.Id),
+//				GroupId: pulumi.StringRef(devopsGroup.Id),
 //			}, nil)
 //			if err != nil {
 //				return err

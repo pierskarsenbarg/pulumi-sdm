@@ -29,12 +29,12 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
+        ///         Type = "gateway",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "gateway",
         ///     });
         /// 
         /// });
@@ -60,12 +60,12 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
+        ///         Type = "gateway",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "gateway",
         ///     });
         /// 
         /// });
@@ -91,12 +91,12 @@ namespace PiersKarsenbarg.Sdm
         /// {
         ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
+        ///         Type = "gateway",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "gateway",
         ///     });
         /// 
         /// });

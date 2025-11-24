@@ -111,10 +111,10 @@ class AccountGroup(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_lead_to_security_team = sdm.AccountGroup("securityLeadToSecurityTeam",
-            account_id=sdm_account["security_lead"]["id"],
-            group_id=sdm_group["security_team"]["id"])
-        admin_user_to_administrators = sdm.AccountGroup("adminUserToAdministrators",
+        security_lead_to_security_team = sdm.AccountGroup("security_lead_to_security_team",
+            account_id=security_lead["id"],
+            group_id=security_team["id"])
+        admin_user_to_administrators = sdm.AccountGroup("admin_user_to_administrators",
             account_id="a-1234567890abcdef",
             group_id="group-1234567890abcdef")
         ```
@@ -147,10 +147,10 @@ class AccountGroup(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        security_lead_to_security_team = sdm.AccountGroup("securityLeadToSecurityTeam",
-            account_id=sdm_account["security_lead"]["id"],
-            group_id=sdm_group["security_team"]["id"])
-        admin_user_to_administrators = sdm.AccountGroup("adminUserToAdministrators",
+        security_lead_to_security_team = sdm.AccountGroup("security_lead_to_security_team",
+            account_id=security_lead["id"],
+            group_id=security_team["id"])
+        admin_user_to_administrators = sdm.AccountGroup("admin_user_to_administrators",
             account_id="a-1234567890abcdef",
             group_id="group-1234567890abcdef")
         ```

@@ -80,7 +80,7 @@ class IdentitySet(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        default = sdm.IdentitySet("default")
+        default = sdm.IdentitySet("default", name="default")
         ```
         This resource can be imported using the import command.
 
@@ -110,7 +110,7 @@ class IdentitySet(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        default = sdm.IdentitySet("default")
+        default = sdm.IdentitySet("default", name="default")
         ```
         This resource can be imported using the import command.
 

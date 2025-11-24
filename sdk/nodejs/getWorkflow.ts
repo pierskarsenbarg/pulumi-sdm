@@ -16,12 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
+ * // Query workflow by name
  * const workflowByName = sdm.getWorkflow({
  *     name: "workflow example",
  * });
+ * // Query workflow by ID
  * const workflowById = sdm.getWorkflow({
  *     id: "w-1234567890abcdef",
  * });
+ * // Query workflow by approval flow ID
  * const workflowByApprovalFlow = sdm.getWorkflow({
  *     approvalFlowId: "aw-1234567890abcdef",
  * });
@@ -148,12 +151,15 @@ export interface GetWorkflowResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
+ * // Query workflow by name
  * const workflowByName = sdm.getWorkflow({
  *     name: "workflow example",
  * });
+ * // Query workflow by ID
  * const workflowById = sdm.getWorkflow({
  *     id: "w-1234567890abcdef",
  * });
+ * // Query workflow by approval flow ID
  * const workflowByApprovalFlow = sdm.getWorkflow({
  *     approvalFlowId: "aw-1234567890abcdef",
  * });

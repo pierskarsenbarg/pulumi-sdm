@@ -23,13 +23,16 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var manualApprovalWorkflow = new Sdm.ApprovalWorkflow("manualApprovalWorkflow", new()
+    ///     var manualApprovalWorkflow = new Sdm.ApprovalWorkflow("manual_approval_workflow", new()
     ///     {
+    ///         Name = "manual approval workflow example",
     ///         ApprovalMode = "manual",
     ///         ApprovalSteps = new[]
     ///         {
     ///             new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs
     ///             {
+    ///                 Quantifier = "any",
+    ///                 SkipAfter = "1h0m0s",
     ///                 Approvers = new[]
     ///                 {
     ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
@@ -45,11 +48,11 @@ namespace PiersKarsenbarg.Sdm
     ///                         Reference = "manager-of-requester",
     ///                     },
     ///                 },
-    ///                 Quantifier = "any",
-    ///                 SkipAfter = "1h0m0s",
     ///             },
     ///             new Sdm.Inputs.ApprovalWorkflowApprovalStepArgs
     ///             {
+    ///                 Quantifier = "all",
+    ///                 SkipAfter = "0s",
     ///                 Approvers = new[]
     ///                 {
     ///                     new Sdm.Inputs.ApprovalWorkflowApprovalStepApproverArgs
@@ -69,14 +72,13 @@ namespace PiersKarsenbarg.Sdm
     ///                         Reference = "manager-of-manager-of-requester",
     ///                     },
     ///                 },
-    ///                 Quantifier = "all",
-    ///                 SkipAfter = "0s",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", new()
+    ///     var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow("auto_grant_approval_workflow", new()
     ///     {
+    ///         Name = "auto approval workflow example",
     ///         ApprovalMode = "automatic",
     ///     });
     /// 

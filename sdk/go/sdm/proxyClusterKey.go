@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewProxyClusterKey(ctx, "testProxyClusterKey", &sdm.ProxyClusterKeyArgs{
+//			_, err := sdm.NewProxyClusterKey(ctx, "test_proxy_cluster_key", &sdm.ProxyClusterKeyArgs{
 //				ProxyClusterId: pulumi.String("n-12345123"),
 //			})
 //			if err != nil {

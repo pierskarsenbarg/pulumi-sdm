@@ -28,12 +28,12 @@ namespace PiersKarsenbarg.Sdm
         ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
+        ///         Type = "mysql",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "mysql",
         ///     });
         /// 
         /// });
@@ -58,12 +58,12 @@ namespace PiersKarsenbarg.Sdm
         ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
+        ///         Type = "mysql",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "mysql",
         ///     });
         /// 
         /// });
@@ -88,12 +88,12 @@ namespace PiersKarsenbarg.Sdm
         ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
+        ///         Type = "mysql",
         ///         Tags = 
         ///         {
-        ///             { "env", "dev" },
         ///             { "region", "us-west" },
+        ///             { "env", "dev" },
         ///         },
-        ///         Type = "mysql",
         ///     });
         /// 
         /// });

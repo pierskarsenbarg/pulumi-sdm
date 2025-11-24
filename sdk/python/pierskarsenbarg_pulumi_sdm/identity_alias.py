@@ -140,6 +140,14 @@ class IdentityAlias(pulumi.CustomResource):
          when connecting to a remote resource using that identity set.
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        user = sdm.IdentityAlias("user",
+            id="i-0900909",
+            username="user")
+        ```
         This resource can be imported using the import command.
 
         ## Import
@@ -167,6 +175,14 @@ class IdentityAlias(pulumi.CustomResource):
          when connecting to a remote resource using that identity set.
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        user = sdm.IdentityAlias("user",
+            id="i-0900909",
+            username="user")
+        ```
         This resource can be imported using the import command.
 
         ## Import
