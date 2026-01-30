@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface AccountService {
     /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
      * Unique human-readable name of the Service.
      */
     name: pulumi.Input<string>;
@@ -23,9 +27,17 @@ export interface AccountService {
 
 export interface AccountUser {
     /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
      * The User's email address. Must be unique.
      */
     email: pulumi.Input<string>;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    employeeNumber?: pulumi.Input<string>;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
@@ -100,6 +112,194 @@ export interface ApprovalWorkflowApprovalStepApprover {
      * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: pulumi.Input<string>;
+}
+
+export interface ConnectorAws {
+    /**
+     * AccountIds is the list of AWS Accounts to scan
+     */
+    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Description of the Connector.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorAwsExcludeTag>[]>;
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorAwsIncludeTag>[]>;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * RoleName is the Role we're assuming into for an account
+     */
+    roleName?: pulumi.Input<string>;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: pulumi.Input<string>;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectorAwsExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorAwsIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorAzure {
+    /**
+     * ClientId is the ID of the Application / Service Account we're acting as
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Description of the Connector.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorAzureExcludeTag>[]>;
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorAzureIncludeTag>[]>;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: pulumi.Input<string>;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * SubscriptionIds are the targets of discovery.
+     */
+    subscriptionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * TenantId is the Azure Tenant we're discovering in
+     * * gcp:
+     */
+    tenantId?: pulumi.Input<string>;
+}
+
+export interface ConnectorAzureExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorAzureIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorGcp {
+    /**
+     * Description of the Connector.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorGcpExcludeTag>[]>;
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: pulumi.Input<pulumi.Input<inputs.ConnectorGcpIncludeTag>[]>;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ProjectIds is the list of GCP Projects the connector will scan
+     */
+    projectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: pulumi.Input<string>;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+     */
+    workloadPoolId?: pulumi.Input<string>;
+    /**
+     * WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
+     */
+    workloadProjectId?: pulumi.Input<string>;
+    /**
+     * WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
+     */
+    workloadProjectNumber?: pulumi.Input<string>;
+    /**
+     * WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+     */
+    workloadProviderId?: pulumi.Input<string>;
+}
+
+export interface ConnectorGcpExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ConnectorGcpIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of this tag.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface GetApprovalWorkflowApprovalStep {
@@ -353,7 +553,7 @@ export interface ResourceAks {
      */
     clientKey?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -475,7 +675,7 @@ export interface ResourceAksServiceAccount {
      */
     bindInterface?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -670,7 +870,7 @@ export interface ResourceAmazonEks {
      */
     clusterName: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -757,7 +957,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     clusterName: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -2136,7 +2336,7 @@ export interface ResourceBigQuery {
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The project to connect to.
+     * The GCP project ID containing the Spanner database.
      */
     project: pulumi.Input<string>;
     /**
@@ -2924,10 +3124,6 @@ export interface ResourceDocumentDbReplicaSet {
      */
     proxyClusterId?: pulumi.Input<string>;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: pulumi.Input<string>;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3263,13 +3459,76 @@ export interface ResourceElasticacheRedis {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceElasticacheRedisIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * The AWS region to connect to.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface ResourceEntraId {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -3504,7 +3763,7 @@ export interface ResourceGoogleGke {
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -3602,6 +3861,65 @@ export interface ResourceGoogleGkeUserImpersonation {
      * The service account key to authenticate with.
      */
     serviceAccountKey?: pulumi.Input<string>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceGoogleSpanner {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint: pulumi.Input<string>;
+    /**
+     * The Spanner instance ID within the GCP project.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * The GCP project ID containing the Spanner database.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.
+     */
+    serviceAccountToImpersonate?: pulumi.Input<string>;
     /**
      * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
@@ -3873,7 +4191,7 @@ export interface ResourceKubernetes {
      */
     clientKey?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -3999,7 +4317,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -4058,7 +4376,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     bindInterface?: pulumi.Input<string>;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: pulumi.Input<boolean>;
     /**
@@ -4312,6 +4630,18 @@ export interface ResourceMcp {
      */
     name: pulumi.Input<string>;
     /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint: pulumi.Input<string>;
+    /**
+     * The OAuth 2.0 dynamic client registration endpoint URL.
+     */
+    oauthRegisterEndpoint?: pulumi.Input<string>;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint: pulumi.Input<string>;
+    /**
      * The password to authenticate with.
      */
     password?: pulumi.Input<string>;
@@ -4339,6 +4669,10 @@ export interface ResourceMcp {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface ResourceMemcached {
@@ -4607,10 +4941,6 @@ export interface ResourceMongoLegacyReplicaset {
      */
     proxyClusterId?: pulumi.Input<string>;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: pulumi.Input<string>;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4673,10 +5003,6 @@ export interface ResourceMongoReplicaSet {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: pulumi.Input<string>;
-    /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5077,6 +5403,57 @@ export interface ResourceNeptuneIam {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ResourceOktaGroups {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ResourceOracle {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -5429,6 +5806,14 @@ export interface ResourceRdp {
      */
     hostname: pulumi.Input<string>;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: pulumi.Input<string>;
+    /**
      * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
      */
     lockRequired?: pulumi.Input<boolean>;
@@ -5476,7 +5861,7 @@ export interface ResourceRdpCert {
      */
     bindInterface?: pulumi.Input<string>;
     /**
-     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     * Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
      */
     dcHostnames?: pulumi.Input<string>;
     /**
@@ -5520,7 +5905,11 @@ export interface ResourceRdpCert {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     * Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+     */
+    serverFqdn?: pulumi.Input<string>;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
      */
     sid?: pulumi.Input<string>;
     /**
@@ -6305,6 +6694,10 @@ export interface ResourceSsh {
      */
     keyType?: pulumi.Input<string>;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: pulumi.Input<boolean>;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -6376,6 +6769,10 @@ export interface ResourceSshCert {
      */
     keyType?: pulumi.Input<string>;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: pulumi.Input<boolean>;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -6439,6 +6836,10 @@ export interface ResourceSshCustomerKey {
      */
     identitySetId?: pulumi.Input<string>;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: pulumi.Input<boolean>;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -6497,6 +6898,10 @@ export interface ResourceSshPassword {
      * The host to dial to initiate a connection from the egress node to this resource.
      */
     hostname: pulumi.Input<string>;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -6913,7 +7318,7 @@ export interface SecretEngineKeyValue {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-export interface SecretEnginePostgresSecretEngine {
+export interface SecretEngineMysqlSecretEngine {
     /**
      * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
      */
@@ -6923,7 +7328,7 @@ export interface SecretEnginePostgresSecretEngine {
      */
     database: pulumi.Input<string>;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     hostname: pulumi.Input<string>;
     /**
@@ -6935,11 +7340,11 @@ export interface SecretEnginePostgresSecretEngine {
      */
     name: pulumi.Input<string>;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     password: pulumi.Input<string>;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     port: pulumi.Input<number>;
     /**
@@ -6959,7 +7364,70 @@ export interface SecretEnginePostgresSecretEngine {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: pulumi.Input<boolean>;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: pulumi.Input<boolean>;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: pulumi.Input<string>;
+    /**
+     * Username is the username to connect to the SQL Server.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface SecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: pulumi.Input<string>;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: pulumi.Input<string>;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     tls?: pulumi.Input<boolean>;
     /**
@@ -6967,7 +7435,70 @@ export interface SecretEnginePostgresSecretEngine {
      */
     ttl?: pulumi.Input<string>;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
+     */
+    username: pulumi.Input<string>;
+}
+
+export interface SecretEngineSqlserverSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: pulumi.Input<string>;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: pulumi.Input<string>;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: pulumi.Input<boolean>;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: pulumi.Input<boolean>;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: pulumi.Input<string>;
+    /**
+     * Username is the username to connect to the SQL Server.
      */
     username: pulumi.Input<string>;
 }

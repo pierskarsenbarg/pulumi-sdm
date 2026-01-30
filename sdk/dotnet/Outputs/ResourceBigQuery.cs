@@ -39,7 +39,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
-        /// The project to connect to.
+        /// The GCP project ID containing the Spanner database.
         /// </summary>
         public readonly string Project;
         /// <summary>

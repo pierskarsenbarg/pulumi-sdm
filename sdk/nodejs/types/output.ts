@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 
 export interface AccountService {
     /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt: string;
+    /**
      * Unique human-readable name of the Service.
      */
     name: string;
@@ -23,9 +27,17 @@ export interface AccountService {
 
 export interface AccountUser {
     /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt: string;
+    /**
      * The User's email address. Must be unique.
      */
     email: string;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    employeeNumber?: string;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
@@ -102,6 +114,194 @@ export interface ApprovalWorkflowApprovalStepApprover {
     roleId?: string;
 }
 
+export interface ConnectorAws {
+    /**
+     * AccountIds is the list of AWS Accounts to scan
+     */
+    accountIds?: string[];
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: outputs.ConnectorAwsExcludeTag[];
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: outputs.ConnectorAwsIncludeTag[];
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: string;
+    /**
+     * RoleName is the Role we're assuming into for an account
+     */
+    roleName?: string;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+}
+
+export interface ConnectorAwsExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
+export interface ConnectorAwsIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
+export interface ConnectorAzure {
+    /**
+     * ClientId is the ID of the Application / Service Account we're acting as
+     */
+    clientId?: string;
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: outputs.ConnectorAzureExcludeTag[];
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: outputs.ConnectorAzureIncludeTag[];
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: string;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+    /**
+     * SubscriptionIds are the targets of discovery.
+     */
+    subscriptionIds?: string[];
+    /**
+     * TenantId is the Azure Tenant we're discovering in
+     * * gcp:
+     */
+    tenantId?: string;
+}
+
+export interface ConnectorAzureExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
+export interface ConnectorAzureIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
+export interface ConnectorGcp {
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+     */
+    excludeTags?: outputs.ConnectorGcpExcludeTag[];
+    /**
+     * IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+     */
+    includeTags?: outputs.ConnectorGcpIncludeTag[];
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name: string;
+    /**
+     * ProjectIds is the list of GCP Projects the connector will scan
+     */
+    projectIds?: string[];
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+    /**
+     * WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+     */
+    workloadPoolId?: string;
+    /**
+     * WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
+     */
+    workloadProjectId?: string;
+    /**
+     * WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
+     */
+    workloadProjectNumber?: string;
+    /**
+     * WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+     */
+    workloadProviderId?: string;
+}
+
+export interface ConnectorGcpExcludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
+export interface ConnectorGcpIncludeTag {
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * The value of this tag.
+     */
+    value?: string;
+}
+
 export interface GetAccountAccount {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
@@ -118,6 +318,10 @@ export interface GetAccountAccount {
 }
 
 export interface GetAccountAccountService {
+    /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt: string;
     /**
      * Unique identifier of the User.
      */
@@ -141,6 +345,10 @@ export interface GetAccountAccountToken {
      * Corresponds to the type of token, e.g. api or admin-token.
      */
     accountType?: string;
+    /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt: string;
     /**
      * The timestamp when the Token will expire.
      */
@@ -177,9 +385,17 @@ export interface GetAccountAccountToken {
 
 export interface GetAccountAccountUser {
     /**
+     * CreatedAt is the timestamp when the user was created
+     */
+    createdAt: string;
+    /**
      * The User's email address. Must be unique.
      */
     email?: string;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    employeeNumber?: string;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
@@ -345,6 +561,121 @@ export interface GetApprovalWorkflowApprovalWorkflowApprovalStepApprover {
      * The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
      */
     roleId?: string;
+}
+
+export interface GetConnectorDiscoveryConnector {
+    aws: outputs.GetConnectorDiscoveryConnectorAw[];
+    azures: outputs.GetConnectorDiscoveryConnectorAzure[];
+    gcps: outputs.GetConnectorDiscoveryConnectorGcp[];
+}
+
+export interface GetConnectorDiscoveryConnectorAw {
+    /**
+     * AccountIds is the list of AWS Accounts to scan
+     */
+    accountIds?: string[];
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the Connector.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * RoleName is the Role we're assuming into for an account
+     */
+    roleName?: string;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+}
+
+export interface GetConnectorDiscoveryConnectorAzure {
+    /**
+     * ClientId is the ID of the Application / Service Account we're acting as
+     */
+    clientId?: string;
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the Connector.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+    /**
+     * SubscriptionIds are the targets of discovery.
+     */
+    subscriptionIds?: string[];
+    /**
+     * TenantId is the Azure Tenant we're discovering in
+     */
+    tenantId?: string;
+}
+
+export interface GetConnectorDiscoveryConnectorGcp {
+    /**
+     * Description of the Connector.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the Connector.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Connector.
+     */
+    name?: string;
+    /**
+     * ProjectIds is the list of GCP Projects the connector will scan
+     */
+    projectIds?: string[];
+    /**
+     * ScanPeriod identifies which remote system this Connector discovers
+     */
+    scanPeriod?: string;
+    /**
+     * Services is a list of services this connector should scan.
+     */
+    services?: string[];
+    /**
+     * WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+     */
+    workloadPoolId?: string;
+    /**
+     * WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
+     */
+    workloadProjectId?: string;
+    /**
+     * WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
+     */
+    workloadProjectNumber?: string;
+    /**
+     * WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+     */
+    workloadProviderId?: string;
 }
 
 export interface GetGroupGroup {
@@ -764,6 +1095,7 @@ export interface GetResourceResource {
     dynamoDbiams: outputs.GetResourceResourceDynamoDbiam[];
     dynamoDbs: outputs.GetResourceResourceDynamoDb[];
     elasticacheRedis: outputs.GetResourceResourceElasticacheRedi[];
+    elasticacheRedisIams: outputs.GetResourceResourceElasticacheRedisIam[];
     elastics: outputs.GetResourceResourceElastic[];
     entraIds: outputs.GetResourceResourceEntraId[];
     gcpConsoles: outputs.GetResourceResourceGcpConsole[];
@@ -774,6 +1106,7 @@ export interface GetResourceResource {
      */
     googleGkeUserImpersonations: outputs.GetResourceResourceGoogleGkeUserImpersonation[];
     googleGkes: outputs.GetResourceResourceGoogleGke[];
+    googleSpanners: outputs.GetResourceResourceGoogleSpanner[];
     greenplums: outputs.GetResourceResourceGreenplum[];
     httpAuths: outputs.GetResourceResourceHttpAuth[];
     httpBasicAuths: outputs.GetResourceResourceHttpBasicAuth[];
@@ -804,6 +1137,7 @@ export interface GetResourceResource {
     mysqls: outputs.GetResourceResourceMysql[];
     neptuneIams: outputs.GetResourceResourceNeptuneIam[];
     neptunes: outputs.GetResourceResourceNeptune[];
+    oktaGroups: outputs.GetResourceResourceOktaGroup[];
     oracleNnes: outputs.GetResourceResourceOracleNne[];
     oracles: outputs.GetResourceResourceOracle[];
     postgres: outputs.GetResourceResourcePostgre[];
@@ -916,7 +1250,7 @@ export interface GetResourceResourceAk {
      */
     clientKey?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -1046,7 +1380,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     bindInterface?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -1316,7 +1650,7 @@ export interface GetResourceResourceAmazonEk {
      */
     clusterName?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -1407,7 +1741,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     clusterName?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -2819,7 +3153,7 @@ export interface GetResourceResourceBigQuery {
      */
     privateKey?: string;
     /**
-     * The project to connect to.
+     * The GCP project ID containing the Spanner database.
      */
     project?: string;
     /**
@@ -3663,10 +3997,6 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     proxyClusterId?: string;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet?: string;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4026,13 +4356,80 @@ export interface GetResourceResourceElasticacheRedi {
     username?: string;
 }
 
+export interface GetResourceResourceElasticacheRedisIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface GetResourceResourceEntraId {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -4283,7 +4680,7 @@ export interface GetResourceResourceGoogleGke {
      */
     certificateAuthority?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -4389,6 +4786,69 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      * The service account key to authenticate with.
      */
     serviceAccountKey?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceGoogleSpanner {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The Spanner instance ID within the GCP project.
+     */
+    instance?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * The GCP project ID containing the Spanner database.
+     */
+    project?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.
+     */
+    serviceAccountToImpersonate?: string;
     /**
      * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
@@ -4676,7 +5136,7 @@ export interface GetResourceResourceKubernete {
      */
     clientKey?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -4810,7 +5270,7 @@ export interface GetResourceResourceKubernetesPodIdentity {
      */
     certificateAuthority?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -4873,7 +5333,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     bindInterface?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -5147,6 +5607,18 @@ export interface GetResourceResourceMcp {
      */
     name?: string;
     /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint?: string;
+    /**
+     * The OAuth 2.0 dynamic client registration endpoint URL.
+     */
+    oauthRegisterEndpoint?: string;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint?: string;
+    /**
      * The password to authenticate with.
      */
     password?: string;
@@ -5174,6 +5646,10 @@ export interface GetResourceResourceMcp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
 }
 
 export interface GetResourceResourceMemcached {
@@ -5462,10 +5938,6 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      */
     proxyClusterId?: string;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet?: string;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -5532,10 +6004,6 @@ export interface GetResourceResourceMongoReplicaSet {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
-    /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5960,6 +6428,61 @@ export interface GetResourceResourceNeptuneIam {
     tags?: {[key: string]: string};
 }
 
+export interface GetResourceResourceOktaGroup {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceOracle {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -6340,6 +6863,14 @@ export interface GetResourceResourceRdp {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
      */
     lockRequired?: boolean;
@@ -6387,7 +6918,7 @@ export interface GetResourceResourceRdpCert {
      */
     bindInterface?: string;
     /**
-     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     * Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
      */
     dcHostnames?: string;
     /**
@@ -6435,7 +6966,11 @@ export interface GetResourceResourceRdpCert {
      */
     secretStoreId?: string;
     /**
-     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     * Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+     */
+    serverFqdn?: string;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
      */
     sid?: string;
     /**
@@ -7272,6 +7807,10 @@ export interface GetResourceResourceSsh {
      */
     keyType?: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -7347,6 +7886,10 @@ export interface GetResourceResourceSshCert {
      */
     keyType?: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -7414,6 +7957,10 @@ export interface GetResourceResourceSshCustomerKey {
      */
     identitySetId?: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -7476,6 +8023,10 @@ export interface GetResourceResourceSshPassword {
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -7827,7 +8378,9 @@ export interface GetRoleRole {
 export interface GetSecretEngineSecretEngine {
     activeDirectories: outputs.GetSecretEngineSecretEngineActiveDirectory[];
     keyValues: outputs.GetSecretEngineSecretEngineKeyValue[];
+    mysqlSecretEngines: outputs.GetSecretEngineSecretEngineMysqlSecretEngine[];
     postgresSecretEngines: outputs.GetSecretEngineSecretEnginePostgresSecretEngine[];
+    sqlserverSecretEngines: outputs.GetSecretEngineSecretEngineSqlserverSecretEngine[];
 }
 
 export interface GetSecretEngineSecretEngineActiveDirectory {
@@ -7948,7 +8501,7 @@ export interface GetSecretEngineSecretEngineKeyValue {
     tags?: {[key: string]: string};
 }
 
-export interface GetSecretEngineSecretEnginePostgresSecretEngine {
+export interface GetSecretEngineSecretEngineMysqlSecretEngine {
     /**
      * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
      */
@@ -7958,7 +8511,7 @@ export interface GetSecretEngineSecretEnginePostgresSecretEngine {
      */
     database?: string;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     hostname?: string;
     /**
@@ -7974,11 +8527,11 @@ export interface GetSecretEngineSecretEnginePostgresSecretEngine {
      */
     name?: string;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     password?: string;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     port?: number;
     /**
@@ -7998,7 +8551,74 @@ export interface GetSecretEngineSecretEnginePostgresSecretEngine {
      */
     tags?: {[key: string]: string};
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the SQL Server.
+     */
+    username?: string;
+}
+
+export interface GetSecretEngineSecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database?: string;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Secret Engine.
+     */
+    id?: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name?: string;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password?: string;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port?: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId?: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     tls?: boolean;
     /**
@@ -8006,7 +8626,74 @@ export interface GetSecretEngineSecretEnginePostgresSecretEngine {
      */
     ttl?: string;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
+     */
+    username?: string;
+}
+
+export interface GetSecretEngineSecretEngineSqlserverSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database?: string;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Secret Engine.
+     */
+    id?: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name?: string;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password?: string;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port?: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId?: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the SQL Server.
      */
     username?: string;
 }
@@ -9158,7 +9845,7 @@ export interface ResourceAks {
      */
     clientKey?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -9280,7 +9967,7 @@ export interface ResourceAksServiceAccount {
      */
     bindInterface: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -9475,7 +10162,7 @@ export interface ResourceAmazonEks {
      */
     clusterName: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -9562,7 +10249,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     clusterName: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -10941,7 +11628,7 @@ export interface ResourceBigQuery {
      */
     privateKey?: string;
     /**
-     * The project to connect to.
+     * The GCP project ID containing the Spanner database.
      */
     project: string;
     /**
@@ -11729,10 +12416,6 @@ export interface ResourceDocumentDbReplicaSet {
      */
     proxyClusterId?: string;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: string;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -12068,13 +12751,76 @@ export interface ResourceElasticacheRedis {
     username?: string;
 }
 
+export interface ResourceElasticacheRedisIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface ResourceEntraId {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
     bindInterface: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -12309,7 +13055,7 @@ export interface ResourceGoogleGke {
      */
     certificateAuthority?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -12407,6 +13153,65 @@ export interface ResourceGoogleGkeUserImpersonation {
      * The service account key to authenticate with.
      */
     serviceAccountKey?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceGoogleSpanner {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint: string;
+    /**
+     * The Spanner instance ID within the GCP project.
+     */
+    instance: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * The GCP project ID containing the Spanner database.
+     */
+    project: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.
+     */
+    serviceAccountToImpersonate?: string;
     /**
      * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
      */
@@ -12678,7 +13483,7 @@ export interface ResourceKubernetes {
      */
     clientKey?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -12804,7 +13609,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     certificateAuthority?: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -12863,7 +13668,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     bindInterface: string;
     /**
-     * If true, configures discovery of a cluster to be run from a node.
+     * If true, configures discovery of the Okta org to be run from a node.
      */
     discoveryEnabled?: boolean;
     /**
@@ -13117,6 +13922,18 @@ export interface ResourceMcp {
      */
     name: string;
     /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint: string;
+    /**
+     * The OAuth 2.0 dynamic client registration endpoint URL.
+     */
+    oauthRegisterEndpoint?: string;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint: string;
+    /**
      * The password to authenticate with.
      */
     password?: string;
@@ -13144,6 +13961,10 @@ export interface ResourceMcp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username: string;
 }
 
 export interface ResourceMemcached {
@@ -13412,10 +14233,6 @@ export interface ResourceMongoLegacyReplicaset {
      */
     proxyClusterId?: string;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: string;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -13478,10 +14295,6 @@ export interface ResourceMongoReplicaSet {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
-    /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -13882,6 +14695,57 @@ export interface ResourceNeptuneIam {
     tags?: {[key: string]: string};
 }
 
+export interface ResourceOktaGroups {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group names to filter by. Supports wildcards (*)
+     */
+    groupNames?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceOracle {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -14234,6 +15098,14 @@ export interface ResourceRdp {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
      */
     lockRequired?: boolean;
@@ -14281,7 +15153,7 @@ export interface ResourceRdpCert {
      */
     bindInterface: string;
     /**
-     * Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+     * Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
      */
     dcHostnames?: string;
     /**
@@ -14325,7 +15197,11 @@ export interface ResourceRdpCert {
      */
     secretStoreId?: string;
     /**
-     * Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+     * Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+     */
+    serverFqdn?: string;
+    /**
+     * Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
      */
     sid?: string;
     /**
@@ -15110,6 +15986,10 @@ export interface ResourceSsh {
      */
     keyType: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -15181,6 +16061,10 @@ export interface ResourceSshCert {
      */
     keyType: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -15244,6 +16128,10 @@ export interface ResourceSshCustomerKey {
      */
     identitySetId?: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -15302,6 +16190,10 @@ export interface ResourceSshPassword {
      * The host to dial to initiate a connection from the egress node to this resource.
      */
     hostname: string;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -15718,7 +16610,7 @@ export interface SecretEngineKeyValue {
     tags?: {[key: string]: string};
 }
 
-export interface SecretEnginePostgresSecretEngine {
+export interface SecretEngineMysqlSecretEngine {
     /**
      * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
      */
@@ -15728,7 +16620,7 @@ export interface SecretEnginePostgresSecretEngine {
      */
     database: string;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     hostname: string;
     /**
@@ -15740,11 +16632,11 @@ export interface SecretEnginePostgresSecretEngine {
      */
     name: string;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     password: string;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     port: number;
     /**
@@ -15764,7 +16656,70 @@ export interface SecretEnginePostgresSecretEngine {
      */
     tags?: {[key: string]: string};
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the SQL Server.
+     */
+    username: string;
+}
+
+export interface SecretEnginePostgresSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: string;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: string;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password: string;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     tls?: boolean;
     /**
@@ -15772,7 +16727,70 @@ export interface SecretEnginePostgresSecretEngine {
      */
     ttl?: string;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
+     */
+    username: string;
+}
+
+export interface SecretEngineSqlserverSecretEngine {
+    /**
+     * The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+     */
+    afterReadTtl?: string;
+    /**
+     * Database is the database to verify credential against.
+     */
+    database: string;
+    /**
+     * Hostname is the hostname or IP address of the SQL Server.
+     */
+    hostname: string;
+    /**
+     * An interval of public/private key rotation for secret engine in days
+     */
+    keyRotationIntervalDays?: number;
+    /**
+     * Unique human-readable name of the Secret Engine.
+     */
+    name: string;
+    /**
+     * Password is the password to connect to the SQL Server server.
+     */
+    password: string;
+    /**
+     * Port is the port number of the SQL Server server.
+     */
+    port: number;
+    /**
+     * Public key linked with a secret engine
+     */
+    publicKey: string;
+    /**
+     * Backing secret store identifier
+     */
+    secretStoreId: string;
+    /**
+     * Backing Secret Store root path where managed secrets are going to be stored
+     */
+    secretStoreRootPath: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
+     */
+    tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: boolean;
+    /**
+     * The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+     */
+    ttl?: string;
+    /**
+     * Username is the username to connect to the SQL Server.
      */
     username: string;
 }

@@ -48,10 +48,9 @@ export class SecretEngine extends pulumi.CustomResource {
 
     declare public readonly activeDirectory: pulumi.Output<outputs.SecretEngineActiveDirectory | undefined>;
     declare public readonly keyValue: pulumi.Output<outputs.SecretEngineKeyValue | undefined>;
-    /**
-     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
+    declare public readonly mysqlSecretEngine: pulumi.Output<outputs.SecretEngineMysqlSecretEngine | undefined>;
     declare public readonly postgresSecretEngine: pulumi.Output<outputs.SecretEnginePostgresSecretEngine | undefined>;
+    declare public readonly sqlserverSecretEngine: pulumi.Output<outputs.SecretEngineSqlserverSecretEngine | undefined>;
 
     /**
      * Create a SecretEngine resource with the given unique name, arguments, and options.
@@ -68,12 +67,16 @@ export class SecretEngine extends pulumi.CustomResource {
             const state = argsOrState as SecretEngineState | undefined;
             resourceInputs["activeDirectory"] = state?.activeDirectory;
             resourceInputs["keyValue"] = state?.keyValue;
+            resourceInputs["mysqlSecretEngine"] = state?.mysqlSecretEngine;
             resourceInputs["postgresSecretEngine"] = state?.postgresSecretEngine;
+            resourceInputs["sqlserverSecretEngine"] = state?.sqlserverSecretEngine;
         } else {
             const args = argsOrState as SecretEngineArgs | undefined;
             resourceInputs["activeDirectory"] = args?.activeDirectory;
             resourceInputs["keyValue"] = args?.keyValue;
+            resourceInputs["mysqlSecretEngine"] = args?.mysqlSecretEngine;
             resourceInputs["postgresSecretEngine"] = args?.postgresSecretEngine;
+            resourceInputs["sqlserverSecretEngine"] = args?.sqlserverSecretEngine;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretEngine.__pulumiType, name, resourceInputs, opts);
@@ -86,10 +89,9 @@ export class SecretEngine extends pulumi.CustomResource {
 export interface SecretEngineState {
     activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
     keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
-    /**
-     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
+    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine>;
     postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
+    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine>;
 }
 
 /**
@@ -98,8 +100,7 @@ export interface SecretEngineState {
 export interface SecretEngineArgs {
     activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
     keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
-    /**
-     * PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
+    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine>;
     postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
+    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine>;
 }

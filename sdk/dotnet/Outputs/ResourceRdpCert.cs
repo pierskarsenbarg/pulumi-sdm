@@ -19,7 +19,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
-        /// Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+        /// Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
         /// </summary>
         public readonly string? DcHostnames;
         /// <summary>
@@ -63,7 +63,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        /// Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+        /// </summary>
+        public readonly string? ServerFqdn;
+        /// <summary>
+        /// Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
         /// </summary>
         public readonly string? Sid;
         /// <summary>
@@ -105,6 +109,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
+            string? serverFqdn,
+
             string? sid,
 
             string? subdomain,
@@ -125,6 +131,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
+            ServerFqdn = serverFqdn;
             Sid = sid;
             Subdomain = subdomain;
             Tags = tags;

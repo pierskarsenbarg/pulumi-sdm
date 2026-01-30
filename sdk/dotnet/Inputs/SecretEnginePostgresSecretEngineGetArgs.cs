@@ -26,7 +26,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// Hostname is the hostname or IP address of the Postgres server.
+        /// Hostname is the hostname or IP address of the SQL Server.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
@@ -44,13 +44,13 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Password is the password to connect to the Postgres server.
+        /// Password is the password to connect to the SQL Server server.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// Port is the port number of the Postgres server.
+        /// Port is the port number of the SQL Server server.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// TLS enables TLS/SSL when connecting to the SQL Server server.
         /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }
@@ -98,7 +98,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? Ttl { get; set; }
 
         /// <summary>
-        /// Username is the username to connect to the Postgres server.
+        /// Username is the username to connect to the SQL Server.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

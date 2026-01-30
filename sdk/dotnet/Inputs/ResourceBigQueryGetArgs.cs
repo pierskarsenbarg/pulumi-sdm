@@ -60,7 +60,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The project to connect to.
+        /// The GCP project ID containing the Spanner database.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? AccountType;
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
         /// The timestamp when the Token will expire.
         /// </summary>
         public readonly string? Deadline;
@@ -55,6 +59,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetAccountAccountTokenResult(
             string? accountType,
 
+            string createdAt,
+
             string? deadline,
 
             string? duration,
@@ -72,6 +78,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableDictionary<string, string>? tags)
         {
             AccountType = accountType;
+            CreatedAt = createdAt;
             Deadline = deadline;
             Duration = duration;
             Id = id;

@@ -14,10 +14,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class AccountUserGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
         /// The User's email address. Must be unique.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
+
+        /// <summary>
+        /// Internal employee ID used to identify the user.
+        /// </summary>
+        [Input("employeeNumber")]
+        public Input<string>? EmployeeNumber { get; set; }
 
         /// <summary>
         /// External ID is an alternative unique ID this user is represented by within an external service.

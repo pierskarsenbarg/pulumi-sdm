@@ -27,7 +27,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? CertificateAuthority;
         /// <summary>
-        /// If true, configures discovery of a cluster to be run from a node.
+        /// If true, configures discovery of the Okta org to be run from a node.
         /// </summary>
         public readonly bool? DiscoveryEnabled;
         /// <summary>

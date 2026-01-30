@@ -16,7 +16,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
     {
         public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineActiveDirectoryResult> ActiveDirectories;
         public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineKeyValueResult> KeyValues;
+        public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineMysqlSecretEngineResult> MysqlSecretEngines;
         public readonly ImmutableArray<Outputs.GetSecretEngineSecretEnginePostgresSecretEngineResult> PostgresSecretEngines;
+        public readonly ImmutableArray<Outputs.GetSecretEngineSecretEngineSqlserverSecretEngineResult> SqlserverSecretEngines;
 
         [OutputConstructor]
         private GetSecretEngineSecretEngineResult(
@@ -24,11 +26,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetSecretEngineSecretEngineKeyValueResult> keyValues,
 
-            ImmutableArray<Outputs.GetSecretEngineSecretEnginePostgresSecretEngineResult> postgresSecretEngines)
+            ImmutableArray<Outputs.GetSecretEngineSecretEngineMysqlSecretEngineResult> mysqlSecretEngines,
+
+            ImmutableArray<Outputs.GetSecretEngineSecretEnginePostgresSecretEngineResult> postgresSecretEngines,
+
+            ImmutableArray<Outputs.GetSecretEngineSecretEngineSqlserverSecretEngineResult> sqlserverSecretEngines)
         {
             ActiveDirectories = activeDirectories;
             KeyValues = keyValues;
+            MysqlSecretEngines = mysqlSecretEngines;
             PostgresSecretEngines = postgresSecretEngines;
+            SqlserverSecretEngines = sqlserverSecretEngines;
         }
     }
 }

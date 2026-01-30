@@ -35,6 +35,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         /// </summary>
         public readonly bool? LockRequired;
@@ -87,6 +95,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? id,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             bool? lockRequired,
 
             string? name,
@@ -112,6 +124,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             Hostname = hostname;
             Id = id;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             LockRequired = lockRequired;
             Name = name;
             Password = password;

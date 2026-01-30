@@ -37,6 +37,24 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The OAuth 2.0 authorization endpoint URL.
+        /// </summary>
+        [Input("oauthAuthEndpoint", required: true)]
+        public Input<string> OauthAuthEndpoint { get; set; } = null!;
+
+        /// <summary>
+        /// The OAuth 2.0 dynamic client registration endpoint URL.
+        /// </summary>
+        [Input("oauthRegisterEndpoint")]
+        public Input<string>? OauthRegisterEndpoint { get; set; }
+
+        /// <summary>
+        /// The OAuth 2.0 token endpoint URL.
+        /// </summary>
+        [Input("oauthTokenEndpoint", required: true)]
+        public Input<string> OauthTokenEndpoint { get; set; } = null!;
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -94,6 +112,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public ResourceMcpArgs()
         {

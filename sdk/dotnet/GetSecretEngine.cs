@@ -71,7 +71,7 @@ namespace PiersKarsenbarg.Sdm
         public bool? DoNotValidateTimestamps { get; set; }
 
         /// <summary>
-        /// Hostname is the hostname or IP address of the Postgres server.
+        /// Hostname is the hostname or IP address of the SQL Server.
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
@@ -101,13 +101,13 @@ namespace PiersKarsenbarg.Sdm
         public string? Name { get; set; }
 
         /// <summary>
-        /// Password is the password to connect to the Postgres server.
+        /// Password is the password to connect to the SQL Server server.
         /// </summary>
         [Input("password")]
         public string? Password { get; set; }
 
         /// <summary>
-        /// Port is the port number of the Postgres server.
+        /// Port is the port number of the SQL Server server.
         /// </summary>
         [Input("port")]
         public int? Port { get; set; }
@@ -149,10 +149,16 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// TLS enables TLS/SSL when connecting to the SQL Server server.
         /// </summary>
         [Input("tls")]
         public bool? Tls { get; set; }
+
+        /// <summary>
+        /// TLS disable certificate verification
+        /// </summary>
+        [Input("tlsSkipVerify")]
+        public bool? TlsSkipVerify { get; set; }
 
         /// <summary>
         /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
@@ -179,7 +185,7 @@ namespace PiersKarsenbarg.Sdm
         public string? Userdn { get; set; }
 
         /// <summary>
-        /// Username is the username to connect to the Postgres server.
+        /// Username is the username to connect to the SQL Server.
         /// </summary>
         [Input("username")]
         public string? Username { get; set; }
@@ -229,7 +235,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<bool>? DoNotValidateTimestamps { get; set; }
 
         /// <summary>
-        /// Hostname is the hostname or IP address of the Postgres server.
+        /// Hostname is the hostname or IP address of the SQL Server.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -259,13 +265,13 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Password is the password to connect to the Postgres server.
+        /// Password is the password to connect to the SQL Server server.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Port is the port number of the Postgres server.
+        /// Port is the port number of the SQL Server server.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -307,10 +313,16 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// TLS enables TLS/SSL when connecting to the SQL Server server.
         /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }
+
+        /// <summary>
+        /// TLS disable certificate verification
+        /// </summary>
+        [Input("tlsSkipVerify")]
+        public Input<bool>? TlsSkipVerify { get; set; }
 
         /// <summary>
         /// a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
@@ -337,7 +349,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? Userdn { get; set; }
 
         /// <summary>
-        /// Username is the username to connect to the Postgres server.
+        /// Username is the username to connect to the SQL Server.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -377,7 +389,7 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly bool? DoNotValidateTimestamps;
         /// <summary>
-        /// Hostname is the hostname or IP address of the Postgres server.
+        /// Hostname is the hostname or IP address of the SQL Server.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
@@ -401,11 +413,11 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Password is the password to connect to the Postgres server.
+        /// Password is the password to connect to the SQL Server server.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Port is the port number of the Postgres server.
+        /// Port is the port number of the SQL Server server.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -434,9 +446,13 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// TLS enables TLS/SSL when connecting to the SQL Server server.
         /// </summary>
         public readonly bool? Tls;
+        /// <summary>
+        /// TLS disable certificate verification
+        /// </summary>
+        public readonly bool? TlsSkipVerify;
         public readonly string? Type;
         /// <summary>
         /// The domain (userPrincipalDomain) used to construct a UPN string for authentication.
@@ -452,7 +468,7 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Userdn;
         /// <summary>
-        /// Username is the username to connect to the Postgres server.
+        /// Username is the username to connect to the SQL Server.
         /// </summary>
         public readonly string? Username;
 
@@ -500,6 +516,8 @@ namespace PiersKarsenbarg.Sdm
 
             bool? tls,
 
+            bool? tlsSkipVerify,
+
             string? type,
 
             string? upndomain,
@@ -531,6 +549,7 @@ namespace PiersKarsenbarg.Sdm
             StartTls = startTls;
             Tags = tags;
             Tls = tls;
+            TlsSkipVerify = tlsSkipVerify;
             Type = type;
             Upndomain = upndomain;
             Url = url;

@@ -15,6 +15,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class AccountService
     {
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        public readonly string? CreatedAt;
+        /// <summary>
         /// Unique human-readable name of the Service.
         /// </summary>
         public readonly string Name;
@@ -30,6 +34,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private AccountService(
+            string? createdAt,
+
             string name,
 
             bool? suspended,
@@ -38,6 +44,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? token)
         {
+            CreatedAt = createdAt;
             Name = name;
             Suspended = suspended;
             Tags = tags;

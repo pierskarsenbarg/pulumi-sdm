@@ -51,10 +51,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ProxyClusterId;
         /// <summary>
-        /// The name of the mongo replicaset.
-        /// </summary>
-        public readonly string ReplicaSet;
-        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -91,8 +87,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? proxyClusterId,
 
-            string replicaSet,
-
             string? secretStoreId,
 
             string? subdomain,
@@ -110,7 +104,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
-            ReplicaSet = replicaSet;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

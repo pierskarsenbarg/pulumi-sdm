@@ -23,17 +23,22 @@ class SecretEngineArgs:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
                  key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
-                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None):
+                 mysql_secret_engine: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']] = None,
+                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None,
+                 sqlserver_secret_engine: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']] = None):
         """
         The set of arguments for constructing a SecretEngine resource.
-        :param pulumi.Input['SecretEnginePostgresSecretEngineArgs'] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
         if key_value is not None:
             pulumi.set(__self__, "key_value", key_value)
+        if mysql_secret_engine is not None:
+            pulumi.set(__self__, "mysql_secret_engine", mysql_secret_engine)
         if postgres_secret_engine is not None:
             pulumi.set(__self__, "postgres_secret_engine", postgres_secret_engine)
+        if sqlserver_secret_engine is not None:
+            pulumi.set(__self__, "sqlserver_secret_engine", sqlserver_secret_engine)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
@@ -54,16 +59,31 @@ class SecretEngineArgs:
         pulumi.set(self, "key_value", value)
 
     @_builtins.property
+    @pulumi.getter(name="mysqlSecretEngine")
+    def mysql_secret_engine(self) -> Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]:
+        return pulumi.get(self, "mysql_secret_engine")
+
+    @mysql_secret_engine.setter
+    def mysql_secret_engine(self, value: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]):
+        pulumi.set(self, "mysql_secret_engine", value)
+
+    @_builtins.property
     @pulumi.getter(name="postgresSecretEngine")
     def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
-        """
-        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "postgres_secret_engine")
 
     @postgres_secret_engine.setter
     def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
         pulumi.set(self, "postgres_secret_engine", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlserverSecretEngine")
+    def sqlserver_secret_engine(self) -> Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]:
+        return pulumi.get(self, "sqlserver_secret_engine")
+
+    @sqlserver_secret_engine.setter
+    def sqlserver_secret_engine(self, value: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]):
+        pulumi.set(self, "sqlserver_secret_engine", value)
 
 
 @pulumi.input_type
@@ -71,17 +91,22 @@ class _SecretEngineState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
                  key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
-                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None):
+                 mysql_secret_engine: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']] = None,
+                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None,
+                 sqlserver_secret_engine: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']] = None):
         """
         Input properties used for looking up and filtering SecretEngine resources.
-        :param pulumi.Input['SecretEnginePostgresSecretEngineArgs'] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
         if key_value is not None:
             pulumi.set(__self__, "key_value", key_value)
+        if mysql_secret_engine is not None:
+            pulumi.set(__self__, "mysql_secret_engine", mysql_secret_engine)
         if postgres_secret_engine is not None:
             pulumi.set(__self__, "postgres_secret_engine", postgres_secret_engine)
+        if sqlserver_secret_engine is not None:
+            pulumi.set(__self__, "sqlserver_secret_engine", sqlserver_secret_engine)
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
@@ -102,16 +127,31 @@ class _SecretEngineState:
         pulumi.set(self, "key_value", value)
 
     @_builtins.property
+    @pulumi.getter(name="mysqlSecretEngine")
+    def mysql_secret_engine(self) -> Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]:
+        return pulumi.get(self, "mysql_secret_engine")
+
+    @mysql_secret_engine.setter
+    def mysql_secret_engine(self, value: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]):
+        pulumi.set(self, "mysql_secret_engine", value)
+
+    @_builtins.property
     @pulumi.getter(name="postgresSecretEngine")
     def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
-        """
-        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "postgres_secret_engine")
 
     @postgres_secret_engine.setter
     def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
         pulumi.set(self, "postgres_secret_engine", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlserverSecretEngine")
+    def sqlserver_secret_engine(self) -> Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]:
+        return pulumi.get(self, "sqlserver_secret_engine")
+
+    @sqlserver_secret_engine.setter
+    def sqlserver_secret_engine(self, value: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]):
+        pulumi.set(self, "sqlserver_secret_engine", value)
 
 
 @pulumi.type_token("sdm:index/secretEngine:SecretEngine")
@@ -122,7 +162,9 @@ class SecretEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
                  key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
                  postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+                 sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
                  __props__=None):
         """
         A SecretEngine is managing secrets in SecretStores.
@@ -138,7 +180,6 @@ class SecretEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -175,7 +216,9 @@ class SecretEngine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
                  key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
                  postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+                 sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -187,7 +230,9 @@ class SecretEngine(pulumi.CustomResource):
 
             __props__.__dict__["active_directory"] = active_directory
             __props__.__dict__["key_value"] = key_value
+            __props__.__dict__["mysql_secret_engine"] = mysql_secret_engine
             __props__.__dict__["postgres_secret_engine"] = postgres_secret_engine
+            __props__.__dict__["sqlserver_secret_engine"] = sqlserver_secret_engine
         super(SecretEngine, __self__).__init__(
             'sdm:index/secretEngine:SecretEngine',
             resource_name,
@@ -200,7 +245,9 @@ class SecretEngine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
             key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-            postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None) -> 'SecretEngine':
+            mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
+            postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+            sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None) -> 'SecretEngine':
         """
         Get an existing SecretEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -208,7 +255,6 @@ class SecretEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']] postgres_secret_engine: PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -216,7 +262,9 @@ class SecretEngine(pulumi.CustomResource):
 
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["key_value"] = key_value
+        __props__.__dict__["mysql_secret_engine"] = mysql_secret_engine
         __props__.__dict__["postgres_secret_engine"] = postgres_secret_engine
+        __props__.__dict__["sqlserver_secret_engine"] = sqlserver_secret_engine
         return SecretEngine(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -230,10 +278,17 @@ class SecretEngine(pulumi.CustomResource):
         return pulumi.get(self, "key_value")
 
     @_builtins.property
+    @pulumi.getter(name="mysqlSecretEngine")
+    def mysql_secret_engine(self) -> pulumi.Output[Optional['outputs.SecretEngineMysqlSecretEngine']]:
+        return pulumi.get(self, "mysql_secret_engine")
+
+    @_builtins.property
     @pulumi.getter(name="postgresSecretEngine")
     def postgres_secret_engine(self) -> pulumi.Output[Optional['outputs.SecretEnginePostgresSecretEngine']]:
-        """
-        PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "postgres_secret_engine")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlserverSecretEngine")
+    def sqlserver_secret_engine(self) -> pulumi.Output[Optional['outputs.SecretEngineSqlserverSecretEngine']]:
+        return pulumi.get(self, "sqlserver_secret_engine")
 

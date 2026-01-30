@@ -184,6 +184,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("elasticacheRedis")]
         public Output<Outputs.ResourceElasticacheRedis?> ElasticacheRedis { get; private set; } = null!;
 
+        /// <summary>
+        /// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("elasticacheRedisIam")]
+        public Output<Outputs.ResourceElasticacheRedisIam?> ElasticacheRedisIam { get; private set; } = null!;
+
         [Output("entraId")]
         public Output<Outputs.ResourceEntraId?> EntraId { get; private set; } = null!;
 
@@ -201,6 +207,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("googleGkeUserImpersonation")]
         public Output<Outputs.ResourceGoogleGkeUserImpersonation?> GoogleGkeUserImpersonation { get; private set; } = null!;
+
+        /// <summary>
+        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("googleSpanner")]
+        public Output<Outputs.ResourceGoogleSpanner?> GoogleSpanner { get; private set; } = null!;
 
         [Output("greenplum")]
         public Output<Outputs.ResourceGreenplum?> Greenplum { get; private set; } = null!;
@@ -285,6 +297,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("neptuneIam")]
         public Output<Outputs.ResourceNeptuneIam?> NeptuneIam { get; private set; } = null!;
+
+        /// <summary>
+        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("oktaGroups")]
+        public Output<Outputs.ResourceOktaGroups?> OktaGroups { get; private set; } = null!;
 
         [Output("oracle")]
         public Output<Outputs.ResourceOracle?> Oracle { get; private set; } = null!;
@@ -582,6 +600,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisArgs>? ElasticacheRedis { get; set; }
 
+        /// <summary>
+        /// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("elasticacheRedisIam")]
+        public Input<Inputs.ResourceElasticacheRedisIamArgs>? ElasticacheRedisIam { get; set; }
+
         [Input("entraId")]
         public Input<Inputs.ResourceEntraIdArgs>? EntraId { get; set; }
 
@@ -599,6 +623,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationArgs>? GoogleGkeUserImpersonation { get; set; }
+
+        /// <summary>
+        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("googleSpanner")]
+        public Input<Inputs.ResourceGoogleSpannerArgs>? GoogleSpanner { get; set; }
 
         [Input("greenplum")]
         public Input<Inputs.ResourceGreenplumArgs>? Greenplum { get; set; }
@@ -683,6 +713,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamArgs>? NeptuneIam { get; set; }
+
+        /// <summary>
+        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("oktaGroups")]
+        public Input<Inputs.ResourceOktaGroupsArgs>? OktaGroups { get; set; }
 
         [Input("oracle")]
         public Input<Inputs.ResourceOracleArgs>? Oracle { get; set; }
@@ -941,6 +977,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("elasticacheRedis")]
         public Input<Inputs.ResourceElasticacheRedisGetArgs>? ElasticacheRedis { get; set; }
 
+        /// <summary>
+        /// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("elasticacheRedisIam")]
+        public Input<Inputs.ResourceElasticacheRedisIamGetArgs>? ElasticacheRedisIam { get; set; }
+
         [Input("entraId")]
         public Input<Inputs.ResourceEntraIdGetArgs>? EntraId { get; set; }
 
@@ -958,6 +1000,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationGetArgs>? GoogleGkeUserImpersonation { get; set; }
+
+        /// <summary>
+        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("googleSpanner")]
+        public Input<Inputs.ResourceGoogleSpannerGetArgs>? GoogleSpanner { get; set; }
 
         [Input("greenplum")]
         public Input<Inputs.ResourceGreenplumGetArgs>? Greenplum { get; set; }
@@ -1042,6 +1090,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamGetArgs>? NeptuneIam { get; set; }
+
+        /// <summary>
+        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("oktaGroups")]
+        public Input<Inputs.ResourceOktaGroupsGetArgs>? OktaGroups { get; set; }
 
         [Input("oracle")]
         public Input<Inputs.ResourceOracleGetArgs>? Oracle { get; set; }

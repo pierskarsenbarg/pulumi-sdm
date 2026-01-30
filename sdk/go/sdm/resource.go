@@ -79,18 +79,22 @@ type Resource struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrOutput             `pulumi:"dynamoDbiam"`
 	Elastic                 ResourceElasticPtrOutput                 `pulumi:"elastic"`
 	ElasticacheRedis        ResourceElasticacheRedisPtrOutput        `pulumi:"elasticacheRedis"`
-	EntraId                 ResourceEntraIdPtrOutput                 `pulumi:"entraId"`
-	Gcp                     ResourceGcpPtrOutput                     `pulumi:"gcp"`
-	GcpConsole              ResourceGcpConsolePtrOutput              `pulumi:"gcpConsole"`
-	Gcpwif                  ResourceGcpwifPtrOutput                  `pulumi:"gcpwif"`
-	GoogleGke               ResourceGoogleGkePtrOutput               `pulumi:"googleGke"`
+	// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	ElasticacheRedisIam ResourceElasticacheRedisIamPtrOutput `pulumi:"elasticacheRedisIam"`
+	EntraId             ResourceEntraIdPtrOutput             `pulumi:"entraId"`
+	Gcp                 ResourceGcpPtrOutput                 `pulumi:"gcp"`
+	GcpConsole          ResourceGcpConsolePtrOutput          `pulumi:"gcpConsole"`
+	Gcpwif              ResourceGcpwifPtrOutput              `pulumi:"gcpwif"`
+	GoogleGke           ResourceGoogleGkePtrOutput           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
-	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
-	HttpBasicAuth              ResourceHttpBasicAuthPtrOutput              `pulumi:"httpBasicAuth"`
-	HttpNoAuth                 ResourceHttpNoAuthPtrOutput                 `pulumi:"httpNoAuth"`
-	Kubernetes                 ResourceKubernetesPtrOutput                 `pulumi:"kubernetes"`
+	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GoogleSpanner ResourceGoogleSpannerPtrOutput `pulumi:"googleSpanner"`
+	Greenplum     ResourceGreenplumPtrOutput     `pulumi:"greenplum"`
+	HttpAuth      ResourceHttpAuthPtrOutput      `pulumi:"httpAuth"`
+	HttpBasicAuth ResourceHttpBasicAuthPtrOutput `pulumi:"httpBasicAuth"`
+	HttpNoAuth    ResourceHttpNoAuthPtrOutput    `pulumi:"httpNoAuth"`
+	Kubernetes    ResourceKubernetesPtrOutput    `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrOutput      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrOutput    `pulumi:"kubernetesPodIdentity"`
@@ -116,6 +120,8 @@ type Resource struct {
 	Mysql                 ResourceMysqlPtrOutput                 `pulumi:"mysql"`
 	Neptune               ResourceNeptunePtrOutput               `pulumi:"neptune"`
 	NeptuneIam            ResourceNeptuneIamPtrOutput            `pulumi:"neptuneIam"`
+	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OktaGroups            ResourceOktaGroupsPtrOutput            `pulumi:"oktaGroups"`
 	Oracle                ResourceOraclePtrOutput                `pulumi:"oracle"`
 	OracleNne             ResourceOracleNnePtrOutput             `pulumi:"oracleNne"`
 	Postgres              ResourcePostgresPtrOutput              `pulumi:"postgres"`
@@ -235,18 +241,22 @@ type resourceState struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	EntraId                 *ResourceEntraId                 `pulumi:"entraId"`
-	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
-	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
-	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
-	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	ElasticacheRedisIam *ResourceElasticacheRedisIam `pulumi:"elasticacheRedisIam"`
+	EntraId             *ResourceEntraId             `pulumi:"entraId"`
+	Gcp                 *ResourceGcp                 `pulumi:"gcp"`
+	GcpConsole          *ResourceGcpConsole          `pulumi:"gcpConsole"`
+	Gcpwif              *ResourceGcpwif              `pulumi:"gcpwif"`
+	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
-	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
-	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
-	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
-	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
+	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GoogleSpanner *ResourceGoogleSpanner `pulumi:"googleSpanner"`
+	Greenplum     *ResourceGreenplum     `pulumi:"greenplum"`
+	HttpAuth      *ResourceHttpAuth      `pulumi:"httpAuth"`
+	HttpBasicAuth *ResourceHttpBasicAuth `pulumi:"httpBasicAuth"`
+	HttpNoAuth    *ResourceHttpNoAuth    `pulumi:"httpNoAuth"`
+	Kubernetes    *ResourceKubernetes    `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
@@ -272,6 +282,8 @@ type resourceState struct {
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
 	Neptune               *ResourceNeptune               `pulumi:"neptune"`
 	NeptuneIam            *ResourceNeptuneIam            `pulumi:"neptuneIam"`
+	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OktaGroups            *ResourceOktaGroups            `pulumi:"oktaGroups"`
 	Oracle                *ResourceOracle                `pulumi:"oracle"`
 	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
 	Postgres              *ResourcePostgres              `pulumi:"postgres"`
@@ -362,18 +374,22 @@ type ResourceState struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	EntraId                 ResourceEntraIdPtrInput
-	Gcp                     ResourceGcpPtrInput
-	GcpConsole              ResourceGcpConsolePtrInput
-	Gcpwif                  ResourceGcpwifPtrInput
-	GoogleGke               ResourceGoogleGkePtrInput
+	// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	ElasticacheRedisIam ResourceElasticacheRedisIamPtrInput
+	EntraId             ResourceEntraIdPtrInput
+	Gcp                 ResourceGcpPtrInput
+	GcpConsole          ResourceGcpConsolePtrInput
+	Gcpwif              ResourceGcpwifPtrInput
+	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                  ResourceGreenplumPtrInput
-	HttpAuth                   ResourceHttpAuthPtrInput
-	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                 ResourceHttpNoAuthPtrInput
-	Kubernetes                 ResourceKubernetesPtrInput
+	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GoogleSpanner ResourceGoogleSpannerPtrInput
+	Greenplum     ResourceGreenplumPtrInput
+	HttpAuth      ResourceHttpAuthPtrInput
+	HttpBasicAuth ResourceHttpBasicAuthPtrInput
+	HttpNoAuth    ResourceHttpNoAuthPtrInput
+	Kubernetes    ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
@@ -399,6 +415,8 @@ type ResourceState struct {
 	Mysql                 ResourceMysqlPtrInput
 	Neptune               ResourceNeptunePtrInput
 	NeptuneIam            ResourceNeptuneIamPtrInput
+	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OktaGroups            ResourceOktaGroupsPtrInput
 	Oracle                ResourceOraclePtrInput
 	OracleNne             ResourceOracleNnePtrInput
 	Postgres              ResourcePostgresPtrInput
@@ -493,18 +511,22 @@ type resourceArgs struct {
 	DynamoDbiam             *ResourceDynamoDbiam             `pulumi:"dynamoDbiam"`
 	Elastic                 *ResourceElastic                 `pulumi:"elastic"`
 	ElasticacheRedis        *ResourceElasticacheRedis        `pulumi:"elasticacheRedis"`
-	EntraId                 *ResourceEntraId                 `pulumi:"entraId"`
-	Gcp                     *ResourceGcp                     `pulumi:"gcp"`
-	GcpConsole              *ResourceGcpConsole              `pulumi:"gcpConsole"`
-	Gcpwif                  *ResourceGcpwif                  `pulumi:"gcpwif"`
-	GoogleGke               *ResourceGoogleGke               `pulumi:"googleGke"`
+	// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	ElasticacheRedisIam *ResourceElasticacheRedisIam `pulumi:"elasticacheRedisIam"`
+	EntraId             *ResourceEntraId             `pulumi:"entraId"`
+	Gcp                 *ResourceGcp                 `pulumi:"gcp"`
+	GcpConsole          *ResourceGcpConsole          `pulumi:"gcpConsole"`
+	Gcpwif              *ResourceGcpwif              `pulumi:"gcpwif"`
+	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
-	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
-	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
-	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
-	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
+	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GoogleSpanner *ResourceGoogleSpanner `pulumi:"googleSpanner"`
+	Greenplum     *ResourceGreenplum     `pulumi:"greenplum"`
+	HttpAuth      *ResourceHttpAuth      `pulumi:"httpAuth"`
+	HttpBasicAuth *ResourceHttpBasicAuth `pulumi:"httpBasicAuth"`
+	HttpNoAuth    *ResourceHttpNoAuth    `pulumi:"httpNoAuth"`
+	Kubernetes    *ResourceKubernetes    `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
@@ -530,6 +552,8 @@ type resourceArgs struct {
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
 	Neptune               *ResourceNeptune               `pulumi:"neptune"`
 	NeptuneIam            *ResourceNeptuneIam            `pulumi:"neptuneIam"`
+	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OktaGroups            *ResourceOktaGroups            `pulumi:"oktaGroups"`
 	Oracle                *ResourceOracle                `pulumi:"oracle"`
 	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
 	Postgres              *ResourcePostgres              `pulumi:"postgres"`
@@ -621,18 +645,22 @@ type ResourceArgs struct {
 	DynamoDbiam             ResourceDynamoDbiamPtrInput
 	Elastic                 ResourceElasticPtrInput
 	ElasticacheRedis        ResourceElasticacheRedisPtrInput
-	EntraId                 ResourceEntraIdPtrInput
-	Gcp                     ResourceGcpPtrInput
-	GcpConsole              ResourceGcpConsolePtrInput
-	Gcpwif                  ResourceGcpwifPtrInput
-	GoogleGke               ResourceGoogleGkePtrInput
+	// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	ElasticacheRedisIam ResourceElasticacheRedisIamPtrInput
+	EntraId             ResourceEntraIdPtrInput
+	Gcp                 ResourceGcpPtrInput
+	GcpConsole          ResourceGcpConsolePtrInput
+	Gcpwif              ResourceGcpwifPtrInput
+	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                  ResourceGreenplumPtrInput
-	HttpAuth                   ResourceHttpAuthPtrInput
-	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                 ResourceHttpNoAuthPtrInput
-	Kubernetes                 ResourceKubernetesPtrInput
+	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GoogleSpanner ResourceGoogleSpannerPtrInput
+	Greenplum     ResourceGreenplumPtrInput
+	HttpAuth      ResourceHttpAuthPtrInput
+	HttpBasicAuth ResourceHttpBasicAuthPtrInput
+	HttpNoAuth    ResourceHttpNoAuthPtrInput
+	Kubernetes    ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
@@ -658,6 +686,8 @@ type ResourceArgs struct {
 	Mysql                 ResourceMysqlPtrInput
 	Neptune               ResourceNeptunePtrInput
 	NeptuneIam            ResourceNeptuneIamPtrInput
+	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	OktaGroups            ResourceOktaGroupsPtrInput
 	Oracle                ResourceOraclePtrInput
 	OracleNne             ResourceOracleNnePtrInput
 	Postgres              ResourcePostgresPtrInput
@@ -991,6 +1021,11 @@ func (o ResourceOutput) ElasticacheRedis() ResourceElasticacheRedisPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceElasticacheRedisPtrOutput { return v.ElasticacheRedis }).(ResourceElasticacheRedisPtrOutput)
 }
 
+// ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) ElasticacheRedisIam() ResourceElasticacheRedisIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceElasticacheRedisIamPtrOutput { return v.ElasticacheRedisIam }).(ResourceElasticacheRedisIamPtrOutput)
+}
+
 func (o ResourceOutput) EntraId() ResourceEntraIdPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceEntraIdPtrOutput { return v.EntraId }).(ResourceEntraIdPtrOutput)
 }
@@ -1014,6 +1049,11 @@ func (o ResourceOutput) GoogleGke() ResourceGoogleGkePtrOutput {
 // Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) GoogleGkeUserImpersonation() ResourceGoogleGkeUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGoogleGkeUserImpersonationPtrOutput { return v.GoogleGkeUserImpersonation }).(ResourceGoogleGkeUserImpersonationPtrOutput)
+}
+
+// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) GoogleSpanner() ResourceGoogleSpannerPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceGoogleSpannerPtrOutput { return v.GoogleSpanner }).(ResourceGoogleSpannerPtrOutput)
 }
 
 func (o ResourceOutput) Greenplum() ResourceGreenplumPtrOutput {
@@ -1118,6 +1158,11 @@ func (o ResourceOutput) Neptune() ResourceNeptunePtrOutput {
 
 func (o ResourceOutput) NeptuneIam() ResourceNeptuneIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceNeptuneIamPtrOutput { return v.NeptuneIam }).(ResourceNeptuneIamPtrOutput)
+}
+
+// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) OktaGroups() ResourceOktaGroupsPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceOktaGroupsPtrOutput { return v.OktaGroups }).(ResourceOktaGroupsPtrOutput)
 }
 
 func (o ResourceOutput) Oracle() ResourceOraclePtrOutput {

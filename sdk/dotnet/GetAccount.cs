@@ -161,6 +161,12 @@ namespace PiersKarsenbarg.Sdm
         public string? Email { get; set; }
 
         /// <summary>
+        /// Internal employee ID used to identify the user.
+        /// </summary>
+        [Input("employeeNumber")]
+        public string? EmployeeNumber { get; set; }
+
+        /// <summary>
         /// External ID is an alternative unique ID this user is represented by within an external service.
         /// </summary>
         [Input("externalId")]
@@ -251,6 +257,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// Internal employee ID used to identify the user.
+        /// </summary>
+        [Input("employeeNumber")]
+        public Input<string>? EmployeeNumber { get; set; }
 
         /// <summary>
         /// External ID is an alternative unique ID this user is represented by within an external service.
@@ -348,6 +360,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Email;
         /// <summary>
+        /// Internal employee ID used to identify the user.
+        /// </summary>
+        public readonly string? EmployeeNumber;
+        /// <summary>
         /// External ID is an alternative unique ID this user is represented by within an external service.
         /// </summary>
         public readonly string? ExternalId;
@@ -401,6 +417,8 @@ namespace PiersKarsenbarg.Sdm
 
             string? email,
 
+            string? employeeNumber,
+
             string? externalId,
 
             string? firstName,
@@ -428,6 +446,7 @@ namespace PiersKarsenbarg.Sdm
             AccountType = accountType;
             Accounts = accounts;
             Email = email;
+            EmployeeNumber = employeeNumber;
             ExternalId = externalId;
             FirstName = firstName;
             Id = id;

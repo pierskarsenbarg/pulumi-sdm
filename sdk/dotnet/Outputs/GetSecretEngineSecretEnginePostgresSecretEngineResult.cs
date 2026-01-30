@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Database;
         /// <summary>
-        /// Hostname is the hostname or IP address of the Postgres server.
+        /// Hostname is the hostname or IP address of the SQL Server.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
@@ -39,11 +39,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Password is the password to connect to the Postgres server.
+        /// Password is the password to connect to the SQL Server server.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Port is the port number of the Postgres server.
+        /// Port is the port number of the SQL Server server.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -63,7 +63,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// TLS enables TLS/SSL when connecting to the Postgres server.
+        /// TLS enables TLS/SSL when connecting to the SQL Server server.
         /// </summary>
         public readonly bool? Tls;
         /// <summary>
@@ -71,7 +71,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Ttl;
         /// <summary>
-        /// Username is the username to connect to the Postgres server.
+        /// Username is the username to connect to the SQL Server.
         /// </summary>
         public readonly string? Username;
 

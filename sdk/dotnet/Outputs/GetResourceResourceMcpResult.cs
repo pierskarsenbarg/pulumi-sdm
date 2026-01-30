@@ -35,6 +35,18 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// The OAuth 2.0 authorization endpoint URL.
+        /// </summary>
+        public readonly string? OauthAuthEndpoint;
+        /// <summary>
+        /// The OAuth 2.0 dynamic client registration endpoint URL.
+        /// </summary>
+        public readonly string? OauthRegisterEndpoint;
+        /// <summary>
+        /// The OAuth 2.0 token endpoint URL.
+        /// </summary>
+        public readonly string? OauthTokenEndpoint;
+        /// <summary>
         /// The password to authenticate with.
         /// </summary>
         public readonly string? Password;
@@ -62,6 +74,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
+        public readonly string? Username;
 
         [OutputConstructor]
         private GetResourceResourceMcpResult(
@@ -75,6 +91,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
+            string? oauthAuthEndpoint,
+
+            string? oauthRegisterEndpoint,
+
+            string? oauthTokenEndpoint,
+
             string? password,
 
             int? port,
@@ -87,13 +109,18 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? subdomain,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            string? username)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
             Id = id;
             Name = name;
+            OauthAuthEndpoint = oauthAuthEndpoint;
+            OauthRegisterEndpoint = oauthRegisterEndpoint;
+            OauthTokenEndpoint = oauthTokenEndpoint;
             Password = password;
             Port = port;
             PortOverride = portOverride;
@@ -101,6 +128,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
+            Username = username;
         }
     }
 }

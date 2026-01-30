@@ -72,12 +72,14 @@ class ResourceArgs:
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
+                 elasticache_redis_iam: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']] = None,
                  entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
                  gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
                  gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
                  google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_spanner: Optional[pulumi.Input['ResourceGoogleSpannerArgs']] = None,
                  greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
                  http_auth: Optional[pulumi.Input['ResourceHttpAuthArgs']] = None,
                  http_basic_auth: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']] = None,
@@ -102,6 +104,7 @@ class ResourceArgs:
                  mysql: Optional[pulumi.Input['ResourceMysqlArgs']] = None,
                  neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
                  neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
+                 okta_groups: Optional[pulumi.Input['ResourceOktaGroupsArgs']] = None,
                  oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
                  oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
                  postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
@@ -136,10 +139,13 @@ class ResourceArgs:
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGoogleSpannerArgs'] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOktaGroupsArgs'] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -255,6 +261,8 @@ class ResourceArgs:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
+        if elasticache_redis_iam is not None:
+            pulumi.set(__self__, "elasticache_redis_iam", elasticache_redis_iam)
         if entra_id is not None:
             pulumi.set(__self__, "entra_id", entra_id)
         if gcp is not None:
@@ -270,6 +278,8 @@ class ResourceArgs:
             pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
         if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
+        if google_spanner is not None:
+            pulumi.set(__self__, "google_spanner", google_spanner)
         if greenplum is not None:
             pulumi.set(__self__, "greenplum", greenplum)
         if http_auth is not None:
@@ -324,6 +334,8 @@ class ResourceArgs:
             pulumi.set(__self__, "neptune", neptune)
         if neptune_iam is not None:
             pulumi.set(__self__, "neptune_iam", neptune_iam)
+        if okta_groups is not None:
+            pulumi.set(__self__, "okta_groups", okta_groups)
         if oracle is not None:
             pulumi.set(__self__, "oracle", oracle)
         if oracle_nne is not None:
@@ -856,6 +868,18 @@ class ResourceArgs:
         pulumi.set(self, "elasticache_redis", value)
 
     @_builtins.property
+    @pulumi.getter(name="elasticacheRedisIam")
+    def elasticache_redis_iam(self) -> Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]:
+        """
+        ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "elasticache_redis_iam")
+
+    @elasticache_redis_iam.setter
+    def elasticache_redis_iam(self, value: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]):
+        pulumi.set(self, "elasticache_redis_iam", value)
+
+    @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
         return pulumi.get(self, "entra_id")
@@ -909,6 +933,18 @@ class ResourceArgs:
     @google_gke_user_impersonation.setter
     def google_gke_user_impersonation(self, value: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleSpanner")
+    def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
+        """
+        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "google_spanner")
+
+    @google_spanner.setter
+    def google_spanner(self, value: Optional[pulumi.Input['ResourceGoogleSpannerArgs']]):
+        pulumi.set(self, "google_spanner", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1139,6 +1175,18 @@ class ResourceArgs:
     @neptune_iam.setter
     def neptune_iam(self, value: Optional[pulumi.Input['ResourceNeptuneIamArgs']]):
         pulumi.set(self, "neptune_iam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oktaGroups")
+    def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
+        """
+        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "okta_groups")
+
+    @okta_groups.setter
+    def okta_groups(self, value: Optional[pulumi.Input['ResourceOktaGroupsArgs']]):
+        pulumi.set(self, "okta_groups", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1456,12 +1504,14 @@ class _ResourceState:
                  dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
+                 elasticache_redis_iam: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']] = None,
                  entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
                  gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
                  gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
                  google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_spanner: Optional[pulumi.Input['ResourceGoogleSpannerArgs']] = None,
                  greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
                  http_auth: Optional[pulumi.Input['ResourceHttpAuthArgs']] = None,
                  http_basic_auth: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']] = None,
@@ -1486,6 +1536,7 @@ class _ResourceState:
                  mysql: Optional[pulumi.Input['ResourceMysqlArgs']] = None,
                  neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
                  neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
+                 okta_groups: Optional[pulumi.Input['ResourceOktaGroupsArgs']] = None,
                  oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
                  oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
                  postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
@@ -1520,10 +1571,13 @@ class _ResourceState:
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGoogleSpannerArgs'] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOktaGroupsArgs'] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -1639,6 +1693,8 @@ class _ResourceState:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
+        if elasticache_redis_iam is not None:
+            pulumi.set(__self__, "elasticache_redis_iam", elasticache_redis_iam)
         if entra_id is not None:
             pulumi.set(__self__, "entra_id", entra_id)
         if gcp is not None:
@@ -1654,6 +1710,8 @@ class _ResourceState:
             pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
         if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
+        if google_spanner is not None:
+            pulumi.set(__self__, "google_spanner", google_spanner)
         if greenplum is not None:
             pulumi.set(__self__, "greenplum", greenplum)
         if http_auth is not None:
@@ -1708,6 +1766,8 @@ class _ResourceState:
             pulumi.set(__self__, "neptune", neptune)
         if neptune_iam is not None:
             pulumi.set(__self__, "neptune_iam", neptune_iam)
+        if okta_groups is not None:
+            pulumi.set(__self__, "okta_groups", okta_groups)
         if oracle is not None:
             pulumi.set(__self__, "oracle", oracle)
         if oracle_nne is not None:
@@ -2240,6 +2300,18 @@ class _ResourceState:
         pulumi.set(self, "elasticache_redis", value)
 
     @_builtins.property
+    @pulumi.getter(name="elasticacheRedisIam")
+    def elasticache_redis_iam(self) -> Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]:
+        """
+        ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "elasticache_redis_iam")
+
+    @elasticache_redis_iam.setter
+    def elasticache_redis_iam(self, value: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]):
+        pulumi.set(self, "elasticache_redis_iam", value)
+
+    @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
         return pulumi.get(self, "entra_id")
@@ -2293,6 +2365,18 @@ class _ResourceState:
     @google_gke_user_impersonation.setter
     def google_gke_user_impersonation(self, value: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleSpanner")
+    def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
+        """
+        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "google_spanner")
+
+    @google_spanner.setter
+    def google_spanner(self, value: Optional[pulumi.Input['ResourceGoogleSpannerArgs']]):
+        pulumi.set(self, "google_spanner", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2523,6 +2607,18 @@ class _ResourceState:
     @neptune_iam.setter
     def neptune_iam(self, value: Optional[pulumi.Input['ResourceNeptuneIamArgs']]):
         pulumi.set(self, "neptune_iam", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oktaGroups")
+    def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
+        """
+        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "okta_groups")
+
+    @okta_groups.setter
+    def okta_groups(self, value: Optional[pulumi.Input['ResourceOktaGroupsArgs']]):
+        pulumi.set(self, "okta_groups", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2843,12 +2939,14 @@ class Resource(pulumi.CustomResource):
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
                  entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
                  gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
                  gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
                  google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+                 google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
                  greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
                  http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
                  http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
@@ -2873,6 +2971,7 @@ class Resource(pulumi.CustomResource):
                  mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
                  neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
                  neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+                 okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
                  oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
                  oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
                  postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
@@ -2917,10 +3016,13 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -3003,12 +3105,14 @@ class Resource(pulumi.CustomResource):
                  dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
                  entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
                  gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
                  gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
                  google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+                 google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
                  greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
                  http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
                  http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
@@ -3033,6 +3137,7 @@ class Resource(pulumi.CustomResource):
                  mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
                  neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
                  neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+                 okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
                  oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
                  oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
                  postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
@@ -3122,12 +3227,14 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
             __props__.__dict__["elastic"] = elastic
             __props__.__dict__["elasticache_redis"] = elasticache_redis
+            __props__.__dict__["elasticache_redis_iam"] = elasticache_redis_iam
             __props__.__dict__["entra_id"] = entra_id
             __props__.__dict__["gcp"] = gcp
             __props__.__dict__["gcp_console"] = gcp_console
             __props__.__dict__["gcpwif"] = gcpwif
             __props__.__dict__["google_gke"] = google_gke
             __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
+            __props__.__dict__["google_spanner"] = google_spanner
             __props__.__dict__["greenplum"] = greenplum
             __props__.__dict__["http_auth"] = http_auth
             __props__.__dict__["http_basic_auth"] = http_basic_auth
@@ -3152,6 +3259,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["neptune"] = neptune
             __props__.__dict__["neptune_iam"] = neptune_iam
+            __props__.__dict__["okta_groups"] = okta_groups
             __props__.__dict__["oracle"] = oracle
             __props__.__dict__["oracle_nne"] = oracle_nne
             __props__.__dict__["postgres"] = postgres
@@ -3242,12 +3350,14 @@ class Resource(pulumi.CustomResource):
             dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
             elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
             elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+            elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
             entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
             gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
             gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
             gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
             google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
             google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+            google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
             greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
             http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
             http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
@@ -3272,6 +3382,7 @@ class Resource(pulumi.CustomResource):
             mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
             neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
             neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+            okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
             oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
             oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
             postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
@@ -3311,10 +3422,13 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3371,12 +3485,14 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
         __props__.__dict__["elastic"] = elastic
         __props__.__dict__["elasticache_redis"] = elasticache_redis
+        __props__.__dict__["elasticache_redis_iam"] = elasticache_redis_iam
         __props__.__dict__["entra_id"] = entra_id
         __props__.__dict__["gcp"] = gcp
         __props__.__dict__["gcp_console"] = gcp_console
         __props__.__dict__["gcpwif"] = gcpwif
         __props__.__dict__["google_gke"] = google_gke
         __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
+        __props__.__dict__["google_spanner"] = google_spanner
         __props__.__dict__["greenplum"] = greenplum
         __props__.__dict__["http_auth"] = http_auth
         __props__.__dict__["http_basic_auth"] = http_basic_auth
@@ -3401,6 +3517,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["mysql"] = mysql
         __props__.__dict__["neptune"] = neptune
         __props__.__dict__["neptune_iam"] = neptune_iam
+        __props__.__dict__["okta_groups"] = okta_groups
         __props__.__dict__["oracle"] = oracle
         __props__.__dict__["oracle_nne"] = oracle_nne
         __props__.__dict__["postgres"] = postgres
@@ -3701,6 +3818,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "elasticache_redis")
 
     @_builtins.property
+    @pulumi.getter(name="elasticacheRedisIam")
+    def elasticache_redis_iam(self) -> pulumi.Output[Optional['outputs.ResourceElasticacheRedisIam']]:
+        """
+        ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "elasticache_redis_iam")
+
+    @_builtins.property
     @pulumi.getter(name="entraId")
     def entra_id(self) -> pulumi.Output[Optional['outputs.ResourceEntraId']]:
         return pulumi.get(self, "entra_id")
@@ -3730,6 +3855,14 @@ class Resource(pulumi.CustomResource):
     @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
     def google_gke_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceGoogleGkeUserImpersonation']]:
         return pulumi.get(self, "google_gke_user_impersonation")
+
+    @_builtins.property
+    @pulumi.getter(name="googleSpanner")
+    def google_spanner(self) -> pulumi.Output[Optional['outputs.ResourceGoogleSpanner']]:
+        """
+        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "google_spanner")
 
     @_builtins.property
     @pulumi.getter
@@ -3864,6 +3997,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="neptuneIam")
     def neptune_iam(self) -> pulumi.Output[Optional['outputs.ResourceNeptuneIam']]:
         return pulumi.get(self, "neptune_iam")
+
+    @_builtins.property
+    @pulumi.getter(name="oktaGroups")
+    def okta_groups(self) -> pulumi.Output[Optional['outputs.ResourceOktaGroups']]:
+        """
+        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "okta_groups")
 
     @_builtins.property
     @pulumi.getter

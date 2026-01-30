@@ -14,6 +14,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class AccountServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Service.
         /// </summary>
         [Input("name", required: true)]

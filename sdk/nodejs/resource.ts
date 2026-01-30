@@ -115,6 +115,10 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly dynamoDbiam: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
     declare public readonly elastic: pulumi.Output<outputs.ResourceElastic | undefined>;
     declare public readonly elasticacheRedis: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
+    /**
+     * ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly elasticacheRedisIam: pulumi.Output<outputs.ResourceElasticacheRedisIam | undefined>;
     declare public readonly entraId: pulumi.Output<outputs.ResourceEntraId | undefined>;
     declare public readonly gcp: pulumi.Output<outputs.ResourceGcp | undefined>;
     declare public readonly gcpConsole: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
@@ -124,6 +128,10 @@ export class Resource extends pulumi.CustomResource {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     declare public readonly googleGkeUserImpersonation: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    /**
+     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly googleSpanner: pulumi.Output<outputs.ResourceGoogleSpanner | undefined>;
     declare public readonly greenplum: pulumi.Output<outputs.ResourceGreenplum | undefined>;
     declare public readonly httpAuth: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
     declare public readonly httpBasicAuth: pulumi.Output<outputs.ResourceHttpBasicAuth | undefined>;
@@ -166,6 +174,10 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly mysql: pulumi.Output<outputs.ResourceMysql | undefined>;
     declare public readonly neptune: pulumi.Output<outputs.ResourceNeptune | undefined>;
     declare public readonly neptuneIam: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
+    /**
+     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly oktaGroups: pulumi.Output<outputs.ResourceOktaGroups | undefined>;
     declare public readonly oracle: pulumi.Output<outputs.ResourceOracle | undefined>;
     declare public readonly oracleNne: pulumi.Output<outputs.ResourceOracleNne | undefined>;
     declare public readonly postgres: pulumi.Output<outputs.ResourcePostgres | undefined>;
@@ -260,12 +272,14 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["dynamoDbiam"] = state?.dynamoDbiam;
             resourceInputs["elastic"] = state?.elastic;
             resourceInputs["elasticacheRedis"] = state?.elasticacheRedis;
+            resourceInputs["elasticacheRedisIam"] = state?.elasticacheRedisIam;
             resourceInputs["entraId"] = state?.entraId;
             resourceInputs["gcp"] = state?.gcp;
             resourceInputs["gcpConsole"] = state?.gcpConsole;
             resourceInputs["gcpwif"] = state?.gcpwif;
             resourceInputs["googleGke"] = state?.googleGke;
             resourceInputs["googleGkeUserImpersonation"] = state?.googleGkeUserImpersonation;
+            resourceInputs["googleSpanner"] = state?.googleSpanner;
             resourceInputs["greenplum"] = state?.greenplum;
             resourceInputs["httpAuth"] = state?.httpAuth;
             resourceInputs["httpBasicAuth"] = state?.httpBasicAuth;
@@ -290,6 +304,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["mysql"] = state?.mysql;
             resourceInputs["neptune"] = state?.neptune;
             resourceInputs["neptuneIam"] = state?.neptuneIam;
+            resourceInputs["oktaGroups"] = state?.oktaGroups;
             resourceInputs["oracle"] = state?.oracle;
             resourceInputs["oracleNne"] = state?.oracleNne;
             resourceInputs["postgres"] = state?.postgres;
@@ -372,12 +387,14 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["dynamoDbiam"] = args?.dynamoDbiam;
             resourceInputs["elastic"] = args?.elastic;
             resourceInputs["elasticacheRedis"] = args?.elasticacheRedis;
+            resourceInputs["elasticacheRedisIam"] = args?.elasticacheRedisIam;
             resourceInputs["entraId"] = args?.entraId;
             resourceInputs["gcp"] = args?.gcp;
             resourceInputs["gcpConsole"] = args?.gcpConsole;
             resourceInputs["gcpwif"] = args?.gcpwif;
             resourceInputs["googleGke"] = args?.googleGke;
             resourceInputs["googleGkeUserImpersonation"] = args?.googleGkeUserImpersonation;
+            resourceInputs["googleSpanner"] = args?.googleSpanner;
             resourceInputs["greenplum"] = args?.greenplum;
             resourceInputs["httpAuth"] = args?.httpAuth;
             resourceInputs["httpBasicAuth"] = args?.httpBasicAuth;
@@ -402,6 +419,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["mysql"] = args?.mysql;
             resourceInputs["neptune"] = args?.neptune;
             resourceInputs["neptuneIam"] = args?.neptuneIam;
+            resourceInputs["oktaGroups"] = args?.oktaGroups;
             resourceInputs["oracle"] = args?.oracle;
             resourceInputs["oracleNne"] = args?.oracleNne;
             resourceInputs["postgres"] = args?.postgres;
@@ -513,6 +531,10 @@ export interface ResourceState {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    /**
+     * ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam>;
     entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
@@ -522,6 +544,10 @@ export interface ResourceState {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
+    /**
+     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
     httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
@@ -564,6 +590,10 @@ export interface ResourceState {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
+    /**
+     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
@@ -671,6 +701,10 @@ export interface ResourceArgs {
     dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    /**
+     * ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam>;
     entraId?: pulumi.Input<inputs.ResourceEntraId>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
@@ -680,6 +714,10 @@ export interface ResourceArgs {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
+    /**
+     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
     httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
@@ -722,6 +760,10 @@ export interface ResourceArgs {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
+    /**
+     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;

@@ -10,10 +10,12 @@ from .account import *
 from .account_attachment import *
 from .account_group import *
 from .approval_workflow import *
+from .connector import *
 from .get_account import *
 from .get_account_attachment import *
 from .get_account_group import *
 from .get_approval_workflow import *
+from .get_connector import *
 from .get_group import *
 from .get_group_role import *
 from .get_identity_alias import *
@@ -102,6 +104,14 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/approvalWorkflow:ApprovalWorkflow": "ApprovalWorkflow"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/connector",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/connector:Connector": "Connector"
   }
  },
  {

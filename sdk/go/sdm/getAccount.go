@@ -76,6 +76,8 @@ type LookupAccountArgs struct {
 	AccountType *string `pulumi:"accountType"`
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
+	// Internal employee ID used to identify the user.
+	EmployeeNumber *string `pulumi:"employeeNumber"`
 	// External ID is an alternative unique ID this user is represented by within an external service.
 	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
@@ -109,6 +111,8 @@ type LookupAccountResult struct {
 	Accounts []GetAccountAccount `pulumi:"accounts"`
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
+	// Internal employee ID used to identify the user.
+	EmployeeNumber *string `pulumi:"employeeNumber"`
 	// External ID is an alternative unique ID this user is represented by within an external service.
 	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
@@ -149,6 +153,8 @@ type LookupAccountOutputArgs struct {
 	AccountType pulumi.StringPtrInput `pulumi:"accountType"`
 	// The User's email address. Must be unique.
 	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Internal employee ID used to identify the user.
+	EmployeeNumber pulumi.StringPtrInput `pulumi:"employeeNumber"`
 	// External ID is an alternative unique ID this user is represented by within an external service.
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// The User's first name.
@@ -206,6 +212,11 @@ func (o LookupAccountResultOutput) Accounts() GetAccountAccountArrayOutput {
 // The User's email address. Must be unique.
 func (o LookupAccountResultOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Internal employee ID used to identify the user.
+func (o LookupAccountResultOutput) EmployeeNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.EmployeeNumber }).(pulumi.StringPtrOutput)
 }
 
 // External ID is an alternative unique ID this user is represented by within an external service.

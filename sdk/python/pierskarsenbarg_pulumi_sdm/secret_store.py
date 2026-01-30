@@ -52,11 +52,6 @@ class SecretStoreArgs:
         """
         The set of arguments for constructing a SecretStore resource.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreStrongVaultArgs'] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs'] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsEc2CertX509Args'] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsIamCertSshArgs'] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsIamCertX509Args'] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -229,9 +224,6 @@ class SecretStoreArgs:
     @_builtins.property
     @pulumi.getter(name="strongVault")
     def strong_vault(self) -> Optional[pulumi.Input['SecretStoreStrongVaultArgs']]:
-        """
-        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "strong_vault")
 
     @strong_vault.setter
@@ -277,9 +269,6 @@ class SecretStoreArgs:
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertSsh")
     def vault_aws_ec2_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]:
-        """
-        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_ssh")
 
     @vault_aws_ec2_cert_ssh.setter
@@ -289,9 +278,6 @@ class SecretStoreArgs:
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertX509")
     def vault_aws_ec2_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]:
-        """
-        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_x509")
 
     @vault_aws_ec2_cert_x509.setter
@@ -310,9 +296,6 @@ class SecretStoreArgs:
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertSsh")
     def vault_aws_iam_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]:
-        """
-        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_ssh")
 
     @vault_aws_iam_cert_ssh.setter
@@ -322,9 +305,6 @@ class SecretStoreArgs:
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertX509")
     def vault_aws_iam_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]:
-        """
-        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_x509")
 
     @vault_aws_iam_cert_x509.setter
@@ -420,11 +400,6 @@ class _SecretStoreState:
         """
         Input properties used for looking up and filtering SecretStore resources.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreStrongVaultArgs'] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs'] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsEc2CertX509Args'] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsIamCertSshArgs'] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['SecretStoreVaultAwsIamCertX509Args'] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
             pulumi.set(__self__, "active_directory_store", active_directory_store)
@@ -597,9 +572,6 @@ class _SecretStoreState:
     @_builtins.property
     @pulumi.getter(name="strongVault")
     def strong_vault(self) -> Optional[pulumi.Input['SecretStoreStrongVaultArgs']]:
-        """
-        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "strong_vault")
 
     @strong_vault.setter
@@ -645,9 +617,6 @@ class _SecretStoreState:
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertSsh")
     def vault_aws_ec2_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertSshArgs']]:
-        """
-        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_ssh")
 
     @vault_aws_ec2_cert_ssh.setter
@@ -657,9 +626,6 @@ class _SecretStoreState:
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertX509")
     def vault_aws_ec2_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsEc2CertX509Args']]:
-        """
-        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_x509")
 
     @vault_aws_ec2_cert_x509.setter
@@ -678,9 +644,6 @@ class _SecretStoreState:
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertSsh")
     def vault_aws_iam_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertSshArgs']]:
-        """
-        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_ssh")
 
     @vault_aws_iam_cert_ssh.setter
@@ -690,9 +653,6 @@ class _SecretStoreState:
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertX509")
     def vault_aws_iam_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultAwsIamCertX509Args']]:
-        """
-        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_x509")
 
     @vault_aws_iam_cert_x509.setter
@@ -805,11 +765,6 @@ class SecretStore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -956,11 +911,6 @@ class SecretStore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict']] strong_vault: StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict']] vault_aws_ec2_cert_ssh: VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict']] vault_aws_ec2_cert_x509: VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict']] vault_aws_iam_cert_ssh: VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict']] vault_aws_iam_cert_x509: VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1062,9 +1012,6 @@ class SecretStore(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="strongVault")
     def strong_vault(self) -> pulumi.Output[Optional['outputs.SecretStoreStrongVault']]:
-        """
-        StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "strong_vault")
 
     @_builtins.property
@@ -1090,17 +1037,11 @@ class SecretStore(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertSsh")
     def vault_aws_ec2_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsEc2CertSsh']]:
-        """
-        VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_ssh")
 
     @_builtins.property
     @pulumi.getter(name="vaultAwsEc2CertX509")
     def vault_aws_ec2_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsEc2CertX509']]:
-        """
-        VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_ec2_cert_x509")
 
     @_builtins.property
@@ -1111,17 +1052,11 @@ class SecretStore(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertSsh")
     def vault_aws_iam_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsIamCertSsh']]:
-        """
-        VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_ssh")
 
     @_builtins.property
     @pulumi.getter(name="vaultAwsIamCertX509")
     def vault_aws_iam_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultAwsIamCertX509']]:
-        """
-        VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "vault_aws_iam_cert_x509")
 
     @_builtins.property
