@@ -31,11 +31,14 @@ namespace PiersKarsenbarg.Sdm
         [Output("keyValue")]
         public Output<Outputs.SecretEngineKeyValue?> KeyValue { get; private set; } = null!;
 
-        /// <summary>
-        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
+        [Output("mysqlSecretEngine")]
+        public Output<Outputs.SecretEngineMysqlSecretEngine?> MysqlSecretEngine { get; private set; } = null!;
+
         [Output("postgresSecretEngine")]
         public Output<Outputs.SecretEnginePostgresSecretEngine?> PostgresSecretEngine { get; private set; } = null!;
+
+        [Output("sqlserverSecretEngine")]
+        public Output<Outputs.SecretEngineSqlserverSecretEngine?> SqlserverSecretEngine { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,11 +93,14 @@ namespace PiersKarsenbarg.Sdm
         [Input("keyValue")]
         public Input<Inputs.SecretEngineKeyValueArgs>? KeyValue { get; set; }
 
-        /// <summary>
-        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
+        [Input("mysqlSecretEngine")]
+        public Input<Inputs.SecretEngineMysqlSecretEngineArgs>? MysqlSecretEngine { get; set; }
+
         [Input("postgresSecretEngine")]
         public Input<Inputs.SecretEnginePostgresSecretEngineArgs>? PostgresSecretEngine { get; set; }
+
+        [Input("sqlserverSecretEngine")]
+        public Input<Inputs.SecretEngineSqlserverSecretEngineArgs>? SqlserverSecretEngine { get; set; }
 
         public SecretEngineArgs()
         {
@@ -110,11 +116,14 @@ namespace PiersKarsenbarg.Sdm
         [Input("keyValue")]
         public Input<Inputs.SecretEngineKeyValueGetArgs>? KeyValue { get; set; }
 
-        /// <summary>
-        /// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
+        [Input("mysqlSecretEngine")]
+        public Input<Inputs.SecretEngineMysqlSecretEngineGetArgs>? MysqlSecretEngine { get; set; }
+
         [Input("postgresSecretEngine")]
         public Input<Inputs.SecretEnginePostgresSecretEngineGetArgs>? PostgresSecretEngine { get; set; }
+
+        [Input("sqlserverSecretEngine")]
+        public Input<Inputs.SecretEngineSqlserverSecretEngineGetArgs>? SqlserverSecretEngine { get; set; }
 
         public SecretEngineState()
         {

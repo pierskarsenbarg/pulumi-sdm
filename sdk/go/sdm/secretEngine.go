@@ -24,10 +24,11 @@ import (
 type SecretEngine struct {
 	pulumi.CustomResourceState
 
-	ActiveDirectory SecretEngineActiveDirectoryPtrOutput `pulumi:"activeDirectory"`
-	KeyValue        SecretEngineKeyValuePtrOutput        `pulumi:"keyValue"`
-	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrOutput `pulumi:"postgresSecretEngine"`
+	ActiveDirectory       SecretEngineActiveDirectoryPtrOutput       `pulumi:"activeDirectory"`
+	KeyValue              SecretEngineKeyValuePtrOutput              `pulumi:"keyValue"`
+	MysqlSecretEngine     SecretEngineMysqlSecretEnginePtrOutput     `pulumi:"mysqlSecretEngine"`
+	PostgresSecretEngine  SecretEnginePostgresSecretEnginePtrOutput  `pulumi:"postgresSecretEngine"`
+	SqlserverSecretEngine SecretEngineSqlserverSecretEnginePtrOutput `pulumi:"sqlserverSecretEngine"`
 }
 
 // NewSecretEngine registers a new resource with the given unique name, arguments, and options.
@@ -60,17 +61,19 @@ func GetSecretEngine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretEngine resources.
 type secretEngineState struct {
-	ActiveDirectory *SecretEngineActiveDirectory `pulumi:"activeDirectory"`
-	KeyValue        *SecretEngineKeyValue        `pulumi:"keyValue"`
-	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	PostgresSecretEngine *SecretEnginePostgresSecretEngine `pulumi:"postgresSecretEngine"`
+	ActiveDirectory       *SecretEngineActiveDirectory       `pulumi:"activeDirectory"`
+	KeyValue              *SecretEngineKeyValue              `pulumi:"keyValue"`
+	MysqlSecretEngine     *SecretEngineMysqlSecretEngine     `pulumi:"mysqlSecretEngine"`
+	PostgresSecretEngine  *SecretEnginePostgresSecretEngine  `pulumi:"postgresSecretEngine"`
+	SqlserverSecretEngine *SecretEngineSqlserverSecretEngine `pulumi:"sqlserverSecretEngine"`
 }
 
 type SecretEngineState struct {
-	ActiveDirectory SecretEngineActiveDirectoryPtrInput
-	KeyValue        SecretEngineKeyValuePtrInput
-	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrInput
+	ActiveDirectory       SecretEngineActiveDirectoryPtrInput
+	KeyValue              SecretEngineKeyValuePtrInput
+	MysqlSecretEngine     SecretEngineMysqlSecretEnginePtrInput
+	PostgresSecretEngine  SecretEnginePostgresSecretEnginePtrInput
+	SqlserverSecretEngine SecretEngineSqlserverSecretEnginePtrInput
 }
 
 func (SecretEngineState) ElementType() reflect.Type {
@@ -78,18 +81,20 @@ func (SecretEngineState) ElementType() reflect.Type {
 }
 
 type secretEngineArgs struct {
-	ActiveDirectory *SecretEngineActiveDirectory `pulumi:"activeDirectory"`
-	KeyValue        *SecretEngineKeyValue        `pulumi:"keyValue"`
-	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	PostgresSecretEngine *SecretEnginePostgresSecretEngine `pulumi:"postgresSecretEngine"`
+	ActiveDirectory       *SecretEngineActiveDirectory       `pulumi:"activeDirectory"`
+	KeyValue              *SecretEngineKeyValue              `pulumi:"keyValue"`
+	MysqlSecretEngine     *SecretEngineMysqlSecretEngine     `pulumi:"mysqlSecretEngine"`
+	PostgresSecretEngine  *SecretEnginePostgresSecretEngine  `pulumi:"postgresSecretEngine"`
+	SqlserverSecretEngine *SecretEngineSqlserverSecretEngine `pulumi:"sqlserverSecretEngine"`
 }
 
 // The set of arguments for constructing a SecretEngine resource.
 type SecretEngineArgs struct {
-	ActiveDirectory SecretEngineActiveDirectoryPtrInput
-	KeyValue        SecretEngineKeyValuePtrInput
-	// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	PostgresSecretEngine SecretEnginePostgresSecretEnginePtrInput
+	ActiveDirectory       SecretEngineActiveDirectoryPtrInput
+	KeyValue              SecretEngineKeyValuePtrInput
+	MysqlSecretEngine     SecretEngineMysqlSecretEnginePtrInput
+	PostgresSecretEngine  SecretEnginePostgresSecretEnginePtrInput
+	SqlserverSecretEngine SecretEngineSqlserverSecretEnginePtrInput
 }
 
 func (SecretEngineArgs) ElementType() reflect.Type {
@@ -187,9 +192,16 @@ func (o SecretEngineOutput) KeyValue() SecretEngineKeyValuePtrOutput {
 	return o.ApplyT(func(v *SecretEngine) SecretEngineKeyValuePtrOutput { return v.KeyValue }).(SecretEngineKeyValuePtrOutput)
 }
 
-// PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretEngineOutput) MysqlSecretEngine() SecretEngineMysqlSecretEnginePtrOutput {
+	return o.ApplyT(func(v *SecretEngine) SecretEngineMysqlSecretEnginePtrOutput { return v.MysqlSecretEngine }).(SecretEngineMysqlSecretEnginePtrOutput)
+}
+
 func (o SecretEngineOutput) PostgresSecretEngine() SecretEnginePostgresSecretEnginePtrOutput {
 	return o.ApplyT(func(v *SecretEngine) SecretEnginePostgresSecretEnginePtrOutput { return v.PostgresSecretEngine }).(SecretEnginePostgresSecretEnginePtrOutput)
+}
+
+func (o SecretEngineOutput) SqlserverSecretEngine() SecretEngineSqlserverSecretEnginePtrOutput {
+	return o.ApplyT(func(v *SecretEngine) SecretEngineSqlserverSecretEnginePtrOutput { return v.SqlserverSecretEngine }).(SecretEngineSqlserverSecretEnginePtrOutput)
 }
 
 type SecretEngineArrayOutput struct{ *pulumi.OutputState }

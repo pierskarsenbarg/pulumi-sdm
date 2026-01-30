@@ -25,6 +25,11 @@ export type ApprovalWorkflow = import("./approvalWorkflow").ApprovalWorkflow;
 export const ApprovalWorkflow: typeof import("./approvalWorkflow").ApprovalWorkflow = null as any;
 utilities.lazyLoad(exports, ["ApprovalWorkflow"], () => require("./approvalWorkflow"));
 
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
+
 export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -44,6 +49,11 @@ export { GetApprovalWorkflowArgs, GetApprovalWorkflowResult, GetApprovalWorkflow
 export const getApprovalWorkflow: typeof import("./getApprovalWorkflow").getApprovalWorkflow = null as any;
 export const getApprovalWorkflowOutput: typeof import("./getApprovalWorkflow").getApprovalWorkflowOutput = null as any;
 utilities.lazyLoad(exports, ["getApprovalWorkflow","getApprovalWorkflowOutput"], () => require("./getApprovalWorkflow"));
+
+export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
+export const getConnector: typeof import("./getConnector").getConnector = null as any;
+export const getConnectorOutput: typeof import("./getConnector").getConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
@@ -290,6 +300,8 @@ const _module = {
                 return new AccountGroup(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflow:ApprovalWorkflow":
                 return new ApprovalWorkflow(name, <any>undefined, { urn })
+            case "sdm:index/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
             case "sdm:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "sdm:index/groupRole:GroupRole":
@@ -341,6 +353,7 @@ pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/connector", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/group", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/groupRole", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/identityAlias", _module)

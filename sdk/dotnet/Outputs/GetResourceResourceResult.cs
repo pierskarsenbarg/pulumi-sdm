@@ -64,6 +64,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbiamResult> DynamoDbiams;
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbResult> DynamoDbs;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> ElasticacheRedis;
+        public readonly ImmutableArray<Outputs.GetResourceResourceElasticacheRedisIamResult> ElasticacheRedisIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticResult> Elastics;
         public readonly ImmutableArray<Outputs.GetResourceResourceEntraIdResult> EntraIds;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> GcpConsoles;
@@ -71,6 +72,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpwifResult> Gcpwifs;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> GoogleGkeUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> GoogleGkes;
+        public readonly ImmutableArray<Outputs.GetResourceResourceGoogleSpannerResult> GoogleSpanners;
         public readonly ImmutableArray<Outputs.GetResourceResourceGreenplumResult> Greenplums;
         public readonly ImmutableArray<Outputs.GetResourceResourceHttpAuthResult> HttpAuths;
         public readonly ImmutableArray<Outputs.GetResourceResourceHttpBasicAuthResult> HttpBasicAuths;
@@ -95,6 +97,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceMysqlResult> Mysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceNeptuneIamResult> NeptuneIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceNeptuneResult> Neptunes;
+        public readonly ImmutableArray<Outputs.GetResourceResourceOktaGroupResult> OktaGroups;
         public readonly ImmutableArray<Outputs.GetResourceResourceOracleNneResult> OracleNnes;
         public readonly ImmutableArray<Outputs.GetResourceResourceOracleResult> Oracles;
         public readonly ImmutableArray<Outputs.GetResourceResourcePostgreResult> Postgres;
@@ -227,6 +230,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> elasticacheRedis,
 
+            ImmutableArray<Outputs.GetResourceResourceElasticacheRedisIamResult> elasticacheRedisIams,
+
             ImmutableArray<Outputs.GetResourceResourceElasticResult> elastics,
 
             ImmutableArray<Outputs.GetResourceResourceEntraIdResult> entraIds,
@@ -240,6 +245,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> googleGkeUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> googleGkes,
+
+            ImmutableArray<Outputs.GetResourceResourceGoogleSpannerResult> googleSpanners,
 
             ImmutableArray<Outputs.GetResourceResourceGreenplumResult> greenplums,
 
@@ -288,6 +295,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceNeptuneIamResult> neptuneIams,
 
             ImmutableArray<Outputs.GetResourceResourceNeptuneResult> neptunes,
+
+            ImmutableArray<Outputs.GetResourceResourceOktaGroupResult> oktaGroups,
 
             ImmutableArray<Outputs.GetResourceResourceOracleNneResult> oracleNnes,
 
@@ -397,6 +406,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             DynamoDbiams = dynamoDbiams;
             DynamoDbs = dynamoDbs;
             ElasticacheRedis = elasticacheRedis;
+            ElasticacheRedisIams = elasticacheRedisIams;
             Elastics = elastics;
             EntraIds = entraIds;
             GcpConsoles = gcpConsoles;
@@ -404,6 +414,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Gcpwifs = gcpwifs;
             GoogleGkeUserImpersonations = googleGkeUserImpersonations;
             GoogleGkes = googleGkes;
+            GoogleSpanners = googleSpanners;
             Greenplums = greenplums;
             HttpAuths = httpAuths;
             HttpBasicAuths = httpBasicAuths;
@@ -428,6 +439,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Mysqls = mysqls;
             NeptuneIams = neptuneIams;
             Neptunes = neptunes;
+            OktaGroups = oktaGroups;
             OracleNnes = oracleNnes;
             Oracles = oracles;
             Postgres = postgres;

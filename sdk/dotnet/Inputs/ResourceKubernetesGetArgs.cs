@@ -74,7 +74,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// If true, configures discovery of a cluster to be run from a node.
+        /// If true, configures discovery of the Okta org to be run from a node.
         /// </summary>
         [Input("discoveryEnabled")]
         public Input<bool>? DiscoveryEnabled { get; set; }

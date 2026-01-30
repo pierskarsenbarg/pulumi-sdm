@@ -50,6 +50,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? IdentitySetId { get; set; }
 
         /// <summary>
+        /// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        /// </summary>
+        [Input("lockRequired")]
+        public Input<bool>? LockRequired { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]

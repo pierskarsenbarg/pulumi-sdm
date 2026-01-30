@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountGroup{}
 	case "sdm:index/approvalWorkflow:ApprovalWorkflow":
 		r = &ApprovalWorkflow{}
+	case "sdm:index/connector:Connector":
+		r = &Connector{}
 	case "sdm:index/group:Group":
 		r = &Group{}
 	case "sdm:index/groupRole:GroupRole":
@@ -120,6 +122,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/approvalWorkflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/connector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

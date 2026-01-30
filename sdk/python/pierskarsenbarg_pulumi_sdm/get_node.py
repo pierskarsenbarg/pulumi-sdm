@@ -140,10 +140,11 @@ def get_node(bind_address: Optional[_builtins.str] = None,
              type: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeResult:
     """
-    Nodes make up the strongDM network, and allow your users to connect securely to your resources.
-     There are two types of nodes:
+    Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+     There are three types of nodes:
      1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
-     2. **Gateways:** a relay that also listens for connections from strongDM clients
+     2. **Gateway:** a relay that also listens for connections from StrongDM clients
+     3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     ## Example Usage
 
     ```python
@@ -192,10 +193,11 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[_builtins.str]]
                     type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
-    Nodes make up the strongDM network, and allow your users to connect securely to your resources.
-     There are two types of nodes:
+    Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+     There are three types of nodes:
      1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
-     2. **Gateways:** a relay that also listens for connections from strongDM clients
+     2. **Gateway:** a relay that also listens for connections from StrongDM clients
+     3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     ## Example Usage
 
     ```python

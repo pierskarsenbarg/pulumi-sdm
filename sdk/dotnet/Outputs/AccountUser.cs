@@ -15,9 +15,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class AccountUser
     {
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        public readonly string? CreatedAt;
+        /// <summary>
         /// The User's email address. Must be unique.
         /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// Internal employee ID used to identify the user.
+        /// </summary>
+        public readonly string? EmployeeNumber;
         /// <summary>
         /// External ID is an alternative unique ID this user is represented by within an external service.
         /// </summary>
@@ -61,7 +69,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private AccountUser(
+            string? createdAt,
+
             string email,
+
+            string? employeeNumber,
 
             string? externalId,
 
@@ -83,7 +95,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags)
         {
+            CreatedAt = createdAt;
             Email = email;
+            EmployeeNumber = employeeNumber;
             ExternalId = externalId;
             FirstName = firstName;
             LastName = lastName;

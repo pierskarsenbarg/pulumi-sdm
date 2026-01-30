@@ -27,7 +27,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_type=None, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, manager_id=None, name=None, permission_level=None, permissions=None, suspended=None, tags=None, type=None):
+    def __init__(__self__, account_type=None, accounts=None, email=None, employee_number=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, manager_id=None, name=None, permission_level=None, permissions=None, suspended=None, tags=None, type=None):
         if account_type and not isinstance(account_type, str):
             raise TypeError("Expected argument 'account_type' to be a str")
         pulumi.set(__self__, "account_type", account_type)
@@ -37,6 +37,9 @@ class GetAccountResult:
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
+        if employee_number and not isinstance(employee_number, str):
+            raise TypeError("Expected argument 'employee_number' to be a str")
+        pulumi.set(__self__, "employee_number", employee_number)
         if external_id and not isinstance(external_id, str):
             raise TypeError("Expected argument 'external_id' to be a str")
         pulumi.set(__self__, "external_id", external_id)
@@ -98,6 +101,14 @@ class GetAccountResult:
         The User's email address. Must be unique.
         """
         return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="employeeNumber")
+    def employee_number(self) -> Optional[_builtins.str]:
+        """
+        Internal employee ID used to identify the user.
+        """
+        return pulumi.get(self, "employee_number")
 
     @_builtins.property
     @pulumi.getter(name="externalId")
@@ -202,6 +213,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             account_type=self.account_type,
             accounts=self.accounts,
             email=self.email,
+            employee_number=self.employee_number,
             external_id=self.external_id,
             first_name=self.first_name,
             id=self.id,
@@ -218,6 +230,7 @@ class AwaitableGetAccountResult(GetAccountResult):
 
 def get_account(account_type: Optional[_builtins.str] = None,
                 email: Optional[_builtins.str] = None,
+                employee_number: Optional[_builtins.str] = None,
                 external_id: Optional[_builtins.str] = None,
                 first_name: Optional[_builtins.str] = None,
                 id: Optional[_builtins.str] = None,
@@ -256,6 +269,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
 
     :param _builtins.str account_type: Corresponds to the type of token, e.g. api or admin-token.
     :param _builtins.str email: The User's email address. Must be unique.
+    :param _builtins.str employee_number: Internal employee ID used to identify the user.
     :param _builtins.str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param _builtins.str first_name: The User's first name.
     :param _builtins.str id: Unique identifier of the User.
@@ -271,6 +285,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['accountType'] = account_type
     __args__['email'] = email
+    __args__['employeeNumber'] = employee_number
     __args__['externalId'] = external_id
     __args__['firstName'] = first_name
     __args__['id'] = id
@@ -289,6 +304,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
         account_type=pulumi.get(__ret__, 'account_type'),
         accounts=pulumi.get(__ret__, 'accounts'),
         email=pulumi.get(__ret__, 'email'),
+        employee_number=pulumi.get(__ret__, 'employee_number'),
         external_id=pulumi.get(__ret__, 'external_id'),
         first_name=pulumi.get(__ret__, 'first_name'),
         id=pulumi.get(__ret__, 'id'),
@@ -303,6 +319,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       employee_number: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        external_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        first_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -341,6 +358,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
 
     :param _builtins.str account_type: Corresponds to the type of token, e.g. api or admin-token.
     :param _builtins.str email: The User's email address. Must be unique.
+    :param _builtins.str employee_number: Internal employee ID used to identify the user.
     :param _builtins.str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param _builtins.str first_name: The User's first name.
     :param _builtins.str id: Unique identifier of the User.
@@ -356,6 +374,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
     __args__ = dict()
     __args__['accountType'] = account_type
     __args__['email'] = email
+    __args__['employeeNumber'] = employee_number
     __args__['externalId'] = external_id
     __args__['firstName'] = first_name
     __args__['id'] = id
@@ -373,6 +392,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
         account_type=pulumi.get(__response__, 'account_type'),
         accounts=pulumi.get(__response__, 'accounts'),
         email=pulumi.get(__response__, 'email'),
+        employee_number=pulumi.get(__response__, 'employee_number'),
         external_id=pulumi.get(__response__, 'external_id'),
         first_name=pulumi.get(__response__, 'first_name'),
         id=pulumi.get(__response__, 'id'),

@@ -35,6 +35,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        /// </summary>
+        public readonly bool? LockRequired;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
@@ -87,6 +91,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? id,
 
+            bool? lockRequired,
+
             string? name,
 
             string? password,
@@ -112,6 +118,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             Hostname = hostname;
             Id = id;
+            LockRequired = lockRequired;
             Name = name;
             Password = password;
             Port = port;

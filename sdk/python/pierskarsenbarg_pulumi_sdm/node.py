@@ -141,10 +141,11 @@ class Node(pulumi.CustomResource):
                  relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None,
                  __props__=None):
         """
-        Nodes make up the strongDM network, and allow your users to connect securely to your resources.
-         There are two types of nodes:
+        Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+         There are three types of nodes:
          1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
-         2. **Gateways:** a relay that also listens for connections from strongDM clients
+         2. **Gateway:** a relay that also listens for connections from StrongDM clients
+         3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         ## Example Usage
 
         ```python
@@ -191,10 +192,11 @@ class Node(pulumi.CustomResource):
                  args: Optional[NodeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Nodes make up the strongDM network, and allow your users to connect securely to your resources.
-         There are two types of nodes:
+        Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+         There are three types of nodes:
          1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
-         2. **Gateways:** a relay that also listens for connections from strongDM clients
+         2. **Gateway:** a relay that also listens for connections from StrongDM clients
+         3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         ## Example Usage
 
         ```python

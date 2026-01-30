@@ -15,6 +15,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetAccountAccountServiceResult
     {
         /// <summary>
+        /// CreatedAt is the timestamp when the user was created
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
         /// Unique identifier of the User.
         /// </summary>
         public readonly string? Id;
@@ -33,6 +37,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetAccountAccountServiceResult(
+            string createdAt,
+
             string? id,
 
             string? name,
@@ -41,6 +47,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags)
         {
+            CreatedAt = createdAt;
             Id = id;
             Name = name;
             Suspended = suspended;

@@ -32,6 +32,7 @@ export function getSecretEngine(args?: GetSecretEngineArgs, opts?: pulumi.Invoke
         "startTls": args.startTls,
         "tags": args.tags,
         "tls": args.tls,
+        "tlsSkipVerify": args.tlsSkipVerify,
         "type": args.type,
         "upndomain": args.upndomain,
         "url": args.url,
@@ -69,7 +70,7 @@ export interface GetSecretEngineArgs {
      */
     doNotValidateTimestamps?: boolean;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     hostname?: string;
     /**
@@ -89,11 +90,11 @@ export interface GetSecretEngineArgs {
      */
     name?: string;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     password?: string;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     port?: number;
     /**
@@ -117,9 +118,13 @@ export interface GetSecretEngineArgs {
      */
     tags?: {[key: string]: string};
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: boolean;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
@@ -137,7 +142,7 @@ export interface GetSecretEngineArgs {
      */
     userdn?: string;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
      */
     username?: string;
 }
@@ -171,7 +176,7 @@ export interface GetSecretEngineResult {
      */
     readonly doNotValidateTimestamps?: boolean;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     readonly hostname?: string;
     /**
@@ -195,11 +200,11 @@ export interface GetSecretEngineResult {
      */
     readonly name?: string;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     readonly password?: string;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     readonly port?: number;
     /**
@@ -228,9 +233,13 @@ export interface GetSecretEngineResult {
      */
     readonly tags?: {[key: string]: string};
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     readonly tls?: boolean;
+    /**
+     * TLS disable certificate verification
+     */
+    readonly tlsSkipVerify?: boolean;
     readonly type?: string;
     /**
      * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
@@ -246,7 +255,7 @@ export interface GetSecretEngineResult {
      */
     readonly userdn?: string;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
      */
     readonly username?: string;
 }
@@ -276,6 +285,7 @@ export function getSecretEngineOutput(args?: GetSecretEngineOutputArgs, opts?: p
         "startTls": args.startTls,
         "tags": args.tags,
         "tls": args.tls,
+        "tlsSkipVerify": args.tlsSkipVerify,
         "type": args.type,
         "upndomain": args.upndomain,
         "url": args.url,
@@ -313,7 +323,7 @@ export interface GetSecretEngineOutputArgs {
      */
     doNotValidateTimestamps?: pulumi.Input<boolean>;
     /**
-     * Hostname is the hostname or IP address of the Postgres server.
+     * Hostname is the hostname or IP address of the SQL Server.
      */
     hostname?: pulumi.Input<string>;
     /**
@@ -333,11 +343,11 @@ export interface GetSecretEngineOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Password is the password to connect to the Postgres server.
+     * Password is the password to connect to the SQL Server server.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port is the port number of the Postgres server.
+     * Port is the port number of the SQL Server server.
      */
     port?: pulumi.Input<number>;
     /**
@@ -361,9 +371,13 @@ export interface GetSecretEngineOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * TLS enables TLS/SSL when connecting to the Postgres server.
+     * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
     tls?: pulumi.Input<boolean>;
+    /**
+     * TLS disable certificate verification
+     */
+    tlsSkipVerify?: pulumi.Input<boolean>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
@@ -381,7 +395,7 @@ export interface GetSecretEngineOutputArgs {
      */
     userdn?: pulumi.Input<string>;
     /**
-     * Username is the username to connect to the Postgres server.
+     * Username is the username to connect to the SQL Server.
      */
     username?: pulumi.Input<string>;
 }

@@ -27,7 +27,7 @@ class GetSecretEngineResult:
     """
     A collection of values returned by getSecretEngine.
     """
-    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, database=None, do_not_validate_timestamps=None, hostname=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, password=None, port=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, tls=None, type=None, upndomain=None, url=None, userdn=None, username=None):
+    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, database=None, do_not_validate_timestamps=None, hostname=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, password=None, port=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, tls=None, tls_skip_verify=None, type=None, upndomain=None, url=None, userdn=None, username=None):
         if binddn and not isinstance(binddn, str):
             raise TypeError("Expected argument 'binddn' to be a str")
         pulumi.set(__self__, "binddn", binddn)
@@ -91,6 +91,9 @@ class GetSecretEngineResult:
         if tls and not isinstance(tls, bool):
             raise TypeError("Expected argument 'tls' to be a bool")
         pulumi.set(__self__, "tls", tls)
+        if tls_skip_verify and not isinstance(tls_skip_verify, bool):
+            raise TypeError("Expected argument 'tls_skip_verify' to be a bool")
+        pulumi.set(__self__, "tls_skip_verify", tls_skip_verify)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -159,7 +162,7 @@ class GetSecretEngineResult:
     @pulumi.getter
     def hostname(self) -> Optional[_builtins.str]:
         """
-        Hostname is the hostname or IP address of the Postgres server.
+        Hostname is the hostname or IP address of the SQL Server.
         """
         return pulumi.get(self, "hostname")
 
@@ -207,7 +210,7 @@ class GetSecretEngineResult:
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Password is the password to connect to the Postgres server.
+        Password is the password to connect to the SQL Server server.
         """
         return pulumi.get(self, "password")
 
@@ -215,7 +218,7 @@ class GetSecretEngineResult:
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
         """
-        Port is the port number of the Postgres server.
+        Port is the port number of the SQL Server server.
         """
         return pulumi.get(self, "port")
 
@@ -272,9 +275,17 @@ class GetSecretEngineResult:
     @pulumi.getter
     def tls(self) -> Optional[_builtins.bool]:
         """
-        TLS enables TLS/SSL when connecting to the Postgres server.
+        TLS enables TLS/SSL when connecting to the SQL Server server.
         """
         return pulumi.get(self, "tls")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsSkipVerify")
+    def tls_skip_verify(self) -> Optional[_builtins.bool]:
+        """
+        TLS disable certificate verification
+        """
+        return pulumi.get(self, "tls_skip_verify")
 
     @_builtins.property
     @pulumi.getter
@@ -310,7 +321,7 @@ class GetSecretEngineResult:
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        Username is the username to connect to the Postgres server.
+        Username is the username to connect to the SQL Server.
         """
         return pulumi.get(self, "username")
 
@@ -342,6 +353,7 @@ class AwaitableGetSecretEngineResult(GetSecretEngineResult):
             start_tls=self.start_tls,
             tags=self.tags,
             tls=self.tls,
+            tls_skip_verify=self.tls_skip_verify,
             type=self.type,
             upndomain=self.upndomain,
             url=self.url,
@@ -368,6 +380,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
                       start_tls: Optional[_builtins.bool] = None,
                       tags: Optional[Mapping[str, _builtins.str]] = None,
                       tls: Optional[_builtins.bool] = None,
+                      tls_skip_verify: Optional[_builtins.bool] = None,
                       type: Optional[_builtins.str] = None,
                       upndomain: Optional[_builtins.str] = None,
                       url: Optional[_builtins.str] = None,
@@ -384,24 +397,25 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
     :param _builtins.int connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
     :param _builtins.str database: Database is the database to verify credential against.
     :param _builtins.bool do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
-    :param _builtins.str hostname: Hostname is the hostname or IP address of the Postgres server.
+    :param _builtins.str hostname: Hostname is the hostname or IP address of the SQL Server.
     :param _builtins.str id: Unique identifier of the Secret Engine.
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
-    :param _builtins.str password: Password is the password to connect to the Postgres server.
-    :param _builtins.int port: Port is the port number of the Postgres server.
+    :param _builtins.str password: Password is the password to connect to the SQL Server server.
+    :param _builtins.int port: Port is the port number of the SQL Server server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
     :param _builtins.str secret_store_id: Backing secret store identifier
     :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param _builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the Postgres server.
+    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
+    :param _builtins.bool tls_skip_verify: TLS disable certificate verification
     :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param _builtins.str url: The LDAP server to connect to.
     :param _builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
-    :param _builtins.str username: Username is the username to connect to the Postgres server.
+    :param _builtins.str username: Username is the username to connect to the SQL Server.
     """
     __args__ = dict()
     __args__['binddn'] = binddn
@@ -423,6 +437,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
     __args__['startTls'] = start_tls
     __args__['tags'] = tags
     __args__['tls'] = tls
+    __args__['tlsSkipVerify'] = tls_skip_verify
     __args__['type'] = type
     __args__['upndomain'] = upndomain
     __args__['url'] = url
@@ -453,6 +468,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
         start_tls=pulumi.get(__ret__, 'start_tls'),
         tags=pulumi.get(__ret__, 'tags'),
         tls=pulumi.get(__ret__, 'tls'),
+        tls_skip_verify=pulumi.get(__ret__, 'tls_skip_verify'),
         type=pulumi.get(__ret__, 'type'),
         upndomain=pulumi.get(__ret__, 'upndomain'),
         url=pulumi.get(__ret__, 'url'),
@@ -477,6 +493,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
                              start_tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                              tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                             tls_skip_verify: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              upndomain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -493,24 +510,25 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
     :param _builtins.int connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
     :param _builtins.str database: Database is the database to verify credential against.
     :param _builtins.bool do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
-    :param _builtins.str hostname: Hostname is the hostname or IP address of the Postgres server.
+    :param _builtins.str hostname: Hostname is the hostname or IP address of the SQL Server.
     :param _builtins.str id: Unique identifier of the Secret Engine.
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
-    :param _builtins.str password: Password is the password to connect to the Postgres server.
-    :param _builtins.int port: Port is the port number of the Postgres server.
+    :param _builtins.str password: Password is the password to connect to the SQL Server server.
+    :param _builtins.int port: Port is the port number of the SQL Server server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
     :param _builtins.str secret_store_id: Backing secret store identifier
     :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
     :param _builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
-    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the Postgres server.
+    :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
+    :param _builtins.bool tls_skip_verify: TLS disable certificate verification
     :param _builtins.str type: a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
     :param _builtins.str upndomain: The domain (userPrincipalDomain) used to construct a UPN string for authentication.
     :param _builtins.str url: The LDAP server to connect to.
     :param _builtins.str userdn: Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
-    :param _builtins.str username: Username is the username to connect to the Postgres server.
+    :param _builtins.str username: Username is the username to connect to the SQL Server.
     """
     __args__ = dict()
     __args__['binddn'] = binddn
@@ -532,6 +550,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
     __args__['startTls'] = start_tls
     __args__['tags'] = tags
     __args__['tls'] = tls
+    __args__['tlsSkipVerify'] = tls_skip_verify
     __args__['type'] = type
     __args__['upndomain'] = upndomain
     __args__['url'] = url
@@ -561,6 +580,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
         start_tls=pulumi.get(__response__, 'start_tls'),
         tags=pulumi.get(__response__, 'tags'),
         tls=pulumi.get(__response__, 'tls'),
+        tls_skip_verify=pulumi.get(__response__, 'tls_skip_verify'),
         type=pulumi.get(__response__, 'type'),
         upndomain=pulumi.get(__response__, 'upndomain'),
         url=pulumi.get(__response__, 'url'),

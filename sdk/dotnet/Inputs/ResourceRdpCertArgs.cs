@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
-        /// Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+        /// Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
         /// </summary>
         [Input("dcHostnames")]
         public Input<string>? DcHostnames { get; set; }
@@ -86,7 +86,13 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+        /// Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+        /// </summary>
+        [Input("serverFqdn")]
+        public Input<string>? ServerFqdn { get; set; }
+
+        /// <summary>
+        /// Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
         /// </summary>
         [Input("sid")]
         public Input<string>? Sid { get; set; }

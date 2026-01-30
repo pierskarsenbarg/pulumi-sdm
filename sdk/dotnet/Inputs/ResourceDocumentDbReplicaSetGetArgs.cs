@@ -78,12 +78,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ProxyClusterId { get; set; }
 
         /// <summary>
-        /// The name of the mongo replicaset.
-        /// </summary>
-        [Input("replicaSet", required: true)]
-        public Input<string> ReplicaSet { get; set; } = null!;
-
-        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]

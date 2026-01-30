@@ -41,6 +41,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("sdm:index/getAccount:getAccount", {
         "accountType": args.accountType,
         "email": args.email,
+        "employeeNumber": args.employeeNumber,
         "externalId": args.externalId,
         "firstName": args.firstName,
         "id": args.id,
@@ -67,6 +68,10 @@ export interface GetAccountArgs {
      * The User's email address. Must be unique.
      */
     email?: string;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    employeeNumber?: string;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
@@ -130,6 +135,10 @@ export interface GetAccountResult {
      * The User's email address. Must be unique.
      */
     readonly email?: string;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    readonly employeeNumber?: string;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
@@ -211,6 +220,7 @@ export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.Invo
     return pulumi.runtime.invokeOutput("sdm:index/getAccount:getAccount", {
         "accountType": args.accountType,
         "email": args.email,
+        "employeeNumber": args.employeeNumber,
         "externalId": args.externalId,
         "firstName": args.firstName,
         "id": args.id,
@@ -237,6 +247,10 @@ export interface GetAccountOutputArgs {
      * The User's email address. Must be unique.
      */
     email?: pulumi.Input<string>;
+    /**
+     * Internal employee ID used to identify the user.
+     */
+    employeeNumber?: pulumi.Input<string>;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */

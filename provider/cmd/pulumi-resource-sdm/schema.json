@@ -77,6 +77,10 @@
     "types": {
         "sdm:index/AccountService:AccountService": {
             "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "CreatedAt is the timestamp when the user was created\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Service.\n"
@@ -104,6 +108,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "createdAt",
                         "name",
                         "token"
                     ]
@@ -112,9 +117,17 @@
         },
         "sdm:index/AccountUser:AccountUser": {
             "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "CreatedAt is the timestamp when the user was created\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "The User's email address. Must be unique.\n"
+                },
+                "employeeNumber": {
+                    "type": "string",
+                    "description": "Internal employee ID used to identify the user.\n"
                 },
                 "externalId": {
                     "type": "string",
@@ -169,6 +182,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "createdAt",
                         "email",
                         "firstName",
                         "lastName",
@@ -221,6 +235,256 @@
                 "roleId": {
                     "type": "string",
                     "description": "The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorAws:ConnectorAws": {
+            "properties": {
+                "accountIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "AccountIds is the list of AWS Accounts to scan\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "excludeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorAwsExcludeTag:ConnectorAwsExcludeTag"
+                    },
+                    "description": "ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.\n"
+                },
+                "includeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorAwsIncludeTag:ConnectorAwsIncludeTag"
+                    },
+                    "description": "IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "roleName": {
+                    "type": "string",
+                    "description": "RoleName is the Role we're assuming into for an account\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "sdm:index/ConnectorAwsExcludeTag:ConnectorAwsExcludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorAwsIncludeTag:ConnectorAwsIncludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorAzure:ConnectorAzure": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "ClientId is the ID of the Application / Service Account we're acting as\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "excludeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorAzureExcludeTag:ConnectorAzureExcludeTag"
+                    },
+                    "description": "ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.\n"
+                },
+                "includeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorAzureIncludeTag:ConnectorAzureIncludeTag"
+                    },
+                    "description": "IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                },
+                "subscriptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SubscriptionIds are the targets of discovery.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "TenantId is the Azure Tenant we're discovering in\n* gcp:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "sdm:index/ConnectorAzureExcludeTag:ConnectorAzureExcludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorAzureIncludeTag:ConnectorAzureIncludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorGcp:ConnectorGcp": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "excludeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorGcpExcludeTag:ConnectorGcpExcludeTag"
+                    },
+                    "description": "ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.\n"
+                },
+                "includeTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/ConnectorGcpIncludeTag:ConnectorGcpIncludeTag"
+                    },
+                    "description": "IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "ProjectIds is the list of GCP Projects the connector will scan\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT\n"
+                },
+                "workloadProjectId": {
+                    "type": "string",
+                    "description": "WorkloadProjectId is the GCP Project ID where the Workload Pool is defined\n"
+                },
+                "workloadProjectNumber": {
+                    "type": "string",
+                    "description": "WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined\n"
+                },
+                "workloadProviderId": {
+                    "type": "string",
+                    "description": "WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "sdm:index/ConnectorGcpExcludeTag:ConnectorGcpExcludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/ConnectorGcpIncludeTag:ConnectorGcpIncludeTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of this tag.\n"
                 }
             },
             "type": "object"
@@ -534,7 +798,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -703,7 +967,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -971,7 +1235,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -1085,7 +1349,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -2967,7 +3231,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The project to connect to.\n"
+                    "description": "The GCP project ID containing the Spanner database.\n"
                 },
                 "proxyClusterId": {
                     "type": "string",
@@ -4062,10 +4326,6 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -4090,8 +4350,7 @@
             "required": [
                 "authDatabase",
                 "hostname",
-                "name",
-                "replicaSet"
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -4101,7 +4360,6 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet",
                         "subdomain"
                     ]
                 }
@@ -4555,6 +4813,91 @@
                 }
             }
         },
+        "sdm:index/ResourceElasticacheRedisIam:ResourceElasticacheRedisIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceEntraId:ResourceEntraId": {
             "properties": {
                 "bindInterface": {
@@ -4563,7 +4906,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -4885,7 +5228,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -5031,6 +5374,91 @@
                         "healthcheckNamespace",
                         "name",
                         "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "instance": {
+                    "type": "string",
+                    "description": "The Spanner instance ID within the GCP project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The GCP project ID containing the Spanner database.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "serviceAccountToImpersonate": {
+                    "type": "string",
+                    "description": "Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "endpoint",
+                "instance",
+                "name",
+                "project"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "endpoint",
+                        "instance",
+                        "name",
+                        "portOverride",
+                        "project",
                         "subdomain"
                     ]
                 }
@@ -5393,7 +5821,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -5567,7 +5995,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -5645,7 +6073,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -5990,6 +6418,18 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "oauthAuthEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 authorization endpoint URL.\n"
+                },
+                "oauthRegisterEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 dynamic client registration endpoint URL.\n"
+                },
+                "oauthTokenEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 token endpoint URL.\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password to authenticate with.\n",
@@ -6021,12 +6461,19 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
                 }
             },
             "type": "object",
             "required": [
                 "hostname",
-                "name"
+                "name",
+                "oauthAuthEndpoint",
+                "oauthTokenEndpoint",
+                "username"
             ],
             "language": {
                 "nodejs": {
@@ -6034,8 +6481,11 @@
                         "bindInterface",
                         "hostname",
                         "name",
+                        "oauthAuthEndpoint",
+                        "oauthTokenEndpoint",
                         "portOverride",
-                        "subdomain"
+                        "subdomain",
+                        "username"
                     ]
                 }
             }
@@ -6394,10 +6844,6 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -6426,8 +6872,7 @@
             "required": [
                 "authDatabase",
                 "hostname",
-                "name",
-                "replicaSet"
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -6437,7 +6882,6 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet",
                         "subdomain"
                     ]
                 }
@@ -6486,10 +6930,6 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -6518,8 +6958,7 @@
             "required": [
                 "authDatabase",
                 "hostname",
-                "name",
-                "replicaSet"
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -6529,7 +6968,6 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet",
                         "subdomain"
                     ]
                 }
@@ -7050,6 +7488,78 @@
                 }
             }
         },
+        "sdm:index/ResourceOktaGroups:ResourceOktaGroups": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Represents the Okta Org Client URL\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "groupNames": {
+                    "type": "string",
+                    "description": "comma separated list of group names to filter by. Supports wildcards (*)\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "identitySetId",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "domain",
+                        "identitySetId",
+                        "name",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceOracle:ResourceOracle": {
             "properties": {
                 "bindInterface": {
@@ -7539,6 +8049,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "lockRequired": {
                     "type": "boolean",
                     "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
@@ -7609,7 +8127,7 @@
                 },
                 "dcHostnames": {
                     "type": "string",
-                    "description": "Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.\n"
+                    "description": "Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -7651,9 +8169,13 @@
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
+                "serverFqdn": {
+                    "type": "string",
+                    "description": "Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.\n"
+                },
                 "sid": {
                     "type": "string",
-                    "description": "Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.\n"
+                    "description": "Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -8728,6 +9250,10 @@
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8823,6 +9349,10 @@
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8909,6 +9439,10 @@
                     "type": "string",
                     "description": "The ID of the identity set to use for identity connections.\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8990,6 +9524,10 @@
                 "hostname": {
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
                 },
                 "name": {
                     "type": "string",
@@ -9581,7 +10119,7 @@
                 }
             }
         },
-        "sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine": {
+        "sdm:index/SecretEngineMysqlSecretEngine:SecretEngineMysqlSecretEngine": {
             "properties": {
                 "afterReadTtl": {
                     "type": "string",
@@ -9593,7 +10131,7 @@
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "Hostname is the hostname or IP address of the Postgres server.\n"
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
                 },
                 "keyRotationIntervalDays": {
                     "type": "integer",
@@ -9605,11 +10143,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the Postgres server.\n"
+                    "description": "Password is the password to connect to the SQL Server server.\n"
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port is the port number of the Postgres server.\n"
+                    "description": "Port is the port number of the SQL Server server.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -9632,7 +10170,11 @@
                 },
                 "tls": {
                     "type": "boolean",
-                    "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "tlsSkipVerify": {
+                    "type": "boolean",
+                    "description": "TLS disable certificate verification\n"
                 },
                 "ttl": {
                     "type": "string",
@@ -9640,7 +10182,189 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the Postgres server.\n"
+                    "description": "Username is the username to connect to the SQL Server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "password",
+                "port",
+                "secretStoreId",
+                "secretStoreRootPath",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "database",
+                        "hostname",
+                        "name",
+                        "password",
+                        "port",
+                        "publicKey",
+                        "secretStoreId",
+                        "secretStoreRootPath",
+                        "username"
+                    ]
+                }
+            }
+        },
+        "sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the SQL Server server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the SQL Server server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the SQL Server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "password",
+                "port",
+                "secretStoreId",
+                "secretStoreRootPath",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "database",
+                        "hostname",
+                        "name",
+                        "password",
+                        "port",
+                        "publicKey",
+                        "secretStoreId",
+                        "secretStoreRootPath",
+                        "username"
+                    ]
+                }
+            }
+        },
+        "sdm:index/SecretEngineSqlserverSecretEngine:SecretEngineSqlserverSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the SQL Server server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the SQL Server server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "tlsSkipVerify": {
+                    "type": "boolean",
+                    "description": "TLS disable certificate verification\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the SQL Server.\n"
                 }
             },
             "type": "object",
@@ -10749,6 +11473,10 @@
         },
         "sdm:index/getAccountAccountService:getAccountAccountService": {
             "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "CreatedAt is the timestamp when the user was created\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the User.\n"
@@ -10769,13 +11497,25 @@
                     "description": "Tags is a map of key, value pairs.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "createdAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getAccountAccountToken:getAccountAccountToken": {
             "properties": {
                 "accountType": {
                     "type": "string",
                     "description": "Corresponds to the type of token, e.g. api or admin-token.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "CreatedAt is the timestamp when the user was created\n"
                 },
                 "deadline": {
                     "type": "string",
@@ -10816,13 +11556,29 @@
                     "description": "Tags is a map of key, value pairs.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "createdAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getAccountAccountUser:getAccountAccountUser": {
             "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "CreatedAt is the timestamp when the user was created\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "The User's email address. Must be unique.\n"
+                },
+                "employeeNumber": {
+                    "type": "string",
+                    "description": "Internal employee ID used to identify the user.\n"
                 },
                 "externalId": {
                     "type": "string",
@@ -10874,6 +11630,7 @@
             },
             "type": "object",
             "required": [
+                "createdAt",
                 "managedBy",
                 "resolvedManagerId",
                 "scim",
@@ -11036,6 +11793,172 @@
                 "roleId": {
                     "type": "string",
                     "description": "The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getConnectorDiscoveryConnector:getConnectorDiscoveryConnector": {
+            "properties": {
+                "aws": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getConnectorDiscoveryConnectorAw:getConnectorDiscoveryConnectorAw"
+                    }
+                },
+                "azures": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getConnectorDiscoveryConnectorAzure:getConnectorDiscoveryConnectorAzure"
+                    }
+                },
+                "gcps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getConnectorDiscoveryConnectorGcp:getConnectorDiscoveryConnectorGcp"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "aws",
+                "azures",
+                "gcps"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getConnectorDiscoveryConnectorAw:getConnectorDiscoveryConnectorAw": {
+            "properties": {
+                "accountIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "AccountIds is the list of AWS Accounts to scan\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Connector.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "roleName": {
+                    "type": "string",
+                    "description": "RoleName is the Role we're assuming into for an account\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getConnectorDiscoveryConnectorAzure:getConnectorDiscoveryConnectorAzure": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "ClientId is the ID of the Application / Service Account we're acting as\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Connector.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                },
+                "subscriptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SubscriptionIds are the targets of discovery.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "TenantId is the Azure Tenant we're discovering in\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getConnectorDiscoveryConnectorGcp:getConnectorDiscoveryConnectorGcp": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Connector.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Connector.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Connector.\n"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "ProjectIds is the list of GCP Projects the connector will scan\n"
+                },
+                "scanPeriod": {
+                    "type": "string",
+                    "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services is a list of services this connector should scan.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT\n"
+                },
+                "workloadProjectId": {
+                    "type": "string",
+                    "description": "WorkloadProjectId is the GCP Project ID where the Workload Pool is defined\n"
+                },
+                "workloadProjectNumber": {
+                    "type": "string",
+                    "description": "WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined\n"
+                },
+                "workloadProviderId": {
+                    "type": "string",
+                    "description": "WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT\n"
                 }
             },
             "type": "object"
@@ -11862,6 +12785,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceElasticacheRedi:getResourceResourceElasticacheRedi"
                     }
                 },
+                "elasticacheRedisIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceElasticacheRedisIam:getResourceResourceElasticacheRedisIam"
+                    }
+                },
                 "elastics": {
                     "type": "array",
                     "items": {
@@ -11903,6 +12832,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceGoogleGke:getResourceResourceGoogleGke"
+                    }
+                },
+                "googleSpanners": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceGoogleSpanner:getResourceResourceGoogleSpanner"
                     }
                 },
                 "greenplums": {
@@ -12049,6 +12984,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceNeptune:getResourceResourceNeptune"
+                    }
+                },
+                "oktaGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceOktaGroup:getResourceResourceOktaGroup"
                     }
                 },
                 "oracleNnes": {
@@ -12279,12 +13220,14 @@
                 "dynamoDbiams",
                 "elastics",
                 "elasticacheRedis",
+                "elasticacheRedisIams",
                 "entraIds",
                 "gcps",
                 "gcpConsoles",
                 "gcpwifs",
                 "googleGkes",
                 "googleGkeUserImpersonations",
+                "googleSpanners",
                 "greenplums",
                 "httpAuths",
                 "httpBasicAuths",
@@ -12309,6 +13252,7 @@
                 "mysqls",
                 "neptunes",
                 "neptuneIams",
+                "oktaGroups",
                 "oracles",
                 "oracleNnes",
                 "postgres",
@@ -12437,7 +13381,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -12578,7 +13522,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -12873,7 +13817,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -12971,7 +13915,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -14508,7 +15452,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The project to connect to.\n"
+                    "description": "The GCP project ID containing the Spanner database.\n"
                 },
                 "proxyClusterId": {
                     "type": "string",
@@ -15431,10 +16375,6 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -15833,6 +16773,78 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceElasticacheRedisIam:getResourceResourceElasticacheRedisIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceEntraId:getResourceResourceEntraId": {
             "properties": {
                 "bindInterface": {
@@ -15841,7 +16853,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -16111,7 +17123,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -16223,6 +17235,74 @@
                     "type": "string",
                     "description": "The service account key to authenticate with.\n",
                     "secret": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceGoogleSpanner:getResourceResourceGoogleSpanner": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "instance": {
+                    "type": "string",
+                    "description": "The Spanner instance ID within the GCP project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The GCP project ID containing the Spanner database.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "serviceAccountToImpersonate": {
+                    "type": "string",
+                    "description": "Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -16540,7 +17620,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -16686,7 +17766,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -16754,7 +17834,7 @@
                 },
                 "discoveryEnabled": {
                     "type": "boolean",
-                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
                 },
                 "discoveryUsername": {
                     "type": "string",
@@ -17050,6 +18130,18 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "oauthAuthEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 authorization endpoint URL.\n"
+                },
+                "oauthRegisterEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 dynamic client registration endpoint URL.\n"
+                },
+                "oauthTokenEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 token endpoint URL.\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password to authenticate with.\n",
@@ -17081,6 +18173,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
                 }
             },
             "type": "object"
@@ -17395,10 +18491,6 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -17471,10 +18563,6 @@
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
-                },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -17945,6 +19033,66 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceOktaGroup:getResourceResourceOktaGroup": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Represents the Okta Org Client URL\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "groupNames": {
+                    "type": "string",
+                    "description": "comma separated list of group names to filter by. Supports wildcards (*)\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceOracle:getResourceResourceOracle": {
             "properties": {
                 "bindInterface": {
@@ -18360,6 +19508,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "lockRequired": {
                     "type": "boolean",
                     "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
@@ -18415,7 +19571,7 @@
                 },
                 "dcHostnames": {
                     "type": "string",
-                    "description": "Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.\n"
+                    "description": "Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -18461,9 +19617,13 @@
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
+                "serverFqdn": {
+                    "type": "string",
+                    "description": "Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.\n"
+                },
                 "sid": {
                     "type": "string",
-                    "description": "Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.\n"
+                    "description": "Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -19379,6 +20539,10 @@
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -19467,6 +20631,10 @@
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -19539,6 +20707,10 @@
                     "type": "string",
                     "description": "The ID of the identity set to use for identity connections.\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -19607,6 +20779,10 @@
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
+                },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
                 },
                 "name": {
                     "type": "string",
@@ -20018,10 +21194,22 @@
                         "$ref": "#/types/sdm:index/getSecretEngineSecretEngineKeyValue:getSecretEngineSecretEngineKeyValue"
                     }
                 },
+                "mysqlSecretEngines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretEngineSecretEngineMysqlSecretEngine:getSecretEngineSecretEngineMysqlSecretEngine"
+                    }
+                },
                 "postgresSecretEngines": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getSecretEngineSecretEnginePostgresSecretEngine:getSecretEngineSecretEnginePostgresSecretEngine"
+                    }
+                },
+                "sqlserverSecretEngines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretEngineSecretEngineSqlserverSecretEngine:getSecretEngineSecretEngineSqlserverSecretEngine"
                     }
                 }
             },
@@ -20029,7 +21217,9 @@
             "required": [
                 "activeDirectories",
                 "keyValues",
-                "postgresSecretEngines"
+                "mysqlSecretEngines",
+                "postgresSecretEngines",
+                "sqlserverSecretEngines"
             ],
             "language": {
                 "nodejs": {
@@ -20181,7 +21371,7 @@
                 }
             }
         },
-        "sdm:index/getSecretEngineSecretEnginePostgresSecretEngine:getSecretEngineSecretEnginePostgresSecretEngine": {
+        "sdm:index/getSecretEngineSecretEngineMysqlSecretEngine:getSecretEngineSecretEngineMysqlSecretEngine": {
             "properties": {
                 "afterReadTtl": {
                     "type": "string",
@@ -20193,7 +21383,7 @@
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "Hostname is the hostname or IP address of the Postgres server.\n"
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
                 },
                 "id": {
                     "type": "string",
@@ -20209,11 +21399,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the Postgres server.\n"
+                    "description": "Password is the password to connect to the SQL Server server.\n"
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Port is the port number of the Postgres server.\n"
+                    "description": "Port is the port number of the SQL Server server.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -20236,7 +21426,11 @@
                 },
                 "tls": {
                     "type": "boolean",
-                    "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "tlsSkipVerify": {
+                    "type": "boolean",
+                    "description": "TLS disable certificate verification\n"
                 },
                 "ttl": {
                     "type": "string",
@@ -20244,7 +21438,163 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the Postgres server.\n"
+                    "description": "Username is the username to connect to the SQL Server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEnginePostgresSecretEngine:getSecretEngineSecretEnginePostgresSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Secret Engine.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the SQL Server server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the SQL Server server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the SQL Server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getSecretEngineSecretEngineSqlserverSecretEngine:getSecretEngineSecretEngineSqlserverSecretEngine": {
+            "properties": {
+                "afterReadTtl": {
+                    "type": "string",
+                    "description": "The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database is the database to verify credential against.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname is the hostname or IP address of the SQL Server.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Secret Engine.\n"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer",
+                    "description": "An interval of public/private key rotation for secret engine in days\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password is the password to connect to the SQL Server server.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port is the port number of the SQL Server server.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key linked with a secret engine\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "Backing secret store identifier\n"
+                },
+                "secretStoreRootPath": {
+                    "type": "string",
+                    "description": "Backing Secret Store root path where managed secrets are going to be stored\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                },
+                "tlsSkipVerify": {
+                    "type": "boolean",
+                    "description": "TLS disable certificate verification\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username is the username to connect to the SQL Server.\n"
                 }
             },
             "type": "object",
@@ -21797,6 +23147,46 @@
                 "type": "object"
             }
         },
+        "sdm:index/connector:Connector": {
+            "description": "A Connector configures scanning for a given system.\nThis resource can be imported using the import command.\n\n## Import\n\nA Connector can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/connector:Connector example con-12345678\n```\n",
+            "properties": {
+                "aws": {
+                    "$ref": "#/types/sdm:index/ConnectorAws:ConnectorAws"
+                },
+                "azure": {
+                    "$ref": "#/types/sdm:index/ConnectorAzure:ConnectorAzure"
+                },
+                "gcp": {
+                    "$ref": "#/types/sdm:index/ConnectorGcp:ConnectorGcp"
+                }
+            },
+            "inputProperties": {
+                "aws": {
+                    "$ref": "#/types/sdm:index/ConnectorAws:ConnectorAws"
+                },
+                "azure": {
+                    "$ref": "#/types/sdm:index/ConnectorAzure:ConnectorAzure"
+                },
+                "gcp": {
+                    "$ref": "#/types/sdm:index/ConnectorGcp:ConnectorGcp"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Connector resources.\n",
+                "properties": {
+                    "aws": {
+                        "$ref": "#/types/sdm:index/ConnectorAws:ConnectorAws"
+                    },
+                    "azure": {
+                        "$ref": "#/types/sdm:index/ConnectorAzure:ConnectorAzure"
+                    },
+                    "gcp": {
+                        "$ref": "#/types/sdm:index/ConnectorGcp:ConnectorGcp"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/group:Group": {
             "description": "A Group is a named set of principals.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst securityTeam = new sdm.Group(\"security_team\", {\n    name: \"Security Team\",\n    tags: {\n        admin: \"true\",\n    },\n});\nconst administrators = new sdm.Group(\"administrators\", {name: \"Administrators\"});\nconst devopsTeam = new sdm.Group(\"devops_team\", {name: \"DevOps Team\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nsecurity_team = sdm.Group(\"security_team\",\n    name=\"Security Team\",\n    tags={\n        \"admin\": \"true\",\n    })\nadministrators = sdm.Group(\"administrators\", name=\"Administrators\")\ndevops_team = sdm.Group(\"devops_team\", name=\"DevOps Team\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var securityTeam = new Sdm.Group(\"security_team\", new()\n    {\n        Name = \"Security Team\",\n        Tags = \n        {\n            { \"admin\", \"true\" },\n        },\n    });\n\n    var administrators = new Sdm.Group(\"administrators\", new()\n    {\n        Name = \"Administrators\",\n    });\n\n    var devopsTeam = new Sdm.Group(\"devops_team\", new()\n    {\n        Name = \"DevOps Team\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewGroup(ctx, \"security_team\", \u0026sdm.GroupArgs{\n\t\t\tName: pulumi.String(\"Security Team\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"admin\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewGroup(ctx, \"administrators\", \u0026sdm.GroupArgs{\n\t\t\tName: pulumi.String(\"Administrators\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewGroup(ctx, \"devops_team\", \u0026sdm.GroupArgs{\n\t\t\tName: pulumi.String(\"DevOps Team\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Group;\nimport com.pulumi.sdm.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var securityTeam = new Group(\"securityTeam\", GroupArgs.builder()\n            .name(\"Security Team\")\n            .tags(Map.of(\"admin\", \"true\"))\n            .build());\n\n        var administrators = new Group(\"administrators\", GroupArgs.builder()\n            .name(\"Administrators\")\n            .build());\n\n        var devopsTeam = new Group(\"devopsTeam\", GroupArgs.builder()\n            .name(\"DevOps Team\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  securityTeam:\n    type: sdm:Group\n    name: security_team\n    properties:\n      name: Security Team\n      tags:\n        admin: 'true'\n  administrators:\n    type: sdm:Group\n    properties:\n      name: Administrators\n  devopsTeam:\n    type: sdm:Group\n    name: devops_team\n    properties:\n      name: DevOps Team\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Group can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/group:Group example group-12345678\n```\n",
             "properties": {
@@ -22186,7 +23576,7 @@
             }
         },
         "sdm:index/node:Node": {
-            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    name: \"test-gateway\",\n    listenAddress: \"165.23.40.1:21222\",\n    bindAddress: \"0.0.0.0:21222\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway={\n    \"name\": \"test-gateway\",\n    \"listen_address\": \"165.23.40.1:21222\",\n    \"bind_address\": \"0.0.0.0:21222\",\n    \"tags\": {\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    },\n})\nrelay = sdm.Node(\"relay\", relay={\n    \"name\": \"test-relay\",\n    \"tags\": {\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    },\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            Name = \"test-gateway\",\n            ListenAddress = \"165.23.40.1:21222\",\n            BindAddress = \"0.0.0.0:21222\",\n            Tags = \n            {\n                { \"region\", \"us-west\" },\n                { \"env\", \"dev\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"region\", \"us-west\" },\n                { \"env\", \"dev\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()\n            .gateway(NodeGatewayArgs.builder()\n                .name(\"test-gateway\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .bindAddress(\"0.0.0.0:21222\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"region\", \"us-west\"),\n                    Map.entry(\"env\", \"dev\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()\n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"region\", \"us-west\"),\n                    Map.entry(\"env\", \"dev\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        name: test-gateway\n        listenAddress: 165.23.40.1:21222\n        bindAddress: 0.0.0.0:21222\n        tags:\n          region: us-west\n          env: dev\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          region: us-west\n          env: dev\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Node can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/node:Node example n-12345678\n```\n",
+            "description": "Nodes make up the StrongDM network, and allow your users to connect securely to your resources.\n There are three types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 2. **Gateway:** a relay that also listens for connections from StrongDM clients\n 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    name: \"test-gateway\",\n    listenAddress: \"165.23.40.1:21222\",\n    bindAddress: \"0.0.0.0:21222\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway={\n    \"name\": \"test-gateway\",\n    \"listen_address\": \"165.23.40.1:21222\",\n    \"bind_address\": \"0.0.0.0:21222\",\n    \"tags\": {\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    },\n})\nrelay = sdm.Node(\"relay\", relay={\n    \"name\": \"test-relay\",\n    \"tags\": {\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    },\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            Name = \"test-gateway\",\n            ListenAddress = \"165.23.40.1:21222\",\n            BindAddress = \"0.0.0.0:21222\",\n            Tags = \n            {\n                { \"region\", \"us-west\" },\n                { \"env\", \"dev\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"region\", \"us-west\" },\n                { \"env\", \"dev\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()\n            .gateway(NodeGatewayArgs.builder()\n                .name(\"test-gateway\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .bindAddress(\"0.0.0.0:21222\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"region\", \"us-west\"),\n                    Map.entry(\"env\", \"dev\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()\n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"region\", \"us-west\"),\n                    Map.entry(\"env\", \"dev\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        name: test-gateway\n        listenAddress: 165.23.40.1:21222\n        bindAddress: 0.0.0.0:21222\n        tags:\n          region: us-west\n          env: dev\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          region: us-west\n          env: dev\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Node can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/node:Node example n-12345678\n```\n",
             "properties": {
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
@@ -22715,6 +24105,10 @@
                 "elasticacheRedis": {
                     "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                 },
+                "elasticacheRedisIam": {
+                    "$ref": "#/types/sdm:index/ResourceElasticacheRedisIam:ResourceElasticacheRedisIam",
+                    "description": "ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "entraId": {
                     "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                 },
@@ -22733,6 +24127,10 @@
                 "googleGkeUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
+                },
+                "googleSpanner": {
+                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
+                    "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -22811,6 +24209,10 @@
                 },
                 "neptuneIam": {
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
+                },
+                "oktaGroups": {
+                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
+                    "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -23061,6 +24463,10 @@
                 "elasticacheRedis": {
                     "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                 },
+                "elasticacheRedisIam": {
+                    "$ref": "#/types/sdm:index/ResourceElasticacheRedisIam:ResourceElasticacheRedisIam",
+                    "description": "ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
                 "entraId": {
                     "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                 },
@@ -23079,6 +24485,10 @@
                 "googleGkeUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
+                },
+                "googleSpanner": {
+                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
+                    "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -23157,6 +24567,10 @@
                 },
                 "neptuneIam": {
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
+                },
+                "oktaGroups": {
+                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
+                    "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -23409,6 +24823,10 @@
                     "elasticacheRedis": {
                         "$ref": "#/types/sdm:index/ResourceElasticacheRedis:ResourceElasticacheRedis"
                     },
+                    "elasticacheRedisIam": {
+                        "$ref": "#/types/sdm:index/ResourceElasticacheRedisIam:ResourceElasticacheRedisIam",
+                        "description": "ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
                     "entraId": {
                         "$ref": "#/types/sdm:index/ResourceEntraId:ResourceEntraId"
                     },
@@ -23427,6 +24845,10 @@
                     "googleGkeUserImpersonation": {
                         "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                         "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
+                    },
+                    "googleSpanner": {
+                        "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
+                        "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "greenplum": {
                         "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -23505,6 +24927,10 @@
                     },
                     "neptuneIam": {
                         "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
+                    },
+                    "oktaGroups": {
+                        "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
+                        "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
                     },
                     "oracle": {
                         "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -23677,9 +25103,14 @@
                 "keyValue": {
                     "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
                 },
+                "mysqlSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEngineMysqlSecretEngine:SecretEngineMysqlSecretEngine"
+                },
                 "postgresSecretEngine": {
-                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
-                    "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine"
+                },
+                "sqlserverSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEngineSqlserverSecretEngine:SecretEngineSqlserverSecretEngine"
                 }
             },
             "inputProperties": {
@@ -23689,9 +25120,14 @@
                 "keyValue": {
                     "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
                 },
+                "mysqlSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEngineMysqlSecretEngine:SecretEngineMysqlSecretEngine"
+                },
                 "postgresSecretEngine": {
-                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
-                    "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine"
+                },
+                "sqlserverSecretEngine": {
+                    "$ref": "#/types/sdm:index/SecretEngineSqlserverSecretEngine:SecretEngineSqlserverSecretEngine"
                 }
             },
             "stateInputs": {
@@ -23703,9 +25139,14 @@
                     "keyValue": {
                         "$ref": "#/types/sdm:index/SecretEngineKeyValue:SecretEngineKeyValue"
                     },
+                    "mysqlSecretEngine": {
+                        "$ref": "#/types/sdm:index/SecretEngineMysqlSecretEngine:SecretEngineMysqlSecretEngine"
+                    },
                     "postgresSecretEngine": {
-                        "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine",
-                        "description": "PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretEnginePostgresSecretEngine:SecretEnginePostgresSecretEngine"
+                    },
+                    "sqlserverSecretEngine": {
+                        "$ref": "#/types/sdm:index/SecretEngineSqlserverSecretEngine:SecretEngineSqlserverSecretEngine"
                     }
                 },
                 "type": "object"
@@ -23752,8 +25193,7 @@
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
                 "strongVault": {
-                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
-                    "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault"
                 },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
@@ -23768,23 +25208,19 @@
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                 },
                 "vaultAwsEc2CertSsh": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
-                    "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh"
                 },
                 "vaultAwsEc2CertX509": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
-                    "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509"
                 },
                 "vaultAwsIam": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
                 },
                 "vaultAwsIamCertSsh": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
-                    "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh"
                 },
                 "vaultAwsIamCertX509": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
-                    "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509"
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -23844,8 +25280,7 @@
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
                 "strongVault": {
-                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
-                    "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault"
                 },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
@@ -23860,23 +25295,19 @@
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                 },
                 "vaultAwsEc2CertSsh": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
-                    "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh"
                 },
                 "vaultAwsEc2CertX509": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
-                    "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509"
                 },
                 "vaultAwsIam": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
                 },
                 "vaultAwsIamCertSsh": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
-                    "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh"
                 },
                 "vaultAwsIamCertX509": {
-                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
-                    "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509"
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -23938,8 +25369,7 @@
                         "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                     },
                     "strongVault": {
-                        "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault",
-                        "description": "StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretStoreStrongVault:SecretStoreStrongVault"
                     },
                     "vaultApprole": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
@@ -23954,23 +25384,19 @@
                         "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2"
                     },
                     "vaultAwsEc2CertSsh": {
-                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh",
-                        "description": "VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertSsh:SecretStoreVaultAwsEc2CertSsh"
                     },
                     "vaultAwsEc2CertX509": {
-                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509",
-                        "description": "VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2CertX509:SecretStoreVaultAwsEc2CertX509"
                     },
                     "vaultAwsIam": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam"
                     },
                     "vaultAwsIamCertSsh": {
-                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh",
-                        "description": "VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertSsh:SecretStoreVaultAwsIamCertSsh"
                     },
                     "vaultAwsIamCertX509": {
-                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509",
-                        "description": "VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIamCertX509:SecretStoreVaultAwsIamCertX509"
                     },
                     "vaultTls": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -24277,6 +25703,10 @@
                         "type": "string",
                         "description": "The User's email address. Must be unique.\n"
                     },
+                    "employeeNumber": {
+                        "type": "string",
+                        "description": "Internal employee ID used to identify the user.\n"
+                    },
                     "externalId": {
                         "type": "string",
                         "description": "External ID is an alternative unique ID this user is represented by within an external service.\n"
@@ -24343,6 +25773,10 @@
                     },
                     "email": {
                         "description": "The User's email address. Must be unique.\n",
+                        "type": "string"
+                    },
+                    "employeeNumber": {
+                        "description": "Internal employee ID used to identify the user.\n",
                         "type": "string"
                     },
                     "externalId": {
@@ -24594,6 +26028,166 @@
                 },
                 "required": [
                     "approvalWorkflows",
+                    "ids"
+                ],
+                "type": "object"
+            }
+        },
+        "sdm:index/getConnector:getConnector": {
+            "description": "A Connector configures scanning for a given system.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnector.\n",
+                "properties": {
+                    "accountIds": {
+                        "type": "string",
+                        "description": "AccountIds is the list of AWS Accounts to scan\n"
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "description": "ClientId is the ID of the Application / Service Account we're acting as\n"
+                    },
+                    "cloud": {
+                        "type": "string",
+                        "description": "a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the Connector.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Connector.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Connector.\n"
+                    },
+                    "projectIds": {
+                        "type": "string",
+                        "description": "ProjectIds is the list of GCP Projects the connector will scan\n"
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "description": "RoleName is the Role we're assuming into for an account\n"
+                    },
+                    "scanPeriod": {
+                        "type": "string",
+                        "description": "ScanPeriod identifies which remote system this Connector discovers\n"
+                    },
+                    "services": {
+                        "type": "string",
+                        "description": "Services is a list of services this connector should scan.\n"
+                    },
+                    "subscriptionIds": {
+                        "type": "string",
+                        "description": "SubscriptionIds are the targets of discovery.\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "TenantId is the Azure Tenant we're discovering in\n"
+                    },
+                    "workloadPoolId": {
+                        "type": "string",
+                        "description": "WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT\n"
+                    },
+                    "workloadProjectId": {
+                        "type": "string",
+                        "description": "WorkloadProjectId is the GCP Project ID where the Workload Pool is defined\n"
+                    },
+                    "workloadProjectNumber": {
+                        "type": "string",
+                        "description": "WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined\n"
+                    },
+                    "workloadProviderId": {
+                        "type": "string",
+                        "description": "WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnector.\n",
+                "properties": {
+                    "accountIds": {
+                        "description": "AccountIds is the list of AWS Accounts to scan\n",
+                        "type": "string"
+                    },
+                    "clientId": {
+                        "description": "ClientId is the ID of the Application / Service Account we're acting as\n",
+                        "type": "string"
+                    },
+                    "cloud": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the Connector.\n",
+                        "type": "string"
+                    },
+                    "discoveryConnectors": {
+                        "description": "A single element list containing a map, where each key lists one of the following objects:\n* aws:\n",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getConnectorDiscoveryConnector:getConnectorDiscoveryConnector"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "Unique identifier of the Connector.\n",
+                        "type": "string"
+                    },
+                    "ids": {
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "description": "Unique human-readable name of the Connector.\n",
+                        "type": "string"
+                    },
+                    "projectIds": {
+                        "description": "ProjectIds is the list of GCP Projects the connector will scan\n",
+                        "type": "string"
+                    },
+                    "roleName": {
+                        "description": "RoleName is the Role we're assuming into for an account\n",
+                        "type": "string"
+                    },
+                    "scanPeriod": {
+                        "description": "ScanPeriod identifies which remote system this Connector discovers\n",
+                        "type": "string"
+                    },
+                    "services": {
+                        "description": "Services is a list of services this connector should scan.\n",
+                        "type": "string"
+                    },
+                    "subscriptionIds": {
+                        "description": "SubscriptionIds are the targets of discovery.\n",
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "description": "TenantId is the Azure Tenant we're discovering in\n* gcp:\n",
+                        "type": "string"
+                    },
+                    "workloadPoolId": {
+                        "description": "WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT\n",
+                        "type": "string"
+                    },
+                    "workloadProjectId": {
+                        "description": "WorkloadProjectId is the GCP Project ID where the Workload Pool is defined\n",
+                        "type": "string"
+                    },
+                    "workloadProjectNumber": {
+                        "description": "WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined\n",
+                        "type": "string"
+                    },
+                    "workloadProviderId": {
+                        "description": "WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "discoveryConnectors",
                     "ids"
                 ],
                 "type": "object"
@@ -24948,7 +26542,7 @@
             }
         },
         "sdm:index/getNode:getNode": {
-            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gatewayQuery = sdm.getNode({\n    type: \"gateway\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\ngateway_query = sdm.get_node(type=\"gateway\",\n    tags={\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gatewayQuery = Sdm.GetNode.Invoke(new()\n    {\n        Type = \"gateway\",\n        Tags = \n        {\n            { \"region\", \"us-west\" },\n            { \"env\", \"dev\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupNode(ctx, \u0026sdm.LookupNodeArgs{\n\t\t\tType: pulumi.StringRef(\"gateway\"),\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetNodeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var gatewayQuery = SdmFunctions.getNode(GetNodeArgs.builder()\n            .type(\"gateway\")\n            .tags(Map.ofEntries(\n                Map.entry(\"region\", \"us-west\"),\n                Map.entry(\"env\", \"dev\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  gatewayQuery:\n    fn::invoke:\n      function: sdm:getNode\n      arguments:\n        type: gateway\n        tags:\n          region: us-west\n          env: dev\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Nodes make up the StrongDM network, and allow your users to connect securely to your resources.\n There are three types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 2. **Gateway:** a relay that also listens for connections from StrongDM clients\n 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gatewayQuery = sdm.getNode({\n    type: \"gateway\",\n    tags: {\n        region: \"us-west\",\n        env: \"dev\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\ngateway_query = sdm.get_node(type=\"gateway\",\n    tags={\n        \"region\": \"us-west\",\n        \"env\": \"dev\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gatewayQuery = Sdm.GetNode.Invoke(new()\n    {\n        Type = \"gateway\",\n        Tags = \n        {\n            { \"region\", \"us-west\" },\n            { \"env\", \"dev\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupNode(ctx, \u0026sdm.LookupNodeArgs{\n\t\t\tType: pulumi.StringRef(\"gateway\"),\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetNodeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var gatewayQuery = SdmFunctions.getNode(GetNodeArgs.builder()\n            .type(\"gateway\")\n            .tags(Map.ofEntries(\n                Map.entry(\"region\", \"us-west\"),\n                Map.entry(\"env\", \"dev\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  gatewayQuery:\n    fn::invoke:\n      function: sdm:getNode\n      arguments:\n        type: gateway\n        tags:\n          region: us-west\n          env: dev\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNode.\n",
                 "properties": {
@@ -25705,7 +27299,7 @@
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "Hostname is the hostname or IP address of the Postgres server.\n"
+                        "description": "Hostname is the hostname or IP address of the SQL Server.\n"
                     },
                     "id": {
                         "type": "string",
@@ -25725,11 +27319,11 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "Password is the password to connect to the Postgres server.\n"
+                        "description": "Password is the password to connect to the SQL Server server.\n"
                     },
                     "port": {
                         "type": "integer",
-                        "description": "Port is the port number of the Postgres server.\n"
+                        "description": "Port is the port number of the SQL Server server.\n"
                     },
                     "requestTimeout": {
                         "type": "integer",
@@ -25756,7 +27350,11 @@
                     },
                     "tls": {
                         "type": "boolean",
-                        "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n"
+                        "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n"
+                    },
+                    "tlsSkipVerify": {
+                        "type": "boolean",
+                        "description": "TLS disable certificate verification\n"
                     },
                     "type": {
                         "type": "string",
@@ -25776,7 +27374,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "Username is the username to connect to the Postgres server.\n"
+                        "description": "Username is the username to connect to the SQL Server.\n"
                     }
                 },
                 "type": "object"
@@ -25809,7 +27407,7 @@
                         "type": "boolean"
                     },
                     "hostname": {
-                        "description": "Hostname is the hostname or IP address of the Postgres server.\n",
+                        "description": "Hostname is the hostname or IP address of the SQL Server.\n",
                         "type": "string"
                     },
                     "id": {
@@ -25836,11 +27434,11 @@
                         "type": "string"
                     },
                     "password": {
-                        "description": "Password is the password to connect to the Postgres server.\n",
+                        "description": "Password is the password to connect to the SQL Server server.\n",
                         "type": "string"
                     },
                     "port": {
-                        "description": "Port is the port number of the Postgres server.\n",
+                        "description": "Port is the port number of the SQL Server server.\n",
                         "type": "integer"
                     },
                     "requestTimeout": {
@@ -25874,7 +27472,11 @@
                         "type": "object"
                     },
                     "tls": {
-                        "description": "TLS enables TLS/SSL when connecting to the Postgres server.\n",
+                        "description": "TLS enables TLS/SSL when connecting to the SQL Server server.\n",
+                        "type": "boolean"
+                    },
+                    "tlsSkipVerify": {
+                        "description": "TLS disable certificate verification\n",
                         "type": "boolean"
                     },
                     "type": {
@@ -25893,7 +27495,7 @@
                         "type": "string"
                     },
                     "username": {
-                        "description": "Username is the username to connect to the Postgres server.\n",
+                        "description": "Username is the username to connect to the SQL Server.\n",
                         "type": "string"
                     }
                 },
