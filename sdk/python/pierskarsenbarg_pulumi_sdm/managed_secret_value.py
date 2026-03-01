@@ -23,6 +23,7 @@ class ManagedSecretValueArgs:
                  value: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ManagedSecretValue resource.
+
         :param pulumi.Input[_builtins.str] public_key: secret engine's public key used for encryption in PEM format
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value: value object
         """
@@ -62,6 +63,7 @@ class _ManagedSecretValueState:
                  value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ManagedSecretValue resources.
+
         :param pulumi.Input[_builtins.str] encrypted: encrypted value
         :param pulumi.Input[_builtins.str] public_key: secret engine's public key used for encryption in PEM format
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value: value object
@@ -121,6 +123,7 @@ class ManagedSecretValue(pulumi.CustomResource):
                  __props__=None):
         """
         Create a ManagedSecretValue resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] public_key: secret engine's public key used for encryption in PEM format
@@ -134,6 +137,7 @@ class ManagedSecretValue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a ManagedSecretValue resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param ManagedSecretValueArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -24,6 +24,7 @@ class RoleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
@@ -81,6 +82,7 @@ class _RoleState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
         :param pulumi.Input[_builtins.str] managed_by: Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Role.
@@ -241,6 +243,7 @@ class Role(pulumi.CustomResource):
         $ pulumi import sdm:index/role:Role example r-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
@@ -339,6 +342,7 @@ class Role(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/role:Role example r-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

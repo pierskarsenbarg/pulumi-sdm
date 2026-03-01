@@ -23,6 +23,7 @@ class AccountAttachmentArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccountAttachment resource.
+
         :param pulumi.Input[_builtins.str] account_id: The id of the account of this AccountAttachment.
         :param pulumi.Input[_builtins.str] role_id: The id of the attached role of this AccountAttachment.
         """
@@ -61,6 +62,7 @@ class _AccountAttachmentState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountAttachment resources.
+
         :param pulumi.Input[_builtins.str] account_id: The id of the account of this AccountAttachment.
         :param pulumi.Input[_builtins.str] role_id: The id of the attached role of this AccountAttachment.
         """
@@ -125,6 +127,7 @@ class AccountAttachment(pulumi.CustomResource):
         $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The id of the account of this AccountAttachment.
@@ -157,6 +160,7 @@ class AccountAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountAttachmentArgs args: The arguments to use to populate this resource's properties.

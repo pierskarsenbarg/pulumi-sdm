@@ -128,6 +128,7 @@ class Connector(pulumi.CustomResource):
         $ pulumi import sdm:index/connector:Connector example con-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -148,6 +149,7 @@ class Connector(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/connector:Connector example con-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorArgs args: The arguments to use to populate this resource's properties.

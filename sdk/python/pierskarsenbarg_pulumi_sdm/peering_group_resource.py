@@ -23,6 +23,7 @@ class PeeringGroupResourceArgs:
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringGroupResource resource.
+
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the resource will be attached to.
         :param pulumi.Input[_builtins.str] resource_id: Resource ID to be attached.
         """
@@ -63,6 +64,7 @@ class _PeeringGroupResourceState:
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringGroupResource resources.
+
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the resource will be attached to.
         :param pulumi.Input[_builtins.str] resource_id: Resource ID to be attached.
         """
@@ -117,6 +119,7 @@ class PeeringGroupResource(pulumi.CustomResource):
         $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the resource will be attached to.
@@ -139,6 +142,7 @@ class PeeringGroupResource(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeringGroupResourceArgs args: The arguments to use to populate this resource's properties.

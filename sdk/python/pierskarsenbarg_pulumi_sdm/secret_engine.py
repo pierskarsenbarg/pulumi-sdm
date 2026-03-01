@@ -178,6 +178,7 @@ class SecretEngine(pulumi.CustomResource):
         $ pulumi import sdm:index/secretEngine:SecretEngine example eng-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -198,6 +199,7 @@ class SecretEngine(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/secretEngine:SecretEngine example eng-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretEngineArgs args: The arguments to use to populate this resource's properties.

@@ -51,6 +51,7 @@ class SecretStoreArgs:
                  vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         The set of arguments for constructing a SecretStore resource.
+
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
@@ -399,6 +400,7 @@ class _SecretStoreState:
                  vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         Input properties used for looking up and filtering SecretStore resources.
+
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if active_directory_store is not None:
@@ -762,6 +764,7 @@ class SecretStore(pulumi.CustomResource):
         $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -784,6 +787,7 @@ class SecretStore(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretStoreArgs args: The arguments to use to populate this resource's properties.

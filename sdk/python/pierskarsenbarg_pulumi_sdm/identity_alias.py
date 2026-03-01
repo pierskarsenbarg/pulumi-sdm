@@ -24,6 +24,7 @@ class IdentityAliasArgs:
                  username: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a IdentityAlias resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account for this identity alias.
         :param pulumi.Input[_builtins.str] identity_set_id: The identity set.
         :param pulumi.Input[_builtins.str] username: The username to be used as the identity alias for this account.
@@ -77,6 +78,7 @@ class _IdentityAliasState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdentityAlias resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account for this identity alias.
         :param pulumi.Input[_builtins.str] identity_set_id: The identity set.
         :param pulumi.Input[_builtins.str] username: The username to be used as the identity alias for this account.
@@ -158,6 +160,7 @@ class IdentityAlias(pulumi.CustomResource):
         $ pulumi import sdm:index/identityAlias:IdentityAlias example i-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account for this identity alias.
@@ -192,6 +195,7 @@ class IdentityAlias(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/identityAlias:IdentityAlias example i-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IdentityAliasArgs args: The arguments to use to populate this resource's properties.

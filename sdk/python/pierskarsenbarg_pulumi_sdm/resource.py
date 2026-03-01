@@ -136,6 +136,7 @@ class ResourceArgs:
                  vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
+
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1568,6 +1569,7 @@ class _ResourceState:
                  vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3011,6 +3013,7 @@ class Resource(pulumi.CustomResource):
         $ pulumi import sdm:index/resource:Resource example rs-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -3038,6 +3041,7 @@ class Resource(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/resource:Resource example rs-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.

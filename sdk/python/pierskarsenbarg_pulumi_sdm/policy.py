@@ -24,6 +24,7 @@ class PolicyArgs:
                  policy_content: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
+
         :param pulumi.Input[_builtins.str] description: Optional description of the Policy.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Policy.
         :param pulumi.Input[_builtins.str] policy_content: The content of the Policy, in Cedar policy language.
@@ -80,6 +81,7 @@ class _PolicyState:
                  policy_content: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+
         :param pulumi.Input[_builtins.str] description: Optional description of the Policy.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Policy.
         :param pulumi.Input[_builtins.str] policy_content: The content of the Policy, in Cedar policy language.
@@ -162,6 +164,7 @@ class Policy(pulumi.CustomResource):
         $ pulumi import sdm:index/policy:Policy example po-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional description of the Policy.
@@ -197,6 +200,7 @@ class Policy(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/policy:Policy example po-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

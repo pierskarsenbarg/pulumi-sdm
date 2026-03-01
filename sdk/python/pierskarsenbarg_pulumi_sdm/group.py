@@ -24,6 +24,7 @@ class GroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the Group.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key/value pairs that can be attached to a Group.
@@ -81,6 +82,7 @@ class _GroupState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the Group.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Group.
         :param pulumi.Input[_builtins.str] source: Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.
@@ -180,6 +182,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import sdm:index/group:Group example group-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the Group.
@@ -217,6 +220,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/group:Group example group-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

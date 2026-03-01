@@ -22,6 +22,7 @@ class PeeringGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringGroup resource.
+
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the PeeringGroup.
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _PeeringGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringGroup resources.
+
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the PeeringGroup.
         """
         if name is not None:
@@ -85,6 +87,7 @@ class PeeringGroup(pulumi.CustomResource):
         $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the PeeringGroup.
@@ -107,6 +110,7 @@ class PeeringGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeringGroupArgs args: The arguments to use to populate this resource's properties.

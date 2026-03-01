@@ -24,6 +24,7 @@ class RemoteIdentityArgs:
                  username: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RemoteIdentity resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account for this remote identity.
         :param pulumi.Input[_builtins.str] remote_identity_group_id: The remote identity group.
         :param pulumi.Input[_builtins.str] username: The username to be used as the remote identity for this account.
@@ -77,6 +78,7 @@ class _RemoteIdentityState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RemoteIdentity resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account for this remote identity.
         :param pulumi.Input[_builtins.str] remote_identity_group_id: The remote identity group.
         :param pulumi.Input[_builtins.str] username: The username to be used as the remote identity for this account.
@@ -158,6 +160,7 @@ class RemoteIdentity(pulumi.CustomResource):
         $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account for this remote identity.
@@ -192,6 +195,7 @@ class RemoteIdentity(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RemoteIdentityArgs args: The arguments to use to populate this resource's properties.

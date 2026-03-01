@@ -351,29 +351,24 @@ __all__ = [
     'GetApprovalWorkflowApprovalStepApproverArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccountServiceArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Service.
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CreatedAt is the timestamp when the user was created
-        """
-        suspended: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The Service's suspended state.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    AccountServiceArgsDict: TypeAlias = Mapping[str, Any]
+class AccountServiceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Service.
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CreatedAt is the timestamp when the user was created
+    """
+    suspended: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The Service's suspended state.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AccountServiceArgs:
@@ -457,62 +452,59 @@ class AccountServiceArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AccountUserArgsDict(TypedDict):
-        email: pulumi.Input[_builtins.str]
-        """
-        The User's email address. Must be unique.
-        """
-        first_name: pulumi.Input[_builtins.str]
-        """
-        The User's first name.
-        """
-        last_name: pulumi.Input[_builtins.str]
-        """
-        The User's last name.
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CreatedAt is the timestamp when the user was created
-        """
-        employee_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Internal employee ID used to identify the user.
-        """
-        external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        External ID is an alternative unique ID this user is represented by within an external service.
-        """
-        managed_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
-        """
-        manager_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
-        """
-        permission_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        PermissionLevel is the user's permission level e.g. admin, DBA, user.
-        """
-        resolved_manager_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
-        """
-        scim: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        SCIM contains the raw SCIM metadata for the user. This is a read-only field.
-        """
-        suspended: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        The Service's suspended state.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    AccountUserArgsDict: TypeAlias = Mapping[str, Any]
+class AccountUserArgsDict(TypedDict):
+    email: pulumi.Input[_builtins.str]
+    """
+    The User's email address. Must be unique.
+    """
+    first_name: pulumi.Input[_builtins.str]
+    """
+    The User's first name.
+    """
+    last_name: pulumi.Input[_builtins.str]
+    """
+    The User's last name.
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CreatedAt is the timestamp when the user was created
+    """
+    employee_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Internal employee ID used to identify the user.
+    """
+    external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    External ID is an alternative unique ID this user is represented by within an external service.
+    """
+    managed_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+    """
+    manager_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+    """
+    permission_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    PermissionLevel is the user's permission level e.g. admin, DBA, user.
+    """
+    resolved_manager_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Resolved Manager ID is the ID of the user's manager derived from the manager_id, if present, or from the SCIM metadata. This is a read-only field that's only populated for get and list.
+    """
+    scim: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+    """
+    suspended: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    The Service's suspended state.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class AccountUserArgs:
@@ -726,22 +718,19 @@ class AccountUserArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ApprovalWorkflowApprovalStepArgsDict(TypedDict):
-        approvers: pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgsDict']]]
-        """
-        The approvers for this approval step
-        """
-        quantifier: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
-        """
-        skip_after: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
-        """
-elif False:
-    ApprovalWorkflowApprovalStepArgsDict: TypeAlias = Mapping[str, Any]
+class ApprovalWorkflowApprovalStepArgsDict(TypedDict):
+    approvers: pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepApproverArgsDict']]]
+    """
+    The approvers for this approval step
+    """
+    quantifier: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+    """
+    skip_after: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+    """
 
 @pulumi.input_type
 class ApprovalWorkflowApprovalStepArgs:
@@ -797,26 +786,23 @@ class ApprovalWorkflowApprovalStepArgs:
         pulumi.set(self, "skip_after", value)
 
 
-if not MYPY:
-    class ApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        reference: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        role_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-elif False:
-    ApprovalWorkflowApprovalStepApproverArgsDict: TypeAlias = Mapping[str, Any]
+class ApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    reference: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
 
 @pulumi.input_type
 class ApprovalWorkflowApprovalStepApproverArgs:
@@ -889,42 +875,39 @@ class ApprovalWorkflowApprovalStepApproverArgs:
         pulumi.set(self, "role_id", value)
 
 
-if not MYPY:
-    class ConnectorAwsArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Connector.
-        """
-        account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        AccountIds is the list of AWS Accounts to scan
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Connector.
-        """
-        exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAwsExcludeTagArgsDict']]]]
-        """
-        ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
-        """
-        include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAwsIncludeTagArgsDict']]]]
-        """
-        IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
-        """
-        role_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        RoleName is the Role we're assuming into for an account
-        """
-        scan_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ScanPeriod identifies which remote system this Connector discovers
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Services is a list of services this connector should scan.
-        """
-elif False:
-    ConnectorAwsArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAwsArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Connector.
+    """
+    account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    AccountIds is the list of AWS Accounts to scan
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Connector.
+    """
+    exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAwsExcludeTagArgsDict']]]]
+    """
+    ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    """
+    include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAwsIncludeTagArgsDict']]]]
+    """
+    IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+    """
+    role_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    RoleName is the Role we're assuming into for an account
+    """
+    scan_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ScanPeriod identifies which remote system this Connector discovers
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Services is a list of services this connector should scan.
+    """
 
 @pulumi.input_type
 class ConnectorAwsArgs:
@@ -1060,18 +1043,15 @@ class ConnectorAwsArgs:
         pulumi.set(self, "services", value)
 
 
-if not MYPY:
-    class ConnectorAwsExcludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorAwsExcludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAwsExcludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorAwsExcludeTagArgs:
@@ -1112,18 +1092,15 @@ class ConnectorAwsExcludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectorAwsIncludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorAwsIncludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAwsIncludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorAwsIncludeTagArgs:
@@ -1164,47 +1141,44 @@ class ConnectorAwsIncludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectorAzureArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Connector.
-        """
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ClientId is the ID of the Application / Service Account we're acting as
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Connector.
-        """
-        exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAzureExcludeTagArgsDict']]]]
-        """
-        ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
-        """
-        include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAzureIncludeTagArgsDict']]]]
-        """
-        IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
-        """
-        scan_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ScanPeriod identifies which remote system this Connector discovers
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Services is a list of services this connector should scan.
-        """
-        subscription_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        SubscriptionIds are the targets of discovery.
-        """
-        tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        TenantId is the Azure Tenant we're discovering in
-        * gcp:
-        """
-elif False:
-    ConnectorAzureArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAzureArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Connector.
+    """
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ClientId is the ID of the Application / Service Account we're acting as
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Connector.
+    """
+    exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAzureExcludeTagArgsDict']]]]
+    """
+    ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    """
+    include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorAzureIncludeTagArgsDict']]]]
+    """
+    IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+    """
+    scan_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ScanPeriod identifies which remote system this Connector discovers
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Services is a list of services this connector should scan.
+    """
+    subscription_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    SubscriptionIds are the targets of discovery.
+    """
+    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    TenantId is the Azure Tenant we're discovering in
+    * gcp:
+    """
 
 @pulumi.input_type
 class ConnectorAzureArgs:
@@ -1358,18 +1332,15 @@ class ConnectorAzureArgs:
         pulumi.set(self, "tenant_id", value)
 
 
-if not MYPY:
-    class ConnectorAzureExcludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorAzureExcludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAzureExcludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorAzureExcludeTagArgs:
@@ -1410,18 +1381,15 @@ class ConnectorAzureExcludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectorAzureIncludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorAzureIncludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorAzureIncludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorAzureIncludeTagArgs:
@@ -1462,54 +1430,51 @@ class ConnectorAzureIncludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectorGcpArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Connector.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Connector.
-        """
-        exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpExcludeTagArgsDict']]]]
-        """
-        ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
-        """
-        include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpIncludeTagArgsDict']]]]
-        """
-        IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
-        """
-        project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        ProjectIds is the list of GCP Projects the connector will scan
-        """
-        scan_period: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ScanPeriod identifies which remote system this Connector discovers
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Services is a list of services this connector should scan.
-        """
-        workload_pool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
-        """
-        workload_project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
-        """
-        workload_project_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
-        """
-        workload_provider_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
-        """
-elif False:
-    ConnectorGcpArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorGcpArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Connector.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Connector.
+    """
+    exclude_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpExcludeTagArgsDict']]]]
+    """
+    ExcludeTags filters out discovered resources that have the tag and value. We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    """
+    include_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorGcpIncludeTagArgsDict']]]]
+    """
+    IncludeTags only discovers cloud resources that have one of the included tags. We do not allow duplicate tag names for IncludeTags
+    """
+    project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    ProjectIds is the list of GCP Projects the connector will scan
+    """
+    scan_period: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ScanPeriod identifies which remote system this Connector discovers
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Services is a list of services this connector should scan.
+    """
+    workload_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+    """
+    workload_project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
+    """
+    workload_project_number: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
+    """
+    workload_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+    """
 
 @pulumi.input_type
 class ConnectorGcpArgs:
@@ -1693,18 +1658,15 @@ class ConnectorGcpArgs:
         pulumi.set(self, "workload_provider_id", value)
 
 
-if not MYPY:
-    class ConnectorGcpExcludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorGcpExcludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorGcpExcludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorGcpExcludeTagArgs:
@@ -1745,18 +1707,15 @@ class ConnectorGcpExcludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ConnectorGcpIncludeTagArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Connector.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of this tag.
-        """
-elif False:
-    ConnectorGcpIncludeTagArgsDict: TypeAlias = Mapping[str, Any]
+class ConnectorGcpIncludeTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Connector.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of this tag.
+    """
 
 @pulumi.input_type
 class ConnectorGcpIncludeTagArgs:
@@ -1797,47 +1756,44 @@ class ConnectorGcpIncludeTagArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class NodeGatewayArgsDict(TypedDict):
-        listen_address: pulumi.Input[_builtins.str]
-        """
-        The public hostname/port tuple at which the gateway will be accessible to clients.
-        """
-        bind_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
-        """
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Device is a read only device name uploaded by the gateway process when it comes online.
-        """
-        gateway_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Location is a read only network location uploaded by the gateway process when it comes online.
-        """
-        maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgsDict']]]]
-        """
-        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
-        """
-elif False:
-    NodeGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGatewayArgsDict(TypedDict):
+    listen_address: pulumi.Input[_builtins.str]
+    """
+    The public hostname/port tuple at which the gateway will be accessible to clients.
+    """
+    bind_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
+    """
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Device is a read only device name uploaded by the gateway process when it comes online.
+    """
+    gateway_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Location is a read only network location uploaded by the gateway process when it comes online.
+    """
+    maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgsDict']]]]
+    """
+    Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+    """
 
 @pulumi.input_type
 class NodeGatewayArgs:
@@ -2001,12 +1957,9 @@ class NodeGatewayArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class NodeGatewayMaintenanceWindowArgsDict(TypedDict):
-        cron_schedule: pulumi.Input[_builtins.str]
-        require_idleness: pulumi.Input[_builtins.bool]
-elif False:
-    NodeGatewayMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class NodeGatewayMaintenanceWindowArgsDict(TypedDict):
+    cron_schedule: pulumi.Input[_builtins.str]
+    require_idleness: pulumi.Input[_builtins.bool]
 
 @pulumi.input_type
 class NodeGatewayMaintenanceWindowArgs:
@@ -2035,26 +1988,23 @@ class NodeGatewayMaintenanceWindowArgs:
         pulumi.set(self, "require_idleness", value)
 
 
-if not MYPY:
-    class NodeProxyClusterArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The public hostname/port tuple at which the proxy cluster will be accessible to clients.
-        """
-        maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeProxyClusterMaintenanceWindowArgsDict']]]]
-        """
-        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    NodeProxyClusterArgsDict: TypeAlias = Mapping[str, Any]
+class NodeProxyClusterArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+    """
+    maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeProxyClusterMaintenanceWindowArgsDict']]]]
+    """
+    Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class NodeProxyClusterArgs:
@@ -2126,12 +2076,9 @@ class NodeProxyClusterArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class NodeProxyClusterMaintenanceWindowArgsDict(TypedDict):
-        cron_schedule: pulumi.Input[_builtins.str]
-        require_idleness: pulumi.Input[_builtins.bool]
-elif False:
-    NodeProxyClusterMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class NodeProxyClusterMaintenanceWindowArgsDict(TypedDict):
+    cron_schedule: pulumi.Input[_builtins.str]
+    require_idleness: pulumi.Input[_builtins.bool]
 
 @pulumi.input_type
 class NodeProxyClusterMaintenanceWindowArgs:
@@ -2160,39 +2107,36 @@ class NodeProxyClusterMaintenanceWindowArgs:
         pulumi.set(self, "require_idleness", value)
 
 
-if not MYPY:
-    class NodeRelayArgsDict(TypedDict):
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Device is a read only device name uploaded by the gateway process when it comes online.
-        """
-        gateway_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Location is a read only network location uploaded by the gateway process when it comes online.
-        """
-        maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgsDict']]]]
-        """
-        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
-        """
-elif False:
-    NodeRelayArgsDict: TypeAlias = Mapping[str, Any]
+class NodeRelayArgsDict(TypedDict):
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Device is a read only device name uploaded by the gateway process when it comes online.
+    """
+    gateway_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
+    """
+    location: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Location is a read only network location uploaded by the gateway process when it comes online.
+    """
+    maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgsDict']]]]
+    """
+    Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+    """
 
 @pulumi.input_type
 class NodeRelayArgs:
@@ -2325,12 +2269,9 @@ class NodeRelayArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class NodeRelayMaintenanceWindowArgsDict(TypedDict):
-        cron_schedule: pulumi.Input[_builtins.str]
-        require_idleness: pulumi.Input[_builtins.bool]
-elif False:
-    NodeRelayMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class NodeRelayMaintenanceWindowArgsDict(TypedDict):
+    cron_schedule: pulumi.Input[_builtins.str]
+    require_idleness: pulumi.Input[_builtins.bool]
 
 @pulumi.input_type
 class NodeRelayMaintenanceWindowArgs:
@@ -2359,62 +2300,59 @@ class NodeRelayMaintenanceWindowArgs:
         pulumi.set(self, "require_idleness", value)
 
 
-if not MYPY:
-    class ResourceAerospikeArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_services_alternate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, uses UseServicesAlternates directive for Aerospike connection
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAerospikeArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAerospikeArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_services_alternate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, uses UseServicesAlternates directive for Aerospike connection
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAerospikeArgs:
@@ -2629,86 +2567,83 @@ class ResourceAerospikeArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAksArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAksArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAksArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAksArgs:
@@ -3018,62 +2953,59 @@ class ResourceAksArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAksBasicAuthArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAksBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAksBasicAuthArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAksBasicAuthArgs:
@@ -3287,79 +3219,76 @@ class ResourceAksBasicAuthArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAksServiceAccountArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API token to authenticate with.
-        * kubernetes_user_impersonation:
-        """
-elif False:
-    ResourceAksServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAksServiceAccountArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API token to authenticate with.
+    * kubernetes_user_impersonation:
+    """
 
 @pulumi.input_type
 class ResourceAksServiceAccountArgs:
@@ -3639,59 +3568,56 @@ class ResourceAksServiceAccountArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ResourceAksServiceAccountUserImpersonationArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API token to authenticate with.
-        * kubernetes_user_impersonation:
-        """
-elif False:
-    ResourceAksServiceAccountUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAksServiceAccountUserImpersonationArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API token to authenticate with.
+    * kubernetes_user_impersonation:
+    """
 
 @pulumi.input_type
 class ResourceAksServiceAccountUserImpersonationArgs:
@@ -3891,66 +3817,63 @@ class ResourceAksServiceAccountUserImpersonationArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ResourceAksUserImpersonationArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAksUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAksUserImpersonationArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAksUserImpersonationArgs:
@@ -4180,98 +4103,95 @@ class ResourceAksUserImpersonationArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEksArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster to connect to.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAmazonEksArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEksArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster to connect to.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEksArgs:
@@ -4628,90 +4548,87 @@ class ResourceAmazonEksArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEksInstanceProfileArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster to connect to.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAmazonEksInstanceProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEksInstanceProfileArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster to connect to.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEksInstanceProfileArgs:
@@ -5036,70 +4953,67 @@ class ResourceAmazonEksInstanceProfileArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEksInstanceProfileUserImpersonationArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster to connect to.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAmazonEksInstanceProfileUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEksInstanceProfileUserImpersonationArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster to connect to.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
@@ -5344,78 +5258,75 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEksUserImpersonationArgsDict(TypedDict):
-        cluster_name: pulumi.Input[_builtins.str]
-        """
-        The name of the cluster to connect to.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAmazonEksUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEksUserImpersonationArgsDict(TypedDict):
+    cluster_name: pulumi.Input[_builtins.str]
+    """
+    The name of the cluster to connect to.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEksUserImpersonationArgs:
@@ -5692,66 +5603,63 @@ class ResourceAmazonEksUserImpersonationArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEsArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAmazonEsArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEsArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEsArgs:
@@ -5982,62 +5890,59 @@ class ResourceAmazonEsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAmazonEsiamArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-elif False:
-    ResourceAmazonEsiamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonEsiamArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
 
 @pulumi.input_type
 class ResourceAmazonEsiamArgs:
@@ -6251,62 +6156,59 @@ class ResourceAmazonEsiamArgs:
         pulumi.set(self, "tls_required", value)
 
 
-if not MYPY:
-    class ResourceAmazonmqAmqp091ArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAmazonmqAmqp091ArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonmqAmqp091ArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAmazonmqAmqp091Args:
@@ -6521,62 +6423,59 @@ class ResourceAmazonmqAmqp091Args:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAmazonmqAmqpArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAmazonmqAmqpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAmazonmqAmqpArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAmazonmqAmqpArgs:
@@ -6791,66 +6690,63 @@ class ResourceAmazonmqAmqpArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAthenaArgsDict(TypedDict):
-        athena_output: pulumi.Input[_builtins.str]
-        """
-        The AWS S3 output location.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AWS region to connect to.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAthenaArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAthenaArgsDict(TypedDict):
+    athena_output: pulumi.Input[_builtins.str]
+    """
+    The AWS S3 output location.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AWS region to connect to.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAthenaArgs:
@@ -7081,58 +6977,55 @@ class ResourceAthenaArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAthenaIamArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        output: pulumi.Input[_builtins.str]
-        """
-        The AWS S3 output location.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AWS region to connect to.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAthenaIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAthenaIamArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    output: pulumi.Input[_builtins.str]
+    """
+    The AWS S3 output location.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AWS region to connect to.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAthenaIamArgs:
@@ -7331,70 +7224,67 @@ class ResourceAthenaIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAuroraMysqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAuroraMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAuroraMysqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAuroraMysqlArgs:
@@ -7641,66 +7531,63 @@ class ResourceAuroraMysqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAuroraMysqlIamArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAuroraMysqlIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAuroraMysqlIamArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAuroraMysqlIamArgs:
@@ -7930,66 +7817,63 @@ class ResourceAuroraMysqlIamArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAuroraPostgresArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAuroraPostgresArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAuroraPostgresArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAuroraPostgresArgs:
@@ -8219,70 +8103,67 @@ class ResourceAuroraPostgresArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAuroraPostgresIamArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAuroraPostgresIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAuroraPostgresIamArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAuroraPostgresIamArgs:
@@ -8527,62 +8408,59 @@ class ResourceAuroraPostgresIamArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAwsArgsDict(TypedDict):
-        healthcheck_region: pulumi.Input[_builtins.str]
-        """
-        The AWS region healthcheck requests should attempt to connect to.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAwsArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAwsArgsDict(TypedDict):
+    healthcheck_region: pulumi.Input[_builtins.str]
+    """
+    The AWS region healthcheck requests should attempt to connect to.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAwsArgs:
@@ -8797,70 +8675,67 @@ class ResourceAwsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAwsConsoleArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        enable_env_variables: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        session_expiry: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The length of time in seconds console sessions will live before needing to reauthenticate.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAwsConsoleArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAwsConsoleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    enable_env_variables: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    session_expiry: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The length of time in seconds console sessions will live before needing to reauthenticate.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAwsConsoleArgs:
@@ -9106,74 +8981,71 @@ class ResourceAwsConsoleArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAwsConsoleStaticKeyPairArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        session_expiry: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The length of time in seconds console sessions will live before needing to reauthenticate.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAwsConsoleStaticKeyPairArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAwsConsoleStaticKeyPairArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    session_expiry: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The length of time in seconds console sessions will live before needing to reauthenticate.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAwsConsoleStaticKeyPairArgs:
@@ -9435,58 +9307,55 @@ class ResourceAwsConsoleStaticKeyPairArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAwsInstanceProfileArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        enable_env_variables: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceAwsInstanceProfileArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAwsInstanceProfileArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    enable_env_variables: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceAwsInstanceProfileArgs:
@@ -9685,55 +9554,52 @@ class ResourceAwsInstanceProfileArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceAzureArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The application ID to authenticate with.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure AD directory (tenant) ID with which to authenticate.
-        * sql_server_kerberos_ad:
-        """
-elif False:
-    ResourceAzureArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzureArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The application ID to authenticate with.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure AD directory (tenant) ID with which to authenticate.
+    * sql_server_kerberos_ad:
+    """
 
 @pulumi.input_type
 class ResourceAzureArgs:
@@ -9919,55 +9785,52 @@ class ResourceAzureArgs:
         pulumi.set(self, "tenant_id", value)
 
 
-if not MYPY:
-    class ResourceAzureCertificateArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The application ID to authenticate with.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure AD directory (tenant) ID with which to authenticate.
-        * sql_server_kerberos_ad:
-        """
-elif False:
-    ResourceAzureCertificateArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzureCertificateArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The application ID to authenticate with.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure AD directory (tenant) ID with which to authenticate.
+    * sql_server_kerberos_ad:
+    """
 
 @pulumi.input_type
 class ResourceAzureCertificateArgs:
@@ -10153,70 +10016,67 @@ class ResourceAzureCertificateArgs:
         pulumi.set(self, "tenant_id", value)
 
 
-if not MYPY:
-    class ResourceAzureMysqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAzureMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzureMysqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAzureMysqlArgs:
@@ -10463,66 +10323,63 @@ class ResourceAzureMysqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAzureMysqlManagedIdentityArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAzureMysqlManagedIdentityArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzureMysqlManagedIdentityArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAzureMysqlManagedIdentityArgs:
@@ -10753,66 +10610,63 @@ class ResourceAzureMysqlManagedIdentityArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAzurePostgresArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAzurePostgresArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzurePostgresArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAzurePostgresArgs:
@@ -11042,70 +10896,67 @@ class ResourceAzurePostgresArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceAzurePostgresManagedIdentityArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceAzurePostgresManagedIdentityArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceAzurePostgresManagedIdentityArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceAzurePostgresManagedIdentityArgs:
@@ -11351,58 +11202,55 @@ class ResourceAzurePostgresManagedIdentityArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceBigQueryArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The GCP project ID containing the Spanner database.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private key used to authenticate with the server.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceBigQueryArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceBigQueryArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The GCP project ID containing the Spanner database.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private key used to authenticate with the server.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceBigQueryArgs:
@@ -11600,62 +11448,59 @@ class ResourceBigQueryArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceCassandraArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceCassandraArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceCassandraArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceCassandraArgs:
@@ -11870,66 +11715,63 @@ class ResourceCassandraArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceCitusArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceCitusArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceCitusArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceCitusArgs:
@@ -12159,55 +12001,52 @@ class ResourceCitusArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceClickHouseHttpArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The base address of your website without the path.
-        * kubernetes:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceClickHouseHttpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceClickHouseHttpArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The base address of your website without the path.
+    * kubernetes:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceClickHouseHttpArgs:
@@ -12392,66 +12231,63 @@ class ResourceClickHouseHttpArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceClickHouseMySqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceClickHouseMySqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceClickHouseMySqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceClickHouseMySqlArgs:
@@ -12682,66 +12518,63 @@ class ResourceClickHouseMySqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceClickHouseTcpArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceClickHouseTcpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceClickHouseTcpArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceClickHouseTcpArgs:
@@ -12971,70 +12804,67 @@ class ResourceClickHouseTcpArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceClustrixArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceClustrixArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceClustrixArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceClustrixArgs:
@@ -13281,66 +13111,63 @@ class ResourceClustrixArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceCockroachArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceCockroachArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceCockroachArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceCockroachArgs:
@@ -13570,66 +13397,63 @@ class ResourceCockroachArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceCouchbaseDatabaseArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        n1_ql_port: pulumi.Input[_builtins.int]
-        """
-        The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceCouchbaseDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceCouchbaseDatabaseArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    n1_ql_port: pulumi.Input[_builtins.int]
+    """
+    The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceCouchbaseDatabaseArgs:
@@ -13859,55 +13683,52 @@ class ResourceCouchbaseDatabaseArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceCouchbaseWebUiArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The base address of your website without the path.
-        * kubernetes:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceCouchbaseWebUiArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceCouchbaseWebUiArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The base address of your website without the path.
+    * kubernetes:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceCouchbaseWebUiArgs:
@@ -14091,62 +13912,59 @@ class ResourceCouchbaseWebUiArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDb2IArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceDb2IArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDb2IArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceDb2IArgs:
@@ -14360,66 +14178,63 @@ class ResourceDb2IArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDb2LuwArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceDb2LuwArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDb2LuwArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceDb2LuwArgs:
@@ -14649,62 +14464,59 @@ class ResourceDb2LuwArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDocumentDbHostArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceDocumentDbHostArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDocumentDbHostArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceDocumentDbHostArgs:
@@ -14918,54 +14730,51 @@ class ResourceDocumentDbHostArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDocumentDbHostIamArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceDocumentDbHostIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDocumentDbHostIamArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceDocumentDbHostIamArgs:
@@ -15147,62 +14956,59 @@ class ResourceDocumentDbHostIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceDocumentDbReplicaSetArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to connect to a replica instead of the primary node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceDocumentDbReplicaSetArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDocumentDbReplicaSetArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to connect to a replica instead of the primary node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceDocumentDbReplicaSetArgs:
@@ -15416,54 +15222,51 @@ class ResourceDocumentDbReplicaSetArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDocumentDbReplicaSetIamArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to connect to a replica instead of the primary node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceDocumentDbReplicaSetIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDocumentDbReplicaSetIamArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to connect to a replica instead of the primary node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceDocumentDbReplicaSetIamArgs:
@@ -15645,58 +15448,55 @@ class ResourceDocumentDbReplicaSetIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceDruidArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceDruidArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDruidArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceDruidArgs:
@@ -15895,66 +15695,63 @@ class ResourceDruidArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceDynamoDbArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceDynamoDbArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDynamoDbArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceDynamoDbArgs:
@@ -16184,58 +15981,55 @@ class ResourceDynamoDbArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceDynamoDbiamArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceDynamoDbiamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceDynamoDbiamArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceDynamoDbiamArgs:
@@ -16433,62 +16227,59 @@ class ResourceDynamoDbiamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceElasticArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceElasticArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceElasticArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceElasticArgs:
@@ -16703,62 +16494,59 @@ class ResourceElasticArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceElasticacheRedisArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceElasticacheRedisArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceElasticacheRedisArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceElasticacheRedisArgs:
@@ -16973,70 +16761,67 @@ class ResourceElasticacheRedisArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceElasticacheRedisIamArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceElasticacheRedisIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceElasticacheRedisIamArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceElasticacheRedisIamArgs:
@@ -17282,71 +17067,68 @@ class ResourceElasticacheRedisIamArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceEntraIdArgsDict(TypedDict):
-        identity_set_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        tenant_id: pulumi.Input[_builtins.str]
-        """
-        The Azure AD directory (tenant) ID with which to authenticate.
-        * sql_server_kerberos_ad:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        group_names: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        comma separated list of group names to filter by. Supports wildcards (*)
-        """
-        management_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The management group ID to authenticate scope Privileges to.
-        """
-        privilege_levels: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The privilege levels specify which Groups are managed externally
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        resource_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        filters discovered groups to the specified Resource Group
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        subscription_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subscription ID to authenticate scope Privileges to.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceEntraIdArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceEntraIdArgsDict(TypedDict):
+    identity_set_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    tenant_id: pulumi.Input[_builtins.str]
+    """
+    The Azure AD directory (tenant) ID with which to authenticate.
+    * sql_server_kerberos_ad:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    group_names: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    comma separated list of group names to filter by. Supports wildcards (*)
+    """
+    management_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The management group ID to authenticate scope Privileges to.
+    """
+    privilege_levels: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The privilege levels specify which Groups are managed externally
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    resource_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    filters discovered groups to the specified Resource Group
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    subscription_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The subscription ID to authenticate scope Privileges to.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceEntraIdArgs:
@@ -17594,50 +17376,47 @@ class ResourceEntraIdArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGcpArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        scopes: pulumi.Input[_builtins.str]
-        """
-        Space separated scopes that this login should assume into when authenticating.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        keyfile: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account keyfile to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGcpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGcpArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    scopes: pulumi.Input[_builtins.str]
+    """
+    Space separated scopes that this login should assume into when authenticating.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    keyfile: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account keyfile to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGcpArgs:
@@ -17804,63 +17583,60 @@ class ResourceGcpArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGcpConsoleArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        workforce_pool_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
-        """
-        workforce_provider_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
-        * google_gke:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        session_expiry: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The length of time in seconds console sessions will live before needing to reauthenticate.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGcpConsoleArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGcpConsoleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    workforce_pool_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+    """
+    workforce_provider_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+    * google_gke:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    session_expiry: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The length of time in seconds console sessions will live before needing to reauthenticate.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGcpConsoleArgs:
@@ -18075,71 +17851,68 @@ class ResourceGcpConsoleArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGcpwifArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        scopes: pulumi.Input[_builtins.str]
-        """
-        Space separated scopes that this login should assume into when authenticating.
-        """
-        workforce_pool_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
-        """
-        workforce_provider_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
-        * google_gke:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        session_expiry: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The length of time in seconds console sessions will live before needing to reauthenticate.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGcpwifArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGcpwifArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    scopes: pulumi.Input[_builtins.str]
+    """
+    Space separated scopes that this login should assume into when authenticating.
+    """
+    workforce_pool_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+    """
+    workforce_provider_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+    * google_gke:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    session_expiry: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The length of time in seconds console sessions will live before needing to reauthenticate.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGcpwifArgs:
@@ -18386,78 +18159,75 @@ class ResourceGcpwifArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGoogleGkeArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        service_account_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account key to authenticate with.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGoogleGkeArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGoogleGkeArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    service_account_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account key to authenticate with.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGoogleGkeArgs:
@@ -18736,58 +18506,55 @@ class ResourceGoogleGkeArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGoogleGkeUserImpersonationArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        service_account_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service account key to authenticate with.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGoogleGkeUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGoogleGkeUserImpersonationArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    service_account_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The service account key to authenticate with.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGoogleGkeUserImpersonationArgs:
@@ -18986,66 +18753,63 @@ class ResourceGoogleGkeUserImpersonationArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGoogleSpannerArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        instance: pulumi.Input[_builtins.str]
-        """
-        The Spanner instance ID within the GCP project.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        project: pulumi.Input[_builtins.str]
-        """
-        The GCP project ID containing the Spanner database.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        service_account_to_impersonate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceGoogleSpannerArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGoogleSpannerArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    instance: pulumi.Input[_builtins.str]
+    """
+    The Spanner instance ID within the GCP project.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    project: pulumi.Input[_builtins.str]
+    """
+    The GCP project ID containing the Spanner database.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    service_account_to_impersonate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional service account email to impersonate. When set, the relay's Application Default Credentials will impersonate this service account to access Spanner. This allows role separation where the relay uses one service account but operates as another.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceGoogleSpannerArgs:
@@ -19273,66 +19037,63 @@ class ResourceGoogleSpannerArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceGreenplumArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceGreenplumArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceGreenplumArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceGreenplumArgs:
@@ -19562,67 +19323,64 @@ class ResourceGreenplumArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceHttpAuthArgsDict(TypedDict):
-        healthcheck_path: pulumi.Input[_builtins.str]
-        """
-        This path will be used to check the health of your site.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The base address of your website without the path.
-        * kubernetes:
-        """
-        auth_header: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The content to set as the authorization header.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        default_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Automatically redirect to this path upon connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Header names (e.g. Authorization), to omit from logs.
-        """
-        host_override: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host header will be overwritten with this field if provided.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceHttpAuthArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceHttpAuthArgsDict(TypedDict):
+    healthcheck_path: pulumi.Input[_builtins.str]
+    """
+    This path will be used to check the health of your site.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The base address of your website without the path.
+    * kubernetes:
+    """
+    auth_header: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The content to set as the authorization header.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    default_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Automatically redirect to this path upon connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Header names (e.g. Authorization), to omit from logs.
+    """
+    host_override: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host header will be overwritten with this field if provided.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceHttpAuthArgs:
@@ -19853,71 +19611,68 @@ class ResourceHttpAuthArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceHttpBasicAuthArgsDict(TypedDict):
-        healthcheck_path: pulumi.Input[_builtins.str]
-        """
-        This path will be used to check the health of your site.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The base address of your website without the path.
-        * kubernetes:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        default_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Automatically redirect to this path upon connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Header names (e.g. Authorization), to omit from logs.
-        """
-        host_override: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host header will be overwritten with this field if provided.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceHttpBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceHttpBasicAuthArgsDict(TypedDict):
+    healthcheck_path: pulumi.Input[_builtins.str]
+    """
+    This path will be used to check the health of your site.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The base address of your website without the path.
+    * kubernetes:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    default_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Automatically redirect to this path upon connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Header names (e.g. Authorization), to omit from logs.
+    """
+    host_override: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host header will be overwritten with this field if provided.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceHttpBasicAuthArgs:
@@ -20164,63 +19919,60 @@ class ResourceHttpBasicAuthArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceHttpNoAuthArgsDict(TypedDict):
-        healthcheck_path: pulumi.Input[_builtins.str]
-        """
-        This path will be used to check the health of your site.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The base address of your website without the path.
-        * kubernetes:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        default_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Automatically redirect to this path upon connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Header names (e.g. Authorization), to omit from logs.
-        """
-        host_override: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The host header will be overwritten with this field if provided.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceHttpNoAuthArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceHttpNoAuthArgsDict(TypedDict):
+    healthcheck_path: pulumi.Input[_builtins.str]
+    """
+    This path will be used to check the health of your site.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The base address of your website without the path.
+    * kubernetes:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    default_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Automatically redirect to this path upon connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    headers_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Header names (e.g. Authorization), to omit from logs.
+    """
+    host_override: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The host header will be overwritten with this field if provided.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceHttpNoAuthArgs:
@@ -20435,86 +20187,83 @@ class ResourceHttpNoAuthArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceKubernetesArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceKubernetesArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceKubernetesArgs:
@@ -20824,62 +20573,59 @@ class ResourceKubernetesArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceKubernetesBasicAuthArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceKubernetesBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesBasicAuthArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceKubernetesBasicAuthArgs:
@@ -21093,70 +20839,67 @@ class ResourceKubernetesBasicAuthArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceKubernetesPodIdentityArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceKubernetesPodIdentityArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesPodIdentityArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceKubernetesPodIdentityArgs:
@@ -21404,79 +21147,76 @@ class ResourceKubernetesPodIdentityArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceKubernetesServiceAccountArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        discovery_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API token to authenticate with.
-        * kubernetes_user_impersonation:
-        """
-elif False:
-    ResourceKubernetesServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesServiceAccountArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_resource_role_bypass: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    discovery_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API token to authenticate with.
+    * kubernetes_user_impersonation:
+    """
 
 @pulumi.input_type
 class ResourceKubernetesServiceAccountArgs:
@@ -21756,59 +21496,56 @@ class ResourceKubernetesServiceAccountArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ResourceKubernetesServiceAccountUserImpersonationArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The API token to authenticate with.
-        * kubernetes_user_impersonation:
-        """
-elif False:
-    ResourceKubernetesServiceAccountUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesServiceAccountUserImpersonationArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The API token to authenticate with.
+    * kubernetes_user_impersonation:
+    """
 
 @pulumi.input_type
 class ResourceKubernetesServiceAccountUserImpersonationArgs:
@@ -22008,66 +21745,63 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class ResourceKubernetesUserImpersonationArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceKubernetesUserImpersonationArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceKubernetesUserImpersonationArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    healthcheck_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceKubernetesUserImpersonationArgs:
@@ -22297,70 +22031,67 @@ class ResourceKubernetesUserImpersonationArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceMariaArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMariaArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMariaArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMariaArgs:
@@ -22607,70 +22338,67 @@ class ResourceMariaArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMcpArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        oauth_auth_endpoint: pulumi.Input[_builtins.str]
-        """
-        The OAuth 2.0 authorization endpoint URL.
-        """
-        oauth_token_endpoint: pulumi.Input[_builtins.str]
-        """
-        The OAuth 2.0 token endpoint URL.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        The username to authenticate with.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        oauth_register_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The OAuth 2.0 dynamic client registration endpoint URL.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceMcpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMcpArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    oauth_auth_endpoint: pulumi.Input[_builtins.str]
+    """
+    The OAuth 2.0 authorization endpoint URL.
+    """
+    oauth_token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The OAuth 2.0 token endpoint URL.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The username to authenticate with.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    oauth_register_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The OAuth 2.0 dynamic client registration endpoint URL.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceMcpArgs:
@@ -22914,50 +22642,47 @@ class ResourceMcpArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceMemcachedArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceMemcachedArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMemcachedArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceMemcachedArgs:
@@ -23124,70 +22849,67 @@ class ResourceMemcachedArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceMemsqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMemsqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMemsqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMemsqlArgs:
@@ -23434,66 +23156,63 @@ class ResourceMemsqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMongoHostArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMongoHostArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMongoHostArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMongoHostArgs:
@@ -23723,66 +23442,63 @@ class ResourceMongoHostArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMongoLegacyHostArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMongoLegacyHostArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMongoLegacyHostArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMongoLegacyHostArgs:
@@ -24012,70 +23728,67 @@ class ResourceMongoLegacyHostArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMongoLegacyReplicasetArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to connect to a replica instead of the primary node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMongoLegacyReplicasetArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMongoLegacyReplicasetArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to connect to a replica instead of the primary node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMongoLegacyReplicasetArgs:
@@ -24321,70 +24034,67 @@ class ResourceMongoLegacyReplicasetArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMongoReplicaSetArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to connect to a replica instead of the primary node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMongoReplicaSetArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMongoReplicaSetArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    connect_to_replica: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to connect to a replica instead of the primary node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMongoReplicaSetArgs:
@@ -24630,62 +24340,59 @@ class ResourceMongoReplicaSetArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMongoShardedClusterArgsDict(TypedDict):
-        auth_database: pulumi.Input[_builtins.str]
-        """
-        The authentication database to use.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMongoShardedClusterArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMongoShardedClusterArgsDict(TypedDict):
+    auth_database: pulumi.Input[_builtins.str]
+    """
+    The authentication database to use.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMongoShardedClusterArgs:
@@ -24899,86 +24606,83 @@ class ResourceMongoShardedClusterArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMtlsMysqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        server_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Server name for TLS verification (unverified by StrongDM if empty)
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMtlsMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMtlsMysqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    server_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Server name for TLS verification (unverified by StrongDM if empty)
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMtlsMysqlArgs:
@@ -25289,82 +24993,79 @@ class ResourceMtlsMysqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMtlsPostgresArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CA to authenticate TLS connections with.
-        """
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate to authenticate TLS connections with.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key to authenticate TLS connections with.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        server_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Server name for TLS verification (unverified by StrongDM if empty)
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMtlsPostgresArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMtlsPostgresArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    certificate_authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CA to authenticate TLS connections with.
+    """
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate to authenticate TLS connections with.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key to authenticate TLS connections with.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    server_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Server name for TLS verification (unverified by StrongDM if empty)
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMtlsPostgresArgs:
@@ -25658,70 +25359,67 @@ class ResourceMtlsPostgresArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceMysqlArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceMysqlArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceMysqlArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceMysqlArgs:
@@ -25968,50 +25666,47 @@ class ResourceMysqlArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceNeptuneArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceNeptuneArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceNeptuneArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceNeptuneArgs:
@@ -26178,70 +25873,67 @@ class ResourceNeptuneArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceNeptuneIamArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Access Key ID to use to authenticate.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Secret Access Key to use to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceNeptuneIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceNeptuneIamArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Access Key ID to use to authenticate.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Secret Access Key to use to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceNeptuneIamArgs:
@@ -26487,58 +26179,55 @@ class ResourceNeptuneIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceOktaGroupsArgsDict(TypedDict):
-        domain: pulumi.Input[_builtins.str]
-        """
-        Represents the Okta Org Client URL
-        """
-        identity_set_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, configures discovery of the Okta org to be run from a node.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        group_names: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        comma separated list of group names to filter by. Supports wildcards (*)
-        """
-        privilege_levels: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The privilege levels specify which Groups are managed externally
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceOktaGroupsArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceOktaGroupsArgsDict(TypedDict):
+    domain: pulumi.Input[_builtins.str]
+    """
+    Represents the Okta Org Client URL
+    """
+    identity_set_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    discovery_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, configures discovery of the Okta org to be run from a node.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    group_names: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    comma separated list of group names to filter by. Supports wildcards (*)
+    """
+    privilege_levels: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The privilege levels specify which Groups are managed externally
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceOktaGroupsArgs:
@@ -26736,66 +26425,63 @@ class ResourceOktaGroupsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceOracleArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceOracleArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceOracleArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceOracleArgs:
@@ -27024,66 +26710,63 @@ class ResourceOracleArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceOracleNneArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceOracleNneArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceOracleNneArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceOracleNneArgs:
@@ -27312,66 +26995,63 @@ class ResourceOracleNneArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourcePostgresArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourcePostgresArgsDict: TypeAlias = Mapping[str, Any]
+class ResourcePostgresArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourcePostgresArgs:
@@ -27601,66 +27281,63 @@ class ResourcePostgresArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourcePrestoArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourcePrestoArgsDict: TypeAlias = Mapping[str, Any]
+class ResourcePrestoArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourcePrestoArgs:
@@ -27890,62 +27567,59 @@ class ResourcePrestoArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRabbitmqAmqp091ArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRabbitmqAmqp091ArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRabbitmqAmqp091ArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRabbitmqAmqp091Args:
@@ -28160,50 +27834,47 @@ class ResourceRabbitmqAmqp091Args:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRawTcpArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceRawTcpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRawTcpArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceRawTcpArgs:
@@ -28370,74 +28041,71 @@ class ResourceRawTcpArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceRdpArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        downgrade_nla_connections: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRdpArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRdpArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    downgrade_nla_connections: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRdpArgs:
@@ -28700,78 +28368,75 @@ class ResourceRdpArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRdpCertArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        dc_hostnames: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        server_fqdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
-        """
-        sid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRdpCertArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRdpCertArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    dc_hostnames: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    server_fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+    """
+    sid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRdpCertArgs:
@@ -29050,70 +28715,67 @@ class ResourceRdpCertArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRdsPostgresIamArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRdsPostgresIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRdsPostgresIamArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRdsPostgresIamArgs:
@@ -29358,62 +29020,59 @@ class ResourceRdsPostgresIamArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRedisArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRedisArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRedisArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRedisArgs:
@@ -29628,62 +29287,59 @@ class ResourceRedisArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRedisClusterArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRedisClusterArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRedisClusterArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRedisClusterArgs:
@@ -29898,66 +29554,63 @@ class ResourceRedisClusterArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRedshiftArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceRedshiftArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRedshiftArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceRedshiftArgs:
@@ -30187,70 +29840,67 @@ class ResourceRedshiftArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceRedshiftIamArgsDict(TypedDict):
-        cluster_id: pulumi.Input[_builtins.str]
-        """
-        Cluster Identified of Redshift cluster
-        """
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceRedshiftIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRedshiftIamArgsDict(TypedDict):
+    cluster_id: pulumi.Input[_builtins.str]
+    """
+    Cluster Identified of Redshift cluster
+    """
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceRedshiftIamArgs:
@@ -30494,71 +30144,68 @@ class ResourceRedshiftIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceRedshiftServerlessIamArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to connect to.
-        """
-        workgroup: pulumi.Input[_builtins.str]
-        """
-        Workgroup name in the serverless Redshift
-        * single_store:
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceRedshiftServerlessIamArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceRedshiftServerlessIamArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to connect to.
+    """
+    workgroup: pulumi.Input[_builtins.str]
+    """
+    Workgroup name in the serverless Redshift
+    * single_store:
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    role_assumption_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceRedshiftServerlessIamArgs:
@@ -30804,70 +30451,67 @@ class ResourceRedshiftServerlessIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceSingleStoreArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, appends the hostname to the username when hitting a database.azure.com address
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSingleStoreArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSingleStoreArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    require_native_auth: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    use_azure_single_server_usernames: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, appends the hostname to the username when hitting a database.azure.com address
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSingleStoreArgs:
@@ -31114,66 +30758,63 @@ class ResourceSingleStoreArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSnowflakeArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private key used to authenticate with the server.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Schema to use to direct initial requests.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSnowflakeArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSnowflakeArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private key used to authenticate with the server.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Schema to use to direct initial requests.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSnowflakeArgs:
@@ -31403,54 +31044,51 @@ class ResourceSnowflakeArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSnowsightArgsDict(TypedDict):
-        healthcheck_username: pulumi.Input[_builtins.str]
-        """
-        The StrongDM user email to use for healthchecks.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        subdomain: pulumi.Input[_builtins.str]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        connect_to_default: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, select the ACS with isDefault=true
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        saml_metadata: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Metadata for your snowflake IDP integration
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    ResourceSnowsightArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSnowsightArgsDict(TypedDict):
+    healthcheck_username: pulumi.Input[_builtins.str]
+    """
+    The StrongDM user email to use for healthchecks.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    subdomain: pulumi.Input[_builtins.str]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    connect_to_default: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, select the ACS with isDefault=true
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    saml_metadata: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Metadata for your snowflake IDP integration
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class ResourceSnowsightArgs:
@@ -31632,74 +31270,71 @@ class ResourceSnowsightArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ResourceSqlServerArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Schema to use to direct initial requests.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSqlServerArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSqlServerArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Schema to use to direct initial requests.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSqlServerArgs:
@@ -31962,79 +31597,76 @@ class ResourceSqlServerArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSqlServerAzureAdArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        client_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure AD application (client) ID with which to authenticate.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Schema to use to direct initial requests.
-        """
-        secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure AD client secret (application password) with which to authenticate.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Azure AD directory (tenant) ID with which to authenticate.
-        * sql_server_kerberos_ad:
-        """
-elif False:
-    ResourceSqlServerAzureAdArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSqlServerAzureAdArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    client_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure AD application (client) ID with which to authenticate.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Schema to use to direct initial requests.
+    """
+    secret: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure AD client secret (application password) with which to authenticate.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tenant_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Azure AD directory (tenant) ID with which to authenticate.
+    * sql_server_kerberos_ad:
+    """
 
 @pulumi.input_type
 class ResourceSqlServerAzureAdArgs:
@@ -32315,86 +31947,83 @@ class ResourceSqlServerAzureAdArgs:
         pulumi.set(self, "tenant_id", value)
 
 
-if not MYPY:
-    class ResourceSqlServerKerberosAdArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        server_spn: pulumi.Input[_builtins.str]
-        """
-        The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-        """
-        allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        database: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        keytab: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
-        """
-        krb_config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
-        """
-        override_database: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        realm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Active Directory domain (realm) to which the configured username belongs.
-        """
-        schema: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Schema to use to direct initial requests.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSqlServerKerberosAdArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSqlServerKerberosAdArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    server_spn: pulumi.Input[_builtins.str]
+    """
+    The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+    """
+    allow_deprecated_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    database: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    keytab: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+    """
+    krb_config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+    """
+    override_database: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    realm: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Active Directory domain (realm) to which the configured username belongs.
+    """
+    schema: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Schema to use to direct initial requests.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSqlServerKerberosAdArgs:
@@ -32704,74 +32333,71 @@ class ResourceSqlServerKerberosAdArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSshArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        key_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key type to use e.g. rsa-2048 or ed25519
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether port forwarding is allowed through this server.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public key to append to a server's authorized keys. This will be generated after resource creation.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSshArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSshArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    key_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key type to use e.g. rsa-2048 or ed25519
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether port forwarding is allowed through this server.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public key to append to a server's authorized keys. This will be generated after resource creation.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSshArgs:
@@ -33033,78 +32659,75 @@ class ResourceSshArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSshCertArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        key_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key type to use e.g. rsa-2048 or ed25519
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether port forwarding is allowed through this server.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSshCertArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSshCertArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    key_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key type to use e.g. rsa-2048 or ed25519
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether port forwarding is allowed through this server.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSshCertArgs:
@@ -33382,78 +33005,75 @@ class ResourceSshCertArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSshCustomerKeyArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        """
-        identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the identity set to use for identity connections.
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether port forwarding is allowed through this server.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        private_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private key used to authenticate with the server.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSshCustomerKeyArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSshCustomerKeyArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    identity_alias_healthcheck_username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    """
+    identity_set_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the identity set to use for identity connections.
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether port forwarding is allowed through this server.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private key used to authenticate with the server.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSshCustomerKeyArgs:
@@ -33731,70 +33351,67 @@ class ResourceSshCustomerKeyArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSshPasswordArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        lock_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether port forwarding is allowed through this server.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSshPasswordArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSshPasswordArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    allow_deprecated_key_exchanges: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    lock_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether port forwarding is allowed through this server.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSshPasswordArgs:
@@ -34040,58 +33657,55 @@ class ResourceSshPasswordArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSybaseArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSybaseArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSybaseArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSybaseArgs:
@@ -34290,58 +33904,55 @@ class ResourceSybaseArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceSybaseIqArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceSybaseIqArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceSybaseIqArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceSybaseIqArgs:
@@ -34540,58 +34151,55 @@ class ResourceSybaseIqArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceTeradataArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceTeradataArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceTeradataArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceTeradataArgs:
@@ -34790,62 +34398,59 @@ class ResourceTeradataArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceTrinoArgsDict(TypedDict):
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls_required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set, TLS must be used to connect to this resource.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceTrinoArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceTrinoArgsDict(TypedDict):
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls_required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set, TLS must be used to connect to this resource.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceTrinoArgs:
@@ -35060,62 +34665,59 @@ class ResourceTrinoArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class ResourceVerticaArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        The host to dial to initiate a connection from the egress node to this resource.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Resource.
-        """
-        bind_interface: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
-        """
-        egress_filter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A filter applied to the routing logic to pin datasource to nodes.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password to authenticate with.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to dial to initiate a connection from the egress node to this resource.
-        """
-        port_override: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        """
-        proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the proxy cluster for this resource, if any.
-        """
-        secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the secret store containing credentials for this resource, if any.
-        """
-        subdomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The username to authenticate with.
-        """
-elif False:
-    ResourceVerticaArgsDict: TypeAlias = Mapping[str, Any]
+class ResourceVerticaArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    The host to dial to initiate a connection from the egress node to this resource.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Resource.
+    """
+    bind_interface: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    """
+    egress_filter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A filter applied to the routing logic to pin datasource to nodes.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password to authenticate with.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to dial to initiate a connection from the egress node to this resource.
+    """
+    port_override: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    """
+    proxy_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the proxy cluster for this resource, if any.
+    """
+    secret_store_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the secret store containing credentials for this resource, if any.
+    """
+    subdomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The username to authenticate with.
+    """
 
 @pulumi.input_type
 class ResourceVerticaArgs:
@@ -35329,91 +34931,88 @@ class ResourceVerticaArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class SecretEngineActiveDirectoryArgsDict(TypedDict):
-        binddn: pulumi.Input[_builtins.str]
-        """
-        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
-        """
-        bindpass: pulumi.Input[_builtins.str]
-        """
-        Password to use along with binddn when performing user search.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Secret Engine.
-        """
-        secret_store_id: pulumi.Input[_builtins.str]
-        """
-        Backing secret store identifier
-        """
-        secret_store_root_path: pulumi.Input[_builtins.str]
-        """
-        Backing Secret Store root path where managed secrets are going to be stored
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The LDAP server to connect to.
-        """
-        after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
-        """
-        certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
-        """
-        connection_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
-        """
-        do_not_validate_timestamps: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
-        """
-        insecure_tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, skips LDAP server SSL certificate verification - insecure, use with caution!
-        """
-        key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An interval of public/private key rotation for secret engine in days
-        """
-        max_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public key linked with a secret engine
-        """
-        request_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Timeout, in seconds, for the connection when making requests against the server before returning back an error.
-        """
-        start_tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, issues a StartTLS command after establishing an unencrypted connection.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        """
-        upndomain: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain (userPrincipalDomain) used to construct a UPN string for authentication.
-        """
-        userdn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
-        * key_value:
-        """
-elif False:
-    SecretEngineActiveDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+class SecretEngineActiveDirectoryArgsDict(TypedDict):
+    binddn: pulumi.Input[_builtins.str]
+    """
+    Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+    """
+    bindpass: pulumi.Input[_builtins.str]
+    """
+    Password to use along with binddn when performing user search.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Secret Engine.
+    """
+    secret_store_id: pulumi.Input[_builtins.str]
+    """
+    Backing secret store identifier
+    """
+    secret_store_root_path: pulumi.Input[_builtins.str]
+    """
+    Backing Secret Store root path where managed secrets are going to be stored
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The LDAP server to connect to.
+    """
+    after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    """
+    certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+    """
+    connection_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+    """
+    do_not_validate_timestamps: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+    """
+    insecure_tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+    """
+    key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An interval of public/private key rotation for secret engine in days
+    """
+    max_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Public key linked with a secret engine
+    """
+    request_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+    """
+    start_tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, issues a StartTLS command after establishing an unencrypted connection.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    """
+    upndomain: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+    """
+    userdn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+    * key_value:
+    """
 
 @pulumi.input_type
 class SecretEngineActiveDirectoryArgs:
@@ -35738,34 +35337,31 @@ class SecretEngineActiveDirectoryArgs:
         pulumi.set(self, "userdn", value)
 
 
-if not MYPY:
-    class SecretEngineKeyValueArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Secret Engine.
-        """
-        secret_store_id: pulumi.Input[_builtins.str]
-        """
-        Backing secret store identifier
-        """
-        secret_store_root_path: pulumi.Input[_builtins.str]
-        """
-        Backing Secret Store root path where managed secrets are going to be stored
-        """
-        key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An interval of public/private key rotation for secret engine in days
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public key linked with a secret engine
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretEngineKeyValueArgsDict: TypeAlias = Mapping[str, Any]
+class SecretEngineKeyValueArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Secret Engine.
+    """
+    secret_store_id: pulumi.Input[_builtins.str]
+    """
+    Backing secret store identifier
+    """
+    secret_store_root_path: pulumi.Input[_builtins.str]
+    """
+    Backing Secret Store root path where managed secrets are going to be stored
+    """
+    key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An interval of public/private key rotation for secret engine in days
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Public key linked with a secret engine
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretEngineKeyValueArgs:
@@ -35867,70 +35463,67 @@ class SecretEngineKeyValueArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretEngineMysqlSecretEngineArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database is the database to verify credential against.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname is the hostname or IP address of the SQL Server.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Secret Engine.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        Password is the password to connect to the SQL Server server.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port is the port number of the SQL Server server.
-        """
-        secret_store_id: pulumi.Input[_builtins.str]
-        """
-        Backing secret store identifier
-        """
-        secret_store_root_path: pulumi.Input[_builtins.str]
-        """
-        Backing Secret Store root path where managed secrets are going to be stored
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username is the username to connect to the SQL Server.
-        """
-        after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
-        """
-        key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An interval of public/private key rotation for secret engine in days
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public key linked with a secret engine
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        TLS enables TLS/SSL when connecting to the SQL Server server.
-        """
-        tls_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        TLS disable certificate verification
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        """
-elif False:
-    SecretEngineMysqlSecretEngineArgsDict: TypeAlias = Mapping[str, Any]
+class SecretEngineMysqlSecretEngineArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database is the database to verify credential against.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname is the hostname or IP address of the SQL Server.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Secret Engine.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password is the password to connect to the SQL Server server.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port is the port number of the SQL Server server.
+    """
+    secret_store_id: pulumi.Input[_builtins.str]
+    """
+    Backing secret store identifier
+    """
+    secret_store_root_path: pulumi.Input[_builtins.str]
+    """
+    Backing Secret Store root path where managed secrets are going to be stored
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username is the username to connect to the SQL Server.
+    """
+    after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    """
+    key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An interval of public/private key rotation for secret engine in days
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Public key linked with a secret engine
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    TLS enables TLS/SSL when connecting to the SQL Server server.
+    """
+    tls_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    TLS disable certificate verification
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    """
 
 @pulumi.input_type
 class SecretEngineMysqlSecretEngineArgs:
@@ -36171,66 +35764,63 @@ class SecretEngineMysqlSecretEngineArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class SecretEnginePostgresSecretEngineArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database is the database to verify credential against.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname is the hostname or IP address of the SQL Server.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Secret Engine.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        Password is the password to connect to the SQL Server server.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port is the port number of the SQL Server server.
-        """
-        secret_store_id: pulumi.Input[_builtins.str]
-        """
-        Backing secret store identifier
-        """
-        secret_store_root_path: pulumi.Input[_builtins.str]
-        """
-        Backing Secret Store root path where managed secrets are going to be stored
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username is the username to connect to the SQL Server.
-        """
-        after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
-        """
-        key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An interval of public/private key rotation for secret engine in days
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public key linked with a secret engine
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        TLS enables TLS/SSL when connecting to the SQL Server server.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        """
-elif False:
-    SecretEnginePostgresSecretEngineArgsDict: TypeAlias = Mapping[str, Any]
+class SecretEnginePostgresSecretEngineArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database is the database to verify credential against.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname is the hostname or IP address of the SQL Server.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Secret Engine.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password is the password to connect to the SQL Server server.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port is the port number of the SQL Server server.
+    """
+    secret_store_id: pulumi.Input[_builtins.str]
+    """
+    Backing secret store identifier
+    """
+    secret_store_root_path: pulumi.Input[_builtins.str]
+    """
+    Backing Secret Store root path where managed secrets are going to be stored
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username is the username to connect to the SQL Server.
+    """
+    after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    """
+    key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An interval of public/private key rotation for secret engine in days
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Public key linked with a secret engine
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    TLS enables TLS/SSL when connecting to the SQL Server server.
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    """
 
 @pulumi.input_type
 class SecretEnginePostgresSecretEngineArgs:
@@ -36455,70 +36045,67 @@ class SecretEnginePostgresSecretEngineArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class SecretEngineSqlserverSecretEngineArgsDict(TypedDict):
-        database: pulumi.Input[_builtins.str]
-        """
-        Database is the database to verify credential against.
-        """
-        hostname: pulumi.Input[_builtins.str]
-        """
-        Hostname is the hostname or IP address of the SQL Server.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the Secret Engine.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        Password is the password to connect to the SQL Server server.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        Port is the port number of the SQL Server server.
-        """
-        secret_store_id: pulumi.Input[_builtins.str]
-        """
-        Backing secret store identifier
-        """
-        secret_store_root_path: pulumi.Input[_builtins.str]
-        """
-        Backing Secret Store root path where managed secrets are going to be stored
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        Username is the username to connect to the SQL Server.
-        """
-        after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
-        """
-        key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        An interval of public/private key rotation for secret engine in days
-        """
-        public_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public key linked with a secret engine
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        TLS enables TLS/SSL when connecting to the SQL Server server.
-        """
-        tls_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        TLS disable certificate verification
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        """
-elif False:
-    SecretEngineSqlserverSecretEngineArgsDict: TypeAlias = Mapping[str, Any]
+class SecretEngineSqlserverSecretEngineArgsDict(TypedDict):
+    database: pulumi.Input[_builtins.str]
+    """
+    Database is the database to verify credential against.
+    """
+    hostname: pulumi.Input[_builtins.str]
+    """
+    Hostname is the hostname or IP address of the SQL Server.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the Secret Engine.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Password is the password to connect to the SQL Server server.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port is the port number of the SQL Server server.
+    """
+    secret_store_id: pulumi.Input[_builtins.str]
+    """
+    Backing secret store identifier
+    """
+    secret_store_root_path: pulumi.Input[_builtins.str]
+    """
+    Backing Secret Store root path where managed secrets are going to be stored
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Username is the username to connect to the SQL Server.
+    """
+    after_read_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    """
+    key_rotation_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    An interval of public/private key rotation for secret engine in days
+    """
+    public_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Public key linked with a secret engine
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    TLS enables TLS/SSL when connecting to the SQL Server server.
+    """
+    tls_skip_verify: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    TLS disable certificate verification
+    """
+    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    """
 
 @pulumi.input_type
 class SecretEngineSqlserverSecretEngineArgs:
@@ -36759,22 +36346,19 @@ class SecretEngineSqlserverSecretEngineArgs:
         pulumi.set(self, "ttl", value)
 
 
-if not MYPY:
-    class SecretStoreActiveDirectoryStoreArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreActiveDirectoryStoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreActiveDirectoryStoreArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreActiveDirectoryStoreArgs:
@@ -36829,30 +36413,27 @@ class SecretStoreActiveDirectoryStoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreAwsArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to target e.g. us-east-1
-        """
-        role_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The role to assume after logging in.
-        """
-        role_external_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreAwsArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreAwsArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to target e.g. us-east-1
+    """
+    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The role to assume after logging in.
+    """
+    role_external_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreAwsArgs:
@@ -36939,38 +36520,35 @@ class SecretStoreAwsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreAwsCertX509ArgsDict(TypedDict):
-        ca_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the CA in AWS Private CA
-        """
-        certificate_template_arn: pulumi.Input[_builtins.str]
-        """
-        The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
-        """
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        The AWS region to target e.g. us-east-1
-        """
-        signing_algo: pulumi.Input[_builtins.str]
-        """
-        The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreAwsCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreAwsCertX509ArgsDict(TypedDict):
+    ca_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the CA in AWS Private CA
+    """
+    certificate_template_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+    """
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    The AWS region to target e.g. us-east-1
+    """
+    signing_algo: pulumi.Input[_builtins.str]
+    """
+    The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreAwsCertX509Args:
@@ -37085,23 +36663,20 @@ class SecretStoreAwsCertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreAzureStoreArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        vault_uri: pulumi.Input[_builtins.str]
-        """
-        The URI of the key vault to target e.g. https://myvault.vault.azure.net
-        * cyberark_conjur:
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreAzureStoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreAzureStoreArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    vault_uri: pulumi.Input[_builtins.str]
+    """
+    The URI of the key vault to target e.g. https://myvault.vault.azure.net
+    * cyberark_conjur:
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreAzureStoreArgs:
@@ -37158,22 +36733,19 @@ class SecretStoreAzureStoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreCyberarkConjurArgsDict(TypedDict):
-        app_url: pulumi.Input[_builtins.str]
-        """
-        The URL of the Cyberark instance
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreCyberarkConjurArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreCyberarkConjurArgsDict(TypedDict):
+    app_url: pulumi.Input[_builtins.str]
+    """
+    The URL of the Cyberark instance
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreCyberarkConjurArgs:
@@ -37228,22 +36800,19 @@ class SecretStoreCyberarkConjurArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreCyberarkPamArgsDict(TypedDict):
-        app_url: pulumi.Input[_builtins.str]
-        """
-        The URL of the Cyberark instance
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreCyberarkPamArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreCyberarkPamArgsDict(TypedDict):
+    app_url: pulumi.Input[_builtins.str]
+    """
+    The URL of the Cyberark instance
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreCyberarkPamArgs:
@@ -37298,22 +36867,19 @@ class SecretStoreCyberarkPamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreCyberarkPamExperimentalArgsDict(TypedDict):
-        app_url: pulumi.Input[_builtins.str]
-        """
-        The URL of the Cyberark instance
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreCyberarkPamExperimentalArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreCyberarkPamExperimentalArgsDict(TypedDict):
+    app_url: pulumi.Input[_builtins.str]
+    """
+    The URL of the Cyberark instance
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreCyberarkPamExperimentalArgs:
@@ -37368,27 +36934,24 @@ class SecretStoreCyberarkPamExperimentalArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreDelineaStoreArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of the Delinea instance
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-        tenant_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The tenant name to target
-        * gcp_store:
-        """
-elif False:
-    SecretStoreDelineaStoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreDelineaStoreArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of the Delinea instance
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
+    tenant_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The tenant name to target
+    * gcp_store:
+    """
 
 @pulumi.input_type
 class SecretStoreDelineaStoreArgs:
@@ -37462,38 +37025,35 @@ class SecretStoreDelineaStoreArgs:
         pulumi.set(self, "tenant_name", value)
 
 
-if not MYPY:
-    class SecretStoreGcpCertX509StoreArgsDict(TypedDict):
-        ca_pool_id: pulumi.Input[_builtins.str]
-        """
-        The ID of the target CA pool
-        """
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        location: pulumi.Input[_builtins.str]
-        """
-        The Region for the CA in GCP format e.g. us-west1
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The GCP project ID to target.
-        """
-        ca_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the target CA
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreGcpCertX509StoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreGcpCertX509StoreArgsDict(TypedDict):
+    ca_pool_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the target CA pool
+    """
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    location: pulumi.Input[_builtins.str]
+    """
+    The Region for the CA in GCP format e.g. us-west1
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The GCP project ID to target.
+    """
+    ca_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the target CA
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreGcpCertX509StoreArgs:
@@ -37609,22 +37169,19 @@ class SecretStoreGcpCertX509StoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreGcpStoreArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The GCP project ID to target.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreGcpStoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreGcpStoreArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The GCP project ID to target.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreGcpStoreArgs:
@@ -37679,54 +37236,51 @@ class SecretStoreGcpStoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreKeyfactorSshStoreArgsDict(TypedDict):
-        certificate_file_path: pulumi.Input[_builtins.str]
-        """
-        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
-        """
-        default_certificate_authority_name: pulumi.Input[_builtins.str]
-        """
-        Name of EJBCA certificate authority that will enroll CSR.
-        """
-        default_certificate_profile_name: pulumi.Input[_builtins.str]
-        """
-        Certificate profile name that EJBCA will enroll the CSR with.
-        """
-        default_end_entity_profile_name: pulumi.Input[_builtins.str]
-        """
-        End entity profile that EJBCA will enroll the CSR with.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        ca_file_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
-        """
-        enrollment_code_env_var: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        code used by EJBCA during enrollment. May be left blank if no code is required.
-        """
-        enrollment_username_env_var: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
-        """
-        key_file_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreKeyfactorSshStoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreKeyfactorSshStoreArgsDict(TypedDict):
+    certificate_file_path: pulumi.Input[_builtins.str]
+    """
+    Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+    """
+    default_certificate_authority_name: pulumi.Input[_builtins.str]
+    """
+    Name of EJBCA certificate authority that will enroll CSR.
+    """
+    default_certificate_profile_name: pulumi.Input[_builtins.str]
+    """
+    Certificate profile name that EJBCA will enroll the CSR with.
+    """
+    default_end_entity_profile_name: pulumi.Input[_builtins.str]
+    """
+    End entity profile that EJBCA will enroll the CSR with.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    ca_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+    """
+    enrollment_code_env_var: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    code used by EJBCA during enrollment. May be left blank if no code is required.
+    """
+    enrollment_username_env_var: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+    """
+    key_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreKeyfactorSshStoreArgs:
@@ -37905,54 +37459,51 @@ class SecretStoreKeyfactorSshStoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreKeyfactorX509StoreArgsDict(TypedDict):
-        certificate_file_path: pulumi.Input[_builtins.str]
-        """
-        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
-        """
-        default_certificate_authority_name: pulumi.Input[_builtins.str]
-        """
-        Name of EJBCA certificate authority that will enroll CSR.
-        """
-        default_certificate_profile_name: pulumi.Input[_builtins.str]
-        """
-        Certificate profile name that EJBCA will enroll the CSR with.
-        """
-        default_end_entity_profile_name: pulumi.Input[_builtins.str]
-        """
-        End entity profile that EJBCA will enroll the CSR with.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        ca_file_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
-        """
-        enrollment_code_env_var: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        code used by EJBCA during enrollment. May be left blank if no code is required.
-        """
-        enrollment_username_env_var: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
-        """
-        key_file_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreKeyfactorX509StoreArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreKeyfactorX509StoreArgsDict(TypedDict):
+    certificate_file_path: pulumi.Input[_builtins.str]
+    """
+    Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+    """
+    default_certificate_authority_name: pulumi.Input[_builtins.str]
+    """
+    Name of EJBCA certificate authority that will enroll CSR.
+    """
+    default_certificate_profile_name: pulumi.Input[_builtins.str]
+    """
+    Certificate profile name that EJBCA will enroll the CSR with.
+    """
+    default_end_entity_profile_name: pulumi.Input[_builtins.str]
+    """
+    End entity profile that EJBCA will enroll the CSR with.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    ca_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+    """
+    enrollment_code_env_var: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    code used by EJBCA during enrollment. May be left blank if no code is required.
+    """
+    enrollment_username_env_var: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+    """
+    key_file_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreKeyfactorX509StoreArgs:
@@ -38131,18 +37682,15 @@ class SecretStoreKeyfactorX509StoreArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreStrongVaultArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreStrongVaultArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreStrongVaultArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreStrongVaultArgs:
@@ -38182,26 +37730,23 @@ class SecretStoreStrongVaultArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultApproleArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultApproleArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultApproleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultApproleArgs:
@@ -38272,38 +37817,35 @@ class SecretStoreVaultApproleArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultApproleCertSshArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ssh_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the SSH engine configured with the desired CA
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultApproleCertSshArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultApproleCertSshArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ssh_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the SSH engine configured with the desired CA
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultApproleCertSshArgs:
@@ -38419,38 +37961,35 @@ class SecretStoreVaultApproleCertSshArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultApproleCertX509ArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        pki_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the PKI engine configured with the desired CA
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultApproleCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultApproleCertX509ArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    pki_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the PKI engine configured with the desired CA
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultApproleCertX509Args:
@@ -38566,26 +38105,23 @@ class SecretStoreVaultApproleCertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsEc2ArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsEc2ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsEc2ArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsEc2Args:
@@ -38656,38 +38192,35 @@ class SecretStoreVaultAwsEc2Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsEc2CertSshArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ssh_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the SSH engine configured with the desired CA
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsEc2CertSshArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsEc2CertSshArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ssh_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the SSH engine configured with the desired CA
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsEc2CertSshArgs:
@@ -38803,38 +38336,35 @@ class SecretStoreVaultAwsEc2CertSshArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsEc2CertX509ArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        pki_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the PKI engine configured with the desired CA
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsEc2CertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsEc2CertX509ArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    pki_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the PKI engine configured with the desired CA
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsEc2CertX509Args:
@@ -38950,26 +38480,23 @@ class SecretStoreVaultAwsEc2CertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsIamArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsIamArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsIamArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsIamArgs:
@@ -39040,38 +38567,35 @@ class SecretStoreVaultAwsIamArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsIamCertSshArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ssh_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the SSH engine configured with the desired CA
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsIamCertSshArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsIamCertSshArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ssh_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the SSH engine configured with the desired CA
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsIamCertSshArgs:
@@ -39187,38 +38711,35 @@ class SecretStoreVaultAwsIamCertSshArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultAwsIamCertX509ArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        pki_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the PKI engine configured with the desired CA
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultAwsIamCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultAwsIamCertX509ArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    pki_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the PKI engine configured with the desired CA
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultAwsIamCertX509Args:
@@ -39334,38 +38855,35 @@ class SecretStoreVaultAwsIamCertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTlsArgsDict(TypedDict):
-        client_cert_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client certificate file accessible by a Node
-        """
-        client_key_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client key file accessible by a Node
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A path to a CA file accessible by a Node
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTlsArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTlsArgsDict(TypedDict):
+    client_cert_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client certificate file accessible by a Node
+    """
+    client_key_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client key file accessible by a Node
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A path to a CA file accessible by a Node
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTlsArgs:
@@ -39482,50 +39000,47 @@ class SecretStoreVaultTlsArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTlsCertSshArgsDict(TypedDict):
-        client_cert_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client certificate file accessible by a Node
-        """
-        client_key_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client key file accessible by a Node
-        """
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ssh_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the SSH engine configured with the desired CA
-        """
-        ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A path to a CA file accessible by a Node
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTlsCertSshArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTlsCertSshArgsDict(TypedDict):
+    client_cert_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client certificate file accessible by a Node
+    """
+    client_key_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client key file accessible by a Node
+    """
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ssh_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the SSH engine configured with the desired CA
+    """
+    ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A path to a CA file accessible by a Node
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTlsCertSshArgs:
@@ -39687,50 +39202,47 @@ class SecretStoreVaultTlsCertSshArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTlsCertX509ArgsDict(TypedDict):
-        client_cert_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client certificate file accessible by a Node
-        """
-        client_key_path: pulumi.Input[_builtins.str]
-        """
-        A path to a client key file accessible by a Node
-        """
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        pki_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the PKI engine configured with the desired CA
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A path to a CA file accessible by a Node
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTlsCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTlsCertX509ArgsDict(TypedDict):
+    client_cert_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client certificate file accessible by a Node
+    """
+    client_key_path: pulumi.Input[_builtins.str]
+    """
+    A path to a client key file accessible by a Node
+    """
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    pki_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the PKI engine configured with the desired CA
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ca_cert_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A path to a CA file accessible by a Node
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTlsCertX509Args:
@@ -39892,26 +39404,23 @@ class SecretStoreVaultTlsCertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTokenArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTokenArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTokenArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTokenArgs:
@@ -39982,38 +39491,35 @@ class SecretStoreVaultTokenArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTokenCertSshArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        ssh_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the SSH engine configured with the desired CA
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTokenCertSshArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTokenCertSshArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    ssh_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the SSH engine configured with the desired CA
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTokenCertSshArgs:
@@ -40129,38 +39635,35 @@ class SecretStoreVaultTokenCertSshArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class SecretStoreVaultTokenCertX509ArgsDict(TypedDict):
-        issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
-        """
-        The lifetime of certificates issued by this CA represented in minutes.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Unique human-readable name of the SecretStore.
-        """
-        pki_mount_point: pulumi.Input[_builtins.str]
-        """
-        The mount point of the PKI engine configured with the desired CA
-        """
-        server_address: pulumi.Input[_builtins.str]
-        """
-        The URL of the Vault to target
-        """
-        signing_role: pulumi.Input[_builtins.str]
-        """
-        The signing role to be used for signing certificates
-        """
-        namespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The namespace to make requests within
-        """
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags is a map of key, value pairs.
-        """
-elif False:
-    SecretStoreVaultTokenCertX509ArgsDict: TypeAlias = Mapping[str, Any]
+class SecretStoreVaultTokenCertX509ArgsDict(TypedDict):
+    issued_cert_ttl_minutes: pulumi.Input[_builtins.int]
+    """
+    The lifetime of certificates issued by this CA represented in minutes.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique human-readable name of the SecretStore.
+    """
+    pki_mount_point: pulumi.Input[_builtins.str]
+    """
+    The mount point of the PKI engine configured with the desired CA
+    """
+    server_address: pulumi.Input[_builtins.str]
+    """
+    The URL of the Vault to target
+    """
+    signing_role: pulumi.Input[_builtins.str]
+    """
+    The signing role to be used for signing certificates
+    """
+    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The namespace to make requests within
+    """
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Tags is a map of key, value pairs.
+    """
 
 @pulumi.input_type
 class SecretStoreVaultTokenCertX509Args:
@@ -40276,22 +39779,19 @@ class SecretStoreVaultTokenCertX509Args:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class GetApprovalWorkflowApprovalStepArgsDict(TypedDict):
-        approvers: Sequence['GetApprovalWorkflowApprovalStepApproverArgsDict']
-        """
-        The approvers for this approval step
-        """
-        quantifier: NotRequired[_builtins.str]
-        """
-        Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
-        """
-        skip_after: NotRequired[_builtins.str]
-        """
-        Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
-        """
-elif False:
-    GetApprovalWorkflowApprovalStepArgsDict: TypeAlias = Mapping[str, Any]
+class GetApprovalWorkflowApprovalStepArgsDict(TypedDict):
+    approvers: Sequence['GetApprovalWorkflowApprovalStepApproverArgsDict']
+    """
+    The approvers for this approval step
+    """
+    quantifier: NotRequired[_builtins.str]
+    """
+    Whether any or all approvers are required to approve for this approval step (optional, defaults to any)
+    """
+    skip_after: NotRequired[_builtins.str]
+    """
+    Duration after which this approval step will be skipped if no approval is given (optional, if not provided this step must be manually approved)
+    """
 
 @pulumi.input_type
 class GetApprovalWorkflowApprovalStepArgs:
@@ -40347,26 +39847,23 @@ class GetApprovalWorkflowApprovalStepArgs:
         pulumi.set(self, "skip_after", value)
 
 
-if not MYPY:
-    class GetApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
-        account_id: NotRequired[_builtins.str]
-        """
-        The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        group_id: NotRequired[_builtins.str]
-        """
-        The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        reference: NotRequired[_builtins.str]
-        """
-        A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-        role_id: NotRequired[_builtins.str]
-        """
-        The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
-        """
-elif False:
-    GetApprovalWorkflowApprovalStepApproverArgsDict: TypeAlias = Mapping[str, Any]
+class GetApprovalWorkflowApprovalStepApproverArgsDict(TypedDict):
+    account_id: NotRequired[_builtins.str]
+    """
+    The account id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    group_id: NotRequired[_builtins.str]
+    """
+    The group id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    reference: NotRequired[_builtins.str]
+    """
+    A reference to an approver: 'manager-of-requester' or 'manager-of-manager-of-requester' (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
+    role_id: NotRequired[_builtins.str]
+    """
+    The role id of the approver (only one of account_id, role_id, group id, or reference may be present for one approver)
+    """
 
 @pulumi.input_type
 class GetApprovalWorkflowApprovalStepApproverArgs:

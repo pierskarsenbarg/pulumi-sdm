@@ -23,6 +23,7 @@ class GroupRoleArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupRole resource.
+
         :param pulumi.Input[_builtins.str] group_id: The assigned Group ID.
         :param pulumi.Input[_builtins.str] role_id: The assigned Role ID.
         """
@@ -61,6 +62,7 @@ class _GroupRoleState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupRole resources.
+
         :param pulumi.Input[_builtins.str] group_id: The assigned Group ID.
         :param pulumi.Input[_builtins.str] role_id: The assigned Role ID.
         """
@@ -128,6 +130,7 @@ class GroupRole(pulumi.CustomResource):
         $ pulumi import sdm:index/groupRole:GroupRole example grouprole-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The assigned Group ID.
@@ -163,6 +166,7 @@ class GroupRole(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/groupRole:GroupRole example grouprole-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupRoleArgs args: The arguments to use to populate this resource's properties.

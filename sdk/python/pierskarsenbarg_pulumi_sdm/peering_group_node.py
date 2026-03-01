@@ -23,6 +23,7 @@ class PeeringGroupNodeArgs:
                  node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringGroupNode resource.
+
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the node will be attached to.
         :param pulumi.Input[_builtins.str] node_id: Node ID to be attached.
         """
@@ -63,6 +64,7 @@ class _PeeringGroupNodeState:
                  node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringGroupNode resources.
+
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the node will be attached to.
         :param pulumi.Input[_builtins.str] node_id: Node ID to be attached.
         """
@@ -117,6 +119,7 @@ class PeeringGroupNode(pulumi.CustomResource):
         $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Peering Group ID to which the node will be attached to.
@@ -139,6 +142,7 @@ class PeeringGroupNode(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeringGroupNodeArgs args: The arguments to use to populate this resource's properties.
