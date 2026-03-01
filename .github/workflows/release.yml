@@ -272,6 +272,7 @@ jobs:
       run: cp ${{github.workspace}}/README.md ${{github.workspace}}/sdk/nodejs/bin
     - name: Publish NPM package
       run: npm publish --ignore-scripts
+      working-directory: ${{github.workspace}}/sdk/nodejs/bin
     # - name: Publish NPM package
     #   uses: JS-DevTools/npm-publish@v4
     #   with: 
