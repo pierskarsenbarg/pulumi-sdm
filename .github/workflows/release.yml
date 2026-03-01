@@ -13,6 +13,12 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
   TRAVIS_OS_NAME: "linux"
+
+
+permissions:
+  id-token: write  
+  contents: read
+
 jobs:
   build_sdk:
     name: build_sdk
