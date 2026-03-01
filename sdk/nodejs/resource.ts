@@ -7,6 +7,54 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * A Resource is a database, server, cluster, website, or cloud that strongDM
+ *  delegates access to.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const redis_test = new sdm.Resource("redis-test", {redis: {
+ *     name: "redis-test",
+ *     hostname: "example.com",
+ *     portOverride: 4020,
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
+ * }});
+ * const postgres_test = new sdm.Resource("postgres-test", {postgres: {
+ *     name: "postgres-test",
+ *     hostname: "example.com",
+ *     database: "my-db",
+ *     username: "admin",
+ *     password: "hunter2",
+ *     port: 5432,
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
+ * }});
+ * const aurora_mysql_test = new sdm.Resource("aurora-mysql-test", {auroraMysql: {
+ *     name: "aurora-mysql-test",
+ *     hostname: "example.com",
+ *     database: "my-db",
+ *     port: 3306,
+ *     secretStoreId: "se-109564346",
+ *     username: "path/to/credential?key=optionalKeyName",
+ *     password: "path/to/credential?key=optionalKeyName",
+ * }});
+ * ```
+ * This resource can be imported using the import command.
+ * ## Providing Credentials
+ *
+ * Credentials can be provided to resources in two forms:
+ * - As raw text, which will not be returned to the terraform client on import or on loading state from StrongDM, but may be stored in the terraform state itself.
+ * - As a path to a credential in a Secret Store, which will be returned on import. e.g. /path/to/secret?key=password&encoding=base64
+ *
+ * All credentials must be either raw or Secret Store paths, depending on whether the resource has a Secret Store ID provided. In both cases, some credentials may be optional depending on the resource subtype.
+ *
  * ## Import
  *
  * A Resource can be imported using the id, e.g.,

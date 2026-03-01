@@ -3005,6 +3005,54 @@ class Resource(pulumi.CustomResource):
                  vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
                  __props__=None):
         """
+        A Resource is a database, server, cluster, website, or cloud that strongDM
+         delegates access to.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        redis_test = sdm.Resource("redis-test", redis={
+            "name": "redis-test",
+            "hostname": "example.com",
+            "port_override": 4020,
+            "tags": {
+                "region": "us-west",
+                "env": "dev",
+            },
+        })
+        postgres_test = sdm.Resource("postgres-test", postgres={
+            "name": "postgres-test",
+            "hostname": "example.com",
+            "database": "my-db",
+            "username": "admin",
+            "password": "hunter2",
+            "port": 5432,
+            "tags": {
+                "region": "us-west",
+                "env": "dev",
+            },
+        })
+        aurora_mysql_test = sdm.Resource("aurora-mysql-test", aurora_mysql={
+            "name": "aurora-mysql-test",
+            "hostname": "example.com",
+            "database": "my-db",
+            "port": 3306,
+            "secret_store_id": "se-109564346",
+            "username": "path/to/credential?key=optionalKeyName",
+            "password": "path/to/credential?key=optionalKeyName",
+        })
+        ```
+        This resource can be imported using the import command.
+        ## Providing Credentials
+
+        Credentials can be provided to resources in two forms:
+        - As raw text, which will not be returned to the terraform client on import or on loading state from StrongDM, but may be stored in the terraform state itself.
+        - As a path to a credential in a Secret Store, which will be returned on import. e.g. /path/to/secret?key=password&encoding=base64
+
+        All credentials must be either raw or Secret Store paths, depending on whether the resource has a Secret Store ID provided. In both cases, some credentials may be optional depending on the resource subtype.
+
         ## Import
 
         A Resource can be imported using the id, e.g.,
@@ -3034,6 +3082,54 @@ class Resource(pulumi.CustomResource):
                  args: Optional[ResourceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Resource is a database, server, cluster, website, or cloud that strongDM
+         delegates access to.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        redis_test = sdm.Resource("redis-test", redis={
+            "name": "redis-test",
+            "hostname": "example.com",
+            "port_override": 4020,
+            "tags": {
+                "region": "us-west",
+                "env": "dev",
+            },
+        })
+        postgres_test = sdm.Resource("postgres-test", postgres={
+            "name": "postgres-test",
+            "hostname": "example.com",
+            "database": "my-db",
+            "username": "admin",
+            "password": "hunter2",
+            "port": 5432,
+            "tags": {
+                "region": "us-west",
+                "env": "dev",
+            },
+        })
+        aurora_mysql_test = sdm.Resource("aurora-mysql-test", aurora_mysql={
+            "name": "aurora-mysql-test",
+            "hostname": "example.com",
+            "database": "my-db",
+            "port": 3306,
+            "secret_store_id": "se-109564346",
+            "username": "path/to/credential?key=optionalKeyName",
+            "password": "path/to/credential?key=optionalKeyName",
+        })
+        ```
+        This resource can be imported using the import command.
+        ## Providing Credentials
+
+        Credentials can be provided to resources in two forms:
+        - As raw text, which will not be returned to the terraform client on import or on loading state from StrongDM, but may be stored in the terraform state itself.
+        - As a path to a credential in a Secret Store, which will be returned on import. e.g. /path/to/secret?key=password&encoding=base64
+
+        All credentials must be either raw or Secret Store paths, depending on whether the resource has a Secret Store ID provided. In both cases, some credentials may be optional depending on the resource subtype.
+
         ## Import
 
         A Resource can be imported using the id, e.g.,

@@ -11,6 +11,83 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Resource is a database, server, cluster, website, or cloud that strongDM
+//
+//	delegates access to.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewResource(ctx, "redis-test", &sdm.ResourceArgs{
+//				Redis: &sdm.ResourceRedisArgs{
+//					Name:         pulumi.String("redis-test"),
+//					Hostname:     pulumi.String("example.com"),
+//					PortOverride: pulumi.Int(4020),
+//					Tags: pulumi.StringMap{
+//						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewResource(ctx, "postgres-test", &sdm.ResourceArgs{
+//				Postgres: &sdm.ResourcePostgresArgs{
+//					Name:     pulumi.String("postgres-test"),
+//					Hostname: pulumi.String("example.com"),
+//					Database: pulumi.String("my-db"),
+//					Username: pulumi.String("admin"),
+//					Password: pulumi.String("hunter2"),
+//					Port:     pulumi.Int(5432),
+//					Tags: pulumi.StringMap{
+//						"region": pulumi.String("us-west"),
+//						"env":    pulumi.String("dev"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewResource(ctx, "aurora-mysql-test", &sdm.ResourceArgs{
+//				AuroraMysql: &sdm.ResourceAuroraMysqlArgs{
+//					Name:          pulumi.String("aurora-mysql-test"),
+//					Hostname:      pulumi.String("example.com"),
+//					Database:      pulumi.String("my-db"),
+//					Port:          pulumi.Int(3306),
+//					SecretStoreId: pulumi.String("se-109564346"),
+//					Username:      pulumi.String("path/to/credential?key=optionalKeyName"),
+//					Password:      pulumi.String("path/to/credential?key=optionalKeyName"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+// ## Providing Credentials
+//
+// Credentials can be provided to resources in two forms:
+// - As raw text, which will not be returned to the terraform client on import or on loading state from StrongDM, but may be stored in the terraform state itself.
+// - As a path to a credential in a Secret Store, which will be returned on import. e.g. /path/to/secret?key=password&encoding=base64
+//
+// All credentials must be either raw or Secret Store paths, depending on whether the resource has a Secret Store ID provided. In both cases, some credentials may be optional depending on the resource subtype.
+//
 // ## Import
 //
 // A Resource can be imported using the id, e.g.,
