@@ -17,7 +17,6 @@ env:
 
 permissions:
   id-token: write  
-  contents: read
 
 jobs:
   build_sdk:
