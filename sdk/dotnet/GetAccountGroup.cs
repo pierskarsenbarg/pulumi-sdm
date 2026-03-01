@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
+        /// using Sdm = PiersKarsenbarg.Sdm;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -53,7 +53,7 @@ namespace PiersKarsenbarg.Sdm
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
+        /// using Sdm = PiersKarsenbarg.Sdm;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -86,7 +86,7 @@ namespace PiersKarsenbarg.Sdm
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
+        /// using Sdm = PiersKarsenbarg.Sdm;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

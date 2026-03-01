@@ -11,6 +11,76 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
+    /// A Resource is a database, server, cluster, website, or cloud that strongDM
+    ///  delegates access to.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redis_test = new Sdm.Resource("redis-test", new()
+    ///     {
+    ///         Redis = new Sdm.Inputs.ResourceRedisArgs
+    ///         {
+    ///             Name = "redis-test",
+    ///             Hostname = "example.com",
+    ///             PortOverride = 4020,
+    ///             Tags = 
+    ///             {
+    ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var postgres_test = new Sdm.Resource("postgres-test", new()
+    ///     {
+    ///         Postgres = new Sdm.Inputs.ResourcePostgresArgs
+    ///         {
+    ///             Name = "postgres-test",
+    ///             Hostname = "example.com",
+    ///             Database = "my-db",
+    ///             Username = "admin",
+    ///             Password = "hunter2",
+    ///             Port = 5432,
+    ///             Tags = 
+    ///             {
+    ///                 { "region", "us-west" },
+    ///                 { "env", "dev" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var aurora_mysql_test = new Sdm.Resource("aurora-mysql-test", new()
+    ///     {
+    ///         AuroraMysql = new Sdm.Inputs.ResourceAuroraMysqlArgs
+    ///         {
+    ///             Name = "aurora-mysql-test",
+    ///             Hostname = "example.com",
+    ///             Database = "my-db",
+    ///             Port = 3306,
+    ///             SecretStoreId = "se-109564346",
+    ///             Username = "path/to/credential?key=optionalKeyName",
+    ///             Password = "path/to/credential?key=optionalKeyName",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// This resource can be imported using the import command.
+    /// ## Providing Credentials
+    /// 
+    /// Credentials can be provided to resources in two forms:
+    /// - As raw text, which will not be returned to the terraform client on import or on loading state from StrongDM, but may be stored in the terraform state itself.
+    /// - As a path to a credential in a Secret Store, which will be returned on import. e.g. /path/to/secret?key=password&amp;encoding=base64
+    /// 
+    /// All credentials must be either raw or Secret Store paths, depending on whether the resource has a Secret Store ID provided. In both cases, some credentials may be optional depending on the resource subtype.
+    /// 
     /// ## Import
     /// 
     /// A Resource can be imported using the id, e.g.,
