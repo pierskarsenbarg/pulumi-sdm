@@ -271,11 +271,13 @@ jobs:
     - name: Copy README to npm package
       run: cp ${{github.workspace}}/README.md ${{github.workspace}}/sdk/nodejs/bin
     - name: Publish NPM package
-      uses: JS-DevTools/npm-publish@v4
-      with: 
-        access: "public"
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+      run: npm publish --ignore-scripts
+    # - name: Publish NPM package
+    #   uses: JS-DevTools/npm-publish@v4
+    #   with: 
+    #     access: "public"
+    #     token: ${{ secrets.NPM_TOKEN }}
+    #     package: ${{github.workspace}}/sdk/nodejs/bin/package.json
     - name: Publish PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
