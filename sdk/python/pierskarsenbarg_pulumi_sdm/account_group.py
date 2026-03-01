@@ -23,6 +23,7 @@ class AccountGroupArgs:
                  group_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccountGroup resource.
+
         :param pulumi.Input[_builtins.str] account_id: Unique identifier of the Account.
         :param pulumi.Input[_builtins.str] group_id: Unique identifier of the Group.
         """
@@ -61,6 +62,7 @@ class _AccountGroupState:
                  group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountGroup resources.
+
         :param pulumi.Input[_builtins.str] account_id: Unique identifier of the Account.
         :param pulumi.Input[_builtins.str] group_id: Unique identifier of the Group.
         """
@@ -128,6 +130,7 @@ class AccountGroup(pulumi.CustomResource):
         $ pulumi import sdm:index/accountGroup:AccountGroup example accountgroup-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Unique identifier of the Account.
@@ -163,6 +166,7 @@ class AccountGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/accountGroup:AccountGroup example accountgroup-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountGroupArgs args: The arguments to use to populate this resource's properties.

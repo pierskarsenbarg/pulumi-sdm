@@ -22,6 +22,7 @@ class IdentitySetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IdentitySet resource.
+
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the IdentitySet.
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _IdentitySetState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdentitySet resources.
+
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the IdentitySet.
         """
         if name is not None:
@@ -92,6 +94,7 @@ class IdentitySet(pulumi.CustomResource):
         $ pulumi import sdm:index/identitySet:IdentitySet example ig-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the IdentitySet.
@@ -121,6 +124,7 @@ class IdentitySet(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/identitySet:IdentitySet example ig-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IdentitySetArgs args: The arguments to use to populate this resource's properties.

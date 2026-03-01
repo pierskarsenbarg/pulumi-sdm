@@ -22,6 +22,7 @@ class ProxyClusterKeyArgs:
                  proxy_cluster_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProxyClusterKey resource.
+
         :param pulumi.Input[_builtins.str] proxy_cluster_id: The ID of the proxy cluster which this key authenticates to.
         """
         pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
@@ -46,6 +47,7 @@ class _ProxyClusterKeyState:
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProxyClusterKey resources.
+
         :param pulumi.Input[_builtins.str] proxy_cluster_id: The ID of the proxy cluster which this key authenticates to.
         """
         if proxy_cluster_id is not None:
@@ -105,6 +107,7 @@ class ProxyClusterKey(pulumi.CustomResource):
         $ pulumi import sdm:index/proxyClusterKey:ProxyClusterKey example gk-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] proxy_cluster_id: The ID of the proxy cluster which this key authenticates to.
@@ -136,6 +139,7 @@ class ProxyClusterKey(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/proxyClusterKey:ProxyClusterKey example gk-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProxyClusterKeyArgs args: The arguments to use to populate this resource's properties.

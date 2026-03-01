@@ -25,6 +25,7 @@ class AccountArgs:
                  user: Optional[pulumi.Input['AccountUserArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input['AccountUserArgs'] user: A User can connect to resources they are granted directly, or granted via roles.
         """
@@ -65,6 +66,7 @@ class _AccountState:
                  user: Optional[pulumi.Input['AccountUserArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input['AccountServiceArgs'] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         :param pulumi.Input['AccountUserArgs'] user: A User can connect to resources they are granted directly, or granted via roles.
         """
@@ -147,6 +149,7 @@ class Account(pulumi.CustomResource):
         $ pulumi import sdm:index/account:Account example a-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
@@ -197,6 +200,7 @@ class Account(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/account:Account example a-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

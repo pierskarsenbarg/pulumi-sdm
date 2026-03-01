@@ -23,6 +23,7 @@ class WorkflowRoleArgs:
                  workflow_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkflowRole resource.
+
         :param pulumi.Input[_builtins.str] role_id: The role id.
         :param pulumi.Input[_builtins.str] workflow_id: The workflow id.
         """
@@ -61,6 +62,7 @@ class _WorkflowRoleState:
                  workflow_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkflowRole resources.
+
         :param pulumi.Input[_builtins.str] role_id: The role id.
         :param pulumi.Input[_builtins.str] workflow_id: The workflow id.
         """
@@ -129,6 +131,7 @@ class WorkflowRole(pulumi.CustomResource):
         $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] role_id: The role id.
@@ -165,6 +168,7 @@ class WorkflowRole(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowRoleArgs args: The arguments to use to populate this resource's properties.

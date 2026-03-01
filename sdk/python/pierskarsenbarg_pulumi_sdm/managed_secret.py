@@ -25,6 +25,7 @@ class ManagedSecretArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ManagedSecret resource.
+
         :param pulumi.Input[_builtins.str] secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
@@ -100,6 +101,7 @@ class _ManagedSecretState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedSecret resources.
+
         :param pulumi.Input[_builtins.str] config: public part of the secret value
         :param pulumi.Input[_builtins.str] expires_at: Timestamp of when secret is going to be rotated
         :param pulumi.Input[_builtins.str] last_rotated_at: Timestamp of when secret was last rotated
@@ -246,6 +248,7 @@ class ManagedSecret(pulumi.CustomResource):
         $ pulumi import sdm:index/managedSecret:ManagedSecret example ms-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
@@ -270,6 +273,7 @@ class ManagedSecret(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/managedSecret:ManagedSecret example ms-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ManagedSecretArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class ApprovalWorkflowArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApprovalWorkflow resource.
+
         :param pulumi.Input[_builtins.str] approval_mode: Approval mode of the ApprovalWorkflow
         :param pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]] approval_steps: The approval steps of this approval workflow
         :param pulumi.Input[_builtins.str] description: Optional description of the ApprovalWorkflow.
@@ -98,6 +99,7 @@ class _ApprovalWorkflowState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApprovalWorkflow resources.
+
         :param pulumi.Input[_builtins.str] approval_mode: Approval mode of the ApprovalWorkflow
         :param pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]] approval_steps: The approval steps of this approval workflow
         :param pulumi.Input[_builtins.str] description: Optional description of the ApprovalWorkflow.
@@ -233,6 +235,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
         $ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] approval_mode: Approval mode of the ApprovalWorkflow
@@ -306,6 +309,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApprovalWorkflowArgs args: The arguments to use to populate this resource's properties.

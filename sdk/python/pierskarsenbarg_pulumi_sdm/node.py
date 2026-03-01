@@ -26,6 +26,7 @@ class NodeArgs:
                  relay: Optional[pulumi.Input['NodeRelayArgs']] = None):
         """
         The set of arguments for constructing a Node resource.
+
         :param pulumi.Input['NodeGatewayArgs'] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
         :param pulumi.Input['NodeProxyClusterArgs'] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input['NodeRelayArgs'] relay: Relay represents a StrongDM CLI installation running in relay mode.
@@ -82,6 +83,7 @@ class _NodeState:
                  relay: Optional[pulumi.Input['NodeRelayArgs']] = None):
         """
         Input properties used for looking up and filtering Node resources.
+
         :param pulumi.Input['NodeGatewayArgs'] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
         :param pulumi.Input['NodeProxyClusterArgs'] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input['NodeRelayArgs'] relay: Relay represents a StrongDM CLI installation running in relay mode.
@@ -179,6 +181,7 @@ class Node(pulumi.CustomResource):
         $ pulumi import sdm:index/node:Node example n-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -229,6 +232,7 @@ class Node(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/node:Node example n-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeArgs args: The arguments to use to populate this resource's properties.

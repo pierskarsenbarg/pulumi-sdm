@@ -30,6 +30,7 @@ class WorkflowArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+
         :param pulumi.Input[_builtins.str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[_builtins.str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[_builtins.str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
@@ -186,6 +187,7 @@ class _WorkflowState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
+
         :param pulumi.Input[_builtins.str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[_builtins.str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[_builtins.str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
@@ -401,6 +403,7 @@ class Workflow(pulumi.CustomResource):
         $ pulumi import sdm:index/workflow:Workflow example aw-12345678
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
@@ -475,6 +478,7 @@ class Workflow(pulumi.CustomResource):
         ```sh
         $ pulumi import sdm:index/workflow:Workflow example aw-12345678
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkflowArgs args: The arguments to use to populate this resource's properties.
