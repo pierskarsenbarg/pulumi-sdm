@@ -26,7 +26,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });
@@ -51,7 +51,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });
@@ -76,7 +76,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });

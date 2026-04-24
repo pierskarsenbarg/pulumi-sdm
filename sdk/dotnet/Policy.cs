@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var permitEverything = new Sdm.Policy("permit_everything", new()
+    ///     var permitEverything = new Sdm.Index.Policy("permit_everything", new()
     ///     {
     ///         Name = "permit-everything",
     ///         Description = "this policy permits everything",

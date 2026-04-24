@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupApprovalWorkflow(ctx, &sdm.LookupApprovalWorkflowArgs{
+//			_, err := sdm.GetApprovalWorkflow(ctx, &sdm.LookupApprovalWorkflowArgs{
 //				Name:         pulumi.StringRef("approval workflow manual"),
 //				ApprovalMode: pulumi.StringRef("manual"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupApprovalWorkflow(ctx, &sdm.LookupApprovalWorkflowArgs{
+//			_, err = sdm.GetApprovalWorkflow(ctx, &sdm.LookupApprovalWorkflowArgs{
 //				Name:         pulumi.StringRef("approval workflow auto"),
 //				ApprovalMode: pulumi.StringRef("automatic"),
 //			}, nil)

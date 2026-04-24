@@ -24,7 +24,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });
@@ -47,7 +47,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });
@@ -70,7 +70,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });

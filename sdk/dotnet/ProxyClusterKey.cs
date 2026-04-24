@@ -24,7 +24,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProxyClusterKey = new Sdm.ProxyClusterKey("test_proxy_cluster_key", new()
+    ///     var testProxyClusterKey = new Sdm.Index.ProxyClusterKey("test_proxy_cluster_key", new()
     ///     {
     ///         ProxyClusterId = "n-12345123",
     ///     });

@@ -26,19 +26,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
+//			_, err := sdm.GetAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
 //				AccountId: pulumi.StringRef(securityLead.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
+//			_, err = sdm.GetAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
 //				Id: pulumi.StringRef("accountgroup-1234567890abcdef"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
+//			_, err = sdm.GetAccountGroup(ctx, &sdm.LookupAccountGroupArgs{
 //				GroupId: pulumi.StringRef(devopsGroup.Id),
 //			}, nil)
 //			if err != nil {

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupResource(ctx, &sdm.LookupResourceArgs{
+//			_, err := sdm.GetResource(ctx, &sdm.LookupResourceArgs{
 //				Name: pulumi.StringRef("us-west*"),
 //				Type: pulumi.StringRef("mysql"),
 //				Tags: map[string]interface{}{

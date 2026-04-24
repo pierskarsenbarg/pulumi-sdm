@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupAccountAttachment(ctx, &sdm.LookupAccountAttachmentArgs{
+//			_, err := sdm.GetAccountAttachment(ctx, &sdm.LookupAccountAttachmentArgs{
 //				AccountId: pulumi.StringRef("a-00000054"),
 //			}, nil)
 //			if err != nil {

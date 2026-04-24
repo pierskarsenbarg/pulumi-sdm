@@ -25,7 +25,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });
@@ -49,7 +49,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });
@@ -73,7 +73,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });

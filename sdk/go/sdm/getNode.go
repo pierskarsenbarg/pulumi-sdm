@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupNode(ctx, &sdm.LookupNodeArgs{
+//			_, err := sdm.GetNode(ctx, &sdm.LookupNodeArgs{
 //				Type: pulumi.StringRef("gateway"),
 //				Tags: map[string]interface{}{
 //					"region": "us-west",

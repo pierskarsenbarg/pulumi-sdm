@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//			_, err := sdm.GetAccount(ctx, &sdm.LookupAccountArgs{
 //				Type:  pulumi.StringRef("user"),
 //				Email: pulumi.StringRef("*@strongdm.com"),
 //				Tags: map[string]interface{}{
@@ -41,14 +41,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//			_, err = sdm.GetAccount(ctx, &sdm.LookupAccountArgs{
 //				Type: pulumi.StringRef("api"),
 //				Name: pulumi.StringRef("*-dev"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//			_, err = sdm.GetAccount(ctx, &sdm.LookupAccountArgs{
 //				Type: pulumi.StringRef("admin-token"),
 //				Name: pulumi.StringRef("*-prod"),
 //			}, nil)

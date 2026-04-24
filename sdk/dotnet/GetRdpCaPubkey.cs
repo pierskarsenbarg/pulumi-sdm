@@ -24,7 +24,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -48,7 +48,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -72,7 +72,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

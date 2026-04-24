@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Sdm.IdentityAlias("user", new()
+    ///     var user = new Sdm.Index.IdentityAlias("user", new()
     ///     {
     ///         Id = "i-0900909",
     ///         Username = "user",

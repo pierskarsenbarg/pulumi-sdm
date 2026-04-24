@@ -22,13 +22,13 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityTeamToProductionAccess = new Sdm.GroupRole("security_team_to_production_access", new()
+    ///     var securityTeamToProductionAccess = new Sdm.Index.GroupRole("security_team_to_production_access", new()
     ///     {
     ///         GroupId = securityTeam.Id,
     ///         RoleId = productionAccess.Id,
     ///     });
     /// 
-    ///     var administratorsToAdminAccess = new Sdm.GroupRole("administrators_to_admin_access", new()
+    ///     var administratorsToAdminAccess = new Sdm.Index.GroupRole("administrators_to_admin_access", new()
     ///     {
     ///         GroupId = "group-1234567890abcdef",
     ///         RoleId = "r-1234567890abcdef",

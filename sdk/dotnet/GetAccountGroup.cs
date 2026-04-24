@@ -24,17 +24,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });
@@ -57,17 +57,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });
@@ -90,17 +90,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });

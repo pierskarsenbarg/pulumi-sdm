@@ -22,7 +22,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityTeam = new Sdm.Group("security_team", new()
+    ///     var securityTeam = new Sdm.Index.Group("security_team", new()
     ///     {
     ///         Name = "Security Team",
     ///         Tags = 
@@ -31,12 +31,12 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var administrators = new Sdm.Group("administrators", new()
+    ///     var administrators = new Sdm.Index.Group("administrators", new()
     ///     {
     ///         Name = "Administrators",
     ///     });
     /// 
-    ///     var devopsTeam = new Sdm.Group("devops_team", new()
+    ///     var devopsTeam = new Sdm.Index.Group("devops_team", new()
     ///     {
     ///         Name = "DevOps Team",
     ///     });

@@ -25,7 +25,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",
@@ -55,7 +55,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",
@@ -85,7 +85,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",

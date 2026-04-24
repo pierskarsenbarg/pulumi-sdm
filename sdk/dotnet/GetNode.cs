@@ -28,7 +28,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 
@@ -60,7 +60,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 
@@ -92,7 +92,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 

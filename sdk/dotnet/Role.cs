@@ -25,7 +25,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var engineers = new Sdm.Role("engineers", new()
+    ///     var engineers = new Sdm.Index.Role("engineers", new()
     ///     {
     ///         Name = "engineers",
     ///         Tags = 
@@ -34,7 +34,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var example_role = new Sdm.Role("example-role", new()
+    ///     var example_role = new Sdm.Index.Role("example-role", new()
     ///     {
     ///         Name = "example-role",
     ///         AccessRules = JsonSerializer.Serialize(new[]
@@ -65,7 +65,7 @@ namespace PiersKarsenbarg.Sdm
     ///         }),
     ///     });
     /// 
-    ///     var k8s_admin = new Sdm.Role("k8s-admin", new()
+    ///     var k8s_admin = new Sdm.Index.Role("k8s-admin", new()
     ///     {
     ///         Name = "k8s-admin",
     ///         AccessRules = JsonSerializer.Serialize(new[]
@@ -90,7 +90,7 @@ namespace PiersKarsenbarg.Sdm
     ///         }),
     ///     });
     /// 
-    ///     var k8s_developers = new Sdm.Role("k8s-developers", new()
+    ///     var k8s_developers = new Sdm.Index.Role("k8s-developers", new()
     ///     {
     ///         Name = "k8s-developers",
     ///         AccessRules = JsonSerializer.Serialize(new[]

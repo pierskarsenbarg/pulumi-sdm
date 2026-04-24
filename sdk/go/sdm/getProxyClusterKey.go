@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupProxyClusterKey(ctx, &sdm.LookupProxyClusterKeyArgs{
+//			_, err := sdm.GetProxyClusterKey(ctx, &sdm.LookupProxyClusterKeyArgs{
 //				ProxyClusterId: pulumi.StringRef("n-233332245"),
 //			}, nil)
 //			if err != nil {
