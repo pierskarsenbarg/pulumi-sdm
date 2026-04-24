@@ -22,6 +22,7 @@ from .get_identity_alias import *
 from .get_identity_set import *
 from .get_managed_secret import *
 from .get_node import *
+from .get_org_url_info import *
 from .get_peering_group import *
 from .get_peering_group_node import *
 from .get_peering_group_peer import *

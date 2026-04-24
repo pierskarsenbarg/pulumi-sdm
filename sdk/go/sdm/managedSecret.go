@@ -31,6 +31,8 @@ type ManagedSecret struct {
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// Timestamp of when secret was last rotated
 	LastRotatedAt pulumi.StringOutput `pulumi:"lastRotatedAt"`
+	// Whether the secret requires a lock to access
+	LockRequired pulumi.BoolPtrOutput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Managed Secret.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -89,6 +91,8 @@ type managedSecretState struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// Timestamp of when secret was last rotated
 	LastRotatedAt *string `pulumi:"lastRotatedAt"`
+	// Whether the secret requires a lock to access
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Managed Secret.
 	Name *string `pulumi:"name"`
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -108,6 +112,8 @@ type ManagedSecretState struct {
 	ExpiresAt pulumi.StringPtrInput
 	// Timestamp of when secret was last rotated
 	LastRotatedAt pulumi.StringPtrInput
+	// Whether the secret requires a lock to access
+	LockRequired pulumi.BoolPtrInput
 	// Unique human-readable name of the Managed Secret.
 	Name pulumi.StringPtrInput
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -125,6 +131,8 @@ func (ManagedSecretState) ElementType() reflect.Type {
 }
 
 type managedSecretArgs struct {
+	// Whether the secret requires a lock to access
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Managed Secret.
 	Name *string `pulumi:"name"`
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -137,6 +145,8 @@ type managedSecretArgs struct {
 
 // The set of arguments for constructing a ManagedSecret resource.
 type ManagedSecretArgs struct {
+	// Whether the secret requires a lock to access
+	LockRequired pulumi.BoolPtrInput
 	// Unique human-readable name of the Managed Secret.
 	Name pulumi.StringPtrInput
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -247,6 +257,11 @@ func (o ManagedSecretOutput) ExpiresAt() pulumi.StringOutput {
 // Timestamp of when secret was last rotated
 func (o ManagedSecretOutput) LastRotatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedSecret) pulumi.StringOutput { return v.LastRotatedAt }).(pulumi.StringOutput)
+}
+
+// Whether the secret requires a lock to access
+func (o ManagedSecretOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedSecret) pulumi.BoolPtrOutput { return v.LockRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Managed Secret.

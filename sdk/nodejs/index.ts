@@ -85,6 +85,11 @@ export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
 
+export { GetOrgUrlInfoArgs, GetOrgUrlInfoResult, GetOrgUrlInfoOutputArgs } from "./getOrgUrlInfo";
+export const getOrgUrlInfo: typeof import("./getOrgUrlInfo").getOrgUrlInfo = null as any;
+export const getOrgUrlInfoOutput: typeof import("./getOrgUrlInfo").getOrgUrlInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getOrgUrlInfo","getOrgUrlInfoOutput"], () => require("./getOrgUrlInfo"));
+
 export { GetPeeringGroupArgs, GetPeeringGroupResult, GetPeeringGroupOutputArgs } from "./getPeeringGroup";
 export const getPeeringGroup: typeof import("./getPeeringGroup").getPeeringGroup = null as any;
 export const getPeeringGroupOutput: typeof import("./getPeeringGroup").getPeeringGroupOutput = null as any;

@@ -14,6 +14,7 @@ export function getManagedSecret(args?: GetManagedSecretArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getManagedSecret:getManagedSecret", {
         "id": args.id,
+        "lockRequired": args.lockRequired,
         "name": args.name,
         "secretEngineId": args.secretEngineId,
         "tags": args.tags,
@@ -29,6 +30,10 @@ export interface GetManagedSecretArgs {
      * Unique identifier of the Managed Secret.
      */
     id?: string;
+    /**
+     * Whether the secret requires a lock to access
+     */
+    lockRequired?: boolean;
     /**
      * Unique human-readable name of the Managed Secret.
      */
@@ -72,6 +77,10 @@ export interface GetManagedSecretResult {
      */
     readonly lastRotatedAt: string;
     /**
+     * Whether the secret requires a lock to access
+     */
+    readonly lockRequired?: boolean;
+    /**
      * A list where each element has the following attributes:
      */
     readonly managedSecrets: outputs.GetManagedSecretManagedSecret[];
@@ -104,6 +113,7 @@ export function getManagedSecretOutput(args?: GetManagedSecretOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getManagedSecret:getManagedSecret", {
         "id": args.id,
+        "lockRequired": args.lockRequired,
         "name": args.name,
         "secretEngineId": args.secretEngineId,
         "tags": args.tags,
@@ -119,6 +129,10 @@ export interface GetManagedSecretOutputArgs {
      * Unique identifier of the Managed Secret.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Whether the secret requires a lock to access
+     */
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Managed Secret.
      */

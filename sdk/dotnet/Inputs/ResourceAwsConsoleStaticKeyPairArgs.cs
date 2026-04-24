@@ -125,6 +125,13 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// This option enforces HTTPS on the client, not resource connection.
+        /// * sql_server:
+        /// </summary>
+        [Input("useHttps")]
+        public Input<bool>? UseHttps { get; set; }
+
         public ResourceAwsConsoleStaticKeyPairArgs()
         {
         }

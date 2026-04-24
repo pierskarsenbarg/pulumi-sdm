@@ -112,10 +112,9 @@ type Resource struct {
 	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
-	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrOutput `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                   ResourceAmazonEsPtrOutput                   `pulumi:"amazonEs"`
-	AmazonEsiam                ResourceAmazonEsiamPtrOutput                `pulumi:"amazonEsiam"`
-	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEksUserImpersonation   ResourceAmazonEksUserImpersonationPtrOutput   `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                     ResourceAmazonEsPtrOutput                     `pulumi:"amazonEs"`
+	AmazonEsiam                  ResourceAmazonEsiamPtrOutput                  `pulumi:"amazonEsiam"`
 	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrOutput                 `pulumi:"amazonmqAmqp"`
 	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrOutput              `pulumi:"amazonmqAmqp091"`
 	Athena                       ResourceAthenaPtrOutput                       `pulumi:"athena"`
@@ -144,6 +143,7 @@ type Resource struct {
 	Cockroach                    ResourceCockroachPtrOutput                    `pulumi:"cockroach"`
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrOutput            `pulumi:"couchbaseDatabase"`
 	CouchbaseWebUi               ResourceCouchbaseWebUiPtrOutput               `pulumi:"couchbaseWebUi"`
+	Databricks                   ResourceDatabricksPtrOutput                   `pulumi:"databricks"`
 	Db2I                         ResourceDb2IPtrOutput                         `pulumi:"db2I"`
 	Db2Luw                       ResourceDb2LuwPtrOutput                       `pulumi:"db2Luw"`
 	DocumentDbHost               ResourceDocumentDbHostPtrOutput               `pulumi:"documentDbHost"`
@@ -165,13 +165,12 @@ type Resource struct {
 	GoogleGke           ResourceGoogleGkePtrOutput           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
-	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	GoogleSpanner ResourceGoogleSpannerPtrOutput `pulumi:"googleSpanner"`
-	Greenplum     ResourceGreenplumPtrOutput     `pulumi:"greenplum"`
-	HttpAuth      ResourceHttpAuthPtrOutput      `pulumi:"httpAuth"`
-	HttpBasicAuth ResourceHttpBasicAuthPtrOutput `pulumi:"httpBasicAuth"`
-	HttpNoAuth    ResourceHttpNoAuthPtrOutput    `pulumi:"httpNoAuth"`
-	Kubernetes    ResourceKubernetesPtrOutput    `pulumi:"kubernetes"`
+	GoogleSpanner              ResourceGoogleSpannerPtrOutput              `pulumi:"googleSpanner"`
+	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
+	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
+	HttpBasicAuth              ResourceHttpBasicAuthPtrOutput              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 ResourceHttpNoAuthPtrOutput                 `pulumi:"httpNoAuth"`
+	Kubernetes                 ResourceKubernetesPtrOutput                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrOutput      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrOutput    `pulumi:"kubernetesPodIdentity"`
@@ -181,11 +180,14 @@ type Resource struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrOutput `pulumi:"kubernetesUserImpersonation"`
 	Maria                       ResourceMariaPtrOutput                       `pulumi:"maria"`
-	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Mcp       ResourceMcpPtrOutput       `pulumi:"mcp"`
-	Memcached ResourceMemcachedPtrOutput `pulumi:"memcached"`
-	Memsql    ResourceMemsqlPtrOutput    `pulumi:"memsql"`
-	MongoHost ResourceMongoHostPtrOutput `pulumi:"mongoHost"`
+	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrOutput            `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrOutput             `pulumi:"mcpGatewayOAuth"`
+	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrOutput `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      ResourceMcpGatewayPatPtrOutput      `pulumi:"mcpGatewayPat"`
+	Memcached          ResourceMemcachedPtrOutput          `pulumi:"memcached"`
+	Memsql             ResourceMemsqlPtrOutput             `pulumi:"memsql"`
+	MongoHost          ResourceMongoHostPtrOutput          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -197,7 +199,6 @@ type Resource struct {
 	Mysql                 ResourceMysqlPtrOutput                 `pulumi:"mysql"`
 	Neptune               ResourceNeptunePtrOutput               `pulumi:"neptune"`
 	NeptuneIam            ResourceNeptuneIamPtrOutput            `pulumi:"neptuneIam"`
-	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	OktaGroups            ResourceOktaGroupsPtrOutput            `pulumi:"oktaGroups"`
 	Oracle                ResourceOraclePtrOutput                `pulumi:"oracle"`
 	OracleNne             ResourceOracleNnePtrOutput             `pulumi:"oracleNne"`
@@ -274,10 +275,9 @@ type resourceState struct {
 	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
-	AmazonEksUserImpersonation *ResourceAmazonEksUserImpersonation `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
-	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
-	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEksUserImpersonation   *ResourceAmazonEksUserImpersonation   `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                     *ResourceAmazonEs                     `pulumi:"amazonEs"`
+	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
 	AmazonmqAmqp                 *ResourceAmazonmqAmqp                 `pulumi:"amazonmqAmqp"`
 	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
 	Athena                       *ResourceAthena                       `pulumi:"athena"`
@@ -306,6 +306,7 @@ type resourceState struct {
 	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
 	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
 	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
+	Databricks                   *ResourceDatabricks                   `pulumi:"databricks"`
 	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
 	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
@@ -327,13 +328,12 @@ type resourceState struct {
 	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
-	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	GoogleSpanner *ResourceGoogleSpanner `pulumi:"googleSpanner"`
-	Greenplum     *ResourceGreenplum     `pulumi:"greenplum"`
-	HttpAuth      *ResourceHttpAuth      `pulumi:"httpAuth"`
-	HttpBasicAuth *ResourceHttpBasicAuth `pulumi:"httpBasicAuth"`
-	HttpNoAuth    *ResourceHttpNoAuth    `pulumi:"httpNoAuth"`
-	Kubernetes    *ResourceKubernetes    `pulumi:"kubernetes"`
+	GoogleSpanner              *ResourceGoogleSpanner              `pulumi:"googleSpanner"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
@@ -343,11 +343,14 @@ type resourceState struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Mcp       *ResourceMcp       `pulumi:"mcp"`
-	Memcached *ResourceMemcached `pulumi:"memcached"`
-	Memsql    *ResourceMemsql    `pulumi:"memsql"`
-	MongoHost *ResourceMongoHost `pulumi:"mongoHost"`
+	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
+	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
+	Memcached          *ResourceMemcached          `pulumi:"memcached"`
+	Memsql             *ResourceMemsql             `pulumi:"memsql"`
+	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -359,7 +362,6 @@ type resourceState struct {
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
 	Neptune               *ResourceNeptune               `pulumi:"neptune"`
 	NeptuneIam            *ResourceNeptuneIam            `pulumi:"neptuneIam"`
-	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	OktaGroups            *ResourceOktaGroups            `pulumi:"oktaGroups"`
 	Oracle                *ResourceOracle                `pulumi:"oracle"`
 	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
@@ -407,10 +409,9 @@ type ResourceState struct {
 	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
-	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                   ResourceAmazonEsPtrInput
-	AmazonEsiam                ResourceAmazonEsiamPtrInput
-	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEksUserImpersonation   ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                     ResourceAmazonEsPtrInput
+	AmazonEsiam                  ResourceAmazonEsiamPtrInput
 	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrInput
 	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
 	Athena                       ResourceAthenaPtrInput
@@ -439,6 +440,7 @@ type ResourceState struct {
 	Cockroach                    ResourceCockroachPtrInput
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
 	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
+	Databricks                   ResourceDatabricksPtrInput
 	Db2I                         ResourceDb2IPtrInput
 	Db2Luw                       ResourceDb2LuwPtrInput
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
@@ -460,13 +462,12 @@ type ResourceState struct {
 	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
-	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	GoogleSpanner ResourceGoogleSpannerPtrInput
-	Greenplum     ResourceGreenplumPtrInput
-	HttpAuth      ResourceHttpAuthPtrInput
-	HttpBasicAuth ResourceHttpBasicAuthPtrInput
-	HttpNoAuth    ResourceHttpNoAuthPtrInput
-	Kubernetes    ResourceKubernetesPtrInput
+	GoogleSpanner              ResourceGoogleSpannerPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
@@ -476,11 +477,14 @@ type ResourceState struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
 	Maria                       ResourceMariaPtrInput
-	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Mcp       ResourceMcpPtrInput
-	Memcached ResourceMemcachedPtrInput
-	Memsql    ResourceMemsqlPtrInput
-	MongoHost ResourceMongoHostPtrInput
+	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
+	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
+	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat      ResourceMcpGatewayPatPtrInput
+	Memcached          ResourceMemcachedPtrInput
+	Memsql             ResourceMemsqlPtrInput
+	MongoHost          ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -492,7 +496,6 @@ type ResourceState struct {
 	Mysql                 ResourceMysqlPtrInput
 	Neptune               ResourceNeptunePtrInput
 	NeptuneIam            ResourceNeptuneIamPtrInput
-	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	OktaGroups            ResourceOktaGroupsPtrInput
 	Oracle                ResourceOraclePtrInput
 	OracleNne             ResourceOracleNnePtrInput
@@ -544,10 +547,9 @@ type resourceArgs struct {
 	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
-	AmazonEksUserImpersonation *ResourceAmazonEksUserImpersonation `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                   *ResourceAmazonEs                   `pulumi:"amazonEs"`
-	AmazonEsiam                *ResourceAmazonEsiam                `pulumi:"amazonEsiam"`
-	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEksUserImpersonation   *ResourceAmazonEksUserImpersonation   `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                     *ResourceAmazonEs                     `pulumi:"amazonEs"`
+	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
 	AmazonmqAmqp                 *ResourceAmazonmqAmqp                 `pulumi:"amazonmqAmqp"`
 	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
 	Athena                       *ResourceAthena                       `pulumi:"athena"`
@@ -576,6 +578,7 @@ type resourceArgs struct {
 	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
 	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
 	CouchbaseWebUi               *ResourceCouchbaseWebUi               `pulumi:"couchbaseWebUi"`
+	Databricks                   *ResourceDatabricks                   `pulumi:"databricks"`
 	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
 	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
@@ -597,13 +600,12 @@ type resourceArgs struct {
 	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
-	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	GoogleSpanner *ResourceGoogleSpanner `pulumi:"googleSpanner"`
-	Greenplum     *ResourceGreenplum     `pulumi:"greenplum"`
-	HttpAuth      *ResourceHttpAuth      `pulumi:"httpAuth"`
-	HttpBasicAuth *ResourceHttpBasicAuth `pulumi:"httpBasicAuth"`
-	HttpNoAuth    *ResourceHttpNoAuth    `pulumi:"httpNoAuth"`
-	Kubernetes    *ResourceKubernetes    `pulumi:"kubernetes"`
+	GoogleSpanner              *ResourceGoogleSpanner              `pulumi:"googleSpanner"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      *ResourceKubernetesBasicAuth      `pulumi:"kubernetesBasicAuth"`
 	KubernetesPodIdentity    *ResourceKubernetesPodIdentity    `pulumi:"kubernetesPodIdentity"`
@@ -613,11 +615,14 @@ type resourceArgs struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Mcp       *ResourceMcp       `pulumi:"mcp"`
-	Memcached *ResourceMemcached `pulumi:"memcached"`
-	Memsql    *ResourceMemsql    `pulumi:"memsql"`
-	MongoHost *ResourceMongoHost `pulumi:"mongoHost"`
+	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
+	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
+	Memcached          *ResourceMemcached          `pulumi:"memcached"`
+	Memsql             *ResourceMemsql             `pulumi:"memsql"`
+	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -629,7 +634,6 @@ type resourceArgs struct {
 	Mysql                 *ResourceMysql                 `pulumi:"mysql"`
 	Neptune               *ResourceNeptune               `pulumi:"neptune"`
 	NeptuneIam            *ResourceNeptuneIam            `pulumi:"neptuneIam"`
-	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	OktaGroups            *ResourceOktaGroups            `pulumi:"oktaGroups"`
 	Oracle                *ResourceOracle                `pulumi:"oracle"`
 	OracleNne             *ResourceOracleNne             `pulumi:"oracleNne"`
@@ -678,10 +682,9 @@ type ResourceArgs struct {
 	// Deprecated: amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	// Deprecated: amazon_eks_user_impersonation is deprecated, see docs for more info
-	AmazonEksUserImpersonation ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                   ResourceAmazonEsPtrInput
-	AmazonEsiam                ResourceAmazonEsiamPtrInput
-	// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEksUserImpersonation   ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                     ResourceAmazonEsPtrInput
+	AmazonEsiam                  ResourceAmazonEsiamPtrInput
 	AmazonmqAmqp                 ResourceAmazonmqAmqpPtrInput
 	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
 	Athena                       ResourceAthenaPtrInput
@@ -710,6 +713,7 @@ type ResourceArgs struct {
 	Cockroach                    ResourceCockroachPtrInput
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
 	CouchbaseWebUi               ResourceCouchbaseWebUiPtrInput
+	Databricks                   ResourceDatabricksPtrInput
 	Db2I                         ResourceDb2IPtrInput
 	Db2Luw                       ResourceDb2LuwPtrInput
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
@@ -731,13 +735,12 @@ type ResourceArgs struct {
 	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
-	// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	GoogleSpanner ResourceGoogleSpannerPtrInput
-	Greenplum     ResourceGreenplumPtrInput
-	HttpAuth      ResourceHttpAuthPtrInput
-	HttpBasicAuth ResourceHttpBasicAuthPtrInput
-	HttpNoAuth    ResourceHttpNoAuthPtrInput
-	Kubernetes    ResourceKubernetesPtrInput
+	GoogleSpanner              ResourceGoogleSpannerPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth      ResourceKubernetesBasicAuthPtrInput
 	KubernetesPodIdentity    ResourceKubernetesPodIdentityPtrInput
@@ -747,11 +750,14 @@ type ResourceArgs struct {
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
 	Maria                       ResourceMariaPtrInput
-	// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Mcp       ResourceMcpPtrInput
-	Memcached ResourceMemcachedPtrInput
-	Memsql    ResourceMemsqlPtrInput
-	MongoHost ResourceMongoHostPtrInput
+	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
+	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
+	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat      ResourceMcpGatewayPatPtrInput
+	Memcached          ResourceMemcachedPtrInput
+	Memsql             ResourceMemsqlPtrInput
+	MongoHost          ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -763,7 +769,6 @@ type ResourceArgs struct {
 	Mysql                 ResourceMysqlPtrInput
 	Neptune               ResourceNeptunePtrInput
 	NeptuneIam            ResourceNeptuneIamPtrInput
-	// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	OktaGroups            ResourceOktaGroupsPtrInput
 	Oracle                ResourceOraclePtrInput
 	OracleNne             ResourceOracleNnePtrInput
@@ -940,7 +945,6 @@ func (o ResourceOutput) AmazonEsiam() ResourceAmazonEsiamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEsiamPtrOutput { return v.AmazonEsiam }).(ResourceAmazonEsiamPtrOutput)
 }
 
-// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AmazonmqAmqp() ResourceAmazonmqAmqpPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonmqAmqpPtrOutput { return v.AmazonmqAmqp }).(ResourceAmazonmqAmqpPtrOutput)
 }
@@ -1053,6 +1057,10 @@ func (o ResourceOutput) CouchbaseWebUi() ResourceCouchbaseWebUiPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceCouchbaseWebUiPtrOutput { return v.CouchbaseWebUi }).(ResourceCouchbaseWebUiPtrOutput)
 }
 
+func (o ResourceOutput) Databricks() ResourceDatabricksPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceDatabricksPtrOutput { return v.Databricks }).(ResourceDatabricksPtrOutput)
+}
+
 func (o ResourceOutput) Db2I() ResourceDb2IPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDb2IPtrOutput { return v.Db2I }).(ResourceDb2IPtrOutput)
 }
@@ -1128,7 +1136,6 @@ func (o ResourceOutput) GoogleGkeUserImpersonation() ResourceGoogleGkeUserImpers
 	return o.ApplyT(func(v *Resource) ResourceGoogleGkeUserImpersonationPtrOutput { return v.GoogleGkeUserImpersonation }).(ResourceGoogleGkeUserImpersonationPtrOutput)
 }
 
-// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) GoogleSpanner() ResourceGoogleSpannerPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGoogleSpannerPtrOutput { return v.GoogleSpanner }).(ResourceGoogleSpannerPtrOutput)
 }
@@ -1182,9 +1189,21 @@ func (o ResourceOutput) Maria() ResourceMariaPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMariaPtrOutput { return v.Maria }).(ResourceMariaPtrOutput)
 }
 
-// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-func (o ResourceOutput) Mcp() ResourceMcpPtrOutput {
-	return o.ApplyT(func(v *Resource) ResourceMcpPtrOutput { return v.Mcp }).(ResourceMcpPtrOutput)
+func (o ResourceOutput) McpGatewayNoAuth() ResourceMcpGatewayNoAuthPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceMcpGatewayNoAuthPtrOutput { return v.McpGatewayNoAuth }).(ResourceMcpGatewayNoAuthPtrOutput)
+}
+
+func (o ResourceOutput) McpGatewayOAuth() ResourceMcpGatewayOAuthPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceMcpGatewayOAuthPtrOutput { return v.McpGatewayOAuth }).(ResourceMcpGatewayOAuthPtrOutput)
+}
+
+// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) McpGatewayOAuthDcr() ResourceMcpGatewayOAuthDcrPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceMcpGatewayOAuthDcrPtrOutput { return v.McpGatewayOAuthDcr }).(ResourceMcpGatewayOAuthDcrPtrOutput)
+}
+
+func (o ResourceOutput) McpGatewayPat() ResourceMcpGatewayPatPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceMcpGatewayPatPtrOutput { return v.McpGatewayPat }).(ResourceMcpGatewayPatPtrOutput)
 }
 
 func (o ResourceOutput) Memcached() ResourceMemcachedPtrOutput {
@@ -1237,7 +1256,6 @@ func (o ResourceOutput) NeptuneIam() ResourceNeptuneIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceNeptuneIamPtrOutput { return v.NeptuneIam }).(ResourceNeptuneIamPtrOutput)
 }
 
-// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) OktaGroups() ResourceOktaGroupsPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceOktaGroupsPtrOutput { return v.OktaGroups }).(ResourceOktaGroupsPtrOutput)
 }

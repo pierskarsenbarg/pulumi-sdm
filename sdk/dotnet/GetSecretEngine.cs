@@ -101,6 +101,12 @@ namespace PiersKarsenbarg.Sdm
         public string? Name { get; set; }
 
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        [Input("nodeSelector")]
+        public string? NodeSelector { get; set; }
+
+        /// <summary>
         /// Password is the password to connect to the SQL Server server.
         /// </summary>
         [Input("password")]
@@ -265,6 +271,12 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        [Input("nodeSelector")]
+        public Input<string>? NodeSelector { get; set; }
+
+        /// <summary>
         /// Password is the password to connect to the SQL Server server.
         /// </summary>
         [Input("password")]
@@ -413,6 +425,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        public readonly string? NodeSelector;
+        /// <summary>
         /// Password is the password to connect to the SQL Server server.
         /// </summary>
         public readonly string? Password;
@@ -498,6 +514,8 @@ namespace PiersKarsenbarg.Sdm
 
             string? name,
 
+            string? nodeSelector,
+
             string? password,
 
             int? port,
@@ -540,6 +558,7 @@ namespace PiersKarsenbarg.Sdm
             InsecureTls = insecureTls;
             KeyRotationIntervalDays = keyRotationIntervalDays;
             Name = name;
+            NodeSelector = nodeSelector;
             Password = password;
             Port = port;
             RequestTimeout = requestTimeout;

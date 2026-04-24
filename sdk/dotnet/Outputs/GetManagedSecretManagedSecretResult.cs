@@ -31,6 +31,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string LastRotatedAt;
         /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        public readonly bool? LockRequired;
+        /// <summary>
         /// Unique human-readable name of the Managed Secret.
         /// </summary>
         public readonly string? Name;
@@ -61,6 +65,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string lastRotatedAt,
 
+            bool? lockRequired,
+
             string? name,
 
             string? secretEngineId,
@@ -75,6 +81,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ExpiresAt = expiresAt;
             Id = id;
             LastRotatedAt = lastRotatedAt;
+            LockRequired = lockRequired;
             Name = name;
             SecretEngineId = secretEngineId;
             SecretStorePath = secretStorePath;

@@ -92,8 +92,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The base address of your website without the path.
-        /// * kubernetes:
+        /// If set, TLS must be used to connect to this resource.
+        /// </summary>
+        [Input("tlsRequired")]
+        public Input<bool>? TlsRequired { get; set; }
+
+        /// <summary>
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

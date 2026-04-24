@@ -82,6 +82,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// This option enforces HTTPS on the client, not resource connection.
+        /// * sql_server:
+        /// </summary>
+        public readonly bool? UseHttps;
 
         [OutputConstructor]
         private GetResourceResourceAwsConsoleStaticKeyPairResult(
@@ -117,7 +122,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? subdomain,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            bool? useHttps)
         {
             AccessKey = accessKey;
             BindInterface = bindInterface;
@@ -136,6 +143,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SessionExpiry = sessionExpiry;
             Subdomain = subdomain;
             Tags = tags;
+            UseHttps = useHttps;
         }
     }
 }

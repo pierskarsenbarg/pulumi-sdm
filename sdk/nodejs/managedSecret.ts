@@ -57,6 +57,10 @@ export class ManagedSecret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastRotatedAt: pulumi.Output<string>;
     /**
+     * Whether the secret requires a lock to access
+     */
+    declare public readonly lockRequired: pulumi.Output<boolean | undefined>;
+    /**
      * Unique human-readable name of the Managed Secret.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -93,6 +97,7 @@ export class ManagedSecret extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["lastRotatedAt"] = state?.lastRotatedAt;
+            resourceInputs["lockRequired"] = state?.lockRequired;
             resourceInputs["name"] = state?.name;
             resourceInputs["secretEngineId"] = state?.secretEngineId;
             resourceInputs["secretStorePath"] = state?.secretStorePath;
@@ -103,6 +108,7 @@ export class ManagedSecret extends pulumi.CustomResource {
             if (args?.secretEngineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretEngineId'");
             }
+            resourceInputs["lockRequired"] = args?.lockRequired;
             resourceInputs["name"] = args?.name;
             resourceInputs["secretEngineId"] = args?.secretEngineId;
             resourceInputs["tags"] = args?.tags;
@@ -136,6 +142,10 @@ export interface ManagedSecretState {
      */
     lastRotatedAt?: pulumi.Input<string>;
     /**
+     * Whether the secret requires a lock to access
+     */
+    lockRequired?: pulumi.Input<boolean>;
+    /**
      * Unique human-readable name of the Managed Secret.
      */
     name?: pulumi.Input<string>;
@@ -161,6 +171,10 @@ export interface ManagedSecretState {
  * The set of arguments for constructing a ManagedSecret resource.
  */
 export interface ManagedSecretArgs {
+    /**
+     * Whether the secret requires a lock to access
+     */
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Managed Secret.
      */

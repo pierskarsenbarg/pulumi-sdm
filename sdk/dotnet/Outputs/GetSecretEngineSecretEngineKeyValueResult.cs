@@ -27,6 +27,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        public readonly string? NodeSelector;
+        /// <summary>
         /// Public key linked with a secret engine
         /// </summary>
         public readonly string PublicKey;
@@ -51,6 +55,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
+            string? nodeSelector,
+
             string publicKey,
 
             string? secretStoreId,
@@ -62,6 +68,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             KeyRotationIntervalDays = keyRotationIntervalDays;
             Name = name;
+            NodeSelector = nodeSelector;
             PublicKey = publicKey;
             SecretStoreId = secretStoreId;
             SecretStoreRootPath = secretStoreRootPath;

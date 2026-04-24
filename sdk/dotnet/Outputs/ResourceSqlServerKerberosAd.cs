@@ -35,6 +35,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
         /// </summary>
         public readonly string? Keytab;
@@ -103,6 +111,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string hostname,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string? keytab,
 
             string? krbConfig,
@@ -136,6 +148,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             Keytab = keytab;
             KrbConfig = krbConfig;
             Name = name;

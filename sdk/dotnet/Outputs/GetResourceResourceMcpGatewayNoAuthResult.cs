@@ -12,7 +12,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceMcp
+    public sealed class GetResourceResourceMcpGatewayNoAuthResult
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -27,29 +27,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// Unique identifier of the Resource.
+        /// </summary>
+        public readonly string? Id;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The OAuth 2.0 authorization endpoint URL.
-        /// </summary>
-        public readonly string OauthAuthEndpoint;
-        /// <summary>
-        /// The OAuth 2.0 dynamic client registration endpoint URL.
-        /// </summary>
-        public readonly string? OauthRegisterEndpoint;
-        /// <summary>
-        /// The OAuth 2.0 token endpoint URL.
-        /// </summary>
-        public readonly string OauthTokenEndpoint;
-        /// <summary>
-        /// The password to authenticate with.
-        /// </summary>
-        public readonly string? Password;
-        /// <summary>
-        /// The port to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        public readonly int? Port;
+        public readonly string? Name;
         /// <summary>
         /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         /// </summary>
@@ -71,29 +55,22 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The username to authenticate with.
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
-        public readonly string Username;
+        public readonly string? Url;
 
         [OutputConstructor]
-        private ResourceMcp(
+        private GetResourceResourceMcpGatewayNoAuthResult(
             string? bindInterface,
 
             string? egressFilter,
 
             string hostname,
 
-            string name,
+            string? id,
 
-            string oauthAuthEndpoint,
-
-            string? oauthRegisterEndpoint,
-
-            string oauthTokenEndpoint,
-
-            string? password,
-
-            int? port,
+            string? name,
 
             int? portOverride,
 
@@ -105,23 +82,19 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            string username)
+            string? url)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
+            Id = id;
             Name = name;
-            OauthAuthEndpoint = oauthAuthEndpoint;
-            OauthRegisterEndpoint = oauthRegisterEndpoint;
-            OauthTokenEndpoint = oauthTokenEndpoint;
-            Password = password;
-            Port = port;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            Username = username;
+            Url = url;
         }
     }
 }

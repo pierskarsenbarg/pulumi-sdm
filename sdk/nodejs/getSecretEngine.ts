@@ -24,6 +24,7 @@ export function getSecretEngine(args?: GetSecretEngineArgs, opts?: pulumi.Invoke
         "insecureTls": args.insecureTls,
         "keyRotationIntervalDays": args.keyRotationIntervalDays,
         "name": args.name,
+        "nodeSelector": args.nodeSelector,
         "password": args.password,
         "port": args.port,
         "requestTimeout": args.requestTimeout,
@@ -89,6 +90,10 @@ export interface GetSecretEngineArgs {
      * Unique human-readable name of the Secret Engine.
      */
     name?: string;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
     /**
      * Password is the password to connect to the SQL Server server.
      */
@@ -200,6 +205,10 @@ export interface GetSecretEngineResult {
      */
     readonly name?: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    readonly nodeSelector?: string;
+    /**
      * Password is the password to connect to the SQL Server server.
      */
     readonly password?: string;
@@ -277,6 +286,7 @@ export function getSecretEngineOutput(args?: GetSecretEngineOutputArgs, opts?: p
         "insecureTls": args.insecureTls,
         "keyRotationIntervalDays": args.keyRotationIntervalDays,
         "name": args.name,
+        "nodeSelector": args.nodeSelector,
         "password": args.password,
         "port": args.port,
         "requestTimeout": args.requestTimeout,
@@ -342,6 +352,10 @@ export interface GetSecretEngineOutputArgs {
      * Unique human-readable name of the Secret Engine.
      */
     name?: pulumi.Input<string>;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: pulumi.Input<string>;
     /**
      * Password is the password to connect to the SQL Server server.
      */

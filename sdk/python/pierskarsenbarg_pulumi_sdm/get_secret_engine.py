@@ -27,7 +27,7 @@ class GetSecretEngineResult:
     """
     A collection of values returned by getSecretEngine.
     """
-    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, database=None, do_not_validate_timestamps=None, hostname=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, password=None, port=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, tls=None, tls_skip_verify=None, type=None, upndomain=None, url=None, userdn=None, username=None):
+    def __init__(__self__, binddn=None, bindpass=None, certificate=None, connection_timeout=None, database=None, do_not_validate_timestamps=None, hostname=None, id=None, ids=None, insecure_tls=None, key_rotation_interval_days=None, name=None, node_selector=None, password=None, port=None, request_timeout=None, secret_engines=None, secret_store_id=None, secret_store_root_path=None, start_tls=None, tags=None, tls=None, tls_skip_verify=None, type=None, upndomain=None, url=None, userdn=None, username=None):
         if binddn and not isinstance(binddn, str):
             raise TypeError("Expected argument 'binddn' to be a str")
         pulumi.set(__self__, "binddn", binddn)
@@ -64,6 +64,9 @@ class GetSecretEngineResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if node_selector and not isinstance(node_selector, str):
+            raise TypeError("Expected argument 'node_selector' to be a str")
+        pulumi.set(__self__, "node_selector", node_selector)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
@@ -207,6 +210,14 @@ class GetSecretEngineResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[_builtins.str]:
+        """
+        node selector is used to narrow down the nodes used to communicate with with secret engine
+        """
+        return pulumi.get(self, "node_selector")
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
@@ -344,6 +355,7 @@ class AwaitableGetSecretEngineResult(GetSecretEngineResult):
             insecure_tls=self.insecure_tls,
             key_rotation_interval_days=self.key_rotation_interval_days,
             name=self.name,
+            node_selector=self.node_selector,
             password=self.password,
             port=self.port,
             request_timeout=self.request_timeout,
@@ -372,6 +384,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
                       insecure_tls: Optional[_builtins.bool] = None,
                       key_rotation_interval_days: Optional[_builtins.int] = None,
                       name: Optional[_builtins.str] = None,
+                      node_selector: Optional[_builtins.str] = None,
                       password: Optional[_builtins.str] = None,
                       port: Optional[_builtins.int] = None,
                       request_timeout: Optional[_builtins.int] = None,
@@ -402,6 +415,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
+    :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
     :param _builtins.str password: Password is the password to connect to the SQL Server server.
     :param _builtins.int port: Port is the port number of the SQL Server server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
@@ -429,6 +443,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
     __args__['insecureTls'] = insecure_tls
     __args__['keyRotationIntervalDays'] = key_rotation_interval_days
     __args__['name'] = name
+    __args__['nodeSelector'] = node_selector
     __args__['password'] = password
     __args__['port'] = port
     __args__['requestTimeout'] = request_timeout
@@ -459,6 +474,7 @@ def get_secret_engine(binddn: Optional[_builtins.str] = None,
         insecure_tls=pulumi.get(__ret__, 'insecure_tls'),
         key_rotation_interval_days=pulumi.get(__ret__, 'key_rotation_interval_days'),
         name=pulumi.get(__ret__, 'name'),
+        node_selector=pulumi.get(__ret__, 'node_selector'),
         password=pulumi.get(__ret__, 'password'),
         port=pulumi.get(__ret__, 'port'),
         request_timeout=pulumi.get(__ret__, 'request_timeout'),
@@ -485,6 +501,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
                              insecure_tls: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              key_rotation_interval_days: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             node_selector: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              password: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              request_timeout: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
@@ -515,6 +532,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
     :param _builtins.bool insecure_tls: If true, skips LDAP server SSL certificate verification - insecure, use with caution!
     :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
     :param _builtins.str name: Unique human-readable name of the Secret Engine.
+    :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
     :param _builtins.str password: Password is the password to connect to the SQL Server server.
     :param _builtins.int port: Port is the port number of the SQL Server server.
     :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
@@ -542,6 +560,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
     __args__['insecureTls'] = insecure_tls
     __args__['keyRotationIntervalDays'] = key_rotation_interval_days
     __args__['name'] = name
+    __args__['nodeSelector'] = node_selector
     __args__['password'] = password
     __args__['port'] = port
     __args__['requestTimeout'] = request_timeout
@@ -571,6 +590,7 @@ def get_secret_engine_output(binddn: Optional[pulumi.Input[Optional[_builtins.st
         insecure_tls=pulumi.get(__response__, 'insecure_tls'),
         key_rotation_interval_days=pulumi.get(__response__, 'key_rotation_interval_days'),
         name=pulumi.get(__response__, 'name'),
+        node_selector=pulumi.get(__response__, 'node_selector'),
         password=pulumi.get(__response__, 'password'),
         port=pulumi.get(__response__, 'port'),
         request_timeout=pulumi.get(__response__, 'request_timeout'),

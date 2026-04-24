@@ -71,8 +71,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The base address of your website without the path.
-        /// * kubernetes:
+        /// If set, TLS must be used to connect to this resource.
+        /// </summary>
+        public readonly bool? TlsRequired;
+        /// <summary>
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
         public readonly string? Url;
         /// <summary>
@@ -110,6 +114,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
+            bool? tlsRequired,
+
             string? url,
 
             string? username)
@@ -128,6 +134,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
+            TlsRequired = tlsRequired;
             Url = url;
             Username = username;
         }

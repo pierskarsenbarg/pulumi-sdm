@@ -2558,6 +2558,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object",
@@ -2647,6 +2651,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object",
@@ -3478,7 +3486,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
@@ -3955,7 +3963,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
@@ -3976,6 +3984,80 @@
                         "portOverride",
                         "subdomain",
                         "url"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceDatabricks:ResourceDatabricks": {
+            "properties": {
+                "accessToken": {
+                    "type": "string",
+                    "description": "Databricks Personal Access Token (PAT)\n",
+                    "secret": true
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The Schema to use to direct initial requests.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "httpPath",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "httpPath",
+                        "name",
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -5604,9 +5686,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
             "type": "object",
@@ -5687,9 +5773,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
@@ -5769,9 +5859,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
             "type": "object",
@@ -6400,7 +6494,162 @@
                 }
             }
         },
-        "sdm:index/ResourceMcp:ResourceMcp": {
+        "sdm:index/ResourceMcpGatewayNoAuth:ResourceMcpGatewayNoAuth": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain",
+                        "url"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "oauthAuthEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 authorization endpoint URL.\n"
+                },
+                "oauthScopes": {
+                    "type": "string",
+                    "description": "Space-separated list of OAuth scopes to request.\n"
+                },
+                "oauthTokenEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 token endpoint URL.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "oauthAuthEndpoint",
+                "oauthTokenEndpoint",
+                "url",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "oauthAuthEndpoint",
+                        "oauthTokenEndpoint",
+                        "portOverride",
+                        "subdomain",
+                        "url",
+                        "username"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr": {
             "properties": {
                 "bindInterface": {
                     "type": "string",
@@ -6426,18 +6675,13 @@
                     "type": "string",
                     "description": "The OAuth 2.0 dynamic client registration endpoint URL.\n"
                 },
+                "oauthScopes": {
+                    "type": "string",
+                    "description": "Space-separated list of OAuth scopes to request.\n"
+                },
                 "oauthTokenEndpoint": {
                     "type": "string",
                     "description": "The OAuth 2.0 token endpoint URL.\n"
-                },
-                "password": {
-                    "type": "string",
-                    "description": "The password to authenticate with.\n",
-                    "secret": true
-                },
-                "port": {
-                    "type": "integer",
-                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "portOverride": {
                     "type": "integer",
@@ -6462,18 +6706,18 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
-                "username": {
+                "url": {
                     "type": "string",
-                    "description": "The username to authenticate with.\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
             "type": "object",
             "required": [
-                "hostname",
                 "name",
                 "oauthAuthEndpoint",
+                "oauthRegisterEndpoint",
                 "oauthTokenEndpoint",
-                "username"
+                "url"
             ],
             "language": {
                 "nodejs": {
@@ -6482,10 +6726,80 @@
                         "hostname",
                         "name",
                         "oauthAuthEndpoint",
+                        "oauthRegisterEndpoint",
                         "oauthTokenEndpoint",
                         "portOverride",
                         "subdomain",
-                        "username"
+                        "url"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain",
+                        "url"
                     ]
                 }
             }
@@ -8925,6 +9239,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object",
@@ -9146,6 +9464,14 @@
                 "hostname": {
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
                 },
                 "keytab": {
                     "type": "string",
@@ -10005,6 +10331,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "publicKey": {
                     "type": "string",
                     "description": "Public key linked with a secret engine\n"
@@ -10082,6 +10412,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "publicKey": {
                     "type": "string",
                     "description": "Public key linked with a secret engine\n"
@@ -10140,6 +10474,10 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
                 },
                 "password": {
                     "type": "string",
@@ -10234,6 +10572,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "Password is the password to connect to the SQL Server server.\n"
@@ -10322,6 +10664,10 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
                 },
                 "password": {
                     "type": "string",
@@ -12068,6 +12414,10 @@
                     "type": "string",
                     "description": "Timestamp of when secret was last rotated\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "Whether the secret requires a lock to access\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Managed Secret.\n"
@@ -12725,6 +13075,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceCouchbaseWebUi:getResourceResourceCouchbaseWebUi"
                     }
                 },
+                "databricks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceDatabrick:getResourceResourceDatabrick"
+                    }
+                },
                 "db2Is": {
                     "type": "array",
                     "items": {
@@ -12908,10 +13264,28 @@
                         "$ref": "#/types/sdm:index/getResourceResourceMaria:getResourceResourceMaria"
                     }
                 },
-                "mcps": {
+                "mcpGatewayNoAuths": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/sdm:index/getResourceResourceMcp:getResourceResourceMcp"
+                        "$ref": "#/types/sdm:index/getResourceResourceMcpGatewayNoAuth:getResourceResourceMcpGatewayNoAuth"
+                    }
+                },
+                "mcpGatewayOAuthDcrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceMcpGatewayOAuthDcr:getResourceResourceMcpGatewayOAuthDcr"
+                    }
+                },
+                "mcpGatewayOAuths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceMcpGatewayOAuth:getResourceResourceMcpGatewayOAuth"
+                    }
+                },
+                "mcpGatewayPats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceMcpGatewayPat:getResourceResourceMcpGatewayPat"
                     }
                 },
                 "memcacheds": {
@@ -13209,6 +13583,7 @@
                 "cockroaches",
                 "couchbaseDatabases",
                 "couchbaseWebUis",
+                "databricks",
                 "db2Is",
                 "db2Luws",
                 "documentDbHosts",
@@ -13239,7 +13614,10 @@
                 "kubernetesServiceAccountUserImpersonations",
                 "kubernetesUserImpersonations",
                 "marias",
-                "mcps",
+                "mcpGatewayNoAuths",
+                "mcpGatewayOAuths",
+                "mcpGatewayOAuthDcrs",
+                "mcpGatewayPats",
                 "memcacheds",
                 "memsqls",
                 "mongoHosts",
@@ -14880,6 +15258,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object"
@@ -14957,6 +15339,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object"
@@ -15662,7 +16048,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
@@ -16068,11 +16454,72 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
                     "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceDatabrick:getResourceResourceDatabrick": {
+            "properties": {
+                "accessToken": {
+                    "type": "string",
+                    "description": "Databricks Personal Access Token (PAT)\n",
+                    "secret": true
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The Schema to use to direct initial requests.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
                 }
             },
             "type": "object"
@@ -17449,9 +17896,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
             "type": "object"
@@ -17518,9 +17969,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 },
                 "username": {
                     "type": "string",
@@ -17586,9 +18041,13 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
                 "url": {
                     "type": "string",
-                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
             "type": "object"
@@ -18108,7 +18567,148 @@
             },
             "type": "object"
         },
-        "sdm:index/getResourceResourceMcp:getResourceResourceMcp": {
+        "sdm:index/getResourceResourceMcpGatewayNoAuth:getResourceResourceMcpGatewayNoAuth": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getResourceResourceMcpGatewayOAuth:getResourceResourceMcpGatewayOAuth": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "oauthAuthEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 authorization endpoint URL.\n"
+                },
+                "oauthScopes": {
+                    "type": "string",
+                    "description": "Space-separated list of OAuth scopes to request.\n"
+                },
+                "oauthTokenEndpoint": {
+                    "type": "string",
+                    "description": "The OAuth 2.0 token endpoint URL.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getResourceResourceMcpGatewayOAuthDcr:getResourceResourceMcpGatewayOAuthDcr": {
             "properties": {
                 "bindInterface": {
                     "type": "string",
@@ -18138,18 +18738,13 @@
                     "type": "string",
                     "description": "The OAuth 2.0 dynamic client registration endpoint URL.\n"
                 },
+                "oauthScopes": {
+                    "type": "string",
+                    "description": "Space-separated list of OAuth scopes to request.\n"
+                },
                 "oauthTokenEndpoint": {
                     "type": "string",
                     "description": "The OAuth 2.0 token endpoint URL.\n"
-                },
-                "password": {
-                    "type": "string",
-                    "description": "The password to authenticate with.\n",
-                    "secret": true
-                },
-                "port": {
-                    "type": "integer",
-                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "portOverride": {
                     "type": "integer",
@@ -18174,12 +18769,85 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
-                "username": {
+                "url": {
                     "type": "string",
-                    "description": "The username to authenticate with.\n"
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "hostname"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getResourceResourceMcpGatewayPat:getResourceResourceMcpGatewayPat": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getResourceResourceMemcached:getResourceResourceMemcached": {
             "properties": {
@@ -20261,6 +20929,10 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useHttps": {
+                    "type": "boolean",
+                    "description": "This option enforces HTTPS on the client, not resource connection.\n* sql_server:\n"
                 }
             },
             "type": "object"
@@ -20448,6 +21120,14 @@
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
                 },
                 "keytab": {
                     "type": "string",
@@ -21273,6 +21953,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "publicKey": {
                     "type": "string",
                     "description": "Public key linked with a secret engine\n"
@@ -21341,6 +22025,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "publicKey": {
                     "type": "string",
                     "description": "Public key linked with a secret engine\n"
@@ -21396,6 +22084,10 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
                 },
                 "password": {
                     "type": "string",
@@ -21477,6 +22169,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
                 },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "Password is the password to connect to the SQL Server server.\n"
@@ -21552,6 +22248,10 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Secret Engine.\n"
+                },
+                "nodeSelector": {
+                    "type": "string",
+                    "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
                 },
                 "password": {
                     "type": "string",
@@ -23408,6 +24108,10 @@
                     "type": "string",
                     "description": "Timestamp of when secret was last rotated"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "Whether the secret requires a lock to access\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Managed Secret.\n"
@@ -23442,6 +24146,10 @@
                 "secretStorePath"
             ],
             "inputProperties": {
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "Whether the secret requires a lock to access\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Managed Secret.\n"
@@ -23480,6 +24188,10 @@
                     "lastRotatedAt": {
                         "type": "string",
                         "description": "Timestamp of when secret was last rotated"
+                    },
+                    "lockRequired": {
+                        "type": "boolean",
+                        "description": "Whether the secret requires a lock to access\n"
                     },
                     "name": {
                         "type": "string",
@@ -23987,8 +24699,7 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                 },
                 "amazonmqAmqp": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -24071,6 +24782,9 @@
                 "couchbaseWebUi": {
                     "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                 },
+                "databricks": {
+                    "$ref": "#/types/sdm:index/ResourceDatabricks:ResourceDatabricks"
+                },
                 "db2I": {
                     "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
                 },
@@ -24129,8 +24843,7 @@
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
                 "googleSpanner": {
-                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
-                    "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -24168,9 +24881,18 @@
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                 },
-                "mcp": {
-                    "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
-                    "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                "mcpGatewayNoAuth": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayNoAuth:ResourceMcpGatewayNoAuth"
+                },
+                "mcpGatewayOAuth": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
+                },
+                "mcpGatewayOAuthDcr": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
+                    "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "mcpGatewayPat": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
                 },
                 "memcached": {
                     "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
@@ -24211,8 +24933,7 @@
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                 },
                 "oktaGroups": {
-                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
-                    "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups"
                 },
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -24345,8 +25066,7 @@
                     "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                 },
                 "amazonmqAmqp": {
-                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                    "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp"
                 },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -24429,6 +25149,9 @@
                 "couchbaseWebUi": {
                     "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                 },
+                "databricks": {
+                    "$ref": "#/types/sdm:index/ResourceDatabricks:ResourceDatabricks"
+                },
                 "db2I": {
                     "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
                 },
@@ -24487,8 +25210,7 @@
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
                 "googleSpanner": {
-                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
-                    "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
                 },
                 "greenplum": {
                     "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -24526,9 +25248,18 @@
                 "maria": {
                     "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                 },
-                "mcp": {
-                    "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
-                    "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                "mcpGatewayNoAuth": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayNoAuth:ResourceMcpGatewayNoAuth"
+                },
+                "mcpGatewayOAuth": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
+                },
+                "mcpGatewayOAuthDcr": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
+                    "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "mcpGatewayPat": {
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
                 },
                 "memcached": {
                     "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
@@ -24569,8 +25300,7 @@
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                 },
                 "oktaGroups": {
-                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
-                    "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups"
                 },
                 "oracle": {
                     "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -24705,8 +25435,7 @@
                         "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam"
                     },
                     "amazonmqAmqp": {
-                        "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp",
-                        "description": "AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp:ResourceAmazonmqAmqp"
                     },
                     "amazonmqAmqp091": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
@@ -24789,6 +25518,9 @@
                     "couchbaseWebUi": {
                         "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                     },
+                    "databricks": {
+                        "$ref": "#/types/sdm:index/ResourceDatabricks:ResourceDatabricks"
+                    },
                     "db2I": {
                         "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
                     },
@@ -24847,8 +25579,7 @@
                         "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                     },
                     "googleSpanner": {
-                        "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner",
-                        "description": "GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
                     },
                     "greenplum": {
                         "$ref": "#/types/sdm:index/ResourceGreenplum:ResourceGreenplum"
@@ -24886,9 +25617,18 @@
                     "maria": {
                         "$ref": "#/types/sdm:index/ResourceMaria:ResourceMaria"
                     },
-                    "mcp": {
-                        "$ref": "#/types/sdm:index/ResourceMcp:ResourceMcp",
-                        "description": "MCP is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "mcpGatewayNoAuth": {
+                        "$ref": "#/types/sdm:index/ResourceMcpGatewayNoAuth:ResourceMcpGatewayNoAuth"
+                    },
+                    "mcpGatewayOAuth": {
+                        "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
+                    },
+                    "mcpGatewayOAuthDcr": {
+                        "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
+                        "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
+                    "mcpGatewayPat": {
+                        "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
                     },
                     "memcached": {
                         "$ref": "#/types/sdm:index/ResourceMemcached:ResourceMemcached"
@@ -24929,8 +25669,7 @@
                         "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                     },
                     "oktaGroups": {
-                        "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups",
-                        "description": "OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/ResourceOktaGroups:ResourceOktaGroups"
                     },
                     "oracle": {
                         "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
@@ -26449,6 +27188,10 @@
                         "type": "string",
                         "description": "Unique identifier of the Managed Secret.\n"
                     },
+                    "lockRequired": {
+                        "type": "boolean",
+                        "description": "Whether the secret requires a lock to access\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Managed Secret.\n"
@@ -26497,6 +27240,10 @@
                     "lastRotatedAt": {
                         "description": "Timestamp of when secret was last rotated\n",
                         "type": "string"
+                    },
+                    "lockRequired": {
+                        "description": "Whether the secret requires a lock to access\n",
+                        "type": "boolean"
                     },
                     "managedSecrets": {
                         "description": "A list where each element has the following attributes:\n",
@@ -26624,6 +27371,50 @@
                     "ids",
                     "nodes"
                 ],
+                "type": "object"
+            }
+        },
+        "sdm:index/getOrgUrlInfo:getOrgUrlInfo": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrgUrlInfo.\n",
+                "properties": {
+                    "baseUrl": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "oidcIssuerUrl": {
+                        "type": "string"
+                    },
+                    "samlMetadataUrl": {
+                        "type": "string"
+                    },
+                    "websitesSubdomain": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrgUrlInfo.\n",
+                "properties": {
+                    "baseUrl": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "oidcIssuerUrl": {
+                        "type": "string"
+                    },
+                    "samlMetadataUrl": {
+                        "type": "string"
+                    },
+                    "websitesSubdomain": {
+                        "type": "string"
+                    }
+                },
                 "type": "object"
             }
         },
@@ -27317,6 +28108,10 @@
                         "type": "string",
                         "description": "Unique human-readable name of the Secret Engine.\n"
                     },
+                    "nodeSelector": {
+                        "type": "string",
+                        "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                    },
                     "password": {
                         "type": "string",
                         "description": "Password is the password to connect to the SQL Server server.\n"
@@ -27431,6 +28226,10 @@
                     },
                     "name": {
                         "description": "Unique human-readable name of the Secret Engine.\n",
+                        "type": "string"
+                    },
+                    "nodeSelector": {
+                        "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n",
                         "type": "string"
                     },
                     "password": {

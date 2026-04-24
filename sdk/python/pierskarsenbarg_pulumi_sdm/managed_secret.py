@@ -20,6 +20,7 @@ __all__ = ['ManagedSecretArgs', 'ManagedSecret']
 class ManagedSecretArgs:
     def __init__(__self__, *,
                  secret_engine_id: pulumi.Input[_builtins.str],
+                 lock_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
@@ -27,11 +28,14 @@ class ManagedSecretArgs:
         The set of arguments for constructing a ManagedSecret resource.
 
         :param pulumi.Input[_builtins.str] secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
+        :param pulumi.Input[_builtins.bool] lock_required: Whether the secret requires a lock to access
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[_builtins.str] value: Sensitive value of the secret.
         """
         pulumi.set(__self__, "secret_engine_id", secret_engine_id)
+        if lock_required is not None:
+            pulumi.set(__self__, "lock_required", lock_required)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -50,6 +54,18 @@ class ManagedSecretArgs:
     @secret_engine_id.setter
     def secret_engine_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_engine_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the secret requires a lock to access
+        """
+        return pulumi.get(self, "lock_required")
+
+    @lock_required.setter
+    def lock_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "lock_required", value)
 
     @_builtins.property
     @pulumi.getter
@@ -94,6 +110,7 @@ class _ManagedSecretState:
                  config: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  last_rotated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 lock_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_store_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -105,6 +122,7 @@ class _ManagedSecretState:
         :param pulumi.Input[_builtins.str] config: public part of the secret value
         :param pulumi.Input[_builtins.str] expires_at: Timestamp of when secret is going to be rotated
         :param pulumi.Input[_builtins.str] last_rotated_at: Timestamp of when secret was last rotated
+        :param pulumi.Input[_builtins.bool] lock_required: Whether the secret requires a lock to access
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
         :param pulumi.Input[_builtins.str] secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
         :param pulumi.Input[_builtins.str] secret_store_path: Path in a secret store.
@@ -117,6 +135,8 @@ class _ManagedSecretState:
             pulumi.set(__self__, "expires_at", expires_at)
         if last_rotated_at is not None:
             pulumi.set(__self__, "last_rotated_at", last_rotated_at)
+        if lock_required is not None:
+            pulumi.set(__self__, "lock_required", lock_required)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret_engine_id is not None:
@@ -163,6 +183,18 @@ class _ManagedSecretState:
     @last_rotated_at.setter
     def last_rotated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "last_rotated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the secret requires a lock to access
+        """
+        return pulumi.get(self, "lock_required")
+
+    @lock_required.setter
+    def lock_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "lock_required", value)
 
     @_builtins.property
     @pulumi.getter
@@ -231,6 +263,7 @@ class ManagedSecret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 lock_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -251,6 +284,7 @@ class ManagedSecret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] lock_required: Whether the secret requires a lock to access
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
         :param pulumi.Input[_builtins.str] secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
@@ -290,6 +324,7 @@ class ManagedSecret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 lock_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_engine_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -303,6 +338,7 @@ class ManagedSecret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedSecretArgs.__new__(ManagedSecretArgs)
 
+            __props__.__dict__["lock_required"] = lock_required
             __props__.__dict__["name"] = name
             if secret_engine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_engine_id'")
@@ -328,6 +364,7 @@ class ManagedSecret(pulumi.CustomResource):
             config: Optional[pulumi.Input[_builtins.str]] = None,
             expires_at: Optional[pulumi.Input[_builtins.str]] = None,
             last_rotated_at: Optional[pulumi.Input[_builtins.str]] = None,
+            lock_required: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             secret_engine_id: Optional[pulumi.Input[_builtins.str]] = None,
             secret_store_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -343,6 +380,7 @@ class ManagedSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config: public part of the secret value
         :param pulumi.Input[_builtins.str] expires_at: Timestamp of when secret is going to be rotated
         :param pulumi.Input[_builtins.str] last_rotated_at: Timestamp of when secret was last rotated
+        :param pulumi.Input[_builtins.bool] lock_required: Whether the secret requires a lock to access
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Managed Secret.
         :param pulumi.Input[_builtins.str] secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
         :param pulumi.Input[_builtins.str] secret_store_path: Path in a secret store.
@@ -356,6 +394,7 @@ class ManagedSecret(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["last_rotated_at"] = last_rotated_at
+        __props__.__dict__["lock_required"] = lock_required
         __props__.__dict__["name"] = name
         __props__.__dict__["secret_engine_id"] = secret_engine_id
         __props__.__dict__["secret_store_path"] = secret_store_path
@@ -386,6 +425,14 @@ class ManagedSecret(pulumi.CustomResource):
         Timestamp of when secret was last rotated
         """
         return pulumi.get(self, "last_rotated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the secret requires a lock to access
+        """
+        return pulumi.get(self, "lock_required")
 
     @_builtins.property
     @pulumi.getter

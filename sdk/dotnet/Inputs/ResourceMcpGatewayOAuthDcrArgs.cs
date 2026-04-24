@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMcpGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceMcpGatewayOAuthDcrArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -28,8 +28,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The host to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        [Input("hostname", required: true)]
-        public Input<string> Hostname { get; set; } = null!;
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -46,36 +46,20 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The OAuth 2.0 dynamic client registration endpoint URL.
         /// </summary>
-        [Input("oauthRegisterEndpoint")]
-        public Input<string>? OauthRegisterEndpoint { get; set; }
+        [Input("oauthRegisterEndpoint", required: true)]
+        public Input<string> OauthRegisterEndpoint { get; set; } = null!;
+
+        /// <summary>
+        /// Space-separated list of OAuth scopes to request.
+        /// </summary>
+        [Input("oauthScopes")]
+        public Input<string>? OauthScopes { get; set; }
 
         /// <summary>
         /// The OAuth 2.0 token endpoint URL.
         /// </summary>
         [Input("oauthTokenEndpoint", required: true)]
         public Input<string> OauthTokenEndpoint { get; set; } = null!;
-
-        [Input("password")]
-        private Input<string>? _password;
-
-        /// <summary>
-        /// The password to authenticate with.
-        /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The port to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -114,14 +98,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The username to authenticate with.
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
-        public ResourceMcpGetArgs()
+        public ResourceMcpGatewayOAuthDcrArgs()
         {
         }
-        public static new ResourceMcpGetArgs Empty => new ResourceMcpGetArgs();
+        public static new ResourceMcpGatewayOAuthDcrArgs Empty => new ResourceMcpGatewayOAuthDcrArgs();
     }
 }
