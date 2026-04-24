@@ -26,6 +26,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        [Input("nodeSelector")]
+        public Input<string>? NodeSelector { get; set; }
+
+        /// <summary>
         /// Public key linked with a secret engine
         /// </summary>
         [Input("publicKey")]

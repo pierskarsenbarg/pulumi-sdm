@@ -37,6 +37,7 @@
         "getIdentitySet.ts",
         "getManagedSecret.ts",
         "getNode.ts",
+        "getOrgUrlInfo.ts",
         "getPeeringGroup.ts",
         "getPeeringGroupNode.ts",
         "getPeeringGroupPeer.ts",

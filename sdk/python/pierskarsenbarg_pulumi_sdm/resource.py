@@ -61,6 +61,7 @@ class ResourceArgs:
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
                  couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
                  couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
+                 databricks: Optional[pulumi.Input['ResourceDatabricksArgs']] = None,
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
@@ -91,7 +92,10 @@ class ResourceArgs:
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
                  maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
-                 mcp: Optional[pulumi.Input['ResourceMcpArgs']] = None,
+                 mcp_gateway_no_auth: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']] = None,
+                 mcp_gateway_o_auth: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']] = None,
+                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']] = None,
+                 mcp_gateway_pat: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']] = None,
                  memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
                  memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
                  mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
@@ -138,15 +142,12 @@ class ResourceArgs:
         The set of arguments for constructing a Resource resource.
 
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGoogleSpannerArgs'] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMcpGatewayOAuthDcrArgs'] mcp_gateway_o_auth_dcr: MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceOktaGroupsArgs'] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -240,6 +241,8 @@ class ResourceArgs:
             pulumi.set(__self__, "couchbase_database", couchbase_database)
         if couchbase_web_ui is not None:
             pulumi.set(__self__, "couchbase_web_ui", couchbase_web_ui)
+        if databricks is not None:
+            pulumi.set(__self__, "databricks", databricks)
         if db2_i is not None:
             pulumi.set(__self__, "db2_i", db2_i)
         if db2_luw is not None:
@@ -309,8 +312,14 @@ class ResourceArgs:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
-        if mcp is not None:
-            pulumi.set(__self__, "mcp", mcp)
+        if mcp_gateway_no_auth is not None:
+            pulumi.set(__self__, "mcp_gateway_no_auth", mcp_gateway_no_auth)
+        if mcp_gateway_o_auth is not None:
+            pulumi.set(__self__, "mcp_gateway_o_auth", mcp_gateway_o_auth)
+        if mcp_gateway_o_auth_dcr is not None:
+            pulumi.set(__self__, "mcp_gateway_o_auth_dcr", mcp_gateway_o_auth_dcr)
+        if mcp_gateway_pat is not None:
+            pulumi.set(__self__, "mcp_gateway_pat", mcp_gateway_pat)
         if memcached is not None:
             pulumi.set(__self__, "memcached", memcached)
         if memsql is not None:
@@ -514,9 +523,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp")
     def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
-        """
-        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazonmq_amqp")
 
     @amazonmq_amqp.setter
@@ -767,6 +773,15 @@ class ResourceArgs:
         pulumi.set(self, "couchbase_web_ui", value)
 
     @_builtins.property
+    @pulumi.getter
+    def databricks(self) -> Optional[pulumi.Input['ResourceDatabricksArgs']]:
+        return pulumi.get(self, "databricks")
+
+    @databricks.setter
+    def databricks(self, value: Optional[pulumi.Input['ResourceDatabricksArgs']]):
+        pulumi.set(self, "databricks", value)
+
+    @_builtins.property
     @pulumi.getter(name="db2I")
     def db2_i(self) -> Optional[pulumi.Input['ResourceDb2IArgs']]:
         return pulumi.get(self, "db2_i")
@@ -938,9 +953,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
     def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
-        """
-        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "google_spanner")
 
     @google_spanner.setter
@@ -1052,16 +1064,43 @@ class ResourceArgs:
         pulumi.set(self, "maria", value)
 
     @_builtins.property
-    @pulumi.getter
-    def mcp(self) -> Optional[pulumi.Input['ResourceMcpArgs']]:
-        """
-        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
-        return pulumi.get(self, "mcp")
+    @pulumi.getter(name="mcpGatewayNoAuth")
+    def mcp_gateway_no_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]:
+        return pulumi.get(self, "mcp_gateway_no_auth")
 
-    @mcp.setter
-    def mcp(self, value: Optional[pulumi.Input['ResourceMcpArgs']]):
-        pulumi.set(self, "mcp", value)
+    @mcp_gateway_no_auth.setter
+    def mcp_gateway_no_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]):
+        pulumi.set(self, "mcp_gateway_no_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuth")
+    def mcp_gateway_o_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]:
+        return pulumi.get(self, "mcp_gateway_o_auth")
+
+    @mcp_gateway_o_auth.setter
+    def mcp_gateway_o_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]):
+        pulumi.set(self, "mcp_gateway_o_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuthDcr")
+    def mcp_gateway_o_auth_dcr(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]:
+        """
+        MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "mcp_gateway_o_auth_dcr")
+
+    @mcp_gateway_o_auth_dcr.setter
+    def mcp_gateway_o_auth_dcr(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]):
+        pulumi.set(self, "mcp_gateway_o_auth_dcr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayPat")
+    def mcp_gateway_pat(self) -> Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]:
+        return pulumi.get(self, "mcp_gateway_pat")
+
+    @mcp_gateway_pat.setter
+    def mcp_gateway_pat(self, value: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]):
+        pulumi.set(self, "mcp_gateway_pat", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1180,9 +1219,6 @@ class ResourceArgs:
     @_builtins.property
     @pulumi.getter(name="oktaGroups")
     def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
-        """
-        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "okta_groups")
 
     @okta_groups.setter
@@ -1494,6 +1530,7 @@ class _ResourceState:
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
                  couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
                  couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
+                 databricks: Optional[pulumi.Input['ResourceDatabricksArgs']] = None,
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
@@ -1524,7 +1561,10 @@ class _ResourceState:
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
                  maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
-                 mcp: Optional[pulumi.Input['ResourceMcpArgs']] = None,
+                 mcp_gateway_no_auth: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']] = None,
+                 mcp_gateway_o_auth: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']] = None,
+                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']] = None,
+                 mcp_gateway_pat: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']] = None,
                  memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
                  memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
                  mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
@@ -1571,15 +1611,12 @@ class _ResourceState:
         Input properties used for looking up and filtering Resource resources.
 
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAmazonmqAmqpArgs'] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGoogleSpannerArgs'] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMcpArgs'] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMcpGatewayOAuthDcrArgs'] mcp_gateway_o_auth_dcr: MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceOktaGroupsArgs'] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aerospike is not None:
             pulumi.set(__self__, "aerospike", aerospike)
@@ -1673,6 +1710,8 @@ class _ResourceState:
             pulumi.set(__self__, "couchbase_database", couchbase_database)
         if couchbase_web_ui is not None:
             pulumi.set(__self__, "couchbase_web_ui", couchbase_web_ui)
+        if databricks is not None:
+            pulumi.set(__self__, "databricks", databricks)
         if db2_i is not None:
             pulumi.set(__self__, "db2_i", db2_i)
         if db2_luw is not None:
@@ -1742,8 +1781,14 @@ class _ResourceState:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
-        if mcp is not None:
-            pulumi.set(__self__, "mcp", mcp)
+        if mcp_gateway_no_auth is not None:
+            pulumi.set(__self__, "mcp_gateway_no_auth", mcp_gateway_no_auth)
+        if mcp_gateway_o_auth is not None:
+            pulumi.set(__self__, "mcp_gateway_o_auth", mcp_gateway_o_auth)
+        if mcp_gateway_o_auth_dcr is not None:
+            pulumi.set(__self__, "mcp_gateway_o_auth_dcr", mcp_gateway_o_auth_dcr)
+        if mcp_gateway_pat is not None:
+            pulumi.set(__self__, "mcp_gateway_pat", mcp_gateway_pat)
         if memcached is not None:
             pulumi.set(__self__, "memcached", memcached)
         if memsql is not None:
@@ -1947,9 +1992,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp")
     def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
-        """
-        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazonmq_amqp")
 
     @amazonmq_amqp.setter
@@ -2200,6 +2242,15 @@ class _ResourceState:
         pulumi.set(self, "couchbase_web_ui", value)
 
     @_builtins.property
+    @pulumi.getter
+    def databricks(self) -> Optional[pulumi.Input['ResourceDatabricksArgs']]:
+        return pulumi.get(self, "databricks")
+
+    @databricks.setter
+    def databricks(self, value: Optional[pulumi.Input['ResourceDatabricksArgs']]):
+        pulumi.set(self, "databricks", value)
+
+    @_builtins.property
     @pulumi.getter(name="db2I")
     def db2_i(self) -> Optional[pulumi.Input['ResourceDb2IArgs']]:
         return pulumi.get(self, "db2_i")
@@ -2371,9 +2422,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
     def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
-        """
-        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "google_spanner")
 
     @google_spanner.setter
@@ -2485,16 +2533,43 @@ class _ResourceState:
         pulumi.set(self, "maria", value)
 
     @_builtins.property
-    @pulumi.getter
-    def mcp(self) -> Optional[pulumi.Input['ResourceMcpArgs']]:
-        """
-        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
-        return pulumi.get(self, "mcp")
+    @pulumi.getter(name="mcpGatewayNoAuth")
+    def mcp_gateway_no_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]:
+        return pulumi.get(self, "mcp_gateway_no_auth")
 
-    @mcp.setter
-    def mcp(self, value: Optional[pulumi.Input['ResourceMcpArgs']]):
-        pulumi.set(self, "mcp", value)
+    @mcp_gateway_no_auth.setter
+    def mcp_gateway_no_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]):
+        pulumi.set(self, "mcp_gateway_no_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuth")
+    def mcp_gateway_o_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]:
+        return pulumi.get(self, "mcp_gateway_o_auth")
+
+    @mcp_gateway_o_auth.setter
+    def mcp_gateway_o_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]):
+        pulumi.set(self, "mcp_gateway_o_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuthDcr")
+    def mcp_gateway_o_auth_dcr(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]:
+        """
+        MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "mcp_gateway_o_auth_dcr")
+
+    @mcp_gateway_o_auth_dcr.setter
+    def mcp_gateway_o_auth_dcr(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]):
+        pulumi.set(self, "mcp_gateway_o_auth_dcr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayPat")
+    def mcp_gateway_pat(self) -> Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]:
+        return pulumi.get(self, "mcp_gateway_pat")
+
+    @mcp_gateway_pat.setter
+    def mcp_gateway_pat(self, value: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]):
+        pulumi.set(self, "mcp_gateway_pat", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2613,9 +2688,6 @@ class _ResourceState:
     @_builtins.property
     @pulumi.getter(name="oktaGroups")
     def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
-        """
-        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "okta_groups")
 
     @okta_groups.setter
@@ -2930,6 +3002,7 @@ class Resource(pulumi.CustomResource):
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
                  couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
                  couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+                 databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -2960,7 +3033,10 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
                  maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-                 mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
+                 mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+                 mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
                  memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
                  memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
                  mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -3065,15 +3141,12 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']] mcp_gateway_o_auth_dcr: MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -3194,6 +3267,7 @@ class Resource(pulumi.CustomResource):
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
                  couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
                  couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+                 databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -3224,7 +3298,10 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
                  maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-                 mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
+                 mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+                 mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
                  memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
                  memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
                  mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -3316,6 +3393,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["cockroach"] = cockroach
             __props__.__dict__["couchbase_database"] = couchbase_database
             __props__.__dict__["couchbase_web_ui"] = couchbase_web_ui
+            __props__.__dict__["databricks"] = databricks
             __props__.__dict__["db2_i"] = db2_i
             __props__.__dict__["db2_luw"] = db2_luw
             __props__.__dict__["document_db_host"] = document_db_host
@@ -3346,7 +3424,10 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
             __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
             __props__.__dict__["maria"] = maria
-            __props__.__dict__["mcp"] = mcp
+            __props__.__dict__["mcp_gateway_no_auth"] = mcp_gateway_no_auth
+            __props__.__dict__["mcp_gateway_o_auth"] = mcp_gateway_o_auth
+            __props__.__dict__["mcp_gateway_o_auth_dcr"] = mcp_gateway_o_auth_dcr
+            __props__.__dict__["mcp_gateway_pat"] = mcp_gateway_pat
             __props__.__dict__["memcached"] = memcached
             __props__.__dict__["memsql"] = memsql
             __props__.__dict__["mongo_host"] = mongo_host
@@ -3439,6 +3520,7 @@ class Resource(pulumi.CustomResource):
             cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
             couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
             couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+            databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
             db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
             db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
             document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -3469,7 +3551,10 @@ class Resource(pulumi.CustomResource):
             kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
             kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
             maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-            mcp: Optional[pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']]] = None,
+            mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+            mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+            mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+            mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
             memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
             memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
             mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
@@ -3520,15 +3605,12 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']] amazonmq_amqp: AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']] google_spanner: GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceMcpArgs', 'ResourceMcpArgsDict']] mcp: MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']] mcp_gateway_o_auth_dcr: MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']] okta_groups: OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3574,6 +3656,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["cockroach"] = cockroach
         __props__.__dict__["couchbase_database"] = couchbase_database
         __props__.__dict__["couchbase_web_ui"] = couchbase_web_ui
+        __props__.__dict__["databricks"] = databricks
         __props__.__dict__["db2_i"] = db2_i
         __props__.__dict__["db2_luw"] = db2_luw
         __props__.__dict__["document_db_host"] = document_db_host
@@ -3604,7 +3687,10 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
         __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
         __props__.__dict__["maria"] = maria
-        __props__.__dict__["mcp"] = mcp
+        __props__.__dict__["mcp_gateway_no_auth"] = mcp_gateway_no_auth
+        __props__.__dict__["mcp_gateway_o_auth"] = mcp_gateway_o_auth
+        __props__.__dict__["mcp_gateway_o_auth_dcr"] = mcp_gateway_o_auth_dcr
+        __props__.__dict__["mcp_gateway_pat"] = mcp_gateway_pat
         __props__.__dict__["memcached"] = memcached
         __props__.__dict__["memsql"] = memsql
         __props__.__dict__["mongo_host"] = mongo_host
@@ -3719,9 +3805,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp")
     def amazonmq_amqp(self) -> pulumi.Output[Optional['outputs.ResourceAmazonmqAmqp']]:
-        """
-        AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "amazonmq_amqp")
 
     @_builtins.property
@@ -3860,6 +3943,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "couchbase_web_ui")
 
     @_builtins.property
+    @pulumi.getter
+    def databricks(self) -> pulumi.Output[Optional['outputs.ResourceDatabricks']]:
+        return pulumi.get(self, "databricks")
+
+    @_builtins.property
     @pulumi.getter(name="db2I")
     def db2_i(self) -> pulumi.Output[Optional['outputs.ResourceDb2I']]:
         return pulumi.get(self, "db2_i")
@@ -3959,9 +4047,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
     def google_spanner(self) -> pulumi.Output[Optional['outputs.ResourceGoogleSpanner']]:
-        """
-        GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "google_spanner")
 
     @_builtins.property
@@ -4025,12 +4110,27 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "maria")
 
     @_builtins.property
-    @pulumi.getter
-    def mcp(self) -> pulumi.Output[Optional['outputs.ResourceMcp']]:
+    @pulumi.getter(name="mcpGatewayNoAuth")
+    def mcp_gateway_no_auth(self) -> pulumi.Output[Optional['outputs.ResourceMcpGatewayNoAuth']]:
+        return pulumi.get(self, "mcp_gateway_no_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuth")
+    def mcp_gateway_o_auth(self) -> pulumi.Output[Optional['outputs.ResourceMcpGatewayOAuth']]:
+        return pulumi.get(self, "mcp_gateway_o_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayOAuthDcr")
+    def mcp_gateway_o_auth_dcr(self) -> pulumi.Output[Optional['outputs.ResourceMcpGatewayOAuthDcr']]:
         """
-        MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
-        return pulumi.get(self, "mcp")
+        return pulumi.get(self, "mcp_gateway_o_auth_dcr")
+
+    @_builtins.property
+    @pulumi.getter(name="mcpGatewayPat")
+    def mcp_gateway_pat(self) -> pulumi.Output[Optional['outputs.ResourceMcpGatewayPat']]:
+        return pulumi.get(self, "mcp_gateway_pat")
 
     @_builtins.property
     @pulumi.getter
@@ -4101,9 +4201,6 @@ class Resource(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="oktaGroups")
     def okta_groups(self) -> pulumi.Output[Optional['outputs.ResourceOktaGroups']]:
-        """
-        OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "okta_groups")
 
     @_builtins.property

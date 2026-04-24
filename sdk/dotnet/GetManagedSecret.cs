@@ -41,6 +41,12 @@ namespace PiersKarsenbarg.Sdm
         public string? Id { get; set; }
 
         /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        [Input("lockRequired")]
+        public bool? LockRequired { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Managed Secret.
         /// </summary>
         [Input("name")]
@@ -89,6 +95,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        [Input("lockRequired")]
+        public Input<bool>? LockRequired { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Managed Secret.
@@ -161,6 +173,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string LastRotatedAt;
         /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        public readonly bool? LockRequired;
+        /// <summary>
         /// A list where each element has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetManagedSecretManagedSecretResult> ManagedSecrets;
@@ -197,6 +213,8 @@ namespace PiersKarsenbarg.Sdm
 
             string lastRotatedAt,
 
+            bool? lockRequired,
+
             ImmutableArray<Outputs.GetManagedSecretManagedSecretResult> managedSecrets,
 
             string? name,
@@ -214,6 +232,7 @@ namespace PiersKarsenbarg.Sdm
             Id = id;
             Ids = ids;
             LastRotatedAt = lastRotatedAt;
+            LockRequired = lockRequired;
             ManagedSecrets = managedSecrets;
             Name = name;
             SecretEngineId = secretEngineId;

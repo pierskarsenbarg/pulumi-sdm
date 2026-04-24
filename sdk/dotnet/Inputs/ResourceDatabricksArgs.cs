@@ -11,8 +11,24 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMcpArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceDatabricksArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+
+        /// <summary>
+        /// Databricks Personal Access Token (PAT)
+        /// </summary>
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
@@ -32,50 +48,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
+        /// The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)
+        /// </summary>
+        [Input("httpPath", required: true)]
+        public Input<string> HttpPath { get; set; } = null!;
+
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The OAuth 2.0 authorization endpoint URL.
-        /// </summary>
-        [Input("oauthAuthEndpoint", required: true)]
-        public Input<string> OauthAuthEndpoint { get; set; } = null!;
-
-        /// <summary>
-        /// The OAuth 2.0 dynamic client registration endpoint URL.
-        /// </summary>
-        [Input("oauthRegisterEndpoint")]
-        public Input<string>? OauthRegisterEndpoint { get; set; }
-
-        /// <summary>
-        /// The OAuth 2.0 token endpoint URL.
-        /// </summary>
-        [Input("oauthTokenEndpoint", required: true)]
-        public Input<string> OauthTokenEndpoint { get; set; } = null!;
-
-        [Input("password")]
-        private Input<string>? _password;
-
-        /// <summary>
-        /// The password to authenticate with.
-        /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The port to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -88,6 +70,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("proxyClusterId")]
         public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
+        /// The Schema to use to direct initial requests.
+        /// </summary>
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -113,15 +101,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The username to authenticate with.
-        /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
-
-        public ResourceMcpArgs()
+        public ResourceDatabricksArgs()
         {
         }
-        public static new ResourceMcpArgs Empty => new ResourceMcpArgs();
+        public static new ResourceDatabricksArgs Empty => new ResourceDatabricksArgs();
     }
 }

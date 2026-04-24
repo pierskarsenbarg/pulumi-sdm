@@ -764,6 +764,10 @@ export interface GetManagedSecretManagedSecret {
      */
     lastRotatedAt: string;
     /**
+     * Whether the secret requires a lock to access
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Managed Secret.
      */
     name?: string;
@@ -1085,6 +1089,7 @@ export interface GetResourceResource {
     cockroaches: outputs.GetResourceResourceCockroach[];
     couchbaseDatabases: outputs.GetResourceResourceCouchbaseDatabase[];
     couchbaseWebUis: outputs.GetResourceResourceCouchbaseWebUi[];
+    databricks: outputs.GetResourceResourceDatabrick[];
     db2Is: outputs.GetResourceResourceDb2I[];
     db2Luws: outputs.GetResourceResourceDb2Luw[];
     documentDbHostIams: outputs.GetResourceResourceDocumentDbHostIam[];
@@ -1124,7 +1129,10 @@ export interface GetResourceResource {
      */
     kubernetesUserImpersonations: outputs.GetResourceResourceKubernetesUserImpersonation[];
     marias: outputs.GetResourceResourceMaria[];
-    mcps: outputs.GetResourceResourceMcp[];
+    mcpGatewayNoAuths: outputs.GetResourceResourceMcpGatewayNoAuth[];
+    mcpGatewayOAuthDcrs: outputs.GetResourceResourceMcpGatewayOAuthDcr[];
+    mcpGatewayOAuths: outputs.GetResourceResourceMcpGatewayOAuth[];
+    mcpGatewayPats: outputs.GetResourceResourceMcpGatewayPat[];
     memcacheds: outputs.GetResourceResourceMemcached[];
     memsqls: outputs.GetResourceResourceMemsql[];
     mongoHosts: outputs.GetResourceResourceMongoHost[];
@@ -2631,6 +2639,11 @@ export interface GetResourceResourceAwsConsole {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface GetResourceResourceAwsConsoleStaticKeyPair {
@@ -2702,6 +2715,11 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface GetResourceResourceAwsInstanceProfile {
@@ -3342,8 +3360,8 @@ export interface GetResourceResourceClickHouseHttp {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url?: string;
     /**
@@ -3713,14 +3731,69 @@ export interface GetResourceResourceCouchbaseWebUi {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url?: string;
     /**
      * The username to authenticate with.
      */
     username?: string;
+}
+
+export interface GetResourceResourceDatabrick {
+    /**
+     * Databricks Personal Access Token (PAT)
+     */
+    accessToken?: string;
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)
+     */
+    httpPath?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The Schema to use to direct initial requests.
+     */
+    schema?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
 }
 
 export interface GetResourceResourceDb2I {
@@ -4980,8 +5053,12 @@ export interface GetResourceResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url?: string;
 }
@@ -5044,8 +5121,12 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url?: string;
     /**
@@ -5108,8 +5189,12 @@ export interface GetResourceResourceHttpNoAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url?: string;
 }
@@ -5585,7 +5670,7 @@ export interface GetResourceResourceMaria {
     username?: string;
 }
 
-export interface GetResourceResourceMcp {
+export interface GetResourceResourceMcpGatewayNoAuth {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
@@ -5597,7 +5682,7 @@ export interface GetResourceResourceMcp {
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
-    hostname?: string;
+    hostname: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -5606,26 +5691,6 @@ export interface GetResourceResourceMcp {
      * Unique human-readable name of the Resource.
      */
     name?: string;
-    /**
-     * The OAuth 2.0 authorization endpoint URL.
-     */
-    oauthAuthEndpoint?: string;
-    /**
-     * The OAuth 2.0 dynamic client registration endpoint URL.
-     */
-    oauthRegisterEndpoint?: string;
-    /**
-     * The OAuth 2.0 token endpoint URL.
-     */
-    oauthTokenEndpoint?: string;
-    /**
-     * The password to authenticate with.
-     */
-    password?: string;
-    /**
-     * The port to dial to initiate a connection from the egress node to this resource.
-     */
-    port?: number;
     /**
      * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
@@ -5647,9 +5712,194 @@ export interface GetResourceResourceMcp {
      */
     tags?: {[key: string]: string};
     /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
+}
+
+export interface GetResourceResourceMcpGatewayOAuth {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint?: string;
+    /**
+     * Space-separated list of OAuth scopes to request.
+     */
+    oauthScopes?: string;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
+    /**
      * The username to authenticate with.
      */
     username?: string;
+}
+
+export interface GetResourceResourceMcpGatewayOAuthDcr {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint?: string;
+    /**
+     * The OAuth 2.0 dynamic client registration endpoint URL.
+     */
+    oauthRegisterEndpoint?: string;
+    /**
+     * Space-separated list of OAuth scopes to request.
+     */
+    oauthScopes?: string;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
+}
+
+export interface GetResourceResourceMcpGatewayPat {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
 }
 
 export interface GetResourceResourceMemcached {
@@ -7549,6 +7799,11 @@ export interface GetResourceResourceSnowsight {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface GetResourceResourceSqlServer {
@@ -7723,6 +7978,14 @@ export interface GetResourceResourceSqlServerKerberosAd {
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
     /**
      * The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
      */
@@ -8429,6 +8692,10 @@ export interface GetSecretEngineSecretEngineActiveDirectory {
      */
     name?: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Public key linked with a secret engine
      */
     publicKey: string;
@@ -8484,6 +8751,10 @@ export interface GetSecretEngineSecretEngineKeyValue {
      */
     name?: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Public key linked with a secret engine
      */
     publicKey: string;
@@ -8526,6 +8797,10 @@ export interface GetSecretEngineSecretEngineMysqlSecretEngine {
      * Unique human-readable name of the Secret Engine.
      */
     name?: string;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
     /**
      * Password is the password to connect to the SQL Server server.
      */
@@ -8594,6 +8869,10 @@ export interface GetSecretEngineSecretEnginePostgresSecretEngine {
      */
     name?: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Password is the password to connect to the SQL Server server.
      */
     password?: string;
@@ -8656,6 +8935,10 @@ export interface GetSecretEngineSecretEngineSqlserverSecretEngine {
      * Unique human-readable name of the Secret Engine.
      */
     name?: string;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
     /**
      * Password is the password to connect to the SQL Server server.
      */
@@ -11142,6 +11425,11 @@ export interface ResourceAwsConsole {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface ResourceAwsConsoleStaticKeyPair {
@@ -11209,6 +11497,11 @@ export interface ResourceAwsConsoleStaticKeyPair {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface ResourceAwsInstanceProfile {
@@ -11805,8 +12098,8 @@ export interface ResourceClickHouseHttp {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url: string;
     /**
@@ -12152,14 +12445,65 @@ export interface ResourceCouchbaseWebUi {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url: string;
     /**
      * The username to authenticate with.
      */
     username?: string;
+}
+
+export interface ResourceDatabricks {
+    /**
+     * Databricks Personal Access Token (PAT)
+     */
+    accessToken?: string;
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)
+     */
+    httpPath: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The Schema to use to direct initial requests.
+     */
+    schema?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
 }
 
 export interface ResourceDb2I {
@@ -13335,8 +13679,12 @@ export interface ResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url: string;
 }
@@ -13395,8 +13743,12 @@ export interface ResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url: string;
     /**
@@ -13455,8 +13807,12 @@ export interface ResourceHttpNoAuth {
      */
     tags?: {[key: string]: string};
     /**
-     * The base address of your website without the path.
-     * * kubernetes:
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
     url: string;
 }
@@ -13904,7 +14260,115 @@ export interface ResourceMaria {
     username?: string;
 }
 
-export interface ResourceMcp {
+export interface ResourceMcpGatewayNoAuth {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url: string;
+}
+
+export interface ResourceMcpGatewayOAuth {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The OAuth 2.0 authorization endpoint URL.
+     */
+    oauthAuthEndpoint: string;
+    /**
+     * Space-separated list of OAuth scopes to request.
+     */
+    oauthScopes?: string;
+    /**
+     * The OAuth 2.0 token endpoint URL.
+     */
+    oauthTokenEndpoint: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url: string;
+    /**
+     * The username to authenticate with.
+     */
+    username: string;
+}
+
+export interface ResourceMcpGatewayOAuthDcr {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
      */
@@ -13928,19 +14392,15 @@ export interface ResourceMcp {
     /**
      * The OAuth 2.0 dynamic client registration endpoint URL.
      */
-    oauthRegisterEndpoint?: string;
+    oauthRegisterEndpoint: string;
+    /**
+     * Space-separated list of OAuth scopes to request.
+     */
+    oauthScopes?: string;
     /**
      * The OAuth 2.0 token endpoint URL.
      */
     oauthTokenEndpoint: string;
-    /**
-     * The password to authenticate with.
-     */
-    password?: string;
-    /**
-     * The port to dial to initiate a connection from the egress node to this resource.
-     */
-    port?: number;
     /**
      * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
      */
@@ -13962,9 +14422,58 @@ export interface ResourceMcp {
      */
     tags?: {[key: string]: string};
     /**
-     * The username to authenticate with.
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
      */
-    username: string;
+    url: string;
+}
+
+export interface ResourceMcpGatewayPat {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url: string;
 }
 
 export interface ResourceMemcached {
@@ -15744,6 +16253,11 @@ export interface ResourceSnowsight {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * This option enforces HTTPS on the client, not resource connection.
+     * * sql_server:
+     */
+    useHttps?: boolean;
 }
 
 export interface ResourceSqlServer {
@@ -15906,6 +16420,14 @@ export interface ResourceSqlServerKerberosAd {
      * The host to dial to initiate a connection from the egress node to this resource.
      */
     hostname: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
     /**
      * The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
      */
@@ -16541,6 +17063,10 @@ export interface SecretEngineActiveDirectory {
      */
     name: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Public key linked with a secret engine
      */
     publicKey: string;
@@ -16593,6 +17119,10 @@ export interface SecretEngineKeyValue {
      */
     name: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Public key linked with a secret engine
      */
     publicKey: string;
@@ -16631,6 +17161,10 @@ export interface SecretEngineMysqlSecretEngine {
      * Unique human-readable name of the Secret Engine.
      */
     name: string;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
     /**
      * Password is the password to connect to the SQL Server server.
      */
@@ -16695,6 +17229,10 @@ export interface SecretEnginePostgresSecretEngine {
      */
     name: string;
     /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
+    /**
      * Password is the password to connect to the SQL Server server.
      */
     password: string;
@@ -16753,6 +17291,10 @@ export interface SecretEngineSqlserverSecretEngine {
      * Unique human-readable name of the Secret Engine.
      */
     name: string;
+    /**
+     * node selector is used to narrow down the nodes used to communicate with with secret engine
+     */
+    nodeSelector?: string;
     /**
      * Password is the password to connect to the SQL Server server.
      */

@@ -26,6 +26,8 @@ func LookupManagedSecret(ctx *pulumi.Context, args *LookupManagedSecretArgs, opt
 type LookupManagedSecretArgs struct {
 	// Unique identifier of the Managed Secret.
 	Id *string `pulumi:"id"`
+	// Whether the secret requires a lock to access
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Managed Secret.
 	Name *string `pulumi:"name"`
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -48,6 +50,8 @@ type LookupManagedSecretResult struct {
 	Ids []string `pulumi:"ids"`
 	// Timestamp of when secret was last rotated
 	LastRotatedAt string `pulumi:"lastRotatedAt"`
+	// Whether the secret requires a lock to access
+	LockRequired *bool `pulumi:"lockRequired"`
 	// A list where each element has the following attributes:
 	ManagedSecrets []GetManagedSecretManagedSecret `pulumi:"managedSecrets"`
 	// Unique human-readable name of the Managed Secret.
@@ -75,6 +79,8 @@ func LookupManagedSecretOutput(ctx *pulumi.Context, args LookupManagedSecretOutp
 type LookupManagedSecretOutputArgs struct {
 	// Unique identifier of the Managed Secret.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether the secret requires a lock to access
+	LockRequired pulumi.BoolPtrInput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Managed Secret.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An ID of a Secret Engine linked with the Managed Secret.
@@ -127,6 +133,11 @@ func (o LookupManagedSecretResultOutput) Ids() pulumi.StringArrayOutput {
 // Timestamp of when secret was last rotated
 func (o LookupManagedSecretResultOutput) LastRotatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedSecretResult) string { return v.LastRotatedAt }).(pulumi.StringOutput)
+}
+
+// Whether the secret requires a lock to access
+func (o LookupManagedSecretResultOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupManagedSecretResult) *bool { return v.LockRequired }).(pulumi.BoolPtrOutput)
 }
 
 // A list where each element has the following attributes:

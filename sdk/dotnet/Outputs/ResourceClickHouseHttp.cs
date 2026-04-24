@@ -51,8 +51,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The base address of your website without the path.
-        /// * kubernetes:
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
         public readonly string Url;
         /// <summary>

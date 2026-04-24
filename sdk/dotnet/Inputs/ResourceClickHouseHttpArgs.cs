@@ -84,8 +84,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The base address of your website without the path.
-        /// * kubernetes:
+        /// The URL to dial to initiate a connection from the egress node to this resource.
+        /// * memcached:
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

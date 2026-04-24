@@ -46,6 +46,8 @@ type LookupSecretEngineArgs struct {
 	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name *string `pulumi:"name"`
+	// node selector is used to narrow down the nodes used to communicate with with secret engine
+	NodeSelector *string `pulumi:"nodeSelector"`
 	// Password is the password to connect to the SQL Server server.
 	Password *string `pulumi:"password"`
 	// Port is the port number of the SQL Server server.
@@ -102,6 +104,8 @@ type LookupSecretEngineResult struct {
 	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name *string `pulumi:"name"`
+	// node selector is used to narrow down the nodes used to communicate with with secret engine
+	NodeSelector *string `pulumi:"nodeSelector"`
 	// Password is the password to connect to the SQL Server server.
 	Password *string `pulumi:"password"`
 	// Port is the port number of the SQL Server server.
@@ -168,6 +172,8 @@ type LookupSecretEngineOutputArgs struct {
 	KeyRotationIntervalDays pulumi.IntPtrInput `pulumi:"keyRotationIntervalDays"`
 	// Unique human-readable name of the Secret Engine.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// node selector is used to narrow down the nodes used to communicate with with secret engine
+	NodeSelector pulumi.StringPtrInput `pulumi:"nodeSelector"`
 	// Password is the password to connect to the SQL Server server.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port is the port number of the SQL Server server.
@@ -275,6 +281,11 @@ func (o LookupSecretEngineResultOutput) KeyRotationIntervalDays() pulumi.IntPtrO
 // Unique human-readable name of the Secret Engine.
 func (o LookupSecretEngineResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// node selector is used to narrow down the nodes used to communicate with with secret engine
+func (o LookupSecretEngineResultOutput) NodeSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretEngineResult) *string { return v.NodeSelector }).(pulumi.StringPtrOutput)
 }
 
 // Password is the password to connect to the SQL Server server.

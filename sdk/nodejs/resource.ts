@@ -118,9 +118,6 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly amazonEksUserImpersonation: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     declare public readonly amazonEs: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
     declare public readonly amazonEsiam: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
-    /**
-     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly amazonmqAmqp: pulumi.Output<outputs.ResourceAmazonmqAmqp | undefined>;
     declare public readonly amazonmqAmqp091: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     declare public readonly athena: pulumi.Output<outputs.ResourceAthena | undefined>;
@@ -149,6 +146,7 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly cockroach: pulumi.Output<outputs.ResourceCockroach | undefined>;
     declare public readonly couchbaseDatabase: pulumi.Output<outputs.ResourceCouchbaseDatabase | undefined>;
     declare public readonly couchbaseWebUi: pulumi.Output<outputs.ResourceCouchbaseWebUi | undefined>;
+    declare public readonly databricks: pulumi.Output<outputs.ResourceDatabricks | undefined>;
     declare public readonly db2I: pulumi.Output<outputs.ResourceDb2I | undefined>;
     declare public readonly db2Luw: pulumi.Output<outputs.ResourceDb2Luw | undefined>;
     declare public readonly documentDbHost: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
@@ -176,9 +174,6 @@ export class Resource extends pulumi.CustomResource {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     declare public readonly googleGkeUserImpersonation: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
-    /**
-     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly googleSpanner: pulumi.Output<outputs.ResourceGoogleSpanner | undefined>;
     declare public readonly greenplum: pulumi.Output<outputs.ResourceGreenplum | undefined>;
     declare public readonly httpAuth: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
@@ -200,10 +195,13 @@ export class Resource extends pulumi.CustomResource {
      */
     declare public readonly kubernetesUserImpersonation: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
     declare public readonly maria: pulumi.Output<outputs.ResourceMaria | undefined>;
+    declare public readonly mcpGatewayNoAuth: pulumi.Output<outputs.ResourceMcpGatewayNoAuth | undefined>;
+    declare public readonly mcpGatewayOAuth: pulumi.Output<outputs.ResourceMcpGatewayOAuth | undefined>;
     /**
-     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    declare public readonly mcp: pulumi.Output<outputs.ResourceMcp | undefined>;
+    declare public readonly mcpGatewayOAuthDcr: pulumi.Output<outputs.ResourceMcpGatewayOAuthDcr | undefined>;
+    declare public readonly mcpGatewayPat: pulumi.Output<outputs.ResourceMcpGatewayPat | undefined>;
     declare public readonly memcached: pulumi.Output<outputs.ResourceMemcached | undefined>;
     declare public readonly memsql: pulumi.Output<outputs.ResourceMemsql | undefined>;
     declare public readonly mongoHost: pulumi.Output<outputs.ResourceMongoHost | undefined>;
@@ -222,9 +220,6 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly mysql: pulumi.Output<outputs.ResourceMysql | undefined>;
     declare public readonly neptune: pulumi.Output<outputs.ResourceNeptune | undefined>;
     declare public readonly neptuneIam: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
-    /**
-     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly oktaGroups: pulumi.Output<outputs.ResourceOktaGroups | undefined>;
     declare public readonly oracle: pulumi.Output<outputs.ResourceOracle | undefined>;
     declare public readonly oracleNne: pulumi.Output<outputs.ResourceOracleNne | undefined>;
@@ -309,6 +304,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["cockroach"] = state?.cockroach;
             resourceInputs["couchbaseDatabase"] = state?.couchbaseDatabase;
             resourceInputs["couchbaseWebUi"] = state?.couchbaseWebUi;
+            resourceInputs["databricks"] = state?.databricks;
             resourceInputs["db2I"] = state?.db2I;
             resourceInputs["db2Luw"] = state?.db2Luw;
             resourceInputs["documentDbHost"] = state?.documentDbHost;
@@ -339,7 +335,10 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = state?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = state?.kubernetesUserImpersonation;
             resourceInputs["maria"] = state?.maria;
-            resourceInputs["mcp"] = state?.mcp;
+            resourceInputs["mcpGatewayNoAuth"] = state?.mcpGatewayNoAuth;
+            resourceInputs["mcpGatewayOAuth"] = state?.mcpGatewayOAuth;
+            resourceInputs["mcpGatewayOAuthDcr"] = state?.mcpGatewayOAuthDcr;
+            resourceInputs["mcpGatewayPat"] = state?.mcpGatewayPat;
             resourceInputs["memcached"] = state?.memcached;
             resourceInputs["memsql"] = state?.memsql;
             resourceInputs["mongoHost"] = state?.mongoHost;
@@ -424,6 +423,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["cockroach"] = args?.cockroach;
             resourceInputs["couchbaseDatabase"] = args?.couchbaseDatabase;
             resourceInputs["couchbaseWebUi"] = args?.couchbaseWebUi;
+            resourceInputs["databricks"] = args?.databricks;
             resourceInputs["db2I"] = args?.db2I;
             resourceInputs["db2Luw"] = args?.db2Luw;
             resourceInputs["documentDbHost"] = args?.documentDbHost;
@@ -454,7 +454,10 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = args?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = args?.kubernetesUserImpersonation;
             resourceInputs["maria"] = args?.maria;
-            resourceInputs["mcp"] = args?.mcp;
+            resourceInputs["mcpGatewayNoAuth"] = args?.mcpGatewayNoAuth;
+            resourceInputs["mcpGatewayOAuth"] = args?.mcpGatewayOAuth;
+            resourceInputs["mcpGatewayOAuthDcr"] = args?.mcpGatewayOAuthDcr;
+            resourceInputs["mcpGatewayPat"] = args?.mcpGatewayPat;
             resourceInputs["memcached"] = args?.memcached;
             resourceInputs["memsql"] = args?.memsql;
             resourceInputs["mongoHost"] = args?.mongoHost;
@@ -534,9 +537,6 @@ export interface ResourceState {
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
-    /**
-     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
@@ -565,6 +565,7 @@ export interface ResourceState {
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
     couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
     couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
+    databricks?: pulumi.Input<inputs.ResourceDatabricks>;
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
@@ -592,9 +593,6 @@ export interface ResourceState {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
-    /**
-     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
@@ -616,10 +614,13 @@ export interface ResourceState {
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
+    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth>;
+    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth>;
     /**
-     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mcp?: pulumi.Input<inputs.ResourceMcp>;
+    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr>;
+    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
@@ -638,9 +639,6 @@ export interface ResourceState {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    /**
-     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
@@ -704,9 +702,6 @@ export interface ResourceArgs {
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
-    /**
-     * AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
@@ -735,6 +730,7 @@ export interface ResourceArgs {
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
     couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
     couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
+    databricks?: pulumi.Input<inputs.ResourceDatabricks>;
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
@@ -762,9 +758,6 @@ export interface ResourceArgs {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
-    /**
-     * GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
@@ -786,10 +779,13 @@ export interface ResourceArgs {
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
     maria?: pulumi.Input<inputs.ResourceMaria>;
+    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth>;
+    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth>;
     /**
-     * MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mcp?: pulumi.Input<inputs.ResourceMcp>;
+    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr>;
+    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
@@ -808,9 +804,6 @@ export interface ResourceArgs {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    /**
-     * OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;

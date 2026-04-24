@@ -27,7 +27,7 @@ class GetManagedSecretResult:
     """
     A collection of values returned by getManagedSecret.
     """
-    def __init__(__self__, config=None, expires_at=None, id=None, ids=None, last_rotated_at=None, managed_secrets=None, name=None, secret_engine_id=None, secret_store_path=None, tags=None, value=None):
+    def __init__(__self__, config=None, expires_at=None, id=None, ids=None, last_rotated_at=None, lock_required=None, managed_secrets=None, name=None, secret_engine_id=None, secret_store_path=None, tags=None, value=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -43,6 +43,9 @@ class GetManagedSecretResult:
         if last_rotated_at and not isinstance(last_rotated_at, str):
             raise TypeError("Expected argument 'last_rotated_at' to be a str")
         pulumi.set(__self__, "last_rotated_at", last_rotated_at)
+        if lock_required and not isinstance(lock_required, bool):
+            raise TypeError("Expected argument 'lock_required' to be a bool")
+        pulumi.set(__self__, "lock_required", lock_required)
         if managed_secrets and not isinstance(managed_secrets, list):
             raise TypeError("Expected argument 'managed_secrets' to be a list")
         pulumi.set(__self__, "managed_secrets", managed_secrets)
@@ -101,6 +104,14 @@ class GetManagedSecretResult:
         Timestamp of when secret was last rotated
         """
         return pulumi.get(self, "last_rotated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the secret requires a lock to access
+        """
+        return pulumi.get(self, "lock_required")
 
     @_builtins.property
     @pulumi.getter(name="managedSecrets")
@@ -162,6 +173,7 @@ class AwaitableGetManagedSecretResult(GetManagedSecretResult):
             id=self.id,
             ids=self.ids,
             last_rotated_at=self.last_rotated_at,
+            lock_required=self.lock_required,
             managed_secrets=self.managed_secrets,
             name=self.name,
             secret_engine_id=self.secret_engine_id,
@@ -171,6 +183,7 @@ class AwaitableGetManagedSecretResult(GetManagedSecretResult):
 
 
 def get_managed_secret(id: Optional[_builtins.str] = None,
+                       lock_required: Optional[_builtins.bool] = None,
                        name: Optional[_builtins.str] = None,
                        secret_engine_id: Optional[_builtins.str] = None,
                        tags: Optional[Mapping[str, _builtins.str]] = None,
@@ -181,6 +194,7 @@ def get_managed_secret(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: Unique identifier of the Managed Secret.
+    :param _builtins.bool lock_required: Whether the secret requires a lock to access
     :param _builtins.str name: Unique human-readable name of the Managed Secret.
     :param _builtins.str secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -188,6 +202,7 @@ def get_managed_secret(id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['lockRequired'] = lock_required
     __args__['name'] = name
     __args__['secretEngineId'] = secret_engine_id
     __args__['tags'] = tags
@@ -201,6 +216,7 @@ def get_managed_secret(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         last_rotated_at=pulumi.get(__ret__, 'last_rotated_at'),
+        lock_required=pulumi.get(__ret__, 'lock_required'),
         managed_secrets=pulumi.get(__ret__, 'managed_secrets'),
         name=pulumi.get(__ret__, 'name'),
         secret_engine_id=pulumi.get(__ret__, 'secret_engine_id'),
@@ -208,6 +224,7 @@ def get_managed_secret(id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         value=pulumi.get(__ret__, 'value'))
 def get_managed_secret_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              lock_required: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               secret_engine_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
@@ -218,6 +235,7 @@ def get_managed_secret_output(id: Optional[pulumi.Input[Optional[_builtins.str]]
 
 
     :param _builtins.str id: Unique identifier of the Managed Secret.
+    :param _builtins.bool lock_required: Whether the secret requires a lock to access
     :param _builtins.str name: Unique human-readable name of the Managed Secret.
     :param _builtins.str secret_engine_id: An ID of a Secret Engine linked with the Managed Secret.
     :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
@@ -225,6 +243,7 @@ def get_managed_secret_output(id: Optional[pulumi.Input[Optional[_builtins.str]]
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['lockRequired'] = lock_required
     __args__['name'] = name
     __args__['secretEngineId'] = secret_engine_id
     __args__['tags'] = tags
@@ -237,6 +256,7 @@ def get_managed_secret_output(id: Optional[pulumi.Input[Optional[_builtins.str]]
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         last_rotated_at=pulumi.get(__response__, 'last_rotated_at'),
+        lock_required=pulumi.get(__response__, 'lock_required'),
         managed_secrets=pulumi.get(__response__, 'managed_secrets'),
         name=pulumi.get(__response__, 'name'),
         secret_engine_id=pulumi.get(__response__, 'secret_engine_id'),

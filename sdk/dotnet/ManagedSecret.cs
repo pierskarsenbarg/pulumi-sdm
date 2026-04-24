@@ -44,6 +44,12 @@ namespace PiersKarsenbarg.Sdm
         public Output<string> LastRotatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        [Output("lockRequired")]
+        public Output<bool?> LockRequired { get; private set; } = null!;
+
+        /// <summary>
         /// Unique human-readable name of the Managed Secret.
         /// </summary>
         [Output("name")]
@@ -125,6 +131,12 @@ namespace PiersKarsenbarg.Sdm
     public sealed class ManagedSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        [Input("lockRequired")]
+        public Input<bool>? LockRequired { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Managed Secret.
         /// </summary>
         [Input("name")]
@@ -189,6 +201,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("lastRotatedAt")]
         public Input<string>? LastRotatedAt { get; set; }
+
+        /// <summary>
+        /// Whether the secret requires a lock to access
+        /// </summary>
+        [Input("lockRequired")]
+        public Input<bool>? LockRequired { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Managed Secret.

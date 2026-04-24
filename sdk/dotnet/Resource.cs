@@ -131,9 +131,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEsiam")]
         public Output<Outputs.ResourceAmazonEsiam?> AmazonEsiam { get; private set; } = null!;
 
-        /// <summary>
-        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("amazonmqAmqp")]
         public Output<Outputs.ResourceAmazonmqAmqp?> AmazonmqAmqp { get; private set; } = null!;
 
@@ -218,6 +215,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("couchbaseWebUi")]
         public Output<Outputs.ResourceCouchbaseWebUi?> CouchbaseWebUi { get; private set; } = null!;
 
+        [Output("databricks")]
+        public Output<Outputs.ResourceDatabricks?> Databricks { get; private set; } = null!;
+
         [Output("db2I")]
         public Output<Outputs.ResourceDb2I?> Db2I { get; private set; } = null!;
 
@@ -278,9 +278,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("googleGkeUserImpersonation")]
         public Output<Outputs.ResourceGoogleGkeUserImpersonation?> GoogleGkeUserImpersonation { get; private set; } = null!;
 
-        /// <summary>
-        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("googleSpanner")]
         public Output<Outputs.ResourceGoogleSpanner?> GoogleSpanner { get; private set; } = null!;
 
@@ -320,11 +317,20 @@ namespace PiersKarsenbarg.Sdm
         [Output("maria")]
         public Output<Outputs.ResourceMaria?> Maria { get; private set; } = null!;
 
+        [Output("mcpGatewayNoAuth")]
+        public Output<Outputs.ResourceMcpGatewayNoAuth?> McpGatewayNoAuth { get; private set; } = null!;
+
+        [Output("mcpGatewayOAuth")]
+        public Output<Outputs.ResourceMcpGatewayOAuth?> McpGatewayOAuth { get; private set; } = null!;
+
         /// <summary>
-        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
-        [Output("mcp")]
-        public Output<Outputs.ResourceMcp?> Mcp { get; private set; } = null!;
+        [Output("mcpGatewayOAuthDcr")]
+        public Output<Outputs.ResourceMcpGatewayOAuthDcr?> McpGatewayOAuthDcr { get; private set; } = null!;
+
+        [Output("mcpGatewayPat")]
+        public Output<Outputs.ResourceMcpGatewayPat?> McpGatewayPat { get; private set; } = null!;
 
         [Output("memcached")]
         public Output<Outputs.ResourceMemcached?> Memcached { get; private set; } = null!;
@@ -368,9 +374,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("neptuneIam")]
         public Output<Outputs.ResourceNeptuneIam?> NeptuneIam { get; private set; } = null!;
 
-        /// <summary>
-        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("oktaGroups")]
         public Output<Outputs.ResourceOktaGroups?> OktaGroups { get; private set; } = null!;
 
@@ -547,9 +550,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamArgs>? AmazonEsiam { get; set; }
 
-        /// <summary>
-        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("amazonmqAmqp")]
         public Input<Inputs.ResourceAmazonmqAmqpArgs>? AmazonmqAmqp { get; set; }
 
@@ -634,6 +634,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("couchbaseWebUi")]
         public Input<Inputs.ResourceCouchbaseWebUiArgs>? CouchbaseWebUi { get; set; }
 
+        [Input("databricks")]
+        public Input<Inputs.ResourceDatabricksArgs>? Databricks { get; set; }
+
         [Input("db2I")]
         public Input<Inputs.ResourceDb2IArgs>? Db2I { get; set; }
 
@@ -694,9 +697,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationArgs>? GoogleGkeUserImpersonation { get; set; }
 
-        /// <summary>
-        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("googleSpanner")]
         public Input<Inputs.ResourceGoogleSpannerArgs>? GoogleSpanner { get; set; }
 
@@ -736,11 +736,20 @@ namespace PiersKarsenbarg.Sdm
         [Input("maria")]
         public Input<Inputs.ResourceMariaArgs>? Maria { get; set; }
 
+        [Input("mcpGatewayNoAuth")]
+        public Input<Inputs.ResourceMcpGatewayNoAuthArgs>? McpGatewayNoAuth { get; set; }
+
+        [Input("mcpGatewayOAuth")]
+        public Input<Inputs.ResourceMcpGatewayOAuthArgs>? McpGatewayOAuth { get; set; }
+
         /// <summary>
-        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
-        [Input("mcp")]
-        public Input<Inputs.ResourceMcpArgs>? Mcp { get; set; }
+        [Input("mcpGatewayOAuthDcr")]
+        public Input<Inputs.ResourceMcpGatewayOAuthDcrArgs>? McpGatewayOAuthDcr { get; set; }
+
+        [Input("mcpGatewayPat")]
+        public Input<Inputs.ResourceMcpGatewayPatArgs>? McpGatewayPat { get; set; }
 
         [Input("memcached")]
         public Input<Inputs.ResourceMemcachedArgs>? Memcached { get; set; }
@@ -784,9 +793,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamArgs>? NeptuneIam { get; set; }
 
-        /// <summary>
-        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("oktaGroups")]
         public Input<Inputs.ResourceOktaGroupsArgs>? OktaGroups { get; set; }
 
@@ -924,9 +930,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEsiam")]
         public Input<Inputs.ResourceAmazonEsiamGetArgs>? AmazonEsiam { get; set; }
 
-        /// <summary>
-        /// AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("amazonmqAmqp")]
         public Input<Inputs.ResourceAmazonmqAmqpGetArgs>? AmazonmqAmqp { get; set; }
 
@@ -1011,6 +1014,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("couchbaseWebUi")]
         public Input<Inputs.ResourceCouchbaseWebUiGetArgs>? CouchbaseWebUi { get; set; }
 
+        [Input("databricks")]
+        public Input<Inputs.ResourceDatabricksGetArgs>? Databricks { get; set; }
+
         [Input("db2I")]
         public Input<Inputs.ResourceDb2IGetArgs>? Db2I { get; set; }
 
@@ -1071,9 +1077,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationGetArgs>? GoogleGkeUserImpersonation { get; set; }
 
-        /// <summary>
-        /// GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("googleSpanner")]
         public Input<Inputs.ResourceGoogleSpannerGetArgs>? GoogleSpanner { get; set; }
 
@@ -1113,11 +1116,20 @@ namespace PiersKarsenbarg.Sdm
         [Input("maria")]
         public Input<Inputs.ResourceMariaGetArgs>? Maria { get; set; }
 
+        [Input("mcpGatewayNoAuth")]
+        public Input<Inputs.ResourceMcpGatewayNoAuthGetArgs>? McpGatewayNoAuth { get; set; }
+
+        [Input("mcpGatewayOAuth")]
+        public Input<Inputs.ResourceMcpGatewayOAuthGetArgs>? McpGatewayOAuth { get; set; }
+
         /// <summary>
-        /// MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
         /// </summary>
-        [Input("mcp")]
-        public Input<Inputs.ResourceMcpGetArgs>? Mcp { get; set; }
+        [Input("mcpGatewayOAuthDcr")]
+        public Input<Inputs.ResourceMcpGatewayOAuthDcrGetArgs>? McpGatewayOAuthDcr { get; set; }
+
+        [Input("mcpGatewayPat")]
+        public Input<Inputs.ResourceMcpGatewayPatGetArgs>? McpGatewayPat { get; set; }
 
         [Input("memcached")]
         public Input<Inputs.ResourceMemcachedGetArgs>? Memcached { get; set; }
@@ -1161,9 +1173,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamGetArgs>? NeptuneIam { get; set; }
 
-        /// <summary>
-        /// OktaGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("oktaGroups")]
         public Input<Inputs.ResourceOktaGroupsGetArgs>? OktaGroups { get; set; }
 

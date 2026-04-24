@@ -35,6 +35,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// node selector is used to narrow down the nodes used to communicate with with secret engine
+        /// </summary>
+        public readonly string? NodeSelector;
+        /// <summary>
         /// Password is the password to connect to the SQL Server server.
         /// </summary>
         public readonly string Password;
@@ -83,6 +87,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
+            string? nodeSelector,
+
             string password,
 
             int port,
@@ -106,6 +112,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Hostname = hostname;
             KeyRotationIntervalDays = keyRotationIntervalDays;
             Name = name;
+            NodeSelector = nodeSelector;
             Password = password;
             Port = port;
             PublicKey = publicKey;

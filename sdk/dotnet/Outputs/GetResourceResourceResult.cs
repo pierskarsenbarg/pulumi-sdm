@@ -54,6 +54,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceCockroachResult> Cockroaches;
         public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseDatabaseResult> CouchbaseDatabases;
         public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseWebUiResult> CouchbaseWebUis;
+        public readonly ImmutableArray<Outputs.GetResourceResourceDatabrickResult> Databricks;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2IResult> Db2Is;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> Db2Luws;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostIamResult> DocumentDbHostIams;
@@ -84,7 +85,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> KubernetesServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> KubernetesUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceMariaResult> Marias;
-        public readonly ImmutableArray<Outputs.GetResourceResourceMcpResult> Mcps;
+        public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayNoAuthResult> McpGatewayNoAuths;
+        public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayOAuthDcrResult> McpGatewayOAuthDcrs;
+        public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayOAuthResult> McpGatewayOAuths;
+        public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayPatResult> McpGatewayPats;
         public readonly ImmutableArray<Outputs.GetResourceResourceMemcachedResult> Memcacheds;
         public readonly ImmutableArray<Outputs.GetResourceResourceMemsqlResult> Memsqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceMongoHostResult> MongoHosts;
@@ -210,6 +214,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceCouchbaseWebUiResult> couchbaseWebUis,
 
+            ImmutableArray<Outputs.GetResourceResourceDatabrickResult> databricks,
+
             ImmutableArray<Outputs.GetResourceResourceDb2IResult> db2Is,
 
             ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> db2Luws,
@@ -270,7 +276,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceMariaResult> marias,
 
-            ImmutableArray<Outputs.GetResourceResourceMcpResult> mcps,
+            ImmutableArray<Outputs.GetResourceResourceMcpGatewayNoAuthResult> mcpGatewayNoAuths,
+
+            ImmutableArray<Outputs.GetResourceResourceMcpGatewayOAuthDcrResult> mcpGatewayOAuthDcrs,
+
+            ImmutableArray<Outputs.GetResourceResourceMcpGatewayOAuthResult> mcpGatewayOAuths,
+
+            ImmutableArray<Outputs.GetResourceResourceMcpGatewayPatResult> mcpGatewayPats,
 
             ImmutableArray<Outputs.GetResourceResourceMemcachedResult> memcacheds,
 
@@ -396,6 +408,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Cockroaches = cockroaches;
             CouchbaseDatabases = couchbaseDatabases;
             CouchbaseWebUis = couchbaseWebUis;
+            Databricks = databricks;
             Db2Is = db2Is;
             Db2Luws = db2Luws;
             DocumentDbHostIams = documentDbHostIams;
@@ -426,7 +439,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             KubernetesServiceAccounts = kubernetesServiceAccounts;
             KubernetesUserImpersonations = kubernetesUserImpersonations;
             Marias = marias;
-            Mcps = mcps;
+            McpGatewayNoAuths = mcpGatewayNoAuths;
+            McpGatewayOAuthDcrs = mcpGatewayOAuthDcrs;
+            McpGatewayOAuths = mcpGatewayOAuths;
+            McpGatewayPats = mcpGatewayPats;
             Memcacheds = memcacheds;
             Memsqls = memsqls;
             MongoHosts = mongoHosts;

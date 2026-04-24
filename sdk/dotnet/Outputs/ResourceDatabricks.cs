@@ -12,8 +12,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceMcpResult
+    public sealed class ResourceDatabricks
     {
+        /// <summary>
+        /// Databricks Personal Access Token (PAT)
+        /// </summary>
+        public readonly string? AccessToken;
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
@@ -25,35 +29,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The host to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        public readonly string? Hostname;
+        public readonly string Hostname;
         /// <summary>
-        /// Unique identifier of the Resource.
+        /// The HTTP path to the SQL warehouse or cluster (e.g., /sql/1.0/warehouses/xxx)
         /// </summary>
-        public readonly string? Id;
+        public readonly string HttpPath;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// The OAuth 2.0 authorization endpoint URL.
-        /// </summary>
-        public readonly string? OauthAuthEndpoint;
-        /// <summary>
-        /// The OAuth 2.0 dynamic client registration endpoint URL.
-        /// </summary>
-        public readonly string? OauthRegisterEndpoint;
-        /// <summary>
-        /// The OAuth 2.0 token endpoint URL.
-        /// </summary>
-        public readonly string? OauthTokenEndpoint;
-        /// <summary>
-        /// The password to authenticate with.
-        /// </summary>
-        public readonly string? Password;
-        /// <summary>
-        /// The port to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        public readonly int? Port;
+        public readonly string Name;
         /// <summary>
         /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         /// </summary>
@@ -62,6 +46,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         public readonly string? ProxyClusterId;
+        /// <summary>
+        /// The Schema to use to direct initial requests.
+        /// </summary>
+        public readonly string? Schema;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -74,61 +62,45 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// The username to authenticate with.
-        /// </summary>
-        public readonly string? Username;
 
         [OutputConstructor]
-        private GetResourceResourceMcpResult(
+        private ResourceDatabricks(
+            string? accessToken,
+
             string? bindInterface,
 
             string? egressFilter,
 
-            string? hostname,
+            string hostname,
 
-            string? id,
+            string httpPath,
 
-            string? name,
-
-            string? oauthAuthEndpoint,
-
-            string? oauthRegisterEndpoint,
-
-            string? oauthTokenEndpoint,
-
-            string? password,
-
-            int? port,
+            string name,
 
             int? portOverride,
 
             string? proxyClusterId,
 
+            string? schema,
+
             string? secretStoreId,
 
             string? subdomain,
 
-            ImmutableDictionary<string, string>? tags,
-
-            string? username)
+            ImmutableDictionary<string, string>? tags)
         {
+            AccessToken = accessToken;
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
-            Id = id;
+            HttpPath = httpPath;
             Name = name;
-            OauthAuthEndpoint = oauthAuthEndpoint;
-            OauthRegisterEndpoint = oauthRegisterEndpoint;
-            OauthTokenEndpoint = oauthTokenEndpoint;
-            Password = password;
-            Port = port;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
+            Schema = schema;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            Username = username;
         }
     }
 }
