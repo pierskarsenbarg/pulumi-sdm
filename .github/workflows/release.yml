@@ -2,16 +2,11 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  # NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   PROVIDER: sdm
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi.com
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-  PYPI_USERNAME: "__token__"
   TRAVIS_OS_NAME: "linux"
 
 
@@ -40,7 +35,7 @@ jobs:
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v3.0.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -51,7 +46,6 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
     - name: Setup DotNet
       uses: actions/setup-dotnet@v5
       with:
@@ -90,14 +84,14 @@ jobs:
         dotnetversion:
         - 8.0.x
         goversion:
-        - 1.25.x
+        - 1.26.x
         language:
         - nodejs
         - python
         - dotnet
         - go
         nodeversion:
-        - 20.x
+        - 24.x
         pythonversion:
         - "3.11"
   prerequisites:
@@ -119,7 +113,7 @@ jobs:
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v3.0.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -128,7 +122,7 @@ jobs:
           pulumi-version: latest
     - if: github.event_name == 'pull_request'
       name: Install Schema Tools
-      uses: jaxxstorm/action-install-gh-release@v3.0.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: mikhailshilkov/schema-tools
     - name: Build tfgen & provider binaries
@@ -163,9 +157,9 @@ jobs:
         dotnetversion:
         - 8.0.x
         goversion:
-        - 1.25.x
+        - 1.26.x
         nodeversion:
-        - 20.x
+        - 24.x
         pythonversion:
         - "3.11"
   publish:
@@ -182,7 +176,7 @@ jobs:
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v3.0.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -202,9 +196,9 @@ jobs:
         dotnetversion:
         - 8.0.x
         goversion:
-        - 1.25.x
+        - 1.26.x
         nodeversion:
-        - 20.x
+        - 24.x
         pythonversion:
         - "3.11"
   publish_sdk:
@@ -227,7 +221,7 @@ jobs:
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v3.0.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
@@ -238,7 +232,6 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
     - name: Setup DotNet
       uses: actions/setup-dotnet@v5
       with:
@@ -277,23 +270,20 @@ jobs:
     - name: Copy README to npm package
       run: cp ${{github.workspace}}/README.md ${{github.workspace}}/sdk/nodejs/bin
     - name: Publish NPM package
-      run: npm publish --ignore-scripts
+      run: npm publish --access public
       working-directory: ${{github.workspace}}/sdk/nodejs/bin
-    # - name: Publish NPM package
-    #   uses: JS-DevTools/npm-publish@v4
-    #   with: 
-    #     access: "public"
-    #     token: ${{ secrets.NPM_TOKEN }}
-    #     package: ${{github.workspace}}/sdk/nodejs/bin/package.json
     - name: Publish PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: ${{ env.PYPI_USERNAME }}
-        password: ${{ env.PYPI_PASSWORD }}
-        packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+        packages-dir: ${{github.workspace}}/sdk/python/bin/dist
+    - name: Login to Nuget
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: pierspulumi
     - name: Publish Nuget package
       env: 
-        NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+        NUGET_PUBLISH_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
       run: find "${{github.workspace}}/sdk/dotnet/bin/Debug/" -name 'PiersKarsenbarg.*.nupkg' -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} ';'
     strategy:
       fail-fast: true
@@ -301,9 +291,9 @@ jobs:
         dotnetversion:
         - 8.0.x
         goversion:
-        - 1.25.x
+        - 1.26.x
         nodeversion:
-        - 20.x
+        - 24.x
         pythonversion:
         - "3.11"
   # test:
@@ -326,7 +316,7 @@ jobs:
   #     with:
   #       go-version: ${{matrix.goversion}}
   #   - name: Install pulumictl
-  #     uses: jaxxstorm/action-install-gh-release@v3.0.0
+  #     uses: jaxxstorm/action-install-gh-release@v2.1.0
   #     with:
   #       repo: pulumi/pulumictl
   #   - name: Install Pulumi CLI
