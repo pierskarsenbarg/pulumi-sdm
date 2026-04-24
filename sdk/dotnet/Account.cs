@@ -25,7 +25,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_user = new Sdm.Account("test-user", new()
+    ///     var test_user = new Sdm.Index.Account("test-user", new()
     ///     {
     ///         User = new Sdm.Inputs.AccountUserArgs
     ///         {
@@ -42,7 +42,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var test_service = new Sdm.Account("test-service", new()
+    ///     var test_service = new Sdm.Index.Account("test-service", new()
     ///     {
     ///         Service = new Sdm.Inputs.AccountServiceArgs
     ///         {

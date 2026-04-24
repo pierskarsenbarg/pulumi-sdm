@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupIdentityAlias(ctx, &sdm.LookupIdentityAliasArgs{
+//			_, err := sdm.GetIdentityAlias(ctx, &sdm.LookupIdentityAliasArgs{
 //				Id:       pulumi.StringRef("i-0900909"),
 //				Username: pulumi.StringRef("user"),
 //			}, nil)

@@ -26,19 +26,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupGroup(ctx, &sdm.LookupGroupArgs{
+//			_, err := sdm.GetGroup(ctx, &sdm.LookupGroupArgs{
 //				Name: pulumi.StringRef("Security Team"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupGroup(ctx, &sdm.LookupGroupArgs{
+//			_, err = sdm.GetGroup(ctx, &sdm.LookupGroupArgs{
 //				Id: pulumi.StringRef("group-1234567890abcdef"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupGroup(ctx, &sdm.LookupGroupArgs{
+//			_, err = sdm.GetGroup(ctx, &sdm.LookupGroupArgs{
 //				Tags: map[string]interface{}{
 //					"admin": "true",
 //				},

@@ -24,17 +24,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {
@@ -60,17 +60,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {
@@ -96,17 +96,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {

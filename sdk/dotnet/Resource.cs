@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var redis_test = new Sdm.Resource("redis-test", new()
+    ///     var redis_test = new Sdm.Index.Resource("redis-test", new()
     ///     {
     ///         Redis = new Sdm.Inputs.ResourceRedisArgs
     ///         {
@@ -38,7 +38,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var postgres_test = new Sdm.Resource("postgres-test", new()
+    ///     var postgres_test = new Sdm.Index.Resource("postgres-test", new()
     ///     {
     ///         Postgres = new Sdm.Inputs.ResourcePostgresArgs
     ///         {
@@ -56,7 +56,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var aurora_mysql_test = new Sdm.Resource("aurora-mysql-test", new()
+    ///     var aurora_mysql_test = new Sdm.Index.Resource("aurora-mysql-test", new()
     ///     {
     ///         AuroraMysql = new Sdm.Inputs.ResourceAuroraMysqlArgs
     ///         {

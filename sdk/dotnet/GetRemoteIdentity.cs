@@ -25,7 +25,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
+        ///     var user = Sdm.Index.GetRemoteIdentity.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",
@@ -50,7 +50,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
+        ///     var user = Sdm.Index.GetRemoteIdentity.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",
@@ -75,7 +75,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
+        ///     var user = Sdm.Index.GetRemoteIdentity.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",

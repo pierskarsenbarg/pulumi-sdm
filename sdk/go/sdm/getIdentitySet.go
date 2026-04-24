@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupIdentitySet(ctx, &sdm.LookupIdentitySetArgs{
+//			_, err := sdm.GetIdentitySet(ctx, &sdm.LookupIdentitySetArgs{
 //				Name: pulumi.StringRef("default"),
 //			}, nil)
 //			if err != nil {

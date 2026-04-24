@@ -26,19 +26,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupGroupRole(ctx, &sdm.LookupGroupRoleArgs{
+//			_, err := sdm.GetGroupRole(ctx, &sdm.LookupGroupRoleArgs{
 //				GroupId: pulumi.StringRef(securityTeam.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupGroupRole(ctx, &sdm.LookupGroupRoleArgs{
+//			_, err = sdm.GetGroupRole(ctx, &sdm.LookupGroupRoleArgs{
 //				Id: pulumi.StringRef("grouprole-1234567890abcdef"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.LookupGroupRole(ctx, &sdm.LookupGroupRoleArgs{
+//			_, err = sdm.GetGroupRole(ctx, &sdm.LookupGroupRoleArgs{
 //				RoleId: pulumi.StringRef(adminRole.Id),
 //			}, nil)
 //			if err != nil {

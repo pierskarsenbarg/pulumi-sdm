@@ -24,17 +24,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });
@@ -57,17 +57,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });
@@ -90,17 +90,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });

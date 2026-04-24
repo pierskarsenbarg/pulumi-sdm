@@ -25,13 +25,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",
@@ -56,13 +56,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",
@@ -87,13 +87,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",

@@ -26,14 +26,14 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });
@@ -58,14 +58,14 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });
@@ -90,14 +90,14 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });

@@ -22,7 +22,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Sdm.IdentitySet("default", new()
+    ///     var @default = new Sdm.Index.IdentitySet("default", new()
     ///     {
     ///         Name = "default",
     ///     });

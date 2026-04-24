@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var manualApprovalWorkflow = new Sdm.ApprovalWorkflow("manual_approval_workflow", new()
+    ///     var manualApprovalWorkflow = new Sdm.Index.ApprovalWorkflow("manual_approval_workflow", new()
     ///     {
     ///         Name = "manual approval workflow example",
     ///         ApprovalMode = "manual",
@@ -76,7 +76,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow("auto_grant_approval_workflow", new()
+    ///     var autoGrantApprovalWorkflow = new Sdm.Index.ApprovalWorkflow("auto_grant_approval_workflow", new()
     ///     {
     ///         Name = "auto approval workflow example",
     ///         ApprovalMode = "automatic",

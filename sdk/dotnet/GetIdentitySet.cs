@@ -24,7 +24,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.GetIdentitySet.Invoke(new()
+        ///     var @default = Sdm.Index.GetIdentitySet.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });
@@ -47,7 +47,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.GetIdentitySet.Invoke(new()
+        ///     var @default = Sdm.Index.GetIdentitySet.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });
@@ -70,7 +70,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.GetIdentitySet.Invoke(new()
+        ///     var @default = Sdm.Index.GetIdentitySet.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });

@@ -26,7 +26,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gateway = new Sdm.Node("gateway", new()
+    ///     var gateway = new Sdm.Index.Node("gateway", new()
     ///     {
     ///         Gateway = new Sdm.Inputs.NodeGatewayArgs
     ///         {
@@ -41,7 +41,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var relay = new Sdm.Node("relay", new()
+    ///     var relay = new Sdm.Index.Node("relay", new()
     ///     {
     ///         Relay = new Sdm.Inputs.NodeRelayArgs
     ///         {

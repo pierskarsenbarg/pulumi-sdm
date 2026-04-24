@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupPolicy(ctx, &sdm.LookupPolicyArgs{
+//			_, err := sdm.GetPolicy(ctx, &sdm.LookupPolicyArgs{
 //				Name: pulumi.StringRef("policy-query"),
 //			}, nil)
 //			if err != nil {

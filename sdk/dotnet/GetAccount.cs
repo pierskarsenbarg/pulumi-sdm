@@ -27,7 +27,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -38,13 +38,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
@@ -71,7 +71,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -82,13 +82,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
@@ -115,7 +115,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -126,13 +126,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
