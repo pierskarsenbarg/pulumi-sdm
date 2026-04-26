@@ -48,14 +48,15 @@ build_nodejs:: install_plugins tfgen # build the node sdk
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python:: install_plugins tfgen # build the python sdk
-	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
+build_python:: install_plugins provider # build the python sdk
+	rm -rf sdk/python
+	pulumi package gen-sdk $(WORKING_DIR)/bin/$(PROVIDER) --language python -o $(WORKING_DIR)/sdk
+	sed -i.bak -e "s/version = \"0.0.0\"/version = \"$(PYPI_VERSION)\"/" sdk/python/pyproject.toml && rm sdk/python/pyproject.toml.bak
 	cd sdk/python/ && \
 		cp ../../README.md . && \
-		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		rm -f ./bin/go.mod && \
+		cp -R . ../python.bin && mv ../python.bin ./bin && \
 		python3 -m venv venv && \
-		./venv/bin/python -m pip install build==1.2.1 && \
+		./venv/bin/python -m pip install build && \
 		cd ./bin && \
 		../venv/bin/python -m build .
 
