@@ -2124,7 +2124,7 @@ class ResourceAks(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -2261,7 +2261,7 @@ class ResourceAks(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -2371,7 +2371,7 @@ class ResourceAksBasicAuth(dict):
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -2448,7 +2448,7 @@ class ResourceAksBasicAuth(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -2575,7 +2575,7 @@ class ResourceAksServiceAccount(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -2686,7 +2686,7 @@ class ResourceAksServiceAccount(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -2804,7 +2804,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -2879,7 +2879,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -2992,7 +2992,7 @@ class ResourceAksUserImpersonation(dict):
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -3093,7 +3093,7 @@ class ResourceAksUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -3224,7 +3224,7 @@ class ResourceAmazonEks(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -3369,7 +3369,7 @@ class ResourceAmazonEks(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -3533,7 +3533,7 @@ class ResourceAmazonEksInstanceProfile(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -3665,7 +3665,7 @@ class ResourceAmazonEksInstanceProfile(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -3803,7 +3803,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -3899,7 +3899,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -4028,7 +4028,7 @@ class ResourceAmazonEksUserImpersonation(dict):
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str role_arn: The role to assume after logging in.
@@ -4137,7 +4137,7 @@ class ResourceAmazonEksUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -13394,7 +13394,7 @@ class ResourceGoogleGke(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -13505,7 +13505,7 @@ class ResourceGoogleGke(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -13626,7 +13626,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -13701,7 +13701,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -14889,7 +14889,7 @@ class ResourceKubernetes(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -15026,7 +15026,7 @@ class ResourceKubernetes(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -15136,7 +15136,7 @@ class ResourceKubernetesBasicAuth(dict):
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -15213,7 +15213,7 @@ class ResourceKubernetesBasicAuth(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -15339,7 +15339,7 @@ class ResourceKubernetesPodIdentity(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -15438,7 +15438,7 @@ class ResourceKubernetesPodIdentity(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -15565,7 +15565,7 @@ class ResourceKubernetesServiceAccount(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -15676,7 +15676,7 @@ class ResourceKubernetesServiceAccount(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -15794,7 +15794,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -15869,7 +15869,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -15982,7 +15982,7 @@ class ResourceKubernetesUserImpersonation(dict):
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -16083,7 +16083,7 @@ class ResourceKubernetesUserImpersonation(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -32630,7 +32630,7 @@ class GetResourceResourceAkResult(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -32752,7 +32752,7 @@ class GetResourceResourceAkResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -32865,7 +32865,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
         """
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -32927,7 +32927,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -33047,7 +33047,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -33143,7 +33143,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -33264,7 +33264,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
         """
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -33324,7 +33324,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -33434,7 +33434,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -33520,7 +33520,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -33820,7 +33820,7 @@ class GetResourceResourceAmazonEkResult(dict):
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
@@ -33958,7 +33958,7 @@ class GetResourceResourceAmazonEkResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -34100,7 +34100,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
@@ -34225,7 +34225,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -34351,7 +34351,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -34440,7 +34440,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -34553,7 +34553,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
         :param _builtins.str cluster_name: The name of the cluster to connect to.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -34655,7 +34655,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -43013,7 +43013,7 @@ class GetResourceResourceGoogleGkeResult(dict):
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
@@ -43122,7 +43122,7 @@ class GetResourceResourceGoogleGkeResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -43228,7 +43228,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
         :param _builtins.str certificate_authority: The CA to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param _builtins.str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -43301,7 +43301,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -44379,7 +44379,7 @@ class GetResourceResourceKuberneteResult(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -44501,7 +44501,7 @@ class GetResourceResourceKuberneteResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -44614,7 +44614,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
         """
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -44676,7 +44676,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -44795,7 +44795,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param _builtins.str identity_set_id: The ID of the identity set to use for identity connections.
@@ -44891,7 +44891,7 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -44995,7 +44995,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
         :param _builtins.bool discovery_enabled: If true, configures discovery of the Okta org to be run from a node.
         :param _builtins.str discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -45091,7 +45091,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -45212,7 +45212,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
         """
         :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -45272,7 +45272,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 
@@ -45382,7 +45382,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
         :param _builtins.str client_certificate: The certificate to authenticate TLS connections with.
         :param _builtins.str client_key: The key to authenticate TLS connections with.
         :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param _builtins.str healthcheck_namespace: The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         :param _builtins.str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param _builtins.str id: Unique identifier of the Resource.
         :param _builtins.str name: Unique human-readable name of the Resource.
@@ -45468,7 +45468,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
     @pulumi.getter(name="healthcheckNamespace")
     def healthcheck_namespace(self) -> Optional[_builtins.str]:
         """
-        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
 

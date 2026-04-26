@@ -109,6 +109,7 @@ class GroupRole(pulumi.CustomResource):
         A GroupRole assigns a Group to a Role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -120,6 +121,7 @@ class GroupRole(pulumi.CustomResource):
             group_id="group-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -146,6 +148,7 @@ class GroupRole(pulumi.CustomResource):
         A GroupRole assigns a Group to a Role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -157,6 +160,7 @@ class GroupRole(pulumi.CustomResource):
             group_id="group-1234567890abcdef",
             role_id="r-1234567890abcdef")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

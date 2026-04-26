@@ -116,6 +116,7 @@ class Account(pulumi.CustomResource):
          3. **Tokens** are access keys with permissions that can be used for authentication.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -139,6 +140,7 @@ class Account(pulumi.CustomResource):
             },
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -168,6 +170,7 @@ class Account(pulumi.CustomResource):
          3. **Tokens** are access keys with permissions that can be used for authentication.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -191,6 +194,7 @@ class Account(pulumi.CustomResource):
             },
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

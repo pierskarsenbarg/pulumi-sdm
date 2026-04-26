@@ -131,6 +131,7 @@ def get_group(description: Optional[_builtins.str] = None,
     A Group is a named set of principals.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -141,6 +142,7 @@ def get_group(description: Optional[_builtins.str] = None,
         "admin": "true",
     })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str description: Description of the Group.
@@ -173,6 +175,7 @@ def get_group_output(description: Optional[pulumi.Input[Optional[_builtins.str]]
     A Group is a named set of principals.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -183,6 +186,7 @@ def get_group_output(description: Optional[pulumi.Input[Optional[_builtins.str]]
         "admin": "true",
     })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str description: Description of the Group.

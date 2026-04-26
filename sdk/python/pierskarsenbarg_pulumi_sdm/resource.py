@@ -3085,6 +3085,7 @@ class Resource(pulumi.CustomResource):
          delegates access to.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -3120,6 +3121,7 @@ class Resource(pulumi.CustomResource):
             "password": "path/to/credential?key=optionalKeyName",
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
         ## Providing Credentials
 
@@ -3159,6 +3161,7 @@ class Resource(pulumi.CustomResource):
          delegates access to.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -3194,6 +3197,7 @@ class Resource(pulumi.CustomResource):
             "password": "path/to/credential?key=optionalKeyName",
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
         ## Providing Credentials
 

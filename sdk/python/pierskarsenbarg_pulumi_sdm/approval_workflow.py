@@ -179,6 +179,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
          approvers and be approved or denied.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -225,6 +226,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
             name="auto approval workflow example",
             approval_mode="automatic")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -254,6 +256,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
          approvers and be approved or denied.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -300,6 +303,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
             name="auto approval workflow example",
             approval_mode="automatic")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

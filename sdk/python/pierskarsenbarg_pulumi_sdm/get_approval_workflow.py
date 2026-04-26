@@ -134,6 +134,7 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
      approvers and be approved or denied.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -143,6 +144,7 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
     auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
         approval_mode="automatic")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str approval_mode: Approval mode of the ApprovalWorkflow
@@ -179,6 +181,7 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[_
      approvers and be approved or denied.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -188,6 +191,7 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[_
     auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
         approval_mode="automatic")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str approval_mode: Approval mode of the ApprovalWorkflow

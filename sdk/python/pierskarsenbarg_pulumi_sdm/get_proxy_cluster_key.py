@@ -95,12 +95,14 @@ def get_proxy_cluster_key(id: Optional[_builtins.str] = None,
      multiple keys in order to facilitate key rotation.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     proxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id="n-233332245")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str id: Unique identifier of the Relay.
@@ -126,12 +128,14 @@ def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[_builtins.st
      multiple keys in order to facilitate key rotation.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     proxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id="n-233332245")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str id: Unique identifier of the Relay.

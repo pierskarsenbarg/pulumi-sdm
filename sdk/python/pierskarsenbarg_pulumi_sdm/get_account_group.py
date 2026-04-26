@@ -106,6 +106,7 @@ def get_account_group(account_id: Optional[_builtins.str] = None,
     An AccountGroup is a link between an Account and a Group.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -114,6 +115,7 @@ def get_account_group(account_id: Optional[_builtins.str] = None,
     specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
     users_in_group = sdm.get_account_group(group_id=devops_group["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_id: Unique identifier of the Account.
@@ -141,6 +143,7 @@ def get_account_group_output(account_id: Optional[pulumi.Input[Optional[_builtin
     An AccountGroup is a link between an Account and a Group.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -149,6 +152,7 @@ def get_account_group_output(account_id: Optional[pulumi.Input[Optional[_builtin
     specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
     users_in_group = sdm.get_account_group(group_id=devops_group["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_id: Unique identifier of the Account.

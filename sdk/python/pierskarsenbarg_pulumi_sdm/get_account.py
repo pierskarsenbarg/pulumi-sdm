@@ -250,6 +250,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
      3. **Tokens** are access keys with permissions that can be used for authentication.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -265,6 +266,7 @@ def get_account(account_type: Optional[_builtins.str] = None,
     admin_token_queries = sdm.get_account(type="admin-token",
         name="*-prod")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_type: Corresponds to the type of token, e.g. api or admin-token.
@@ -339,6 +341,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
      3. **Tokens** are access keys with permissions that can be used for authentication.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -354,6 +357,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[_builtins.st
     admin_token_queries = sdm.get_account(type="admin-token",
         name="*-prod")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_type: Corresponds to the type of token, e.g. api or admin-token.

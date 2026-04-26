@@ -145,6 +145,7 @@ class Policy(pulumi.CustomResource):
          for the users of an organization.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -154,6 +155,7 @@ class Policy(pulumi.CustomResource):
             description="this policy permits everything",
             policy_content="permit(principal, action, resource);\\n")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -182,6 +184,7 @@ class Policy(pulumi.CustomResource):
          for the users of an organization.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -191,6 +194,7 @@ class Policy(pulumi.CustomResource):
             description="this policy permits everything",
             policy_content="permit(principal, action, resource);\\n")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

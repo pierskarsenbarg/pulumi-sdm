@@ -106,6 +106,7 @@ def get_group_role(group_id: Optional[_builtins.str] = None,
     A GroupRole assigns a Group to a Role.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -114,6 +115,7 @@ def get_group_role(group_id: Optional[_builtins.str] = None,
     specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
     groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str group_id: The assigned Group ID.
@@ -141,6 +143,7 @@ def get_group_role_output(group_id: Optional[pulumi.Input[Optional[_builtins.str
     A GroupRole assigns a Group to a Role.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -149,6 +152,7 @@ def get_group_role_output(group_id: Optional[pulumi.Input[Optional[_builtins.str
     specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
     groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str group_id: The assigned Group ID.

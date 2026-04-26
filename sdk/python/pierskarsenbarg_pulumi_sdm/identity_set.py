@@ -78,12 +78,14 @@ class IdentitySet(pulumi.CustomResource):
         A IdentitySet defines a group of identity aliases.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
         default = sdm.IdentitySet("default", name="default")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -109,12 +111,14 @@ class IdentitySet(pulumi.CustomResource):
         A IdentitySet defines a group of identity aliases.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
         default = sdm.IdentitySet("default", name="default")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

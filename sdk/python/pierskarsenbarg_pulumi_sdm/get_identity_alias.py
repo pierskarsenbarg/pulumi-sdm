@@ -120,6 +120,7 @@ def get_identity_alias(account_id: Optional[_builtins.str] = None,
      when connecting to a remote resource using that identity set.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -127,6 +128,7 @@ def get_identity_alias(account_id: Optional[_builtins.str] = None,
     user = sdm.get_identity_alias(id="i-0900909",
         username="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_id: The account for this identity alias.
@@ -159,6 +161,7 @@ def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[_builti
      when connecting to a remote resource using that identity set.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -166,6 +169,7 @@ def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[_builti
     user = sdm.get_identity_alias(id="i-0900909",
         username="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str account_id: The account for this identity alias.

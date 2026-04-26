@@ -187,6 +187,7 @@ def get_workflow(access_request_fixed_duration: Optional[_builtins.str] = None,
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -198,6 +199,7 @@ def get_workflow(access_request_fixed_duration: Optional[_builtins.str] = None,
     # Query workflow by approval flow ID
     workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
@@ -251,6 +253,7 @@ def get_workflow_output(access_request_fixed_duration: Optional[pulumi.Input[Opt
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -262,6 +265,7 @@ def get_workflow_output(access_request_fixed_duration: Optional[pulumi.Input[Opt
     # Query workflow by approval flow ID
     workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.

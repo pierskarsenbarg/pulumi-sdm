@@ -147,6 +147,7 @@ def get_node(bind_address: Optional[_builtins.str] = None,
      3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -157,6 +158,7 @@ def get_node(bind_address: Optional[_builtins.str] = None,
             "env": "dev",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -200,6 +202,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[_builtins.str]]
      3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -210,6 +213,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[_builtins.str]]
             "env": "dev",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".

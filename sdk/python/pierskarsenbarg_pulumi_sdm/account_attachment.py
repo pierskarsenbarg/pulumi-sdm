@@ -109,6 +109,7 @@ class AccountAttachment(pulumi.CustomResource):
         AccountAttachments assign an account to a role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -117,6 +118,7 @@ class AccountAttachment(pulumi.CustomResource):
             account_id="a-00000054",
             role_id="r-12355562")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -143,6 +145,7 @@ class AccountAttachment(pulumi.CustomResource):
         AccountAttachments assign an account to a role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -151,6 +154,7 @@ class AccountAttachment(pulumi.CustomResource):
             account_id="a-00000054",
             role_id="r-12355562")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

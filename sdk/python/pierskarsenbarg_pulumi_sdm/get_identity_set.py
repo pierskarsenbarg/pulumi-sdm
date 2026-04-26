@@ -93,12 +93,14 @@ def get_identity_set(id: Optional[_builtins.str] = None,
     A IdentitySet defines a group of identity aliases.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     default = sdm.get_identity_set(name="default")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str id: Unique identifier of the IdentitySet.
@@ -122,12 +124,14 @@ def get_identity_set_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] 
     A IdentitySet defines a group of identity aliases.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     default = sdm.get_identity_set(name="default")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str id: Unique identifier of the IdentitySet.

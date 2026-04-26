@@ -91,12 +91,14 @@ class ProxyClusterKey(pulumi.CustomResource):
          multiple keys in order to facilitate key rotation.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
         test_proxy_cluster_key = sdm.ProxyClusterKey("test_proxy_cluster_key", proxy_cluster_id="n-12345123")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -124,12 +126,14 @@ class ProxyClusterKey(pulumi.CustomResource):
          multiple keys in order to facilitate key rotation.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
         test_proxy_cluster_key = sdm.ProxyClusterKey("test_proxy_cluster_key", proxy_cluster_id="n-12345123")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

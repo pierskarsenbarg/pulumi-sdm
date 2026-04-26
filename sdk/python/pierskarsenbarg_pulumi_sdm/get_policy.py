@@ -120,12 +120,14 @@ def get_policy(description: Optional[_builtins.str] = None,
      for the users of an organization.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     policy = sdm.get_policy(name="policy-query")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str description: Optional description of the Policy.
@@ -158,12 +160,14 @@ def get_policy_output(description: Optional[pulumi.Input[Optional[_builtins.str]
      for the users of an organization.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     policy = sdm.get_policy(name="policy-query")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str description: Optional description of the Policy.

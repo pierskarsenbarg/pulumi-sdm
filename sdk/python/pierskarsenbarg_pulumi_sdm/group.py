@@ -160,6 +160,7 @@ class Group(pulumi.CustomResource):
         A Group is a named set of principals.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -172,6 +173,7 @@ class Group(pulumi.CustomResource):
         administrators = sdm.Group("administrators", name="Administrators")
         devops_team = sdm.Group("devops_team", name="DevOps Team")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -199,6 +201,7 @@ class Group(pulumi.CustomResource):
         A Group is a named set of principals.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -211,6 +214,7 @@ class Group(pulumi.CustomResource):
         administrators = sdm.Group("administrators", name="Administrators")
         devops_team = sdm.Group("devops_team", name="DevOps Team")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

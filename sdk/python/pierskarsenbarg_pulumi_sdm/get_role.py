@@ -120,6 +120,9 @@ def get_role(id: Optional[_builtins.str] = None,
      AccountAttachments.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
+    <!--End PulumiCodeChooser -->
+
 
     :param _builtins.str id: Unique identifier of the Role.
     :param _builtins.str name: Unique human-readable name of the Role.
@@ -148,6 +151,9 @@ def get_role_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
      of the Role have access to. An Account can be a member of multiple Roles via
      AccountAttachments.
     ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    <!--End PulumiCodeChooser -->
 
 
     :param _builtins.str id: Unique identifier of the Role.

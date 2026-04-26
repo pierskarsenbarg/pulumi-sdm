@@ -150,6 +150,7 @@ class Node(pulumi.CustomResource):
          3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -171,6 +172,7 @@ class Node(pulumi.CustomResource):
             },
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -202,6 +204,7 @@ class Node(pulumi.CustomResource):
          3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -223,6 +226,7 @@ class Node(pulumi.CustomResource):
             },
         })
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
