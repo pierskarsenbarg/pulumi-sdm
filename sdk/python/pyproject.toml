@@ -5,7 +5,7 @@
   keywords = ["pulumi", "sdm", "category/cloud"]
   readme = "README.md"
   requires-python = ">=3.9"
-  version = "1.35.0a1777194147+dirty"
+  version = "1.35.0a1777194304"
   [project.license]
     text = "Apache-2.0"
   [project.urls]
