@@ -325,9 +325,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("mcpGatewayOAuth")]
         public Output<Outputs.ResourceMcpGatewayOAuth?> McpGatewayOAuth { get; private set; } = null!;
 
-        /// <summary>
-        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("mcpGatewayOAuthDcr")]
         public Output<Outputs.ResourceMcpGatewayOAuthDcr?> McpGatewayOAuthDcr { get; private set; } = null!;
 
@@ -744,9 +741,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mcpGatewayOAuth")]
         public Input<Inputs.ResourceMcpGatewayOAuthArgs>? McpGatewayOAuth { get; set; }
 
-        /// <summary>
-        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mcpGatewayOAuthDcr")]
         public Input<Inputs.ResourceMcpGatewayOAuthDcrArgs>? McpGatewayOAuthDcr { get; set; }
 
@@ -1124,9 +1118,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mcpGatewayOAuth")]
         public Input<Inputs.ResourceMcpGatewayOAuthGetArgs>? McpGatewayOAuth { get; set; }
 
-        /// <summary>
-        /// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mcpGatewayOAuthDcr")]
         public Input<Inputs.ResourceMcpGatewayOAuthDcrGetArgs>? McpGatewayOAuthDcr { get; set; }
 

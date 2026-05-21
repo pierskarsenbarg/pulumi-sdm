@@ -199,9 +199,6 @@ export class Resource extends pulumi.CustomResource {
     declare public readonly maria: pulumi.Output<outputs.ResourceMaria | undefined>;
     declare public readonly mcpGatewayNoAuth: pulumi.Output<outputs.ResourceMcpGatewayNoAuth | undefined>;
     declare public readonly mcpGatewayOAuth: pulumi.Output<outputs.ResourceMcpGatewayOAuth | undefined>;
-    /**
-     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     declare public readonly mcpGatewayOAuthDcr: pulumi.Output<outputs.ResourceMcpGatewayOAuthDcr | undefined>;
     declare public readonly mcpGatewayPat: pulumi.Output<outputs.ResourceMcpGatewayPat | undefined>;
     declare public readonly memcached: pulumi.Output<outputs.ResourceMemcached | undefined>;
@@ -618,9 +615,6 @@ export interface ResourceState {
     maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
     mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
     mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
-    /**
-     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr | undefined>;
     mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat | undefined>;
     memcached?: pulumi.Input<inputs.ResourceMemcached | undefined>;
@@ -783,9 +777,6 @@ export interface ResourceArgs {
     maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
     mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
     mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
-    /**
-     * MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr | undefined>;
     mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat | undefined>;
     memcached?: pulumi.Input<inputs.ResourceMemcached | undefined>;

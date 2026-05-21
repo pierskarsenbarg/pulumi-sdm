@@ -24890,8 +24890,7 @@
                     "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
                 },
                 "mcpGatewayOAuthDcr": {
-                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
-                    "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr"
                 },
                 "mcpGatewayPat": {
                     "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
@@ -25257,8 +25256,7 @@
                     "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
                 },
                 "mcpGatewayOAuthDcr": {
-                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
-                    "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr"
                 },
                 "mcpGatewayPat": {
                     "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
@@ -25626,8 +25624,7 @@
                         "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuth:ResourceMcpGatewayOAuth"
                     },
                     "mcpGatewayOAuthDcr": {
-                        "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr",
-                        "description": "MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                        "$ref": "#/types/sdm:index/ResourceMcpGatewayOAuthDcr:ResourceMcpGatewayOAuthDcr"
                     },
                     "mcpGatewayPat": {
                         "$ref": "#/types/sdm:index/ResourceMcpGatewayPat:ResourceMcpGatewayPat"
