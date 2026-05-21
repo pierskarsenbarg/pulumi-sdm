@@ -16,6 +16,29 @@ namespace PiersKarsenbarg.Sdm
         /// An AccountGroup is a link between an Account and a Group.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityLeadGroups = sdm.getAccountGroup({
+        ///     accountId: securityLead.id,
+        /// });
+        /// const specificRelationship = sdm.getAccountGroup({
+        ///     id: "accountgroup-1234567890abcdef",
+        /// });
+        /// const usersInGroup = sdm.getAccountGroup({
+        ///     groupId: devopsGroup.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_lead_groups = sdm.get_account_group(account_id=security_lead["id"])
+        /// specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
+        /// users_in_group = sdm.get_account_group(group_id=devops_group["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,23 +47,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			AccountId: pulumi.StringRef(securityLead.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			Id: pulumi.StringRef("accountgroup-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			GroupId: pulumi.StringRef(devopsGroup.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .accountId(securityLead.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .id("accountgroup-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .groupId(devopsGroup.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityLeadGroups:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         accountId: ${securityLead.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         id: accountgroup-1234567890abcdef
+        ///   usersInGroup:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         groupId: ${devopsGroup.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountGroupResult> InvokeAsync(GetAccountGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountGroupResult>("sdm:index/getAccountGroup:getAccountGroup", args ?? new GetAccountGroupArgs(), options.WithDefaults());
@@ -49,6 +159,29 @@ namespace PiersKarsenbarg.Sdm
         /// An AccountGroup is a link between an Account and a Group.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityLeadGroups = sdm.getAccountGroup({
+        ///     accountId: securityLead.id,
+        /// });
+        /// const specificRelationship = sdm.getAccountGroup({
+        ///     id: "accountgroup-1234567890abcdef",
+        /// });
+        /// const usersInGroup = sdm.getAccountGroup({
+        ///     groupId: devopsGroup.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_lead_groups = sdm.get_account_group(account_id=security_lead["id"])
+        /// specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
+        /// users_in_group = sdm.get_account_group(group_id=devops_group["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,23 +190,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			AccountId: pulumi.StringRef(securityLead.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			Id: pulumi.StringRef("accountgroup-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			GroupId: pulumi.StringRef(devopsGroup.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .accountId(securityLead.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .id("accountgroup-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .groupId(devopsGroup.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityLeadGroups:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         accountId: ${securityLead.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         id: accountgroup-1234567890abcdef
+        ///   usersInGroup:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         groupId: ${devopsGroup.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountGroupResult> Invoke(GetAccountGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountGroupResult>("sdm:index/getAccountGroup:getAccountGroup", args ?? new GetAccountGroupInvokeArgs(), options.WithDefaults());
@@ -82,6 +302,29 @@ namespace PiersKarsenbarg.Sdm
         /// An AccountGroup is a link between an Account and a Group.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityLeadGroups = sdm.getAccountGroup({
+        ///     accountId: securityLead.id,
+        /// });
+        /// const specificRelationship = sdm.getAccountGroup({
+        ///     id: "accountgroup-1234567890abcdef",
+        /// });
+        /// const usersInGroup = sdm.getAccountGroup({
+        ///     groupId: devopsGroup.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_lead_groups = sdm.get_account_group(account_id=security_lead["id"])
+        /// specific_relationship = sdm.get_account_group(id="accountgroup-1234567890abcdef")
+        /// users_in_group = sdm.get_account_group(group_id=devops_group["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,23 +333,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityLeadGroups = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var securityLeadGroups = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         AccountId = securityLead.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var specificRelationship = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         Id = "accountgroup-1234567890abcdef",
         ///     });
         /// 
-        ///     var usersInGroup = Sdm.Index.GetAccountGroup.Invoke(new()
+        ///     var usersInGroup = Sdm.GetAccountGroup.Invoke(new()
         ///     {
         ///         GroupId = devopsGroup.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			AccountId: pulumi.StringRef(securityLead.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			Id: pulumi.StringRef("accountgroup-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccountGroup(ctx, &amp;sdm.LookupAccountGroupArgs{
+        /// 			GroupId: pulumi.StringRef(devopsGroup.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .accountId(securityLead.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .id("accountgroup-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
+        ///             .groupId(devopsGroup.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityLeadGroups:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         accountId: ${securityLead.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         id: accountgroup-1234567890abcdef
+        ///   usersInGroup:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountGroup
+        ///       arguments:
+        ///         groupId: ${devopsGroup.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountGroupResult> Invoke(GetAccountGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountGroupResult>("sdm:index/getAccountGroup:getAccountGroup", args ?? new GetAccountGroupInvokeArgs(), options.WithDefaults());

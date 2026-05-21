@@ -106,11 +106,11 @@ def get_org_url_info(base_url: Optional[_builtins.str] = None,
         oidc_issuer_url=pulumi.get(__ret__, 'oidc_issuer_url'),
         saml_metadata_url=pulumi.get(__ret__, 'saml_metadata_url'),
         websites_subdomain=pulumi.get(__ret__, 'websites_subdomain'))
-def get_org_url_info_output(base_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            oidc_issuer_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            saml_metadata_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            websites_subdomain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_org_url_info_output(base_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            oidc_issuer_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            saml_metadata_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            websites_subdomain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrgUrlInfoResult]:
     """
     Use this data source to access information about an existing resource.

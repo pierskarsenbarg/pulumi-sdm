@@ -17,6 +17,21 @@ namespace PiersKarsenbarg.Sdm
         ///  for the users of an organization.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const policy = sdm.getPolicy({
+        ///     name: "policy-query",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// policy = sdm.get_policy(name="policy-query")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,13 +40,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetPolicy(ctx, &amp;sdm.LookupPolicyArgs{
+        /// 			Name: pulumi.StringRef("policy-query"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetPolicyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var policy = SdmFunctions.getPolicy(GetPolicyArgs.builder()
+        ///             .name("policy-query")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   policy:
+        ///     fn::invoke:
+        ///       function: sdm:getPolicy
+        ///       arguments:
+        ///         name: policy-query
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("sdm:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
@@ -41,6 +113,21 @@ namespace PiersKarsenbarg.Sdm
         ///  for the users of an organization.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const policy = sdm.getPolicy({
+        ///     name: "policy-query",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// policy = sdm.get_policy(name="policy-query")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,13 +136,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetPolicy(ctx, &amp;sdm.LookupPolicyArgs{
+        /// 			Name: pulumi.StringRef("policy-query"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetPolicyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var policy = SdmFunctions.getPolicy(GetPolicyArgs.builder()
+        ///             .name("policy-query")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   policy:
+        ///     fn::invoke:
+        ///       function: sdm:getPolicy
+        ///       arguments:
+        ///         name: policy-query
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("sdm:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
@@ -65,6 +209,21 @@ namespace PiersKarsenbarg.Sdm
         ///  for the users of an organization.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const policy = sdm.getPolicy({
+        ///     name: "policy-query",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// policy = sdm.get_policy(name="policy-query")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,13 +232,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = Sdm.Index.GetPolicy.Invoke(new()
+        ///     var policy = Sdm.GetPolicy.Invoke(new()
         ///     {
         ///         Name = "policy-query",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetPolicy(ctx, &amp;sdm.LookupPolicyArgs{
+        /// 			Name: pulumi.StringRef("policy-query"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetPolicyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var policy = SdmFunctions.getPolicy(GetPolicyArgs.builder()
+        ///             .name("policy-query")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   policy:
+        ///     fn::invoke:
+        ///       function: sdm:getPolicy
+        ///       arguments:
+        ///         name: policy-query
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("sdm:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());

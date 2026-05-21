@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  *  AccountAttachments.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -84,6 +85,7 @@ import * as utilities from "./utilities";
  *     ]),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -175,19 +177,19 @@ export interface RoleState {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    accessRules?: pulumi.Input<string>;
+    accessRules?: pulumi.Input<string | undefined>;
     /**
      * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -197,13 +199,13 @@ export interface RoleArgs {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    accessRules?: pulumi.Input<string>;
+    accessRules?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

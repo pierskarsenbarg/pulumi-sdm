@@ -16,6 +16,21 @@ namespace PiersKarsenbarg.Sdm
         /// The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const rdpPubkeyQuery = sdm.getRdpCaPubkey({});
+        /// export const rdpca = rdpPubkeyQuery.then(rdpPubkeyQuery =&gt; rdpPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// rdp_pubkey_query = sdm.get_rdp_ca_pubkey()
+        /// pulumi.export("rdpca", rdp_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,7 +39,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -32,6 +47,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		rdpPubkeyQuery, err := sdm.GetRdpCaPubkey(ctx, &amp;sdm.GetRdpCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("rdpca", rdpPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRdpCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var rdpPubkeyQuery = SdmFunctions.getRdpCaPubkey(GetRdpCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("rdpca", rdpPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   rdpPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRdpCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   rdpca: ${rdpPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRdpCaPubkeyResult> InvokeAsync(GetRdpCaPubkeyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdpCaPubkeyResult>("sdm:index/getRdpCaPubkey:getRdpCaPubkey", args ?? new GetRdpCaPubkeyArgs(), options.WithDefaults());
@@ -40,6 +112,21 @@ namespace PiersKarsenbarg.Sdm
         /// The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const rdpPubkeyQuery = sdm.getRdpCaPubkey({});
+        /// export const rdpca = rdpPubkeyQuery.then(rdpPubkeyQuery =&gt; rdpPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// rdp_pubkey_query = sdm.get_rdp_ca_pubkey()
+        /// pulumi.export("rdpca", rdp_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +135,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -56,6 +143,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		rdpPubkeyQuery, err := sdm.GetRdpCaPubkey(ctx, &amp;sdm.GetRdpCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("rdpca", rdpPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRdpCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var rdpPubkeyQuery = SdmFunctions.getRdpCaPubkey(GetRdpCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("rdpca", rdpPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   rdpPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRdpCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   rdpca: ${rdpPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRdpCaPubkeyResult> Invoke(GetRdpCaPubkeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdpCaPubkeyResult>("sdm:index/getRdpCaPubkey:getRdpCaPubkey", args ?? new GetRdpCaPubkeyInvokeArgs(), options.WithDefaults());
@@ -64,6 +208,21 @@ namespace PiersKarsenbarg.Sdm
         /// The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const rdpPubkeyQuery = sdm.getRdpCaPubkey({});
+        /// export const rdpca = rdpPubkeyQuery.then(rdpPubkeyQuery =&gt; rdpPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// rdp_pubkey_query = sdm.get_rdp_ca_pubkey()
+        /// pulumi.export("rdpca", rdp_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +231,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rdpPubkeyQuery = Sdm.Index.GetRdpCaPubkey.Invoke();
+        ///     var rdpPubkeyQuery = Sdm.GetRdpCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,6 +239,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		rdpPubkeyQuery, err := sdm.GetRdpCaPubkey(ctx, &amp;sdm.GetRdpCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("rdpca", rdpPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRdpCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var rdpPubkeyQuery = SdmFunctions.getRdpCaPubkey(GetRdpCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("rdpca", rdpPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   rdpPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRdpCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   rdpca: ${rdpPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRdpCaPubkeyResult> Invoke(GetRdpCaPubkeyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdpCaPubkeyResult>("sdm:index/getRdpCaPubkey:getRdpCaPubkey", args ?? new GetRdpCaPubkeyInvokeArgs(), options.WithDefaults());

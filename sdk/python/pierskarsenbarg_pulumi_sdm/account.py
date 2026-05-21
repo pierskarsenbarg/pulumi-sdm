@@ -21,8 +21,8 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
-                 service: Optional[pulumi.Input['AccountServiceArgs']] = None,
-                 user: Optional[pulumi.Input['AccountUserArgs']] = None):
+                 service: pulumi.Input[Optional['AccountServiceArgs']] = None,
+                 user: pulumi.Input[Optional['AccountUserArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -36,34 +36,34 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input['AccountServiceArgs']]:
+    def service(self) -> pulumi.Input[Optional['AccountServiceArgs']]:
         """
         A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input['AccountServiceArgs']]):
+    def service(self, value: pulumi.Input[Optional['AccountServiceArgs']]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input['AccountUserArgs']]:
+    def user(self) -> pulumi.Input[Optional['AccountUserArgs']]:
         """
         A User can connect to resources they are granted directly, or granted via roles.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input['AccountUserArgs']]):
+    def user(self, value: pulumi.Input[Optional['AccountUserArgs']]):
         pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 service: Optional[pulumi.Input['AccountServiceArgs']] = None,
-                 user: Optional[pulumi.Input['AccountUserArgs']] = None):
+                 service: pulumi.Input[Optional['AccountServiceArgs']] = None,
+                 user: pulumi.Input[Optional['AccountUserArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -77,26 +77,26 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input['AccountServiceArgs']]:
+    def service(self) -> pulumi.Input[Optional['AccountServiceArgs']]:
         """
         A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input['AccountServiceArgs']]):
+    def service(self, value: pulumi.Input[Optional['AccountServiceArgs']]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input['AccountUserArgs']]:
+    def user(self) -> pulumi.Input[Optional['AccountUserArgs']]:
         """
         A User can connect to resources they are granted directly, or granted via roles.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input['AccountUserArgs']]):
+    def user(self, value: pulumi.Input[Optional['AccountUserArgs']]):
         pulumi.set(self, "user", value)
 
 
@@ -106,8 +106,8 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service: Optional[pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-                 user: Optional[pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
+                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
+                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
                  __props__=None):
         """
         Accounts are users that have access to strongDM. The types of accounts are:
@@ -221,8 +221,8 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service: Optional[pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-                 user: Optional[pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
+                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
+                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -244,8 +244,8 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            service: Optional[pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-            user: Optional[pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None) -> 'Account':
+            service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
+            user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

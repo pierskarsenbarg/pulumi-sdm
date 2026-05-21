@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *  when connecting to a remote resource using that group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     username: "user",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -112,15 +114,15 @@ export interface RemoteIdentityState {
     /**
      * The account for this remote identity.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The remote identity group.
      */
-    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

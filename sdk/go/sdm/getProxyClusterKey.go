@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupProxyClusterKey(ctx *pulumi.Context, args *LookupProxyClusterKeyArgs, opts ...pulumi.InvokeOption) (*LookupProxyClusterKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProxyClusterKeyResult

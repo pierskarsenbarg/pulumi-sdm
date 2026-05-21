@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * AccountAttachments assign an account to a role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     roleId: "r-12355562",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -102,11 +104,11 @@ export interface AccountAttachmentState {
     /**
      * The id of the account of this AccountAttachment.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The id of the attached role of this AccountAttachment.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

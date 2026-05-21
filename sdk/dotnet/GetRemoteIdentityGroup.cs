@@ -16,6 +16,21 @@ namespace PiersKarsenbarg.Sdm
         /// A RemoteIdentityGroup defines a group of remote identities.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const _default = sdm.getRemoteIdentityGroup({
+        ///     name: "default",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// default = sdm.get_remote_identity_group(name="default")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,13 +39,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.Index.GetRemoteIdentityGroup.Invoke(new()
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRemoteIdentityGroup(ctx, &amp;sdm.GetRemoteIdentityGroupArgs{
+        /// 			Name: pulumi.StringRef("default"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRemoteIdentityGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var default = SdmFunctions.getRemoteIdentityGroup(GetRemoteIdentityGroupArgs.builder()
+        ///             .name("default")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   default:
+        ///     fn::invoke:
+        ///       function: sdm:getRemoteIdentityGroup
+        ///       arguments:
+        ///         name: default
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRemoteIdentityGroupResult> InvokeAsync(GetRemoteIdentityGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupArgs(), options.WithDefaults());
@@ -39,6 +111,21 @@ namespace PiersKarsenbarg.Sdm
         /// A RemoteIdentityGroup defines a group of remote identities.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const _default = sdm.getRemoteIdentityGroup({
+        ///     name: "default",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// default = sdm.get_remote_identity_group(name="default")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,13 +134,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.Index.GetRemoteIdentityGroup.Invoke(new()
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRemoteIdentityGroup(ctx, &amp;sdm.GetRemoteIdentityGroupArgs{
+        /// 			Name: pulumi.StringRef("default"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRemoteIdentityGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var default = SdmFunctions.getRemoteIdentityGroup(GetRemoteIdentityGroupArgs.builder()
+        ///             .name("default")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   default:
+        ///     fn::invoke:
+        ///       function: sdm:getRemoteIdentityGroup
+        ///       arguments:
+        ///         name: default
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteIdentityGroupResult> Invoke(GetRemoteIdentityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupInvokeArgs(), options.WithDefaults());
@@ -62,6 +206,21 @@ namespace PiersKarsenbarg.Sdm
         /// A RemoteIdentityGroup defines a group of remote identities.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const _default = sdm.getRemoteIdentityGroup({
+        ///     name: "default",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// default = sdm.get_remote_identity_group(name="default")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,13 +229,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Sdm.Index.GetRemoteIdentityGroup.Invoke(new()
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
         ///     {
         ///         Name = "default",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRemoteIdentityGroup(ctx, &amp;sdm.GetRemoteIdentityGroupArgs{
+        /// 			Name: pulumi.StringRef("default"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRemoteIdentityGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var default = SdmFunctions.getRemoteIdentityGroup(GetRemoteIdentityGroupArgs.builder()
+        ///             .name("default")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   default:
+        ///     fn::invoke:
+        ///       function: sdm:getRemoteIdentityGroup
+        ///       arguments:
+        ///         name: default
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteIdentityGroupResult> Invoke(GetRemoteIdentityGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupInvokeArgs(), options.WithDefaults());

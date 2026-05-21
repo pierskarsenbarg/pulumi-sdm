@@ -17,6 +17,20 @@ namespace PiersKarsenbarg.Sdm
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
         /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```yaml
+        /// variables:
+        ///   compositeRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRole
+        ///       arguments:
+        ///         composite: true
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
@@ -26,6 +40,20 @@ namespace PiersKarsenbarg.Sdm
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
         /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```yaml
+        /// variables:
+        ///   compositeRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRole
+        ///       arguments:
+        ///         composite: true
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
@@ -35,6 +63,20 @@ namespace PiersKarsenbarg.Sdm
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
         /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```yaml
+        /// variables:
+        ///   compositeRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getRole
+        ///       arguments:
+        ///         composite: true
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());

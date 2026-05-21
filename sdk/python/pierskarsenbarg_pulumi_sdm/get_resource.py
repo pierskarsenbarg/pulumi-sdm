@@ -201,13 +201,13 @@ def get_resource(hostname: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
-def get_resource_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                        type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_output(hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        port: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                        type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceResult]:
     """
     A Resource is a database, server, cluster, website, or cloud that strongDM

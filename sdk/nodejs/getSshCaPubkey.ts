@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * The SSH CA Pubkey is a public key used for setting up SSH resources.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -15,6 +16,7 @@ import * as utilities from "./utilities";
  * const sshPubkeyQuery = sdm.getSshCaPubkey({});
  * export const sshca = sshPubkeyQuery.then(sshPubkeyQuery => sshPubkeyQuery.publicKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSshCaPubkey(args?: GetSshCaPubkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshCaPubkeyResult> {
     args = args || {};
@@ -56,6 +58,7 @@ export interface GetSshCaPubkeyResult {
  * The SSH CA Pubkey is a public key used for setting up SSH resources.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -63,6 +66,7 @@ export interface GetSshCaPubkeyResult {
  * const sshPubkeyQuery = sdm.getSshCaPubkey({});
  * export const sshca = sshPubkeyQuery.then(sshPubkeyQuery => sshPubkeyQuery.publicKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSshCaPubkeyOutput(args?: GetSshCaPubkeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshCaPubkeyResult> {
     args = args || {};
@@ -80,9 +84,9 @@ export interface GetSshCaPubkeyOutputArgs {
     /**
      * a generated id representing this request.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the SSH Certificate Authority public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }

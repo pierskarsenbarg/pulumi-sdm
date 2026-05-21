@@ -17,6 +17,7 @@ namespace PiersKarsenbarg.Sdm
     ///  3. **Tokens** are access keys with permissions that can be used for authentication.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,7 +26,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_user = new Sdm.Index.Account("test-user", new()
+    ///     var test_user = new Sdm.Account("test-user", new()
     ///     {
     ///         User = new Sdm.Inputs.AccountUserArgs
     ///         {
@@ -42,7 +43,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var test_service = new Sdm.Index.Account("test-service", new()
+    ///     var test_service = new Sdm.Account("test-service", new()
     ///     {
     ///         Service = new Sdm.Inputs.AccountServiceArgs
     ///         {
@@ -57,6 +58,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

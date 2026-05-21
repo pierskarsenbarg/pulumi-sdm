@@ -16,6 +16,29 @@ namespace PiersKarsenbarg.Sdm
         /// A GroupRole assigns a Group to a Role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeamRoles = sdm.getGroupRole({
+        ///     groupId: securityTeam.id,
+        /// });
+        /// const specificRelationship = sdm.getGroupRole({
+        ///     id: "grouprole-1234567890abcdef",
+        /// });
+        /// const groupsWithRole = sdm.getGroupRole({
+        ///     roleId: adminRole.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team_roles = sdm.get_group_role(group_id=security_team["id"])
+        /// specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
+        /// groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,23 +47,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			GroupId: pulumi.StringRef(securityTeam.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			Id: pulumi.StringRef("grouprole-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			RoleId: pulumi.StringRef(adminRole.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .groupId(securityTeam.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .id("grouprole-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .roleId(adminRole.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeamRoles:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         groupId: ${securityTeam.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         id: grouprole-1234567890abcdef
+        ///   groupsWithRole:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         roleId: ${adminRole.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupRoleResult> InvokeAsync(GetGroupRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupRoleResult>("sdm:index/getGroupRole:getGroupRole", args ?? new GetGroupRoleArgs(), options.WithDefaults());
@@ -49,6 +159,29 @@ namespace PiersKarsenbarg.Sdm
         /// A GroupRole assigns a Group to a Role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeamRoles = sdm.getGroupRole({
+        ///     groupId: securityTeam.id,
+        /// });
+        /// const specificRelationship = sdm.getGroupRole({
+        ///     id: "grouprole-1234567890abcdef",
+        /// });
+        /// const groupsWithRole = sdm.getGroupRole({
+        ///     roleId: adminRole.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team_roles = sdm.get_group_role(group_id=security_team["id"])
+        /// specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
+        /// groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,23 +190,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			GroupId: pulumi.StringRef(securityTeam.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			Id: pulumi.StringRef("grouprole-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			RoleId: pulumi.StringRef(adminRole.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .groupId(securityTeam.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .id("grouprole-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .roleId(adminRole.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeamRoles:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         groupId: ${securityTeam.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         id: grouprole-1234567890abcdef
+        ///   groupsWithRole:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         roleId: ${adminRole.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupRoleResult> Invoke(GetGroupRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupRoleResult>("sdm:index/getGroupRole:getGroupRole", args ?? new GetGroupRoleInvokeArgs(), options.WithDefaults());
@@ -82,6 +302,29 @@ namespace PiersKarsenbarg.Sdm
         /// A GroupRole assigns a Group to a Role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeamRoles = sdm.getGroupRole({
+        ///     groupId: securityTeam.id,
+        /// });
+        /// const specificRelationship = sdm.getGroupRole({
+        ///     id: "grouprole-1234567890abcdef",
+        /// });
+        /// const groupsWithRole = sdm.getGroupRole({
+        ///     roleId: adminRole.id,
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team_roles = sdm.get_group_role(group_id=security_team["id"])
+        /// specific_relationship = sdm.get_group_role(id="grouprole-1234567890abcdef")
+        /// groups_with_role = sdm.get_group_role(role_id=admin_role["id"])
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,23 +333,110 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeamRoles = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var securityTeamRoles = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         GroupId = securityTeam.Id,
         ///     });
         /// 
-        ///     var specificRelationship = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var specificRelationship = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         Id = "grouprole-1234567890abcdef",
         ///     });
         /// 
-        ///     var groupsWithRole = Sdm.Index.GetGroupRole.Invoke(new()
+        ///     var groupsWithRole = Sdm.GetGroupRole.Invoke(new()
         ///     {
         ///         RoleId = adminRole.Id,
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			GroupId: pulumi.StringRef(securityTeam.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			Id: pulumi.StringRef("grouprole-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroupRole(ctx, &amp;sdm.LookupGroupRoleArgs{
+        /// 			RoleId: pulumi.StringRef(adminRole.Id),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .groupId(securityTeam.id())
+        ///             .build());
+        /// 
+        ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .id("grouprole-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
+        ///             .roleId(adminRole.id())
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeamRoles:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         groupId: ${securityTeam.id}
+        ///   specificRelationship:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         id: grouprole-1234567890abcdef
+        ///   groupsWithRole:
+        ///     fn::invoke:
+        ///       function: sdm:getGroupRole
+        ///       arguments:
+        ///         roleId: ${adminRole.id}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupRoleResult> Invoke(GetGroupRoleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupRoleResult>("sdm:index/getGroupRole:getGroupRole", args ?? new GetGroupRoleInvokeArgs(), options.WithDefaults());

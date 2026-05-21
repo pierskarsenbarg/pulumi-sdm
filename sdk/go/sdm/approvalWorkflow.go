@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,6 +85,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import

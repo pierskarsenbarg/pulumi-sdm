@@ -17,6 +17,9 @@ import (
 //	AccountAttachments.
 //
 // ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// <!--End PulumiCodeChooser -->
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult

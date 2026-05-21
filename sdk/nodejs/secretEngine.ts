@@ -87,20 +87,20 @@ export class SecretEngine extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretEngine resources.
  */
 export interface SecretEngineState {
-    activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
-    keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
-    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine>;
-    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
-    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine>;
+    activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory | undefined>;
+    keyValue?: pulumi.Input<inputs.SecretEngineKeyValue | undefined>;
+    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine | undefined>;
+    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine | undefined>;
+    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SecretEngine resource.
  */
 export interface SecretEngineArgs {
-    activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory>;
-    keyValue?: pulumi.Input<inputs.SecretEngineKeyValue>;
-    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine>;
-    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine>;
-    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine>;
+    activeDirectory?: pulumi.Input<inputs.SecretEngineActiveDirectory | undefined>;
+    keyValue?: pulumi.Input<inputs.SecretEngineKeyValue | undefined>;
+    mysqlSecretEngine?: pulumi.Input<inputs.SecretEngineMysqlSecretEngine | undefined>;
+    postgresSecretEngine?: pulumi.Input<inputs.SecretEnginePostgresSecretEngine | undefined>;
+    sqlserverSecretEngine?: pulumi.Input<inputs.SecretEngineSqlserverSecretEngine | undefined>;
 }

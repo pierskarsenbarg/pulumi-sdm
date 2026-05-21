@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  approvers and be approved or denied.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     approvalMode: "automatic",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflow(args?: GetApprovalWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetApprovalWorkflowResult> {
     args = args || {};
@@ -101,6 +103,7 @@ export interface GetApprovalWorkflowResult {
  *  approvers and be approved or denied.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -114,6 +117,7 @@ export interface GetApprovalWorkflowResult {
  *     approvalMode: "automatic",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflowOutput(args?: GetApprovalWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApprovalWorkflowResult> {
     args = args || {};
@@ -134,21 +138,21 @@ export interface GetApprovalWorkflowOutputArgs {
     /**
      * Approval mode of the ApprovalWorkflow
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepArgs>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepArgs>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the ApprovalWorkflow.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

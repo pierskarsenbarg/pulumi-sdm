@@ -138,9 +138,9 @@ def get_workflow_role(id: Optional[_builtins.str] = None,
         role_id=pulumi.get(__ret__, 'role_id'),
         workflow_id=pulumi.get(__ret__, 'workflow_id'),
         workflow_roles=pulumi.get(__ret__, 'workflow_roles'))
-def get_workflow_role_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             role_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             workflow_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workflow_role_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             workflow_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowRoleResult]:
     """
     WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of

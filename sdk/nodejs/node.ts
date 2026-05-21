@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *  3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  *     },
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -120,15 +122,15 @@ export interface NodeState {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    gateway?: pulumi.Input<inputs.NodeGateway>;
+    gateway?: pulumi.Input<inputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    relay?: pulumi.Input<inputs.NodeRelay>;
+    relay?: pulumi.Input<inputs.NodeRelay | undefined>;
 }
 
 /**
@@ -138,13 +140,13 @@ export interface NodeArgs {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    gateway?: pulumi.Input<inputs.NodeGateway>;
+    gateway?: pulumi.Input<inputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    relay?: pulumi.Input<inputs.NodeRelay>;
+    relay?: pulumi.Input<inputs.NodeRelay | undefined>;
 }

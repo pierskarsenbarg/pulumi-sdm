@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  approvers and be approved or denied.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -59,6 +60,7 @@ import * as utilities from "./utilities";
  *     approvalMode: "automatic",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -153,19 +155,19 @@ export interface ApprovalWorkflowState {
     /**
      * Approval mode of the ApprovalWorkflow
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,13 +181,13 @@ export interface ApprovalWorkflowArgs {
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

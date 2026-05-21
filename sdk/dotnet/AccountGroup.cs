@@ -14,6 +14,7 @@ namespace PiersKarsenbarg.Sdm
     /// An AccountGroup is a link between an Account and a Group.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,13 +23,13 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityLeadToSecurityTeam = new Sdm.Index.AccountGroup("security_lead_to_security_team", new()
+    ///     var securityLeadToSecurityTeam = new Sdm.AccountGroup("security_lead_to_security_team", new()
     ///     {
     ///         AccountId = securityLead.Id,
     ///         GroupId = securityTeam.Id,
     ///     });
     /// 
-    ///     var adminUserToAdministrators = new Sdm.Index.AccountGroup("admin_user_to_administrators", new()
+    ///     var adminUserToAdministrators = new Sdm.AccountGroup("admin_user_to_administrators", new()
     ///     {
     ///         AccountId = "a-1234567890abcdef",
     ///         GroupId = "group-1234567890abcdef",
@@ -36,6 +37,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

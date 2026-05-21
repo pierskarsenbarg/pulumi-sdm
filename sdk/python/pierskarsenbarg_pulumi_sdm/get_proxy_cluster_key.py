@@ -119,8 +119,8 @@ def get_proxy_cluster_key(id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         proxy_cluster_id=pulumi.get(__ret__, 'proxy_cluster_id'),
         proxy_cluster_keys=pulumi.get(__ret__, 'proxy_cluster_keys'))
-def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 proxy_cluster_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_proxy_cluster_key_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 proxy_cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyClusterKeyResult]:
     """
     Proxy Cluster Keys are authentication keys for all proxies within a cluster.

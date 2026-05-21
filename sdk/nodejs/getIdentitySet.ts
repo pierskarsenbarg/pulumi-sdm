@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * A IdentitySet defines a group of identity aliases.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     name: "default",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdentitySet(args?: GetIdentitySetArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentitySetResult> {
     args = args || {};
@@ -67,6 +69,7 @@ export interface GetIdentitySetResult {
  * A IdentitySet defines a group of identity aliases.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -75,6 +78,7 @@ export interface GetIdentitySetResult {
  *     name: "default",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIdentitySetOutput(args?: GetIdentitySetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentitySetResult> {
     args = args || {};
@@ -92,9 +96,9 @@ export interface GetIdentitySetOutputArgs {
     /**
      * Unique identifier of the IdentitySet.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

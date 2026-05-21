@@ -15,6 +15,7 @@ namespace PiersKarsenbarg.Sdm
     ///  when connecting to a remote resource using that group.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,7 +24,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Sdm.Index.RemoteIdentity("user", new()
+    ///     var user = new Sdm.RemoteIdentity("user", new()
     ///     {
     ///         Id = "i-0900909",
     ///         Username = "user",
@@ -31,6 +32,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * An AccountGroup is a link between an Account and a Group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     groupId: devopsGroup.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountGroup(args?: GetAccountGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountGroupResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetAccountGroupResult {
  * An AccountGroup is a link between an Account and a Group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -96,6 +99,7 @@ export interface GetAccountGroupResult {
  *     groupId: devopsGroup.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountGroupOutput(args?: GetAccountGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountGroupResult> {
     args = args || {};
@@ -114,13 +118,13 @@ export interface GetAccountGroupOutputArgs {
     /**
      * Unique identifier of the Account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the AccountGroup.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

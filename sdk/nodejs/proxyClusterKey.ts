@@ -10,12 +10,14 @@ import * as utilities from "./utilities";
  *  multiple keys in order to facilitate key rotation.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const testProxyClusterKey = new sdm.ProxyClusterKey("test_proxy_cluster_key", {proxyClusterId: "n-12345123"});
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -97,8 +99,8 @@ export interface ProxyClusterKeyState {
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    proxyClusterId?: pulumi.Input<string>;
-    secretKey?: pulumi.Input<string>;
+    proxyClusterId?: pulumi.Input<string | undefined>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 /**

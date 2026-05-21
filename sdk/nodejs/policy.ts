@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *  for the users of an organization.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     policyContent: "permit(principal, action, resource);\n",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -104,15 +106,15 @@ export interface PolicyState {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policyContent?: pulumi.Input<string>;
+    policyContent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,13 +124,13 @@ export interface PolicyArgs {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policyContent?: pulumi.Input<string>;
+    policyContent?: pulumi.Input<string | undefined>;
 }

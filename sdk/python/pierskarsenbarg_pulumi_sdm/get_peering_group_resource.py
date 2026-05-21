@@ -123,9 +123,9 @@ def get_peering_group_resource(group_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         peering_group_resources=pulumi.get(__ret__, 'peering_group_resources'),
         resource_id=pulumi.get(__ret__, 'resource_id'))
-def get_peering_group_resource_output(group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      resource_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_peering_group_resource_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      resource_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupResourceResult]:
     """
     PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.

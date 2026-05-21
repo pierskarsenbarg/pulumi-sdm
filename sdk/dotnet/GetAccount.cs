@@ -19,6 +19,43 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Tokens** are access keys with permissions that can be used for authentication.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user_queries = sdm.getAccount({
+        ///     type: "user",
+        ///     email: "*@strongdm.com",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// const api_key_queries = sdm.getAccount({
+        ///     type: "api",
+        ///     name: "*-dev",
+        /// });
+        /// const admin_token_queries = sdm.getAccount({
+        ///     type: "admin-token",
+        ///     name: "*-prod",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user_queries = sdm.get_account(type="user",
+        ///     email="*@strongdm.com",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// api_key_queries = sdm.get_account(type="api",
+        ///     name="*-dev")
+        /// admin_token_queries = sdm.get_account(type="admin-token",
+        ///     name="*-prod")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -27,7 +64,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -38,13 +75,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
@@ -52,6 +89,113 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type:  pulumi.StringRef("user"),
+        /// 			Email: pulumi.StringRef("*@strongdm.com"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("api"),
+        /// 			Name: pulumi.StringRef("*-dev"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("admin-token"),
+        /// 			Name: pulumi.StringRef("*-prod"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("user")
+        ///             .email("*@strongdm.com")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///         final var api-key-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("api")
+        ///             .name("*-dev")
+        ///             .build());
+        /// 
+        ///         final var admin-token-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("admin-token")
+        ///             .name("*-prod")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: user
+        ///         email: '*@strongdm.com'
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        ///   api-key-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: api
+        ///         name: '*-dev'
+        ///   admin-token-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: admin-token
+        ///         name: '*-prod'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -63,6 +207,43 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Tokens** are access keys with permissions that can be used for authentication.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user_queries = sdm.getAccount({
+        ///     type: "user",
+        ///     email: "*@strongdm.com",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// const api_key_queries = sdm.getAccount({
+        ///     type: "api",
+        ///     name: "*-dev",
+        /// });
+        /// const admin_token_queries = sdm.getAccount({
+        ///     type: "admin-token",
+        ///     name: "*-prod",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user_queries = sdm.get_account(type="user",
+        ///     email="*@strongdm.com",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// api_key_queries = sdm.get_account(type="api",
+        ///     name="*-dev")
+        /// admin_token_queries = sdm.get_account(type="admin-token",
+        ///     name="*-prod")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,7 +252,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -82,13 +263,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
@@ -96,6 +277,113 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type:  pulumi.StringRef("user"),
+        /// 			Email: pulumi.StringRef("*@strongdm.com"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("api"),
+        /// 			Name: pulumi.StringRef("*-dev"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("admin-token"),
+        /// 			Name: pulumi.StringRef("*-prod"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("user")
+        ///             .email("*@strongdm.com")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///         final var api-key-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("api")
+        ///             .name("*-dev")
+        ///             .build());
+        /// 
+        ///         final var admin-token-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("admin-token")
+        ///             .name("*-prod")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: user
+        ///         email: '*@strongdm.com'
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        ///   api-key-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: api
+        ///         name: '*-dev'
+        ///   admin-token-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: admin-token
+        ///         name: '*-prod'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
@@ -107,6 +395,43 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Tokens** are access keys with permissions that can be used for authentication.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user_queries = sdm.getAccount({
+        ///     type: "user",
+        ///     email: "*@strongdm.com",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// const api_key_queries = sdm.getAccount({
+        ///     type: "api",
+        ///     name: "*-dev",
+        /// });
+        /// const admin_token_queries = sdm.getAccount({
+        ///     type: "admin-token",
+        ///     name: "*-prod",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user_queries = sdm.get_account(type="user",
+        ///     email="*@strongdm.com",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// api_key_queries = sdm.get_account(type="api",
+        ///     name="*-dev")
+        /// admin_token_queries = sdm.get_account(type="admin-token",
+        ///     name="*-prod")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -115,7 +440,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "user",
         ///         Email = "*@strongdm.com",
@@ -126,13 +451,13 @@ namespace PiersKarsenbarg.Sdm
         ///         },
         ///     });
         /// 
-        ///     var api_key_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "api",
         ///         Name = "*-dev",
         ///     });
         /// 
-        ///     var admin_token_queries = Sdm.Index.GetAccount.Invoke(new()
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
         ///     {
         ///         Type = "admin-token",
         ///         Name = "*-prod",
@@ -140,6 +465,113 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type:  pulumi.StringRef("user"),
+        /// 			Email: pulumi.StringRef("*@strongdm.com"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("api"),
+        /// 			Name: pulumi.StringRef("*-dev"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
+        /// 			Type: pulumi.StringRef("admin-token"),
+        /// 			Name: pulumi.StringRef("*-prod"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("user")
+        ///             .email("*@strongdm.com")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///         final var api-key-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("api")
+        ///             .name("*-dev")
+        ///             .build());
+        /// 
+        ///         final var admin-token-queries = SdmFunctions.getAccount(GetAccountArgs.builder()
+        ///             .type("admin-token")
+        ///             .name("*-prod")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: user
+        ///         email: '*@strongdm.com'
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        ///   api-key-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: api
+        ///         name: '*-dev'
+        ///   admin-token-queries:
+        ///     fn::invoke:
+        ///       function: sdm:getAccount
+        ///       arguments:
+        ///         type: admin-token
+        ///         name: '*-prod'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
