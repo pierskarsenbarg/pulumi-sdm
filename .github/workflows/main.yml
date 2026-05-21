@@ -40,7 +40,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
+        uses: pulumi/actions@v7
         with:
           pulumi-version: latest
       - name: Setup Node
@@ -121,7 +121,7 @@ jobs:
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        uses: pulumi/actions@v6
+        uses: pulumi/actions@v7
         with:
           pulumi-version: latest
       - if: github.event_name == 'pull_request'
@@ -185,7 +185,7 @@ jobs:
   #     with:
   #       repo: pulumi/pulumictl
   #   - name: Install Pulumi CLI
-  #     uses: pulumi/actions@v6
+  #     uses: pulumi/actions@v7
   #   - name: Set PreRelease Version
   #     run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
   #   - name: Run GoReleaser
@@ -229,7 +229,7 @@ jobs:
   #     with:
   #       repo: pulumi/pulumictl
   #   - name: Install Pulumi CLI
-  #     uses: pulumi/actions@v6
+  #     uses: pulumi/actions@v7
   #   - name: Setup Node
   #     uses: actions/setup-node@v6
   #     with:
@@ -304,7 +304,7 @@ jobs:
   #     with:
   #       repo: pulumi/pulumictl
   #   - name: Install Pulumi CLI
-  #     uses: pulumi/actions@v6
+  #     uses: pulumi/actions@v7
   #   - name: Setup Node
   #     uses: actions/setup-node@v6
   #     with:
