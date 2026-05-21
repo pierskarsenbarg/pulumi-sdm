@@ -184,12 +184,11 @@ type Resource struct {
 	Maria                       ResourceMariaPtrOutput                       `pulumi:"maria"`
 	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrOutput            `pulumi:"mcpGatewayNoAuth"`
 	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrOutput             `pulumi:"mcpGatewayOAuth"`
-	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrOutput `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat      ResourceMcpGatewayPatPtrOutput      `pulumi:"mcpGatewayPat"`
-	Memcached          ResourceMemcachedPtrOutput          `pulumi:"memcached"`
-	Memsql             ResourceMemsqlPtrOutput             `pulumi:"memsql"`
-	MongoHost          ResourceMongoHostPtrOutput          `pulumi:"mongoHost"`
+	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrOutput          `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat               ResourceMcpGatewayPatPtrOutput               `pulumi:"mcpGatewayPat"`
+	Memcached                   ResourceMemcachedPtrOutput                   `pulumi:"memcached"`
+	Memsql                      ResourceMemsqlPtrOutput                      `pulumi:"memsql"`
+	MongoHost                   ResourceMongoHostPtrOutput                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -347,12 +346,11 @@ type resourceState struct {
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
 	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
 	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
-	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
-	Memcached          *ResourceMemcached          `pulumi:"memcached"`
-	Memsql             *ResourceMemsql             `pulumi:"memsql"`
-	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
+	McpGatewayOAuthDcr          *ResourceMcpGatewayOAuthDcr          `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat               *ResourceMcpGatewayPat               `pulumi:"mcpGatewayPat"`
+	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
+	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
+	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -481,12 +479,11 @@ type ResourceState struct {
 	Maria                       ResourceMariaPtrInput
 	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
 	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
-	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
-	McpGatewayPat      ResourceMcpGatewayPatPtrInput
-	Memcached          ResourceMemcachedPtrInput
-	Memsql             ResourceMemsqlPtrInput
-	MongoHost          ResourceMongoHostPtrInput
+	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat               ResourceMcpGatewayPatPtrInput
+	Memcached                   ResourceMemcachedPtrInput
+	Memsql                      ResourceMemsqlPtrInput
+	MongoHost                   ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -619,12 +616,11 @@ type resourceArgs struct {
 	Maria                       *ResourceMaria                       `pulumi:"maria"`
 	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
 	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
-	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
-	Memcached          *ResourceMemcached          `pulumi:"memcached"`
-	Memsql             *ResourceMemsql             `pulumi:"memsql"`
-	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
+	McpGatewayOAuthDcr          *ResourceMcpGatewayOAuthDcr          `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat               *ResourceMcpGatewayPat               `pulumi:"mcpGatewayPat"`
+	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
+	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
+	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -754,12 +750,11 @@ type ResourceArgs struct {
 	Maria                       ResourceMariaPtrInput
 	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
 	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
-	// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
-	McpGatewayPat      ResourceMcpGatewayPatPtrInput
-	Memcached          ResourceMemcachedPtrInput
-	Memsql             ResourceMemsqlPtrInput
-	MongoHost          ResourceMongoHostPtrInput
+	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat               ResourceMcpGatewayPatPtrInput
+	Memcached                   ResourceMemcachedPtrInput
+	Memsql                      ResourceMemsqlPtrInput
+	MongoHost                   ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1199,7 +1194,6 @@ func (o ResourceOutput) McpGatewayOAuth() ResourceMcpGatewayOAuthPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMcpGatewayOAuthPtrOutput { return v.McpGatewayOAuth }).(ResourceMcpGatewayOAuthPtrOutput)
 }
 
-// MCPGatewayOAuthDCR is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) McpGatewayOAuthDcr() ResourceMcpGatewayOAuthDcrPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMcpGatewayOAuthDcrPtrOutput { return v.McpGatewayOAuthDcr }).(ResourceMcpGatewayOAuthDcrPtrOutput)
 }
