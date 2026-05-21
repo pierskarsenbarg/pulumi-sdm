@@ -135,9 +135,9 @@ def get_group_role(group_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         role_id=pulumi.get(__ret__, 'role_id'))
-def get_group_role_output(group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          role_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_group_role_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupRoleResult]:
     """
     A GroupRole assigns a Group to a Role.

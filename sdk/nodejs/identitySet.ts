@@ -8,12 +8,14 @@ import * as utilities from "./utilities";
  * A IdentitySet defines a group of identity aliases.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const _default = new sdm.IdentitySet("default", {name: "default"});
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -87,7 +89,7 @@ export interface IdentitySetState {
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -97,5 +99,5 @@ export interface IdentitySetArgs {
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -211,65 +211,65 @@ export interface GetConnectorOutputArgs {
     /**
      * AccountIds is the list of AWS Accounts to scan
      */
-    accountIds?: pulumi.Input<string>;
+    accountIds?: pulumi.Input<string | undefined>;
     /**
      * ClientId is the ID of the Application / Service Account we're acting as
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Description of the Connector.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Connector.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Connector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ProjectIds is the list of GCP Projects the connector will scan
      */
-    projectIds?: pulumi.Input<string>;
+    projectIds?: pulumi.Input<string | undefined>;
     /**
      * RoleName is the Role we're assuming into for an account
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * ScanPeriod identifies which remote system this Connector discovers
      */
-    scanPeriod?: pulumi.Input<string>;
+    scanPeriod?: pulumi.Input<string | undefined>;
     /**
      * Services is a list of services this connector should scan.
      */
-    services?: pulumi.Input<string>;
+    services?: pulumi.Input<string | undefined>;
     /**
      * SubscriptionIds are the targets of discovery.
      */
-    subscriptionIds?: pulumi.Input<string>;
+    subscriptionIds?: pulumi.Input<string | undefined>;
     /**
      * TenantId is the Azure Tenant we're discovering in
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
      */
-    workloadPoolId?: pulumi.Input<string>;
+    workloadPoolId?: pulumi.Input<string | undefined>;
     /**
      * WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
      */
-    workloadProjectId?: pulumi.Input<string>;
+    workloadProjectId?: pulumi.Input<string | undefined>;
     /**
      * WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
      */
-    workloadProjectNumber?: pulumi.Input<string>;
+    workloadProjectNumber?: pulumi.Input<string | undefined>;
     /**
      * WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
      */
-    workloadProviderId?: pulumi.Input<string>;
+    workloadProviderId?: pulumi.Input<string | undefined>;
 }

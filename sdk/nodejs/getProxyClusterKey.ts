@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *  multiple keys in order to facilitate key rotation.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     proxyClusterId: "n-233332245",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProxyClusterKey(args?: GetProxyClusterKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProxyClusterKeyResult> {
     args = args || {};
@@ -71,6 +73,7 @@ export interface GetProxyClusterKeyResult {
  *  multiple keys in order to facilitate key rotation.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -79,6 +82,7 @@ export interface GetProxyClusterKeyResult {
  *     proxyClusterId: "n-233332245",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProxyClusterKeyOutput(args?: GetProxyClusterKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProxyClusterKeyResult> {
     args = args || {};
@@ -96,9 +100,9 @@ export interface GetProxyClusterKeyOutputArgs {
     /**
      * Unique identifier of the Relay.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    proxyClusterId?: pulumi.Input<string>;
+    proxyClusterId?: pulumi.Input<string | undefined>;
 }

@@ -18,6 +18,35 @@ namespace PiersKarsenbarg.Sdm
         ///  but automatic approval or a set of users authorized to approve the requests.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow by name
+        /// const workflowByName = sdm.getWorkflow({
+        ///     name: "workflow example",
+        /// });
+        /// // Query workflow by ID
+        /// const workflowById = sdm.getWorkflow({
+        ///     id: "w-1234567890abcdef",
+        /// });
+        /// // Query workflow by approval flow ID
+        /// const workflowByApprovalFlow = sdm.getWorkflow({
+        ///     approvalFlowId: "aw-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow by name
+        /// workflow_by_name = sdm.get_workflow(name="workflow example")
+        /// # Query workflow by ID
+        /// workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+        /// # Query workflow by approval flow ID
+        /// workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -27,25 +56,121 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow by name
-        ///     var workflowByName = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
         ///     // Query workflow by ID
-        ///     var workflowById = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow by approval flow ID
-        ///     var workflowByApprovalFlow = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow by name
+        /// 		_, err := sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Name: pulumi.StringRef("workflow example"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Id: pulumi.StringRef("w-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by approval flow ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			ApprovalFlowId: pulumi.StringRef("aw-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow by name
+        ///         final var workflowByName = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .name("workflow example")
+        ///             .build());
+        /// 
+        ///         // Query workflow by ID
+        ///         final var workflowById = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .id("w-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow by approval flow ID
+        ///         final var workflowByApprovalFlow = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .approvalFlowId("aw-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow by name
+        ///   workflowByName:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         name: workflow example
+        ///   # Query workflow by ID
+        ///   workflowById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         id: w-1234567890abcdef
+        ///   # Query workflow by approval flow ID
+        ///   workflowByApprovalFlow:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         approvalFlowId: aw-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowArgs(), options.WithDefaults());
@@ -56,6 +181,35 @@ namespace PiersKarsenbarg.Sdm
         ///  but automatic approval or a set of users authorized to approve the requests.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow by name
+        /// const workflowByName = sdm.getWorkflow({
+        ///     name: "workflow example",
+        /// });
+        /// // Query workflow by ID
+        /// const workflowById = sdm.getWorkflow({
+        ///     id: "w-1234567890abcdef",
+        /// });
+        /// // Query workflow by approval flow ID
+        /// const workflowByApprovalFlow = sdm.getWorkflow({
+        ///     approvalFlowId: "aw-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow by name
+        /// workflow_by_name = sdm.get_workflow(name="workflow example")
+        /// # Query workflow by ID
+        /// workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+        /// # Query workflow by approval flow ID
+        /// workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,25 +219,121 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow by name
-        ///     var workflowByName = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
         ///     // Query workflow by ID
-        ///     var workflowById = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow by approval flow ID
-        ///     var workflowByApprovalFlow = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow by name
+        /// 		_, err := sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Name: pulumi.StringRef("workflow example"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Id: pulumi.StringRef("w-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by approval flow ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			ApprovalFlowId: pulumi.StringRef("aw-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow by name
+        ///         final var workflowByName = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .name("workflow example")
+        ///             .build());
+        /// 
+        ///         // Query workflow by ID
+        ///         final var workflowById = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .id("w-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow by approval flow ID
+        ///         final var workflowByApprovalFlow = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .approvalFlowId("aw-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow by name
+        ///   workflowByName:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         name: workflow example
+        ///   # Query workflow by ID
+        ///   workflowById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         id: w-1234567890abcdef
+        ///   # Query workflow by approval flow ID
+        ///   workflowByApprovalFlow:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         approvalFlowId: aw-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());
@@ -94,6 +344,35 @@ namespace PiersKarsenbarg.Sdm
         ///  but automatic approval or a set of users authorized to approve the requests.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow by name
+        /// const workflowByName = sdm.getWorkflow({
+        ///     name: "workflow example",
+        /// });
+        /// // Query workflow by ID
+        /// const workflowById = sdm.getWorkflow({
+        ///     id: "w-1234567890abcdef",
+        /// });
+        /// // Query workflow by approval flow ID
+        /// const workflowByApprovalFlow = sdm.getWorkflow({
+        ///     approvalFlowId: "aw-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow by name
+        /// workflow_by_name = sdm.get_workflow(name="workflow example")
+        /// # Query workflow by ID
+        /// workflow_by_id = sdm.get_workflow(id="w-1234567890abcdef")
+        /// # Query workflow by approval flow ID
+        /// workflow_by_approval_flow = sdm.get_workflow(approval_flow_id="aw-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,25 +382,121 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow by name
-        ///     var workflowByName = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByName = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Name = "workflow example",
         ///     });
         /// 
         ///     // Query workflow by ID
-        ///     var workflowById = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowById = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         Id = "w-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow by approval flow ID
-        ///     var workflowByApprovalFlow = Sdm.Index.GetWorkflow.Invoke(new()
+        ///     var workflowByApprovalFlow = Sdm.GetWorkflow.Invoke(new()
         ///     {
         ///         ApprovalFlowId = "aw-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow by name
+        /// 		_, err := sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Name: pulumi.StringRef("workflow example"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			Id: pulumi.StringRef("w-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow by approval flow ID
+        /// 		_, err = sdm.GetWorkflow(ctx, &amp;sdm.LookupWorkflowArgs{
+        /// 			ApprovalFlowId: pulumi.StringRef("aw-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow by name
+        ///         final var workflowByName = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .name("workflow example")
+        ///             .build());
+        /// 
+        ///         // Query workflow by ID
+        ///         final var workflowById = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .id("w-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow by approval flow ID
+        ///         final var workflowByApprovalFlow = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()
+        ///             .approvalFlowId("aw-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow by name
+        ///   workflowByName:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         name: workflow example
+        ///   # Query workflow by ID
+        ///   workflowById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         id: w-1234567890abcdef
+        ///   # Query workflow by approval flow ID
+        ///   workflowByApprovalFlow:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflow
+        ///       arguments:
+        ///         approvalFlowId: aw-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());

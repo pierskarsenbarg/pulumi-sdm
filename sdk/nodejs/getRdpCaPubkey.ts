@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -15,6 +16,7 @@ import * as utilities from "./utilities";
  * const rdpPubkeyQuery = sdm.getRdpCaPubkey({});
  * export const rdpca = rdpPubkeyQuery.then(rdpPubkeyQuery => rdpPubkeyQuery.publicKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRdpCaPubkey(args?: GetRdpCaPubkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetRdpCaPubkeyResult> {
     args = args || {};
@@ -56,6 +58,7 @@ export interface GetRdpCaPubkeyResult {
  * The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -63,6 +66,7 @@ export interface GetRdpCaPubkeyResult {
  * const rdpPubkeyQuery = sdm.getRdpCaPubkey({});
  * export const rdpca = rdpPubkeyQuery.then(rdpPubkeyQuery => rdpPubkeyQuery.publicKey);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRdpCaPubkeyOutput(args?: GetRdpCaPubkeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdpCaPubkeyResult> {
     args = args || {};
@@ -80,9 +84,9 @@ export interface GetRdpCaPubkeyOutputArgs {
     /**
      * a generated id representing this request.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the RDP Certificate Authority public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }

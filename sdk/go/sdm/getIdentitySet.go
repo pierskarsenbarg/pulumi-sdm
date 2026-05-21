@@ -14,6 +14,7 @@ import (
 // A IdentitySet defines a group of identity aliases.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupIdentitySet(ctx *pulumi.Context, args *LookupIdentitySetArgs, opts ...pulumi.InvokeOption) (*LookupIdentitySetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIdentitySetResult

@@ -85,15 +85,15 @@ export interface ManagedSecretValueState {
     /**
      * encrypted value
      */
-    encrypted?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<string | undefined>;
     /**
      * secret engine's public key used for encryption in PEM format
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * value object
      */
-    value?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    value?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**

@@ -58,8 +58,8 @@ class WorkflowRoleArgs:
 @pulumi.input_type
 class _WorkflowRoleState:
     def __init__(__self__, *,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflow_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflow_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkflowRole resources.
 
@@ -73,26 +73,26 @@ class _WorkflowRoleState:
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role id.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workflowId")
-    def workflow_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workflow_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workflow id.
         """
         return pulumi.get(self, "workflow_id")
 
     @workflow_id.setter
-    def workflow_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workflow_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workflow_id", value)
 
 
@@ -102,8 +102,8 @@ class WorkflowRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflow_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflow_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
@@ -189,8 +189,8 @@ class WorkflowRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workflow_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workflow_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,8 +216,8 @@ class WorkflowRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workflow_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkflowRole':
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workflow_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkflowRole':
         """
         Get an existing WorkflowRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

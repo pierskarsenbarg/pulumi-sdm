@@ -16,6 +16,7 @@ namespace PiersKarsenbarg.Sdm
     ///  multiple keys in order to facilitate key rotation.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,13 +25,14 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProxyClusterKey = new Sdm.Index.ProxyClusterKey("test_proxy_cluster_key", new()
+    ///     var testProxyClusterKey = new Sdm.ProxyClusterKey("test_proxy_cluster_key", new()
     ///     {
     ///         ProxyClusterId = "n-12345123",
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

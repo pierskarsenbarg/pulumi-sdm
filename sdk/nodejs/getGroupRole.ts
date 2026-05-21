@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * A GroupRole assigns a Group to a Role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     roleId: adminRole.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupRole(args?: GetGroupRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupRoleResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetGroupRoleResult {
  * A GroupRole assigns a Group to a Role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -96,6 +99,7 @@ export interface GetGroupRoleResult {
  *     roleId: adminRole.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupRoleOutput(args?: GetGroupRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupRoleResult> {
     args = args || {};
@@ -114,13 +118,13 @@ export interface GetGroupRoleOutputArgs {
     /**
      * The assigned Group ID.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the GroupRole.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The assigned Role ID.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }

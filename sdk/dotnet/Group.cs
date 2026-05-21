@@ -14,6 +14,7 @@ namespace PiersKarsenbarg.Sdm
     /// A Group is a named set of principals.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityTeam = new Sdm.Index.Group("security_team", new()
+    ///     var securityTeam = new Sdm.Group("security_team", new()
     ///     {
     ///         Name = "Security Team",
     ///         Tags = 
@@ -31,18 +32,19 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var administrators = new Sdm.Index.Group("administrators", new()
+    ///     var administrators = new Sdm.Group("administrators", new()
     ///     {
     ///         Name = "Administrators",
     ///     });
     /// 
-    ///     var devopsTeam = new Sdm.Index.Group("devops_team", new()
+    ///     var devopsTeam = new Sdm.Group("devops_team", new()
     ///     {
     ///         Name = "DevOps Team",
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

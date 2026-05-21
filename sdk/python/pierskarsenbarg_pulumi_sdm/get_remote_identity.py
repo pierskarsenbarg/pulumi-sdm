@@ -151,10 +151,10 @@ def get_remote_identity(account_id: Optional[_builtins.str] = None,
         remote_identities=pulumi.get(__ret__, 'remote_identities'),
         remote_identity_group_id=pulumi.get(__ret__, 'remote_identity_group_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               remote_identity_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_remote_identity_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               remote_identity_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRemoteIdentityResult]:
     """
     RemoteIdentities define the username to be used for a specific account

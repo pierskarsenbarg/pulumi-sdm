@@ -14,6 +14,7 @@ namespace PiersKarsenbarg.Sdm
     /// A IdentitySet defines a group of identity aliases.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,13 +23,14 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Sdm.Index.IdentitySet("default", new()
+    ///     var @default = new Sdm.IdentitySet("default", new()
     ///     {
     ///         Name = "default",
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

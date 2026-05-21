@@ -18,6 +18,21 @@ namespace PiersKarsenbarg.Sdm
         ///  multiple keys in order to facilitate key rotation.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const proxyClusterKeyQuery = sdm.getProxyClusterKey({
+        ///     proxyClusterId: "n-233332245",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// proxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id="n-233332245")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -26,13 +41,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetProxyClusterKey(ctx, &amp;sdm.LookupProxyClusterKeyArgs{
+        /// 			ProxyClusterId: pulumi.StringRef("n-233332245"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetProxyClusterKeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var proxyClusterKeyQuery = SdmFunctions.getProxyClusterKey(GetProxyClusterKeyArgs.builder()
+        ///             .proxyClusterId("n-233332245")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   proxyClusterKeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getProxyClusterKey
+        ///       arguments:
+        ///         proxyClusterId: n-233332245
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProxyClusterKeyResult> InvokeAsync(GetProxyClusterKeyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProxyClusterKeyResult>("sdm:index/getProxyClusterKey:getProxyClusterKey", args ?? new GetProxyClusterKeyArgs(), options.WithDefaults());
@@ -43,6 +115,21 @@ namespace PiersKarsenbarg.Sdm
         ///  multiple keys in order to facilitate key rotation.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const proxyClusterKeyQuery = sdm.getProxyClusterKey({
+        ///     proxyClusterId: "n-233332245",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// proxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id="n-233332245")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,13 +138,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetProxyClusterKey(ctx, &amp;sdm.LookupProxyClusterKeyArgs{
+        /// 			ProxyClusterId: pulumi.StringRef("n-233332245"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetProxyClusterKeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var proxyClusterKeyQuery = SdmFunctions.getProxyClusterKey(GetProxyClusterKeyArgs.builder()
+        ///             .proxyClusterId("n-233332245")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   proxyClusterKeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getProxyClusterKey
+        ///       arguments:
+        ///         proxyClusterId: n-233332245
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProxyClusterKeyResult> Invoke(GetProxyClusterKeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProxyClusterKeyResult>("sdm:index/getProxyClusterKey:getProxyClusterKey", args ?? new GetProxyClusterKeyInvokeArgs(), options.WithDefaults());
@@ -68,6 +212,21 @@ namespace PiersKarsenbarg.Sdm
         ///  multiple keys in order to facilitate key rotation.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const proxyClusterKeyQuery = sdm.getProxyClusterKey({
+        ///     proxyClusterId: "n-233332245",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// proxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id="n-233332245")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,13 +235,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyClusterKeyQuery = Sdm.Index.GetProxyClusterKey.Invoke(new()
+        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
         ///     {
         ///         ProxyClusterId = "n-233332245",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetProxyClusterKey(ctx, &amp;sdm.LookupProxyClusterKeyArgs{
+        /// 			ProxyClusterId: pulumi.StringRef("n-233332245"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetProxyClusterKeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var proxyClusterKeyQuery = SdmFunctions.getProxyClusterKey(GetProxyClusterKeyArgs.builder()
+        ///             .proxyClusterId("n-233332245")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   proxyClusterKeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getProxyClusterKey
+        ///       arguments:
+        ///         proxyClusterId: n-233332245
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProxyClusterKeyResult> Invoke(GetProxyClusterKeyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProxyClusterKeyResult>("sdm:index/getProxyClusterKey:getProxyClusterKey", args ?? new GetProxyClusterKeyInvokeArgs(), options.WithDefaults());

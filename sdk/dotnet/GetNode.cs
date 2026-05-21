@@ -20,6 +20,29 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const gatewayQuery = sdm.getNode({
+        ///     type: "gateway",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// gateway_query = sdm.get_node(type="gateway",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -28,7 +51,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 
@@ -40,6 +63,74 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
+        /// 			Type: pulumi.StringRef("gateway"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetNodeArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var gatewayQuery = SdmFunctions.getNode(GetNodeArgs.builder()
+        ///             .type("gateway")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   gatewayQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getNode
+        ///       arguments:
+        ///         type: gateway
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
@@ -52,6 +143,29 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const gatewayQuery = sdm.getNode({
+        ///     type: "gateway",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// gateway_query = sdm.get_node(type="gateway",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +174,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 
@@ -72,6 +186,74 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
+        /// 			Type: pulumi.StringRef("gateway"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetNodeArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var gatewayQuery = SdmFunctions.getNode(GetNodeArgs.builder()
+        ///             .type("gateway")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   gatewayQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getNode
+        ///       arguments:
+        ///         type: gateway
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
@@ -84,6 +266,29 @@ namespace PiersKarsenbarg.Sdm
         ///  3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const gatewayQuery = sdm.getNode({
+        ///     type: "gateway",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// gateway_query = sdm.get_node(type="gateway",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +297,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var gatewayQuery = Sdm.Index.GetNode.Invoke(new()
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
         ///         Type = "gateway",
         ///         Tags = 
@@ -104,6 +309,74 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
+        /// 			Type: pulumi.StringRef("gateway"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetNodeArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var gatewayQuery = SdmFunctions.getNode(GetNodeArgs.builder()
+        ///             .type("gateway")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   gatewayQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getNode
+        ///       arguments:
+        ///         type: gateway
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());

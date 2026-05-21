@@ -16,6 +16,21 @@ namespace PiersKarsenbarg.Sdm
         /// AccountAttachments assign an account to a role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const accountAttachmentQuery = sdm.getAccountAttachment({
+        ///     accountId: "a-00000054",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// account_attachment_query = sdm.get_account_attachment(account_id="a-00000054")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,13 +39,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountAttachment(ctx, &amp;sdm.LookupAccountAttachmentArgs{
+        /// 			AccountId: pulumi.StringRef("a-00000054"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountAttachmentArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var accountAttachmentQuery = SdmFunctions.getAccountAttachment(GetAccountAttachmentArgs.builder()
+        ///             .accountId("a-00000054")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   accountAttachmentQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountAttachment
+        ///       arguments:
+        ///         accountId: a-00000054
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountAttachmentResult> InvokeAsync(GetAccountAttachmentArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentArgs(), options.WithDefaults());
@@ -39,6 +111,21 @@ namespace PiersKarsenbarg.Sdm
         /// AccountAttachments assign an account to a role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const accountAttachmentQuery = sdm.getAccountAttachment({
+        ///     accountId: "a-00000054",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// account_attachment_query = sdm.get_account_attachment(account_id="a-00000054")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,13 +134,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountAttachment(ctx, &amp;sdm.LookupAccountAttachmentArgs{
+        /// 			AccountId: pulumi.StringRef("a-00000054"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountAttachmentArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var accountAttachmentQuery = SdmFunctions.getAccountAttachment(GetAccountAttachmentArgs.builder()
+        ///             .accountId("a-00000054")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   accountAttachmentQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountAttachment
+        ///       arguments:
+        ///         accountId: a-00000054
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountAttachmentResult> Invoke(GetAccountAttachmentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentInvokeArgs(), options.WithDefaults());
@@ -62,6 +206,21 @@ namespace PiersKarsenbarg.Sdm
         /// AccountAttachments assign an account to a role.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const accountAttachmentQuery = sdm.getAccountAttachment({
+        ///     accountId: "a-00000054",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// account_attachment_query = sdm.get_account_attachment(account_id="a-00000054")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,13 +229,70 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var accountAttachmentQuery = Sdm.Index.GetAccountAttachment.Invoke(new()
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
         ///     {
         ///         AccountId = "a-00000054",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetAccountAttachment(ctx, &amp;sdm.LookupAccountAttachmentArgs{
+        /// 			AccountId: pulumi.StringRef("a-00000054"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetAccountAttachmentArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var accountAttachmentQuery = SdmFunctions.getAccountAttachment(GetAccountAttachmentArgs.builder()
+        ///             .accountId("a-00000054")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   accountAttachmentQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getAccountAttachment
+        ///       arguments:
+        ///         accountId: a-00000054
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountAttachmentResult> Invoke(GetAccountAttachmentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentInvokeArgs(), options.WithDefaults());

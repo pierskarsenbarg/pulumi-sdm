@@ -11,6 +11,9 @@ import * as utilities from "./utilities";
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
  * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * <!--End PulumiCodeChooser -->
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
@@ -74,6 +77,9 @@ export interface GetRoleResult {
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
  * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};
@@ -92,13 +98,13 @@ export interface GetRoleOutputArgs {
     /**
      * Unique identifier of the Role.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

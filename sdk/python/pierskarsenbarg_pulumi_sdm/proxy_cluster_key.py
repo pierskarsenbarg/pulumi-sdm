@@ -43,8 +43,8 @@ class ProxyClusterKeyArgs:
 @pulumi.input_type
 class _ProxyClusterKeyState:
     def __init__(__self__, *,
-                 proxy_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProxyClusterKey resources.
 
@@ -57,23 +57,23 @@ class _ProxyClusterKeyState:
 
     @_builtins.property
     @pulumi.getter(name="proxyClusterId")
-    def proxy_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the proxy cluster which this key authenticates to.
         """
         return pulumi.get(self, "proxy_cluster_id")
 
     @proxy_cluster_id.setter
-    def proxy_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
 
@@ -83,7 +83,7 @@ class ProxyClusterKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 proxy_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Proxy Cluster Keys are authentication keys for all proxies within a cluster.
@@ -160,7 +160,7 @@ class ProxyClusterKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 proxy_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,8 +186,8 @@ class ProxyClusterKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            proxy_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProxyClusterKey':
+            proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProxyClusterKey':
         """
         Get an existing ProxyClusterKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * A RemoteIdentityGroup defines a group of remote identities.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     name: "default",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityGroup(args?: GetRemoteIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityGroupResult> {
     args = args || {};
@@ -67,6 +69,7 @@ export interface GetRemoteIdentityGroupResult {
  * A RemoteIdentityGroup defines a group of remote identities.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -75,6 +78,7 @@ export interface GetRemoteIdentityGroupResult {
  *     name: "default",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
     args = args || {};
@@ -92,9 +96,9 @@ export interface GetRemoteIdentityGroupOutputArgs {
     /**
      * Unique identifier of the RemoteIdentityGroup.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the RemoteIdentityGroup.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

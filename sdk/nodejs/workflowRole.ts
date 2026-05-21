@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *  to request access to a resource via the workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     roleId: "r-1234567890abcdef",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -107,11 +109,11 @@ export interface WorkflowRoleState {
     /**
      * The role id.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The workflow id.
      */
-    workflowId?: pulumi.Input<string>;
+    workflowId?: pulumi.Input<string | undefined>;
 }
 
 /**

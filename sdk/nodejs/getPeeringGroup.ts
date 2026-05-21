@@ -74,9 +74,9 @@ export interface GetPeeringGroupOutputArgs {
     /**
      * Unique identifier of the PeeringGroup.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the PeeringGroup.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

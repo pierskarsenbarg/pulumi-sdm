@@ -14,6 +14,7 @@ import (
 // The RDP CA Pubkey is a public key used for setting up a trusted CA on Active Directiory Domain Controllers.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRdpCaPubkey(ctx *pulumi.Context, args *GetRdpCaPubkeyArgs, opts ...pulumi.InvokeOption) (*GetRdpCaPubkeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRdpCaPubkeyResult

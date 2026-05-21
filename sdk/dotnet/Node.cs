@@ -18,6 +18,7 @@ namespace PiersKarsenbarg.Sdm
     ///  3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,7 +27,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gateway = new Sdm.Index.Node("gateway", new()
+    ///     var gateway = new Sdm.Node("gateway", new()
     ///     {
     ///         Gateway = new Sdm.Inputs.NodeGatewayArgs
     ///         {
@@ -41,7 +42,7 @@ namespace PiersKarsenbarg.Sdm
     ///         },
     ///     });
     /// 
-    ///     var relay = new Sdm.Index.Node("relay", new()
+    ///     var relay = new Sdm.Node("relay", new()
     ///     {
     ///         Relay = new Sdm.Inputs.NodeRelayArgs
     ///         {
@@ -56,6 +57,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

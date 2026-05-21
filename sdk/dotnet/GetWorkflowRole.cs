@@ -17,6 +17,31 @@ namespace PiersKarsenbarg.Sdm
         ///  to request access to a resource via the workflow.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow role by workflow and role IDs
+        /// const workflowRoleQuery = sdm.getWorkflowRole({
+        ///     workflowId: "w-1234567890abcdef",
+        ///     roleId: "r-1234567890abcdef",
+        /// });
+        /// // Query workflow role by specific ID
+        /// const workflowRoleById = sdm.getWorkflowRole({
+        ///     id: "wr-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// workflow_role_query = sdm.get_workflow_role(workflow_id="w-1234567890abcdef",
+        ///     role_id="r-1234567890abcdef")
+        /// # Query workflow role by specific ID
+        /// workflow_role_by_id = sdm.get_workflow_role(id="wr-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -26,20 +51,101 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow role by workflow and role IDs
+        /// 		_, err := sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			WorkflowId: pulumi.StringRef("w-1234567890abcdef"),
+        /// 			RoleId:     pulumi.StringRef("r-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow role by specific ID
+        /// 		_, err = sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			Id: pulumi.StringRef("wr-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow role by workflow and role IDs
+        ///         final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .workflowId("w-1234567890abcdef")
+        ///             .roleId("r-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow role by specific ID
+        ///         final var workflowRoleById = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .id("wr-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow role by workflow and role IDs
+        ///   workflowRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         workflowId: w-1234567890abcdef
+        ///         roleId: r-1234567890abcdef
+        ///   # Query workflow role by specific ID
+        ///   workflowRoleById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         id: wr-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWorkflowRoleResult> InvokeAsync(GetWorkflowRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleArgs(), options.WithDefaults());
@@ -49,6 +155,31 @@ namespace PiersKarsenbarg.Sdm
         ///  to request access to a resource via the workflow.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow role by workflow and role IDs
+        /// const workflowRoleQuery = sdm.getWorkflowRole({
+        ///     workflowId: "w-1234567890abcdef",
+        ///     roleId: "r-1234567890abcdef",
+        /// });
+        /// // Query workflow role by specific ID
+        /// const workflowRoleById = sdm.getWorkflowRole({
+        ///     id: "wr-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// workflow_role_query = sdm.get_workflow_role(workflow_id="w-1234567890abcdef",
+        ///     role_id="r-1234567890abcdef")
+        /// # Query workflow role by specific ID
+        /// workflow_role_by_id = sdm.get_workflow_role(id="wr-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,20 +189,101 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow role by workflow and role IDs
+        /// 		_, err := sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			WorkflowId: pulumi.StringRef("w-1234567890abcdef"),
+        /// 			RoleId:     pulumi.StringRef("r-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow role by specific ID
+        /// 		_, err = sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			Id: pulumi.StringRef("wr-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow role by workflow and role IDs
+        ///         final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .workflowId("w-1234567890abcdef")
+        ///             .roleId("r-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow role by specific ID
+        ///         final var workflowRoleById = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .id("wr-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow role by workflow and role IDs
+        ///   workflowRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         workflowId: w-1234567890abcdef
+        ///         roleId: r-1234567890abcdef
+        ///   # Query workflow role by specific ID
+        ///   workflowRoleById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         id: wr-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowRoleResult> Invoke(GetWorkflowRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleInvokeArgs(), options.WithDefaults());
@@ -81,6 +293,31 @@ namespace PiersKarsenbarg.Sdm
         ///  to request access to a resource via the workflow.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// // Query workflow role by workflow and role IDs
+        /// const workflowRoleQuery = sdm.getWorkflowRole({
+        ///     workflowId: "w-1234567890abcdef",
+        ///     roleId: "r-1234567890abcdef",
+        /// });
+        /// // Query workflow role by specific ID
+        /// const workflowRoleById = sdm.getWorkflowRole({
+        ///     id: "wr-1234567890abcdef",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// workflow_role_query = sdm.get_workflow_role(workflow_id="w-1234567890abcdef",
+        ///     role_id="r-1234567890abcdef")
+        /// # Query workflow role by specific ID
+        /// workflow_role_by_id = sdm.get_workflow_role(id="wr-1234567890abcdef")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,20 +327,101 @@ namespace PiersKarsenbarg.Sdm
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Query workflow role by workflow and role IDs
-        ///     var workflowRoleQuery = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         WorkflowId = "w-1234567890abcdef",
         ///         RoleId = "r-1234567890abcdef",
         ///     });
         /// 
         ///     // Query workflow role by specific ID
-        ///     var workflowRoleById = Sdm.Index.GetWorkflowRole.Invoke(new()
+        ///     var workflowRoleById = Sdm.GetWorkflowRole.Invoke(new()
         ///     {
         ///         Id = "wr-1234567890abcdef",
         ///     });
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		// Query workflow role by workflow and role IDs
+        /// 		_, err := sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			WorkflowId: pulumi.StringRef("w-1234567890abcdef"),
+        /// 			RoleId:     pulumi.StringRef("r-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		// Query workflow role by specific ID
+        /// 		_, err = sdm.GetWorkflowRole(ctx, &amp;sdm.LookupWorkflowRoleArgs{
+        /// 			Id: pulumi.StringRef("wr-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetWorkflowRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         // Query workflow role by workflow and role IDs
+        ///         final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .workflowId("w-1234567890abcdef")
+        ///             .roleId("r-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         // Query workflow role by specific ID
+        ///         final var workflowRoleById = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()
+        ///             .id("wr-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   # Query workflow role by workflow and role IDs
+        ///   workflowRoleQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         workflowId: w-1234567890abcdef
+        ///         roleId: r-1234567890abcdef
+        ///   # Query workflow role by specific ID
+        ///   workflowRoleById:
+        ///     fn::invoke:
+        ///       function: sdm:getWorkflowRole
+        ///       arguments:
+        ///         id: wr-1234567890abcdef
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowRoleResult> Invoke(GetWorkflowRoleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleInvokeArgs(), options.WithDefaults());

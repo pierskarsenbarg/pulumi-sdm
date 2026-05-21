@@ -15,6 +15,7 @@ import (
 // A GroupRole assigns a Group to a Role.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import

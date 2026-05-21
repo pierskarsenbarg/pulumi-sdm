@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  for the users of an organization.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "policy-query",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
@@ -87,6 +89,7 @@ export interface GetPolicyResult {
  *  for the users of an organization.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -95,6 +98,7 @@ export interface GetPolicyResult {
  *     name: "policy-query",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyResult> {
     args = args || {};
@@ -114,17 +118,17 @@ export interface GetPolicyOutputArgs {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Policy.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }

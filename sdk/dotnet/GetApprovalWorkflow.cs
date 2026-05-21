@@ -17,6 +17,29 @@ namespace PiersKarsenbarg.Sdm
         ///  approvers and be approved or denied.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow manual",
+        ///     approvalMode: "manual",
+        /// });
+        /// const autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow auto",
+        ///     approvalMode: "automatic",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// manual_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow manual",
+        ///     approval_mode="manual")
+        /// auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
+        ///     approval_mode="automatic")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,13 +48,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",
@@ -39,6 +62,84 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow manual"),
+        /// 			ApprovalMode: pulumi.StringRef("manual"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow auto"),
+        /// 			ApprovalMode: pulumi.StringRef("automatic"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetApprovalWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var manualApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow manual")
+        ///             .approvalMode("manual")
+        ///             .build());
+        /// 
+        ///         final var autoGrantApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow auto")
+        ///             .approvalMode("automatic")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   manualApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow manual
+        ///         approvalMode: manual
+        ///   autoGrantApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow auto
+        ///         approvalMode: automatic
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApprovalWorkflowResult> InvokeAsync(GetApprovalWorkflowArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowArgs(), options.WithDefaults());
@@ -48,6 +149,29 @@ namespace PiersKarsenbarg.Sdm
         ///  approvers and be approved or denied.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow manual",
+        ///     approvalMode: "manual",
+        /// });
+        /// const autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow auto",
+        ///     approvalMode: "automatic",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// manual_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow manual",
+        ///     approval_mode="manual")
+        /// auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
+        ///     approval_mode="automatic")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,13 +180,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",
@@ -70,6 +194,84 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow manual"),
+        /// 			ApprovalMode: pulumi.StringRef("manual"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow auto"),
+        /// 			ApprovalMode: pulumi.StringRef("automatic"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetApprovalWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var manualApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow manual")
+        ///             .approvalMode("manual")
+        ///             .build());
+        /// 
+        ///         final var autoGrantApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow auto")
+        ///             .approvalMode("automatic")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   manualApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow manual
+        ///         approvalMode: manual
+        ///   autoGrantApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow auto
+        ///         approvalMode: automatic
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApprovalWorkflowResult> Invoke(GetApprovalWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowInvokeArgs(), options.WithDefaults());
@@ -79,6 +281,29 @@ namespace PiersKarsenbarg.Sdm
         ///  approvers and be approved or denied.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const manualApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow manual",
+        ///     approvalMode: "manual",
+        /// });
+        /// const autoGrantApprovalWorkflowQuery = sdm.getApprovalWorkflow({
+        ///     name: "approval workflow auto",
+        ///     approvalMode: "automatic",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// manual_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow manual",
+        ///     approval_mode="manual")
+        /// auto_grant_approval_workflow_query = sdm.get_approval_workflow(name="approval workflow auto",
+        ///     approval_mode="automatic")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,13 +312,13 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var manualApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow manual",
         ///         ApprovalMode = "manual",
         ///     });
         /// 
-        ///     var autoGrantApprovalWorkflowQuery = Sdm.Index.GetApprovalWorkflow.Invoke(new()
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
         ///     {
         ///         Name = "approval workflow auto",
         ///         ApprovalMode = "automatic",
@@ -101,6 +326,84 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow manual"),
+        /// 			ApprovalMode: pulumi.StringRef("manual"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetApprovalWorkflow(ctx, &amp;sdm.LookupApprovalWorkflowArgs{
+        /// 			Name:         pulumi.StringRef("approval workflow auto"),
+        /// 			ApprovalMode: pulumi.StringRef("automatic"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetApprovalWorkflowArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var manualApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow manual")
+        ///             .approvalMode("manual")
+        ///             .build());
+        /// 
+        ///         final var autoGrantApprovalWorkflowQuery = SdmFunctions.getApprovalWorkflow(GetApprovalWorkflowArgs.builder()
+        ///             .name("approval workflow auto")
+        ///             .approvalMode("automatic")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   manualApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow manual
+        ///         approvalMode: manual
+        ///   autoGrantApprovalWorkflowQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getApprovalWorkflow
+        ///       arguments:
+        ///         name: approval workflow auto
+        ///         approvalMode: automatic
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApprovalWorkflowResult> Invoke(GetApprovalWorkflowInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowInvokeArgs(), options.WithDefaults());

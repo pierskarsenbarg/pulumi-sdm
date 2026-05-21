@@ -16,6 +16,21 @@ namespace PiersKarsenbarg.Sdm
         /// The SSH CA Pubkey is a public key used for setting up SSH resources.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const sshPubkeyQuery = sdm.getSshCaPubkey({});
+        /// export const sshca = sshPubkeyQuery.then(sshPubkeyQuery =&gt; sshPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// ssh_pubkey_query = sdm.get_ssh_ca_pubkey()
+        /// pulumi.export("sshca", ssh_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,7 +39,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sshPubkeyQuery = Sdm.Index.GetSshCaPubkey.Invoke();
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -32,6 +47,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		sshPubkeyQuery, err := sdm.GetSshCaPubkey(ctx, &amp;sdm.GetSshCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("sshca", sshPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetSshCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var sshPubkeyQuery = SdmFunctions.getSshCaPubkey(GetSshCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("sshca", sshPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   sshPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getSshCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   sshca: ${sshPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSshCaPubkeyResult> InvokeAsync(GetSshCaPubkeyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyArgs(), options.WithDefaults());
@@ -40,6 +112,21 @@ namespace PiersKarsenbarg.Sdm
         /// The SSH CA Pubkey is a public key used for setting up SSH resources.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const sshPubkeyQuery = sdm.getSshCaPubkey({});
+        /// export const sshca = sshPubkeyQuery.then(sshPubkeyQuery =&gt; sshPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// ssh_pubkey_query = sdm.get_ssh_ca_pubkey()
+        /// pulumi.export("sshca", ssh_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +135,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sshPubkeyQuery = Sdm.Index.GetSshCaPubkey.Invoke();
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -56,6 +143,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		sshPubkeyQuery, err := sdm.GetSshCaPubkey(ctx, &amp;sdm.GetSshCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("sshca", sshPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetSshCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var sshPubkeyQuery = SdmFunctions.getSshCaPubkey(GetSshCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("sshca", sshPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   sshPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getSshCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   sshca: ${sshPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSshCaPubkeyResult> Invoke(GetSshCaPubkeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());
@@ -64,6 +208,21 @@ namespace PiersKarsenbarg.Sdm
         /// The SSH CA Pubkey is a public key used for setting up SSH resources.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const sshPubkeyQuery = sdm.getSshCaPubkey({});
+        /// export const sshca = sshPubkeyQuery.then(sshPubkeyQuery =&gt; sshPubkeyQuery.publicKey);
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// ssh_pubkey_query = sdm.get_ssh_ca_pubkey()
+        /// pulumi.export("sshca", ssh_pubkey_query.public_key)
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +231,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sshPubkeyQuery = Sdm.Index.GetSshCaPubkey.Invoke();
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,6 +239,63 @@ namespace PiersKarsenbarg.Sdm
         ///     };
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		sshPubkeyQuery, err := sdm.GetSshCaPubkey(ctx, &amp;sdm.GetSshCaPubkeyArgs{}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("sshca", sshPubkeyQuery.PublicKey)
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetSshCaPubkeyArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var sshPubkeyQuery = SdmFunctions.getSshCaPubkey(GetSshCaPubkeyArgs.builder()
+        ///             .build());
+        /// 
+        ///         ctx.export("sshca", sshPubkeyQuery.publicKey());
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   sshPubkeyQuery:
+        ///     fn::invoke:
+        ///       function: sdm:getSshCaPubkey
+        ///       arguments: {}
+        /// outputs:
+        ///   sshca: ${sshPubkeyQuery.publicKey}
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSshCaPubkeyResult> Invoke(GetSshCaPubkeyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());

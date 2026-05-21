@@ -82,13 +82,13 @@ export interface GetPeeringGroupPeerOutputArgs {
     /**
      * Group ID from which the link will originate.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Attachment.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Peering Group ID to which Group ID will link.
      */
-    peersWithGroupId?: pulumi.Input<string>;
+    peersWithGroupId?: pulumi.Input<string | undefined>;
 }

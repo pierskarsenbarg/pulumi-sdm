@@ -21,11 +21,11 @@ __all__ = ['SecretEngineArgs', 'SecretEngine']
 @pulumi.input_type
 class SecretEngineArgs:
     def __init__(__self__, *,
-                 active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
-                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
-                 mysql_secret_engine: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']] = None,
-                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None,
-                 sqlserver_secret_engine: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']] = None):
+                 active_directory: pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']] = None,
+                 key_value: pulumi.Input[Optional['SecretEngineKeyValueArgs']] = None,
+                 mysql_secret_engine: pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']] = None,
+                 postgres_secret_engine: pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']] = None):
         """
         The set of arguments for constructing a SecretEngine resource.
         """
@@ -42,58 +42,58 @@ class SecretEngineArgs:
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
-    def active_directory(self) -> Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]:
+    def active_directory(self) -> pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']]:
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
-    def active_directory(self, value: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]):
+    def active_directory(self, value: pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']]):
         pulumi.set(self, "active_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="keyValue")
-    def key_value(self) -> Optional[pulumi.Input['SecretEngineKeyValueArgs']]:
+    def key_value(self) -> pulumi.Input[Optional['SecretEngineKeyValueArgs']]:
         return pulumi.get(self, "key_value")
 
     @key_value.setter
-    def key_value(self, value: Optional[pulumi.Input['SecretEngineKeyValueArgs']]):
+    def key_value(self, value: pulumi.Input[Optional['SecretEngineKeyValueArgs']]):
         pulumi.set(self, "key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlSecretEngine")
-    def mysql_secret_engine(self) -> Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]:
+    def mysql_secret_engine(self) -> pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']]:
         return pulumi.get(self, "mysql_secret_engine")
 
     @mysql_secret_engine.setter
-    def mysql_secret_engine(self, value: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]):
+    def mysql_secret_engine(self, value: pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']]):
         pulumi.set(self, "mysql_secret_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresSecretEngine")
-    def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
+    def postgres_secret_engine(self) -> pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']]:
         return pulumi.get(self, "postgres_secret_engine")
 
     @postgres_secret_engine.setter
-    def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
+    def postgres_secret_engine(self, value: pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']]):
         pulumi.set(self, "postgres_secret_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlserverSecretEngine")
-    def sqlserver_secret_engine(self) -> Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]:
+    def sqlserver_secret_engine(self) -> pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']]:
         return pulumi.get(self, "sqlserver_secret_engine")
 
     @sqlserver_secret_engine.setter
-    def sqlserver_secret_engine(self, value: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]):
+    def sqlserver_secret_engine(self, value: pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']]):
         pulumi.set(self, "sqlserver_secret_engine", value)
 
 
 @pulumi.input_type
 class _SecretEngineState:
     def __init__(__self__, *,
-                 active_directory: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']] = None,
-                 key_value: Optional[pulumi.Input['SecretEngineKeyValueArgs']] = None,
-                 mysql_secret_engine: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']] = None,
-                 postgres_secret_engine: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']] = None,
-                 sqlserver_secret_engine: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']] = None):
+                 active_directory: pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']] = None,
+                 key_value: pulumi.Input[Optional['SecretEngineKeyValueArgs']] = None,
+                 mysql_secret_engine: pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']] = None,
+                 postgres_secret_engine: pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']] = None):
         """
         Input properties used for looking up and filtering SecretEngine resources.
         """
@@ -110,47 +110,47 @@ class _SecretEngineState:
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
-    def active_directory(self) -> Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]:
+    def active_directory(self) -> pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']]:
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
-    def active_directory(self, value: Optional[pulumi.Input['SecretEngineActiveDirectoryArgs']]):
+    def active_directory(self, value: pulumi.Input[Optional['SecretEngineActiveDirectoryArgs']]):
         pulumi.set(self, "active_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="keyValue")
-    def key_value(self) -> Optional[pulumi.Input['SecretEngineKeyValueArgs']]:
+    def key_value(self) -> pulumi.Input[Optional['SecretEngineKeyValueArgs']]:
         return pulumi.get(self, "key_value")
 
     @key_value.setter
-    def key_value(self, value: Optional[pulumi.Input['SecretEngineKeyValueArgs']]):
+    def key_value(self, value: pulumi.Input[Optional['SecretEngineKeyValueArgs']]):
         pulumi.set(self, "key_value", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlSecretEngine")
-    def mysql_secret_engine(self) -> Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]:
+    def mysql_secret_engine(self) -> pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']]:
         return pulumi.get(self, "mysql_secret_engine")
 
     @mysql_secret_engine.setter
-    def mysql_secret_engine(self, value: Optional[pulumi.Input['SecretEngineMysqlSecretEngineArgs']]):
+    def mysql_secret_engine(self, value: pulumi.Input[Optional['SecretEngineMysqlSecretEngineArgs']]):
         pulumi.set(self, "mysql_secret_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresSecretEngine")
-    def postgres_secret_engine(self) -> Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]:
+    def postgres_secret_engine(self) -> pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']]:
         return pulumi.get(self, "postgres_secret_engine")
 
     @postgres_secret_engine.setter
-    def postgres_secret_engine(self, value: Optional[pulumi.Input['SecretEnginePostgresSecretEngineArgs']]):
+    def postgres_secret_engine(self, value: pulumi.Input[Optional['SecretEnginePostgresSecretEngineArgs']]):
         pulumi.set(self, "postgres_secret_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlserverSecretEngine")
-    def sqlserver_secret_engine(self) -> Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]:
+    def sqlserver_secret_engine(self) -> pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']]:
         return pulumi.get(self, "sqlserver_secret_engine")
 
     @sqlserver_secret_engine.setter
-    def sqlserver_secret_engine(self, value: Optional[pulumi.Input['SecretEngineSqlserverSecretEngineArgs']]):
+    def sqlserver_secret_engine(self, value: pulumi.Input[Optional['SecretEngineSqlserverSecretEngineArgs']]):
         pulumi.set(self, "sqlserver_secret_engine", value)
 
 
@@ -160,11 +160,11 @@ class SecretEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-                 key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-                 mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-                 postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-                 sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
+                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
+                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
+                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
                  __props__=None):
         """
         A SecretEngine is managing secrets in SecretStores.
@@ -216,11 +216,11 @@ class SecretEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-                 key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-                 mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-                 postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-                 sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
+                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
+                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
+                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,11 +245,11 @@ class SecretEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_directory: Optional[pulumi.Input[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-            key_value: Optional[pulumi.Input[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-            mysql_secret_engine: Optional[pulumi.Input[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-            postgres_secret_engine: Optional[pulumi.Input[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-            sqlserver_secret_engine: Optional[pulumi.Input[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None) -> 'SecretEngine':
+            active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
+            key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
+            mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
+            postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
+            sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None) -> 'SecretEngine':
         """
         Get an existing SecretEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *  3. **Tokens** are access keys with permissions that can be used for authentication.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -36,6 +37,7 @@ import * as utilities from "./utilities";
  *     },
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -115,11 +117,11 @@ export interface AccountState {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
-    service?: pulumi.Input<inputs.AccountService>;
+    service?: pulumi.Input<inputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    user?: pulumi.Input<inputs.AccountUser>;
+    user?: pulumi.Input<inputs.AccountUser | undefined>;
 }
 
 /**
@@ -129,9 +131,9 @@ export interface AccountArgs {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
-    service?: pulumi.Input<inputs.AccountService>;
+    service?: pulumi.Input<inputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    user?: pulumi.Input<inputs.AccountUser>;
+    user?: pulumi.Input<inputs.AccountUser | undefined>;
 }

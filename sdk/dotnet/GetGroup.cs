@@ -16,6 +16,33 @@ namespace PiersKarsenbarg.Sdm
         /// A Group is a named set of principals.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeam = sdm.getGroup({
+        ///     name: "Security Team",
+        /// });
+        /// const administrators = sdm.getGroup({
+        ///     id: "group-1234567890abcdef",
+        /// });
+        /// const adminTeams = sdm.getGroup({
+        ///     tags: {
+        ///         admin: "true",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team = sdm.get_group(name="Security Team")
+        /// administrators = sdm.get_group(id="group-1234567890abcdef")
+        /// admin_teams = sdm.get_group(tags={
+        ///     "admin": "true",
+        /// })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -24,17 +51,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {
@@ -44,6 +71,96 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Name: pulumi.StringRef("Security Team"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Id: pulumi.StringRef("group-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Tags: map[string]interface{}{
+        /// 				"admin": "true",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeam = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .name("Security Team")
+        ///             .build());
+        /// 
+        ///         final var administrators = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .id("group-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var adminTeams = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .tags(Map.of("admin", "true"))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeam:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         name: Security Team
+        ///   administrators:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         id: group-1234567890abcdef
+        ///   adminTeams:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         tags:
+        ///           admin: 'true'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("sdm:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
@@ -52,6 +169,33 @@ namespace PiersKarsenbarg.Sdm
         /// A Group is a named set of principals.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeam = sdm.getGroup({
+        ///     name: "Security Team",
+        /// });
+        /// const administrators = sdm.getGroup({
+        ///     id: "group-1234567890abcdef",
+        /// });
+        /// const adminTeams = sdm.getGroup({
+        ///     tags: {
+        ///         admin: "true",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team = sdm.get_group(name="Security Team")
+        /// administrators = sdm.get_group(id="group-1234567890abcdef")
+        /// admin_teams = sdm.get_group(tags={
+        ///     "admin": "true",
+        /// })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,17 +204,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {
@@ -80,6 +224,96 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Name: pulumi.StringRef("Security Team"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Id: pulumi.StringRef("group-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Tags: map[string]interface{}{
+        /// 				"admin": "true",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeam = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .name("Security Team")
+        ///             .build());
+        /// 
+        ///         final var administrators = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .id("group-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var adminTeams = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .tags(Map.of("admin", "true"))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeam:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         name: Security Team
+        ///   administrators:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         id: group-1234567890abcdef
+        ///   adminTeams:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         tags:
+        ///           admin: 'true'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("sdm:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
@@ -88,6 +322,33 @@ namespace PiersKarsenbarg.Sdm
         /// A Group is a named set of principals.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const securityTeam = sdm.getGroup({
+        ///     name: "Security Team",
+        /// });
+        /// const administrators = sdm.getGroup({
+        ///     id: "group-1234567890abcdef",
+        /// });
+        /// const adminTeams = sdm.getGroup({
+        ///     tags: {
+        ///         admin: "true",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// security_team = sdm.get_group(name="Security Team")
+        /// administrators = sdm.get_group(id="group-1234567890abcdef")
+        /// admin_teams = sdm.get_group(tags={
+        ///     "admin": "true",
+        /// })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,17 +357,17 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityTeam = Sdm.Index.GetGroup.Invoke(new()
+        ///     var securityTeam = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Name = "Security Team",
         ///     });
         /// 
-        ///     var administrators = Sdm.Index.GetGroup.Invoke(new()
+        ///     var administrators = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Id = "group-1234567890abcdef",
         ///     });
         /// 
-        ///     var adminTeams = Sdm.Index.GetGroup.Invoke(new()
+        ///     var adminTeams = Sdm.GetGroup.Invoke(new()
         ///     {
         ///         Tags = 
         ///         {
@@ -116,6 +377,96 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Name: pulumi.StringRef("Security Team"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Id: pulumi.StringRef("group-1234567890abcdef"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
+        /// 			Tags: map[string]interface{}{
+        /// 				"admin": "true",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetGroupArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var securityTeam = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .name("Security Team")
+        ///             .build());
+        /// 
+        ///         final var administrators = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .id("group-1234567890abcdef")
+        ///             .build());
+        /// 
+        ///         final var adminTeams = SdmFunctions.getGroup(GetGroupArgs.builder()
+        ///             .tags(Map.of("admin", "true"))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   securityTeam:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         name: Security Team
+        ///   administrators:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         id: group-1234567890abcdef
+        ///   adminTeams:
+        ///     fn::invoke:
+        ///       function: sdm:getGroup
+        ///       arguments:
+        ///         tags:
+        ///           admin: 'true'
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("sdm:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());

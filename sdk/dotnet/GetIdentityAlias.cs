@@ -17,6 +17,23 @@ namespace PiersKarsenbarg.Sdm
         ///  when connecting to a remote resource using that identity set.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user = sdm.getIdentityAlias({
+        ///     id: "i-0900909",
+        ///     username: "user",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user = sdm.get_identity_alias(id="i-0900909",
+        ///     username="user")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,7 +42,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.Index.GetIdentityAlias.Invoke(new()
+        ///     var user = Sdm.GetIdentityAlias.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",
@@ -33,6 +50,66 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetIdentityAlias(ctx, &amp;sdm.LookupIdentityAliasArgs{
+        /// 			Id:       pulumi.StringRef("i-0900909"),
+        /// 			Username: pulumi.StringRef("user"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetIdentityAliasArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user = SdmFunctions.getIdentityAlias(GetIdentityAliasArgs.builder()
+        ///             .id("i-0900909")
+        ///             .username("user")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user:
+        ///     fn::invoke:
+        ///       function: sdm:getIdentityAlias
+        ///       arguments:
+        ///         id: i-0900909
+        ///         username: user
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIdentityAliasResult> InvokeAsync(GetIdentityAliasArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIdentityAliasResult>("sdm:index/getIdentityAlias:getIdentityAlias", args ?? new GetIdentityAliasArgs(), options.WithDefaults());
@@ -42,6 +119,23 @@ namespace PiersKarsenbarg.Sdm
         ///  when connecting to a remote resource using that identity set.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user = sdm.getIdentityAlias({
+        ///     id: "i-0900909",
+        ///     username: "user",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user = sdm.get_identity_alias(id="i-0900909",
+        ///     username="user")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +144,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.Index.GetIdentityAlias.Invoke(new()
+        ///     var user = Sdm.GetIdentityAlias.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",
@@ -58,6 +152,66 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetIdentityAlias(ctx, &amp;sdm.LookupIdentityAliasArgs{
+        /// 			Id:       pulumi.StringRef("i-0900909"),
+        /// 			Username: pulumi.StringRef("user"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetIdentityAliasArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user = SdmFunctions.getIdentityAlias(GetIdentityAliasArgs.builder()
+        ///             .id("i-0900909")
+        ///             .username("user")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user:
+        ///     fn::invoke:
+        ///       function: sdm:getIdentityAlias
+        ///       arguments:
+        ///         id: i-0900909
+        ///         username: user
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIdentityAliasResult> Invoke(GetIdentityAliasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityAliasResult>("sdm:index/getIdentityAlias:getIdentityAlias", args ?? new GetIdentityAliasInvokeArgs(), options.WithDefaults());
@@ -67,6 +221,23 @@ namespace PiersKarsenbarg.Sdm
         ///  when connecting to a remote resource using that identity set.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const user = sdm.getIdentityAlias({
+        ///     id: "i-0900909",
+        ///     username: "user",
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// user = sdm.get_identity_alias(id="i-0900909",
+        ///     username="user")
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,7 +246,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Sdm.Index.GetIdentityAlias.Invoke(new()
+        ///     var user = Sdm.GetIdentityAlias.Invoke(new()
         ///     {
         ///         Id = "i-0900909",
         ///         Username = "user",
@@ -83,6 +254,66 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetIdentityAlias(ctx, &amp;sdm.LookupIdentityAliasArgs{
+        /// 			Id:       pulumi.StringRef("i-0900909"),
+        /// 			Username: pulumi.StringRef("user"),
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetIdentityAliasArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var user = SdmFunctions.getIdentityAlias(GetIdentityAliasArgs.builder()
+        ///             .id("i-0900909")
+        ///             .username("user")
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   user:
+        ///     fn::invoke:
+        ///       function: sdm:getIdentityAlias
+        ///       arguments:
+        ///         id: i-0900909
+        ///         username: user
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIdentityAliasResult> Invoke(GetIdentityAliasInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentityAliasResult>("sdm:index/getIdentityAlias:getIdentityAlias", args ?? new GetIdentityAliasInvokeArgs(), options.WithDefaults());

@@ -21,9 +21,9 @@ __all__ = ['ConnectorArgs', 'Connector']
 @pulumi.input_type
 class ConnectorArgs:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectorAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectorAzureArgs']] = None,
-                 gcp: Optional[pulumi.Input['ConnectorGcpArgs']] = None):
+                 aws: pulumi.Input[Optional['ConnectorAwsArgs']] = None,
+                 azure: pulumi.Input[Optional['ConnectorAzureArgs']] = None,
+                 gcp: pulumi.Input[Optional['ConnectorGcpArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
         """
@@ -36,38 +36,38 @@ class ConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectorAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ConnectorAwsArgs']]:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectorAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ConnectorAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectorAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ConnectorAzureArgs']]:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectorAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ConnectorAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcp(self) -> Optional[pulumi.Input['ConnectorGcpArgs']]:
+    def gcp(self) -> pulumi.Input[Optional['ConnectorGcpArgs']]:
         return pulumi.get(self, "gcp")
 
     @gcp.setter
-    def gcp(self, value: Optional[pulumi.Input['ConnectorGcpArgs']]):
+    def gcp(self, value: pulumi.Input[Optional['ConnectorGcpArgs']]):
         pulumi.set(self, "gcp", value)
 
 
 @pulumi.input_type
 class _ConnectorState:
     def __init__(__self__, *,
-                 aws: Optional[pulumi.Input['ConnectorAwsArgs']] = None,
-                 azure: Optional[pulumi.Input['ConnectorAzureArgs']] = None,
-                 gcp: Optional[pulumi.Input['ConnectorGcpArgs']] = None):
+                 aws: pulumi.Input[Optional['ConnectorAwsArgs']] = None,
+                 azure: pulumi.Input[Optional['ConnectorAzureArgs']] = None,
+                 gcp: pulumi.Input[Optional['ConnectorGcpArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
         """
@@ -80,29 +80,29 @@ class _ConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ConnectorAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ConnectorAwsArgs']]:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ConnectorAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ConnectorAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ConnectorAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ConnectorAzureArgs']]:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ConnectorAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ConnectorAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcp(self) -> Optional[pulumi.Input['ConnectorGcpArgs']]:
+    def gcp(self) -> pulumi.Input[Optional['ConnectorGcpArgs']]:
         return pulumi.get(self, "gcp")
 
     @gcp.setter
-    def gcp(self, value: Optional[pulumi.Input['ConnectorGcpArgs']]):
+    def gcp(self, value: pulumi.Input[Optional['ConnectorGcpArgs']]):
         pulumi.set(self, "gcp", value)
 
 
@@ -112,9 +112,9 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-                 gcp: Optional[pulumi.Input[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
                  __props__=None):
         """
         A Connector configures scanning for a given system.
@@ -166,9 +166,9 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-                 gcp: Optional[pulumi.Input[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -191,9 +191,9 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: Optional[pulumi.Input[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-            azure: Optional[pulumi.Input[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-            gcp: Optional[pulumi.Input[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None) -> 'Connector':
+            aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
+            gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

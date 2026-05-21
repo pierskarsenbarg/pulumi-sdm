@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  when connecting to a remote resource using that group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     username: "user",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentity(args?: GetRemoteIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityResult> {
     args = args || {};
@@ -88,6 +90,7 @@ export interface GetRemoteIdentityResult {
  *  when connecting to a remote resource using that group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -97,6 +100,7 @@ export interface GetRemoteIdentityResult {
  *     username: "user",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityOutput(args?: GetRemoteIdentityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemoteIdentityResult> {
     args = args || {};
@@ -116,17 +120,17 @@ export interface GetRemoteIdentityOutputArgs {
     /**
      * The account for this remote identity.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the RemoteIdentity.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The remote identity group.
      */
-    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

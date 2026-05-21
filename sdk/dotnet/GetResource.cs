@@ -17,6 +17,31 @@ namespace PiersKarsenbarg.Sdm
         ///  delegates access to.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const mysqlDatasources = sdm.getResource({
+        ///     name: "us-west*",
+        ///     type: "mysql",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// mysql_datasources = sdm.get_resource(name="us-west*",
+        ///     type="mysql",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,7 +50,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",
@@ -38,6 +63,77 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
+        /// 			Name: pulumi.StringRef("us-west*"),
+        /// 			Type: pulumi.StringRef("mysql"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetResourceArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var mysqlDatasources = SdmFunctions.getResource(GetResourceArgs.builder()
+        ///             .name("us-west*")
+        ///             .type("mysql")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   mysqlDatasources:
+        ///     fn::invoke:
+        ///       function: sdm:getResource
+        ///       arguments:
+        ///         name: us-west*
+        ///         type: mysql
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourceResult> InvokeAsync(GetResourceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceArgs(), options.WithDefaults());
@@ -47,6 +143,31 @@ namespace PiersKarsenbarg.Sdm
         ///  delegates access to.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const mysqlDatasources = sdm.getResource({
+        ///     name: "us-west*",
+        ///     type: "mysql",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// mysql_datasources = sdm.get_resource(name="us-west*",
+        ///     type="mysql",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +176,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",
@@ -68,6 +189,77 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
+        /// 			Name: pulumi.StringRef("us-west*"),
+        /// 			Type: pulumi.StringRef("mysql"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetResourceArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var mysqlDatasources = SdmFunctions.getResource(GetResourceArgs.builder()
+        ///             .name("us-west*")
+        ///             .type("mysql")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   mysqlDatasources:
+        ///     fn::invoke:
+        ///       function: sdm:getResource
+        ///       arguments:
+        ///         name: us-west*
+        ///         type: mysql
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
@@ -77,6 +269,31 @@ namespace PiersKarsenbarg.Sdm
         ///  delegates access to.
         /// ## Example Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const mysqlDatasources = sdm.getResource({
+        ///     name: "us-west*",
+        ///     type: "mysql",
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// mysql_datasources = sdm.get_resource(name="us-west*",
+        ///     type="mysql",
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +302,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysqlDatasources = Sdm.Index.GetResource.Invoke(new()
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
         ///         Name = "us-west*",
         ///         Type = "mysql",
@@ -98,6 +315,77 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
+        /// 			Name: pulumi.StringRef("us-west*"),
+        /// 			Type: pulumi.StringRef("mysql"),
+        /// 			Tags: map[string]interface{}{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetResourceArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var mysqlDatasources = SdmFunctions.getResource(GetResourceArgs.builder()
+        ///             .name("us-west*")
+        ///             .type("mysql")
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
+        /// }
+        /// ```
+        /// ```yaml
+        /// variables:
+        ///   mysqlDatasources:
+        ///     fn::invoke:
+        ///       function: sdm:getResource
+        ///       arguments:
+        ///         name: us-west*
+        ///         type: mysql
+        ///         tags:
+        ///           region: us-west
+        ///           env: dev
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());

@@ -19,8 +19,8 @@ __all__ = ['PeeringGroupPeerArgs', 'PeeringGroupPeer']
 @pulumi.input_type
 class PeeringGroupPeerArgs:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers_with_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers_with_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringGroupPeer resource.
 
@@ -34,34 +34,34 @@ class PeeringGroupPeerArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group ID from which the link will originate.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peersWithGroupId")
-    def peers_with_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peers_with_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peering Group ID to which Group ID will link.
         """
         return pulumi.get(self, "peers_with_group_id")
 
     @peers_with_group_id.setter
-    def peers_with_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peers_with_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peers_with_group_id", value)
 
 
 @pulumi.input_type
 class _PeeringGroupPeerState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers_with_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers_with_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringGroupPeer resources.
 
@@ -75,26 +75,26 @@ class _PeeringGroupPeerState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group ID from which the link will originate.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peersWithGroupId")
-    def peers_with_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peers_with_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peering Group ID to which Group ID will link.
         """
         return pulumi.get(self, "peers_with_group_id")
 
     @peers_with_group_id.setter
-    def peers_with_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peers_with_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peers_with_group_id", value)
 
 
@@ -104,8 +104,8 @@ class PeeringGroupPeer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers_with_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers_with_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         PeeringGroupPeer represents the link between two PeeringGroups
@@ -159,8 +159,8 @@ class PeeringGroupPeer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers_with_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers_with_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -182,8 +182,8 @@ class PeeringGroupPeer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peers_with_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PeeringGroupPeer':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peers_with_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PeeringGroupPeer':
         """
         Get an existing PeeringGroupPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -14,6 +14,7 @@ import (
 // A GroupRole assigns a Group to a Role.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupGroupRole(ctx *pulumi.Context, args *LookupGroupRoleArgs, opts ...pulumi.InvokeOption) (*LookupGroupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupRoleResult

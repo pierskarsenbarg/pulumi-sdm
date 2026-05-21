@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * An AccountGroup is a link between an Account and a Group.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     groupId: "group-1234567890abcdef",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -106,11 +108,11 @@ export interface AccountGroupState {
     /**
      * Unique identifier of the Account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
 }
 
 /**

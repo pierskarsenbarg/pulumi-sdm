@@ -14,6 +14,7 @@ import (
 // An AccountGroup is a link between an Account and a Group.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAccountGroup(ctx *pulumi.Context, args *LookupAccountGroupArgs, opts ...pulumi.InvokeOption) (*LookupAccountGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountGroupResult

@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * A GroupRole assigns a Group to a Role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     roleId: "r-1234567890abcdef",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -106,11 +108,11 @@ export interface GroupRoleState {
     /**
      * The assigned Group ID.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The assigned Role ID.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

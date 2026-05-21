@@ -14,6 +14,7 @@ namespace PiersKarsenbarg.Sdm
     /// AccountAttachments assign an account to a role.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,7 +23,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testAccountAttachment = new Sdm.Index.AccountAttachment("test_account_attachment", new()
+    ///     var testAccountAttachment = new Sdm.AccountAttachment("test_account_attachment", new()
     ///     {
     ///         AccountId = "a-00000054",
     ///         RoleId = "r-12355562",
@@ -30,6 +31,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
