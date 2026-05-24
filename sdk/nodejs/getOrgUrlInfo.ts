@@ -53,9 +53,9 @@ export function getOrgUrlInfoOutput(args?: GetOrgUrlInfoOutputArgs, opts?: pulum
  * A collection of arguments for invoking getOrgUrlInfo.
  */
 export interface GetOrgUrlInfoOutputArgs {
-    baseUrl?: pulumi.Input<string | undefined>;
-    id?: pulumi.Input<string | undefined>;
-    oidcIssuerUrl?: pulumi.Input<string | undefined>;
-    samlMetadataUrl?: pulumi.Input<string | undefined>;
-    websitesSubdomain?: pulumi.Input<string | undefined>;
+    baseUrl?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    oidcIssuerUrl?: pulumi.Input<string>;
+    samlMetadataUrl?: pulumi.Input<string>;
+    websitesSubdomain?: pulumi.Input<string>;
 }

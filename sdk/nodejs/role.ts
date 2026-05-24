@@ -177,19 +177,19 @@ export interface RoleState {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    accessRules?: pulumi.Input<string | undefined>;
+    accessRules?: pulumi.Input<string>;
     /**
      * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
      */
-    managedBy?: pulumi.Input<string | undefined>;
+    managedBy?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Role.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -199,13 +199,13 @@ export interface RoleArgs {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
-    accessRules?: pulumi.Input<string | undefined>;
+    accessRules?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Role.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

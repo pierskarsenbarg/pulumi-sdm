@@ -150,25 +150,25 @@ export interface GetNodeOutputArgs {
     /**
      * The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
      */
-    bindAddress?: pulumi.Input<string | undefined>;
+    bindAddress?: pulumi.Input<string>;
     /**
      * Unique identifier of the Relay.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * The public hostname/port tuple at which the gateway will be accessible to clients.
      */
-    listenAddress?: pulumi.Input<string | undefined>;
+    listenAddress?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
-    type?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string>;
 }

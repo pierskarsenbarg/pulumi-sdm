@@ -110,6 +110,29 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflow" "workflowByName" {
+        ///   name = "workflow example"
+        /// }
+        /// data "sdm_getworkflow" "workflowById" {
+        ///   id = "w-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        ///   approval_flow_id = "aw-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow by name
+        /// # Query workflow by ID
+        /// # Query workflow by approval flow ID
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -273,6 +296,29 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflow" "workflowByName" {
+        ///   name = "workflow example"
+        /// }
+        /// data "sdm_getworkflow" "workflowById" {
+        ///   id = "w-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        ///   approval_flow_id = "aw-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow by name
+        /// # Query workflow by ID
+        /// # Query workflow by approval flow ID
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -435,6 +481,29 @@ namespace PiersKarsenbarg.Sdm
         /// 		return nil
         /// 	})
         /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflow" "workflowByName" {
+        ///   name = "workflow example"
+        /// }
+        /// data "sdm_getworkflow" "workflowById" {
+        ///   id = "w-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        ///   approval_flow_id = "aw-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow by name
+        /// # Query workflow by ID
+        /// # Query workflow by approval flow ID
         /// ```
         /// ```java
         /// package generated_program;

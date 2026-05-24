@@ -135,9 +135,9 @@ def get_account_group(account_id: Optional[_builtins.str] = None,
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-def get_account_group_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_account_group_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountGroupResult]:
     """
     An AccountGroup is a link between an Account and a Group.

@@ -151,10 +151,10 @@ def get_identity_alias(account_id: Optional[_builtins.str] = None,
         identity_set_id=pulumi.get(__ret__, 'identity_set_id'),
         ids=pulumi.get(__ret__, 'ids'),
         username=pulumi.get(__ret__, 'username'))
-def get_identity_alias_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              identity_set_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              identity_set_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityAliasResult]:
     """
     IdentityAliases define the username to be used for a specific account

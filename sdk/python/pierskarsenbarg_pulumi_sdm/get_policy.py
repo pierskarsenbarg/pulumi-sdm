@@ -150,10 +150,10 @@ def get_policy(description: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         policies=pulumi.get(__ret__, 'policies'),
         policy=pulumi.get(__ret__, 'policy'))
-def get_policy_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                      id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                      policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_policy_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Policy is a collection of one or more statements that enforce fine-grained access control

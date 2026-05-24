@@ -19,10 +19,10 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_access_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 host: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_rate_limit_errors: pulumi.Input[Optional[_builtins.bool]] = None):
+                 api_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_rate_limit_errors: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -42,50 +42,50 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiAccessKey")
-    def api_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def api_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A GUID identifying the API key used to authenticate with the StrongDM API.
         """
         return pulumi.get(self, "api_access_key")
 
     @api_access_key.setter
-    def api_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def api_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "api_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="apiSecretKey")
-    def api_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def api_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A base64 encoded secret key used to authenticate with the StrongDM API.
         """
         return pulumi.get(self, "api_secret_key")
 
     @api_secret_key.setter
-    def api_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def api_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "api_secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The host and port of the StrongDM API endpoint.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="retryRateLimitErrors")
-    def retry_rate_limit_errors(self) -> pulumi.Input[Optional[_builtins.bool]]:
+    def retry_rate_limit_errors(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether experienced rate limits should cause the client to sleep instead of erroring out
         """
         return pulumi.get(self, "retry_rate_limit_errors")
 
     @retry_rate_limit_errors.setter
-    def retry_rate_limit_errors(self, value: pulumi.Input[Optional[_builtins.bool]]):
+    def retry_rate_limit_errors(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "retry_rate_limit_errors", value)
 
 
@@ -95,10 +95,10 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_access_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 host: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_rate_limit_errors: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_rate_limit_errors: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the sdm package. By default, resources use package-wide configuration
@@ -142,10 +142,10 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_access_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 host: pulumi.Input[Optional[_builtins.str]] = None,
-                 retry_rate_limit_errors: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_rate_limit_errors: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

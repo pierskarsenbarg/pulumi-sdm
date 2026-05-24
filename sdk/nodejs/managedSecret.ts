@@ -132,39 +132,39 @@ export interface ManagedSecretState {
     /**
      * public part of the secret value
      */
-    config?: pulumi.Input<string | undefined>;
+    config?: pulumi.Input<string>;
     /**
      * Timestamp of when secret is going to be rotated
      */
-    expiresAt?: pulumi.Input<string | undefined>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * Timestamp of when secret was last rotated
      */
-    lastRotatedAt?: pulumi.Input<string | undefined>;
+    lastRotatedAt?: pulumi.Input<string>;
     /**
      * Whether the secret requires a lock to access
      */
-    lockRequired?: pulumi.Input<boolean | undefined>;
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Managed Secret.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * An ID of a Secret Engine linked with the Managed Secret.
      */
-    secretEngineId?: pulumi.Input<string | undefined>;
+    secretEngineId?: pulumi.Input<string>;
     /**
      * Path in a secret store.
      */
-    secretStorePath?: pulumi.Input<string | undefined>;
+    secretStorePath?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Sensitive value of the secret.
      */
-    value?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -174,11 +174,11 @@ export interface ManagedSecretArgs {
     /**
      * Whether the secret requires a lock to access
      */
-    lockRequired?: pulumi.Input<boolean | undefined>;
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Managed Secret.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * An ID of a Secret Engine linked with the Managed Secret.
      */
@@ -186,9 +186,9 @@ export interface ManagedSecretArgs {
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Sensitive value of the secret.
      */
-    value?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string>;
 }

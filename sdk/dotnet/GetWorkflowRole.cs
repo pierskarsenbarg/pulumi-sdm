@@ -94,6 +94,26 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflowrole" "workflowRoleQuery" {
+        ///   workflow_id = "w-1234567890abcdef"
+        ///   role_id     = "r-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflowrole" "workflowRoleById" {
+        ///   id = "wr-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// # Query workflow role by specific ID
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -232,6 +252,26 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflowrole" "workflowRoleQuery" {
+        ///   workflow_id = "w-1234567890abcdef"
+        ///   role_id     = "r-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflowrole" "workflowRoleById" {
+        ///   id = "wr-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// # Query workflow role by specific ID
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -369,6 +409,26 @@ namespace PiersKarsenbarg.Sdm
         /// 		return nil
         /// 	})
         /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getworkflowrole" "workflowRoleQuery" {
+        ///   workflow_id = "w-1234567890abcdef"
+        ///   role_id     = "r-1234567890abcdef"
+        /// }
+        /// data "sdm_getworkflowrole" "workflowRoleById" {
+        ///   id = "wr-1234567890abcdef"
+        /// }
+        /// 
+        /// # Query workflow role by workflow and role IDs
+        /// # Query workflow role by specific ID
         /// ```
         /// ```java
         /// package generated_program;

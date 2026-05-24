@@ -311,105 +311,105 @@ export interface GetSecretEngineOutputArgs {
     /**
      * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
      */
-    binddn?: pulumi.Input<string | undefined>;
+    binddn?: pulumi.Input<string>;
     /**
      * Password to use along with binddn when performing user search.
      */
-    bindpass?: pulumi.Input<string | undefined>;
+    bindpass?: pulumi.Input<string>;
     /**
      * CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
      */
-    certificate?: pulumi.Input<string | undefined>;
+    certificate?: pulumi.Input<string>;
     /**
      * Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
      */
-    connectionTimeout?: pulumi.Input<number | undefined>;
+    connectionTimeout?: pulumi.Input<number>;
     /**
      * Database is the database to verify credential against.
      */
-    database?: pulumi.Input<string | undefined>;
+    database?: pulumi.Input<string>;
     /**
      * If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
      */
-    doNotValidateTimestamps?: pulumi.Input<boolean | undefined>;
+    doNotValidateTimestamps?: pulumi.Input<boolean>;
     /**
      * Hostname is the hostname or IP address of the SQL Server.
      */
-    hostname?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<string>;
     /**
      * Unique identifier of the Secret Engine.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * If true, skips LDAP server SSL certificate verification - insecure, use with caution!
      */
-    insecureTls?: pulumi.Input<boolean | undefined>;
+    insecureTls?: pulumi.Input<boolean>;
     /**
      * An interval of public/private key rotation for secret engine in days
      */
-    keyRotationIntervalDays?: pulumi.Input<number | undefined>;
+    keyRotationIntervalDays?: pulumi.Input<number>;
     /**
      * Unique human-readable name of the Secret Engine.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * node selector is used to narrow down the nodes used to communicate with with secret engine
      */
-    nodeSelector?: pulumi.Input<string | undefined>;
+    nodeSelector?: pulumi.Input<string>;
     /**
      * Password is the password to connect to the SQL Server server.
      */
-    password?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string>;
     /**
      * Port is the port number of the SQL Server server.
      */
-    port?: pulumi.Input<number | undefined>;
+    port?: pulumi.Input<number>;
     /**
      * Timeout, in seconds, for the connection when making requests against the server before returning back an error.
      */
-    requestTimeout?: pulumi.Input<number | undefined>;
+    requestTimeout?: pulumi.Input<number>;
     /**
      * Backing secret store identifier
      */
-    secretStoreId?: pulumi.Input<string | undefined>;
+    secretStoreId?: pulumi.Input<string>;
     /**
      * Backing Secret Store root path where managed secrets are going to be stored
      */
-    secretStoreRootPath?: pulumi.Input<string | undefined>;
+    secretStoreRootPath?: pulumi.Input<string>;
     /**
      * If true, issues a StartTLS command after establishing an unencrypted connection.
      */
-    startTls?: pulumi.Input<boolean | undefined>;
+    startTls?: pulumi.Input<boolean>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * TLS enables TLS/SSL when connecting to the SQL Server server.
      */
-    tls?: pulumi.Input<boolean | undefined>;
+    tls?: pulumi.Input<boolean>;
     /**
      * TLS disable certificate verification
      */
-    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
+    tlsSkipVerify?: pulumi.Input<boolean>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
-    type?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string>;
     /**
      * The domain (userPrincipalDomain) used to construct a UPN string for authentication.
      */
-    upndomain?: pulumi.Input<string | undefined>;
+    upndomain?: pulumi.Input<string>;
     /**
      * The LDAP server to connect to.
      */
-    url?: pulumi.Input<string | undefined>;
+    url?: pulumi.Input<string>;
     /**
      * Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
      */
-    userdn?: pulumi.Input<string | undefined>;
+    userdn?: pulumi.Input<string>;
     /**
      * Username is the username to connect to the SQL Server.
      */
-    username?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string>;
 }

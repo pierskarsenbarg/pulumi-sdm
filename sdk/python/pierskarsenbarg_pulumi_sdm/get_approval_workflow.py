@@ -170,11 +170,11 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'))
-def get_approval_workflow_output(approval_mode: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 approval_steps: pulumi.Input[Optional[Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]]]] = None,
-                                 description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 approval_steps: Optional[pulumi.Input[Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                                 description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApprovalWorkflowResult]:
     """
     ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized

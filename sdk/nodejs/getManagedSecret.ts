@@ -128,25 +128,25 @@ export interface GetManagedSecretOutputArgs {
     /**
      * Unique identifier of the Managed Secret.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * Whether the secret requires a lock to access
      */
-    lockRequired?: pulumi.Input<boolean | undefined>;
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Managed Secret.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * An ID of a Secret Engine linked with the Managed Secret.
      */
-    secretEngineId?: pulumi.Input<string | undefined>;
+    secretEngineId?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Sensitive value of the secret.
      */
-    value?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string>;
 }

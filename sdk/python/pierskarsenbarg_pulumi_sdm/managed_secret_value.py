@@ -58,9 +58,9 @@ class ManagedSecretValueArgs:
 @pulumi.input_type
 class _ManagedSecretValueState:
     def __init__(__self__, *,
-                 encrypted: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 encrypted: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ManagedSecretValue resources.
 
@@ -77,38 +77,38 @@ class _ManagedSecretValueState:
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def encrypted(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         encrypted value
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def encrypted(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         secret engine's public key used for encryption in PEM format
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         value object
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value", value)
 
 
@@ -118,8 +118,8 @@ class ManagedSecretValue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Create a ManagedSecretValue resource with the given unique name, props, and options.
@@ -153,8 +153,8 @@ class ManagedSecretValue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -181,9 +181,9 @@ class ManagedSecretValue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            encrypted: pulumi.Input[Optional[_builtins.str]] = None,
-            public_key: pulumi.Input[Optional[_builtins.str]] = None,
-            value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ManagedSecretValue':
+            encrypted: Optional[pulumi.Input[_builtins.str]] = None,
+            public_key: Optional[pulumi.Input[_builtins.str]] = None,
+            value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ManagedSecretValue':
         """
         Get an existing ManagedSecretValue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

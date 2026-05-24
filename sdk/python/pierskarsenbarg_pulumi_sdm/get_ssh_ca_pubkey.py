@@ -91,8 +91,8 @@ def get_ssh_ca_pubkey(id: Optional[_builtins.str] = None,
     return AwaitableGetSshCaPubkeyResult(
         id=pulumi.get(__ret__, 'id'),
         public_key=pulumi.get(__ret__, 'public_key'))
-def get_ssh_ca_pubkey_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             public_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_ssh_ca_pubkey_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             public_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshCaPubkeyResult]:
     """
     The SSH CA Pubkey is a public key used for setting up SSH resources.

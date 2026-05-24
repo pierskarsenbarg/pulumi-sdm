@@ -96,6 +96,25 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        ///   group_id = securityTeam.id
+        /// }
+        /// data "sdm_getgrouprole" "specificRelationship" {
+        ///   id = "grouprole-1234567890abcdef"
+        /// }
+        /// data "sdm_getgrouprole" "groupsWithRole" {
+        ///   role_id = adminRole.id
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -239,6 +258,25 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        ///   group_id = securityTeam.id
+        /// }
+        /// data "sdm_getgrouprole" "specificRelationship" {
+        ///   id = "grouprole-1234567890abcdef"
+        /// }
+        /// data "sdm_getgrouprole" "groupsWithRole" {
+        ///   role_id = adminRole.id
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -380,6 +418,25 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        ///   group_id = securityTeam.id
+        /// }
+        /// data "sdm_getgrouprole" "specificRelationship" {
+        ///   id = "grouprole-1234567890abcdef"
+        /// }
+        /// data "sdm_getgrouprole" "groupsWithRole" {
+        ///   role_id = adminRole.id
         /// }
         /// ```
         /// ```java

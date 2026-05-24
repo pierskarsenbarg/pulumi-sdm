@@ -104,11 +104,11 @@ export interface AccountAttachmentState {
     /**
      * The id of the account of this AccountAttachment.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * The id of the attached role of this AccountAttachment.
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
 }
 
 /**

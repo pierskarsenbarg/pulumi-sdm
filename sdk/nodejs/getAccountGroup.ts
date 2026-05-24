@@ -118,13 +118,13 @@ export interface GetAccountGroupOutputArgs {
     /**
      * Unique identifier of the Account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * Unique identifier of the Group.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Unique identifier of the AccountGroup.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
 }

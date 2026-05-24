@@ -80,7 +80,7 @@ export interface PeeringGroupState {
     /**
      * Unique human-readable name of the PeeringGroup.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -90,5 +90,5 @@ export interface PeeringGroupArgs {
     /**
      * Unique human-readable name of the PeeringGroup.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
 }

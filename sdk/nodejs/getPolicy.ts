@@ -118,17 +118,17 @@ export interface GetPolicyOutputArgs {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Unique identifier of the Policy.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policy?: pulumi.Input<string | undefined>;
+    policy?: pulumi.Input<string>;
 }

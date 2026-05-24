@@ -156,29 +156,29 @@ export interface GetResourceOutputArgs {
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
-    hostname?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<string>;
     /**
      * Unique identifier of the Resource.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The port to dial to initiate a connection from the egress node to this resource.
      */
-    port?: pulumi.Input<number | undefined>;
+    port?: pulumi.Input<number>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
-    type?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string>;
     /**
      * The username to authenticate with.
      */
-    username?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string>;
 }

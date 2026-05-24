@@ -85,11 +85,11 @@ export interface PeeringGroupResourceState {
     /**
      * Peering Group ID to which the resource will be attached to.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Resource ID to be attached.
      */
-    resourceId?: pulumi.Input<string | undefined>;
+    resourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -99,9 +99,9 @@ export interface PeeringGroupResourceArgs {
     /**
      * Peering Group ID to which the resource will be attached to.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Resource ID to be attached.
      */
-    resourceId?: pulumi.Input<string | undefined>;
+    resourceId?: pulumi.Input<string>;
 }

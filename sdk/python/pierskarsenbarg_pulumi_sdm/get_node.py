@@ -187,12 +187,12 @@ def get_node(bind_address: Optional[_builtins.str] = None,
         nodes=pulumi.get(__ret__, 'nodes'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-def get_node_output(bind_address: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    listen_address: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                    tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
-                    type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_node_output(bind_address: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    listen_address: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+                    type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
     Nodes make up the StrongDM network, and allow your users to connect securely to your resources.

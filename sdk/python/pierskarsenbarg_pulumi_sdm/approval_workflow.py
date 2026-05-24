@@ -22,9 +22,9 @@ __all__ = ['ApprovalWorkflowArgs', 'ApprovalWorkflow']
 class ApprovalWorkflowArgs:
     def __init__(__self__, *,
                  approval_mode: pulumi.Input[_builtins.str],
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 approval_steps: Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApprovalWorkflow resource.
 
@@ -55,48 +55,48 @@ class ApprovalWorkflowArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalSteps")
-    def approval_steps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]:
+    def approval_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]:
         """
         The approval steps of this approval workflow
         """
         return pulumi.get(self, "approval_steps")
 
     @approval_steps.setter
-    def approval_steps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]):
+    def approval_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]):
         pulumi.set(self, "approval_steps", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional description of the ApprovalWorkflow.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique human-readable name of the ApprovalWorkflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ApprovalWorkflowState:
     def __init__(__self__, *,
-                 approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_steps: Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApprovalWorkflow resources.
 
@@ -116,50 +116,50 @@ class _ApprovalWorkflowState:
 
     @_builtins.property
     @pulumi.getter(name="approvalMode")
-    def approval_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def approval_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Approval mode of the ApprovalWorkflow
         """
         return pulumi.get(self, "approval_mode")
 
     @approval_mode.setter
-    def approval_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def approval_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "approval_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalSteps")
-    def approval_steps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]:
+    def approval_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]:
         """
         The approval steps of this approval workflow
         """
         return pulumi.get(self, "approval_steps")
 
     @approval_steps.setter
-    def approval_steps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]):
+    def approval_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApprovalWorkflowApprovalStepArgs']]]]):
         pulumi.set(self, "approval_steps", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Optional description of the ApprovalWorkflow.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique human-readable name of the ApprovalWorkflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -169,10 +169,10 @@ class ApprovalWorkflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
@@ -330,10 +330,10 @@ class ApprovalWorkflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,10 +359,10 @@ class ApprovalWorkflow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
-            description: pulumi.Input[Optional[_builtins.str]] = None,
-            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApprovalWorkflow':
+            approval_mode: Optional[pulumi.Input[_builtins.str]] = None,
+            approval_steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
+            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApprovalWorkflow':
         """
         Get an existing ApprovalWorkflow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

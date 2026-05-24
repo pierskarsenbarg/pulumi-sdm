@@ -140,10 +140,10 @@ def get_workflow_approver(account_id: Optional[_builtins.str] = None,
         role_id=pulumi.get(__ret__, 'role_id'),
         workflow_approvers=pulumi.get(__ret__, 'workflow_approvers'),
         workflow_id=pulumi.get(__ret__, 'workflow_id'))
-def get_workflow_approver_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 workflow_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 role_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 workflow_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowApproverResult]:
     """
     WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.

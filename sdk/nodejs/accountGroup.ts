@@ -108,11 +108,11 @@ export interface AccountGroupState {
     /**
      * Unique identifier of the Account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * Unique identifier of the Group.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
 }
 
 /**

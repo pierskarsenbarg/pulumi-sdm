@@ -160,72 +160,72 @@ export class SecretStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretStore resources.
  */
 export interface SecretStoreState {
-    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore | undefined>;
-    aws?: pulumi.Input<inputs.SecretStoreAws | undefined>;
-    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509 | undefined>;
-    azureStore?: pulumi.Input<inputs.SecretStoreAzureStore | undefined>;
-    cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur | undefined>;
-    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam | undefined>;
+    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore>;
+    aws?: pulumi.Input<inputs.SecretStoreAws>;
+    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509>;
+    azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
+    cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
+    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental | undefined>;
-    delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore | undefined>;
-    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store | undefined>;
-    gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore | undefined>;
-    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore | undefined>;
-    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store | undefined>;
-    strongVault?: pulumi.Input<inputs.SecretStoreStrongVault | undefined>;
-    vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole | undefined>;
-    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh | undefined>;
-    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509 | undefined>;
-    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2 | undefined>;
-    vaultAwsEc2CertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertSsh | undefined>;
-    vaultAwsEc2CertX509?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertX509 | undefined>;
-    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam | undefined>;
-    vaultAwsIamCertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertSsh | undefined>;
-    vaultAwsIamCertX509?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertX509 | undefined>;
-    vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls | undefined>;
-    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh | undefined>;
-    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509 | undefined>;
-    vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken | undefined>;
-    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh | undefined>;
-    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509 | undefined>;
+    cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
+    delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
+    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
+    gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore>;
+    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
+    strongVault?: pulumi.Input<inputs.SecretStoreStrongVault>;
+    vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
+    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
+    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
+    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2>;
+    vaultAwsEc2CertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertSsh>;
+    vaultAwsEc2CertX509?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertX509>;
+    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam>;
+    vaultAwsIamCertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertSsh>;
+    vaultAwsIamCertX509?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertX509>;
+    vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
+    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
+    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;
+    vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken>;
+    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh>;
+    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509>;
 }
 
 /**
  * The set of arguments for constructing a SecretStore resource.
  */
 export interface SecretStoreArgs {
-    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore | undefined>;
-    aws?: pulumi.Input<inputs.SecretStoreAws | undefined>;
-    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509 | undefined>;
-    azureStore?: pulumi.Input<inputs.SecretStoreAzureStore | undefined>;
-    cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur | undefined>;
-    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam | undefined>;
+    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore>;
+    aws?: pulumi.Input<inputs.SecretStoreAws>;
+    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509>;
+    azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
+    cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
+    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental | undefined>;
-    delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore | undefined>;
-    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store | undefined>;
-    gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore | undefined>;
-    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore | undefined>;
-    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store | undefined>;
-    strongVault?: pulumi.Input<inputs.SecretStoreStrongVault | undefined>;
-    vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole | undefined>;
-    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh | undefined>;
-    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509 | undefined>;
-    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2 | undefined>;
-    vaultAwsEc2CertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertSsh | undefined>;
-    vaultAwsEc2CertX509?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertX509 | undefined>;
-    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam | undefined>;
-    vaultAwsIamCertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertSsh | undefined>;
-    vaultAwsIamCertX509?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertX509 | undefined>;
-    vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls | undefined>;
-    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh | undefined>;
-    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509 | undefined>;
-    vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken | undefined>;
-    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh | undefined>;
-    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509 | undefined>;
+    cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
+    delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
+    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
+    gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore>;
+    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
+    strongVault?: pulumi.Input<inputs.SecretStoreStrongVault>;
+    vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
+    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
+    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
+    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2>;
+    vaultAwsEc2CertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertSsh>;
+    vaultAwsEc2CertX509?: pulumi.Input<inputs.SecretStoreVaultAwsEc2CertX509>;
+    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam>;
+    vaultAwsIamCertSsh?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertSsh>;
+    vaultAwsIamCertX509?: pulumi.Input<inputs.SecretStoreVaultAwsIamCertX509>;
+    vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
+    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
+    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;
+    vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken>;
+    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh>;
+    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509>;
 }

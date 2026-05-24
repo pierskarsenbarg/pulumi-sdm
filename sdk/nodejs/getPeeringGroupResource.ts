@@ -82,13 +82,13 @@ export interface GetPeeringGroupResourceOutputArgs {
     /**
      * Peering Group ID to which the resource will be attached to.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Unique identifier of the Attachment.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * Resource ID to be attached.
      */
-    resourceId?: pulumi.Input<string | undefined>;
+    resourceId?: pulumi.Input<string>;
 }

@@ -66,6 +66,19 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        ///   account_id = "a-00000054"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -161,6 +174,19 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        ///   account_id = "a-00000054"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -254,6 +280,19 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        ///   account_id = "a-00000054"
         /// }
         /// ```
         /// ```java

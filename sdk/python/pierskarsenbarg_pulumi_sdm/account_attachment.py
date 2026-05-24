@@ -58,8 +58,8 @@ class AccountAttachmentArgs:
 @pulumi.input_type
 class _AccountAttachmentState:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountAttachment resources.
 
@@ -73,26 +73,26 @@ class _AccountAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The id of the account of this AccountAttachment.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The id of the attached role of this AccountAttachment.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
@@ -102,8 +102,8 @@ class AccountAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         AccountAttachments assign an account to a role.
@@ -181,8 +181,8 @@ class AccountAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -208,8 +208,8 @@ class AccountAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountAttachment':
+            account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            role_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountAttachment':
         """
         Get an existing AccountAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

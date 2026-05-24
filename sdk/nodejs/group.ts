@@ -114,19 +114,19 @@ export interface GroupState {
     /**
      * Description of the Group.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Group.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.
      */
-    source?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string>;
     /**
      * Tags is a map of key/value pairs that can be attached to a Group.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -136,13 +136,13 @@ export interface GroupArgs {
     /**
      * Description of the Group.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Group.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Tags is a map of key/value pairs that can be attached to a Group.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

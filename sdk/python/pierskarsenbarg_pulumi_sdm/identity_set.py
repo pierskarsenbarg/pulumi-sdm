@@ -19,7 +19,7 @@ __all__ = ['IdentitySetArgs', 'IdentitySet']
 @pulumi.input_type
 class IdentitySetArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IdentitySet resource.
 
@@ -30,21 +30,21 @@ class IdentitySetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique human-readable name of the IdentitySet.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _IdentitySetState:
     def __init__(__self__, *,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdentitySet resources.
 
@@ -55,14 +55,14 @@ class _IdentitySetState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Unique human-readable name of the IdentitySet.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -72,7 +72,7 @@ class IdentitySet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         A IdentitySet defines a group of identity aliases.
@@ -145,7 +145,7 @@ class IdentitySet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -166,7 +166,7 @@ class IdentitySet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdentitySet':
+            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'IdentitySet':
         """
         Get an existing IdentitySet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -47,7 +47,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// The path used to check the health of your connection.  Defaults to &lt;span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`"&gt;`default`&lt;/span&gt;.  This field is required, and is only marked as optional for backwards compatibility.
+        /// The path used to check the health of your connection.  Defaults to &lt;span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`"&gt;`default`&lt;/span&gt;.  This field is required, and is only marked as optional for backwards compatibility.
         /// </summary>
         public readonly string? HealthcheckNamespace;
         /// <summary>

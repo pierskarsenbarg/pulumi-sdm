@@ -120,13 +120,13 @@ export interface GetWorkflowRoleOutputArgs {
     /**
      * Unique identifier of the WorkflowRole.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * The role id.
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId?: pulumi.Input<string>;
 }

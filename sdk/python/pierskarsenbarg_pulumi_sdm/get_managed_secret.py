@@ -223,12 +223,12 @@ def get_managed_secret(id: Optional[_builtins.str] = None,
         secret_store_path=pulumi.get(__ret__, 'secret_store_path'),
         tags=pulumi.get(__ret__, 'tags'),
         value=pulumi.get(__ret__, 'value'))
-def get_managed_secret_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              lock_required: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              secret_engine_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
-                              value: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_managed_secret_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              lock_required: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              secret_engine_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+                              value: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedSecretResult]:
     """
     ManagedSecret contains details about managed secret

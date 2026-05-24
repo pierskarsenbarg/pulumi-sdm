@@ -82,13 +82,13 @@ export interface GetPeeringGroupNodeOutputArgs {
     /**
      * Peering Group ID to which the node will be attached to.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Unique identifier of the Attachment.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * Node ID to be attached.
      */
-    nodeId?: pulumi.Input<string | undefined>;
+    nodeId?: pulumi.Input<string>;
 }

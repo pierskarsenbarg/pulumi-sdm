@@ -19,6 +19,23 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrole" "compositeRoleQuery" {
+        ///   composite = true
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// ```
         /// ```yaml
         /// variables:
         ///   compositeRoleQuery:
@@ -42,6 +59,23 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrole" "compositeRoleQuery" {
+        ///   composite = true
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// ```
         /// ```yaml
         /// variables:
         ///   compositeRoleQuery:
@@ -65,6 +99,23 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrole" "compositeRoleQuery" {
+        ///   composite = true
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// ```
         /// ```yaml
         /// variables:
         ///   compositeRoleQuery:

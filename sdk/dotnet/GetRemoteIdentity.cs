@@ -71,6 +71,20 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getremoteidentity" "user" {
+        ///   id       = "i-0900909"
+        ///   username = "user"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -173,6 +187,20 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getremoteidentity" "user" {
+        ///   id       = "i-0900909"
+        ///   username = "user"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -273,6 +301,20 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getremoteidentity" "user" {
+        ///   id       = "i-0900909"
+        ///   username = "user"
         /// }
         /// ```
         /// ```java

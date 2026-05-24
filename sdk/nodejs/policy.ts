@@ -106,15 +106,15 @@ export interface PolicyState {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policyContent?: pulumi.Input<string | undefined>;
+    policyContent?: pulumi.Input<string>;
 }
 
 /**
@@ -124,13 +124,13 @@ export interface PolicyArgs {
     /**
      * Optional description of the Policy.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Policy.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The content of the Policy, in Cedar policy language.
      */
-    policyContent?: pulumi.Input<string | undefined>;
+    policyContent?: pulumi.Input<string>;
 }

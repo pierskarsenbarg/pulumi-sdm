@@ -114,15 +114,15 @@ export interface IdentityAliasState {
     /**
      * The account for this identity alias.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * The identity set.
      */
-    identitySetId?: pulumi.Input<string | undefined>;
+    identitySetId?: pulumi.Input<string>;
     /**
      * The username to be used as the identity alias for this account.
      */
-    username?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string>;
 }
 
 /**

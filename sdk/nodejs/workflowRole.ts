@@ -109,11 +109,11 @@ export interface WorkflowRoleState {
     /**
      * The role id.
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId?: pulumi.Input<string>;
 }
 
 /**

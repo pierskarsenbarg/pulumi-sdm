@@ -89,7 +89,7 @@ export interface IdentitySetState {
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -99,5 +99,5 @@ export interface IdentitySetArgs {
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
 }

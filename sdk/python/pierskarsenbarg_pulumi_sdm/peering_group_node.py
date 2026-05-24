@@ -19,8 +19,8 @@ __all__ = ['PeeringGroupNodeArgs', 'PeeringGroupNode']
 @pulumi.input_type
 class PeeringGroupNodeArgs:
     def __init__(__self__, *,
-                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringGroupNode resource.
 
@@ -34,34 +34,34 @@ class PeeringGroupNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Peering Group ID to which the node will be attached to.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Node ID to be attached.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
 @pulumi.input_type
 class _PeeringGroupNodeState:
     def __init__(__self__, *,
-                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringGroupNode resources.
 
@@ -75,26 +75,26 @@ class _PeeringGroupNodeState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Peering Group ID to which the node will be attached to.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Node ID to be attached.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
@@ -104,8 +104,8 @@ class PeeringGroupNode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         PeeringGroupNode represents the attachment between a PeeringGroup and a Node.
@@ -159,8 +159,8 @@ class PeeringGroupNode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -182,8 +182,8 @@ class PeeringGroupNode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            node_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PeeringGroupNode':
+            group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            node_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PeeringGroupNode':
         """
         Get an existing PeeringGroupNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

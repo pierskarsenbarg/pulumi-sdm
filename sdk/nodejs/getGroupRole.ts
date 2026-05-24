@@ -118,13 +118,13 @@ export interface GetGroupRoleOutputArgs {
     /**
      * The assigned Group ID.
      */
-    groupId?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string>;
     /**
      * Unique identifier of the GroupRole.
      */
-    id?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string>;
     /**
      * The assigned Role ID.
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
 }

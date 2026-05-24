@@ -114,15 +114,15 @@ export interface RemoteIdentityState {
     /**
      * The account for this remote identity.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * The remote identity group.
      */
-    remoteIdentityGroupId?: pulumi.Input<string | undefined>;
+    remoteIdentityGroupId?: pulumi.Input<string>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    username?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string>;
 }
 
 /**

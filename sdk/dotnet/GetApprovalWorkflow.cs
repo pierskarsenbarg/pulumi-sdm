@@ -90,6 +90,24 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        ///   name          = "approval workflow manual"
+        ///   approval_mode = "manual"
+        /// }
+        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        ///   name          = "approval workflow auto"
+        ///   approval_mode = "automatic"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -222,6 +240,24 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        ///   name          = "approval workflow manual"
+        ///   approval_mode = "manual"
+        /// }
+        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        ///   name          = "approval workflow auto"
+        ///   approval_mode = "automatic"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -352,6 +388,24 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        ///   name          = "approval workflow manual"
+        ///   approval_mode = "manual"
+        /// }
+        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        ///   name          = "approval workflow auto"
+        ///   approval_mode = "automatic"
         /// }
         /// ```
         /// ```java

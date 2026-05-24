@@ -75,19 +75,19 @@ export interface ProviderArgs {
     /**
      * A GUID identifying the API key used to authenticate with the StrongDM API.
      */
-    apiAccessKey?: pulumi.Input<string | undefined>;
+    apiAccessKey?: pulumi.Input<string>;
     /**
      * A base64 encoded secret key used to authenticate with the StrongDM API.
      */
-    apiSecretKey?: pulumi.Input<string | undefined>;
+    apiSecretKey?: pulumi.Input<string>;
     /**
      * The host and port of the StrongDM API endpoint.
      */
-    host?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string>;
     /**
      * Whether experienced rate limits should cause the client to sleep instead of erroring out
      */
-    retryRateLimitErrors?: pulumi.Input<boolean | undefined>;
+    retryRateLimitErrors?: pulumi.Input<boolean>;
 }
 
 export namespace Provider {

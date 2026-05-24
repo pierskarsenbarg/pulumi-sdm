@@ -73,9 +73,9 @@ class IdentityAliasArgs:
 @pulumi.input_type
 class _IdentityAliasState:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 identity_set_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 identity_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdentityAlias resources.
 
@@ -92,38 +92,38 @@ class _IdentityAliasState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The account for this identity alias.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="identitySetId")
-    def identity_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def identity_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identity set.
         """
         return pulumi.get(self, "identity_set_id")
 
     @identity_set_id.setter
-    def identity_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def identity_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identity_set_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The username to be used as the identity alias for this account.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -133,9 +133,9 @@ class IdentityAlias(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 identity_set_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 identity_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         IdentityAliases define the username to be used for a specific account
@@ -216,9 +216,9 @@ class IdentityAlias(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 identity_set_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 identity_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -247,9 +247,9 @@ class IdentityAlias(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            identity_set_id: pulumi.Input[Optional[_builtins.str]] = None,
-            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdentityAlias':
+            account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            identity_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'IdentityAlias':
         """
         Get an existing IdentityAlias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

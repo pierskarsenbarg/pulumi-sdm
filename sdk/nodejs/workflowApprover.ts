@@ -95,15 +95,15 @@ export interface WorkflowApproverState {
     /**
      * The approver account id.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * The approver role id
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId?: pulumi.Input<string>;
 }
 
 /**
@@ -113,11 +113,11 @@ export interface WorkflowApproverArgs {
     /**
      * The approver account id.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId?: pulumi.Input<string>;
     /**
      * The approver role id
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */
