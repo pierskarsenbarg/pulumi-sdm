@@ -565,7 +565,7 @@ export interface ResourceAks {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -620,7 +620,7 @@ export interface ResourceAksBasicAuth {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -687,7 +687,7 @@ export interface ResourceAksServiceAccount {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -747,7 +747,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -811,7 +811,7 @@ export interface ResourceAksUserImpersonation {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -886,7 +886,7 @@ export interface ResourceAmazonEks {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -973,7 +973,7 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -1044,7 +1044,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -1111,7 +1111,7 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -3840,7 +3840,7 @@ export interface ResourceGoogleGke {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -3899,7 +3899,7 @@ export interface ResourceGoogleGkeUserImpersonation {
      */
     endpoint: pulumi.Input<string>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4276,7 +4276,7 @@ export interface ResourceKubernetes {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4331,7 +4331,7 @@ export interface ResourceKubernetesBasicAuth {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4402,7 +4402,7 @@ export interface ResourceKubernetesPodIdentity {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4461,7 +4461,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4521,7 +4521,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**
@@ -4585,7 +4585,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
+     * The path used to check the health of your connection.  Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string | undefined>;
     /**

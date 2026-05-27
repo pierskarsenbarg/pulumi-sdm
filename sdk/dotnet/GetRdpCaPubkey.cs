@@ -66,6 +66,22 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrdpcapubkey" "rdpPubkeyQuery" {
+        /// }
+        /// 
+        /// output "rdpca" {
+        ///   value = data.sdm_getrdpcapubkey.rdpPubkeyQuery.public_key
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -162,6 +178,22 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrdpcapubkey" "rdpPubkeyQuery" {
+        /// }
+        /// 
+        /// output "rdpca" {
+        ///   value = data.sdm_getrdpcapubkey.rdpPubkeyQuery.public_key
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -256,6 +288,22 @@ namespace PiersKarsenbarg.Sdm
         /// 		ctx.Export("rdpca", rdpPubkeyQuery.PublicKey)
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getrdpcapubkey" "rdpPubkeyQuery" {
+        /// }
+        /// 
+        /// output "rdpca" {
+        ///   value = data.sdm_getrdpcapubkey.rdpPubkeyQuery.public_key
         /// }
         /// ```
         /// ```java

@@ -68,6 +68,19 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        ///   proxy_cluster_id = "n-233332245"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -165,6 +178,19 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        ///   proxy_cluster_id = "n-233332245"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -260,6 +286,19 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        ///   proxy_cluster_id = "n-233332245"
         /// }
         /// ```
         /// ```java

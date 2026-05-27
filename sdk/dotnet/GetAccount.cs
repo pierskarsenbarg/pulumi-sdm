@@ -128,6 +128,32 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccount" "user-queries" {
+        ///   type  = "user"
+        ///   email = "*@strongdm.com"
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// data "sdm_getaccount" "api-key-queries" {
+        ///   type = "api"
+        ///   name = "*-dev"
+        /// }
+        /// data "sdm_getaccount" "admin-token-queries" {
+        ///   type = "admin-token"
+        ///   name = "*-prod"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -316,6 +342,32 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccount" "user-queries" {
+        ///   type  = "user"
+        ///   email = "*@strongdm.com"
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// data "sdm_getaccount" "api-key-queries" {
+        ///   type = "api"
+        ///   name = "*-dev"
+        /// }
+        /// data "sdm_getaccount" "admin-token-queries" {
+        ///   type = "admin-token"
+        ///   name = "*-prod"
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -502,6 +554,32 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccount" "user-queries" {
+        ///   type  = "user"
+        ///   email = "*@strongdm.com"
+        ///   tags = {
+        ///     "region" = "us-west"
+        ///     "env"    = "dev"
+        ///   }
+        /// }
+        /// data "sdm_getaccount" "api-key-queries" {
+        ///   type = "api"
+        ///   name = "*-dev"
+        /// }
+        /// data "sdm_getaccount" "admin-token-queries" {
+        ///   type = "admin-token"
+        ///   name = "*-prod"
         /// }
         /// ```
         /// ```java

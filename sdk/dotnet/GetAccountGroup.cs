@@ -96,6 +96,25 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        ///   account_id = securityLead.id
+        /// }
+        /// data "sdm_getaccountgroup" "specificRelationship" {
+        ///   id = "accountgroup-1234567890abcdef"
+        /// }
+        /// data "sdm_getaccountgroup" "usersInGroup" {
+        ///   group_id = devopsGroup.id
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -239,6 +258,25 @@ namespace PiersKarsenbarg.Sdm
         /// 	})
         /// }
         /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        ///   account_id = securityLead.id
+        /// }
+        /// data "sdm_getaccountgroup" "specificRelationship" {
+        ///   id = "accountgroup-1234567890abcdef"
+        /// }
+        /// data "sdm_getaccountgroup" "usersInGroup" {
+        ///   group_id = devopsGroup.id
+        /// }
+        /// ```
         /// ```java
         /// package generated_program;
         /// 
@@ -380,6 +418,25 @@ namespace PiersKarsenbarg.Sdm
         /// 		}
         /// 		return nil
         /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// pulumi {
+        ///   required_providers {
+        ///     sdm = {
+        ///       source = "pulumi/sdm"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        ///   account_id = securityLead.id
+        /// }
+        /// data "sdm_getaccountgroup" "specificRelationship" {
+        ///   id = "accountgroup-1234567890abcdef"
+        /// }
+        /// data "sdm_getaccountgroup" "usersInGroup" {
+        ///   group_id = devopsGroup.id
         /// }
         /// ```
         /// ```java
