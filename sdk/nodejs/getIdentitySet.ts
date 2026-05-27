@@ -96,9 +96,9 @@ export interface GetIdentitySetOutputArgs {
     /**
      * Unique identifier of the IdentitySet.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the IdentitySet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

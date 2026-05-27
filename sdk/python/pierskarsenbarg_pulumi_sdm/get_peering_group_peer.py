@@ -123,9 +123,9 @@ def get_peering_group_peer(group_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         peering_group_peers=pulumi.get(__ret__, 'peering_group_peers'),
         peers_with_group_id=pulumi.get(__ret__, 'peers_with_group_id'))
-def get_peering_group_peer_output(group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  peers_with_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_peering_group_peer_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  peers_with_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupPeerResult]:
     """
     PeeringGroupPeer represents the link between two PeeringGroups

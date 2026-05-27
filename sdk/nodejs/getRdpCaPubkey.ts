@@ -84,9 +84,9 @@ export interface GetRdpCaPubkeyOutputArgs {
     /**
      * a generated id representing this request.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the RDP Certificate Authority public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }

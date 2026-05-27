@@ -509,322 +509,322 @@ export class Resource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Resource resources.
  */
 export interface ResourceState {
-    aerospike?: pulumi.Input<inputs.ResourceAerospike>;
-    aks?: pulumi.Input<inputs.ResourceAks>;
+    aerospike?: pulumi.Input<inputs.ResourceAerospike | undefined>;
+    aks?: pulumi.Input<inputs.ResourceAks | undefined>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
-    aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
+    aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth | undefined>;
+    aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount | undefined>;
     /**
      * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
      */
-    aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
+    aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated aks_user_impersonation is deprecated, see docs for more info
      */
-    aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
-    amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
-    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation | undefined>;
+    amazonEks?: pulumi.Input<inputs.ResourceAmazonEks | undefined>;
+    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile | undefined>;
     /**
      * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
      */
-    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
+    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     /**
      * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
      */
-    amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
-    amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
-    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
-    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
-    amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
-    athena?: pulumi.Input<inputs.ResourceAthena>;
-    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
-    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
-    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
-    auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
-    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
-    aws?: pulumi.Input<inputs.ResourceAws>;
-    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
-    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
-    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
-    azure?: pulumi.Input<inputs.ResourceAzure>;
-    azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
-    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
-    azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
-    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
-    bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
-    cassandra?: pulumi.Input<inputs.ResourceCassandra>;
-    citus?: pulumi.Input<inputs.ResourceCitus>;
-    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp>;
-    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql>;
-    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp>;
-    clustrix?: pulumi.Input<inputs.ResourceClustrix>;
-    cockroach?: pulumi.Input<inputs.ResourceCockroach>;
-    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
-    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
-    databricks?: pulumi.Input<inputs.ResourceDatabricks>;
-    db2I?: pulumi.Input<inputs.ResourceDb2I>;
-    db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
-    documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
-    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
-    documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
+    amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation | undefined>;
+    amazonEs?: pulumi.Input<inputs.ResourceAmazonEs | undefined>;
+    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam | undefined>;
+    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp | undefined>;
+    amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091 | undefined>;
+    athena?: pulumi.Input<inputs.ResourceAthena | undefined>;
+    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam | undefined>;
+    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql | undefined>;
+    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam | undefined>;
+    auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres | undefined>;
+    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam | undefined>;
+    aws?: pulumi.Input<inputs.ResourceAws | undefined>;
+    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole | undefined>;
+    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair | undefined>;
+    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile | undefined>;
+    azure?: pulumi.Input<inputs.ResourceAzure | undefined>;
+    azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate | undefined>;
+    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql | undefined>;
+    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity | undefined>;
+    azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres | undefined>;
+    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity | undefined>;
+    bigQuery?: pulumi.Input<inputs.ResourceBigQuery | undefined>;
+    cassandra?: pulumi.Input<inputs.ResourceCassandra | undefined>;
+    citus?: pulumi.Input<inputs.ResourceCitus | undefined>;
+    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp | undefined>;
+    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql | undefined>;
+    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp | undefined>;
+    clustrix?: pulumi.Input<inputs.ResourceClustrix | undefined>;
+    cockroach?: pulumi.Input<inputs.ResourceCockroach | undefined>;
+    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase | undefined>;
+    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi | undefined>;
+    databricks?: pulumi.Input<inputs.ResourceDatabricks | undefined>;
+    db2I?: pulumi.Input<inputs.ResourceDb2I | undefined>;
+    db2Luw?: pulumi.Input<inputs.ResourceDb2Luw | undefined>;
+    documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost | undefined>;
+    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam | undefined>;
+    documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet | undefined>;
     /**
      * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
-    druid?: pulumi.Input<inputs.ResourceDruid>;
-    dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
-    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
-    elastic?: pulumi.Input<inputs.ResourceElastic>;
-    elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam | undefined>;
+    druid?: pulumi.Input<inputs.ResourceDruid | undefined>;
+    dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb | undefined>;
+    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam | undefined>;
+    elastic?: pulumi.Input<inputs.ResourceElastic | undefined>;
+    elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis | undefined>;
     /**
      * ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam>;
-    entraId?: pulumi.Input<inputs.ResourceEntraId>;
-    gcp?: pulumi.Input<inputs.ResourceGcp>;
-    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
-    gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
-    googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
+    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam | undefined>;
+    entraId?: pulumi.Input<inputs.ResourceEntraId | undefined>;
+    gcp?: pulumi.Input<inputs.ResourceGcp | undefined>;
+    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole | undefined>;
+    gcpwif?: pulumi.Input<inputs.ResourceGcpwif | undefined>;
+    googleGke?: pulumi.Input<inputs.ResourceGoogleGke | undefined>;
     /**
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
-    googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
-    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
-    greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
-    httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
-    httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
-    httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth>;
-    kubernetes?: pulumi.Input<inputs.ResourceKubernetes>;
+    googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner | undefined>;
+    greenplum?: pulumi.Input<inputs.ResourceGreenplum | undefined>;
+    httpAuth?: pulumi.Input<inputs.ResourceHttpAuth | undefined>;
+    httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth | undefined>;
+    httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth | undefined>;
+    kubernetes?: pulumi.Input<inputs.ResourceKubernetes | undefined>;
     /**
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
-    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
-    kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
+    kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth | undefined>;
+    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity | undefined>;
+    kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount | undefined>;
     /**
      * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
      */
-    kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
+    kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
-    kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
-    maria?: pulumi.Input<inputs.ResourceMaria>;
-    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth>;
-    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth>;
-    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr>;
-    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat>;
-    memcached?: pulumi.Input<inputs.ResourceMemcached>;
-    memsql?: pulumi.Input<inputs.ResourceMemsql>;
-    mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
+    kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation | undefined>;
+    maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
+    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
+    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
+    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr | undefined>;
+    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat | undefined>;
+    memcached?: pulumi.Input<inputs.ResourceMemcached | undefined>;
+    memsql?: pulumi.Input<inputs.ResourceMemsql | undefined>;
+    mongoHost?: pulumi.Input<inputs.ResourceMongoHost | undefined>;
     /**
      * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
+    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost | undefined>;
     /**
      * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
-    mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
-    mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
-    mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
-    mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
-    mysql?: pulumi.Input<inputs.ResourceMysql>;
-    neptune?: pulumi.Input<inputs.ResourceNeptune>;
-    neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
-    oracle?: pulumi.Input<inputs.ResourceOracle>;
-    oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
-    postgres?: pulumi.Input<inputs.ResourcePostgres>;
-    presto?: pulumi.Input<inputs.ResourcePresto>;
-    rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
-    rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
-    rdp?: pulumi.Input<inputs.ResourceRdp>;
-    rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
-    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
-    redis?: pulumi.Input<inputs.ResourceRedis>;
-    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
-    redshift?: pulumi.Input<inputs.ResourceRedshift>;
-    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
-    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
-    singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
-    snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
-    snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
-    sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
-    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;
-    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd>;
-    ssh?: pulumi.Input<inputs.ResourceSsh>;
-    sshCert?: pulumi.Input<inputs.ResourceSshCert>;
-    sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
-    sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
-    sybase?: pulumi.Input<inputs.ResourceSybase>;
-    sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
-    teradata?: pulumi.Input<inputs.ResourceTeradata>;
-    trino?: pulumi.Input<inputs.ResourceTrino>;
-    vertica?: pulumi.Input<inputs.ResourceVertica>;
+    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset | undefined>;
+    mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet | undefined>;
+    mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster | undefined>;
+    mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql | undefined>;
+    mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres | undefined>;
+    mysql?: pulumi.Input<inputs.ResourceMysql | undefined>;
+    neptune?: pulumi.Input<inputs.ResourceNeptune | undefined>;
+    neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam | undefined>;
+    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups | undefined>;
+    oracle?: pulumi.Input<inputs.ResourceOracle | undefined>;
+    oracleNne?: pulumi.Input<inputs.ResourceOracleNne | undefined>;
+    postgres?: pulumi.Input<inputs.ResourcePostgres | undefined>;
+    presto?: pulumi.Input<inputs.ResourcePresto | undefined>;
+    rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091 | undefined>;
+    rawTcp?: pulumi.Input<inputs.ResourceRawTcp | undefined>;
+    rdp?: pulumi.Input<inputs.ResourceRdp | undefined>;
+    rdpCert?: pulumi.Input<inputs.ResourceRdpCert | undefined>;
+    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam | undefined>;
+    redis?: pulumi.Input<inputs.ResourceRedis | undefined>;
+    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster | undefined>;
+    redshift?: pulumi.Input<inputs.ResourceRedshift | undefined>;
+    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam | undefined>;
+    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam | undefined>;
+    singleStore?: pulumi.Input<inputs.ResourceSingleStore | undefined>;
+    snowflake?: pulumi.Input<inputs.ResourceSnowflake | undefined>;
+    snowsight?: pulumi.Input<inputs.ResourceSnowsight | undefined>;
+    sqlServer?: pulumi.Input<inputs.ResourceSqlServer | undefined>;
+    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd | undefined>;
+    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd | undefined>;
+    ssh?: pulumi.Input<inputs.ResourceSsh | undefined>;
+    sshCert?: pulumi.Input<inputs.ResourceSshCert | undefined>;
+    sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey | undefined>;
+    sshPassword?: pulumi.Input<inputs.ResourceSshPassword | undefined>;
+    sybase?: pulumi.Input<inputs.ResourceSybase | undefined>;
+    sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq | undefined>;
+    teradata?: pulumi.Input<inputs.ResourceTeradata | undefined>;
+    trino?: pulumi.Input<inputs.ResourceTrino | undefined>;
+    vertica?: pulumi.Input<inputs.ResourceVertica | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Resource resource.
  */
 export interface ResourceArgs {
-    aerospike?: pulumi.Input<inputs.ResourceAerospike>;
-    aks?: pulumi.Input<inputs.ResourceAks>;
+    aerospike?: pulumi.Input<inputs.ResourceAerospike | undefined>;
+    aks?: pulumi.Input<inputs.ResourceAks | undefined>;
     /**
      * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
-    aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
+    aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth | undefined>;
+    aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount | undefined>;
     /**
      * @deprecated aks_service_account_user_impersonation is deprecated, see docs for more info
      */
-    aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
+    aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated aks_user_impersonation is deprecated, see docs for more info
      */
-    aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
-    amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
-    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation | undefined>;
+    amazonEks?: pulumi.Input<inputs.ResourceAmazonEks | undefined>;
+    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile | undefined>;
     /**
      * @deprecated amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info
      */
-    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
+    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     /**
      * @deprecated amazon_eks_user_impersonation is deprecated, see docs for more info
      */
-    amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
-    amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
-    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
-    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp>;
-    amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
-    athena?: pulumi.Input<inputs.ResourceAthena>;
-    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
-    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
-    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
-    auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
-    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
-    aws?: pulumi.Input<inputs.ResourceAws>;
-    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
-    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
-    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
-    azure?: pulumi.Input<inputs.ResourceAzure>;
-    azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
-    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity>;
-    azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
-    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
-    bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
-    cassandra?: pulumi.Input<inputs.ResourceCassandra>;
-    citus?: pulumi.Input<inputs.ResourceCitus>;
-    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp>;
-    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql>;
-    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp>;
-    clustrix?: pulumi.Input<inputs.ResourceClustrix>;
-    cockroach?: pulumi.Input<inputs.ResourceCockroach>;
-    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
-    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
-    databricks?: pulumi.Input<inputs.ResourceDatabricks>;
-    db2I?: pulumi.Input<inputs.ResourceDb2I>;
-    db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
-    documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
-    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
-    documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
+    amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation | undefined>;
+    amazonEs?: pulumi.Input<inputs.ResourceAmazonEs | undefined>;
+    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam | undefined>;
+    amazonmqAmqp?: pulumi.Input<inputs.ResourceAmazonmqAmqp | undefined>;
+    amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091 | undefined>;
+    athena?: pulumi.Input<inputs.ResourceAthena | undefined>;
+    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam | undefined>;
+    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql | undefined>;
+    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam | undefined>;
+    auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres | undefined>;
+    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam | undefined>;
+    aws?: pulumi.Input<inputs.ResourceAws | undefined>;
+    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole | undefined>;
+    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair | undefined>;
+    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile | undefined>;
+    azure?: pulumi.Input<inputs.ResourceAzure | undefined>;
+    azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate | undefined>;
+    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql | undefined>;
+    azureMysqlManagedIdentity?: pulumi.Input<inputs.ResourceAzureMysqlManagedIdentity | undefined>;
+    azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres | undefined>;
+    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity | undefined>;
+    bigQuery?: pulumi.Input<inputs.ResourceBigQuery | undefined>;
+    cassandra?: pulumi.Input<inputs.ResourceCassandra | undefined>;
+    citus?: pulumi.Input<inputs.ResourceCitus | undefined>;
+    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp | undefined>;
+    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql | undefined>;
+    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp | undefined>;
+    clustrix?: pulumi.Input<inputs.ResourceClustrix | undefined>;
+    cockroach?: pulumi.Input<inputs.ResourceCockroach | undefined>;
+    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase | undefined>;
+    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi | undefined>;
+    databricks?: pulumi.Input<inputs.ResourceDatabricks | undefined>;
+    db2I?: pulumi.Input<inputs.ResourceDb2I | undefined>;
+    db2Luw?: pulumi.Input<inputs.ResourceDb2Luw | undefined>;
+    documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost | undefined>;
+    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam | undefined>;
+    documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet | undefined>;
     /**
      * DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam>;
-    druid?: pulumi.Input<inputs.ResourceDruid>;
-    dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
-    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
-    elastic?: pulumi.Input<inputs.ResourceElastic>;
-    elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
+    documentDbReplicaSetIam?: pulumi.Input<inputs.ResourceDocumentDbReplicaSetIam | undefined>;
+    druid?: pulumi.Input<inputs.ResourceDruid | undefined>;
+    dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb | undefined>;
+    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam | undefined>;
+    elastic?: pulumi.Input<inputs.ResourceElastic | undefined>;
+    elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis | undefined>;
     /**
      * ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam>;
-    entraId?: pulumi.Input<inputs.ResourceEntraId>;
-    gcp?: pulumi.Input<inputs.ResourceGcp>;
-    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
-    gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
-    googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
+    elasticacheRedisIam?: pulumi.Input<inputs.ResourceElasticacheRedisIam | undefined>;
+    entraId?: pulumi.Input<inputs.ResourceEntraId | undefined>;
+    gcp?: pulumi.Input<inputs.ResourceGcp | undefined>;
+    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole | undefined>;
+    gcpwif?: pulumi.Input<inputs.ResourceGcpwif | undefined>;
+    googleGke?: pulumi.Input<inputs.ResourceGoogleGke | undefined>;
     /**
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
-    googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
-    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner>;
-    greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
-    httpAuth?: pulumi.Input<inputs.ResourceHttpAuth>;
-    httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
-    httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth>;
-    kubernetes?: pulumi.Input<inputs.ResourceKubernetes>;
+    googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner | undefined>;
+    greenplum?: pulumi.Input<inputs.ResourceGreenplum | undefined>;
+    httpAuth?: pulumi.Input<inputs.ResourceHttpAuth | undefined>;
+    httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth | undefined>;
+    httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth | undefined>;
+    kubernetes?: pulumi.Input<inputs.ResourceKubernetes | undefined>;
     /**
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
-    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
-    kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
+    kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth | undefined>;
+    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity | undefined>;
+    kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount | undefined>;
     /**
      * @deprecated kubernetes_service_account_user_impersonation is deprecated, see docs for more info
      */
-    kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
+    kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
     /**
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
-    kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
-    maria?: pulumi.Input<inputs.ResourceMaria>;
-    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth>;
-    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth>;
-    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr>;
-    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat>;
-    memcached?: pulumi.Input<inputs.ResourceMemcached>;
-    memsql?: pulumi.Input<inputs.ResourceMemsql>;
-    mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
+    kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation | undefined>;
+    maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
+    mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
+    mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
+    mcpGatewayOAuthDcr?: pulumi.Input<inputs.ResourceMcpGatewayOAuthDcr | undefined>;
+    mcpGatewayPat?: pulumi.Input<inputs.ResourceMcpGatewayPat | undefined>;
+    memcached?: pulumi.Input<inputs.ResourceMemcached | undefined>;
+    memsql?: pulumi.Input<inputs.ResourceMemsql | undefined>;
+    mongoHost?: pulumi.Input<inputs.ResourceMongoHost | undefined>;
     /**
      * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
+    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost | undefined>;
     /**
      * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
-    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
-    mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
-    mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
-    mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
-    mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
-    mysql?: pulumi.Input<inputs.ResourceMysql>;
-    neptune?: pulumi.Input<inputs.ResourceNeptune>;
-    neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups>;
-    oracle?: pulumi.Input<inputs.ResourceOracle>;
-    oracleNne?: pulumi.Input<inputs.ResourceOracleNne>;
-    postgres?: pulumi.Input<inputs.ResourcePostgres>;
-    presto?: pulumi.Input<inputs.ResourcePresto>;
-    rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
-    rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
-    rdp?: pulumi.Input<inputs.ResourceRdp>;
-    rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
-    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
-    redis?: pulumi.Input<inputs.ResourceRedis>;
-    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster>;
-    redshift?: pulumi.Input<inputs.ResourceRedshift>;
-    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
-    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
-    singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
-    snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
-    snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
-    sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
-    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;
-    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd>;
-    ssh?: pulumi.Input<inputs.ResourceSsh>;
-    sshCert?: pulumi.Input<inputs.ResourceSshCert>;
-    sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
-    sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
-    sybase?: pulumi.Input<inputs.ResourceSybase>;
-    sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
-    teradata?: pulumi.Input<inputs.ResourceTeradata>;
-    trino?: pulumi.Input<inputs.ResourceTrino>;
-    vertica?: pulumi.Input<inputs.ResourceVertica>;
+    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset | undefined>;
+    mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet | undefined>;
+    mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster | undefined>;
+    mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql | undefined>;
+    mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres | undefined>;
+    mysql?: pulumi.Input<inputs.ResourceMysql | undefined>;
+    neptune?: pulumi.Input<inputs.ResourceNeptune | undefined>;
+    neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam | undefined>;
+    oktaGroups?: pulumi.Input<inputs.ResourceOktaGroups | undefined>;
+    oracle?: pulumi.Input<inputs.ResourceOracle | undefined>;
+    oracleNne?: pulumi.Input<inputs.ResourceOracleNne | undefined>;
+    postgres?: pulumi.Input<inputs.ResourcePostgres | undefined>;
+    presto?: pulumi.Input<inputs.ResourcePresto | undefined>;
+    rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091 | undefined>;
+    rawTcp?: pulumi.Input<inputs.ResourceRawTcp | undefined>;
+    rdp?: pulumi.Input<inputs.ResourceRdp | undefined>;
+    rdpCert?: pulumi.Input<inputs.ResourceRdpCert | undefined>;
+    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam | undefined>;
+    redis?: pulumi.Input<inputs.ResourceRedis | undefined>;
+    redisCluster?: pulumi.Input<inputs.ResourceRedisCluster | undefined>;
+    redshift?: pulumi.Input<inputs.ResourceRedshift | undefined>;
+    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam | undefined>;
+    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam | undefined>;
+    singleStore?: pulumi.Input<inputs.ResourceSingleStore | undefined>;
+    snowflake?: pulumi.Input<inputs.ResourceSnowflake | undefined>;
+    snowsight?: pulumi.Input<inputs.ResourceSnowsight | undefined>;
+    sqlServer?: pulumi.Input<inputs.ResourceSqlServer | undefined>;
+    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd | undefined>;
+    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd | undefined>;
+    ssh?: pulumi.Input<inputs.ResourceSsh | undefined>;
+    sshCert?: pulumi.Input<inputs.ResourceSshCert | undefined>;
+    sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey | undefined>;
+    sshPassword?: pulumi.Input<inputs.ResourceSshPassword | undefined>;
+    sybase?: pulumi.Input<inputs.ResourceSybase | undefined>;
+    sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq | undefined>;
+    teradata?: pulumi.Input<inputs.ResourceTeradata | undefined>;
+    trino?: pulumi.Input<inputs.ResourceTrino | undefined>;
+    vertica?: pulumi.Input<inputs.ResourceVertica | undefined>;
 }

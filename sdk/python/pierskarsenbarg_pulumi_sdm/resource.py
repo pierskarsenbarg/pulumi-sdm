@@ -21,123 +21,123 @@ __all__ = ['ResourceArgs', 'Resource']
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
-                 aerospike: Optional[pulumi.Input['ResourceAerospikeArgs']] = None,
-                 aks: Optional[pulumi.Input['ResourceAksArgs']] = None,
-                 aks_basic_auth: Optional[pulumi.Input['ResourceAksBasicAuthArgs']] = None,
-                 aks_service_account: Optional[pulumi.Input['ResourceAksServiceAccountArgs']] = None,
-                 aks_service_account_user_impersonation: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']] = None,
-                 aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
-                 amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
-                 amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
-                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
-                 amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
-                 amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
-                 amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
-                 amazonmq_amqp: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']] = None,
-                 amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
-                 athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
-                 athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
-                 aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
-                 aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
-                 aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
-                 aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
-                 aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
-                 aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
-                 aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
-                 aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
-                 azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
-                 azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
-                 azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
-                 azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
-                 azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
-                 azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
-                 big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
-                 cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
-                 citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
-                 click_house_http: Optional[pulumi.Input['ResourceClickHouseHttpArgs']] = None,
-                 click_house_my_sql: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']] = None,
-                 click_house_tcp: Optional[pulumi.Input['ResourceClickHouseTcpArgs']] = None,
-                 clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
-                 cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
-                 couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
-                 couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
-                 databricks: Optional[pulumi.Input['ResourceDatabricksArgs']] = None,
-                 db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
-                 db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
-                 document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
-                 document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
-                 document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
-                 document_db_replica_set_iam: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']] = None,
-                 druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
-                 dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
-                 dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
-                 elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
-                 elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
-                 elasticache_redis_iam: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']] = None,
-                 entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
-                 gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
-                 gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
-                 gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
-                 google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
-                 google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
-                 google_spanner: Optional[pulumi.Input['ResourceGoogleSpannerArgs']] = None,
-                 greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
-                 http_auth: Optional[pulumi.Input['ResourceHttpAuthArgs']] = None,
-                 http_basic_auth: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']] = None,
-                 http_no_auth: Optional[pulumi.Input['ResourceHttpNoAuthArgs']] = None,
-                 kubernetes: Optional[pulumi.Input['ResourceKubernetesArgs']] = None,
-                 kubernetes_basic_auth: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']] = None,
-                 kubernetes_pod_identity: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']] = None,
-                 kubernetes_service_account: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']] = None,
-                 kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
-                 kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
-                 maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
-                 mcp_gateway_no_auth: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']] = None,
-                 mcp_gateway_o_auth: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']] = None,
-                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']] = None,
-                 mcp_gateway_pat: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']] = None,
-                 memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
-                 memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
-                 mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
-                 mongo_legacy_host: Optional[pulumi.Input['ResourceMongoLegacyHostArgs']] = None,
-                 mongo_legacy_replicaset: Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']] = None,
-                 mongo_replica_set: Optional[pulumi.Input['ResourceMongoReplicaSetArgs']] = None,
-                 mongo_sharded_cluster: Optional[pulumi.Input['ResourceMongoShardedClusterArgs']] = None,
-                 mtls_mysql: Optional[pulumi.Input['ResourceMtlsMysqlArgs']] = None,
-                 mtls_postgres: Optional[pulumi.Input['ResourceMtlsPostgresArgs']] = None,
-                 mysql: Optional[pulumi.Input['ResourceMysqlArgs']] = None,
-                 neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
-                 neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
-                 okta_groups: Optional[pulumi.Input['ResourceOktaGroupsArgs']] = None,
-                 oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
-                 oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
-                 postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
-                 presto: Optional[pulumi.Input['ResourcePrestoArgs']] = None,
-                 rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
-                 raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
-                 rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
-                 rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
-                 rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
-                 redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
-                 redis_cluster: Optional[pulumi.Input['ResourceRedisClusterArgs']] = None,
-                 redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
-                 redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
-                 redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
-                 single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
-                 snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
-                 snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
-                 sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
-                 sql_server_azure_ad: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']] = None,
-                 sql_server_kerberos_ad: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']] = None,
-                 ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
-                 ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
-                 ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
-                 ssh_password: Optional[pulumi.Input['ResourceSshPasswordArgs']] = None,
-                 sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
-                 sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
-                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
-                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None,
-                 vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
+                 aerospike: pulumi.Input[Optional['ResourceAerospikeArgs']] = None,
+                 aks: pulumi.Input[Optional['ResourceAksArgs']] = None,
+                 aks_basic_auth: pulumi.Input[Optional['ResourceAksBasicAuthArgs']] = None,
+                 aks_service_account: pulumi.Input[Optional['ResourceAksServiceAccountArgs']] = None,
+                 aks_service_account_user_impersonation: pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']] = None,
+                 aks_user_impersonation: pulumi.Input[Optional['ResourceAksUserImpersonationArgs']] = None,
+                 amazon_eks: pulumi.Input[Optional['ResourceAmazonEksArgs']] = None,
+                 amazon_eks_instance_profile: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']] = None,
+                 amazon_eks_instance_profile_user_impersonation: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
+                 amazon_eks_user_impersonation: pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']] = None,
+                 amazon_es: pulumi.Input[Optional['ResourceAmazonEsArgs']] = None,
+                 amazon_esiam: pulumi.Input[Optional['ResourceAmazonEsiamArgs']] = None,
+                 amazonmq_amqp: pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']] = None,
+                 amazonmq_amqp091: pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']] = None,
+                 athena: pulumi.Input[Optional['ResourceAthenaArgs']] = None,
+                 athena_iam: pulumi.Input[Optional['ResourceAthenaIamArgs']] = None,
+                 aurora_mysql: pulumi.Input[Optional['ResourceAuroraMysqlArgs']] = None,
+                 aurora_mysql_iam: pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']] = None,
+                 aurora_postgres: pulumi.Input[Optional['ResourceAuroraPostgresArgs']] = None,
+                 aurora_postgres_iam: pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']] = None,
+                 aws: pulumi.Input[Optional['ResourceAwsArgs']] = None,
+                 aws_console: pulumi.Input[Optional['ResourceAwsConsoleArgs']] = None,
+                 aws_console_static_key_pair: pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']] = None,
+                 aws_instance_profile: pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']] = None,
+                 azure: pulumi.Input[Optional['ResourceAzureArgs']] = None,
+                 azure_certificate: pulumi.Input[Optional['ResourceAzureCertificateArgs']] = None,
+                 azure_mysql: pulumi.Input[Optional['ResourceAzureMysqlArgs']] = None,
+                 azure_mysql_managed_identity: pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']] = None,
+                 azure_postgres: pulumi.Input[Optional['ResourceAzurePostgresArgs']] = None,
+                 azure_postgres_managed_identity: pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']] = None,
+                 big_query: pulumi.Input[Optional['ResourceBigQueryArgs']] = None,
+                 cassandra: pulumi.Input[Optional['ResourceCassandraArgs']] = None,
+                 citus: pulumi.Input[Optional['ResourceCitusArgs']] = None,
+                 click_house_http: pulumi.Input[Optional['ResourceClickHouseHttpArgs']] = None,
+                 click_house_my_sql: pulumi.Input[Optional['ResourceClickHouseMySqlArgs']] = None,
+                 click_house_tcp: pulumi.Input[Optional['ResourceClickHouseTcpArgs']] = None,
+                 clustrix: pulumi.Input[Optional['ResourceClustrixArgs']] = None,
+                 cockroach: pulumi.Input[Optional['ResourceCockroachArgs']] = None,
+                 couchbase_database: pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']] = None,
+                 couchbase_web_ui: pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']] = None,
+                 databricks: pulumi.Input[Optional['ResourceDatabricksArgs']] = None,
+                 db2_i: pulumi.Input[Optional['ResourceDb2IArgs']] = None,
+                 db2_luw: pulumi.Input[Optional['ResourceDb2LuwArgs']] = None,
+                 document_db_host: pulumi.Input[Optional['ResourceDocumentDbHostArgs']] = None,
+                 document_db_host_iam: pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']] = None,
+                 document_db_replica_set: pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']] = None,
+                 document_db_replica_set_iam: pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']] = None,
+                 druid: pulumi.Input[Optional['ResourceDruidArgs']] = None,
+                 dynamo_db: pulumi.Input[Optional['ResourceDynamoDbArgs']] = None,
+                 dynamo_dbiam: pulumi.Input[Optional['ResourceDynamoDbiamArgs']] = None,
+                 elastic: pulumi.Input[Optional['ResourceElasticArgs']] = None,
+                 elasticache_redis: pulumi.Input[Optional['ResourceElasticacheRedisArgs']] = None,
+                 elasticache_redis_iam: pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']] = None,
+                 entra_id: pulumi.Input[Optional['ResourceEntraIdArgs']] = None,
+                 gcp: pulumi.Input[Optional['ResourceGcpArgs']] = None,
+                 gcp_console: pulumi.Input[Optional['ResourceGcpConsoleArgs']] = None,
+                 gcpwif: pulumi.Input[Optional['ResourceGcpwifArgs']] = None,
+                 google_gke: pulumi.Input[Optional['ResourceGoogleGkeArgs']] = None,
+                 google_gke_user_impersonation: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_spanner: pulumi.Input[Optional['ResourceGoogleSpannerArgs']] = None,
+                 greenplum: pulumi.Input[Optional['ResourceGreenplumArgs']] = None,
+                 http_auth: pulumi.Input[Optional['ResourceHttpAuthArgs']] = None,
+                 http_basic_auth: pulumi.Input[Optional['ResourceHttpBasicAuthArgs']] = None,
+                 http_no_auth: pulumi.Input[Optional['ResourceHttpNoAuthArgs']] = None,
+                 kubernetes: pulumi.Input[Optional['ResourceKubernetesArgs']] = None,
+                 kubernetes_basic_auth: pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']] = None,
+                 kubernetes_pod_identity: pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']] = None,
+                 kubernetes_service_account: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']] = None,
+                 kubernetes_service_account_user_impersonation: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
+                 kubernetes_user_impersonation: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']] = None,
+                 maria: pulumi.Input[Optional['ResourceMariaArgs']] = None,
+                 mcp_gateway_no_auth: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']] = None,
+                 mcp_gateway_o_auth: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']] = None,
+                 mcp_gateway_o_auth_dcr: pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']] = None,
+                 mcp_gateway_pat: pulumi.Input[Optional['ResourceMcpGatewayPatArgs']] = None,
+                 memcached: pulumi.Input[Optional['ResourceMemcachedArgs']] = None,
+                 memsql: pulumi.Input[Optional['ResourceMemsqlArgs']] = None,
+                 mongo_host: pulumi.Input[Optional['ResourceMongoHostArgs']] = None,
+                 mongo_legacy_host: pulumi.Input[Optional['ResourceMongoLegacyHostArgs']] = None,
+                 mongo_legacy_replicaset: pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']] = None,
+                 mongo_replica_set: pulumi.Input[Optional['ResourceMongoReplicaSetArgs']] = None,
+                 mongo_sharded_cluster: pulumi.Input[Optional['ResourceMongoShardedClusterArgs']] = None,
+                 mtls_mysql: pulumi.Input[Optional['ResourceMtlsMysqlArgs']] = None,
+                 mtls_postgres: pulumi.Input[Optional['ResourceMtlsPostgresArgs']] = None,
+                 mysql: pulumi.Input[Optional['ResourceMysqlArgs']] = None,
+                 neptune: pulumi.Input[Optional['ResourceNeptuneArgs']] = None,
+                 neptune_iam: pulumi.Input[Optional['ResourceNeptuneIamArgs']] = None,
+                 okta_groups: pulumi.Input[Optional['ResourceOktaGroupsArgs']] = None,
+                 oracle: pulumi.Input[Optional['ResourceOracleArgs']] = None,
+                 oracle_nne: pulumi.Input[Optional['ResourceOracleNneArgs']] = None,
+                 postgres: pulumi.Input[Optional['ResourcePostgresArgs']] = None,
+                 presto: pulumi.Input[Optional['ResourcePrestoArgs']] = None,
+                 rabbitmq_amqp091: pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']] = None,
+                 raw_tcp: pulumi.Input[Optional['ResourceRawTcpArgs']] = None,
+                 rdp: pulumi.Input[Optional['ResourceRdpArgs']] = None,
+                 rdp_cert: pulumi.Input[Optional['ResourceRdpCertArgs']] = None,
+                 rds_postgres_iam: pulumi.Input[Optional['ResourceRdsPostgresIamArgs']] = None,
+                 redis: pulumi.Input[Optional['ResourceRedisArgs']] = None,
+                 redis_cluster: pulumi.Input[Optional['ResourceRedisClusterArgs']] = None,
+                 redshift: pulumi.Input[Optional['ResourceRedshiftArgs']] = None,
+                 redshift_iam: pulumi.Input[Optional['ResourceRedshiftIamArgs']] = None,
+                 redshift_serverless_iam: pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']] = None,
+                 single_store: pulumi.Input[Optional['ResourceSingleStoreArgs']] = None,
+                 snowflake: pulumi.Input[Optional['ResourceSnowflakeArgs']] = None,
+                 snowsight: pulumi.Input[Optional['ResourceSnowsightArgs']] = None,
+                 sql_server: pulumi.Input[Optional['ResourceSqlServerArgs']] = None,
+                 sql_server_azure_ad: pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']] = None,
+                 sql_server_kerberos_ad: pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']] = None,
+                 ssh: pulumi.Input[Optional['ResourceSshArgs']] = None,
+                 ssh_cert: pulumi.Input[Optional['ResourceSshCertArgs']] = None,
+                 ssh_customer_key: pulumi.Input[Optional['ResourceSshCustomerKeyArgs']] = None,
+                 ssh_password: pulumi.Input[Optional['ResourceSshPasswordArgs']] = None,
+                 sybase: pulumi.Input[Optional['ResourceSybaseArgs']] = None,
+                 sybase_iq: pulumi.Input[Optional['ResourceSybaseIqArgs']] = None,
+                 teradata: pulumi.Input[Optional['ResourceTeradataArgs']] = None,
+                 trino: pulumi.Input[Optional['ResourceTrinoArgs']] = None,
+                 vertica: pulumi.Input[Optional['ResourceVerticaArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
 
@@ -406,1203 +406,1203 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aerospike(self) -> Optional[pulumi.Input['ResourceAerospikeArgs']]:
+    def aerospike(self) -> pulumi.Input[Optional['ResourceAerospikeArgs']]:
         return pulumi.get(self, "aerospike")
 
     @aerospike.setter
-    def aerospike(self, value: Optional[pulumi.Input['ResourceAerospikeArgs']]):
+    def aerospike(self, value: pulumi.Input[Optional['ResourceAerospikeArgs']]):
         pulumi.set(self, "aerospike", value)
 
     @_builtins.property
     @pulumi.getter
-    def aks(self) -> Optional[pulumi.Input['ResourceAksArgs']]:
+    def aks(self) -> pulumi.Input[Optional['ResourceAksArgs']]:
         return pulumi.get(self, "aks")
 
     @aks.setter
-    def aks(self, value: Optional[pulumi.Input['ResourceAksArgs']]):
+    def aks(self, value: pulumi.Input[Optional['ResourceAksArgs']]):
         pulumi.set(self, "aks", value)
 
     @_builtins.property
     @pulumi.getter(name="aksBasicAuth")
-    def aks_basic_auth(self) -> Optional[pulumi.Input['ResourceAksBasicAuthArgs']]:
+    def aks_basic_auth(self) -> pulumi.Input[Optional['ResourceAksBasicAuthArgs']]:
         """
         AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "aks_basic_auth")
 
     @aks_basic_auth.setter
-    def aks_basic_auth(self, value: Optional[pulumi.Input['ResourceAksBasicAuthArgs']]):
+    def aks_basic_auth(self, value: pulumi.Input[Optional['ResourceAksBasicAuthArgs']]):
         pulumi.set(self, "aks_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccount")
-    def aks_service_account(self) -> Optional[pulumi.Input['ResourceAksServiceAccountArgs']]:
+    def aks_service_account(self) -> pulumi.Input[Optional['ResourceAksServiceAccountArgs']]:
         return pulumi.get(self, "aks_service_account")
 
     @aks_service_account.setter
-    def aks_service_account(self, value: Optional[pulumi.Input['ResourceAksServiceAccountArgs']]):
+    def aks_service_account(self, value: pulumi.Input[Optional['ResourceAksServiceAccountArgs']]):
         pulumi.set(self, "aks_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccountUserImpersonation")
     @_utilities.deprecated("""aks_service_account_user_impersonation is deprecated, see docs for more info""")
-    def aks_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]:
+    def aks_service_account_user_impersonation(self) -> pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "aks_service_account_user_impersonation")
 
     @aks_service_account_user_impersonation.setter
-    def aks_service_account_user_impersonation(self, value: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]):
+    def aks_service_account_user_impersonation(self, value: pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']]):
         pulumi.set(self, "aks_service_account_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="aksUserImpersonation")
     @_utilities.deprecated("""aks_user_impersonation is deprecated, see docs for more info""")
-    def aks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]:
+    def aks_user_impersonation(self) -> pulumi.Input[Optional['ResourceAksUserImpersonationArgs']]:
         return pulumi.get(self, "aks_user_impersonation")
 
     @aks_user_impersonation.setter
-    def aks_user_impersonation(self, value: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]):
+    def aks_user_impersonation(self, value: pulumi.Input[Optional['ResourceAksUserImpersonationArgs']]):
         pulumi.set(self, "aks_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEks")
-    def amazon_eks(self) -> Optional[pulumi.Input['ResourceAmazonEksArgs']]:
+    def amazon_eks(self) -> pulumi.Input[Optional['ResourceAmazonEksArgs']]:
         return pulumi.get(self, "amazon_eks")
 
     @amazon_eks.setter
-    def amazon_eks(self, value: Optional[pulumi.Input['ResourceAmazonEksArgs']]):
+    def amazon_eks(self, value: pulumi.Input[Optional['ResourceAmazonEksArgs']]):
         pulumi.set(self, "amazon_eks", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfile")
-    def amazon_eks_instance_profile(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]:
+    def amazon_eks_instance_profile(self) -> pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile")
 
     @amazon_eks_instance_profile.setter
-    def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
+    def amazon_eks_instance_profile(self, value: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
     @_utilities.deprecated("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
-    def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
+    def amazon_eks_instance_profile_user_impersonation(self) -> pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
     @amazon_eks_instance_profile_user_impersonation.setter
-    def amazon_eks_instance_profile_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
+    def amazon_eks_instance_profile_user_impersonation(self, value: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksUserImpersonation")
     @_utilities.deprecated("""amazon_eks_user_impersonation is deprecated, see docs for more info""")
-    def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
+    def amazon_eks_user_impersonation(self) -> pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
 
     @amazon_eks_user_impersonation.setter
-    def amazon_eks_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]):
+    def amazon_eks_user_impersonation(self, value: pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']]):
         pulumi.set(self, "amazon_eks_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEs")
-    def amazon_es(self) -> Optional[pulumi.Input['ResourceAmazonEsArgs']]:
+    def amazon_es(self) -> pulumi.Input[Optional['ResourceAmazonEsArgs']]:
         return pulumi.get(self, "amazon_es")
 
     @amazon_es.setter
-    def amazon_es(self, value: Optional[pulumi.Input['ResourceAmazonEsArgs']]):
+    def amazon_es(self, value: pulumi.Input[Optional['ResourceAmazonEsArgs']]):
         pulumi.set(self, "amazon_es", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEsiam")
-    def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
+    def amazon_esiam(self) -> pulumi.Input[Optional['ResourceAmazonEsiamArgs']]:
         return pulumi.get(self, "amazon_esiam")
 
     @amazon_esiam.setter
-    def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
+    def amazon_esiam(self, value: pulumi.Input[Optional['ResourceAmazonEsiamArgs']]):
         pulumi.set(self, "amazon_esiam", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp")
-    def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
+    def amazonmq_amqp(self) -> pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']]:
         return pulumi.get(self, "amazonmq_amqp")
 
     @amazonmq_amqp.setter
-    def amazonmq_amqp(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]):
+    def amazonmq_amqp(self, value: pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']]):
         pulumi.set(self, "amazonmq_amqp", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp091")
-    def amazonmq_amqp091(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]:
+    def amazonmq_amqp091(self) -> pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']]:
         return pulumi.get(self, "amazonmq_amqp091")
 
     @amazonmq_amqp091.setter
-    def amazonmq_amqp091(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]):
+    def amazonmq_amqp091(self, value: pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']]):
         pulumi.set(self, "amazonmq_amqp091", value)
 
     @_builtins.property
     @pulumi.getter
-    def athena(self) -> Optional[pulumi.Input['ResourceAthenaArgs']]:
+    def athena(self) -> pulumi.Input[Optional['ResourceAthenaArgs']]:
         return pulumi.get(self, "athena")
 
     @athena.setter
-    def athena(self, value: Optional[pulumi.Input['ResourceAthenaArgs']]):
+    def athena(self, value: pulumi.Input[Optional['ResourceAthenaArgs']]):
         pulumi.set(self, "athena", value)
 
     @_builtins.property
     @pulumi.getter(name="athenaIam")
-    def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
+    def athena_iam(self) -> pulumi.Input[Optional['ResourceAthenaIamArgs']]:
         return pulumi.get(self, "athena_iam")
 
     @athena_iam.setter
-    def athena_iam(self, value: Optional[pulumi.Input['ResourceAthenaIamArgs']]):
+    def athena_iam(self, value: pulumi.Input[Optional['ResourceAthenaIamArgs']]):
         pulumi.set(self, "athena_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraMysql")
-    def aurora_mysql(self) -> Optional[pulumi.Input['ResourceAuroraMysqlArgs']]:
+    def aurora_mysql(self) -> pulumi.Input[Optional['ResourceAuroraMysqlArgs']]:
         return pulumi.get(self, "aurora_mysql")
 
     @aurora_mysql.setter
-    def aurora_mysql(self, value: Optional[pulumi.Input['ResourceAuroraMysqlArgs']]):
+    def aurora_mysql(self, value: pulumi.Input[Optional['ResourceAuroraMysqlArgs']]):
         pulumi.set(self, "aurora_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraMysqlIam")
-    def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
+    def aurora_mysql_iam(self) -> pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']]:
         return pulumi.get(self, "aurora_mysql_iam")
 
     @aurora_mysql_iam.setter
-    def aurora_mysql_iam(self, value: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]):
+    def aurora_mysql_iam(self, value: pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']]):
         pulumi.set(self, "aurora_mysql_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraPostgres")
-    def aurora_postgres(self) -> Optional[pulumi.Input['ResourceAuroraPostgresArgs']]:
+    def aurora_postgres(self) -> pulumi.Input[Optional['ResourceAuroraPostgresArgs']]:
         return pulumi.get(self, "aurora_postgres")
 
     @aurora_postgres.setter
-    def aurora_postgres(self, value: Optional[pulumi.Input['ResourceAuroraPostgresArgs']]):
+    def aurora_postgres(self, value: pulumi.Input[Optional['ResourceAuroraPostgresArgs']]):
         pulumi.set(self, "aurora_postgres", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraPostgresIam")
-    def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
+    def aurora_postgres_iam(self) -> pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']]:
         return pulumi.get(self, "aurora_postgres_iam")
 
     @aurora_postgres_iam.setter
-    def aurora_postgres_iam(self, value: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]):
+    def aurora_postgres_iam(self, value: pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']]):
         pulumi.set(self, "aurora_postgres_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ResourceAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ResourceAwsArgs']]:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ResourceAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ResourceAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter(name="awsConsole")
-    def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
+    def aws_console(self) -> pulumi.Input[Optional['ResourceAwsConsoleArgs']]:
         return pulumi.get(self, "aws_console")
 
     @aws_console.setter
-    def aws_console(self, value: Optional[pulumi.Input['ResourceAwsConsoleArgs']]):
+    def aws_console(self, value: pulumi.Input[Optional['ResourceAwsConsoleArgs']]):
         pulumi.set(self, "aws_console", value)
 
     @_builtins.property
     @pulumi.getter(name="awsConsoleStaticKeyPair")
-    def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
+    def aws_console_static_key_pair(self) -> pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']]:
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @aws_console_static_key_pair.setter
-    def aws_console_static_key_pair(self, value: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]):
+    def aws_console_static_key_pair(self, value: pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']]):
         pulumi.set(self, "aws_console_static_key_pair", value)
 
     @_builtins.property
     @pulumi.getter(name="awsInstanceProfile")
-    def aws_instance_profile(self) -> Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]:
+    def aws_instance_profile(self) -> pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']]:
         return pulumi.get(self, "aws_instance_profile")
 
     @aws_instance_profile.setter
-    def aws_instance_profile(self, value: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]):
+    def aws_instance_profile(self, value: pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']]):
         pulumi.set(self, "aws_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ResourceAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ResourceAzureArgs']]:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ResourceAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ResourceAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter(name="azureCertificate")
-    def azure_certificate(self) -> Optional[pulumi.Input['ResourceAzureCertificateArgs']]:
+    def azure_certificate(self) -> pulumi.Input[Optional['ResourceAzureCertificateArgs']]:
         return pulumi.get(self, "azure_certificate")
 
     @azure_certificate.setter
-    def azure_certificate(self, value: Optional[pulumi.Input['ResourceAzureCertificateArgs']]):
+    def azure_certificate(self, value: pulumi.Input[Optional['ResourceAzureCertificateArgs']]):
         pulumi.set(self, "azure_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="azureMysql")
-    def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
+    def azure_mysql(self) -> pulumi.Input[Optional['ResourceAzureMysqlArgs']]:
         return pulumi.get(self, "azure_mysql")
 
     @azure_mysql.setter
-    def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
+    def azure_mysql(self, value: pulumi.Input[Optional['ResourceAzureMysqlArgs']]):
         pulumi.set(self, "azure_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentity")
-    def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
+    def azure_mysql_managed_identity(self) -> pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']]:
         return pulumi.get(self, "azure_mysql_managed_identity")
 
     @azure_mysql_managed_identity.setter
-    def azure_mysql_managed_identity(self, value: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]):
+    def azure_mysql_managed_identity(self, value: pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']]):
         pulumi.set(self, "azure_mysql_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgres")
-    def azure_postgres(self) -> Optional[pulumi.Input['ResourceAzurePostgresArgs']]:
+    def azure_postgres(self) -> pulumi.Input[Optional['ResourceAzurePostgresArgs']]:
         return pulumi.get(self, "azure_postgres")
 
     @azure_postgres.setter
-    def azure_postgres(self, value: Optional[pulumi.Input['ResourceAzurePostgresArgs']]):
+    def azure_postgres(self, value: pulumi.Input[Optional['ResourceAzurePostgresArgs']]):
         pulumi.set(self, "azure_postgres", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgresManagedIdentity")
-    def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
+    def azure_postgres_managed_identity(self) -> pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']]:
         return pulumi.get(self, "azure_postgres_managed_identity")
 
     @azure_postgres_managed_identity.setter
-    def azure_postgres_managed_identity(self, value: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]):
+    def azure_postgres_managed_identity(self, value: pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']]):
         pulumi.set(self, "azure_postgres_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="bigQuery")
-    def big_query(self) -> Optional[pulumi.Input['ResourceBigQueryArgs']]:
+    def big_query(self) -> pulumi.Input[Optional['ResourceBigQueryArgs']]:
         return pulumi.get(self, "big_query")
 
     @big_query.setter
-    def big_query(self, value: Optional[pulumi.Input['ResourceBigQueryArgs']]):
+    def big_query(self, value: pulumi.Input[Optional['ResourceBigQueryArgs']]):
         pulumi.set(self, "big_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['ResourceCassandraArgs']]:
+    def cassandra(self) -> pulumi.Input[Optional['ResourceCassandraArgs']]:
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['ResourceCassandraArgs']]):
+    def cassandra(self, value: pulumi.Input[Optional['ResourceCassandraArgs']]):
         pulumi.set(self, "cassandra", value)
 
     @_builtins.property
     @pulumi.getter
-    def citus(self) -> Optional[pulumi.Input['ResourceCitusArgs']]:
+    def citus(self) -> pulumi.Input[Optional['ResourceCitusArgs']]:
         return pulumi.get(self, "citus")
 
     @citus.setter
-    def citus(self, value: Optional[pulumi.Input['ResourceCitusArgs']]):
+    def citus(self, value: pulumi.Input[Optional['ResourceCitusArgs']]):
         pulumi.set(self, "citus", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseHttp")
-    def click_house_http(self) -> Optional[pulumi.Input['ResourceClickHouseHttpArgs']]:
+    def click_house_http(self) -> pulumi.Input[Optional['ResourceClickHouseHttpArgs']]:
         return pulumi.get(self, "click_house_http")
 
     @click_house_http.setter
-    def click_house_http(self, value: Optional[pulumi.Input['ResourceClickHouseHttpArgs']]):
+    def click_house_http(self, value: pulumi.Input[Optional['ResourceClickHouseHttpArgs']]):
         pulumi.set(self, "click_house_http", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseMySql")
-    def click_house_my_sql(self) -> Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]:
+    def click_house_my_sql(self) -> pulumi.Input[Optional['ResourceClickHouseMySqlArgs']]:
         return pulumi.get(self, "click_house_my_sql")
 
     @click_house_my_sql.setter
-    def click_house_my_sql(self, value: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]):
+    def click_house_my_sql(self, value: pulumi.Input[Optional['ResourceClickHouseMySqlArgs']]):
         pulumi.set(self, "click_house_my_sql", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseTcp")
-    def click_house_tcp(self) -> Optional[pulumi.Input['ResourceClickHouseTcpArgs']]:
+    def click_house_tcp(self) -> pulumi.Input[Optional['ResourceClickHouseTcpArgs']]:
         return pulumi.get(self, "click_house_tcp")
 
     @click_house_tcp.setter
-    def click_house_tcp(self, value: Optional[pulumi.Input['ResourceClickHouseTcpArgs']]):
+    def click_house_tcp(self, value: pulumi.Input[Optional['ResourceClickHouseTcpArgs']]):
         pulumi.set(self, "click_house_tcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def clustrix(self) -> Optional[pulumi.Input['ResourceClustrixArgs']]:
+    def clustrix(self) -> pulumi.Input[Optional['ResourceClustrixArgs']]:
         return pulumi.get(self, "clustrix")
 
     @clustrix.setter
-    def clustrix(self, value: Optional[pulumi.Input['ResourceClustrixArgs']]):
+    def clustrix(self, value: pulumi.Input[Optional['ResourceClustrixArgs']]):
         pulumi.set(self, "clustrix", value)
 
     @_builtins.property
     @pulumi.getter
-    def cockroach(self) -> Optional[pulumi.Input['ResourceCockroachArgs']]:
+    def cockroach(self) -> pulumi.Input[Optional['ResourceCockroachArgs']]:
         return pulumi.get(self, "cockroach")
 
     @cockroach.setter
-    def cockroach(self, value: Optional[pulumi.Input['ResourceCockroachArgs']]):
+    def cockroach(self, value: pulumi.Input[Optional['ResourceCockroachArgs']]):
         pulumi.set(self, "cockroach", value)
 
     @_builtins.property
     @pulumi.getter(name="couchbaseDatabase")
-    def couchbase_database(self) -> Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]:
+    def couchbase_database(self) -> pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']]:
         return pulumi.get(self, "couchbase_database")
 
     @couchbase_database.setter
-    def couchbase_database(self, value: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]):
+    def couchbase_database(self, value: pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']]):
         pulumi.set(self, "couchbase_database", value)
 
     @_builtins.property
     @pulumi.getter(name="couchbaseWebUi")
-    def couchbase_web_ui(self) -> Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]:
+    def couchbase_web_ui(self) -> pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']]:
         return pulumi.get(self, "couchbase_web_ui")
 
     @couchbase_web_ui.setter
-    def couchbase_web_ui(self, value: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]):
+    def couchbase_web_ui(self, value: pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']]):
         pulumi.set(self, "couchbase_web_ui", value)
 
     @_builtins.property
     @pulumi.getter
-    def databricks(self) -> Optional[pulumi.Input['ResourceDatabricksArgs']]:
+    def databricks(self) -> pulumi.Input[Optional['ResourceDatabricksArgs']]:
         return pulumi.get(self, "databricks")
 
     @databricks.setter
-    def databricks(self, value: Optional[pulumi.Input['ResourceDatabricksArgs']]):
+    def databricks(self, value: pulumi.Input[Optional['ResourceDatabricksArgs']]):
         pulumi.set(self, "databricks", value)
 
     @_builtins.property
     @pulumi.getter(name="db2I")
-    def db2_i(self) -> Optional[pulumi.Input['ResourceDb2IArgs']]:
+    def db2_i(self) -> pulumi.Input[Optional['ResourceDb2IArgs']]:
         return pulumi.get(self, "db2_i")
 
     @db2_i.setter
-    def db2_i(self, value: Optional[pulumi.Input['ResourceDb2IArgs']]):
+    def db2_i(self, value: pulumi.Input[Optional['ResourceDb2IArgs']]):
         pulumi.set(self, "db2_i", value)
 
     @_builtins.property
     @pulumi.getter(name="db2Luw")
-    def db2_luw(self) -> Optional[pulumi.Input['ResourceDb2LuwArgs']]:
+    def db2_luw(self) -> pulumi.Input[Optional['ResourceDb2LuwArgs']]:
         return pulumi.get(self, "db2_luw")
 
     @db2_luw.setter
-    def db2_luw(self, value: Optional[pulumi.Input['ResourceDb2LuwArgs']]):
+    def db2_luw(self, value: pulumi.Input[Optional['ResourceDb2LuwArgs']]):
         pulumi.set(self, "db2_luw", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbHost")
-    def document_db_host(self) -> Optional[pulumi.Input['ResourceDocumentDbHostArgs']]:
+    def document_db_host(self) -> pulumi.Input[Optional['ResourceDocumentDbHostArgs']]:
         return pulumi.get(self, "document_db_host")
 
     @document_db_host.setter
-    def document_db_host(self, value: Optional[pulumi.Input['ResourceDocumentDbHostArgs']]):
+    def document_db_host(self, value: pulumi.Input[Optional['ResourceDocumentDbHostArgs']]):
         pulumi.set(self, "document_db_host", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbHostIam")
-    def document_db_host_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]:
+    def document_db_host_iam(self) -> pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']]:
         return pulumi.get(self, "document_db_host_iam")
 
     @document_db_host_iam.setter
-    def document_db_host_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]):
+    def document_db_host_iam(self, value: pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']]):
         pulumi.set(self, "document_db_host_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbReplicaSet")
-    def document_db_replica_set(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]:
+    def document_db_replica_set(self) -> pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']]:
         return pulumi.get(self, "document_db_replica_set")
 
     @document_db_replica_set.setter
-    def document_db_replica_set(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]):
+    def document_db_replica_set(self, value: pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']]):
         pulumi.set(self, "document_db_replica_set", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbReplicaSetIam")
-    def document_db_replica_set_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]:
+    def document_db_replica_set_iam(self) -> pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']]:
         """
         DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "document_db_replica_set_iam")
 
     @document_db_replica_set_iam.setter
-    def document_db_replica_set_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]):
+    def document_db_replica_set_iam(self, value: pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']]):
         pulumi.set(self, "document_db_replica_set_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def druid(self) -> Optional[pulumi.Input['ResourceDruidArgs']]:
+    def druid(self) -> pulumi.Input[Optional['ResourceDruidArgs']]:
         return pulumi.get(self, "druid")
 
     @druid.setter
-    def druid(self, value: Optional[pulumi.Input['ResourceDruidArgs']]):
+    def druid(self, value: pulumi.Input[Optional['ResourceDruidArgs']]):
         pulumi.set(self, "druid", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamoDb")
-    def dynamo_db(self) -> Optional[pulumi.Input['ResourceDynamoDbArgs']]:
+    def dynamo_db(self) -> pulumi.Input[Optional['ResourceDynamoDbArgs']]:
         return pulumi.get(self, "dynamo_db")
 
     @dynamo_db.setter
-    def dynamo_db(self, value: Optional[pulumi.Input['ResourceDynamoDbArgs']]):
+    def dynamo_db(self, value: pulumi.Input[Optional['ResourceDynamoDbArgs']]):
         pulumi.set(self, "dynamo_db", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamoDbiam")
-    def dynamo_dbiam(self) -> Optional[pulumi.Input['ResourceDynamoDbiamArgs']]:
+    def dynamo_dbiam(self) -> pulumi.Input[Optional['ResourceDynamoDbiamArgs']]:
         return pulumi.get(self, "dynamo_dbiam")
 
     @dynamo_dbiam.setter
-    def dynamo_dbiam(self, value: Optional[pulumi.Input['ResourceDynamoDbiamArgs']]):
+    def dynamo_dbiam(self, value: pulumi.Input[Optional['ResourceDynamoDbiamArgs']]):
         pulumi.set(self, "dynamo_dbiam", value)
 
     @_builtins.property
     @pulumi.getter
-    def elastic(self) -> Optional[pulumi.Input['ResourceElasticArgs']]:
+    def elastic(self) -> pulumi.Input[Optional['ResourceElasticArgs']]:
         return pulumi.get(self, "elastic")
 
     @elastic.setter
-    def elastic(self, value: Optional[pulumi.Input['ResourceElasticArgs']]):
+    def elastic(self, value: pulumi.Input[Optional['ResourceElasticArgs']]):
         pulumi.set(self, "elastic", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticacheRedis")
-    def elasticache_redis(self) -> Optional[pulumi.Input['ResourceElasticacheRedisArgs']]:
+    def elasticache_redis(self) -> pulumi.Input[Optional['ResourceElasticacheRedisArgs']]:
         return pulumi.get(self, "elasticache_redis")
 
     @elasticache_redis.setter
-    def elasticache_redis(self, value: Optional[pulumi.Input['ResourceElasticacheRedisArgs']]):
+    def elasticache_redis(self, value: pulumi.Input[Optional['ResourceElasticacheRedisArgs']]):
         pulumi.set(self, "elasticache_redis", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticacheRedisIam")
-    def elasticache_redis_iam(self) -> Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]:
+    def elasticache_redis_iam(self) -> pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']]:
         """
         ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "elasticache_redis_iam")
 
     @elasticache_redis_iam.setter
-    def elasticache_redis_iam(self, value: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]):
+    def elasticache_redis_iam(self, value: pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']]):
         pulumi.set(self, "elasticache_redis_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="entraId")
-    def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
+    def entra_id(self) -> pulumi.Input[Optional['ResourceEntraIdArgs']]:
         return pulumi.get(self, "entra_id")
 
     @entra_id.setter
-    def entra_id(self, value: Optional[pulumi.Input['ResourceEntraIdArgs']]):
+    def entra_id(self, value: pulumi.Input[Optional['ResourceEntraIdArgs']]):
         pulumi.set(self, "entra_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcp(self) -> Optional[pulumi.Input['ResourceGcpArgs']]:
+    def gcp(self) -> pulumi.Input[Optional['ResourceGcpArgs']]:
         return pulumi.get(self, "gcp")
 
     @gcp.setter
-    def gcp(self, value: Optional[pulumi.Input['ResourceGcpArgs']]):
+    def gcp(self, value: pulumi.Input[Optional['ResourceGcpArgs']]):
         pulumi.set(self, "gcp", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpConsole")
-    def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
+    def gcp_console(self) -> pulumi.Input[Optional['ResourceGcpConsoleArgs']]:
         return pulumi.get(self, "gcp_console")
 
     @gcp_console.setter
-    def gcp_console(self, value: Optional[pulumi.Input['ResourceGcpConsoleArgs']]):
+    def gcp_console(self, value: pulumi.Input[Optional['ResourceGcpConsoleArgs']]):
         pulumi.set(self, "gcp_console", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
+    def gcpwif(self) -> pulumi.Input[Optional['ResourceGcpwifArgs']]:
         return pulumi.get(self, "gcpwif")
 
     @gcpwif.setter
-    def gcpwif(self, value: Optional[pulumi.Input['ResourceGcpwifArgs']]):
+    def gcpwif(self, value: pulumi.Input[Optional['ResourceGcpwifArgs']]):
         pulumi.set(self, "gcpwif", value)
 
     @_builtins.property
     @pulumi.getter(name="googleGke")
-    def google_gke(self) -> Optional[pulumi.Input['ResourceGoogleGkeArgs']]:
+    def google_gke(self) -> pulumi.Input[Optional['ResourceGoogleGkeArgs']]:
         return pulumi.get(self, "google_gke")
 
     @google_gke.setter
-    def google_gke(self, value: Optional[pulumi.Input['ResourceGoogleGkeArgs']]):
+    def google_gke(self, value: pulumi.Input[Optional['ResourceGoogleGkeArgs']]):
         pulumi.set(self, "google_gke", value)
 
     @_builtins.property
     @pulumi.getter(name="googleGkeUserImpersonation")
     @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
-    def google_gke_user_impersonation(self) -> Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]:
+    def google_gke_user_impersonation(self) -> pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]:
         return pulumi.get(self, "google_gke_user_impersonation")
 
     @google_gke_user_impersonation.setter
-    def google_gke_user_impersonation(self, value: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]):
+    def google_gke_user_impersonation(self, value: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
-    def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
+    def google_spanner(self) -> pulumi.Input[Optional['ResourceGoogleSpannerArgs']]:
         return pulumi.get(self, "google_spanner")
 
     @google_spanner.setter
-    def google_spanner(self, value: Optional[pulumi.Input['ResourceGoogleSpannerArgs']]):
+    def google_spanner(self, value: pulumi.Input[Optional['ResourceGoogleSpannerArgs']]):
         pulumi.set(self, "google_spanner", value)
 
     @_builtins.property
     @pulumi.getter
-    def greenplum(self) -> Optional[pulumi.Input['ResourceGreenplumArgs']]:
+    def greenplum(self) -> pulumi.Input[Optional['ResourceGreenplumArgs']]:
         return pulumi.get(self, "greenplum")
 
     @greenplum.setter
-    def greenplum(self, value: Optional[pulumi.Input['ResourceGreenplumArgs']]):
+    def greenplum(self, value: pulumi.Input[Optional['ResourceGreenplumArgs']]):
         pulumi.set(self, "greenplum", value)
 
     @_builtins.property
     @pulumi.getter(name="httpAuth")
-    def http_auth(self) -> Optional[pulumi.Input['ResourceHttpAuthArgs']]:
+    def http_auth(self) -> pulumi.Input[Optional['ResourceHttpAuthArgs']]:
         return pulumi.get(self, "http_auth")
 
     @http_auth.setter
-    def http_auth(self, value: Optional[pulumi.Input['ResourceHttpAuthArgs']]):
+    def http_auth(self, value: pulumi.Input[Optional['ResourceHttpAuthArgs']]):
         pulumi.set(self, "http_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="httpBasicAuth")
-    def http_basic_auth(self) -> Optional[pulumi.Input['ResourceHttpBasicAuthArgs']]:
+    def http_basic_auth(self) -> pulumi.Input[Optional['ResourceHttpBasicAuthArgs']]:
         return pulumi.get(self, "http_basic_auth")
 
     @http_basic_auth.setter
-    def http_basic_auth(self, value: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']]):
+    def http_basic_auth(self, value: pulumi.Input[Optional['ResourceHttpBasicAuthArgs']]):
         pulumi.set(self, "http_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="httpNoAuth")
-    def http_no_auth(self) -> Optional[pulumi.Input['ResourceHttpNoAuthArgs']]:
+    def http_no_auth(self) -> pulumi.Input[Optional['ResourceHttpNoAuthArgs']]:
         return pulumi.get(self, "http_no_auth")
 
     @http_no_auth.setter
-    def http_no_auth(self, value: Optional[pulumi.Input['ResourceHttpNoAuthArgs']]):
+    def http_no_auth(self, value: pulumi.Input[Optional['ResourceHttpNoAuthArgs']]):
         pulumi.set(self, "http_no_auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['ResourceKubernetesArgs']]:
+    def kubernetes(self) -> pulumi.Input[Optional['ResourceKubernetesArgs']]:
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['ResourceKubernetesArgs']]):
+    def kubernetes(self, value: pulumi.Input[Optional['ResourceKubernetesArgs']]):
         pulumi.set(self, "kubernetes", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesBasicAuth")
-    def kubernetes_basic_auth(self) -> Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]:
+    def kubernetes_basic_auth(self) -> pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']]:
         """
         KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @kubernetes_basic_auth.setter
-    def kubernetes_basic_auth(self, value: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]):
+    def kubernetes_basic_auth(self, value: pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']]):
         pulumi.set(self, "kubernetes_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesPodIdentity")
-    def kubernetes_pod_identity(self) -> Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]:
+    def kubernetes_pod_identity(self) -> pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']]:
         return pulumi.get(self, "kubernetes_pod_identity")
 
     @kubernetes_pod_identity.setter
-    def kubernetes_pod_identity(self, value: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]):
+    def kubernetes_pod_identity(self, value: pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']]):
         pulumi.set(self, "kubernetes_pod_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccount")
-    def kubernetes_service_account(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]:
+    def kubernetes_service_account(self) -> pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']]:
         return pulumi.get(self, "kubernetes_service_account")
 
     @kubernetes_service_account.setter
-    def kubernetes_service_account(self, value: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]):
+    def kubernetes_service_account(self, value: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']]):
         pulumi.set(self, "kubernetes_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonation")
     @_utilities.deprecated("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
-    def kubernetes_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
+    def kubernetes_service_account_user_impersonation(self) -> pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_service_account_user_impersonation")
 
     @kubernetes_service_account_user_impersonation.setter
-    def kubernetes_service_account_user_impersonation(self, value: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]):
+    def kubernetes_service_account_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_service_account_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesUserImpersonation")
     @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
-    def kubernetes_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]:
+    def kubernetes_user_impersonation(self) -> pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
 
     @kubernetes_user_impersonation.setter
-    def kubernetes_user_impersonation(self, value: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]):
+    def kubernetes_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter
-    def maria(self) -> Optional[pulumi.Input['ResourceMariaArgs']]:
+    def maria(self) -> pulumi.Input[Optional['ResourceMariaArgs']]:
         return pulumi.get(self, "maria")
 
     @maria.setter
-    def maria(self, value: Optional[pulumi.Input['ResourceMariaArgs']]):
+    def maria(self, value: pulumi.Input[Optional['ResourceMariaArgs']]):
         pulumi.set(self, "maria", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayNoAuth")
-    def mcp_gateway_no_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]:
+    def mcp_gateway_no_auth(self) -> pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']]:
         return pulumi.get(self, "mcp_gateway_no_auth")
 
     @mcp_gateway_no_auth.setter
-    def mcp_gateway_no_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]):
+    def mcp_gateway_no_auth(self, value: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']]):
         pulumi.set(self, "mcp_gateway_no_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayOAuth")
-    def mcp_gateway_o_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]:
+    def mcp_gateway_o_auth(self) -> pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']]:
         return pulumi.get(self, "mcp_gateway_o_auth")
 
     @mcp_gateway_o_auth.setter
-    def mcp_gateway_o_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]):
+    def mcp_gateway_o_auth(self, value: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']]):
         pulumi.set(self, "mcp_gateway_o_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayOAuthDcr")
-    def mcp_gateway_o_auth_dcr(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]:
+    def mcp_gateway_o_auth_dcr(self) -> pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']]:
         return pulumi.get(self, "mcp_gateway_o_auth_dcr")
 
     @mcp_gateway_o_auth_dcr.setter
-    def mcp_gateway_o_auth_dcr(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]):
+    def mcp_gateway_o_auth_dcr(self, value: pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']]):
         pulumi.set(self, "mcp_gateway_o_auth_dcr", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayPat")
-    def mcp_gateway_pat(self) -> Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]:
+    def mcp_gateway_pat(self) -> pulumi.Input[Optional['ResourceMcpGatewayPatArgs']]:
         return pulumi.get(self, "mcp_gateway_pat")
 
     @mcp_gateway_pat.setter
-    def mcp_gateway_pat(self, value: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]):
+    def mcp_gateway_pat(self, value: pulumi.Input[Optional['ResourceMcpGatewayPatArgs']]):
         pulumi.set(self, "mcp_gateway_pat", value)
 
     @_builtins.property
     @pulumi.getter
-    def memcached(self) -> Optional[pulumi.Input['ResourceMemcachedArgs']]:
+    def memcached(self) -> pulumi.Input[Optional['ResourceMemcachedArgs']]:
         return pulumi.get(self, "memcached")
 
     @memcached.setter
-    def memcached(self, value: Optional[pulumi.Input['ResourceMemcachedArgs']]):
+    def memcached(self, value: pulumi.Input[Optional['ResourceMemcachedArgs']]):
         pulumi.set(self, "memcached", value)
 
     @_builtins.property
     @pulumi.getter
-    def memsql(self) -> Optional[pulumi.Input['ResourceMemsqlArgs']]:
+    def memsql(self) -> pulumi.Input[Optional['ResourceMemsqlArgs']]:
         return pulumi.get(self, "memsql")
 
     @memsql.setter
-    def memsql(self, value: Optional[pulumi.Input['ResourceMemsqlArgs']]):
+    def memsql(self, value: pulumi.Input[Optional['ResourceMemsqlArgs']]):
         pulumi.set(self, "memsql", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoHost")
-    def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
+    def mongo_host(self) -> pulumi.Input[Optional['ResourceMongoHostArgs']]:
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
-    def mongo_host(self, value: Optional[pulumi.Input['ResourceMongoHostArgs']]):
+    def mongo_host(self, value: pulumi.Input[Optional['ResourceMongoHostArgs']]):
         pulumi.set(self, "mongo_host", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoLegacyHost")
-    def mongo_legacy_host(self) -> Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]:
+    def mongo_legacy_host(self) -> pulumi.Input[Optional['ResourceMongoLegacyHostArgs']]:
         """
         MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "mongo_legacy_host")
 
     @mongo_legacy_host.setter
-    def mongo_legacy_host(self, value: Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]):
+    def mongo_legacy_host(self, value: pulumi.Input[Optional['ResourceMongoLegacyHostArgs']]):
         pulumi.set(self, "mongo_legacy_host", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoLegacyReplicaset")
-    def mongo_legacy_replicaset(self) -> Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]:
+    def mongo_legacy_replicaset(self) -> pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']]:
         """
         MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "mongo_legacy_replicaset")
 
     @mongo_legacy_replicaset.setter
-    def mongo_legacy_replicaset(self, value: Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]):
+    def mongo_legacy_replicaset(self, value: pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']]):
         pulumi.set(self, "mongo_legacy_replicaset", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoReplicaSet")
-    def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
+    def mongo_replica_set(self) -> pulumi.Input[Optional['ResourceMongoReplicaSetArgs']]:
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
-    def mongo_replica_set(self, value: Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]):
+    def mongo_replica_set(self, value: pulumi.Input[Optional['ResourceMongoReplicaSetArgs']]):
         pulumi.set(self, "mongo_replica_set", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoShardedCluster")
-    def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
+    def mongo_sharded_cluster(self) -> pulumi.Input[Optional['ResourceMongoShardedClusterArgs']]:
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
-    def mongo_sharded_cluster(self, value: Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]):
+    def mongo_sharded_cluster(self, value: pulumi.Input[Optional['ResourceMongoShardedClusterArgs']]):
         pulumi.set(self, "mongo_sharded_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="mtlsMysql")
-    def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
+    def mtls_mysql(self) -> pulumi.Input[Optional['ResourceMtlsMysqlArgs']]:
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
-    def mtls_mysql(self, value: Optional[pulumi.Input['ResourceMtlsMysqlArgs']]):
+    def mtls_mysql(self, value: pulumi.Input[Optional['ResourceMtlsMysqlArgs']]):
         pulumi.set(self, "mtls_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="mtlsPostgres")
-    def mtls_postgres(self) -> Optional[pulumi.Input['ResourceMtlsPostgresArgs']]:
+    def mtls_postgres(self) -> pulumi.Input[Optional['ResourceMtlsPostgresArgs']]:
         return pulumi.get(self, "mtls_postgres")
 
     @mtls_postgres.setter
-    def mtls_postgres(self, value: Optional[pulumi.Input['ResourceMtlsPostgresArgs']]):
+    def mtls_postgres(self, value: pulumi.Input[Optional['ResourceMtlsPostgresArgs']]):
         pulumi.set(self, "mtls_postgres", value)
 
     @_builtins.property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ResourceMysqlArgs']]:
+    def mysql(self) -> pulumi.Input[Optional['ResourceMysqlArgs']]:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ResourceMysqlArgs']]):
+    def mysql(self, value: pulumi.Input[Optional['ResourceMysqlArgs']]):
         pulumi.set(self, "mysql", value)
 
     @_builtins.property
     @pulumi.getter
-    def neptune(self) -> Optional[pulumi.Input['ResourceNeptuneArgs']]:
+    def neptune(self) -> pulumi.Input[Optional['ResourceNeptuneArgs']]:
         return pulumi.get(self, "neptune")
 
     @neptune.setter
-    def neptune(self, value: Optional[pulumi.Input['ResourceNeptuneArgs']]):
+    def neptune(self, value: pulumi.Input[Optional['ResourceNeptuneArgs']]):
         pulumi.set(self, "neptune", value)
 
     @_builtins.property
     @pulumi.getter(name="neptuneIam")
-    def neptune_iam(self) -> Optional[pulumi.Input['ResourceNeptuneIamArgs']]:
+    def neptune_iam(self) -> pulumi.Input[Optional['ResourceNeptuneIamArgs']]:
         return pulumi.get(self, "neptune_iam")
 
     @neptune_iam.setter
-    def neptune_iam(self, value: Optional[pulumi.Input['ResourceNeptuneIamArgs']]):
+    def neptune_iam(self, value: pulumi.Input[Optional['ResourceNeptuneIamArgs']]):
         pulumi.set(self, "neptune_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="oktaGroups")
-    def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
+    def okta_groups(self) -> pulumi.Input[Optional['ResourceOktaGroupsArgs']]:
         return pulumi.get(self, "okta_groups")
 
     @okta_groups.setter
-    def okta_groups(self, value: Optional[pulumi.Input['ResourceOktaGroupsArgs']]):
+    def okta_groups(self, value: pulumi.Input[Optional['ResourceOktaGroupsArgs']]):
         pulumi.set(self, "okta_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
+    def oracle(self) -> pulumi.Input[Optional['ResourceOracleArgs']]:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ResourceOracleArgs']]):
+    def oracle(self, value: pulumi.Input[Optional['ResourceOracleArgs']]):
         pulumi.set(self, "oracle", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleNne")
-    def oracle_nne(self) -> Optional[pulumi.Input['ResourceOracleNneArgs']]:
+    def oracle_nne(self) -> pulumi.Input[Optional['ResourceOracleNneArgs']]:
         return pulumi.get(self, "oracle_nne")
 
     @oracle_nne.setter
-    def oracle_nne(self, value: Optional[pulumi.Input['ResourceOracleNneArgs']]):
+    def oracle_nne(self, value: pulumi.Input[Optional['ResourceOracleNneArgs']]):
         pulumi.set(self, "oracle_nne", value)
 
     @_builtins.property
     @pulumi.getter
-    def postgres(self) -> Optional[pulumi.Input['ResourcePostgresArgs']]:
+    def postgres(self) -> pulumi.Input[Optional['ResourcePostgresArgs']]:
         return pulumi.get(self, "postgres")
 
     @postgres.setter
-    def postgres(self, value: Optional[pulumi.Input['ResourcePostgresArgs']]):
+    def postgres(self, value: pulumi.Input[Optional['ResourcePostgresArgs']]):
         pulumi.set(self, "postgres", value)
 
     @_builtins.property
     @pulumi.getter
-    def presto(self) -> Optional[pulumi.Input['ResourcePrestoArgs']]:
+    def presto(self) -> pulumi.Input[Optional['ResourcePrestoArgs']]:
         return pulumi.get(self, "presto")
 
     @presto.setter
-    def presto(self, value: Optional[pulumi.Input['ResourcePrestoArgs']]):
+    def presto(self, value: pulumi.Input[Optional['ResourcePrestoArgs']]):
         pulumi.set(self, "presto", value)
 
     @_builtins.property
     @pulumi.getter(name="rabbitmqAmqp091")
-    def rabbitmq_amqp091(self) -> Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']]:
+    def rabbitmq_amqp091(self) -> pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']]:
         return pulumi.get(self, "rabbitmq_amqp091")
 
     @rabbitmq_amqp091.setter
-    def rabbitmq_amqp091(self, value: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']]):
+    def rabbitmq_amqp091(self, value: pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']]):
         pulumi.set(self, "rabbitmq_amqp091", value)
 
     @_builtins.property
     @pulumi.getter(name="rawTcp")
-    def raw_tcp(self) -> Optional[pulumi.Input['ResourceRawTcpArgs']]:
+    def raw_tcp(self) -> pulumi.Input[Optional['ResourceRawTcpArgs']]:
         return pulumi.get(self, "raw_tcp")
 
     @raw_tcp.setter
-    def raw_tcp(self, value: Optional[pulumi.Input['ResourceRawTcpArgs']]):
+    def raw_tcp(self, value: pulumi.Input[Optional['ResourceRawTcpArgs']]):
         pulumi.set(self, "raw_tcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdp(self) -> Optional[pulumi.Input['ResourceRdpArgs']]:
+    def rdp(self) -> pulumi.Input[Optional['ResourceRdpArgs']]:
         return pulumi.get(self, "rdp")
 
     @rdp.setter
-    def rdp(self, value: Optional[pulumi.Input['ResourceRdpArgs']]):
+    def rdp(self, value: pulumi.Input[Optional['ResourceRdpArgs']]):
         pulumi.set(self, "rdp", value)
 
     @_builtins.property
     @pulumi.getter(name="rdpCert")
-    def rdp_cert(self) -> Optional[pulumi.Input['ResourceRdpCertArgs']]:
+    def rdp_cert(self) -> pulumi.Input[Optional['ResourceRdpCertArgs']]:
         return pulumi.get(self, "rdp_cert")
 
     @rdp_cert.setter
-    def rdp_cert(self, value: Optional[pulumi.Input['ResourceRdpCertArgs']]):
+    def rdp_cert(self, value: pulumi.Input[Optional['ResourceRdpCertArgs']]):
         pulumi.set(self, "rdp_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="rdsPostgresIam")
-    def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
+    def rds_postgres_iam(self) -> pulumi.Input[Optional['ResourceRdsPostgresIamArgs']]:
         return pulumi.get(self, "rds_postgres_iam")
 
     @rds_postgres_iam.setter
-    def rds_postgres_iam(self, value: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]):
+    def rds_postgres_iam(self, value: pulumi.Input[Optional['ResourceRdsPostgresIamArgs']]):
         pulumi.set(self, "rds_postgres_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input['ResourceRedisArgs']]:
+    def redis(self) -> pulumi.Input[Optional['ResourceRedisArgs']]:
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input['ResourceRedisArgs']]):
+    def redis(self, value: pulumi.Input[Optional['ResourceRedisArgs']]):
         pulumi.set(self, "redis", value)
 
     @_builtins.property
     @pulumi.getter(name="redisCluster")
-    def redis_cluster(self) -> Optional[pulumi.Input['ResourceRedisClusterArgs']]:
+    def redis_cluster(self) -> pulumi.Input[Optional['ResourceRedisClusterArgs']]:
         return pulumi.get(self, "redis_cluster")
 
     @redis_cluster.setter
-    def redis_cluster(self, value: Optional[pulumi.Input['ResourceRedisClusterArgs']]):
+    def redis_cluster(self, value: pulumi.Input[Optional['ResourceRedisClusterArgs']]):
         pulumi.set(self, "redis_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def redshift(self) -> Optional[pulumi.Input['ResourceRedshiftArgs']]:
+    def redshift(self) -> pulumi.Input[Optional['ResourceRedshiftArgs']]:
         return pulumi.get(self, "redshift")
 
     @redshift.setter
-    def redshift(self, value: Optional[pulumi.Input['ResourceRedshiftArgs']]):
+    def redshift(self, value: pulumi.Input[Optional['ResourceRedshiftArgs']]):
         pulumi.set(self, "redshift", value)
 
     @_builtins.property
     @pulumi.getter(name="redshiftIam")
-    def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
+    def redshift_iam(self) -> pulumi.Input[Optional['ResourceRedshiftIamArgs']]:
         return pulumi.get(self, "redshift_iam")
 
     @redshift_iam.setter
-    def redshift_iam(self, value: Optional[pulumi.Input['ResourceRedshiftIamArgs']]):
+    def redshift_iam(self, value: pulumi.Input[Optional['ResourceRedshiftIamArgs']]):
         pulumi.set(self, "redshift_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="redshiftServerlessIam")
-    def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
+    def redshift_serverless_iam(self) -> pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']]:
         return pulumi.get(self, "redshift_serverless_iam")
 
     @redshift_serverless_iam.setter
-    def redshift_serverless_iam(self, value: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]):
+    def redshift_serverless_iam(self, value: pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']]):
         pulumi.set(self, "redshift_serverless_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="singleStore")
-    def single_store(self) -> Optional[pulumi.Input['ResourceSingleStoreArgs']]:
+    def single_store(self) -> pulumi.Input[Optional['ResourceSingleStoreArgs']]:
         return pulumi.get(self, "single_store")
 
     @single_store.setter
-    def single_store(self, value: Optional[pulumi.Input['ResourceSingleStoreArgs']]):
+    def single_store(self, value: pulumi.Input[Optional['ResourceSingleStoreArgs']]):
         pulumi.set(self, "single_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def snowflake(self) -> Optional[pulumi.Input['ResourceSnowflakeArgs']]:
+    def snowflake(self) -> pulumi.Input[Optional['ResourceSnowflakeArgs']]:
         return pulumi.get(self, "snowflake")
 
     @snowflake.setter
-    def snowflake(self, value: Optional[pulumi.Input['ResourceSnowflakeArgs']]):
+    def snowflake(self, value: pulumi.Input[Optional['ResourceSnowflakeArgs']]):
         pulumi.set(self, "snowflake", value)
 
     @_builtins.property
     @pulumi.getter
-    def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
+    def snowsight(self) -> pulumi.Input[Optional['ResourceSnowsightArgs']]:
         return pulumi.get(self, "snowsight")
 
     @snowsight.setter
-    def snowsight(self, value: Optional[pulumi.Input['ResourceSnowsightArgs']]):
+    def snowsight(self, value: pulumi.Input[Optional['ResourceSnowsightArgs']]):
         pulumi.set(self, "snowsight", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServer")
-    def sql_server(self) -> Optional[pulumi.Input['ResourceSqlServerArgs']]:
+    def sql_server(self) -> pulumi.Input[Optional['ResourceSqlServerArgs']]:
         return pulumi.get(self, "sql_server")
 
     @sql_server.setter
-    def sql_server(self, value: Optional[pulumi.Input['ResourceSqlServerArgs']]):
+    def sql_server(self, value: pulumi.Input[Optional['ResourceSqlServerArgs']]):
         pulumi.set(self, "sql_server", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerAzureAd")
-    def sql_server_azure_ad(self) -> Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]:
+    def sql_server_azure_ad(self) -> pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']]:
         return pulumi.get(self, "sql_server_azure_ad")
 
     @sql_server_azure_ad.setter
-    def sql_server_azure_ad(self, value: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]):
+    def sql_server_azure_ad(self, value: pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']]):
         pulumi.set(self, "sql_server_azure_ad", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerKerberosAd")
-    def sql_server_kerberos_ad(self) -> Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]:
+    def sql_server_kerberos_ad(self) -> pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']]:
         return pulumi.get(self, "sql_server_kerberos_ad")
 
     @sql_server_kerberos_ad.setter
-    def sql_server_kerberos_ad(self, value: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]):
+    def sql_server_kerberos_ad(self, value: pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']]):
         pulumi.set(self, "sql_server_kerberos_ad", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['ResourceSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['ResourceSshArgs']]:
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['ResourceSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['ResourceSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter(name="sshCert")
-    def ssh_cert(self) -> Optional[pulumi.Input['ResourceSshCertArgs']]:
+    def ssh_cert(self) -> pulumi.Input[Optional['ResourceSshCertArgs']]:
         return pulumi.get(self, "ssh_cert")
 
     @ssh_cert.setter
-    def ssh_cert(self, value: Optional[pulumi.Input['ResourceSshCertArgs']]):
+    def ssh_cert(self, value: pulumi.Input[Optional['ResourceSshCertArgs']]):
         pulumi.set(self, "ssh_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sshCustomerKey")
-    def ssh_customer_key(self) -> Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]:
+    def ssh_customer_key(self) -> pulumi.Input[Optional['ResourceSshCustomerKeyArgs']]:
         return pulumi.get(self, "ssh_customer_key")
 
     @ssh_customer_key.setter
-    def ssh_customer_key(self, value: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]):
+    def ssh_customer_key(self, value: pulumi.Input[Optional['ResourceSshCustomerKeyArgs']]):
         pulumi.set(self, "ssh_customer_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPassword")
-    def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
+    def ssh_password(self) -> pulumi.Input[Optional['ResourceSshPasswordArgs']]:
         return pulumi.get(self, "ssh_password")
 
     @ssh_password.setter
-    def ssh_password(self, value: Optional[pulumi.Input['ResourceSshPasswordArgs']]):
+    def ssh_password(self, value: pulumi.Input[Optional['ResourceSshPasswordArgs']]):
         pulumi.set(self, "ssh_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def sybase(self) -> Optional[pulumi.Input['ResourceSybaseArgs']]:
+    def sybase(self) -> pulumi.Input[Optional['ResourceSybaseArgs']]:
         return pulumi.get(self, "sybase")
 
     @sybase.setter
-    def sybase(self, value: Optional[pulumi.Input['ResourceSybaseArgs']]):
+    def sybase(self, value: pulumi.Input[Optional['ResourceSybaseArgs']]):
         pulumi.set(self, "sybase", value)
 
     @_builtins.property
     @pulumi.getter(name="sybaseIq")
-    def sybase_iq(self) -> Optional[pulumi.Input['ResourceSybaseIqArgs']]:
+    def sybase_iq(self) -> pulumi.Input[Optional['ResourceSybaseIqArgs']]:
         return pulumi.get(self, "sybase_iq")
 
     @sybase_iq.setter
-    def sybase_iq(self, value: Optional[pulumi.Input['ResourceSybaseIqArgs']]):
+    def sybase_iq(self, value: pulumi.Input[Optional['ResourceSybaseIqArgs']]):
         pulumi.set(self, "sybase_iq", value)
 
     @_builtins.property
     @pulumi.getter
-    def teradata(self) -> Optional[pulumi.Input['ResourceTeradataArgs']]:
+    def teradata(self) -> pulumi.Input[Optional['ResourceTeradataArgs']]:
         return pulumi.get(self, "teradata")
 
     @teradata.setter
-    def teradata(self, value: Optional[pulumi.Input['ResourceTeradataArgs']]):
+    def teradata(self, value: pulumi.Input[Optional['ResourceTeradataArgs']]):
         pulumi.set(self, "teradata", value)
 
     @_builtins.property
     @pulumi.getter
-    def trino(self) -> Optional[pulumi.Input['ResourceTrinoArgs']]:
+    def trino(self) -> pulumi.Input[Optional['ResourceTrinoArgs']]:
         return pulumi.get(self, "trino")
 
     @trino.setter
-    def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
+    def trino(self, value: pulumi.Input[Optional['ResourceTrinoArgs']]):
         pulumi.set(self, "trino", value)
 
     @_builtins.property
     @pulumi.getter
-    def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
+    def vertica(self) -> pulumi.Input[Optional['ResourceVerticaArgs']]:
         return pulumi.get(self, "vertica")
 
     @vertica.setter
-    def vertica(self, value: Optional[pulumi.Input['ResourceVerticaArgs']]):
+    def vertica(self, value: pulumi.Input[Optional['ResourceVerticaArgs']]):
         pulumi.set(self, "vertica", value)
 
 
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
-                 aerospike: Optional[pulumi.Input['ResourceAerospikeArgs']] = None,
-                 aks: Optional[pulumi.Input['ResourceAksArgs']] = None,
-                 aks_basic_auth: Optional[pulumi.Input['ResourceAksBasicAuthArgs']] = None,
-                 aks_service_account: Optional[pulumi.Input['ResourceAksServiceAccountArgs']] = None,
-                 aks_service_account_user_impersonation: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']] = None,
-                 aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
-                 amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
-                 amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
-                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
-                 amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
-                 amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
-                 amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
-                 amazonmq_amqp: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']] = None,
-                 amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
-                 athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
-                 athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
-                 aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
-                 aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
-                 aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
-                 aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
-                 aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
-                 aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
-                 aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
-                 aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
-                 azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
-                 azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
-                 azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
-                 azure_mysql_managed_identity: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']] = None,
-                 azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
-                 azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
-                 big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
-                 cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
-                 citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
-                 click_house_http: Optional[pulumi.Input['ResourceClickHouseHttpArgs']] = None,
-                 click_house_my_sql: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']] = None,
-                 click_house_tcp: Optional[pulumi.Input['ResourceClickHouseTcpArgs']] = None,
-                 clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
-                 cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
-                 couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
-                 couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
-                 databricks: Optional[pulumi.Input['ResourceDatabricksArgs']] = None,
-                 db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
-                 db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
-                 document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
-                 document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
-                 document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
-                 document_db_replica_set_iam: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']] = None,
-                 druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
-                 dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
-                 dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
-                 elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
-                 elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
-                 elasticache_redis_iam: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']] = None,
-                 entra_id: Optional[pulumi.Input['ResourceEntraIdArgs']] = None,
-                 gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
-                 gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
-                 gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
-                 google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
-                 google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
-                 google_spanner: Optional[pulumi.Input['ResourceGoogleSpannerArgs']] = None,
-                 greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
-                 http_auth: Optional[pulumi.Input['ResourceHttpAuthArgs']] = None,
-                 http_basic_auth: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']] = None,
-                 http_no_auth: Optional[pulumi.Input['ResourceHttpNoAuthArgs']] = None,
-                 kubernetes: Optional[pulumi.Input['ResourceKubernetesArgs']] = None,
-                 kubernetes_basic_auth: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']] = None,
-                 kubernetes_pod_identity: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']] = None,
-                 kubernetes_service_account: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']] = None,
-                 kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
-                 kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
-                 maria: Optional[pulumi.Input['ResourceMariaArgs']] = None,
-                 mcp_gateway_no_auth: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']] = None,
-                 mcp_gateway_o_auth: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']] = None,
-                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']] = None,
-                 mcp_gateway_pat: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']] = None,
-                 memcached: Optional[pulumi.Input['ResourceMemcachedArgs']] = None,
-                 memsql: Optional[pulumi.Input['ResourceMemsqlArgs']] = None,
-                 mongo_host: Optional[pulumi.Input['ResourceMongoHostArgs']] = None,
-                 mongo_legacy_host: Optional[pulumi.Input['ResourceMongoLegacyHostArgs']] = None,
-                 mongo_legacy_replicaset: Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']] = None,
-                 mongo_replica_set: Optional[pulumi.Input['ResourceMongoReplicaSetArgs']] = None,
-                 mongo_sharded_cluster: Optional[pulumi.Input['ResourceMongoShardedClusterArgs']] = None,
-                 mtls_mysql: Optional[pulumi.Input['ResourceMtlsMysqlArgs']] = None,
-                 mtls_postgres: Optional[pulumi.Input['ResourceMtlsPostgresArgs']] = None,
-                 mysql: Optional[pulumi.Input['ResourceMysqlArgs']] = None,
-                 neptune: Optional[pulumi.Input['ResourceNeptuneArgs']] = None,
-                 neptune_iam: Optional[pulumi.Input['ResourceNeptuneIamArgs']] = None,
-                 okta_groups: Optional[pulumi.Input['ResourceOktaGroupsArgs']] = None,
-                 oracle: Optional[pulumi.Input['ResourceOracleArgs']] = None,
-                 oracle_nne: Optional[pulumi.Input['ResourceOracleNneArgs']] = None,
-                 postgres: Optional[pulumi.Input['ResourcePostgresArgs']] = None,
-                 presto: Optional[pulumi.Input['ResourcePrestoArgs']] = None,
-                 rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
-                 raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
-                 rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
-                 rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
-                 rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
-                 redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
-                 redis_cluster: Optional[pulumi.Input['ResourceRedisClusterArgs']] = None,
-                 redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
-                 redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
-                 redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
-                 single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
-                 snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
-                 snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
-                 sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
-                 sql_server_azure_ad: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']] = None,
-                 sql_server_kerberos_ad: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']] = None,
-                 ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
-                 ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
-                 ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
-                 ssh_password: Optional[pulumi.Input['ResourceSshPasswordArgs']] = None,
-                 sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
-                 sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
-                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
-                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None,
-                 vertica: Optional[pulumi.Input['ResourceVerticaArgs']] = None):
+                 aerospike: pulumi.Input[Optional['ResourceAerospikeArgs']] = None,
+                 aks: pulumi.Input[Optional['ResourceAksArgs']] = None,
+                 aks_basic_auth: pulumi.Input[Optional['ResourceAksBasicAuthArgs']] = None,
+                 aks_service_account: pulumi.Input[Optional['ResourceAksServiceAccountArgs']] = None,
+                 aks_service_account_user_impersonation: pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']] = None,
+                 aks_user_impersonation: pulumi.Input[Optional['ResourceAksUserImpersonationArgs']] = None,
+                 amazon_eks: pulumi.Input[Optional['ResourceAmazonEksArgs']] = None,
+                 amazon_eks_instance_profile: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']] = None,
+                 amazon_eks_instance_profile_user_impersonation: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
+                 amazon_eks_user_impersonation: pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']] = None,
+                 amazon_es: pulumi.Input[Optional['ResourceAmazonEsArgs']] = None,
+                 amazon_esiam: pulumi.Input[Optional['ResourceAmazonEsiamArgs']] = None,
+                 amazonmq_amqp: pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']] = None,
+                 amazonmq_amqp091: pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']] = None,
+                 athena: pulumi.Input[Optional['ResourceAthenaArgs']] = None,
+                 athena_iam: pulumi.Input[Optional['ResourceAthenaIamArgs']] = None,
+                 aurora_mysql: pulumi.Input[Optional['ResourceAuroraMysqlArgs']] = None,
+                 aurora_mysql_iam: pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']] = None,
+                 aurora_postgres: pulumi.Input[Optional['ResourceAuroraPostgresArgs']] = None,
+                 aurora_postgres_iam: pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']] = None,
+                 aws: pulumi.Input[Optional['ResourceAwsArgs']] = None,
+                 aws_console: pulumi.Input[Optional['ResourceAwsConsoleArgs']] = None,
+                 aws_console_static_key_pair: pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']] = None,
+                 aws_instance_profile: pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']] = None,
+                 azure: pulumi.Input[Optional['ResourceAzureArgs']] = None,
+                 azure_certificate: pulumi.Input[Optional['ResourceAzureCertificateArgs']] = None,
+                 azure_mysql: pulumi.Input[Optional['ResourceAzureMysqlArgs']] = None,
+                 azure_mysql_managed_identity: pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']] = None,
+                 azure_postgres: pulumi.Input[Optional['ResourceAzurePostgresArgs']] = None,
+                 azure_postgres_managed_identity: pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']] = None,
+                 big_query: pulumi.Input[Optional['ResourceBigQueryArgs']] = None,
+                 cassandra: pulumi.Input[Optional['ResourceCassandraArgs']] = None,
+                 citus: pulumi.Input[Optional['ResourceCitusArgs']] = None,
+                 click_house_http: pulumi.Input[Optional['ResourceClickHouseHttpArgs']] = None,
+                 click_house_my_sql: pulumi.Input[Optional['ResourceClickHouseMySqlArgs']] = None,
+                 click_house_tcp: pulumi.Input[Optional['ResourceClickHouseTcpArgs']] = None,
+                 clustrix: pulumi.Input[Optional['ResourceClustrixArgs']] = None,
+                 cockroach: pulumi.Input[Optional['ResourceCockroachArgs']] = None,
+                 couchbase_database: pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']] = None,
+                 couchbase_web_ui: pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']] = None,
+                 databricks: pulumi.Input[Optional['ResourceDatabricksArgs']] = None,
+                 db2_i: pulumi.Input[Optional['ResourceDb2IArgs']] = None,
+                 db2_luw: pulumi.Input[Optional['ResourceDb2LuwArgs']] = None,
+                 document_db_host: pulumi.Input[Optional['ResourceDocumentDbHostArgs']] = None,
+                 document_db_host_iam: pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']] = None,
+                 document_db_replica_set: pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']] = None,
+                 document_db_replica_set_iam: pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']] = None,
+                 druid: pulumi.Input[Optional['ResourceDruidArgs']] = None,
+                 dynamo_db: pulumi.Input[Optional['ResourceDynamoDbArgs']] = None,
+                 dynamo_dbiam: pulumi.Input[Optional['ResourceDynamoDbiamArgs']] = None,
+                 elastic: pulumi.Input[Optional['ResourceElasticArgs']] = None,
+                 elasticache_redis: pulumi.Input[Optional['ResourceElasticacheRedisArgs']] = None,
+                 elasticache_redis_iam: pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']] = None,
+                 entra_id: pulumi.Input[Optional['ResourceEntraIdArgs']] = None,
+                 gcp: pulumi.Input[Optional['ResourceGcpArgs']] = None,
+                 gcp_console: pulumi.Input[Optional['ResourceGcpConsoleArgs']] = None,
+                 gcpwif: pulumi.Input[Optional['ResourceGcpwifArgs']] = None,
+                 google_gke: pulumi.Input[Optional['ResourceGoogleGkeArgs']] = None,
+                 google_gke_user_impersonation: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_spanner: pulumi.Input[Optional['ResourceGoogleSpannerArgs']] = None,
+                 greenplum: pulumi.Input[Optional['ResourceGreenplumArgs']] = None,
+                 http_auth: pulumi.Input[Optional['ResourceHttpAuthArgs']] = None,
+                 http_basic_auth: pulumi.Input[Optional['ResourceHttpBasicAuthArgs']] = None,
+                 http_no_auth: pulumi.Input[Optional['ResourceHttpNoAuthArgs']] = None,
+                 kubernetes: pulumi.Input[Optional['ResourceKubernetesArgs']] = None,
+                 kubernetes_basic_auth: pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']] = None,
+                 kubernetes_pod_identity: pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']] = None,
+                 kubernetes_service_account: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']] = None,
+                 kubernetes_service_account_user_impersonation: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
+                 kubernetes_user_impersonation: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']] = None,
+                 maria: pulumi.Input[Optional['ResourceMariaArgs']] = None,
+                 mcp_gateway_no_auth: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']] = None,
+                 mcp_gateway_o_auth: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']] = None,
+                 mcp_gateway_o_auth_dcr: pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']] = None,
+                 mcp_gateway_pat: pulumi.Input[Optional['ResourceMcpGatewayPatArgs']] = None,
+                 memcached: pulumi.Input[Optional['ResourceMemcachedArgs']] = None,
+                 memsql: pulumi.Input[Optional['ResourceMemsqlArgs']] = None,
+                 mongo_host: pulumi.Input[Optional['ResourceMongoHostArgs']] = None,
+                 mongo_legacy_host: pulumi.Input[Optional['ResourceMongoLegacyHostArgs']] = None,
+                 mongo_legacy_replicaset: pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']] = None,
+                 mongo_replica_set: pulumi.Input[Optional['ResourceMongoReplicaSetArgs']] = None,
+                 mongo_sharded_cluster: pulumi.Input[Optional['ResourceMongoShardedClusterArgs']] = None,
+                 mtls_mysql: pulumi.Input[Optional['ResourceMtlsMysqlArgs']] = None,
+                 mtls_postgres: pulumi.Input[Optional['ResourceMtlsPostgresArgs']] = None,
+                 mysql: pulumi.Input[Optional['ResourceMysqlArgs']] = None,
+                 neptune: pulumi.Input[Optional['ResourceNeptuneArgs']] = None,
+                 neptune_iam: pulumi.Input[Optional['ResourceNeptuneIamArgs']] = None,
+                 okta_groups: pulumi.Input[Optional['ResourceOktaGroupsArgs']] = None,
+                 oracle: pulumi.Input[Optional['ResourceOracleArgs']] = None,
+                 oracle_nne: pulumi.Input[Optional['ResourceOracleNneArgs']] = None,
+                 postgres: pulumi.Input[Optional['ResourcePostgresArgs']] = None,
+                 presto: pulumi.Input[Optional['ResourcePrestoArgs']] = None,
+                 rabbitmq_amqp091: pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']] = None,
+                 raw_tcp: pulumi.Input[Optional['ResourceRawTcpArgs']] = None,
+                 rdp: pulumi.Input[Optional['ResourceRdpArgs']] = None,
+                 rdp_cert: pulumi.Input[Optional['ResourceRdpCertArgs']] = None,
+                 rds_postgres_iam: pulumi.Input[Optional['ResourceRdsPostgresIamArgs']] = None,
+                 redis: pulumi.Input[Optional['ResourceRedisArgs']] = None,
+                 redis_cluster: pulumi.Input[Optional['ResourceRedisClusterArgs']] = None,
+                 redshift: pulumi.Input[Optional['ResourceRedshiftArgs']] = None,
+                 redshift_iam: pulumi.Input[Optional['ResourceRedshiftIamArgs']] = None,
+                 redshift_serverless_iam: pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']] = None,
+                 single_store: pulumi.Input[Optional['ResourceSingleStoreArgs']] = None,
+                 snowflake: pulumi.Input[Optional['ResourceSnowflakeArgs']] = None,
+                 snowsight: pulumi.Input[Optional['ResourceSnowsightArgs']] = None,
+                 sql_server: pulumi.Input[Optional['ResourceSqlServerArgs']] = None,
+                 sql_server_azure_ad: pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']] = None,
+                 sql_server_kerberos_ad: pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']] = None,
+                 ssh: pulumi.Input[Optional['ResourceSshArgs']] = None,
+                 ssh_cert: pulumi.Input[Optional['ResourceSshCertArgs']] = None,
+                 ssh_customer_key: pulumi.Input[Optional['ResourceSshCustomerKeyArgs']] = None,
+                 ssh_password: pulumi.Input[Optional['ResourceSshPasswordArgs']] = None,
+                 sybase: pulumi.Input[Optional['ResourceSybaseArgs']] = None,
+                 sybase_iq: pulumi.Input[Optional['ResourceSybaseIqArgs']] = None,
+                 teradata: pulumi.Input[Optional['ResourceTeradataArgs']] = None,
+                 trino: pulumi.Input[Optional['ResourceTrinoArgs']] = None,
+                 vertica: pulumi.Input[Optional['ResourceVerticaArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
 
@@ -1871,1080 +1871,1080 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter
-    def aerospike(self) -> Optional[pulumi.Input['ResourceAerospikeArgs']]:
+    def aerospike(self) -> pulumi.Input[Optional['ResourceAerospikeArgs']]:
         return pulumi.get(self, "aerospike")
 
     @aerospike.setter
-    def aerospike(self, value: Optional[pulumi.Input['ResourceAerospikeArgs']]):
+    def aerospike(self, value: pulumi.Input[Optional['ResourceAerospikeArgs']]):
         pulumi.set(self, "aerospike", value)
 
     @_builtins.property
     @pulumi.getter
-    def aks(self) -> Optional[pulumi.Input['ResourceAksArgs']]:
+    def aks(self) -> pulumi.Input[Optional['ResourceAksArgs']]:
         return pulumi.get(self, "aks")
 
     @aks.setter
-    def aks(self, value: Optional[pulumi.Input['ResourceAksArgs']]):
+    def aks(self, value: pulumi.Input[Optional['ResourceAksArgs']]):
         pulumi.set(self, "aks", value)
 
     @_builtins.property
     @pulumi.getter(name="aksBasicAuth")
-    def aks_basic_auth(self) -> Optional[pulumi.Input['ResourceAksBasicAuthArgs']]:
+    def aks_basic_auth(self) -> pulumi.Input[Optional['ResourceAksBasicAuthArgs']]:
         """
         AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "aks_basic_auth")
 
     @aks_basic_auth.setter
-    def aks_basic_auth(self, value: Optional[pulumi.Input['ResourceAksBasicAuthArgs']]):
+    def aks_basic_auth(self, value: pulumi.Input[Optional['ResourceAksBasicAuthArgs']]):
         pulumi.set(self, "aks_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccount")
-    def aks_service_account(self) -> Optional[pulumi.Input['ResourceAksServiceAccountArgs']]:
+    def aks_service_account(self) -> pulumi.Input[Optional['ResourceAksServiceAccountArgs']]:
         return pulumi.get(self, "aks_service_account")
 
     @aks_service_account.setter
-    def aks_service_account(self, value: Optional[pulumi.Input['ResourceAksServiceAccountArgs']]):
+    def aks_service_account(self, value: pulumi.Input[Optional['ResourceAksServiceAccountArgs']]):
         pulumi.set(self, "aks_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="aksServiceAccountUserImpersonation")
     @_utilities.deprecated("""aks_service_account_user_impersonation is deprecated, see docs for more info""")
-    def aks_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]:
+    def aks_service_account_user_impersonation(self) -> pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "aks_service_account_user_impersonation")
 
     @aks_service_account_user_impersonation.setter
-    def aks_service_account_user_impersonation(self, value: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']]):
+    def aks_service_account_user_impersonation(self, value: pulumi.Input[Optional['ResourceAksServiceAccountUserImpersonationArgs']]):
         pulumi.set(self, "aks_service_account_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="aksUserImpersonation")
     @_utilities.deprecated("""aks_user_impersonation is deprecated, see docs for more info""")
-    def aks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]:
+    def aks_user_impersonation(self) -> pulumi.Input[Optional['ResourceAksUserImpersonationArgs']]:
         return pulumi.get(self, "aks_user_impersonation")
 
     @aks_user_impersonation.setter
-    def aks_user_impersonation(self, value: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']]):
+    def aks_user_impersonation(self, value: pulumi.Input[Optional['ResourceAksUserImpersonationArgs']]):
         pulumi.set(self, "aks_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEks")
-    def amazon_eks(self) -> Optional[pulumi.Input['ResourceAmazonEksArgs']]:
+    def amazon_eks(self) -> pulumi.Input[Optional['ResourceAmazonEksArgs']]:
         return pulumi.get(self, "amazon_eks")
 
     @amazon_eks.setter
-    def amazon_eks(self, value: Optional[pulumi.Input['ResourceAmazonEksArgs']]):
+    def amazon_eks(self, value: pulumi.Input[Optional['ResourceAmazonEksArgs']]):
         pulumi.set(self, "amazon_eks", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfile")
-    def amazon_eks_instance_profile(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]:
+    def amazon_eks_instance_profile(self) -> pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile")
 
     @amazon_eks_instance_profile.setter
-    def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
+    def amazon_eks_instance_profile(self, value: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
     @_utilities.deprecated("""amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info""")
-    def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
+    def amazon_eks_instance_profile_user_impersonation(self) -> pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
     @amazon_eks_instance_profile_user_impersonation.setter
-    def amazon_eks_instance_profile_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
+    def amazon_eks_instance_profile_user_impersonation(self, value: pulumi.Input[Optional['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEksUserImpersonation")
     @_utilities.deprecated("""amazon_eks_user_impersonation is deprecated, see docs for more info""")
-    def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
+    def amazon_eks_user_impersonation(self) -> pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
 
     @amazon_eks_user_impersonation.setter
-    def amazon_eks_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]):
+    def amazon_eks_user_impersonation(self, value: pulumi.Input[Optional['ResourceAmazonEksUserImpersonationArgs']]):
         pulumi.set(self, "amazon_eks_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEs")
-    def amazon_es(self) -> Optional[pulumi.Input['ResourceAmazonEsArgs']]:
+    def amazon_es(self) -> pulumi.Input[Optional['ResourceAmazonEsArgs']]:
         return pulumi.get(self, "amazon_es")
 
     @amazon_es.setter
-    def amazon_es(self, value: Optional[pulumi.Input['ResourceAmazonEsArgs']]):
+    def amazon_es(self, value: pulumi.Input[Optional['ResourceAmazonEsArgs']]):
         pulumi.set(self, "amazon_es", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonEsiam")
-    def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
+    def amazon_esiam(self) -> pulumi.Input[Optional['ResourceAmazonEsiamArgs']]:
         return pulumi.get(self, "amazon_esiam")
 
     @amazon_esiam.setter
-    def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
+    def amazon_esiam(self, value: pulumi.Input[Optional['ResourceAmazonEsiamArgs']]):
         pulumi.set(self, "amazon_esiam", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp")
-    def amazonmq_amqp(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]:
+    def amazonmq_amqp(self) -> pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']]:
         return pulumi.get(self, "amazonmq_amqp")
 
     @amazonmq_amqp.setter
-    def amazonmq_amqp(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqpArgs']]):
+    def amazonmq_amqp(self, value: pulumi.Input[Optional['ResourceAmazonmqAmqpArgs']]):
         pulumi.set(self, "amazonmq_amqp", value)
 
     @_builtins.property
     @pulumi.getter(name="amazonmqAmqp091")
-    def amazonmq_amqp091(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]:
+    def amazonmq_amqp091(self) -> pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']]:
         return pulumi.get(self, "amazonmq_amqp091")
 
     @amazonmq_amqp091.setter
-    def amazonmq_amqp091(self, value: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]):
+    def amazonmq_amqp091(self, value: pulumi.Input[Optional['ResourceAmazonmqAmqp091Args']]):
         pulumi.set(self, "amazonmq_amqp091", value)
 
     @_builtins.property
     @pulumi.getter
-    def athena(self) -> Optional[pulumi.Input['ResourceAthenaArgs']]:
+    def athena(self) -> pulumi.Input[Optional['ResourceAthenaArgs']]:
         return pulumi.get(self, "athena")
 
     @athena.setter
-    def athena(self, value: Optional[pulumi.Input['ResourceAthenaArgs']]):
+    def athena(self, value: pulumi.Input[Optional['ResourceAthenaArgs']]):
         pulumi.set(self, "athena", value)
 
     @_builtins.property
     @pulumi.getter(name="athenaIam")
-    def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
+    def athena_iam(self) -> pulumi.Input[Optional['ResourceAthenaIamArgs']]:
         return pulumi.get(self, "athena_iam")
 
     @athena_iam.setter
-    def athena_iam(self, value: Optional[pulumi.Input['ResourceAthenaIamArgs']]):
+    def athena_iam(self, value: pulumi.Input[Optional['ResourceAthenaIamArgs']]):
         pulumi.set(self, "athena_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraMysql")
-    def aurora_mysql(self) -> Optional[pulumi.Input['ResourceAuroraMysqlArgs']]:
+    def aurora_mysql(self) -> pulumi.Input[Optional['ResourceAuroraMysqlArgs']]:
         return pulumi.get(self, "aurora_mysql")
 
     @aurora_mysql.setter
-    def aurora_mysql(self, value: Optional[pulumi.Input['ResourceAuroraMysqlArgs']]):
+    def aurora_mysql(self, value: pulumi.Input[Optional['ResourceAuroraMysqlArgs']]):
         pulumi.set(self, "aurora_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraMysqlIam")
-    def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
+    def aurora_mysql_iam(self) -> pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']]:
         return pulumi.get(self, "aurora_mysql_iam")
 
     @aurora_mysql_iam.setter
-    def aurora_mysql_iam(self, value: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]):
+    def aurora_mysql_iam(self, value: pulumi.Input[Optional['ResourceAuroraMysqlIamArgs']]):
         pulumi.set(self, "aurora_mysql_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraPostgres")
-    def aurora_postgres(self) -> Optional[pulumi.Input['ResourceAuroraPostgresArgs']]:
+    def aurora_postgres(self) -> pulumi.Input[Optional['ResourceAuroraPostgresArgs']]:
         return pulumi.get(self, "aurora_postgres")
 
     @aurora_postgres.setter
-    def aurora_postgres(self, value: Optional[pulumi.Input['ResourceAuroraPostgresArgs']]):
+    def aurora_postgres(self, value: pulumi.Input[Optional['ResourceAuroraPostgresArgs']]):
         pulumi.set(self, "aurora_postgres", value)
 
     @_builtins.property
     @pulumi.getter(name="auroraPostgresIam")
-    def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
+    def aurora_postgres_iam(self) -> pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']]:
         return pulumi.get(self, "aurora_postgres_iam")
 
     @aurora_postgres_iam.setter
-    def aurora_postgres_iam(self, value: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]):
+    def aurora_postgres_iam(self, value: pulumi.Input[Optional['ResourceAuroraPostgresIamArgs']]):
         pulumi.set(self, "aurora_postgres_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def aws(self) -> Optional[pulumi.Input['ResourceAwsArgs']]:
+    def aws(self) -> pulumi.Input[Optional['ResourceAwsArgs']]:
         return pulumi.get(self, "aws")
 
     @aws.setter
-    def aws(self, value: Optional[pulumi.Input['ResourceAwsArgs']]):
+    def aws(self, value: pulumi.Input[Optional['ResourceAwsArgs']]):
         pulumi.set(self, "aws", value)
 
     @_builtins.property
     @pulumi.getter(name="awsConsole")
-    def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
+    def aws_console(self) -> pulumi.Input[Optional['ResourceAwsConsoleArgs']]:
         return pulumi.get(self, "aws_console")
 
     @aws_console.setter
-    def aws_console(self, value: Optional[pulumi.Input['ResourceAwsConsoleArgs']]):
+    def aws_console(self, value: pulumi.Input[Optional['ResourceAwsConsoleArgs']]):
         pulumi.set(self, "aws_console", value)
 
     @_builtins.property
     @pulumi.getter(name="awsConsoleStaticKeyPair")
-    def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
+    def aws_console_static_key_pair(self) -> pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']]:
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @aws_console_static_key_pair.setter
-    def aws_console_static_key_pair(self, value: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]):
+    def aws_console_static_key_pair(self, value: pulumi.Input[Optional['ResourceAwsConsoleStaticKeyPairArgs']]):
         pulumi.set(self, "aws_console_static_key_pair", value)
 
     @_builtins.property
     @pulumi.getter(name="awsInstanceProfile")
-    def aws_instance_profile(self) -> Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]:
+    def aws_instance_profile(self) -> pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']]:
         return pulumi.get(self, "aws_instance_profile")
 
     @aws_instance_profile.setter
-    def aws_instance_profile(self, value: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]):
+    def aws_instance_profile(self, value: pulumi.Input[Optional['ResourceAwsInstanceProfileArgs']]):
         pulumi.set(self, "aws_instance_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def azure(self) -> Optional[pulumi.Input['ResourceAzureArgs']]:
+    def azure(self) -> pulumi.Input[Optional['ResourceAzureArgs']]:
         return pulumi.get(self, "azure")
 
     @azure.setter
-    def azure(self, value: Optional[pulumi.Input['ResourceAzureArgs']]):
+    def azure(self, value: pulumi.Input[Optional['ResourceAzureArgs']]):
         pulumi.set(self, "azure", value)
 
     @_builtins.property
     @pulumi.getter(name="azureCertificate")
-    def azure_certificate(self) -> Optional[pulumi.Input['ResourceAzureCertificateArgs']]:
+    def azure_certificate(self) -> pulumi.Input[Optional['ResourceAzureCertificateArgs']]:
         return pulumi.get(self, "azure_certificate")
 
     @azure_certificate.setter
-    def azure_certificate(self, value: Optional[pulumi.Input['ResourceAzureCertificateArgs']]):
+    def azure_certificate(self, value: pulumi.Input[Optional['ResourceAzureCertificateArgs']]):
         pulumi.set(self, "azure_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="azureMysql")
-    def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
+    def azure_mysql(self) -> pulumi.Input[Optional['ResourceAzureMysqlArgs']]:
         return pulumi.get(self, "azure_mysql")
 
     @azure_mysql.setter
-    def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
+    def azure_mysql(self, value: pulumi.Input[Optional['ResourceAzureMysqlArgs']]):
         pulumi.set(self, "azure_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="azureMysqlManagedIdentity")
-    def azure_mysql_managed_identity(self) -> Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]:
+    def azure_mysql_managed_identity(self) -> pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']]:
         return pulumi.get(self, "azure_mysql_managed_identity")
 
     @azure_mysql_managed_identity.setter
-    def azure_mysql_managed_identity(self, value: Optional[pulumi.Input['ResourceAzureMysqlManagedIdentityArgs']]):
+    def azure_mysql_managed_identity(self, value: pulumi.Input[Optional['ResourceAzureMysqlManagedIdentityArgs']]):
         pulumi.set(self, "azure_mysql_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgres")
-    def azure_postgres(self) -> Optional[pulumi.Input['ResourceAzurePostgresArgs']]:
+    def azure_postgres(self) -> pulumi.Input[Optional['ResourceAzurePostgresArgs']]:
         return pulumi.get(self, "azure_postgres")
 
     @azure_postgres.setter
-    def azure_postgres(self, value: Optional[pulumi.Input['ResourceAzurePostgresArgs']]):
+    def azure_postgres(self, value: pulumi.Input[Optional['ResourceAzurePostgresArgs']]):
         pulumi.set(self, "azure_postgres", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePostgresManagedIdentity")
-    def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
+    def azure_postgres_managed_identity(self) -> pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']]:
         return pulumi.get(self, "azure_postgres_managed_identity")
 
     @azure_postgres_managed_identity.setter
-    def azure_postgres_managed_identity(self, value: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]):
+    def azure_postgres_managed_identity(self, value: pulumi.Input[Optional['ResourceAzurePostgresManagedIdentityArgs']]):
         pulumi.set(self, "azure_postgres_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="bigQuery")
-    def big_query(self) -> Optional[pulumi.Input['ResourceBigQueryArgs']]:
+    def big_query(self) -> pulumi.Input[Optional['ResourceBigQueryArgs']]:
         return pulumi.get(self, "big_query")
 
     @big_query.setter
-    def big_query(self, value: Optional[pulumi.Input['ResourceBigQueryArgs']]):
+    def big_query(self, value: pulumi.Input[Optional['ResourceBigQueryArgs']]):
         pulumi.set(self, "big_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['ResourceCassandraArgs']]:
+    def cassandra(self) -> pulumi.Input[Optional['ResourceCassandraArgs']]:
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['ResourceCassandraArgs']]):
+    def cassandra(self, value: pulumi.Input[Optional['ResourceCassandraArgs']]):
         pulumi.set(self, "cassandra", value)
 
     @_builtins.property
     @pulumi.getter
-    def citus(self) -> Optional[pulumi.Input['ResourceCitusArgs']]:
+    def citus(self) -> pulumi.Input[Optional['ResourceCitusArgs']]:
         return pulumi.get(self, "citus")
 
     @citus.setter
-    def citus(self, value: Optional[pulumi.Input['ResourceCitusArgs']]):
+    def citus(self, value: pulumi.Input[Optional['ResourceCitusArgs']]):
         pulumi.set(self, "citus", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseHttp")
-    def click_house_http(self) -> Optional[pulumi.Input['ResourceClickHouseHttpArgs']]:
+    def click_house_http(self) -> pulumi.Input[Optional['ResourceClickHouseHttpArgs']]:
         return pulumi.get(self, "click_house_http")
 
     @click_house_http.setter
-    def click_house_http(self, value: Optional[pulumi.Input['ResourceClickHouseHttpArgs']]):
+    def click_house_http(self, value: pulumi.Input[Optional['ResourceClickHouseHttpArgs']]):
         pulumi.set(self, "click_house_http", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseMySql")
-    def click_house_my_sql(self) -> Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]:
+    def click_house_my_sql(self) -> pulumi.Input[Optional['ResourceClickHouseMySqlArgs']]:
         return pulumi.get(self, "click_house_my_sql")
 
     @click_house_my_sql.setter
-    def click_house_my_sql(self, value: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]):
+    def click_house_my_sql(self, value: pulumi.Input[Optional['ResourceClickHouseMySqlArgs']]):
         pulumi.set(self, "click_house_my_sql", value)
 
     @_builtins.property
     @pulumi.getter(name="clickHouseTcp")
-    def click_house_tcp(self) -> Optional[pulumi.Input['ResourceClickHouseTcpArgs']]:
+    def click_house_tcp(self) -> pulumi.Input[Optional['ResourceClickHouseTcpArgs']]:
         return pulumi.get(self, "click_house_tcp")
 
     @click_house_tcp.setter
-    def click_house_tcp(self, value: Optional[pulumi.Input['ResourceClickHouseTcpArgs']]):
+    def click_house_tcp(self, value: pulumi.Input[Optional['ResourceClickHouseTcpArgs']]):
         pulumi.set(self, "click_house_tcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def clustrix(self) -> Optional[pulumi.Input['ResourceClustrixArgs']]:
+    def clustrix(self) -> pulumi.Input[Optional['ResourceClustrixArgs']]:
         return pulumi.get(self, "clustrix")
 
     @clustrix.setter
-    def clustrix(self, value: Optional[pulumi.Input['ResourceClustrixArgs']]):
+    def clustrix(self, value: pulumi.Input[Optional['ResourceClustrixArgs']]):
         pulumi.set(self, "clustrix", value)
 
     @_builtins.property
     @pulumi.getter
-    def cockroach(self) -> Optional[pulumi.Input['ResourceCockroachArgs']]:
+    def cockroach(self) -> pulumi.Input[Optional['ResourceCockroachArgs']]:
         return pulumi.get(self, "cockroach")
 
     @cockroach.setter
-    def cockroach(self, value: Optional[pulumi.Input['ResourceCockroachArgs']]):
+    def cockroach(self, value: pulumi.Input[Optional['ResourceCockroachArgs']]):
         pulumi.set(self, "cockroach", value)
 
     @_builtins.property
     @pulumi.getter(name="couchbaseDatabase")
-    def couchbase_database(self) -> Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]:
+    def couchbase_database(self) -> pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']]:
         return pulumi.get(self, "couchbase_database")
 
     @couchbase_database.setter
-    def couchbase_database(self, value: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]):
+    def couchbase_database(self, value: pulumi.Input[Optional['ResourceCouchbaseDatabaseArgs']]):
         pulumi.set(self, "couchbase_database", value)
 
     @_builtins.property
     @pulumi.getter(name="couchbaseWebUi")
-    def couchbase_web_ui(self) -> Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]:
+    def couchbase_web_ui(self) -> pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']]:
         return pulumi.get(self, "couchbase_web_ui")
 
     @couchbase_web_ui.setter
-    def couchbase_web_ui(self, value: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]):
+    def couchbase_web_ui(self, value: pulumi.Input[Optional['ResourceCouchbaseWebUiArgs']]):
         pulumi.set(self, "couchbase_web_ui", value)
 
     @_builtins.property
     @pulumi.getter
-    def databricks(self) -> Optional[pulumi.Input['ResourceDatabricksArgs']]:
+    def databricks(self) -> pulumi.Input[Optional['ResourceDatabricksArgs']]:
         return pulumi.get(self, "databricks")
 
     @databricks.setter
-    def databricks(self, value: Optional[pulumi.Input['ResourceDatabricksArgs']]):
+    def databricks(self, value: pulumi.Input[Optional['ResourceDatabricksArgs']]):
         pulumi.set(self, "databricks", value)
 
     @_builtins.property
     @pulumi.getter(name="db2I")
-    def db2_i(self) -> Optional[pulumi.Input['ResourceDb2IArgs']]:
+    def db2_i(self) -> pulumi.Input[Optional['ResourceDb2IArgs']]:
         return pulumi.get(self, "db2_i")
 
     @db2_i.setter
-    def db2_i(self, value: Optional[pulumi.Input['ResourceDb2IArgs']]):
+    def db2_i(self, value: pulumi.Input[Optional['ResourceDb2IArgs']]):
         pulumi.set(self, "db2_i", value)
 
     @_builtins.property
     @pulumi.getter(name="db2Luw")
-    def db2_luw(self) -> Optional[pulumi.Input['ResourceDb2LuwArgs']]:
+    def db2_luw(self) -> pulumi.Input[Optional['ResourceDb2LuwArgs']]:
         return pulumi.get(self, "db2_luw")
 
     @db2_luw.setter
-    def db2_luw(self, value: Optional[pulumi.Input['ResourceDb2LuwArgs']]):
+    def db2_luw(self, value: pulumi.Input[Optional['ResourceDb2LuwArgs']]):
         pulumi.set(self, "db2_luw", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbHost")
-    def document_db_host(self) -> Optional[pulumi.Input['ResourceDocumentDbHostArgs']]:
+    def document_db_host(self) -> pulumi.Input[Optional['ResourceDocumentDbHostArgs']]:
         return pulumi.get(self, "document_db_host")
 
     @document_db_host.setter
-    def document_db_host(self, value: Optional[pulumi.Input['ResourceDocumentDbHostArgs']]):
+    def document_db_host(self, value: pulumi.Input[Optional['ResourceDocumentDbHostArgs']]):
         pulumi.set(self, "document_db_host", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbHostIam")
-    def document_db_host_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]:
+    def document_db_host_iam(self) -> pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']]:
         return pulumi.get(self, "document_db_host_iam")
 
     @document_db_host_iam.setter
-    def document_db_host_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]):
+    def document_db_host_iam(self, value: pulumi.Input[Optional['ResourceDocumentDbHostIamArgs']]):
         pulumi.set(self, "document_db_host_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbReplicaSet")
-    def document_db_replica_set(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]:
+    def document_db_replica_set(self) -> pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']]:
         return pulumi.get(self, "document_db_replica_set")
 
     @document_db_replica_set.setter
-    def document_db_replica_set(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]):
+    def document_db_replica_set(self, value: pulumi.Input[Optional['ResourceDocumentDbReplicaSetArgs']]):
         pulumi.set(self, "document_db_replica_set", value)
 
     @_builtins.property
     @pulumi.getter(name="documentDbReplicaSetIam")
-    def document_db_replica_set_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]:
+    def document_db_replica_set_iam(self) -> pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']]:
         """
         DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "document_db_replica_set_iam")
 
     @document_db_replica_set_iam.setter
-    def document_db_replica_set_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbReplicaSetIamArgs']]):
+    def document_db_replica_set_iam(self, value: pulumi.Input[Optional['ResourceDocumentDbReplicaSetIamArgs']]):
         pulumi.set(self, "document_db_replica_set_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def druid(self) -> Optional[pulumi.Input['ResourceDruidArgs']]:
+    def druid(self) -> pulumi.Input[Optional['ResourceDruidArgs']]:
         return pulumi.get(self, "druid")
 
     @druid.setter
-    def druid(self, value: Optional[pulumi.Input['ResourceDruidArgs']]):
+    def druid(self, value: pulumi.Input[Optional['ResourceDruidArgs']]):
         pulumi.set(self, "druid", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamoDb")
-    def dynamo_db(self) -> Optional[pulumi.Input['ResourceDynamoDbArgs']]:
+    def dynamo_db(self) -> pulumi.Input[Optional['ResourceDynamoDbArgs']]:
         return pulumi.get(self, "dynamo_db")
 
     @dynamo_db.setter
-    def dynamo_db(self, value: Optional[pulumi.Input['ResourceDynamoDbArgs']]):
+    def dynamo_db(self, value: pulumi.Input[Optional['ResourceDynamoDbArgs']]):
         pulumi.set(self, "dynamo_db", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamoDbiam")
-    def dynamo_dbiam(self) -> Optional[pulumi.Input['ResourceDynamoDbiamArgs']]:
+    def dynamo_dbiam(self) -> pulumi.Input[Optional['ResourceDynamoDbiamArgs']]:
         return pulumi.get(self, "dynamo_dbiam")
 
     @dynamo_dbiam.setter
-    def dynamo_dbiam(self, value: Optional[pulumi.Input['ResourceDynamoDbiamArgs']]):
+    def dynamo_dbiam(self, value: pulumi.Input[Optional['ResourceDynamoDbiamArgs']]):
         pulumi.set(self, "dynamo_dbiam", value)
 
     @_builtins.property
     @pulumi.getter
-    def elastic(self) -> Optional[pulumi.Input['ResourceElasticArgs']]:
+    def elastic(self) -> pulumi.Input[Optional['ResourceElasticArgs']]:
         return pulumi.get(self, "elastic")
 
     @elastic.setter
-    def elastic(self, value: Optional[pulumi.Input['ResourceElasticArgs']]):
+    def elastic(self, value: pulumi.Input[Optional['ResourceElasticArgs']]):
         pulumi.set(self, "elastic", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticacheRedis")
-    def elasticache_redis(self) -> Optional[pulumi.Input['ResourceElasticacheRedisArgs']]:
+    def elasticache_redis(self) -> pulumi.Input[Optional['ResourceElasticacheRedisArgs']]:
         return pulumi.get(self, "elasticache_redis")
 
     @elasticache_redis.setter
-    def elasticache_redis(self, value: Optional[pulumi.Input['ResourceElasticacheRedisArgs']]):
+    def elasticache_redis(self, value: pulumi.Input[Optional['ResourceElasticacheRedisArgs']]):
         pulumi.set(self, "elasticache_redis", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticacheRedisIam")
-    def elasticache_redis_iam(self) -> Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]:
+    def elasticache_redis_iam(self) -> pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']]:
         """
         ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "elasticache_redis_iam")
 
     @elasticache_redis_iam.setter
-    def elasticache_redis_iam(self, value: Optional[pulumi.Input['ResourceElasticacheRedisIamArgs']]):
+    def elasticache_redis_iam(self, value: pulumi.Input[Optional['ResourceElasticacheRedisIamArgs']]):
         pulumi.set(self, "elasticache_redis_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="entraId")
-    def entra_id(self) -> Optional[pulumi.Input['ResourceEntraIdArgs']]:
+    def entra_id(self) -> pulumi.Input[Optional['ResourceEntraIdArgs']]:
         return pulumi.get(self, "entra_id")
 
     @entra_id.setter
-    def entra_id(self, value: Optional[pulumi.Input['ResourceEntraIdArgs']]):
+    def entra_id(self, value: pulumi.Input[Optional['ResourceEntraIdArgs']]):
         pulumi.set(self, "entra_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcp(self) -> Optional[pulumi.Input['ResourceGcpArgs']]:
+    def gcp(self) -> pulumi.Input[Optional['ResourceGcpArgs']]:
         return pulumi.get(self, "gcp")
 
     @gcp.setter
-    def gcp(self, value: Optional[pulumi.Input['ResourceGcpArgs']]):
+    def gcp(self, value: pulumi.Input[Optional['ResourceGcpArgs']]):
         pulumi.set(self, "gcp", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpConsole")
-    def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
+    def gcp_console(self) -> pulumi.Input[Optional['ResourceGcpConsoleArgs']]:
         return pulumi.get(self, "gcp_console")
 
     @gcp_console.setter
-    def gcp_console(self, value: Optional[pulumi.Input['ResourceGcpConsoleArgs']]):
+    def gcp_console(self, value: pulumi.Input[Optional['ResourceGcpConsoleArgs']]):
         pulumi.set(self, "gcp_console", value)
 
     @_builtins.property
     @pulumi.getter
-    def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
+    def gcpwif(self) -> pulumi.Input[Optional['ResourceGcpwifArgs']]:
         return pulumi.get(self, "gcpwif")
 
     @gcpwif.setter
-    def gcpwif(self, value: Optional[pulumi.Input['ResourceGcpwifArgs']]):
+    def gcpwif(self, value: pulumi.Input[Optional['ResourceGcpwifArgs']]):
         pulumi.set(self, "gcpwif", value)
 
     @_builtins.property
     @pulumi.getter(name="googleGke")
-    def google_gke(self) -> Optional[pulumi.Input['ResourceGoogleGkeArgs']]:
+    def google_gke(self) -> pulumi.Input[Optional['ResourceGoogleGkeArgs']]:
         return pulumi.get(self, "google_gke")
 
     @google_gke.setter
-    def google_gke(self, value: Optional[pulumi.Input['ResourceGoogleGkeArgs']]):
+    def google_gke(self, value: pulumi.Input[Optional['ResourceGoogleGkeArgs']]):
         pulumi.set(self, "google_gke", value)
 
     @_builtins.property
     @pulumi.getter(name="googleGkeUserImpersonation")
     @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
-    def google_gke_user_impersonation(self) -> Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]:
+    def google_gke_user_impersonation(self) -> pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]:
         return pulumi.get(self, "google_gke_user_impersonation")
 
     @google_gke_user_impersonation.setter
-    def google_gke_user_impersonation(self, value: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']]):
+    def google_gke_user_impersonation(self, value: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
-    def google_spanner(self) -> Optional[pulumi.Input['ResourceGoogleSpannerArgs']]:
+    def google_spanner(self) -> pulumi.Input[Optional['ResourceGoogleSpannerArgs']]:
         return pulumi.get(self, "google_spanner")
 
     @google_spanner.setter
-    def google_spanner(self, value: Optional[pulumi.Input['ResourceGoogleSpannerArgs']]):
+    def google_spanner(self, value: pulumi.Input[Optional['ResourceGoogleSpannerArgs']]):
         pulumi.set(self, "google_spanner", value)
 
     @_builtins.property
     @pulumi.getter
-    def greenplum(self) -> Optional[pulumi.Input['ResourceGreenplumArgs']]:
+    def greenplum(self) -> pulumi.Input[Optional['ResourceGreenplumArgs']]:
         return pulumi.get(self, "greenplum")
 
     @greenplum.setter
-    def greenplum(self, value: Optional[pulumi.Input['ResourceGreenplumArgs']]):
+    def greenplum(self, value: pulumi.Input[Optional['ResourceGreenplumArgs']]):
         pulumi.set(self, "greenplum", value)
 
     @_builtins.property
     @pulumi.getter(name="httpAuth")
-    def http_auth(self) -> Optional[pulumi.Input['ResourceHttpAuthArgs']]:
+    def http_auth(self) -> pulumi.Input[Optional['ResourceHttpAuthArgs']]:
         return pulumi.get(self, "http_auth")
 
     @http_auth.setter
-    def http_auth(self, value: Optional[pulumi.Input['ResourceHttpAuthArgs']]):
+    def http_auth(self, value: pulumi.Input[Optional['ResourceHttpAuthArgs']]):
         pulumi.set(self, "http_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="httpBasicAuth")
-    def http_basic_auth(self) -> Optional[pulumi.Input['ResourceHttpBasicAuthArgs']]:
+    def http_basic_auth(self) -> pulumi.Input[Optional['ResourceHttpBasicAuthArgs']]:
         return pulumi.get(self, "http_basic_auth")
 
     @http_basic_auth.setter
-    def http_basic_auth(self, value: Optional[pulumi.Input['ResourceHttpBasicAuthArgs']]):
+    def http_basic_auth(self, value: pulumi.Input[Optional['ResourceHttpBasicAuthArgs']]):
         pulumi.set(self, "http_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="httpNoAuth")
-    def http_no_auth(self) -> Optional[pulumi.Input['ResourceHttpNoAuthArgs']]:
+    def http_no_auth(self) -> pulumi.Input[Optional['ResourceHttpNoAuthArgs']]:
         return pulumi.get(self, "http_no_auth")
 
     @http_no_auth.setter
-    def http_no_auth(self, value: Optional[pulumi.Input['ResourceHttpNoAuthArgs']]):
+    def http_no_auth(self, value: pulumi.Input[Optional['ResourceHttpNoAuthArgs']]):
         pulumi.set(self, "http_no_auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubernetes(self) -> Optional[pulumi.Input['ResourceKubernetesArgs']]:
+    def kubernetes(self) -> pulumi.Input[Optional['ResourceKubernetesArgs']]:
         return pulumi.get(self, "kubernetes")
 
     @kubernetes.setter
-    def kubernetes(self, value: Optional[pulumi.Input['ResourceKubernetesArgs']]):
+    def kubernetes(self, value: pulumi.Input[Optional['ResourceKubernetesArgs']]):
         pulumi.set(self, "kubernetes", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesBasicAuth")
-    def kubernetes_basic_auth(self) -> Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]:
+    def kubernetes_basic_auth(self) -> pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']]:
         """
         KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @kubernetes_basic_auth.setter
-    def kubernetes_basic_auth(self, value: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]):
+    def kubernetes_basic_auth(self, value: pulumi.Input[Optional['ResourceKubernetesBasicAuthArgs']]):
         pulumi.set(self, "kubernetes_basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesPodIdentity")
-    def kubernetes_pod_identity(self) -> Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]:
+    def kubernetes_pod_identity(self) -> pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']]:
         return pulumi.get(self, "kubernetes_pod_identity")
 
     @kubernetes_pod_identity.setter
-    def kubernetes_pod_identity(self, value: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]):
+    def kubernetes_pod_identity(self, value: pulumi.Input[Optional['ResourceKubernetesPodIdentityArgs']]):
         pulumi.set(self, "kubernetes_pod_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccount")
-    def kubernetes_service_account(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]:
+    def kubernetes_service_account(self) -> pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']]:
         return pulumi.get(self, "kubernetes_service_account")
 
     @kubernetes_service_account.setter
-    def kubernetes_service_account(self, value: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]):
+    def kubernetes_service_account(self, value: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']]):
         pulumi.set(self, "kubernetes_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonation")
     @_utilities.deprecated("""kubernetes_service_account_user_impersonation is deprecated, see docs for more info""")
-    def kubernetes_service_account_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
+    def kubernetes_service_account_user_impersonation(self) -> pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_service_account_user_impersonation")
 
     @kubernetes_service_account_user_impersonation.setter
-    def kubernetes_service_account_user_impersonation(self, value: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']]):
+    def kubernetes_service_account_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_service_account_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesUserImpersonation")
     @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
-    def kubernetes_user_impersonation(self) -> Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]:
+    def kubernetes_user_impersonation(self) -> pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
 
     @kubernetes_user_impersonation.setter
-    def kubernetes_user_impersonation(self, value: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']]):
+    def kubernetes_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_user_impersonation", value)
 
     @_builtins.property
     @pulumi.getter
-    def maria(self) -> Optional[pulumi.Input['ResourceMariaArgs']]:
+    def maria(self) -> pulumi.Input[Optional['ResourceMariaArgs']]:
         return pulumi.get(self, "maria")
 
     @maria.setter
-    def maria(self, value: Optional[pulumi.Input['ResourceMariaArgs']]):
+    def maria(self, value: pulumi.Input[Optional['ResourceMariaArgs']]):
         pulumi.set(self, "maria", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayNoAuth")
-    def mcp_gateway_no_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]:
+    def mcp_gateway_no_auth(self) -> pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']]:
         return pulumi.get(self, "mcp_gateway_no_auth")
 
     @mcp_gateway_no_auth.setter
-    def mcp_gateway_no_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayNoAuthArgs']]):
+    def mcp_gateway_no_auth(self, value: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']]):
         pulumi.set(self, "mcp_gateway_no_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayOAuth")
-    def mcp_gateway_o_auth(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]:
+    def mcp_gateway_o_auth(self) -> pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']]:
         return pulumi.get(self, "mcp_gateway_o_auth")
 
     @mcp_gateway_o_auth.setter
-    def mcp_gateway_o_auth(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthArgs']]):
+    def mcp_gateway_o_auth(self, value: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']]):
         pulumi.set(self, "mcp_gateway_o_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayOAuthDcr")
-    def mcp_gateway_o_auth_dcr(self) -> Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]:
+    def mcp_gateway_o_auth_dcr(self) -> pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']]:
         return pulumi.get(self, "mcp_gateway_o_auth_dcr")
 
     @mcp_gateway_o_auth_dcr.setter
-    def mcp_gateway_o_auth_dcr(self, value: Optional[pulumi.Input['ResourceMcpGatewayOAuthDcrArgs']]):
+    def mcp_gateway_o_auth_dcr(self, value: pulumi.Input[Optional['ResourceMcpGatewayOAuthDcrArgs']]):
         pulumi.set(self, "mcp_gateway_o_auth_dcr", value)
 
     @_builtins.property
     @pulumi.getter(name="mcpGatewayPat")
-    def mcp_gateway_pat(self) -> Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]:
+    def mcp_gateway_pat(self) -> pulumi.Input[Optional['ResourceMcpGatewayPatArgs']]:
         return pulumi.get(self, "mcp_gateway_pat")
 
     @mcp_gateway_pat.setter
-    def mcp_gateway_pat(self, value: Optional[pulumi.Input['ResourceMcpGatewayPatArgs']]):
+    def mcp_gateway_pat(self, value: pulumi.Input[Optional['ResourceMcpGatewayPatArgs']]):
         pulumi.set(self, "mcp_gateway_pat", value)
 
     @_builtins.property
     @pulumi.getter
-    def memcached(self) -> Optional[pulumi.Input['ResourceMemcachedArgs']]:
+    def memcached(self) -> pulumi.Input[Optional['ResourceMemcachedArgs']]:
         return pulumi.get(self, "memcached")
 
     @memcached.setter
-    def memcached(self, value: Optional[pulumi.Input['ResourceMemcachedArgs']]):
+    def memcached(self, value: pulumi.Input[Optional['ResourceMemcachedArgs']]):
         pulumi.set(self, "memcached", value)
 
     @_builtins.property
     @pulumi.getter
-    def memsql(self) -> Optional[pulumi.Input['ResourceMemsqlArgs']]:
+    def memsql(self) -> pulumi.Input[Optional['ResourceMemsqlArgs']]:
         return pulumi.get(self, "memsql")
 
     @memsql.setter
-    def memsql(self, value: Optional[pulumi.Input['ResourceMemsqlArgs']]):
+    def memsql(self, value: pulumi.Input[Optional['ResourceMemsqlArgs']]):
         pulumi.set(self, "memsql", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoHost")
-    def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
+    def mongo_host(self) -> pulumi.Input[Optional['ResourceMongoHostArgs']]:
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
-    def mongo_host(self, value: Optional[pulumi.Input['ResourceMongoHostArgs']]):
+    def mongo_host(self, value: pulumi.Input[Optional['ResourceMongoHostArgs']]):
         pulumi.set(self, "mongo_host", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoLegacyHost")
-    def mongo_legacy_host(self) -> Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]:
+    def mongo_legacy_host(self) -> pulumi.Input[Optional['ResourceMongoLegacyHostArgs']]:
         """
         MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "mongo_legacy_host")
 
     @mongo_legacy_host.setter
-    def mongo_legacy_host(self, value: Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]):
+    def mongo_legacy_host(self, value: pulumi.Input[Optional['ResourceMongoLegacyHostArgs']]):
         pulumi.set(self, "mongo_legacy_host", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoLegacyReplicaset")
-    def mongo_legacy_replicaset(self) -> Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]:
+    def mongo_legacy_replicaset(self) -> pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']]:
         """
         MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "mongo_legacy_replicaset")
 
     @mongo_legacy_replicaset.setter
-    def mongo_legacy_replicaset(self, value: Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]):
+    def mongo_legacy_replicaset(self, value: pulumi.Input[Optional['ResourceMongoLegacyReplicasetArgs']]):
         pulumi.set(self, "mongo_legacy_replicaset", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoReplicaSet")
-    def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
+    def mongo_replica_set(self) -> pulumi.Input[Optional['ResourceMongoReplicaSetArgs']]:
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
-    def mongo_replica_set(self, value: Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]):
+    def mongo_replica_set(self, value: pulumi.Input[Optional['ResourceMongoReplicaSetArgs']]):
         pulumi.set(self, "mongo_replica_set", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoShardedCluster")
-    def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
+    def mongo_sharded_cluster(self) -> pulumi.Input[Optional['ResourceMongoShardedClusterArgs']]:
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
-    def mongo_sharded_cluster(self, value: Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]):
+    def mongo_sharded_cluster(self, value: pulumi.Input[Optional['ResourceMongoShardedClusterArgs']]):
         pulumi.set(self, "mongo_sharded_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="mtlsMysql")
-    def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
+    def mtls_mysql(self) -> pulumi.Input[Optional['ResourceMtlsMysqlArgs']]:
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
-    def mtls_mysql(self, value: Optional[pulumi.Input['ResourceMtlsMysqlArgs']]):
+    def mtls_mysql(self, value: pulumi.Input[Optional['ResourceMtlsMysqlArgs']]):
         pulumi.set(self, "mtls_mysql", value)
 
     @_builtins.property
     @pulumi.getter(name="mtlsPostgres")
-    def mtls_postgres(self) -> Optional[pulumi.Input['ResourceMtlsPostgresArgs']]:
+    def mtls_postgres(self) -> pulumi.Input[Optional['ResourceMtlsPostgresArgs']]:
         return pulumi.get(self, "mtls_postgres")
 
     @mtls_postgres.setter
-    def mtls_postgres(self, value: Optional[pulumi.Input['ResourceMtlsPostgresArgs']]):
+    def mtls_postgres(self, value: pulumi.Input[Optional['ResourceMtlsPostgresArgs']]):
         pulumi.set(self, "mtls_postgres", value)
 
     @_builtins.property
     @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ResourceMysqlArgs']]:
+    def mysql(self) -> pulumi.Input[Optional['ResourceMysqlArgs']]:
         return pulumi.get(self, "mysql")
 
     @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ResourceMysqlArgs']]):
+    def mysql(self, value: pulumi.Input[Optional['ResourceMysqlArgs']]):
         pulumi.set(self, "mysql", value)
 
     @_builtins.property
     @pulumi.getter
-    def neptune(self) -> Optional[pulumi.Input['ResourceNeptuneArgs']]:
+    def neptune(self) -> pulumi.Input[Optional['ResourceNeptuneArgs']]:
         return pulumi.get(self, "neptune")
 
     @neptune.setter
-    def neptune(self, value: Optional[pulumi.Input['ResourceNeptuneArgs']]):
+    def neptune(self, value: pulumi.Input[Optional['ResourceNeptuneArgs']]):
         pulumi.set(self, "neptune", value)
 
     @_builtins.property
     @pulumi.getter(name="neptuneIam")
-    def neptune_iam(self) -> Optional[pulumi.Input['ResourceNeptuneIamArgs']]:
+    def neptune_iam(self) -> pulumi.Input[Optional['ResourceNeptuneIamArgs']]:
         return pulumi.get(self, "neptune_iam")
 
     @neptune_iam.setter
-    def neptune_iam(self, value: Optional[pulumi.Input['ResourceNeptuneIamArgs']]):
+    def neptune_iam(self, value: pulumi.Input[Optional['ResourceNeptuneIamArgs']]):
         pulumi.set(self, "neptune_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="oktaGroups")
-    def okta_groups(self) -> Optional[pulumi.Input['ResourceOktaGroupsArgs']]:
+    def okta_groups(self) -> pulumi.Input[Optional['ResourceOktaGroupsArgs']]:
         return pulumi.get(self, "okta_groups")
 
     @okta_groups.setter
-    def okta_groups(self, value: Optional[pulumi.Input['ResourceOktaGroupsArgs']]):
+    def okta_groups(self, value: pulumi.Input[Optional['ResourceOktaGroupsArgs']]):
         pulumi.set(self, "okta_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
+    def oracle(self) -> pulumi.Input[Optional['ResourceOracleArgs']]:
         return pulumi.get(self, "oracle")
 
     @oracle.setter
-    def oracle(self, value: Optional[pulumi.Input['ResourceOracleArgs']]):
+    def oracle(self, value: pulumi.Input[Optional['ResourceOracleArgs']]):
         pulumi.set(self, "oracle", value)
 
     @_builtins.property
     @pulumi.getter(name="oracleNne")
-    def oracle_nne(self) -> Optional[pulumi.Input['ResourceOracleNneArgs']]:
+    def oracle_nne(self) -> pulumi.Input[Optional['ResourceOracleNneArgs']]:
         return pulumi.get(self, "oracle_nne")
 
     @oracle_nne.setter
-    def oracle_nne(self, value: Optional[pulumi.Input['ResourceOracleNneArgs']]):
+    def oracle_nne(self, value: pulumi.Input[Optional['ResourceOracleNneArgs']]):
         pulumi.set(self, "oracle_nne", value)
 
     @_builtins.property
     @pulumi.getter
-    def postgres(self) -> Optional[pulumi.Input['ResourcePostgresArgs']]:
+    def postgres(self) -> pulumi.Input[Optional['ResourcePostgresArgs']]:
         return pulumi.get(self, "postgres")
 
     @postgres.setter
-    def postgres(self, value: Optional[pulumi.Input['ResourcePostgresArgs']]):
+    def postgres(self, value: pulumi.Input[Optional['ResourcePostgresArgs']]):
         pulumi.set(self, "postgres", value)
 
     @_builtins.property
     @pulumi.getter
-    def presto(self) -> Optional[pulumi.Input['ResourcePrestoArgs']]:
+    def presto(self) -> pulumi.Input[Optional['ResourcePrestoArgs']]:
         return pulumi.get(self, "presto")
 
     @presto.setter
-    def presto(self, value: Optional[pulumi.Input['ResourcePrestoArgs']]):
+    def presto(self, value: pulumi.Input[Optional['ResourcePrestoArgs']]):
         pulumi.set(self, "presto", value)
 
     @_builtins.property
     @pulumi.getter(name="rabbitmqAmqp091")
-    def rabbitmq_amqp091(self) -> Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']]:
+    def rabbitmq_amqp091(self) -> pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']]:
         return pulumi.get(self, "rabbitmq_amqp091")
 
     @rabbitmq_amqp091.setter
-    def rabbitmq_amqp091(self, value: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']]):
+    def rabbitmq_amqp091(self, value: pulumi.Input[Optional['ResourceRabbitmqAmqp091Args']]):
         pulumi.set(self, "rabbitmq_amqp091", value)
 
     @_builtins.property
     @pulumi.getter(name="rawTcp")
-    def raw_tcp(self) -> Optional[pulumi.Input['ResourceRawTcpArgs']]:
+    def raw_tcp(self) -> pulumi.Input[Optional['ResourceRawTcpArgs']]:
         return pulumi.get(self, "raw_tcp")
 
     @raw_tcp.setter
-    def raw_tcp(self, value: Optional[pulumi.Input['ResourceRawTcpArgs']]):
+    def raw_tcp(self, value: pulumi.Input[Optional['ResourceRawTcpArgs']]):
         pulumi.set(self, "raw_tcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdp(self) -> Optional[pulumi.Input['ResourceRdpArgs']]:
+    def rdp(self) -> pulumi.Input[Optional['ResourceRdpArgs']]:
         return pulumi.get(self, "rdp")
 
     @rdp.setter
-    def rdp(self, value: Optional[pulumi.Input['ResourceRdpArgs']]):
+    def rdp(self, value: pulumi.Input[Optional['ResourceRdpArgs']]):
         pulumi.set(self, "rdp", value)
 
     @_builtins.property
     @pulumi.getter(name="rdpCert")
-    def rdp_cert(self) -> Optional[pulumi.Input['ResourceRdpCertArgs']]:
+    def rdp_cert(self) -> pulumi.Input[Optional['ResourceRdpCertArgs']]:
         return pulumi.get(self, "rdp_cert")
 
     @rdp_cert.setter
-    def rdp_cert(self, value: Optional[pulumi.Input['ResourceRdpCertArgs']]):
+    def rdp_cert(self, value: pulumi.Input[Optional['ResourceRdpCertArgs']]):
         pulumi.set(self, "rdp_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="rdsPostgresIam")
-    def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
+    def rds_postgres_iam(self) -> pulumi.Input[Optional['ResourceRdsPostgresIamArgs']]:
         return pulumi.get(self, "rds_postgres_iam")
 
     @rds_postgres_iam.setter
-    def rds_postgres_iam(self, value: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]):
+    def rds_postgres_iam(self, value: pulumi.Input[Optional['ResourceRdsPostgresIamArgs']]):
         pulumi.set(self, "rds_postgres_iam", value)
 
     @_builtins.property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input['ResourceRedisArgs']]:
+    def redis(self) -> pulumi.Input[Optional['ResourceRedisArgs']]:
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input['ResourceRedisArgs']]):
+    def redis(self, value: pulumi.Input[Optional['ResourceRedisArgs']]):
         pulumi.set(self, "redis", value)
 
     @_builtins.property
     @pulumi.getter(name="redisCluster")
-    def redis_cluster(self) -> Optional[pulumi.Input['ResourceRedisClusterArgs']]:
+    def redis_cluster(self) -> pulumi.Input[Optional['ResourceRedisClusterArgs']]:
         return pulumi.get(self, "redis_cluster")
 
     @redis_cluster.setter
-    def redis_cluster(self, value: Optional[pulumi.Input['ResourceRedisClusterArgs']]):
+    def redis_cluster(self, value: pulumi.Input[Optional['ResourceRedisClusterArgs']]):
         pulumi.set(self, "redis_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def redshift(self) -> Optional[pulumi.Input['ResourceRedshiftArgs']]:
+    def redshift(self) -> pulumi.Input[Optional['ResourceRedshiftArgs']]:
         return pulumi.get(self, "redshift")
 
     @redshift.setter
-    def redshift(self, value: Optional[pulumi.Input['ResourceRedshiftArgs']]):
+    def redshift(self, value: pulumi.Input[Optional['ResourceRedshiftArgs']]):
         pulumi.set(self, "redshift", value)
 
     @_builtins.property
     @pulumi.getter(name="redshiftIam")
-    def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
+    def redshift_iam(self) -> pulumi.Input[Optional['ResourceRedshiftIamArgs']]:
         return pulumi.get(self, "redshift_iam")
 
     @redshift_iam.setter
-    def redshift_iam(self, value: Optional[pulumi.Input['ResourceRedshiftIamArgs']]):
+    def redshift_iam(self, value: pulumi.Input[Optional['ResourceRedshiftIamArgs']]):
         pulumi.set(self, "redshift_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="redshiftServerlessIam")
-    def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
+    def redshift_serverless_iam(self) -> pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']]:
         return pulumi.get(self, "redshift_serverless_iam")
 
     @redshift_serverless_iam.setter
-    def redshift_serverless_iam(self, value: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]):
+    def redshift_serverless_iam(self, value: pulumi.Input[Optional['ResourceRedshiftServerlessIamArgs']]):
         pulumi.set(self, "redshift_serverless_iam", value)
 
     @_builtins.property
     @pulumi.getter(name="singleStore")
-    def single_store(self) -> Optional[pulumi.Input['ResourceSingleStoreArgs']]:
+    def single_store(self) -> pulumi.Input[Optional['ResourceSingleStoreArgs']]:
         return pulumi.get(self, "single_store")
 
     @single_store.setter
-    def single_store(self, value: Optional[pulumi.Input['ResourceSingleStoreArgs']]):
+    def single_store(self, value: pulumi.Input[Optional['ResourceSingleStoreArgs']]):
         pulumi.set(self, "single_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def snowflake(self) -> Optional[pulumi.Input['ResourceSnowflakeArgs']]:
+    def snowflake(self) -> pulumi.Input[Optional['ResourceSnowflakeArgs']]:
         return pulumi.get(self, "snowflake")
 
     @snowflake.setter
-    def snowflake(self, value: Optional[pulumi.Input['ResourceSnowflakeArgs']]):
+    def snowflake(self, value: pulumi.Input[Optional['ResourceSnowflakeArgs']]):
         pulumi.set(self, "snowflake", value)
 
     @_builtins.property
     @pulumi.getter
-    def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
+    def snowsight(self) -> pulumi.Input[Optional['ResourceSnowsightArgs']]:
         return pulumi.get(self, "snowsight")
 
     @snowsight.setter
-    def snowsight(self, value: Optional[pulumi.Input['ResourceSnowsightArgs']]):
+    def snowsight(self, value: pulumi.Input[Optional['ResourceSnowsightArgs']]):
         pulumi.set(self, "snowsight", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServer")
-    def sql_server(self) -> Optional[pulumi.Input['ResourceSqlServerArgs']]:
+    def sql_server(self) -> pulumi.Input[Optional['ResourceSqlServerArgs']]:
         return pulumi.get(self, "sql_server")
 
     @sql_server.setter
-    def sql_server(self, value: Optional[pulumi.Input['ResourceSqlServerArgs']]):
+    def sql_server(self, value: pulumi.Input[Optional['ResourceSqlServerArgs']]):
         pulumi.set(self, "sql_server", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerAzureAd")
-    def sql_server_azure_ad(self) -> Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]:
+    def sql_server_azure_ad(self) -> pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']]:
         return pulumi.get(self, "sql_server_azure_ad")
 
     @sql_server_azure_ad.setter
-    def sql_server_azure_ad(self, value: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]):
+    def sql_server_azure_ad(self, value: pulumi.Input[Optional['ResourceSqlServerAzureAdArgs']]):
         pulumi.set(self, "sql_server_azure_ad", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerKerberosAd")
-    def sql_server_kerberos_ad(self) -> Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]:
+    def sql_server_kerberos_ad(self) -> pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']]:
         return pulumi.get(self, "sql_server_kerberos_ad")
 
     @sql_server_kerberos_ad.setter
-    def sql_server_kerberos_ad(self, value: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]):
+    def sql_server_kerberos_ad(self, value: pulumi.Input[Optional['ResourceSqlServerKerberosAdArgs']]):
         pulumi.set(self, "sql_server_kerberos_ad", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['ResourceSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['ResourceSshArgs']]:
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['ResourceSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['ResourceSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter(name="sshCert")
-    def ssh_cert(self) -> Optional[pulumi.Input['ResourceSshCertArgs']]:
+    def ssh_cert(self) -> pulumi.Input[Optional['ResourceSshCertArgs']]:
         return pulumi.get(self, "ssh_cert")
 
     @ssh_cert.setter
-    def ssh_cert(self, value: Optional[pulumi.Input['ResourceSshCertArgs']]):
+    def ssh_cert(self, value: pulumi.Input[Optional['ResourceSshCertArgs']]):
         pulumi.set(self, "ssh_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sshCustomerKey")
-    def ssh_customer_key(self) -> Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]:
+    def ssh_customer_key(self) -> pulumi.Input[Optional['ResourceSshCustomerKeyArgs']]:
         return pulumi.get(self, "ssh_customer_key")
 
     @ssh_customer_key.setter
-    def ssh_customer_key(self, value: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]):
+    def ssh_customer_key(self, value: pulumi.Input[Optional['ResourceSshCustomerKeyArgs']]):
         pulumi.set(self, "ssh_customer_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPassword")
-    def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
+    def ssh_password(self) -> pulumi.Input[Optional['ResourceSshPasswordArgs']]:
         return pulumi.get(self, "ssh_password")
 
     @ssh_password.setter
-    def ssh_password(self, value: Optional[pulumi.Input['ResourceSshPasswordArgs']]):
+    def ssh_password(self, value: pulumi.Input[Optional['ResourceSshPasswordArgs']]):
         pulumi.set(self, "ssh_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def sybase(self) -> Optional[pulumi.Input['ResourceSybaseArgs']]:
+    def sybase(self) -> pulumi.Input[Optional['ResourceSybaseArgs']]:
         return pulumi.get(self, "sybase")
 
     @sybase.setter
-    def sybase(self, value: Optional[pulumi.Input['ResourceSybaseArgs']]):
+    def sybase(self, value: pulumi.Input[Optional['ResourceSybaseArgs']]):
         pulumi.set(self, "sybase", value)
 
     @_builtins.property
     @pulumi.getter(name="sybaseIq")
-    def sybase_iq(self) -> Optional[pulumi.Input['ResourceSybaseIqArgs']]:
+    def sybase_iq(self) -> pulumi.Input[Optional['ResourceSybaseIqArgs']]:
         return pulumi.get(self, "sybase_iq")
 
     @sybase_iq.setter
-    def sybase_iq(self, value: Optional[pulumi.Input['ResourceSybaseIqArgs']]):
+    def sybase_iq(self, value: pulumi.Input[Optional['ResourceSybaseIqArgs']]):
         pulumi.set(self, "sybase_iq", value)
 
     @_builtins.property
     @pulumi.getter
-    def teradata(self) -> Optional[pulumi.Input['ResourceTeradataArgs']]:
+    def teradata(self) -> pulumi.Input[Optional['ResourceTeradataArgs']]:
         return pulumi.get(self, "teradata")
 
     @teradata.setter
-    def teradata(self, value: Optional[pulumi.Input['ResourceTeradataArgs']]):
+    def teradata(self, value: pulumi.Input[Optional['ResourceTeradataArgs']]):
         pulumi.set(self, "teradata", value)
 
     @_builtins.property
     @pulumi.getter
-    def trino(self) -> Optional[pulumi.Input['ResourceTrinoArgs']]:
+    def trino(self) -> pulumi.Input[Optional['ResourceTrinoArgs']]:
         return pulumi.get(self, "trino")
 
     @trino.setter
-    def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
+    def trino(self, value: pulumi.Input[Optional['ResourceTrinoArgs']]):
         pulumi.set(self, "trino", value)
 
     @_builtins.property
     @pulumi.getter
-    def vertica(self) -> Optional[pulumi.Input['ResourceVerticaArgs']]:
+    def vertica(self) -> pulumi.Input[Optional['ResourceVerticaArgs']]:
         return pulumi.get(self, "vertica")
 
     @vertica.setter
-    def vertica(self, value: Optional[pulumi.Input['ResourceVerticaArgs']]):
+    def vertica(self, value: pulumi.Input[Optional['ResourceVerticaArgs']]):
         pulumi.set(self, "vertica", value)
 
 
@@ -2954,123 +2954,123 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
-                 aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
-                 aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
-                 aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
-                 aks_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
-                 aks_user_impersonation: Optional[pulumi.Input[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
-                 amazon_eks: Optional[pulumi.Input[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
-                 amazon_eks_instance_profile: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
-                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
-                 amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
-                 amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
-                 amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
-                 amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
-                 amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
-                 athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
-                 athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
-                 aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
-                 aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
-                 aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
-                 aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
-                 aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
-                 aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
-                 aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
-                 aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
-                 azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-                 azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
-                 azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
-                 azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
-                 azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
-                 big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
-                 cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
-                 citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
-                 click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
-                 click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
-                 click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
-                 clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
-                 cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
-                 couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
-                 couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
-                 databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
-                 db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
-                 db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
-                 document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
-                 document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
-                 document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
-                 document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
-                 druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
-                 dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
-                 dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
-                 elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
-                 elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
-                 elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
-                 entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
-                 gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
-                 gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
-                 gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
-                 google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
-                 google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
-                 google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
-                 greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
-                 http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
-                 http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
-                 http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
-                 kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
-                 kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
-                 kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
-                 kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
-                 kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
-                 kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
-                 maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-                 mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
-                 mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
-                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
-                 mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
-                 memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
-                 memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
-                 mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
-                 mongo_legacy_host: Optional[pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
-                 mongo_legacy_replicaset: Optional[pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
-                 mongo_replica_set: Optional[pulumi.Input[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
-                 mongo_sharded_cluster: Optional[pulumi.Input[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
-                 mtls_mysql: Optional[pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
-                 mtls_postgres: Optional[pulumi.Input[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
-                 mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
-                 neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
-                 neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
-                 okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
-                 oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
-                 oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
-                 postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
-                 presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
-                 rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
-                 raw_tcp: Optional[pulumi.Input[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
-                 rdp: Optional[pulumi.Input[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
-                 rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
-                 rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
-                 redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
-                 redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
-                 redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
-                 redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
-                 redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
-                 single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
-                 snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
-                 snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
-                 sql_server: Optional[pulumi.Input[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
-                 sql_server_azure_ad: Optional[pulumi.Input[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
-                 sql_server_kerberos_ad: Optional[pulumi.Input[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
-                 ssh: Optional[pulumi.Input[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
-                 ssh_cert: Optional[pulumi.Input[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
-                 ssh_customer_key: Optional[pulumi.Input[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
-                 ssh_password: Optional[pulumi.Input[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
-                 sybase: Optional[pulumi.Input[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
-                 sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
-                 teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
-                 trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
-                 vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
+                 aerospike: pulumi.Input[Optional[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
+                 aks: pulumi.Input[Optional[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
+                 aks_basic_auth: pulumi.Input[Optional[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
+                 aks_service_account: pulumi.Input[Optional[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
+                 aks_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
+                 aks_user_impersonation: pulumi.Input[Optional[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
+                 amazon_eks: pulumi.Input[Optional[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
+                 amazon_eks_instance_profile: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
+                 amazon_eks_instance_profile_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
+                 amazon_eks_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
+                 amazon_es: pulumi.Input[Optional[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+                 amazon_esiam: pulumi.Input[Optional[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+                 amazonmq_amqp: pulumi.Input[Optional[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
+                 amazonmq_amqp091: pulumi.Input[Optional[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
+                 athena: pulumi.Input[Optional[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+                 athena_iam: pulumi.Input[Optional[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
+                 aurora_mysql: pulumi.Input[Optional[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+                 aurora_mysql_iam: pulumi.Input[Optional[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
+                 aurora_postgres: pulumi.Input[Optional[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
+                 aurora_postgres_iam: pulumi.Input[Optional[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
+                 aws_console: pulumi.Input[Optional[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
+                 aws_console_static_key_pair: pulumi.Input[Optional[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+                 aws_instance_profile: pulumi.Input[Optional[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
+                 azure_certificate: pulumi.Input[Optional[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
+                 azure_mysql: pulumi.Input[Optional[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+                 azure_mysql_managed_identity: pulumi.Input[Optional[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
+                 azure_postgres: pulumi.Input[Optional[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
+                 azure_postgres_managed_identity: pulumi.Input[Optional[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
+                 big_query: pulumi.Input[Optional[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
+                 cassandra: pulumi.Input[Optional[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
+                 citus: pulumi.Input[Optional[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+                 click_house_http: pulumi.Input[Optional[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+                 click_house_my_sql: pulumi.Input[Optional[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+                 click_house_tcp: pulumi.Input[Optional[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
+                 clustrix: pulumi.Input[Optional[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
+                 cockroach: pulumi.Input[Optional[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+                 couchbase_database: pulumi.Input[Optional[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+                 couchbase_web_ui: pulumi.Input[Optional[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+                 databricks: pulumi.Input[Optional[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
+                 db2_i: pulumi.Input[Optional[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
+                 db2_luw: pulumi.Input[Optional[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
+                 document_db_host: pulumi.Input[Optional[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+                 document_db_host_iam: pulumi.Input[Optional[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
+                 document_db_replica_set: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+                 document_db_replica_set_iam: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
+                 druid: pulumi.Input[Optional[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
+                 dynamo_db: pulumi.Input[Optional[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+                 dynamo_dbiam: pulumi.Input[Optional[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
+                 elastic: pulumi.Input[Optional[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
+                 elasticache_redis: pulumi.Input[Optional[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 elasticache_redis_iam: pulumi.Input[Optional[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
+                 entra_id: pulumi.Input[Optional[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+                 gcp_console: pulumi.Input[Optional[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+                 gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
+                 google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
+                 google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+                 google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
+                 greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
+                 http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
+                 http_basic_auth: pulumi.Input[Optional[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
+                 http_no_auth: pulumi.Input[Optional[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
+                 kubernetes: pulumi.Input[Optional[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
+                 kubernetes_basic_auth: pulumi.Input[Optional[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+                 kubernetes_pod_identity: pulumi.Input[Optional[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
+                 kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
+                 kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
+                 kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+                 maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+                 mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth_dcr: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+                 mcp_gateway_pat: pulumi.Input[Optional[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
+                 memcached: pulumi.Input[Optional[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
+                 memsql: pulumi.Input[Optional[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
+                 mongo_host: pulumi.Input[Optional[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
+                 mongo_legacy_host: pulumi.Input[Optional[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
+                 mongo_legacy_replicaset: pulumi.Input[Optional[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
+                 mongo_replica_set: pulumi.Input[Optional[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
+                 mongo_sharded_cluster: pulumi.Input[Optional[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
+                 mtls_mysql: pulumi.Input[Optional[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
+                 mtls_postgres: pulumi.Input[Optional[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
+                 mysql: pulumi.Input[Optional[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
+                 neptune: pulumi.Input[Optional[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
+                 neptune_iam: pulumi.Input[Optional[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+                 okta_groups: pulumi.Input[Optional[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+                 oracle_nne: pulumi.Input[Optional[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
+                 postgres: pulumi.Input[Optional[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
+                 presto: pulumi.Input[Optional[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
+                 rabbitmq_amqp091: pulumi.Input[Optional[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
+                 raw_tcp: pulumi.Input[Optional[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
+                 rdp: pulumi.Input[Optional[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
+                 rdp_cert: pulumi.Input[Optional[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
+                 rds_postgres_iam: pulumi.Input[Optional[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
+                 redis: pulumi.Input[Optional[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+                 redis_cluster: pulumi.Input[Optional[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
+                 redshift: pulumi.Input[Optional[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+                 redshift_iam: pulumi.Input[Optional[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+                 redshift_serverless_iam: pulumi.Input[Optional[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
+                 single_store: pulumi.Input[Optional[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
+                 snowflake: pulumi.Input[Optional[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
+                 snowsight: pulumi.Input[Optional[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
+                 sql_server: pulumi.Input[Optional[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
+                 sql_server_azure_ad: pulumi.Input[Optional[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
+                 sql_server_kerberos_ad: pulumi.Input[Optional[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
+                 ssh: pulumi.Input[Optional[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
+                 ssh_cert: pulumi.Input[Optional[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
+                 ssh_customer_key: pulumi.Input[Optional[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
+                 ssh_password: pulumi.Input[Optional[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
+                 sybase: pulumi.Input[Optional[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
+                 sybase_iq: pulumi.Input[Optional[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
+                 teradata: pulumi.Input[Optional[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
+                 trino: pulumi.Input[Optional[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+                 vertica: pulumi.Input[Optional[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
                  __props__=None):
         """
         A Resource is a database, server, cluster, website, or cloud that strongDM
@@ -3222,123 +3222,123 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
-                 aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
-                 aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
-                 aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
-                 aks_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
-                 aks_user_impersonation: Optional[pulumi.Input[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
-                 amazon_eks: Optional[pulumi.Input[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
-                 amazon_eks_instance_profile: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
-                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
-                 amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
-                 amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
-                 amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
-                 amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
-                 amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
-                 athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
-                 athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
-                 aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
-                 aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
-                 aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
-                 aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
-                 aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
-                 aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
-                 aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
-                 aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
-                 azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
-                 azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-                 azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
-                 azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
-                 azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
-                 azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
-                 big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
-                 cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
-                 citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
-                 click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
-                 click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
-                 click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
-                 clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
-                 cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
-                 couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
-                 couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
-                 databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
-                 db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
-                 db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
-                 document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
-                 document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
-                 document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
-                 document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
-                 druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
-                 dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
-                 dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
-                 elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
-                 elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
-                 elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
-                 entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
-                 gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
-                 gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
-                 gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
-                 google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
-                 google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
-                 google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
-                 greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
-                 http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
-                 http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
-                 http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
-                 kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
-                 kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
-                 kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
-                 kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
-                 kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
-                 kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
-                 maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-                 mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
-                 mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
-                 mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
-                 mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
-                 memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
-                 memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
-                 mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
-                 mongo_legacy_host: Optional[pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
-                 mongo_legacy_replicaset: Optional[pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
-                 mongo_replica_set: Optional[pulumi.Input[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
-                 mongo_sharded_cluster: Optional[pulumi.Input[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
-                 mtls_mysql: Optional[pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
-                 mtls_postgres: Optional[pulumi.Input[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
-                 mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
-                 neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
-                 neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
-                 okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
-                 oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
-                 oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
-                 postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
-                 presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
-                 rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
-                 raw_tcp: Optional[pulumi.Input[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
-                 rdp: Optional[pulumi.Input[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
-                 rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
-                 rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
-                 redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
-                 redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
-                 redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
-                 redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
-                 redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
-                 single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
-                 snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
-                 snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
-                 sql_server: Optional[pulumi.Input[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
-                 sql_server_azure_ad: Optional[pulumi.Input[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
-                 sql_server_kerberos_ad: Optional[pulumi.Input[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
-                 ssh: Optional[pulumi.Input[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
-                 ssh_cert: Optional[pulumi.Input[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
-                 ssh_customer_key: Optional[pulumi.Input[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
-                 ssh_password: Optional[pulumi.Input[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
-                 sybase: Optional[pulumi.Input[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
-                 sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
-                 teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
-                 trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
-                 vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
+                 aerospike: pulumi.Input[Optional[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
+                 aks: pulumi.Input[Optional[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
+                 aks_basic_auth: pulumi.Input[Optional[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
+                 aks_service_account: pulumi.Input[Optional[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
+                 aks_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
+                 aks_user_impersonation: pulumi.Input[Optional[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
+                 amazon_eks: pulumi.Input[Optional[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
+                 amazon_eks_instance_profile: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
+                 amazon_eks_instance_profile_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
+                 amazon_eks_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
+                 amazon_es: pulumi.Input[Optional[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+                 amazon_esiam: pulumi.Input[Optional[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+                 amazonmq_amqp: pulumi.Input[Optional[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
+                 amazonmq_amqp091: pulumi.Input[Optional[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
+                 athena: pulumi.Input[Optional[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+                 athena_iam: pulumi.Input[Optional[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
+                 aurora_mysql: pulumi.Input[Optional[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+                 aurora_mysql_iam: pulumi.Input[Optional[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
+                 aurora_postgres: pulumi.Input[Optional[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
+                 aurora_postgres_iam: pulumi.Input[Optional[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
+                 aws_console: pulumi.Input[Optional[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
+                 aws_console_static_key_pair: pulumi.Input[Optional[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+                 aws_instance_profile: pulumi.Input[Optional[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
+                 azure: pulumi.Input[Optional[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
+                 azure_certificate: pulumi.Input[Optional[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
+                 azure_mysql: pulumi.Input[Optional[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+                 azure_mysql_managed_identity: pulumi.Input[Optional[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
+                 azure_postgres: pulumi.Input[Optional[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
+                 azure_postgres_managed_identity: pulumi.Input[Optional[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
+                 big_query: pulumi.Input[Optional[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
+                 cassandra: pulumi.Input[Optional[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
+                 citus: pulumi.Input[Optional[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+                 click_house_http: pulumi.Input[Optional[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+                 click_house_my_sql: pulumi.Input[Optional[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+                 click_house_tcp: pulumi.Input[Optional[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
+                 clustrix: pulumi.Input[Optional[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
+                 cockroach: pulumi.Input[Optional[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+                 couchbase_database: pulumi.Input[Optional[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+                 couchbase_web_ui: pulumi.Input[Optional[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+                 databricks: pulumi.Input[Optional[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
+                 db2_i: pulumi.Input[Optional[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
+                 db2_luw: pulumi.Input[Optional[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
+                 document_db_host: pulumi.Input[Optional[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+                 document_db_host_iam: pulumi.Input[Optional[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
+                 document_db_replica_set: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+                 document_db_replica_set_iam: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
+                 druid: pulumi.Input[Optional[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
+                 dynamo_db: pulumi.Input[Optional[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+                 dynamo_dbiam: pulumi.Input[Optional[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
+                 elastic: pulumi.Input[Optional[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
+                 elasticache_redis: pulumi.Input[Optional[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+                 elasticache_redis_iam: pulumi.Input[Optional[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
+                 entra_id: pulumi.Input[Optional[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+                 gcp_console: pulumi.Input[Optional[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+                 gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
+                 google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
+                 google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+                 google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
+                 greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
+                 http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
+                 http_basic_auth: pulumi.Input[Optional[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
+                 http_no_auth: pulumi.Input[Optional[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
+                 kubernetes: pulumi.Input[Optional[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
+                 kubernetes_basic_auth: pulumi.Input[Optional[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+                 kubernetes_pod_identity: pulumi.Input[Optional[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
+                 kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
+                 kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
+                 kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+                 maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+                 mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+                 mcp_gateway_o_auth_dcr: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+                 mcp_gateway_pat: pulumi.Input[Optional[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
+                 memcached: pulumi.Input[Optional[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
+                 memsql: pulumi.Input[Optional[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
+                 mongo_host: pulumi.Input[Optional[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
+                 mongo_legacy_host: pulumi.Input[Optional[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
+                 mongo_legacy_replicaset: pulumi.Input[Optional[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
+                 mongo_replica_set: pulumi.Input[Optional[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
+                 mongo_sharded_cluster: pulumi.Input[Optional[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
+                 mtls_mysql: pulumi.Input[Optional[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
+                 mtls_postgres: pulumi.Input[Optional[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
+                 mysql: pulumi.Input[Optional[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
+                 neptune: pulumi.Input[Optional[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
+                 neptune_iam: pulumi.Input[Optional[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+                 okta_groups: pulumi.Input[Optional[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
+                 oracle: pulumi.Input[Optional[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+                 oracle_nne: pulumi.Input[Optional[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
+                 postgres: pulumi.Input[Optional[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
+                 presto: pulumi.Input[Optional[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
+                 rabbitmq_amqp091: pulumi.Input[Optional[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
+                 raw_tcp: pulumi.Input[Optional[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
+                 rdp: pulumi.Input[Optional[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
+                 rdp_cert: pulumi.Input[Optional[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
+                 rds_postgres_iam: pulumi.Input[Optional[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
+                 redis: pulumi.Input[Optional[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+                 redis_cluster: pulumi.Input[Optional[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
+                 redshift: pulumi.Input[Optional[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+                 redshift_iam: pulumi.Input[Optional[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+                 redshift_serverless_iam: pulumi.Input[Optional[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
+                 single_store: pulumi.Input[Optional[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
+                 snowflake: pulumi.Input[Optional[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
+                 snowsight: pulumi.Input[Optional[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
+                 sql_server: pulumi.Input[Optional[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
+                 sql_server_azure_ad: pulumi.Input[Optional[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
+                 sql_server_kerberos_ad: pulumi.Input[Optional[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
+                 ssh: pulumi.Input[Optional[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
+                 ssh_cert: pulumi.Input[Optional[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
+                 ssh_customer_key: pulumi.Input[Optional[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
+                 ssh_password: pulumi.Input[Optional[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
+                 sybase: pulumi.Input[Optional[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
+                 sybase_iq: pulumi.Input[Optional[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
+                 teradata: pulumi.Input[Optional[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
+                 trino: pulumi.Input[Optional[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+                 vertica: pulumi.Input[Optional[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3475,123 +3475,123 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aerospike: Optional[pulumi.Input[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
-            aks: Optional[pulumi.Input[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
-            aks_basic_auth: Optional[pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
-            aks_service_account: Optional[pulumi.Input[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
-            aks_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
-            aks_user_impersonation: Optional[pulumi.Input[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
-            amazon_eks: Optional[pulumi.Input[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
-            amazon_eks_instance_profile: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
-            amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
-            amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
-            amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
-            amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
-            amazonmq_amqp: Optional[pulumi.Input[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
-            amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
-            athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
-            athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
-            aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
-            aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
-            aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
-            aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
-            aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
-            aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
-            aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
-            aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
-            azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
-            azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
-            azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
-            azure_mysql_managed_identity: Optional[pulumi.Input[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
-            azure_postgres: Optional[pulumi.Input[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
-            azure_postgres_managed_identity: Optional[pulumi.Input[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
-            big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
-            cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
-            citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
-            click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
-            click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
-            click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
-            clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
-            cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
-            couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
-            couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
-            databricks: Optional[pulumi.Input[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
-            db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
-            db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
-            document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
-            document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
-            document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
-            document_db_replica_set_iam: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
-            druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
-            dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
-            dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
-            elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
-            elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
-            elasticache_redis_iam: Optional[pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
-            entra_id: Optional[pulumi.Input[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
-            gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
-            gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
-            gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
-            google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
-            google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
-            google_spanner: Optional[pulumi.Input[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
-            greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
-            http_auth: Optional[pulumi.Input[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
-            http_basic_auth: Optional[pulumi.Input[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
-            http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
-            kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
-            kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
-            kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
-            kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
-            kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
-            kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
-            maria: Optional[pulumi.Input[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
-            mcp_gateway_no_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
-            mcp_gateway_o_auth: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
-            mcp_gateway_o_auth_dcr: Optional[pulumi.Input[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
-            mcp_gateway_pat: Optional[pulumi.Input[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
-            memcached: Optional[pulumi.Input[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
-            memsql: Optional[pulumi.Input[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
-            mongo_host: Optional[pulumi.Input[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
-            mongo_legacy_host: Optional[pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
-            mongo_legacy_replicaset: Optional[pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
-            mongo_replica_set: Optional[pulumi.Input[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
-            mongo_sharded_cluster: Optional[pulumi.Input[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
-            mtls_mysql: Optional[pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
-            mtls_postgres: Optional[pulumi.Input[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
-            mysql: Optional[pulumi.Input[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
-            neptune: Optional[pulumi.Input[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
-            neptune_iam: Optional[pulumi.Input[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
-            okta_groups: Optional[pulumi.Input[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
-            oracle: Optional[pulumi.Input[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
-            oracle_nne: Optional[pulumi.Input[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
-            postgres: Optional[pulumi.Input[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
-            presto: Optional[pulumi.Input[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
-            rabbitmq_amqp091: Optional[pulumi.Input[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
-            raw_tcp: Optional[pulumi.Input[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
-            rdp: Optional[pulumi.Input[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
-            rdp_cert: Optional[pulumi.Input[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
-            rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
-            redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
-            redis_cluster: Optional[pulumi.Input[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
-            redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
-            redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
-            redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
-            single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
-            snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
-            snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
-            sql_server: Optional[pulumi.Input[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
-            sql_server_azure_ad: Optional[pulumi.Input[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
-            sql_server_kerberos_ad: Optional[pulumi.Input[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
-            ssh: Optional[pulumi.Input[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
-            ssh_cert: Optional[pulumi.Input[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
-            ssh_customer_key: Optional[pulumi.Input[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
-            ssh_password: Optional[pulumi.Input[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
-            sybase: Optional[pulumi.Input[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
-            sybase_iq: Optional[pulumi.Input[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
-            teradata: Optional[pulumi.Input[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
-            trino: Optional[pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
-            vertica: Optional[pulumi.Input[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None) -> 'Resource':
+            aerospike: pulumi.Input[Optional[Union['ResourceAerospikeArgs', 'ResourceAerospikeArgsDict']]] = None,
+            aks: pulumi.Input[Optional[Union['ResourceAksArgs', 'ResourceAksArgsDict']]] = None,
+            aks_basic_auth: pulumi.Input[Optional[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']]] = None,
+            aks_service_account: pulumi.Input[Optional[Union['ResourceAksServiceAccountArgs', 'ResourceAksServiceAccountArgsDict']]] = None,
+            aks_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceAksServiceAccountUserImpersonationArgs', 'ResourceAksServiceAccountUserImpersonationArgsDict']]] = None,
+            aks_user_impersonation: pulumi.Input[Optional[Union['ResourceAksUserImpersonationArgs', 'ResourceAksUserImpersonationArgsDict']]] = None,
+            amazon_eks: pulumi.Input[Optional[Union['ResourceAmazonEksArgs', 'ResourceAmazonEksArgsDict']]] = None,
+            amazon_eks_instance_profile: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileArgs', 'ResourceAmazonEksInstanceProfileArgsDict']]] = None,
+            amazon_eks_instance_profile_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
+            amazon_eks_user_impersonation: pulumi.Input[Optional[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
+            amazon_es: pulumi.Input[Optional[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+            amazon_esiam: pulumi.Input[Optional[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
+            amazonmq_amqp: pulumi.Input[Optional[Union['ResourceAmazonmqAmqpArgs', 'ResourceAmazonmqAmqpArgsDict']]] = None,
+            amazonmq_amqp091: pulumi.Input[Optional[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
+            athena: pulumi.Input[Optional[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+            athena_iam: pulumi.Input[Optional[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
+            aurora_mysql: pulumi.Input[Optional[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+            aurora_mysql_iam: pulumi.Input[Optional[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
+            aurora_postgres: pulumi.Input[Optional[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
+            aurora_postgres_iam: pulumi.Input[Optional[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
+            aws: pulumi.Input[Optional[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
+            aws_console: pulumi.Input[Optional[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
+            aws_console_static_key_pair: pulumi.Input[Optional[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+            aws_instance_profile: pulumi.Input[Optional[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
+            azure: pulumi.Input[Optional[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
+            azure_certificate: pulumi.Input[Optional[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
+            azure_mysql: pulumi.Input[Optional[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
+            azure_mysql_managed_identity: pulumi.Input[Optional[Union['ResourceAzureMysqlManagedIdentityArgs', 'ResourceAzureMysqlManagedIdentityArgsDict']]] = None,
+            azure_postgres: pulumi.Input[Optional[Union['ResourceAzurePostgresArgs', 'ResourceAzurePostgresArgsDict']]] = None,
+            azure_postgres_managed_identity: pulumi.Input[Optional[Union['ResourceAzurePostgresManagedIdentityArgs', 'ResourceAzurePostgresManagedIdentityArgsDict']]] = None,
+            big_query: pulumi.Input[Optional[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
+            cassandra: pulumi.Input[Optional[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
+            citus: pulumi.Input[Optional[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+            click_house_http: pulumi.Input[Optional[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+            click_house_my_sql: pulumi.Input[Optional[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+            click_house_tcp: pulumi.Input[Optional[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
+            clustrix: pulumi.Input[Optional[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
+            cockroach: pulumi.Input[Optional[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+            couchbase_database: pulumi.Input[Optional[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+            couchbase_web_ui: pulumi.Input[Optional[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
+            databricks: pulumi.Input[Optional[Union['ResourceDatabricksArgs', 'ResourceDatabricksArgsDict']]] = None,
+            db2_i: pulumi.Input[Optional[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
+            db2_luw: pulumi.Input[Optional[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
+            document_db_host: pulumi.Input[Optional[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+            document_db_host_iam: pulumi.Input[Optional[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
+            document_db_replica_set: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
+            document_db_replica_set_iam: pulumi.Input[Optional[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']]] = None,
+            druid: pulumi.Input[Optional[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
+            dynamo_db: pulumi.Input[Optional[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+            dynamo_dbiam: pulumi.Input[Optional[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
+            elastic: pulumi.Input[Optional[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
+            elasticache_redis: pulumi.Input[Optional[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
+            elasticache_redis_iam: pulumi.Input[Optional[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']]] = None,
+            entra_id: pulumi.Input[Optional[Union['ResourceEntraIdArgs', 'ResourceEntraIdArgsDict']]] = None,
+            gcp: pulumi.Input[Optional[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+            gcp_console: pulumi.Input[Optional[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+            gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
+            google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
+            google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
+            google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict']]] = None,
+            greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
+            http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict']]] = None,
+            http_basic_auth: pulumi.Input[Optional[Union['ResourceHttpBasicAuthArgs', 'ResourceHttpBasicAuthArgsDict']]] = None,
+            http_no_auth: pulumi.Input[Optional[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
+            kubernetes: pulumi.Input[Optional[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
+            kubernetes_basic_auth: pulumi.Input[Optional[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+            kubernetes_pod_identity: pulumi.Input[Optional[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
+            kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
+            kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
+            kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+            maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
+            mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
+            mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
+            mcp_gateway_o_auth_dcr: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthDcrArgs', 'ResourceMcpGatewayOAuthDcrArgsDict']]] = None,
+            mcp_gateway_pat: pulumi.Input[Optional[Union['ResourceMcpGatewayPatArgs', 'ResourceMcpGatewayPatArgsDict']]] = None,
+            memcached: pulumi.Input[Optional[Union['ResourceMemcachedArgs', 'ResourceMemcachedArgsDict']]] = None,
+            memsql: pulumi.Input[Optional[Union['ResourceMemsqlArgs', 'ResourceMemsqlArgsDict']]] = None,
+            mongo_host: pulumi.Input[Optional[Union['ResourceMongoHostArgs', 'ResourceMongoHostArgsDict']]] = None,
+            mongo_legacy_host: pulumi.Input[Optional[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']]] = None,
+            mongo_legacy_replicaset: pulumi.Input[Optional[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']]] = None,
+            mongo_replica_set: pulumi.Input[Optional[Union['ResourceMongoReplicaSetArgs', 'ResourceMongoReplicaSetArgsDict']]] = None,
+            mongo_sharded_cluster: pulumi.Input[Optional[Union['ResourceMongoShardedClusterArgs', 'ResourceMongoShardedClusterArgsDict']]] = None,
+            mtls_mysql: pulumi.Input[Optional[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']]] = None,
+            mtls_postgres: pulumi.Input[Optional[Union['ResourceMtlsPostgresArgs', 'ResourceMtlsPostgresArgsDict']]] = None,
+            mysql: pulumi.Input[Optional[Union['ResourceMysqlArgs', 'ResourceMysqlArgsDict']]] = None,
+            neptune: pulumi.Input[Optional[Union['ResourceNeptuneArgs', 'ResourceNeptuneArgsDict']]] = None,
+            neptune_iam: pulumi.Input[Optional[Union['ResourceNeptuneIamArgs', 'ResourceNeptuneIamArgsDict']]] = None,
+            okta_groups: pulumi.Input[Optional[Union['ResourceOktaGroupsArgs', 'ResourceOktaGroupsArgsDict']]] = None,
+            oracle: pulumi.Input[Optional[Union['ResourceOracleArgs', 'ResourceOracleArgsDict']]] = None,
+            oracle_nne: pulumi.Input[Optional[Union['ResourceOracleNneArgs', 'ResourceOracleNneArgsDict']]] = None,
+            postgres: pulumi.Input[Optional[Union['ResourcePostgresArgs', 'ResourcePostgresArgsDict']]] = None,
+            presto: pulumi.Input[Optional[Union['ResourcePrestoArgs', 'ResourcePrestoArgsDict']]] = None,
+            rabbitmq_amqp091: pulumi.Input[Optional[Union['ResourceRabbitmqAmqp091Args', 'ResourceRabbitmqAmqp091ArgsDict']]] = None,
+            raw_tcp: pulumi.Input[Optional[Union['ResourceRawTcpArgs', 'ResourceRawTcpArgsDict']]] = None,
+            rdp: pulumi.Input[Optional[Union['ResourceRdpArgs', 'ResourceRdpArgsDict']]] = None,
+            rdp_cert: pulumi.Input[Optional[Union['ResourceRdpCertArgs', 'ResourceRdpCertArgsDict']]] = None,
+            rds_postgres_iam: pulumi.Input[Optional[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
+            redis: pulumi.Input[Optional[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
+            redis_cluster: pulumi.Input[Optional[Union['ResourceRedisClusterArgs', 'ResourceRedisClusterArgsDict']]] = None,
+            redshift: pulumi.Input[Optional[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+            redshift_iam: pulumi.Input[Optional[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+            redshift_serverless_iam: pulumi.Input[Optional[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
+            single_store: pulumi.Input[Optional[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
+            snowflake: pulumi.Input[Optional[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
+            snowsight: pulumi.Input[Optional[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
+            sql_server: pulumi.Input[Optional[Union['ResourceSqlServerArgs', 'ResourceSqlServerArgsDict']]] = None,
+            sql_server_azure_ad: pulumi.Input[Optional[Union['ResourceSqlServerAzureAdArgs', 'ResourceSqlServerAzureAdArgsDict']]] = None,
+            sql_server_kerberos_ad: pulumi.Input[Optional[Union['ResourceSqlServerKerberosAdArgs', 'ResourceSqlServerKerberosAdArgsDict']]] = None,
+            ssh: pulumi.Input[Optional[Union['ResourceSshArgs', 'ResourceSshArgsDict']]] = None,
+            ssh_cert: pulumi.Input[Optional[Union['ResourceSshCertArgs', 'ResourceSshCertArgsDict']]] = None,
+            ssh_customer_key: pulumi.Input[Optional[Union['ResourceSshCustomerKeyArgs', 'ResourceSshCustomerKeyArgsDict']]] = None,
+            ssh_password: pulumi.Input[Optional[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']]] = None,
+            sybase: pulumi.Input[Optional[Union['ResourceSybaseArgs', 'ResourceSybaseArgsDict']]] = None,
+            sybase_iq: pulumi.Input[Optional[Union['ResourceSybaseIqArgs', 'ResourceSybaseIqArgsDict']]] = None,
+            teradata: pulumi.Input[Optional[Union['ResourceTeradataArgs', 'ResourceTeradataArgsDict']]] = None,
+            trino: pulumi.Input[Optional[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']]] = None,
+            vertica: pulumi.Input[Optional[Union['ResourceVerticaArgs', 'ResourceVerticaArgsDict']]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

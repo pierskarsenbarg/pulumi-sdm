@@ -120,17 +120,17 @@ export interface GetIdentityAliasOutputArgs {
     /**
      * The account for this identity alias.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the IdentityAlias.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The identity set.
      */
-    identitySetId?: pulumi.Input<string>;
+    identitySetId?: pulumi.Input<string | undefined>;
     /**
      * The username to be used as the identity alias for this account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

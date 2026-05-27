@@ -99,8 +99,8 @@ export interface ProxyClusterKeyState {
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    proxyClusterId?: pulumi.Input<string>;
-    secretKey?: pulumi.Input<string>;
+    proxyClusterId?: pulumi.Input<string | undefined>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 /**

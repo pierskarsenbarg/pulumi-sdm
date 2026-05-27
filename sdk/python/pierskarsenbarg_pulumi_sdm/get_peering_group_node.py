@@ -123,9 +123,9 @@ def get_peering_group_node(group_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         node_id=pulumi.get(__ret__, 'node_id'),
         peering_group_nodes=pulumi.get(__ret__, 'peering_group_nodes'))
-def get_peering_group_node_output(group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  node_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_peering_group_node_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  node_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupNodeResult]:
     """
     PeeringGroupNode represents the attachment between a PeeringGroup and a Node.

@@ -138,21 +138,21 @@ export interface GetApprovalWorkflowOutputArgs {
     /**
      * Approval mode of the ApprovalWorkflow
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepArgs>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.GetApprovalWorkflowApprovalStepArgs>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the ApprovalWorkflow.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

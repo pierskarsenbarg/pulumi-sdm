@@ -120,17 +120,17 @@ export interface GetRemoteIdentityOutputArgs {
     /**
      * The account for this remote identity.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the RemoteIdentity.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The remote identity group.
      */
-    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The username to be used as the remote identity for this account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

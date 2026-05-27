@@ -192,39 +192,39 @@ export interface GetWorkflowOutputArgs {
     /**
      * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    accessRequestFixedDuration?: pulumi.Input<string>;
+    accessRequestFixedDuration?: pulumi.Input<string | undefined>;
     /**
      * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
-    accessRequestMaxDuration?: pulumi.Input<string>;
+    accessRequestMaxDuration?: pulumi.Input<string | undefined>;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */
-    approvalFlowId?: pulumi.Input<string>;
+    approvalFlowId?: pulumi.Input<string | undefined>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      *
      * @deprecated auto_grant is deprecated, see docs for more info
      */
-    autoGrant?: pulumi.Input<boolean>;
+    autoGrant?: pulumi.Input<boolean | undefined>;
     /**
      * Optional description of the Workflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the Workflow.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Workflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional weight for workflow to specify it's priority in matching a request.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

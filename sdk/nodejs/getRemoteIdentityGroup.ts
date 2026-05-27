@@ -96,9 +96,9 @@ export interface GetRemoteIdentityGroupOutputArgs {
     /**
      * Unique identifier of the RemoteIdentityGroup.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the RemoteIdentityGroup.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

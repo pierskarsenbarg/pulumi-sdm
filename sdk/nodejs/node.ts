@@ -122,15 +122,15 @@ export interface NodeState {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    gateway?: pulumi.Input<inputs.NodeGateway>;
+    gateway?: pulumi.Input<inputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    relay?: pulumi.Input<inputs.NodeRelay>;
+    relay?: pulumi.Input<inputs.NodeRelay | undefined>;
 }
 
 /**
@@ -140,13 +140,13 @@ export interface NodeArgs {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
-    gateway?: pulumi.Input<inputs.NodeGateway>;
+    gateway?: pulumi.Input<inputs.NodeGateway | undefined>;
     /**
      * ProxyCluster represents a cluster of StrongDM proxies.
      */
-    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster | undefined>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
-    relay?: pulumi.Input<inputs.NodeRelay>;
+    relay?: pulumi.Input<inputs.NodeRelay | undefined>;
 }

@@ -100,9 +100,9 @@ export interface GetProxyClusterKeyOutputArgs {
     /**
      * Unique identifier of the Relay.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The ID of the proxy cluster which this key authenticates to.
      */
-    proxyClusterId?: pulumi.Input<string>;
+    proxyClusterId?: pulumi.Input<string | undefined>;
 }

@@ -106,13 +106,13 @@ export interface GetAccountAttachmentOutputArgs {
     /**
      * The id of the account of this AccountAttachment.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the AccountAttachment.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The id of the attached role of this AccountAttachment.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }

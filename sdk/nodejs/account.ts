@@ -117,11 +117,11 @@ export interface AccountState {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
-    service?: pulumi.Input<inputs.AccountService>;
+    service?: pulumi.Input<inputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    user?: pulumi.Input<inputs.AccountUser>;
+    user?: pulumi.Input<inputs.AccountUser | undefined>;
 }
 
 /**
@@ -131,9 +131,9 @@ export interface AccountArgs {
     /**
      * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
      */
-    service?: pulumi.Input<inputs.AccountService>;
+    service?: pulumi.Input<inputs.AccountService | undefined>;
     /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
-    user?: pulumi.Input<inputs.AccountUser>;
+    user?: pulumi.Input<inputs.AccountUser | undefined>;
 }

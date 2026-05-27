@@ -85,11 +85,11 @@ export interface PeeringGroupPeerState {
     /**
      * Group ID from which the link will originate.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Peering Group ID to which Group ID will link.
      */
-    peersWithGroupId?: pulumi.Input<string>;
+    peersWithGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,9 +99,9 @@ export interface PeeringGroupPeerArgs {
     /**
      * Group ID from which the link will originate.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Peering Group ID to which Group ID will link.
      */
-    peersWithGroupId?: pulumi.Input<string>;
+    peersWithGroupId?: pulumi.Input<string | undefined>;
 }

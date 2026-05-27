@@ -85,11 +85,11 @@ export interface PeeringGroupNodeState {
     /**
      * Peering Group ID to which the node will be attached to.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Node ID to be attached.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,9 +99,9 @@ export interface PeeringGroupNodeArgs {
     /**
      * Peering Group ID to which the node will be attached to.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Node ID to be attached.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
 }

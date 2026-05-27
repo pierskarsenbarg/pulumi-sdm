@@ -246,57 +246,57 @@ export interface GetAccountOutputArgs {
     /**
      * Corresponds to the type of token, e.g. api or admin-token.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The User's email address. Must be unique.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Internal employee ID used to identify the user.
      */
-    employeeNumber?: pulumi.Input<string>;
+    employeeNumber?: pulumi.Input<string | undefined>;
     /**
      * External ID is an alternative unique ID this user is represented by within an external service.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The User's first name.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the User.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The User's last name.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
      */
-    managerId?: pulumi.Input<string>;
+    managerId?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
-    permissionLevel?: pulumi.Input<string>;
+    permissionLevel?: pulumi.Input<string | undefined>;
     /**
      * Permissions assigned to the token, e.g. role:create.
      */
-    permissions?: pulumi.Input<string>;
+    permissions?: pulumi.Input<string | undefined>;
     /**
      * Reserved for future use.  Always false for tokens.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://docs.strongdm.com/references/cli/filters/) for more information.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

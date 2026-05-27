@@ -81,16 +81,16 @@ export class Connector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connector resources.
  */
 export interface ConnectorState {
-    aws?: pulumi.Input<inputs.ConnectorAws>;
-    azure?: pulumi.Input<inputs.ConnectorAzure>;
-    gcp?: pulumi.Input<inputs.ConnectorGcp>;
+    aws?: pulumi.Input<inputs.ConnectorAws | undefined>;
+    azure?: pulumi.Input<inputs.ConnectorAzure | undefined>;
+    gcp?: pulumi.Input<inputs.ConnectorGcp | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
-    aws?: pulumi.Input<inputs.ConnectorAws>;
-    azure?: pulumi.Input<inputs.ConnectorAzure>;
-    gcp?: pulumi.Input<inputs.ConnectorGcp>;
+    aws?: pulumi.Input<inputs.ConnectorAws | undefined>;
+    azure?: pulumi.Input<inputs.ConnectorAzure | undefined>;
+    gcp?: pulumi.Input<inputs.ConnectorGcp | undefined>;
 }

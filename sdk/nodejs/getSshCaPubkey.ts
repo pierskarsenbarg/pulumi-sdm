@@ -84,9 +84,9 @@ export interface GetSshCaPubkeyOutputArgs {
     /**
      * a generated id representing this request.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the SSH Certificate Authority public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }

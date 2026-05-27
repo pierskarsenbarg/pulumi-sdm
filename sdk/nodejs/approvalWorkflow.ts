@@ -155,19 +155,19 @@ export interface ApprovalWorkflowState {
     /**
      * Approval mode of the ApprovalWorkflow
      */
-    approvalMode?: pulumi.Input<string>;
+    approvalMode?: pulumi.Input<string | undefined>;
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,13 +181,13 @@ export interface ApprovalWorkflowArgs {
     /**
      * The approval steps of this approval workflow
      */
-    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[]>;
+    approvalSteps?: pulumi.Input<pulumi.Input<inputs.ApprovalWorkflowApprovalStep>[] | undefined>;
     /**
      * Optional description of the ApprovalWorkflow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the ApprovalWorkflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

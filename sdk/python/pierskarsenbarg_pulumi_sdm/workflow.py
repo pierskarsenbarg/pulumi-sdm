@@ -19,15 +19,15 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
-                 access_request_fixed_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_request_max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_request_fixed_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_request_max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Workflow resource.
 
@@ -65,126 +65,126 @@ class WorkflowArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessRequestFixedDuration")
-    def access_request_fixed_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_request_fixed_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_fixed_duration")
 
     @access_request_fixed_duration.setter
-    def access_request_fixed_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_request_fixed_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_request_fixed_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRequestMaxDuration")
-    def access_request_max_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_request_max_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_max_duration")
 
     @access_request_max_duration.setter
-    def access_request_max_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_request_max_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_request_max_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AccessRules is a list of access rules defining the resources this Workflow provides access to.
         """
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalFlowId")
-    def approval_flow_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_flow_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional approval flow ID identifies an approval flow that linked to the workflow
         """
         return pulumi.get(self, "approval_flow_id")
 
     @approval_flow_id.setter
-    def approval_flow_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_flow_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_flow_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoGrant")
     @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
-    def auto_grant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_grant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.
         """
         return pulumi.get(self, "auto_grant")
 
     @auto_grant.setter
-    def auto_grant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_grant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_grant", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the Workflow.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique human-readable name of the Workflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional weight for workflow to specify it's priority in matching a request.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _WorkflowState:
     def __init__(__self__, *,
-                 access_request_fixed_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_request_max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_request_fixed_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_request_max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
 
@@ -222,111 +222,111 @@ class _WorkflowState:
 
     @_builtins.property
     @pulumi.getter(name="accessRequestFixedDuration")
-    def access_request_fixed_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_request_fixed_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_fixed_duration")
 
     @access_request_fixed_duration.setter
-    def access_request_fixed_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_request_fixed_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_request_fixed_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRequestMaxDuration")
-    def access_request_max_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_request_max_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_max_duration")
 
     @access_request_max_duration.setter
-    def access_request_max_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_request_max_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_request_max_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AccessRules is a list of access rules defining the resources this Workflow provides access to.
         """
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalFlowId")
-    def approval_flow_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_flow_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional approval flow ID identifies an approval flow that linked to the workflow
         """
         return pulumi.get(self, "approval_flow_id")
 
     @approval_flow_id.setter
-    def approval_flow_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_flow_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_flow_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoGrant")
     @_utilities.deprecated("""auto_grant is deprecated, see docs for more info""")
-    def auto_grant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_grant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional auto grant setting to automatically approve requests or not, defaults to false.
         """
         return pulumi.get(self, "auto_grant")
 
     @auto_grant.setter
-    def auto_grant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_grant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_grant", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the Workflow.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique human-readable name of the Workflow.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional weight for workflow to specify it's priority in matching a request.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -336,15 +336,15 @@ class Workflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_request_fixed_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_request_max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_request_fixed_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_request_max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Workflows are the collection of rules that define the resources to which access can be requested,
@@ -499,15 +499,15 @@ class Workflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_request_fixed_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_request_max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_request_fixed_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_request_max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,15 +536,15 @@ class Workflow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_request_fixed_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            access_request_max_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            access_rules: Optional[pulumi.Input[_builtins.str]] = None,
-            approval_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'Workflow':
+            access_request_fixed_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            access_request_max_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            access_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            approval_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'Workflow':
         """
         Get an existing Workflow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
