@@ -59,6 +59,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly bool? OverrideDatabase;
         /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
         /// The port to dial to initiate a connection from the egress node to this resource.
         /// </summary>
         public readonly int? Port;
@@ -123,6 +127,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             bool? overrideDatabase,
 
+            string? password,
+
             int? port,
 
             int? portOverride,
@@ -154,6 +160,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             KrbConfig = krbConfig;
             Name = name;
             OverrideDatabase = overrideDatabase;
+            Password = password;
             Port = port;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;

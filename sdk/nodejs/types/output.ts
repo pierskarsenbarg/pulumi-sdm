@@ -1128,6 +1128,7 @@ export interface GetResourceResource {
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
     kubernetesUserImpersonations: outputs.GetResourceResourceKubernetesUserImpersonation[];
+    llms: outputs.GetResourceResourceLlm[];
     marias: outputs.GetResourceResourceMaria[];
     mcpGatewayNoAuths: outputs.GetResourceResourceMcpGatewayNoAuth[];
     mcpGatewayOAuthDcrs: outputs.GetResourceResourceMcpGatewayOAuthDcr[];
@@ -5603,6 +5604,58 @@ export interface GetResourceResourceKubernetesUserImpersonation {
     tags?: {[key: string]: string};
 }
 
+export interface GetResourceResourceLlm {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+     */
+    models?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
+}
+
 export interface GetResourceResourceMaria {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -8002,6 +8055,10 @@ export interface GetResourceResourceSqlServerKerberosAd {
      * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
      */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
     /**
      * The port to dial to initiate a connection from the egress node to this resource.
      */
@@ -14197,6 +14254,54 @@ export interface ResourceKubernetesUserImpersonation {
     tags?: {[key: string]: string};
 }
 
+export interface ResourceLlm {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+     */
+    models?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: string;
+}
+
 export interface ResourceMaria {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -16444,6 +16549,10 @@ export interface ResourceSqlServerKerberosAd {
      * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
      */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
     /**
      * The port to dial to initiate a connection from the egress node to this resource.
      */

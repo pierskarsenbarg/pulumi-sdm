@@ -316,6 +316,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("kubernetesUserImpersonation")]
         public Output<Outputs.ResourceKubernetesUserImpersonation?> KubernetesUserImpersonation { get; private set; } = null!;
 
+        /// <summary>
+        /// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("llm")]
+        public Output<Outputs.ResourceLlm?> Llm { get; private set; } = null!;
+
         [Output("maria")]
         public Output<Outputs.ResourceMaria?> Maria { get; private set; } = null!;
 
@@ -732,6 +738,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("kubernetesUserImpersonation")]
         public Input<Inputs.ResourceKubernetesUserImpersonationArgs>? KubernetesUserImpersonation { get; set; }
 
+        /// <summary>
+        /// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("llm")]
+        public Input<Inputs.ResourceLlmArgs>? Llm { get; set; }
+
         [Input("maria")]
         public Input<Inputs.ResourceMariaArgs>? Maria { get; set; }
 
@@ -1108,6 +1120,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("kubernetesUserImpersonation")]
         public Input<Inputs.ResourceKubernetesUserImpersonationGetArgs>? KubernetesUserImpersonation { get; set; }
+
+        /// <summary>
+        /// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("llm")]
+        public Input<Inputs.ResourceLlmGetArgs>? Llm { get; set; }
 
         [Input("maria")]
         public Input<Inputs.ResourceMariaGetArgs>? Maria { get; set; }

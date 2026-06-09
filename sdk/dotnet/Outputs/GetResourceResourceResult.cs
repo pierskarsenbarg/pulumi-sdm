@@ -84,6 +84,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult> KubernetesServiceAccountUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> KubernetesServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> KubernetesUserImpersonations;
+        public readonly ImmutableArray<Outputs.GetResourceResourceLlmResult> Llms;
         public readonly ImmutableArray<Outputs.GetResourceResourceMariaResult> Marias;
         public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayNoAuthResult> McpGatewayNoAuths;
         public readonly ImmutableArray<Outputs.GetResourceResourceMcpGatewayOAuthDcrResult> McpGatewayOAuthDcrs;
@@ -274,6 +275,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> kubernetesUserImpersonations,
 
+            ImmutableArray<Outputs.GetResourceResourceLlmResult> llms,
+
             ImmutableArray<Outputs.GetResourceResourceMariaResult> marias,
 
             ImmutableArray<Outputs.GetResourceResourceMcpGatewayNoAuthResult> mcpGatewayNoAuths,
@@ -438,6 +441,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             KubernetesServiceAccountUserImpersonations = kubernetesServiceAccountUserImpersonations;
             KubernetesServiceAccounts = kubernetesServiceAccounts;
             KubernetesUserImpersonations = kubernetesUserImpersonations;
+            Llms = llms;
             Marias = marias;
             McpGatewayNoAuths = mcpGatewayNoAuths;
             McpGatewayOAuthDcrs = mcpGatewayOAuthDcrs;
