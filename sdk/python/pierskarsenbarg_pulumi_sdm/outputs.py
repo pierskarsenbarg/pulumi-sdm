@@ -105,6 +105,7 @@ __all__ = [
     'ResourceKubernetesServiceAccount',
     'ResourceKubernetesServiceAccountUserImpersonation',
     'ResourceKubernetesUserImpersonation',
+    'ResourceLlm',
     'ResourceMaria',
     'ResourceMcpGatewayNoAuth',
     'ResourceMcpGatewayOAuth',
@@ -291,6 +292,7 @@ __all__ = [
     'GetResourceResourceKubernetesServiceAccountResult',
     'GetResourceResourceKubernetesServiceAccountUserImpersonationResult',
     'GetResourceResourceKubernetesUserImpersonationResult',
+    'GetResourceResourceLlmResult',
     'GetResourceResourceMariaResult',
     'GetResourceResourceMcpGatewayNoAuthResult',
     'GetResourceResourceMcpGatewayOAuthResult',
@@ -16129,6 +16131,171 @@ class ResourceKubernetesUserImpersonation(dict):
 
 
 @pulumi.output_type
+class ResourceLlm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceLlm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceLlm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceLlm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 bind_interface: Optional[_builtins.str] = None,
+                 egress_filter: Optional[_builtins.str] = None,
+                 models: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 port_override: Optional[_builtins.int] = None,
+                 proxy_cluster_id: Optional[_builtins.str] = None,
+                 secret_store_id: Optional[_builtins.str] = None,
+                 subdomain: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Unique human-readable name of the Resource.
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param _builtins.str models: Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+        :param _builtins.str password: The password to authenticate with.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
+        :param _builtins.str url: The URL to dial to initiate a connection from the egress node to this resource.
+               * memcached:
+        """
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[_builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @_builtins.property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[_builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Optional[_builtins.str]:
+        """
+        Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+        """
+        return pulumi.get(self, "models")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[_builtins.int]:
+        """
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+        """
+        return pulumi.get(self, "port_override")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> Optional[_builtins.str]:
+        """
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        The URL to dial to initiate a connection from the egress node to this resource.
+        * memcached:
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class ResourceMaria(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23685,6 +23852,7 @@ class ResourceSqlServerKerberosAd(dict):
                  keytab: Optional[_builtins.str] = None,
                  krb_config: Optional[_builtins.str] = None,
                  override_database: Optional[_builtins.bool] = None,
+                 password: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  port_override: Optional[_builtins.int] = None,
                  proxy_cluster_id: Optional[_builtins.str] = None,
@@ -23707,6 +23875,7 @@ class ResourceSqlServerKerberosAd(dict):
         :param _builtins.str keytab: The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
         :param _builtins.str krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -23738,6 +23907,8 @@ class ResourceSqlServerKerberosAd(dict):
             pulumi.set(__self__, "krb_config", krb_config)
         if override_database is not None:
             pulumi.set(__self__, "override_database", override_database)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
@@ -23852,6 +24023,14 @@ class ResourceSqlServerKerberosAd(dict):
         If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         """
         return pulumi.get(self, "override_database")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
@@ -31665,6 +31844,7 @@ class GetResourceResourceResult(dict):
                  kubernetes_service_account_user_impersonations: Sequence['outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult'],
                  kubernetes_service_accounts: Sequence['outputs.GetResourceResourceKubernetesServiceAccountResult'],
                  kubernetes_user_impersonations: Sequence['outputs.GetResourceResourceKubernetesUserImpersonationResult'],
+                 llms: Sequence['outputs.GetResourceResourceLlmResult'],
                  marias: Sequence['outputs.GetResourceResourceMariaResult'],
                  mcp_gateway_no_auths: Sequence['outputs.GetResourceResourceMcpGatewayNoAuthResult'],
                  mcp_gateway_o_auth_dcrs: Sequence['outputs.GetResourceResourceMcpGatewayOAuthDcrResult'],
@@ -31782,6 +31962,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "kubernetes_service_account_user_impersonations", kubernetes_service_account_user_impersonations)
         pulumi.set(__self__, "kubernetes_service_accounts", kubernetes_service_accounts)
         pulumi.set(__self__, "kubernetes_user_impersonations", kubernetes_user_impersonations)
+        pulumi.set(__self__, "llms", llms)
         pulumi.set(__self__, "marias", marias)
         pulumi.set(__self__, "mcp_gateway_no_auths", mcp_gateway_no_auths)
         pulumi.set(__self__, "mcp_gateway_o_auth_dcrs", mcp_gateway_o_auth_dcrs)
@@ -32186,6 +32367,11 @@ class GetResourceResourceResult(dict):
     @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_user_impersonations(self) -> Sequence['outputs.GetResourceResourceKubernetesUserImpersonationResult']:
         return pulumi.get(self, "kubernetes_user_impersonations")
+
+    @_builtins.property
+    @pulumi.getter
+    def llms(self) -> Sequence['outputs.GetResourceResourceLlmResult']:
+        return pulumi.get(self, "llms")
 
     @_builtins.property
     @pulumi.getter
@@ -45546,6 +45732,159 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
 
 
 @pulumi.output_type
+class GetResourceResourceLlmResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[_builtins.str] = None,
+                 egress_filter: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 models: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 port_override: Optional[_builtins.int] = None,
+                 proxy_cluster_id: Optional[_builtins.str] = None,
+                 secret_store_id: Optional[_builtins.str] = None,
+                 subdomain: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        :param _builtins.str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param _builtins.str id: Unique identifier of the Resource.
+        :param _builtins.str models: Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+        :param _builtins.str name: Unique human-readable name of the Resource.
+        :param _builtins.str password: The password to authenticate with.
+        :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+        :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param _builtins.str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param _builtins.str subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+        :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
+        :param _builtins.str url: The URL to dial to initiate a connection from the egress node to this resource.
+               * memcached:
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[_builtins.str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @_builtins.property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[_builtins.str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Optional[_builtins.str]:
+        """
+        Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+        """
+        return pulumi.get(self, "models")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[_builtins.int]:
+        """
+        The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+        """
+        return pulumi.get(self, "port_override")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> Optional[_builtins.str]:
+        """
+        DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        The URL to dial to initiate a connection from the egress node to this resource.
+        * memcached:
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetResourceResourceMariaResult(dict):
     def __init__(__self__, *,
                  bind_interface: Optional[_builtins.str] = None,
@@ -52524,6 +52863,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
                  krb_config: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  override_database: Optional[_builtins.bool] = None,
+                 password: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  port_override: Optional[_builtins.int] = None,
                  proxy_cluster_id: Optional[_builtins.str] = None,
@@ -52547,6 +52887,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         :param _builtins.str krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
         :param _builtins.str name: Unique human-readable name of the Resource.
         :param _builtins.bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param _builtins.str password: The password to authenticate with.
         :param _builtins.int port: The port to dial to initiate a connection from the egress node to this resource.
         :param _builtins.int port_override: The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
         :param _builtins.str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -52582,6 +52923,8 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
             pulumi.set(__self__, "name", name)
         if override_database is not None:
             pulumi.set(__self__, "override_database", override_database)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
@@ -52698,6 +53041,14 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         """
         return pulumi.get(self, "override_database")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter

@@ -181,14 +181,16 @@ type Resource struct {
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrOutput `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrOutput `pulumi:"kubernetesUserImpersonation"`
-	Maria                       ResourceMariaPtrOutput                       `pulumi:"maria"`
-	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrOutput            `pulumi:"mcpGatewayNoAuth"`
-	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrOutput             `pulumi:"mcpGatewayOAuth"`
-	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrOutput          `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat               ResourceMcpGatewayPatPtrOutput               `pulumi:"mcpGatewayPat"`
-	Memcached                   ResourceMemcachedPtrOutput                   `pulumi:"memcached"`
-	Memsql                      ResourceMemsqlPtrOutput                      `pulumi:"memsql"`
-	MongoHost                   ResourceMongoHostPtrOutput                   `pulumi:"mongoHost"`
+	// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Llm                ResourceLlmPtrOutput                `pulumi:"llm"`
+	Maria              ResourceMariaPtrOutput              `pulumi:"maria"`
+	McpGatewayNoAuth   ResourceMcpGatewayNoAuthPtrOutput   `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth    ResourceMcpGatewayOAuthPtrOutput    `pulumi:"mcpGatewayOAuth"`
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrOutput `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      ResourceMcpGatewayPatPtrOutput      `pulumi:"mcpGatewayPat"`
+	Memcached          ResourceMemcachedPtrOutput          `pulumi:"memcached"`
+	Memsql             ResourceMemsqlPtrOutput             `pulumi:"memsql"`
+	MongoHost          ResourceMongoHostPtrOutput          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -343,14 +345,16 @@ type resourceState struct {
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
-	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
-	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
-	McpGatewayOAuthDcr          *ResourceMcpGatewayOAuthDcr          `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat               *ResourceMcpGatewayPat               `pulumi:"mcpGatewayPat"`
-	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
-	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
-	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
+	// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Llm                *ResourceLlm                `pulumi:"llm"`
+	Maria              *ResourceMaria              `pulumi:"maria"`
+	McpGatewayNoAuth   *ResourceMcpGatewayNoAuth   `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth    *ResourceMcpGatewayOAuth    `pulumi:"mcpGatewayOAuth"`
+	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
+	Memcached          *ResourceMemcached          `pulumi:"memcached"`
+	Memsql             *ResourceMemsql             `pulumi:"memsql"`
+	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -476,14 +480,16 @@ type ResourceState struct {
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
-	Maria                       ResourceMariaPtrInput
-	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
-	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
-	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrInput
-	McpGatewayPat               ResourceMcpGatewayPatPtrInput
-	Memcached                   ResourceMemcachedPtrInput
-	Memsql                      ResourceMemsqlPtrInput
-	MongoHost                   ResourceMongoHostPtrInput
+	// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Llm                ResourceLlmPtrInput
+	Maria              ResourceMariaPtrInput
+	McpGatewayNoAuth   ResourceMcpGatewayNoAuthPtrInput
+	McpGatewayOAuth    ResourceMcpGatewayOAuthPtrInput
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat      ResourceMcpGatewayPatPtrInput
+	Memcached          ResourceMemcachedPtrInput
+	Memsql             ResourceMemsqlPtrInput
+	MongoHost          ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -613,14 +619,16 @@ type resourceArgs struct {
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation *ResourceKubernetesUserImpersonation `pulumi:"kubernetesUserImpersonation"`
-	Maria                       *ResourceMaria                       `pulumi:"maria"`
-	McpGatewayNoAuth            *ResourceMcpGatewayNoAuth            `pulumi:"mcpGatewayNoAuth"`
-	McpGatewayOAuth             *ResourceMcpGatewayOAuth             `pulumi:"mcpGatewayOAuth"`
-	McpGatewayOAuthDcr          *ResourceMcpGatewayOAuthDcr          `pulumi:"mcpGatewayOAuthDcr"`
-	McpGatewayPat               *ResourceMcpGatewayPat               `pulumi:"mcpGatewayPat"`
-	Memcached                   *ResourceMemcached                   `pulumi:"memcached"`
-	Memsql                      *ResourceMemsql                      `pulumi:"memsql"`
-	MongoHost                   *ResourceMongoHost                   `pulumi:"mongoHost"`
+	// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Llm                *ResourceLlm                `pulumi:"llm"`
+	Maria              *ResourceMaria              `pulumi:"maria"`
+	McpGatewayNoAuth   *ResourceMcpGatewayNoAuth   `pulumi:"mcpGatewayNoAuth"`
+	McpGatewayOAuth    *ResourceMcpGatewayOAuth    `pulumi:"mcpGatewayOAuth"`
+	McpGatewayOAuthDcr *ResourceMcpGatewayOAuthDcr `pulumi:"mcpGatewayOAuthDcr"`
+	McpGatewayPat      *ResourceMcpGatewayPat      `pulumi:"mcpGatewayPat"`
+	Memcached          *ResourceMemcached          `pulumi:"memcached"`
+	Memsql             *ResourceMemsql             `pulumi:"memsql"`
+	MongoHost          *ResourceMongoHost          `pulumi:"mongoHost"`
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -747,14 +755,16 @@ type ResourceArgs struct {
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
 	// Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 	KubernetesUserImpersonation ResourceKubernetesUserImpersonationPtrInput
-	Maria                       ResourceMariaPtrInput
-	McpGatewayNoAuth            ResourceMcpGatewayNoAuthPtrInput
-	McpGatewayOAuth             ResourceMcpGatewayOAuthPtrInput
-	McpGatewayOAuthDcr          ResourceMcpGatewayOAuthDcrPtrInput
-	McpGatewayPat               ResourceMcpGatewayPatPtrInput
-	Memcached                   ResourceMemcachedPtrInput
-	Memsql                      ResourceMemsqlPtrInput
-	MongoHost                   ResourceMongoHostPtrInput
+	// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Llm                ResourceLlmPtrInput
+	Maria              ResourceMariaPtrInput
+	McpGatewayNoAuth   ResourceMcpGatewayNoAuthPtrInput
+	McpGatewayOAuth    ResourceMcpGatewayOAuthPtrInput
+	McpGatewayOAuthDcr ResourceMcpGatewayOAuthDcrPtrInput
+	McpGatewayPat      ResourceMcpGatewayPatPtrInput
+	Memcached          ResourceMemcachedPtrInput
+	Memsql             ResourceMemsqlPtrInput
+	MongoHost          ResourceMongoHostPtrInput
 	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyHost ResourceMongoLegacyHostPtrInput
 	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1180,6 +1190,11 @@ func (o ResourceOutput) KubernetesServiceAccountUserImpersonation() ResourceKube
 // Deprecated: kubernetes_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) KubernetesUserImpersonation() ResourceKubernetesUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesUserImpersonationPtrOutput { return v.KubernetesUserImpersonation }).(ResourceKubernetesUserImpersonationPtrOutput)
+}
+
+// LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Llm() ResourceLlmPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceLlmPtrOutput { return v.Llm }).(ResourceLlmPtrOutput)
 }
 
 func (o ResourceOutput) Maria() ResourceMariaPtrOutput {

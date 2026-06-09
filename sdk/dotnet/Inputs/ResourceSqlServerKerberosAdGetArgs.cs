@@ -99,6 +99,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("overrideDatabase")]
         public Input<bool>? OverrideDatabase { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The port to dial to initiate a connection from the egress node to this resource.
         /// </summary>

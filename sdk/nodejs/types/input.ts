@@ -4622,6 +4622,54 @@ export interface ResourceKubernetesUserImpersonation {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
+export interface ResourceLlm {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string | undefined>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string | undefined>;
+    /**
+     * Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+     */
+    models?: pulumi.Input<string | undefined>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+     */
+    portOverride?: pulumi.Input<number | undefined>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string | undefined>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string | undefined>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The URL to dial to initiate a connection from the egress node to this resource.
+     * * memcached:
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
 export interface ResourceMaria {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -6869,6 +6917,10 @@ export interface ResourceSqlServerKerberosAd {
      * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
      */
     overrideDatabase?: pulumi.Input<boolean | undefined>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string | undefined>;
     /**
      * The port to dial to initiate a connection from the egress node to this resource.
      */

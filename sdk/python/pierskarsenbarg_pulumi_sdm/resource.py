@@ -91,6 +91,7 @@ class ResourceArgs:
                  kubernetes_service_account: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']] = None,
                  kubernetes_service_account_user_impersonation: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']] = None,
+                 llm: pulumi.Input[Optional['ResourceLlmArgs']] = None,
                  maria: pulumi.Input[Optional['ResourceMariaArgs']] = None,
                  mcp_gateway_no_auth: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']] = None,
                  mcp_gateway_o_auth: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']] = None,
@@ -145,6 +146,7 @@ class ResourceArgs:
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceLlmArgs'] llm: LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -309,6 +311,8 @@ class ResourceArgs:
             pulumi.log.warn("""kubernetes_user_impersonation is deprecated: kubernetes_user_impersonation is deprecated, see docs for more info""")
         if kubernetes_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
+        if llm is not None:
+            pulumi.set(__self__, "llm", llm)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
         if mcp_gateway_no_auth is not None:
@@ -1052,6 +1056,18 @@ class ResourceArgs:
     @kubernetes_user_impersonation.setter
     def kubernetes_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def llm(self) -> pulumi.Input[Optional['ResourceLlmArgs']]:
+        """
+        LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "llm")
+
+    @llm.setter
+    def llm(self, value: pulumi.Input[Optional['ResourceLlmArgs']]):
+        pulumi.set(self, "llm", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1556,6 +1572,7 @@ class _ResourceState:
                  kubernetes_service_account: pulumi.Input[Optional['ResourceKubernetesServiceAccountArgs']] = None,
                  kubernetes_service_account_user_impersonation: pulumi.Input[Optional['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']] = None,
+                 llm: pulumi.Input[Optional['ResourceLlmArgs']] = None,
                  maria: pulumi.Input[Optional['ResourceMariaArgs']] = None,
                  mcp_gateway_no_auth: pulumi.Input[Optional['ResourceMcpGatewayNoAuthArgs']] = None,
                  mcp_gateway_o_auth: pulumi.Input[Optional['ResourceMcpGatewayOAuthArgs']] = None,
@@ -1610,6 +1627,7 @@ class _ResourceState:
         :param pulumi.Input['ResourceDocumentDbReplicaSetIamArgs'] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceElasticacheRedisIamArgs'] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceLlmArgs'] llm: LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -1774,6 +1792,8 @@ class _ResourceState:
             pulumi.log.warn("""kubernetes_user_impersonation is deprecated: kubernetes_user_impersonation is deprecated, see docs for more info""")
         if kubernetes_user_impersonation is not None:
             pulumi.set(__self__, "kubernetes_user_impersonation", kubernetes_user_impersonation)
+        if llm is not None:
+            pulumi.set(__self__, "llm", llm)
         if maria is not None:
             pulumi.set(__self__, "maria", maria)
         if mcp_gateway_no_auth is not None:
@@ -2517,6 +2537,18 @@ class _ResourceState:
     @kubernetes_user_impersonation.setter
     def kubernetes_user_impersonation(self, value: pulumi.Input[Optional['ResourceKubernetesUserImpersonationArgs']]):
         pulumi.set(self, "kubernetes_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def llm(self) -> pulumi.Input[Optional['ResourceLlmArgs']]:
+        """
+        LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "llm")
+
+    @llm.setter
+    def llm(self, value: pulumi.Input[Optional['ResourceLlmArgs']]):
+        pulumi.set(self, "llm", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3024,6 +3056,7 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
                  kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+                 llm: pulumi.Input[Optional[Union['ResourceLlmArgs', 'ResourceLlmArgsDict']]] = None,
                  maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
                  mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
                  mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
@@ -3138,6 +3171,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceLlmArgs', 'ResourceLlmArgsDict']] llm: LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -3292,6 +3326,7 @@ class Resource(pulumi.CustomResource):
                  kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
                  kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+                 llm: pulumi.Input[Optional[Union['ResourceLlmArgs', 'ResourceLlmArgsDict']]] = None,
                  maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
                  mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
                  mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
@@ -3418,6 +3453,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["kubernetes_service_account"] = kubernetes_service_account
             __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
             __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
+            __props__.__dict__["llm"] = llm
             __props__.__dict__["maria"] = maria
             __props__.__dict__["mcp_gateway_no_auth"] = mcp_gateway_no_auth
             __props__.__dict__["mcp_gateway_o_auth"] = mcp_gateway_o_auth
@@ -3545,6 +3581,7 @@ class Resource(pulumi.CustomResource):
             kubernetes_service_account: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
             kubernetes_service_account_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
             kubernetes_user_impersonation: pulumi.Input[Optional[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
+            llm: pulumi.Input[Optional[Union['ResourceLlmArgs', 'ResourceLlmArgsDict']]] = None,
             maria: pulumi.Input[Optional[Union['ResourceMariaArgs', 'ResourceMariaArgsDict']]] = None,
             mcp_gateway_no_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayNoAuthArgs', 'ResourceMcpGatewayNoAuthArgsDict']]] = None,
             mcp_gateway_o_auth: pulumi.Input[Optional[Union['ResourceMcpGatewayOAuthArgs', 'ResourceMcpGatewayOAuthArgsDict']]] = None,
@@ -3603,6 +3640,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceDocumentDbReplicaSetIamArgs', 'ResourceDocumentDbReplicaSetIamArgsDict']] document_db_replica_set_iam: DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceElasticacheRedisIamArgs', 'ResourceElasticacheRedisIamArgsDict']] elasticache_redis_iam: ElasticacheRedisIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceLlmArgs', 'ResourceLlmArgsDict']] llm: LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
@@ -3680,6 +3718,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["kubernetes_service_account"] = kubernetes_service_account
         __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
         __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
+        __props__.__dict__["llm"] = llm
         __props__.__dict__["maria"] = maria
         __props__.__dict__["mcp_gateway_no_auth"] = mcp_gateway_no_auth
         __props__.__dict__["mcp_gateway_o_auth"] = mcp_gateway_o_auth
@@ -4097,6 +4136,14 @@ class Resource(pulumi.CustomResource):
     @_utilities.deprecated("""kubernetes_user_impersonation is deprecated, see docs for more info""")
     def kubernetes_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesUserImpersonation']]:
         return pulumi.get(self, "kubernetes_user_impersonation")
+
+    @_builtins.property
+    @pulumi.getter
+    def llm(self) -> pulumi.Output[Optional['outputs.ResourceLlm']]:
+        """
+        LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "llm")
 
     @_builtins.property
     @pulumi.getter

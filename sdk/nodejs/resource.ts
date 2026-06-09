@@ -196,6 +196,10 @@ export class Resource extends pulumi.CustomResource {
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
     declare public readonly kubernetesUserImpersonation: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
+    /**
+     * LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    declare public readonly llm: pulumi.Output<outputs.ResourceLlm | undefined>;
     declare public readonly maria: pulumi.Output<outputs.ResourceMaria | undefined>;
     declare public readonly mcpGatewayNoAuth: pulumi.Output<outputs.ResourceMcpGatewayNoAuth | undefined>;
     declare public readonly mcpGatewayOAuth: pulumi.Output<outputs.ResourceMcpGatewayOAuth | undefined>;
@@ -333,6 +337,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccount"] = state?.kubernetesServiceAccount;
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = state?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = state?.kubernetesUserImpersonation;
+            resourceInputs["llm"] = state?.llm;
             resourceInputs["maria"] = state?.maria;
             resourceInputs["mcpGatewayNoAuth"] = state?.mcpGatewayNoAuth;
             resourceInputs["mcpGatewayOAuth"] = state?.mcpGatewayOAuth;
@@ -452,6 +457,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["kubernetesServiceAccount"] = args?.kubernetesServiceAccount;
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = args?.kubernetesServiceAccountUserImpersonation;
             resourceInputs["kubernetesUserImpersonation"] = args?.kubernetesUserImpersonation;
+            resourceInputs["llm"] = args?.llm;
             resourceInputs["maria"] = args?.maria;
             resourceInputs["mcpGatewayNoAuth"] = args?.mcpGatewayNoAuth;
             resourceInputs["mcpGatewayOAuth"] = args?.mcpGatewayOAuth;
@@ -612,6 +618,10 @@ export interface ResourceState {
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation | undefined>;
+    /**
+     * LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    llm?: pulumi.Input<inputs.ResourceLlm | undefined>;
     maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
     mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
     mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
@@ -774,6 +784,10 @@ export interface ResourceArgs {
      * @deprecated kubernetes_user_impersonation is deprecated, see docs for more info
      */
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation | undefined>;
+    /**
+     * LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    llm?: pulumi.Input<inputs.ResourceLlm | undefined>;
     maria?: pulumi.Input<inputs.ResourceMaria | undefined>;
     mcpGatewayNoAuth?: pulumi.Input<inputs.ResourceMcpGatewayNoAuth | undefined>;
     mcpGatewayOAuth?: pulumi.Input<inputs.ResourceMcpGatewayOAuth | undefined>;
