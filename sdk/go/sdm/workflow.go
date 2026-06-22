@@ -76,7 +76,7 @@ import (
 //				Name:           pulumi.String("auto grant workflow example"),
 //				ApprovalFlowId: autoGrant.ID(),
 //				Enabled:        pulumi.Bool(true),
-//				AccessRules:    pulumi.String(pulumi.String(json0)),
+//				AccessRules:    pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -97,7 +97,7 @@ import (
 //				Name:           pulumi.String("manual approval workflow example"),
 //				ApprovalFlowId: manualApproval.ID(),
 //				Enabled:        pulumi.Bool(true),
-//				AccessRules:    pulumi.String(pulumi.String(json1)),
+//				AccessRules:    pulumi.String(json1),
 //			})
 //			if err != nil {
 //				return err
