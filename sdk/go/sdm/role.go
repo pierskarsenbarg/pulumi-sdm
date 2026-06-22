@@ -67,7 +67,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = sdm.NewRole(ctx, "example-role", &sdm.RoleArgs{
 //				Name:        pulumi.String("example-role"),
-//				AccessRules: pulumi.String(pulumi.String(json0)),
+//				AccessRules: pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -92,7 +92,7 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = sdm.NewRole(ctx, "k8s-admin", &sdm.RoleArgs{
 //				Name:        pulumi.String("k8s-admin"),
-//				AccessRules: pulumi.String(pulumi.String(json1)),
+//				AccessRules: pulumi.String(json1),
 //			})
 //			if err != nil {
 //				return err
@@ -132,7 +132,7 @@ import (
 //			json2 := string(tmpJSON2)
 //			_, err = sdm.NewRole(ctx, "k8s-developers", &sdm.RoleArgs{
 //				Name:        pulumi.String("k8s-developers"),
-//				AccessRules: pulumi.String(pulumi.String(json2)),
+//				AccessRules: pulumi.String(json2),
 //			})
 //			if err != nil {
 //				return err
