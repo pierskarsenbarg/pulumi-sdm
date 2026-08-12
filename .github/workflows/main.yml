@@ -94,7 +94,7 @@ jobs:
           - dotnet
           - go
         nodeversion:
-          - 20.x
+          - 22.x
         pythonversion:
           - "3.11"
   prerequisites:
@@ -163,7 +163,7 @@ jobs:
         goversion:
           - 1.25.x
         nodeversion:
-          - 20.x
+          - 22.x
         pythonversion:
           - "3.11"
   # publish:
