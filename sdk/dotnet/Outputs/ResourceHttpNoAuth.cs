@@ -63,6 +63,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// Custom TLS certificate for upstream connection.
+        /// </summary>
+        public readonly string? TlsCert;
+        /// <summary>
+        /// Skip TLS certificate verification for the upstream connection.
+        /// </summary>
+        public readonly bool? TlsInsecure;
+        /// <summary>
         /// If set, TLS must be used to connect to this resource.
         /// </summary>
         public readonly bool? TlsRequired;
@@ -98,6 +106,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
+            string? tlsCert,
+
+            bool? tlsInsecure,
+
             bool? tlsRequired,
 
             string url)
@@ -114,6 +126,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
+            TlsCert = tlsCert;
+            TlsInsecure = tlsInsecure;
             TlsRequired = tlsRequired;
             Url = url;
         }

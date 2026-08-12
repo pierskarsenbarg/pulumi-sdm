@@ -55,6 +55,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// Custom TLS certificate for upstream connection.
+        /// </summary>
+        public readonly string? TlsCert;
+        /// <summary>
+        /// Skip TLS certificate verification for the upstream connection.
+        /// </summary>
+        public readonly bool? TlsInsecure;
+        /// <summary>
         /// The URL to dial to initiate a connection from the egress node to this resource.
         /// * memcached:
         /// </summary>
@@ -82,6 +90,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
+            string? tlsCert,
+
+            bool? tlsInsecure,
+
             string? url)
         {
             BindInterface = bindInterface;
@@ -94,6 +106,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
+            TlsCert = tlsCert;
+            TlsInsecure = tlsInsecure;
             Url = url;
         }
     }

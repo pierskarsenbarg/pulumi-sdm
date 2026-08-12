@@ -93,8 +93,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// The URL to dial to initiate a connection from the egress node to this resource.
         /// * memcached:
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public ResourceLlmGetArgs()
         {
