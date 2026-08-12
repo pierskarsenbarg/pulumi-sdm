@@ -41,10 +41,9 @@ jobs:
     - name: Check Pulumi version
       run: pulumi version
     - name: Setup Node
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
     - name: Setup DotNet
       uses: actions/setup-dotnet@v5
       with:
@@ -91,7 +90,7 @@ jobs:
         - dotnet
         - go
         nodeversion:
-        - 20.x
+        - 22.x
         pythonversion:
         - "3.11"
   comment-notification:
@@ -181,7 +180,7 @@ jobs:
         goversion:
         - 1.25.x
         nodeversion:
-        - 20.x
+        - 22.x
         pythonversion:
         - "3.11"
   # test:
@@ -214,7 +213,7 @@ jobs:
   #   - name: Install Pulumi CLI
   #     uses: pulumi/actions@v7
   #   - name: Setup Node
-  #     uses: actions/setup-node@v6
+  #     uses: actions/setup-node@v7
   #     with:
   #       node-version: ${{matrix.nodeversion}}
   #       registry-url: https://registry.npmjs.org
