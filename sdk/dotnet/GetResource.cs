@@ -76,7 +76,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
         /// 			Name: pulumi.StringRef("us-west*"),
         /// 			Type: pulumi.StringRef("mysql"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -220,7 +220,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
         /// 			Name: pulumi.StringRef("us-west*"),
         /// 			Type: pulumi.StringRef("mysql"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -364,7 +364,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetResource(ctx, &amp;sdm.LookupResourceArgs{
         /// 			Name: pulumi.StringRef("us-west*"),
         /// 			Type: pulumi.StringRef("mysql"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},

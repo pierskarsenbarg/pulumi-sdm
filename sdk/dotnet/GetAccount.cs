@@ -102,7 +102,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
         /// 			Type:  pulumi.StringRef("user"),
         /// 			Email: pulumi.StringRef("*@strongdm.com"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -316,7 +316,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
         /// 			Type:  pulumi.StringRef("user"),
         /// 			Email: pulumi.StringRef("*@strongdm.com"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -530,7 +530,7 @@ namespace PiersKarsenbarg.Sdm
         /// 		_, err := sdm.GetAccount(ctx, &amp;sdm.LookupAccountArgs{
         /// 			Type:  pulumi.StringRef("user"),
         /// 			Email: pulumi.StringRef("*@strongdm.com"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},

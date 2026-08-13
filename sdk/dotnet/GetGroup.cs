@@ -94,7 +94,7 @@ namespace PiersKarsenbarg.Sdm
         /// 			return err
         /// 		}
         /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"admin": "true",
         /// 			},
         /// 		}, nil)
@@ -268,7 +268,7 @@ namespace PiersKarsenbarg.Sdm
         /// 			return err
         /// 		}
         /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"admin": "true",
         /// 			},
         /// 		}, nil)
@@ -442,7 +442,7 @@ namespace PiersKarsenbarg.Sdm
         /// 			return err
         /// 		}
         /// 		_, err = sdm.GetGroup(ctx, &amp;sdm.LookupGroupArgs{
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"admin": "true",
         /// 			},
         /// 		}, nil)

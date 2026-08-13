@@ -75,7 +75,7 @@ namespace PiersKarsenbarg.Sdm
         /// 	pulumi.Run(func(ctx *pulumi.Context) error {
         /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
         /// 			Type: pulumi.StringRef("gateway"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -215,7 +215,7 @@ namespace PiersKarsenbarg.Sdm
         /// 	pulumi.Run(func(ctx *pulumi.Context) error {
         /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
         /// 			Type: pulumi.StringRef("gateway"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},
@@ -355,7 +355,7 @@ namespace PiersKarsenbarg.Sdm
         /// 	pulumi.Run(func(ctx *pulumi.Context) error {
         /// 		_, err := sdm.GetNode(ctx, &amp;sdm.LookupNodeArgs{
         /// 			Type: pulumi.StringRef("gateway"),
-        /// 			Tags: map[string]interface{}{
+        /// 			Tags: map[string]string{
         /// 				"region": "us-west",
         /// 				"env":    "dev",
         /// 			},

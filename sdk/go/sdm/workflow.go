@@ -62,7 +62,7 @@ import (
 //			tmpJSON0, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
 //					"type": "redis",
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"region": "us-east",
 //					},
 //				},
@@ -74,7 +74,7 @@ import (
 //			// Create workflows that reference the approval workflows
 //			_, err = sdm.NewWorkflow(ctx, "auto_grant_workflow", &sdm.WorkflowArgs{
 //				Name:           pulumi.String("auto grant workflow example"),
-//				ApprovalFlowId: autoGrant.ID(),
+//				ApprovalFlowId: autoGrant.ID().ToIDOutput().ToStringOutput(),
 //				Enabled:        pulumi.Bool(true),
 //				AccessRules:    pulumi.String(json0),
 //			})
@@ -84,7 +84,7 @@ import (
 //			tmpJSON1, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
 //					"type": "redis",
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"region": "us-east",
 //					},
 //				},
@@ -95,7 +95,7 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = sdm.NewWorkflow(ctx, "manual_approval_workflow", &sdm.WorkflowArgs{
 //				Name:           pulumi.String("manual approval workflow example"),
-//				ApprovalFlowId: manualApproval.ID(),
+//				ApprovalFlowId: manualApproval.ID().ToIDOutput().ToStringOutput(),
 //				Enabled:        pulumi.Bool(true),
 //				AccessRules:    pulumi.String(json1),
 //			})
