@@ -3486,6 +3486,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -3893,6 +3902,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -3962,6 +3980,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",
@@ -5688,6 +5715,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -5775,6 +5811,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -5860,6 +5905,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "tlsRequired": {
                     "type": "boolean",
@@ -6465,7 +6519,8 @@
             },
             "type": "object",
             "required": [
-                "name"
+                "name",
+                "url"
             ],
             "language": {
                 "nodejs": {
@@ -6473,7 +6528,8 @@
                         "bindInterface",
                         "name",
                         "portOverride",
-                        "subdomain"
+                        "subdomain",
+                        "url"
                     ]
                 }
             }
@@ -6603,6 +6659,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -6683,6 +6748,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",
@@ -6774,6 +6848,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -6848,6 +6931,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",
@@ -16126,6 +16218,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -16475,6 +16576,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -16531,6 +16641,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",
@@ -17976,6 +18095,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -18049,6 +18177,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "tlsRequired": {
                     "type": "boolean",
                     "description": "If set, TLS must be used to connect to this resource.\n"
@@ -18120,6 +18257,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "tlsRequired": {
                     "type": "boolean",
@@ -18749,6 +18895,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -18825,6 +18980,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",
@@ -18906,6 +19070,15 @@
                     },
                     "description": "Tags is a map of key, value pairs.\n"
                 },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
+                },
                 "url": {
                     "type": "string",
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
@@ -18970,6 +19143,15 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsCert": {
+                    "type": "string",
+                    "description": "Custom TLS certificate for upstream connection.\n",
+                    "secret": true
+                },
+                "tlsInsecure": {
+                    "type": "boolean",
+                    "description": "Skip TLS certificate verification for the upstream connection.\n"
                 },
                 "url": {
                     "type": "string",

@@ -89,6 +89,28 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        [Input("tlsCert")]
+        private Input<string>? _tlsCert;
+
+        /// <summary>
+        /// Custom TLS certificate for upstream connection.
+        /// </summary>
+        public Input<string>? TlsCert
+        {
+            get => _tlsCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tlsCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Skip TLS certificate verification for the upstream connection.
+        /// </summary>
+        [Input("tlsInsecure")]
+        public Input<bool>? TlsInsecure { get; set; }
+
         /// <summary>
         /// The URL to dial to initiate a connection from the egress node to this resource.
         /// * memcached:

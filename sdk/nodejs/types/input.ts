@@ -2523,6 +2523,14 @@ export interface ResourceClickHouseHttp {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -2823,6 +2831,14 @@ export interface ResourceCouchbaseDatabase {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: pulumi.Input<boolean | undefined>;
@@ -2869,6 +2885,14 @@ export interface ResourceCouchbaseWebUi {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -4104,6 +4128,14 @@ export interface ResourceHttpAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: pulumi.Input<boolean | undefined>;
@@ -4168,6 +4200,14 @@ export interface ResourceHttpBasicAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: pulumi.Input<boolean | undefined>;
@@ -4231,6 +4271,14 @@ export interface ResourceHttpNoAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
     /**
      * If set, TLS must be used to connect to this resource.
      */
@@ -4667,7 +4715,7 @@ export interface ResourceLlm {
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
-    url?: pulumi.Input<string | undefined>;
+    url: pulumi.Input<string>;
 }
 
 export interface ResourceMaria {
@@ -4771,6 +4819,14 @@ export interface ResourceMcpGatewayNoAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -4830,6 +4886,14 @@ export interface ResourceMcpGatewayOAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -4895,6 +4959,14 @@ export interface ResourceMcpGatewayOAuthDcr {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -4942,6 +5014,14 @@ export interface ResourceMcpGatewayPat {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: pulumi.Input<string | undefined>;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: pulumi.Input<boolean | undefined>;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:

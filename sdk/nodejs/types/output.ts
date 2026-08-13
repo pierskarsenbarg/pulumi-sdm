@@ -3361,6 +3361,14 @@ export interface GetResourceResourceClickHouseHttp {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -3681,6 +3689,14 @@ export interface GetResourceResourceCouchbaseDatabase {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -3731,6 +3747,14 @@ export interface GetResourceResourceCouchbaseWebUi {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -5054,6 +5078,14 @@ export interface GetResourceResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -5122,6 +5154,14 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -5189,6 +5229,14 @@ export interface GetResourceResourceHttpNoAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * If set, TLS must be used to connect to this resource.
      */
@@ -5765,6 +5813,14 @@ export interface GetResourceResourceMcpGatewayNoAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -5828,6 +5884,14 @@ export interface GetResourceResourceMcpGatewayOAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -5897,6 +5961,14 @@ export interface GetResourceResourceMcpGatewayOAuthDcr {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -5948,6 +6020,14 @@ export interface GetResourceResourceMcpGatewayPat {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -12155,6 +12235,14 @@ export interface ResourceClickHouseHttp {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -12455,6 +12543,14 @@ export interface ResourceCouchbaseDatabase {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -12501,6 +12597,14 @@ export interface ResourceCouchbaseWebUi {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -13736,6 +13840,14 @@ export interface ResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -13800,6 +13912,14 @@ export interface ResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * If set, TLS must be used to connect to this resource.
      */
     tlsRequired?: boolean;
@@ -13863,6 +13983,14 @@ export interface ResourceHttpNoAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * If set, TLS must be used to connect to this resource.
      */
@@ -14299,7 +14427,7 @@ export interface ResourceLlm {
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
-    url?: string;
+    url: string;
 }
 
 export interface ResourceMaria {
@@ -14403,6 +14531,14 @@ export interface ResourceMcpGatewayNoAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -14462,6 +14598,14 @@ export interface ResourceMcpGatewayOAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
@@ -14527,6 +14671,14 @@ export interface ResourceMcpGatewayOAuthDcr {
      */
     tags?: {[key: string]: string};
     /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
+    /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:
      */
@@ -14574,6 +14726,14 @@ export interface ResourceMcpGatewayPat {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Custom TLS certificate for upstream connection.
+     */
+    tlsCert?: string;
+    /**
+     * Skip TLS certificate verification for the upstream connection.
+     */
+    tlsInsecure?: boolean;
     /**
      * The URL to dial to initiate a connection from the egress node to this resource.
      * * memcached:

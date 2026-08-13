@@ -58,7 +58,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The URL to dial to initiate a connection from the egress node to this resource.
         /// * memcached:
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private ResourceLlm(
@@ -82,7 +82,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            string? url)
+            string url)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;

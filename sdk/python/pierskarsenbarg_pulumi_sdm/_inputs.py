@@ -12099,6 +12099,14 @@ class ResourceClickHouseHttpArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username to authenticate with.
@@ -12117,6 +12125,8 @@ class ResourceClickHouseHttpArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
@@ -12130,6 +12140,8 @@ class ResourceClickHouseHttpArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "name", name)
@@ -12150,6 +12162,10 @@ class ResourceClickHouseHttpArgs:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -12273,6 +12289,30 @@ class ResourceClickHouseHttpArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
 
     @_builtins.property
     @pulumi.getter
@@ -13502,6 +13542,14 @@ class ResourceCouchbaseDatabaseArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     tls_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set, TLS must be used to connect to this resource.
@@ -13526,6 +13574,8 @@ class ResourceCouchbaseDatabaseArgs:
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -13541,6 +13591,8 @@ class ResourceCouchbaseDatabaseArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -13565,6 +13617,10 @@ class ResourceCouchbaseDatabaseArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
@@ -13715,6 +13771,30 @@ class ResourceCouchbaseDatabaseArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -13781,6 +13861,14 @@ class ResourceCouchbaseWebUiArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username to authenticate with.
@@ -13799,6 +13887,8 @@ class ResourceCouchbaseWebUiArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
@@ -13812,6 +13902,8 @@ class ResourceCouchbaseWebUiArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "name", name)
@@ -13831,6 +13923,10 @@ class ResourceCouchbaseWebUiArgs:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -13954,6 +14050,30 @@ class ResourceCouchbaseWebUiArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19683,6 +19803,14 @@ class ResourceHttpAuthArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     tls_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set, TLS must be used to connect to this resource.
@@ -19705,6 +19833,8 @@ class ResourceHttpAuthArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] healthcheck_path: This path will be used to check the health of your site.
@@ -19722,6 +19852,8 @@ class ResourceHttpAuthArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         """
         pulumi.set(__self__, "healthcheck_path", healthcheck_path)
@@ -19748,6 +19880,10 @@ class ResourceHttpAuthArgs:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
 
@@ -19921,6 +20057,30 @@ class ResourceHttpAuthArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -19991,6 +20151,14 @@ class ResourceHttpBasicAuthArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     tls_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set, TLS must be used to connect to this resource.
@@ -20017,6 +20185,8 @@ class ResourceHttpBasicAuthArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -20035,6 +20205,8 @@ class ResourceHttpBasicAuthArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         :param pulumi.Input[_builtins.str] username: The username to authenticate with.
         """
@@ -20062,6 +20234,10 @@ class ResourceHttpBasicAuthArgs:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
@@ -20237,6 +20413,30 @@ class ResourceHttpBasicAuthArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -20315,6 +20515,14 @@ class ResourceHttpNoAuthArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
     tls_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set, TLS must be used to connect to this resource.
@@ -20336,6 +20544,8 @@ class ResourceHttpNoAuthArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
                  tls_required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] healthcheck_path: This path will be used to check the health of your site.
@@ -20352,6 +20562,8 @@ class ResourceHttpNoAuthArgs:
         :param pulumi.Input[_builtins.str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         :param pulumi.Input[_builtins.bool] tls_required: If set, TLS must be used to connect to this resource.
         """
         pulumi.set(__self__, "healthcheck_path", healthcheck_path)
@@ -20376,6 +20588,10 @@ class ResourceHttpNoAuthArgs:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
 
@@ -20535,6 +20751,30 @@ class ResourceHttpNoAuthArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsRequired")
@@ -22398,6 +22638,11 @@ class ResourceLlmArgsDict(TypedDict):
     """
     Unique human-readable name of the Resource.
     """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL to dial to initiate a connection from the egress node to this resource.
+    * memcached:
+    """
     bind_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -22434,16 +22679,12 @@ class ResourceLlmArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
-    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The URL to dial to initiate a connection from the egress node to this resource.
-    * memcached:
-    """
 
 @pulumi.input_type
 class ResourceLlmArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str],
                  bind_interface: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  models: pulumi.Input[Optional[_builtins.str]] = None,
@@ -22452,10 +22693,11 @@ class ResourceLlmArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 url: pulumi.Input[Optional[_builtins.str]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[_builtins.str] url: The URL to dial to initiate a connection from the egress node to this resource.
+               * memcached:
         :param pulumi.Input[_builtins.str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         :param pulumi.Input[_builtins.str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[_builtins.str] models: Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
@@ -22465,10 +22707,9 @@ class ResourceLlmArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[_builtins.str] url: The URL to dial to initiate a connection from the egress node to this resource.
-               * memcached:
         """
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -22487,8 +22728,6 @@ class ResourceLlmArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
@@ -22501,6 +22740,19 @@ class ResourceLlmArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL to dial to initiate a connection from the egress node to this resource.
+        * memcached:
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="bindInterface")
@@ -22609,19 +22861,6 @@ class ResourceLlmArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The URL to dial to initiate a connection from the egress node to this resource.
-        * memcached:
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "url", value)
 
 
 class ResourceMariaArgsDict(TypedDict):
@@ -22973,6 +23212,14 @@ class ResourceMcpGatewayNoAuthArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
 
 @pulumi.input_type
 class ResourceMcpGatewayNoAuthArgs:
@@ -22986,7 +23233,9 @@ class ResourceMcpGatewayNoAuthArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] url: The URL to dial to initiate a connection from the egress node to this resource.
@@ -22999,6 +23248,8 @@ class ResourceMcpGatewayNoAuthArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
@@ -23018,6 +23269,10 @@ class ResourceMcpGatewayNoAuthArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
 
     @_builtins.property
     @pulumi.getter
@@ -23140,6 +23395,30 @@ class ResourceMcpGatewayNoAuthArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
 
 class ResourceMcpGatewayOAuthArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
@@ -23203,6 +23482,14 @@ class ResourceMcpGatewayOAuthArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
 
 @pulumi.input_type
 class ResourceMcpGatewayOAuthArgs:
@@ -23221,7 +23508,9 @@ class ResourceMcpGatewayOAuthArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] oauth_auth_endpoint: The OAuth 2.0 authorization endpoint URL.
@@ -23239,6 +23528,8 @@ class ResourceMcpGatewayOAuthArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "oauth_auth_endpoint", oauth_auth_endpoint)
@@ -23265,6 +23556,10 @@ class ResourceMcpGatewayOAuthArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
 
     @_builtins.property
     @pulumi.getter
@@ -23447,6 +23742,30 @@ class ResourceMcpGatewayOAuthArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
 
 class ResourceMcpGatewayOAuthDcrArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
@@ -23506,6 +23825,14 @@ class ResourceMcpGatewayOAuthDcrArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
 
 @pulumi.input_type
 class ResourceMcpGatewayOAuthDcrArgs:
@@ -23523,7 +23850,9 @@ class ResourceMcpGatewayOAuthDcrArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] oauth_auth_endpoint: The OAuth 2.0 authorization endpoint URL.
@@ -23540,6 +23869,8 @@ class ResourceMcpGatewayOAuthDcrArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "oauth_auth_endpoint", oauth_auth_endpoint)
@@ -23564,6 +23895,10 @@ class ResourceMcpGatewayOAuthDcrArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
 
     @_builtins.property
     @pulumi.getter
@@ -23734,6 +24069,30 @@ class ResourceMcpGatewayOAuthDcrArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
+
 
 class ResourceMcpGatewayPatArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
@@ -23781,6 +24140,14 @@ class ResourceMcpGatewayPatArgsDict(TypedDict):
     """
     Tags is a map of key, value pairs.
     """
+    tls_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom TLS certificate for upstream connection.
+    """
+    tls_insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Skip TLS certificate verification for the upstream connection.
+    """
 
 @pulumi.input_type
 class ResourceMcpGatewayPatArgs:
@@ -23795,7 +24162,9 @@ class ResourceMcpGatewayPatArgs:
                  proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  subdomain: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tls_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_insecure: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[_builtins.str] url: The URL to dial to initiate a connection from the egress node to this resource.
@@ -23809,6 +24178,8 @@ class ResourceMcpGatewayPatArgs:
         :param pulumi.Input[_builtins.str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[_builtins.str] subdomain: DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[_builtins.str] tls_cert: Custom TLS certificate for upstream connection.
+        :param pulumi.Input[_builtins.bool] tls_insecure: Skip TLS certificate verification for the upstream connection.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
@@ -23830,6 +24201,10 @@ class ResourceMcpGatewayPatArgs:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_cert is not None:
+            pulumi.set(__self__, "tls_cert", tls_cert)
+        if tls_insecure is not None:
+            pulumi.set(__self__, "tls_insecure", tls_insecure)
 
     @_builtins.property
     @pulumi.getter
@@ -23963,6 +24338,30 @@ class ResourceMcpGatewayPatArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCert")
+    def tls_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom TLS certificate for upstream connection.
+        """
+        return pulumi.get(self, "tls_cert")
+
+    @tls_cert.setter
+    def tls_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tls_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsInsecure")
+    def tls_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip TLS certificate verification for the upstream connection.
+        """
+        return pulumi.get(self, "tls_insecure")
+
+    @tls_insecure.setter
+    def tls_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tls_insecure", value)
 
 
 class ResourceMemcachedArgsDict(TypedDict):
