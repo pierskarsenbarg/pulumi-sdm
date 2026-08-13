@@ -34,7 +34,7 @@ import (
 //			_, err := sdm.GetAccount(ctx, &sdm.LookupAccountArgs{
 //				Type:  pulumi.StringRef("user"),
 //				Email: pulumi.StringRef("*@strongdm.com"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"region": "us-west",
 //					"env":    "dev",
 //				},

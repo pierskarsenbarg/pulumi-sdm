@@ -33,7 +33,7 @@ import (
 //			_, err := sdm.GetResource(ctx, &sdm.LookupResourceArgs{
 //				Name: pulumi.StringRef("us-west*"),
 //				Type: pulumi.StringRef("mysql"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"region": "us-west",
 //					"env":    "dev",
 //				},

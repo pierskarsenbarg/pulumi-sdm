@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = sdm.GetGroup(ctx, &sdm.LookupGroupArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"admin": "true",
 //				},
 //			}, nil)

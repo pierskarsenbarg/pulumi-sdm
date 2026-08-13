@@ -43,19 +43,19 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal([]interface{}{
-//				map[string]interface{}{
-//					"tags": map[string]interface{}{
+//				map[string]map[string]string{
+//					"tags": map[string]string{
 //						"env": "staging",
 //					},
 //				},
 //				map[string]interface{}{
 //					"type": "postgres",
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"region": "us-west",
 //						"env":    "dev",
 //					},
 //				},
-//				map[string]interface{}{
+//				map[string][]string{
 //					"ids": []string{
 //						"rs-093e6f3061eb4dad",
 //					},
@@ -74,11 +74,11 @@ import (
 //			}
 //			tmpJSON1, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"env": "production",
 //					},
-//					"privileges": map[string]interface{}{
-//						"k8s": map[string]interface{}{
+//					"privileges": map[string]map[string][]string{
+//						"k8s": map[string][]string{
 //							"groups": []string{
 //								"system:masters",
 //							},
@@ -100,11 +100,11 @@ import (
 //			tmpJSON2, err := json.Marshal([]interface{}{
 //				map[string]interface{}{
 //					"type": "amazon_eks",
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"env": "dev",
 //					},
-//					"privileges": map[string]interface{}{
-//						"k8s": map[string]interface{}{
+//					"privileges": map[string]map[string][]string{
+//						"k8s": map[string][]string{
 //							"groups": []string{
 //								"developers",
 //								"viewers",
@@ -114,11 +114,11 @@ import (
 //				},
 //				map[string]interface{}{
 //					"type": "kubernetes",
-//					"tags": map[string]interface{}{
+//					"tags": map[string]string{
 //						"region": "us-west",
 //					},
-//					"privileges": map[string]interface{}{
-//						"k8s": map[string]interface{}{
+//					"privileges": map[string]map[string][]string{
+//						"k8s": map[string][]string{
 //							"groups": []string{
 //								"edit",
 //							},
