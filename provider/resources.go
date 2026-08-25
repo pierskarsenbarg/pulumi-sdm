@@ -81,7 +81,10 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pierskarsenbarg/pulumi-sdm",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
 		GitHubOrg: "strongdm",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
+			"api_secret_key": {
+				Secret: tfbridge.True(),
+			},
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {

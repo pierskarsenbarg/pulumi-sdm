@@ -156,9 +156,11 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["api_access_key"] = api_access_key
-            __props__.__dict__["api_secret_key"] = api_secret_key
+            __props__.__dict__["api_secret_key"] = None if api_secret_key is None else pulumi.Output.secret(api_secret_key)
             __props__.__dict__["host"] = host
             __props__.__dict__["retry_rate_limit_errors"] = pulumi.Output.from_input(retry_rate_limit_errors).apply(pulumi.runtime.to_json) if retry_rate_limit_errors is not None else None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiSecretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'sdm',
             resource_name,

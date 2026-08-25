@@ -56,6 +56,10 @@ namespace PiersKarsenbarg.Sdm
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pierskarsenbarg/pulumi-sdm",
+                AdditionalSecretOutputs =
+                {
+                    "apiSecretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -78,11 +82,21 @@ namespace PiersKarsenbarg.Sdm
         [Input("apiAccessKey")]
         public Input<string>? ApiAccessKey { get; set; }
 
+        [Input("apiSecretKey")]
+        private Input<string>? _apiSecretKey;
+
         /// <summary>
         /// A base64 encoded secret key used to authenticate with the StrongDM API.
         /// </summary>
-        [Input("apiSecretKey")]
-        public Input<string>? ApiSecretKey { get; set; }
+        public Input<string>? ApiSecretKey
+        {
+            get => _apiSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The host and port of the StrongDM API endpoint.
