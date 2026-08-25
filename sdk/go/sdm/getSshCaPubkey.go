@@ -65,12 +65,8 @@ type GetSshCaPubkeyResult struct {
 }
 
 func GetSshCaPubkeyOutput(ctx *pulumi.Context, args GetSshCaPubkeyOutputArgs, opts ...pulumi.InvokeOption) GetSshCaPubkeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSshCaPubkeyResultOutput, error) {
-			args := v.(GetSshCaPubkeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getSshCaPubkey:getSshCaPubkey", args, GetSshCaPubkeyResultOutput{}, options).(GetSshCaPubkeyResultOutput), nil
-		}).(GetSshCaPubkeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getSshCaPubkey:getSshCaPubkey", args, GetSshCaPubkeyResultOutput{}, options).(GetSshCaPubkeyResultOutput)
 }
 
 // A collection of arguments for invoking getSshCaPubkey.

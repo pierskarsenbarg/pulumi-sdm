@@ -70,12 +70,8 @@ type LookupIdentitySetResult struct {
 }
 
 func LookupIdentitySetOutput(ctx *pulumi.Context, args LookupIdentitySetOutputArgs, opts ...pulumi.InvokeOption) LookupIdentitySetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdentitySetResultOutput, error) {
-			args := v.(LookupIdentitySetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getIdentitySet:getIdentitySet", args, LookupIdentitySetResultOutput{}, options).(LookupIdentitySetResultOutput), nil
-		}).(LookupIdentitySetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getIdentitySet:getIdentitySet", args, LookupIdentitySetResultOutput{}, options).(LookupIdentitySetResultOutput)
 }
 
 // A collection of arguments for invoking getIdentitySet.

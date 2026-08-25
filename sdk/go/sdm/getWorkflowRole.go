@@ -86,12 +86,8 @@ type LookupWorkflowRoleResult struct {
 }
 
 func LookupWorkflowRoleOutput(ctx *pulumi.Context, args LookupWorkflowRoleOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowRoleResultOutput, error) {
-			args := v.(LookupWorkflowRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getWorkflowRole:getWorkflowRole", args, LookupWorkflowRoleResultOutput{}, options).(LookupWorkflowRoleResultOutput), nil
-		}).(LookupWorkflowRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getWorkflowRole:getWorkflowRole", args, LookupWorkflowRoleResultOutput{}, options).(LookupWorkflowRoleResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflowRole.

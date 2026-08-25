@@ -67,12 +67,8 @@ type LookupManagedSecretResult struct {
 }
 
 func LookupManagedSecretOutput(ctx *pulumi.Context, args LookupManagedSecretOutputArgs, opts ...pulumi.InvokeOption) LookupManagedSecretResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedSecretResultOutput, error) {
-			args := v.(LookupManagedSecretArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getManagedSecret:getManagedSecret", args, LookupManagedSecretResultOutput{}, options).(LookupManagedSecretResultOutput), nil
-		}).(LookupManagedSecretResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getManagedSecret:getManagedSecret", args, LookupManagedSecretResultOutput{}, options).(LookupManagedSecretResultOutput)
 }
 
 // A collection of arguments for invoking getManagedSecret.

@@ -82,12 +82,8 @@ type LookupRemoteIdentityResult struct {
 }
 
 func LookupRemoteIdentityOutput(ctx *pulumi.Context, args LookupRemoteIdentityOutputArgs, opts ...pulumi.InvokeOption) LookupRemoteIdentityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRemoteIdentityResultOutput, error) {
-			args := v.(LookupRemoteIdentityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getRemoteIdentity:getRemoteIdentity", args, LookupRemoteIdentityResultOutput{}, options).(LookupRemoteIdentityResultOutput), nil
-		}).(LookupRemoteIdentityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getRemoteIdentity:getRemoteIdentity", args, LookupRemoteIdentityResultOutput{}, options).(LookupRemoteIdentityResultOutput)
 }
 
 // A collection of arguments for invoking getRemoteIdentity.

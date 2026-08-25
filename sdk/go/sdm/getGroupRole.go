@@ -86,12 +86,8 @@ type LookupGroupRoleResult struct {
 }
 
 func LookupGroupRoleOutput(ctx *pulumi.Context, args LookupGroupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupGroupRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupRoleResultOutput, error) {
-			args := v.(LookupGroupRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getGroupRole:getGroupRole", args, LookupGroupRoleResultOutput{}, options).(LookupGroupRoleResultOutput), nil
-		}).(LookupGroupRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getGroupRole:getGroupRole", args, LookupGroupRoleResultOutput{}, options).(LookupGroupRoleResultOutput)
 }
 
 // A collection of arguments for invoking getGroupRole.
