@@ -70,12 +70,8 @@ type GetRemoteIdentityGroupResult struct {
 }
 
 func GetRemoteIdentityGroupOutput(ctx *pulumi.Context, args GetRemoteIdentityGroupOutputArgs, opts ...pulumi.InvokeOption) GetRemoteIdentityGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRemoteIdentityGroupResultOutput, error) {
-			args := v.(GetRemoteIdentityGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args, GetRemoteIdentityGroupResultOutput{}, options).(GetRemoteIdentityGroupResultOutput), nil
-		}).(GetRemoteIdentityGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args, GetRemoteIdentityGroupResultOutput{}, options).(GetRemoteIdentityGroupResultOutput)
 }
 
 // A collection of arguments for invoking getRemoteIdentityGroup.

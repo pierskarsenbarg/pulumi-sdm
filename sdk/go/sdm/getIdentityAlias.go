@@ -82,12 +82,8 @@ type LookupIdentityAliasResult struct {
 }
 
 func LookupIdentityAliasOutput(ctx *pulumi.Context, args LookupIdentityAliasOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityAliasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdentityAliasResultOutput, error) {
-			args := v.(LookupIdentityAliasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getIdentityAlias:getIdentityAlias", args, LookupIdentityAliasResultOutput{}, options).(LookupIdentityAliasResultOutput), nil
-		}).(LookupIdentityAliasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getIdentityAlias:getIdentityAlias", args, LookupIdentityAliasResultOutput{}, options).(LookupIdentityAliasResultOutput)
 }
 
 // A collection of arguments for invoking getIdentityAlias.

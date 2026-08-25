@@ -52,12 +52,8 @@ type LookupWorkflowApproverResult struct {
 }
 
 func LookupWorkflowApproverOutput(ctx *pulumi.Context, args LookupWorkflowApproverOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowApproverResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowApproverResultOutput, error) {
-			args := v.(LookupWorkflowApproverArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getWorkflowApprover:getWorkflowApprover", args, LookupWorkflowApproverResultOutput{}, options).(LookupWorkflowApproverResultOutput), nil
-		}).(LookupWorkflowApproverResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getWorkflowApprover:getWorkflowApprover", args, LookupWorkflowApproverResultOutput{}, options).(LookupWorkflowApproverResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflowApprover.
