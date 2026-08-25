@@ -65,12 +65,8 @@ type GetRdpCaPubkeyResult struct {
 }
 
 func GetRdpCaPubkeyOutput(ctx *pulumi.Context, args GetRdpCaPubkeyOutputArgs, opts ...pulumi.InvokeOption) GetRdpCaPubkeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRdpCaPubkeyResultOutput, error) {
-			args := v.(GetRdpCaPubkeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getRdpCaPubkey:getRdpCaPubkey", args, GetRdpCaPubkeyResultOutput{}, options).(GetRdpCaPubkeyResultOutput), nil
-		}).(GetRdpCaPubkeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getRdpCaPubkey:getRdpCaPubkey", args, GetRdpCaPubkeyResultOutput{}, options).(GetRdpCaPubkeyResultOutput)
 }
 
 // A collection of arguments for invoking getRdpCaPubkey.

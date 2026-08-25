@@ -140,12 +140,8 @@ type LookupSecretEngineResult struct {
 }
 
 func LookupSecretEngineOutput(ctx *pulumi.Context, args LookupSecretEngineOutputArgs, opts ...pulumi.InvokeOption) LookupSecretEngineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretEngineResultOutput, error) {
-			args := v.(LookupSecretEngineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getSecretEngine:getSecretEngine", args, LookupSecretEngineResultOutput{}, options).(LookupSecretEngineResultOutput), nil
-		}).(LookupSecretEngineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getSecretEngine:getSecretEngine", args, LookupSecretEngineResultOutput{}, options).(LookupSecretEngineResultOutput)
 }
 
 // A collection of arguments for invoking getSecretEngine.

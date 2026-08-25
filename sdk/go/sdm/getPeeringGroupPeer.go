@@ -47,12 +47,8 @@ type LookupPeeringGroupPeerResult struct {
 }
 
 func LookupPeeringGroupPeerOutput(ctx *pulumi.Context, args LookupPeeringGroupPeerOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringGroupPeerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPeeringGroupPeerResultOutput, error) {
-			args := v.(LookupPeeringGroupPeerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getPeeringGroupPeer:getPeeringGroupPeer", args, LookupPeeringGroupPeerResultOutput{}, options).(LookupPeeringGroupPeerResultOutput), nil
-		}).(LookupPeeringGroupPeerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getPeeringGroupPeer:getPeeringGroupPeer", args, LookupPeeringGroupPeerResultOutput{}, options).(LookupPeeringGroupPeerResultOutput)
 }
 
 // A collection of arguments for invoking getPeeringGroupPeer.

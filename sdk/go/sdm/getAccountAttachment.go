@@ -74,12 +74,8 @@ type LookupAccountAttachmentResult struct {
 }
 
 func LookupAccountAttachmentOutput(ctx *pulumi.Context, args LookupAccountAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountAttachmentResultOutput, error) {
-			args := v.(LookupAccountAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getAccountAttachment:getAccountAttachment", args, LookupAccountAttachmentResultOutput{}, options).(LookupAccountAttachmentResultOutput), nil
-		}).(LookupAccountAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getAccountAttachment:getAccountAttachment", args, LookupAccountAttachmentResultOutput{}, options).(LookupAccountAttachmentResultOutput)
 }
 
 // A collection of arguments for invoking getAccountAttachment.
