@@ -86,12 +86,8 @@ type LookupAccountGroupResult struct {
 }
 
 func LookupAccountGroupOutput(ctx *pulumi.Context, args LookupAccountGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAccountGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountGroupResultOutput, error) {
-			args := v.(LookupAccountGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getAccountGroup:getAccountGroup", args, LookupAccountGroupResultOutput{}, options).(LookupAccountGroupResultOutput), nil
-		}).(LookupAccountGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getAccountGroup:getAccountGroup", args, LookupAccountGroupResultOutput{}, options).(LookupAccountGroupResultOutput)
 }
 
 // A collection of arguments for invoking getAccountGroup.

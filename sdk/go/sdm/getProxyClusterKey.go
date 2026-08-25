@@ -74,12 +74,8 @@ type LookupProxyClusterKeyResult struct {
 }
 
 func LookupProxyClusterKeyOutput(ctx *pulumi.Context, args LookupProxyClusterKeyOutputArgs, opts ...pulumi.InvokeOption) LookupProxyClusterKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProxyClusterKeyResultOutput, error) {
-			args := v.(LookupProxyClusterKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getProxyClusterKey:getProxyClusterKey", args, LookupProxyClusterKeyResultOutput{}, options).(LookupProxyClusterKeyResultOutput), nil
-		}).(LookupProxyClusterKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getProxyClusterKey:getProxyClusterKey", args, LookupProxyClusterKeyResultOutput{}, options).(LookupProxyClusterKeyResultOutput)
 }
 
 // A collection of arguments for invoking getProxyClusterKey.

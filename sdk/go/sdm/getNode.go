@@ -96,12 +96,8 @@ type LookupNodeResult struct {
 }
 
 func LookupNodeOutput(ctx *pulumi.Context, args LookupNodeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNodeResultOutput, error) {
-			args := v.(LookupNodeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getNode:getNode", args, LookupNodeResultOutput{}, options).(LookupNodeResultOutput), nil
-		}).(LookupNodeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getNode:getNode", args, LookupNodeResultOutput{}, options).(LookupNodeResultOutput)
 }
 
 // A collection of arguments for invoking getNode.

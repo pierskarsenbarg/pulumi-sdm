@@ -40,12 +40,8 @@ type GetOrgUrlInfoResult struct {
 }
 
 func GetOrgUrlInfoOutput(ctx *pulumi.Context, args GetOrgUrlInfoOutputArgs, opts ...pulumi.InvokeOption) GetOrgUrlInfoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrgUrlInfoResultOutput, error) {
-			args := v.(GetOrgUrlInfoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("sdm:index/getOrgUrlInfo:getOrgUrlInfo", args, GetOrgUrlInfoResultOutput{}, options).(GetOrgUrlInfoResultOutput), nil
-		}).(GetOrgUrlInfoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("sdm:index/getOrgUrlInfo:getOrgUrlInfo", args, GetOrgUrlInfoResultOutput{}, options).(GetOrgUrlInfoResultOutput)
 }
 
 // A collection of arguments for invoking getOrgUrlInfo.
