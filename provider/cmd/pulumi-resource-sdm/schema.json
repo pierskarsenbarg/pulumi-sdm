@@ -64,7 +64,8 @@
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.",
+                "secret": true
             },
             "host": {
                 "type": "string",
@@ -23925,7 +23926,8 @@
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.",
+                "secret": true
             },
             "host": {
                 "type": "string",
@@ -23943,7 +23945,8 @@
             },
             "apiSecretKey": {
                 "type": "string",
-                "description": "A base64 encoded secret key used to authenticate with the StrongDM API."
+                "description": "A base64 encoded secret key used to authenticate with the StrongDM API.",
+                "secret": true
             },
             "host": {
                 "type": "string",
