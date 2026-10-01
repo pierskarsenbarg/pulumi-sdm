@@ -28,6 +28,7 @@ class SecretStoreArgs:
                  cyberark_conjur: pulumi.Input[Optional['SecretStoreCyberarkConjurArgs']] = None,
                  cyberark_pam: pulumi.Input[Optional['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: pulumi.Input[Optional['SecretStoreCyberarkPamExperimentalArgs']] = None,
+                 delinea_dsv_store: pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']] = None,
                  delinea_store: pulumi.Input[Optional['SecretStoreDelineaStoreArgs']] = None,
                  gcp_cert_x509_store: pulumi.Input[Optional['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: pulumi.Input[Optional['SecretStoreGcpStoreArgs']] = None,
@@ -68,6 +69,8 @@ class SecretStoreArgs:
             pulumi.set(__self__, "cyberark_pam", cyberark_pam)
         if cyberark_pam_experimental is not None:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
+        if delinea_dsv_store is not None:
+            pulumi.set(__self__, "delinea_dsv_store", delinea_dsv_store)
         if delinea_store is not None:
             pulumi.set(__self__, "delinea_store", delinea_store)
         if gcp_cert_x509_store is not None:
@@ -176,6 +179,15 @@ class SecretStoreArgs:
     @cyberark_pam_experimental.setter
     def cyberark_pam_experimental(self, value: pulumi.Input[Optional['SecretStoreCyberarkPamExperimentalArgs']]):
         pulumi.set(self, "cyberark_pam_experimental", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delineaDsvStore")
+    def delinea_dsv_store(self) -> pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']]:
+        return pulumi.get(self, "delinea_dsv_store")
+
+    @delinea_dsv_store.setter
+    def delinea_dsv_store(self, value: pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']]):
+        pulumi.set(self, "delinea_dsv_store", value)
 
     @_builtins.property
     @pulumi.getter(name="delineaStore")
@@ -377,6 +389,7 @@ class _SecretStoreState:
                  cyberark_conjur: pulumi.Input[Optional['SecretStoreCyberarkConjurArgs']] = None,
                  cyberark_pam: pulumi.Input[Optional['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: pulumi.Input[Optional['SecretStoreCyberarkPamExperimentalArgs']] = None,
+                 delinea_dsv_store: pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']] = None,
                  delinea_store: pulumi.Input[Optional['SecretStoreDelineaStoreArgs']] = None,
                  gcp_cert_x509_store: pulumi.Input[Optional['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: pulumi.Input[Optional['SecretStoreGcpStoreArgs']] = None,
@@ -417,6 +430,8 @@ class _SecretStoreState:
             pulumi.set(__self__, "cyberark_pam", cyberark_pam)
         if cyberark_pam_experimental is not None:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
+        if delinea_dsv_store is not None:
+            pulumi.set(__self__, "delinea_dsv_store", delinea_dsv_store)
         if delinea_store is not None:
             pulumi.set(__self__, "delinea_store", delinea_store)
         if gcp_cert_x509_store is not None:
@@ -525,6 +540,15 @@ class _SecretStoreState:
     @cyberark_pam_experimental.setter
     def cyberark_pam_experimental(self, value: pulumi.Input[Optional['SecretStoreCyberarkPamExperimentalArgs']]):
         pulumi.set(self, "cyberark_pam_experimental", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delineaDsvStore")
+    def delinea_dsv_store(self) -> pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']]:
+        return pulumi.get(self, "delinea_dsv_store")
+
+    @delinea_dsv_store.setter
+    def delinea_dsv_store(self, value: pulumi.Input[Optional['SecretStoreDelineaDsvStoreArgs']]):
+        pulumi.set(self, "delinea_dsv_store", value)
 
     @_builtins.property
     @pulumi.getter(name="delineaStore")
@@ -729,6 +753,7 @@ class SecretStore(pulumi.CustomResource):
                  cyberark_conjur: pulumi.Input[Optional[Union['SecretStoreCyberarkConjurArgs', 'SecretStoreCyberarkConjurArgsDict', 'outputs.SecretStoreCyberarkConjur']]] = None,
                  cyberark_pam: pulumi.Input[Optional[Union['SecretStoreCyberarkPamArgs', 'SecretStoreCyberarkPamArgsDict', 'outputs.SecretStoreCyberarkPam']]] = None,
                  cyberark_pam_experimental: pulumi.Input[Optional[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict', 'outputs.SecretStoreCyberarkPamExperimental']]] = None,
+                 delinea_dsv_store: pulumi.Input[Optional[Union['SecretStoreDelineaDsvStoreArgs', 'SecretStoreDelineaDsvStoreArgsDict', 'outputs.SecretStoreDelineaDsvStore']]] = None,
                  delinea_store: pulumi.Input[Optional[Union['SecretStoreDelineaStoreArgs', 'SecretStoreDelineaStoreArgsDict', 'outputs.SecretStoreDelineaStore']]] = None,
                  gcp_cert_x509_store: pulumi.Input[Optional[Union['SecretStoreGcpCertX509StoreArgs', 'SecretStoreGcpCertX509StoreArgsDict', 'outputs.SecretStoreGcpCertX509Store']]] = None,
                  gcp_store: pulumi.Input[Optional[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict', 'outputs.SecretStoreGcpStore']]] = None,
@@ -811,6 +836,7 @@ class SecretStore(pulumi.CustomResource):
                  cyberark_conjur: pulumi.Input[Optional[Union['SecretStoreCyberarkConjurArgs', 'SecretStoreCyberarkConjurArgsDict', 'outputs.SecretStoreCyberarkConjur']]] = None,
                  cyberark_pam: pulumi.Input[Optional[Union['SecretStoreCyberarkPamArgs', 'SecretStoreCyberarkPamArgsDict', 'outputs.SecretStoreCyberarkPam']]] = None,
                  cyberark_pam_experimental: pulumi.Input[Optional[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict', 'outputs.SecretStoreCyberarkPamExperimental']]] = None,
+                 delinea_dsv_store: pulumi.Input[Optional[Union['SecretStoreDelineaDsvStoreArgs', 'SecretStoreDelineaDsvStoreArgsDict', 'outputs.SecretStoreDelineaDsvStore']]] = None,
                  delinea_store: pulumi.Input[Optional[Union['SecretStoreDelineaStoreArgs', 'SecretStoreDelineaStoreArgsDict', 'outputs.SecretStoreDelineaStore']]] = None,
                  gcp_cert_x509_store: pulumi.Input[Optional[Union['SecretStoreGcpCertX509StoreArgs', 'SecretStoreGcpCertX509StoreArgsDict', 'outputs.SecretStoreGcpCertX509Store']]] = None,
                  gcp_store: pulumi.Input[Optional[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict', 'outputs.SecretStoreGcpStore']]] = None,
@@ -848,6 +874,7 @@ class SecretStore(pulumi.CustomResource):
             __props__.__dict__["cyberark_conjur"] = cyberark_conjur
             __props__.__dict__["cyberark_pam"] = cyberark_pam
             __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
+            __props__.__dict__["delinea_dsv_store"] = delinea_dsv_store
             __props__.__dict__["delinea_store"] = delinea_store
             __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
             __props__.__dict__["gcp_store"] = gcp_store
@@ -886,6 +913,7 @@ class SecretStore(pulumi.CustomResource):
             cyberark_conjur: pulumi.Input[Optional[Union['SecretStoreCyberarkConjurArgs', 'SecretStoreCyberarkConjurArgsDict', 'outputs.SecretStoreCyberarkConjur']]] = None,
             cyberark_pam: pulumi.Input[Optional[Union['SecretStoreCyberarkPamArgs', 'SecretStoreCyberarkPamArgsDict', 'outputs.SecretStoreCyberarkPam']]] = None,
             cyberark_pam_experimental: pulumi.Input[Optional[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict', 'outputs.SecretStoreCyberarkPamExperimental']]] = None,
+            delinea_dsv_store: pulumi.Input[Optional[Union['SecretStoreDelineaDsvStoreArgs', 'SecretStoreDelineaDsvStoreArgsDict', 'outputs.SecretStoreDelineaDsvStore']]] = None,
             delinea_store: pulumi.Input[Optional[Union['SecretStoreDelineaStoreArgs', 'SecretStoreDelineaStoreArgsDict', 'outputs.SecretStoreDelineaStore']]] = None,
             gcp_cert_x509_store: pulumi.Input[Optional[Union['SecretStoreGcpCertX509StoreArgs', 'SecretStoreGcpCertX509StoreArgsDict', 'outputs.SecretStoreGcpCertX509Store']]] = None,
             gcp_store: pulumi.Input[Optional[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict', 'outputs.SecretStoreGcpStore']]] = None,
@@ -927,6 +955,7 @@ class SecretStore(pulumi.CustomResource):
         __props__.__dict__["cyberark_conjur"] = cyberark_conjur
         __props__.__dict__["cyberark_pam"] = cyberark_pam
         __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
+        __props__.__dict__["delinea_dsv_store"] = delinea_dsv_store
         __props__.__dict__["delinea_store"] = delinea_store
         __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
         __props__.__dict__["gcp_store"] = gcp_store
@@ -987,6 +1016,11 @@ class SecretStore(pulumi.CustomResource):
         CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         return pulumi.get(self, "cyberark_pam_experimental")
+
+    @_builtins.property
+    @pulumi.getter(name="delineaDsvStore")
+    def delinea_dsv_store(self) -> pulumi.Output[Optional['outputs.SecretStoreDelineaDsvStore']]:
+        return pulumi.get(self, "delinea_dsv_store")
 
     @_builtins.property
     @pulumi.getter(name="delineaStore")

@@ -23,10 +23,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? EgressFilter;
         /// <summary>
-        /// The host to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        public readonly string Hostname;
-        /// <summary>
         /// Unique identifier of the Resource.
         /// </summary>
         public readonly string? Id;
@@ -94,8 +90,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? egressFilter,
 
-            string hostname,
-
             string? id,
 
             string? name,
@@ -128,7 +122,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
-            Hostname = hostname;
             Id = id;
             Name = name;
             OauthAuthEndpoint = oauthAuthEndpoint;

@@ -5491,6 +5491,78 @@
                 }
             }
         },
+        "sdm:index/ResourceGoogleGroups:ResourceGoogleGroups": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Represents the Okta Org Client URL\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "groupEmails": {
+                    "type": "string",
+                    "description": "comma separated list of group email addresses to filter by. Supports wildcards (*)\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain",
+                "identitySetId",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "domain",
+                        "identitySetId",
+                        "name",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner": {
             "properties": {
                 "bindInterface": {
@@ -6629,10 +6701,6 @@
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
                 },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
-                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -6683,7 +6751,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "hostname",
                         "name",
                         "portOverride",
                         "subdomain",
@@ -6701,10 +6768,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "name": {
                     "type": "string",
@@ -6780,7 +6843,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "hostname",
                         "name",
                         "oauthAuthEndpoint",
                         "oauthTokenEndpoint",
@@ -6801,10 +6863,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "name": {
                     "type": "string",
@@ -6875,7 +6933,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "hostname",
                         "name",
                         "oauthAuthEndpoint",
                         "oauthRegisterEndpoint",
@@ -6896,10 +6953,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "name": {
                     "type": "string",
@@ -6956,7 +7009,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "hostname",
                         "name",
                         "portOverride",
                         "subdomain",
@@ -7150,6 +7202,10 @@
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -7405,6 +7461,10 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -7482,6 +7542,10 @@
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -11102,6 +11166,34 @@
                 "name"
             ]
         },
+        "sdm:index/SecretStoreDelineaDsvStore:SecretStoreDelineaDsvStore": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "The tenant name to target, e.g. \"acme\" for acme.secretsvaultcloud.com\n"
+                },
+                "tld": {
+                    "type": "string",
+                    "description": "The top level domain of the DSV instance, e.g. \"com\". Defaults to \"com\".\n* gcp_store:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "tenant"
+            ]
+        },
         "sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore": {
             "properties": {
                 "name": {
@@ -11121,7 +11213,7 @@
                 },
                 "tenantName": {
                     "type": "string",
-                    "description": "The tenant name to target\n* gcp_store:\n"
+                    "description": "The tenant name to target\n* delinea_dsv_store:\n"
                 }
             },
             "type": "object",
@@ -13356,6 +13448,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceGoogleGke:getResourceResourceGoogleGke"
                     }
                 },
+                "googleGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceGoogleGroup:getResourceResourceGoogleGroup"
+                    }
+                },
                 "googleSpanners": {
                     "type": "array",
                     "items": {
@@ -13774,6 +13872,7 @@
                 "gcpwifs",
                 "googleGkes",
                 "googleGkeUserImpersonations",
+                "googleGroups",
                 "googleSpanners",
                 "greenplums",
                 "httpAuths",
@@ -17897,6 +17996,66 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceGoogleGroup:getResourceResourceGoogleGroup": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of the Okta org to be run from a node.\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Represents the Okta Org Client URL\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "groupEmails": {
+                    "type": "string",
+                    "description": "comma separated list of group email addresses to filter by. Supports wildcards (*)\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "privilegeLevels": {
+                    "type": "string",
+                    "description": "The privilege levels specify which Groups are managed externally\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "DNS subdomain through which this resource may be accessed on clients.  (e.g. \"app-prod1\" allows the resource to be accessed at \"app-prod1.your-org-name.sdm-proxy-domain\"). Only applicable to HTTP-based resources or resources using virtual networking mode.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceGoogleSpanner:getResourceResourceGoogleSpanner": {
             "properties": {
                 "bindInterface": {
@@ -18861,10 +19020,6 @@
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
                 },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
-                },
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
@@ -18910,15 +19065,7 @@
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "hostname"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMcpGatewayOAuth:getResourceResourceMcpGatewayOAuth": {
             "properties": {
@@ -18929,10 +19076,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "id": {
                     "type": "string",
@@ -19000,15 +19143,7 @@
                     "description": "The username to authenticate with.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "hostname"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMcpGatewayOAuthDcr:getResourceResourceMcpGatewayOAuthDcr": {
             "properties": {
@@ -19019,10 +19154,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "id": {
                     "type": "string",
@@ -19085,15 +19216,7 @@
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "hostname"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMcpGatewayPat:getResourceResourceMcpGatewayPat": {
             "properties": {
@@ -19104,10 +19227,6 @@
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
                 "id": {
                     "type": "string",
@@ -19159,15 +19278,7 @@
                     "description": "The URL to dial to initiate a connection from the egress node to this resource.\n* memcached:\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "hostname"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMemcached:getResourceResourceMemcached": {
             "properties": {
@@ -19336,6 +19447,10 @@
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -19552,6 +19667,10 @@
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -19616,6 +19735,10 @@
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -22676,6 +22799,12 @@
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreCyberarkPam:getSecretStoreSecretStoreCyberarkPam"
                     }
                 },
+                "delineaDsvStores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreDelineaDsvStore:getSecretStoreSecretStoreDelineaDsvStore"
+                    }
+                },
                 "delineaStores": {
                     "type": "array",
                     "items": {
@@ -22812,6 +22941,7 @@
                 "cyberarkConjurs",
                 "cyberarkPams",
                 "cyberarkPamExperimentals",
+                "delineaDsvStores",
                 "delineaStores",
                 "gcpCertX509Stores",
                 "gcpStores",
@@ -23032,6 +23162,34 @@
             },
             "type": "object"
         },
+        "sdm:index/getSecretStoreSecretStoreDelineaDsvStore:getSecretStoreSecretStoreDelineaDsvStore": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "The tenant name to target, e.g. \"acme\" for acme.secretsvaultcloud.com\n"
+                },
+                "tld": {
+                    "type": "string",
+                    "description": "The top level domain of the DSV instance, e.g. \"com\". Defaults to \"com\".\n* gcp_store:\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getSecretStoreSecretStoreDelineaStore:getSecretStoreSecretStoreDelineaStore": {
             "properties": {
                 "id": {
@@ -23055,7 +23213,7 @@
                 },
                 "tenantName": {
                     "type": "string",
-                    "description": "The tenant name to target\n* gcp_store:\n"
+                    "description": "The tenant name to target\n* delinea_dsv_store:\n"
                 }
             },
             "type": "object"
@@ -25169,6 +25327,9 @@
                     "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                 },
+                "googleGroups": {
+                    "$ref": "#/types/sdm:index/ResourceGoogleGroups:ResourceGoogleGroups"
+                },
                 "googleSpanner": {
                     "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
                 },
@@ -25538,6 +25699,9 @@
                 "googleGkeUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                     "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
+                },
+                "googleGroups": {
+                    "$ref": "#/types/sdm:index/ResourceGoogleGroups:ResourceGoogleGroups"
                 },
                 "googleSpanner": {
                     "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
@@ -25911,6 +26075,9 @@
                         "$ref": "#/types/sdm:index/ResourceGoogleGkeUserImpersonation:ResourceGoogleGkeUserImpersonation",
                         "deprecationMessage": "google_gke_user_impersonation is deprecated, see docs for more info"
                     },
+                    "googleGroups": {
+                        "$ref": "#/types/sdm:index/ResourceGoogleGroups:ResourceGoogleGroups"
+                    },
                     "googleSpanner": {
                         "$ref": "#/types/sdm:index/ResourceGoogleSpanner:ResourceGoogleSpanner"
                     },
@@ -26252,6 +26419,9 @@
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                     "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
                 },
+                "delineaDsvStore": {
+                    "$ref": "#/types/sdm:index/SecretStoreDelineaDsvStore:SecretStoreDelineaDsvStore"
+                },
                 "delineaStore": {
                     "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
                 },
@@ -26338,6 +26508,9 @@
                 "cyberarkPamExperimental": {
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                     "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                },
+                "delineaDsvStore": {
+                    "$ref": "#/types/sdm:index/SecretStoreDelineaDsvStore:SecretStoreDelineaDsvStore"
                 },
                 "delineaStore": {
                     "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
@@ -26427,6 +26600,9 @@
                     "cyberarkPamExperimental": {
                         "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                         "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump."
+                    },
+                    "delineaDsvStore": {
+                        "$ref": "#/types/sdm:index/SecretStoreDelineaDsvStore:SecretStoreDelineaDsvStore"
                     },
                     "delineaStore": {
                         "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"

@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMcpGatewayPatArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceGoogleGroupsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -20,10 +20,34 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         /// <summary>
+        /// If true, configures discovery of the Okta org to be run from a node.
+        /// </summary>
+        [Input("discoveryEnabled")]
+        public Input<bool>? DiscoveryEnabled { get; set; }
+
+        /// <summary>
+        /// Represents the Okta Org Client URL
+        /// </summary>
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
+
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
+
+        /// <summary>
+        /// comma separated list of group email addresses to filter by. Supports wildcards (*)
+        /// </summary>
+        [Input("groupEmails")]
+        public Input<string>? GroupEmails { get; set; }
+
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        [Input("identitySetId", required: true)]
+        public Input<string> IdentitySetId { get; set; } = null!;
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -31,27 +55,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("password")]
-        private Input<string>? _password;
-
         /// <summary>
-        /// The password to authenticate with.
+        /// The privilege levels specify which Groups are managed externally
         /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
-        /// </summary>
-        [Input("portOverride")]
-        public Input<int>? PortOverride { get; set; }
+        [Input("privilegeLevels")]
+        public Input<string>? PrivilegeLevels { get; set; }
 
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
@@ -83,38 +91,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        [Input("tlsCert")]
-        private Input<string>? _tlsCert;
-
-        /// <summary>
-        /// Custom TLS certificate for upstream connection.
-        /// </summary>
-        public Input<string>? TlsCert
-        {
-            get => _tlsCert;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _tlsCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// Skip TLS certificate verification for the upstream connection.
-        /// </summary>
-        [Input("tlsInsecure")]
-        public Input<bool>? TlsInsecure { get; set; }
-
-        /// <summary>
-        /// The URL to dial to initiate a connection from the egress node to this resource.
-        /// * memcached:
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public ResourceMcpGatewayPatArgs()
+        public ResourceGoogleGroupsArgs()
         {
         }
-        public static new ResourceMcpGatewayPatArgs Empty => new ResourceMcpGatewayPatArgs();
+        public static new ResourceGoogleGroupsArgs Empty => new ResourceGoogleGroupsArgs();
     }
 }

@@ -73,6 +73,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpwifResult> Gcpwifs;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> GoogleGkeUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> GoogleGkes;
+        public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGroupResult> GoogleGroups;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleSpannerResult> GoogleSpanners;
         public readonly ImmutableArray<Outputs.GetResourceResourceGreenplumResult> Greenplums;
         public readonly ImmutableArray<Outputs.GetResourceResourceHttpAuthResult> HttpAuths;
@@ -253,6 +254,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> googleGkes,
 
+            ImmutableArray<Outputs.GetResourceResourceGoogleGroupResult> googleGroups,
+
             ImmutableArray<Outputs.GetResourceResourceGoogleSpannerResult> googleSpanners,
 
             ImmutableArray<Outputs.GetResourceResourceGreenplumResult> greenplums,
@@ -430,6 +433,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Gcpwifs = gcpwifs;
             GoogleGkeUserImpersonations = googleGkeUserImpersonations;
             GoogleGkes = googleGkes;
+            GoogleGroups = googleGroups;
             GoogleSpanners = googleSpanners;
             Greenplums = greenplums;
             HttpAuths = httpAuths;

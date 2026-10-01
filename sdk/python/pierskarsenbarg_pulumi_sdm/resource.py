@@ -80,6 +80,7 @@ class ResourceArgs:
                  gcpwif: pulumi.Input[Optional['ResourceGcpwifArgs']] = None,
                  google_gke: pulumi.Input[Optional['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_groups: pulumi.Input[Optional['ResourceGoogleGroupsArgs']] = None,
                  google_spanner: pulumi.Input[Optional['ResourceGoogleSpannerArgs']] = None,
                  greenplum: pulumi.Input[Optional['ResourceGreenplumArgs']] = None,
                  http_auth: pulumi.Input[Optional['ResourceHttpAuthArgs']] = None,
@@ -283,6 +284,8 @@ class ResourceArgs:
             pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
         if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
+        if google_groups is not None:
+            pulumi.set(__self__, "google_groups", google_groups)
         if google_spanner is not None:
             pulumi.set(__self__, "google_spanner", google_spanner)
         if greenplum is not None:
@@ -952,6 +955,15 @@ class ResourceArgs:
     @google_gke_user_impersonation.setter
     def google_gke_user_impersonation(self, value: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleGroups")
+    def google_groups(self) -> pulumi.Input[Optional['ResourceGoogleGroupsArgs']]:
+        return pulumi.get(self, "google_groups")
+
+    @google_groups.setter
+    def google_groups(self, value: pulumi.Input[Optional['ResourceGoogleGroupsArgs']]):
+        pulumi.set(self, "google_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
@@ -1561,6 +1573,7 @@ class _ResourceState:
                  gcpwif: pulumi.Input[Optional['ResourceGcpwifArgs']] = None,
                  google_gke: pulumi.Input[Optional['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']] = None,
+                 google_groups: pulumi.Input[Optional['ResourceGoogleGroupsArgs']] = None,
                  google_spanner: pulumi.Input[Optional['ResourceGoogleSpannerArgs']] = None,
                  greenplum: pulumi.Input[Optional['ResourceGreenplumArgs']] = None,
                  http_auth: pulumi.Input[Optional['ResourceHttpAuthArgs']] = None,
@@ -1764,6 +1777,8 @@ class _ResourceState:
             pulumi.log.warn("""google_gke_user_impersonation is deprecated: google_gke_user_impersonation is deprecated, see docs for more info""")
         if google_gke_user_impersonation is not None:
             pulumi.set(__self__, "google_gke_user_impersonation", google_gke_user_impersonation)
+        if google_groups is not None:
+            pulumi.set(__self__, "google_groups", google_groups)
         if google_spanner is not None:
             pulumi.set(__self__, "google_spanner", google_spanner)
         if greenplum is not None:
@@ -2433,6 +2448,15 @@ class _ResourceState:
     @google_gke_user_impersonation.setter
     def google_gke_user_impersonation(self, value: pulumi.Input[Optional['ResourceGoogleGkeUserImpersonationArgs']]):
         pulumi.set(self, "google_gke_user_impersonation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="googleGroups")
+    def google_groups(self) -> pulumi.Input[Optional['ResourceGoogleGroupsArgs']]:
+        return pulumi.get(self, "google_groups")
+
+    @google_groups.setter
+    def google_groups(self, value: pulumi.Input[Optional['ResourceGoogleGroupsArgs']]):
+        pulumi.set(self, "google_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSpanner")
@@ -3045,6 +3069,7 @@ class Resource(pulumi.CustomResource):
                  gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict', 'outputs.ResourceGcpwif']]] = None,
                  google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict', 'outputs.ResourceGoogleGke']]] = None,
                  google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict', 'outputs.ResourceGoogleGkeUserImpersonation']]] = None,
+                 google_groups: pulumi.Input[Optional[Union['ResourceGoogleGroupsArgs', 'ResourceGoogleGroupsArgsDict', 'outputs.ResourceGoogleGroups']]] = None,
                  google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict', 'outputs.ResourceGoogleSpanner']]] = None,
                  greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict', 'outputs.ResourceGreenplum']]] = None,
                  http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict', 'outputs.ResourceHttpAuth']]] = None,
@@ -3315,6 +3340,7 @@ class Resource(pulumi.CustomResource):
                  gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict', 'outputs.ResourceGcpwif']]] = None,
                  google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict', 'outputs.ResourceGoogleGke']]] = None,
                  google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict', 'outputs.ResourceGoogleGkeUserImpersonation']]] = None,
+                 google_groups: pulumi.Input[Optional[Union['ResourceGoogleGroupsArgs', 'ResourceGoogleGroupsArgsDict', 'outputs.ResourceGoogleGroups']]] = None,
                  google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict', 'outputs.ResourceGoogleSpanner']]] = None,
                  greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict', 'outputs.ResourceGreenplum']]] = None,
                  http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict', 'outputs.ResourceHttpAuth']]] = None,
@@ -3442,6 +3468,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["gcpwif"] = gcpwif
             __props__.__dict__["google_gke"] = google_gke
             __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
+            __props__.__dict__["google_groups"] = google_groups
             __props__.__dict__["google_spanner"] = google_spanner
             __props__.__dict__["greenplum"] = greenplum
             __props__.__dict__["http_auth"] = http_auth
@@ -3570,6 +3597,7 @@ class Resource(pulumi.CustomResource):
             gcpwif: pulumi.Input[Optional[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict', 'outputs.ResourceGcpwif']]] = None,
             google_gke: pulumi.Input[Optional[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict', 'outputs.ResourceGoogleGke']]] = None,
             google_gke_user_impersonation: pulumi.Input[Optional[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict', 'outputs.ResourceGoogleGkeUserImpersonation']]] = None,
+            google_groups: pulumi.Input[Optional[Union['ResourceGoogleGroupsArgs', 'ResourceGoogleGroupsArgsDict', 'outputs.ResourceGoogleGroups']]] = None,
             google_spanner: pulumi.Input[Optional[Union['ResourceGoogleSpannerArgs', 'ResourceGoogleSpannerArgsDict', 'outputs.ResourceGoogleSpanner']]] = None,
             greenplum: pulumi.Input[Optional[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict', 'outputs.ResourceGreenplum']]] = None,
             http_auth: pulumi.Input[Optional[Union['ResourceHttpAuthArgs', 'ResourceHttpAuthArgsDict', 'outputs.ResourceHttpAuth']]] = None,
@@ -3707,6 +3735,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["gcpwif"] = gcpwif
         __props__.__dict__["google_gke"] = google_gke
         __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
+        __props__.__dict__["google_groups"] = google_groups
         __props__.__dict__["google_spanner"] = google_spanner
         __props__.__dict__["greenplum"] = greenplum
         __props__.__dict__["http_auth"] = http_auth
@@ -4076,6 +4105,11 @@ class Resource(pulumi.CustomResource):
     @_utilities.deprecated("""google_gke_user_impersonation is deprecated, see docs for more info""")
     def google_gke_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceGoogleGkeUserImpersonation']]:
         return pulumi.get(self, "google_gke_user_impersonation")
+
+    @_builtins.property
+    @pulumi.getter(name="googleGroups")
+    def google_groups(self) -> pulumi.Output[Optional['outputs.ResourceGoogleGroups']]:
+        return pulumi.get(self, "google_groups")
 
     @_builtins.property
     @pulumi.getter(name="googleSpanner")

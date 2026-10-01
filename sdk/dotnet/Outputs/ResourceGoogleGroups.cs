@@ -12,24 +12,40 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceMcpGatewayNoAuth
+    public sealed class ResourceGoogleGroups
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
+        /// If true, configures discovery of the Okta org to be run from a node.
+        /// </summary>
+        public readonly bool? DiscoveryEnabled;
+        /// <summary>
+        /// Represents the Okta Org Client URL
+        /// </summary>
+        public readonly string Domain;
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// comma separated list of group email addresses to filter by. Supports wildcards (*)
+        /// </summary>
+        public readonly string? GroupEmails;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string IdentitySetId;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+        /// The privilege levels specify which Groups are managed externally
         /// </summary>
-        public readonly int? PortOverride;
+        public readonly string? PrivilegeLevels;
         /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
@@ -46,29 +62,24 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// Custom TLS certificate for upstream connection.
-        /// </summary>
-        public readonly string? TlsCert;
-        /// <summary>
-        /// Skip TLS certificate verification for the upstream connection.
-        /// </summary>
-        public readonly bool? TlsInsecure;
-        /// <summary>
-        /// The URL to dial to initiate a connection from the egress node to this resource.
-        /// * memcached:
-        /// </summary>
-        public readonly string Url;
 
         [OutputConstructor]
-        private ResourceMcpGatewayNoAuth(
+        private ResourceGoogleGroups(
             string? bindInterface,
+
+            bool? discoveryEnabled,
+
+            string domain,
 
             string? egressFilter,
 
+            string? groupEmails,
+
+            string identitySetId,
+
             string name,
 
-            int? portOverride,
+            string? privilegeLevels,
 
             string? proxyClusterId,
 
@@ -76,25 +87,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? subdomain,
 
-            ImmutableDictionary<string, string>? tags,
-
-            string? tlsCert,
-
-            bool? tlsInsecure,
-
-            string url)
+            ImmutableDictionary<string, string>? tags)
         {
             BindInterface = bindInterface;
+            DiscoveryEnabled = discoveryEnabled;
+            Domain = domain;
             EgressFilter = egressFilter;
+            GroupEmails = groupEmails;
+            IdentitySetId = identitySetId;
             Name = name;
-            PortOverride = portOverride;
+            PrivilegeLevels = privilegeLevels;
             ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            TlsCert = tlsCert;
-            TlsInsecure = tlsInsecure;
-            Url = url;
         }
     }
 }

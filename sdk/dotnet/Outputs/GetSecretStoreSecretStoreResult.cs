@@ -21,6 +21,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkConjurResult> CyberarkConjurs;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult> CyberarkPamExperimentals;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamResult> CyberarkPams;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaDsvStoreResult> DelineaDsvStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> DelineaStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpCertX509StoreResult> GcpCertX509Stores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> GcpStores;
@@ -58,6 +59,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult> cyberarkPamExperimentals,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamResult> cyberarkPams,
+
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaDsvStoreResult> delineaDsvStores,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> delineaStores,
 
@@ -108,6 +111,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             CyberarkConjurs = cyberarkConjurs;
             CyberarkPamExperimentals = cyberarkPamExperimentals;
             CyberarkPams = cyberarkPams;
+            DelineaDsvStores = delineaDsvStores;
             DelineaStores = delineaStores;
             GcpCertX509Stores = gcpCertX509Stores;
             GcpStores = gcpStores;

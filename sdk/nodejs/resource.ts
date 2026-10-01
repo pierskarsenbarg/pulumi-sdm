@@ -176,6 +176,7 @@ export class Resource extends pulumi.CustomResource {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     declare public readonly googleGkeUserImpersonation: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    declare public readonly googleGroups: pulumi.Output<outputs.ResourceGoogleGroups | undefined>;
     declare public readonly googleSpanner: pulumi.Output<outputs.ResourceGoogleSpanner | undefined>;
     declare public readonly greenplum: pulumi.Output<outputs.ResourceGreenplum | undefined>;
     declare public readonly httpAuth: pulumi.Output<outputs.ResourceHttpAuth | undefined>;
@@ -326,6 +327,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["gcpwif"] = state?.gcpwif;
             resourceInputs["googleGke"] = state?.googleGke;
             resourceInputs["googleGkeUserImpersonation"] = state?.googleGkeUserImpersonation;
+            resourceInputs["googleGroups"] = state?.googleGroups;
             resourceInputs["googleSpanner"] = state?.googleSpanner;
             resourceInputs["greenplum"] = state?.greenplum;
             resourceInputs["httpAuth"] = state?.httpAuth;
@@ -446,6 +448,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["gcpwif"] = args?.gcpwif;
             resourceInputs["googleGke"] = args?.googleGke;
             resourceInputs["googleGkeUserImpersonation"] = args?.googleGkeUserImpersonation;
+            resourceInputs["googleGroups"] = args?.googleGroups;
             resourceInputs["googleSpanner"] = args?.googleSpanner;
             resourceInputs["greenplum"] = args?.greenplum;
             resourceInputs["httpAuth"] = args?.httpAuth;
@@ -598,6 +601,7 @@ export interface ResourceState {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    googleGroups?: pulumi.Input<inputs.ResourceGoogleGroups | undefined>;
     googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner | undefined>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum | undefined>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth | undefined>;
@@ -764,6 +768,7 @@ export interface ResourceArgs {
      * @deprecated google_gke_user_impersonation is deprecated, see docs for more info
      */
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation | undefined>;
+    googleGroups?: pulumi.Input<inputs.ResourceGoogleGroups | undefined>;
     googleSpanner?: pulumi.Input<inputs.ResourceGoogleSpanner | undefined>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum | undefined>;
     httpAuth?: pulumi.Input<inputs.ResourceHttpAuth | undefined>;

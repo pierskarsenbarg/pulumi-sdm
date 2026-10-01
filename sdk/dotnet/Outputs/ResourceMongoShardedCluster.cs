@@ -47,6 +47,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ProxyClusterId;
         /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -85,6 +89,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? proxyClusterId,
 
+            string? region,
+
             string? secretStoreId,
 
             string? subdomain,
@@ -103,6 +109,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
+            Region = region;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

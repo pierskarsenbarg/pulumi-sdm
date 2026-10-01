@@ -167,6 +167,7 @@ type Resource struct {
 	GoogleGke           ResourceGoogleGkePtrOutput           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
+	GoogleGroups               ResourceGoogleGroupsPtrOutput               `pulumi:"googleGroups"`
 	GoogleSpanner              ResourceGoogleSpannerPtrOutput              `pulumi:"googleSpanner"`
 	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
 	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
@@ -331,6 +332,7 @@ type resourceState struct {
 	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	GoogleGroups               *ResourceGoogleGroups               `pulumi:"googleGroups"`
 	GoogleSpanner              *ResourceGoogleSpanner              `pulumi:"googleSpanner"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
 	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
@@ -466,6 +468,7 @@ type ResourceState struct {
 	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	GoogleGroups               ResourceGoogleGroupsPtrInput
 	GoogleSpanner              ResourceGoogleSpannerPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
 	HttpAuth                   ResourceHttpAuthPtrInput
@@ -605,6 +608,7 @@ type resourceArgs struct {
 	GoogleGke           *ResourceGoogleGke           `pulumi:"googleGke"`
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	GoogleGroups               *ResourceGoogleGroups               `pulumi:"googleGroups"`
 	GoogleSpanner              *ResourceGoogleSpanner              `pulumi:"googleSpanner"`
 	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
 	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
@@ -741,6 +745,7 @@ type ResourceArgs struct {
 	GoogleGke           ResourceGoogleGkePtrInput
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	GoogleGroups               ResourceGoogleGroupsPtrInput
 	GoogleSpanner              ResourceGoogleSpannerPtrInput
 	Greenplum                  ResourceGreenplumPtrInput
 	HttpAuth                   ResourceHttpAuthPtrInput
@@ -1141,6 +1146,10 @@ func (o ResourceOutput) GoogleGke() ResourceGoogleGkePtrOutput {
 // Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 func (o ResourceOutput) GoogleGkeUserImpersonation() ResourceGoogleGkeUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGoogleGkeUserImpersonationPtrOutput { return v.GoogleGkeUserImpersonation }).(ResourceGoogleGkeUserImpersonationPtrOutput)
+}
+
+func (o ResourceOutput) GoogleGroups() ResourceGoogleGroupsPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceGoogleGroupsPtrOutput { return v.GoogleGroups }).(ResourceGoogleGroupsPtrOutput)
 }
 
 func (o ResourceOutput) GoogleSpanner() ResourceGoogleSpannerPtrOutput {

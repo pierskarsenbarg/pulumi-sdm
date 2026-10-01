@@ -12,40 +12,40 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class SecretStoreDelineaStore
+    public sealed class SecretStoreDelineaDsvStore
     {
         /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The URL of the Delinea instance
-        /// </summary>
-        public readonly string? ServerUrl;
-        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The tenant name to target
-        /// * delinea_dsv_store:
+        /// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
         /// </summary>
-        public readonly string? TenantName;
+        public readonly string Tenant;
+        /// <summary>
+        /// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+        /// * gcp_store:
+        /// </summary>
+        public readonly string? Tld;
 
         [OutputConstructor]
-        private SecretStoreDelineaStore(
+        private SecretStoreDelineaDsvStore(
             string name,
-
-            string? serverUrl,
 
             ImmutableDictionary<string, string>? tags,
 
-            string? tenantName)
+            string tenant,
+
+            string? tld)
         {
             Name = name;
-            ServerUrl = serverUrl;
             Tags = tags;
-            TenantName = tenantName;
+            Tenant = tenant;
+            Tld = tld;
         }
     }
 }

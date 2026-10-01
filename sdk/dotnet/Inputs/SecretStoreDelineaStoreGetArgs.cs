@@ -39,7 +39,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         /// <summary>
         /// The tenant name to target
-        /// * gcp_store:
+        /// * delinea_dsv_store:
         /// </summary>
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }

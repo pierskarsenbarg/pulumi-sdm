@@ -50,6 +50,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("cyberarkPamExperimental")]
         public Output<Outputs.SecretStoreCyberarkPamExperimental?> CyberarkPamExperimental { get; private set; } = null!;
 
+        [Output("delineaDsvStore")]
+        public Output<Outputs.SecretStoreDelineaDsvStore?> DelineaDsvStore { get; private set; } = null!;
+
         [Output("delineaStore")]
         public Output<Outputs.SecretStoreDelineaStore?> DelineaStore { get; private set; } = null!;
 
@@ -184,6 +187,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalArgs>? CyberarkPamExperimental { get; set; }
 
+        [Input("delineaDsvStore")]
+        public Input<Inputs.SecretStoreDelineaDsvStoreArgs>? DelineaDsvStore { get; set; }
+
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreArgs>? DelineaStore { get; set; }
 
@@ -278,6 +284,9 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalGetArgs>? CyberarkPamExperimental { get; set; }
+
+        [Input("delineaDsvStore")]
+        public Input<Inputs.SecretStoreDelineaDsvStoreGetArgs>? DelineaDsvStore { get; set; }
 
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreGetArgs>? DelineaStore { get; set; }

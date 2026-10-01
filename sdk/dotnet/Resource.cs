@@ -280,6 +280,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("googleGkeUserImpersonation")]
         public Output<Outputs.ResourceGoogleGkeUserImpersonation?> GoogleGkeUserImpersonation { get; private set; } = null!;
 
+        [Output("googleGroups")]
+        public Output<Outputs.ResourceGoogleGroups?> GoogleGroups { get; private set; } = null!;
+
         [Output("googleSpanner")]
         public Output<Outputs.ResourceGoogleSpanner?> GoogleSpanner { get; private set; } = null!;
 
@@ -702,6 +705,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationArgs>? GoogleGkeUserImpersonation { get; set; }
 
+        [Input("googleGroups")]
+        public Input<Inputs.ResourceGoogleGroupsArgs>? GoogleGroups { get; set; }
+
         [Input("googleSpanner")]
         public Input<Inputs.ResourceGoogleSpannerArgs>? GoogleSpanner { get; set; }
 
@@ -1084,6 +1090,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("googleGkeUserImpersonation")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationGetArgs>? GoogleGkeUserImpersonation { get; set; }
+
+        [Input("googleGroups")]
+        public Input<Inputs.ResourceGoogleGroupsGetArgs>? GoogleGroups { get; set; }
 
         [Input("googleSpanner")]
         public Input<Inputs.ResourceGoogleSpannerGetArgs>? GoogleSpanner { get; set; }

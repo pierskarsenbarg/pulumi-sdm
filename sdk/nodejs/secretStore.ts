@@ -57,6 +57,7 @@ export class SecretStore extends pulumi.CustomResource {
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     declare public readonly cyberarkPamExperimental: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
+    declare public readonly delineaDsvStore: pulumi.Output<outputs.SecretStoreDelineaDsvStore | undefined>;
     declare public readonly delineaStore: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
     declare public readonly gcpCertX509Store: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
     declare public readonly gcpStore: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
@@ -99,6 +100,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["cyberarkConjur"] = state?.cyberarkConjur;
             resourceInputs["cyberarkPam"] = state?.cyberarkPam;
             resourceInputs["cyberarkPamExperimental"] = state?.cyberarkPamExperimental;
+            resourceInputs["delineaDsvStore"] = state?.delineaDsvStore;
             resourceInputs["delineaStore"] = state?.delineaStore;
             resourceInputs["gcpCertX509Store"] = state?.gcpCertX509Store;
             resourceInputs["gcpStore"] = state?.gcpStore;
@@ -129,6 +131,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["cyberarkConjur"] = args?.cyberarkConjur;
             resourceInputs["cyberarkPam"] = args?.cyberarkPam;
             resourceInputs["cyberarkPamExperimental"] = args?.cyberarkPamExperimental;
+            resourceInputs["delineaDsvStore"] = args?.delineaDsvStore;
             resourceInputs["delineaStore"] = args?.delineaStore;
             resourceInputs["gcpCertX509Store"] = args?.gcpCertX509Store;
             resourceInputs["gcpStore"] = args?.gcpStore;
@@ -170,6 +173,7 @@ export interface SecretStoreState {
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental | undefined>;
+    delineaDsvStore?: pulumi.Input<inputs.SecretStoreDelineaDsvStore | undefined>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore | undefined>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store | undefined>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore | undefined>;
@@ -207,6 +211,7 @@ export interface SecretStoreArgs {
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental | undefined>;
+    delineaDsvStore?: pulumi.Input<inputs.SecretStoreDelineaDsvStore | undefined>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore | undefined>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store | undefined>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore | undefined>;
