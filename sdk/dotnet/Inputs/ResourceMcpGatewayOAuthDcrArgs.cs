@@ -26,12 +26,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
-        /// The host to dial to initiate a connection from the egress node to this resource.
-        /// </summary>
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
-
-        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]

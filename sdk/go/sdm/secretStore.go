@@ -35,6 +35,7 @@ type SecretStore struct {
 	CyberarkPam          SecretStoreCyberarkPamPtrOutput          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrOutput `pulumi:"cyberarkPamExperimental"`
+	DelineaDsvStore         SecretStoreDelineaDsvStorePtrOutput         `pulumi:"delineaDsvStore"`
 	DelineaStore            SecretStoreDelineaStorePtrOutput            `pulumi:"delineaStore"`
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrOutput        `pulumi:"gcpCertX509Store"`
 	GcpStore                SecretStoreGcpStorePtrOutput                `pulumi:"gcpStore"`
@@ -96,6 +97,7 @@ type secretStoreState struct {
 	CyberarkPam          *SecretStoreCyberarkPam          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
+	DelineaDsvStore         *SecretStoreDelineaDsvStore         `pulumi:"delineaDsvStore"`
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
 	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
@@ -128,6 +130,7 @@ type SecretStoreState struct {
 	CyberarkPam          SecretStoreCyberarkPamPtrInput
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
+	DelineaDsvStore         SecretStoreDelineaDsvStorePtrInput
 	DelineaStore            SecretStoreDelineaStorePtrInput
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
@@ -164,6 +167,7 @@ type secretStoreArgs struct {
 	CyberarkPam          *SecretStoreCyberarkPam          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
+	DelineaDsvStore         *SecretStoreDelineaDsvStore         `pulumi:"delineaDsvStore"`
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
 	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
@@ -197,6 +201,7 @@ type SecretStoreArgs struct {
 	CyberarkPam          SecretStoreCyberarkPamPtrInput
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
+	DelineaDsvStore         SecretStoreDelineaDsvStorePtrInput
 	DelineaStore            SecretStoreDelineaStorePtrInput
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
@@ -334,6 +339,10 @@ func (o SecretStoreOutput) CyberarkPam() SecretStoreCyberarkPamPtrOutput {
 // CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o SecretStoreOutput) CyberarkPamExperimental() SecretStoreCyberarkPamExperimentalPtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreCyberarkPamExperimentalPtrOutput { return v.CyberarkPamExperimental }).(SecretStoreCyberarkPamExperimentalPtrOutput)
+}
+
+func (o SecretStoreOutput) DelineaDsvStore() SecretStoreDelineaDsvStorePtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreDelineaDsvStorePtrOutput { return v.DelineaDsvStore }).(SecretStoreDelineaDsvStorePtrOutput)
 }
 
 func (o SecretStoreOutput) DelineaStore() SecretStoreDelineaStorePtrOutput {

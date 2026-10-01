@@ -11,19 +11,13 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class SecretStoreDelineaStoreArgs : global::Pulumi.ResourceArgs
+    public sealed class SecretStoreDelineaDsvStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The URL of the Delinea instance
-        /// </summary>
-        [Input("serverUrl")]
-        public Input<string>? ServerUrl { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -38,15 +32,21 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The tenant name to target
-        /// * delinea_dsv_store:
+        /// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
         /// </summary>
-        [Input("tenantName")]
-        public Input<string>? TenantName { get; set; }
+        [Input("tenant", required: true)]
+        public Input<string> Tenant { get; set; } = null!;
 
-        public SecretStoreDelineaStoreArgs()
+        /// <summary>
+        /// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+        /// * gcp_store:
+        /// </summary>
+        [Input("tld")]
+        public Input<string>? Tld { get; set; }
+
+        public SecretStoreDelineaDsvStoreArgs()
         {
         }
-        public static new SecretStoreDelineaStoreArgs Empty => new SecretStoreDelineaStoreArgs();
+        public static new SecretStoreDelineaDsvStoreArgs Empty => new SecretStoreDelineaDsvStoreArgs();
     }
 }

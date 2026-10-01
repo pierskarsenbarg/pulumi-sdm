@@ -1111,6 +1111,7 @@ export interface GetResourceResource {
      */
     googleGkeUserImpersonations: outputs.GetResourceResourceGoogleGkeUserImpersonation[];
     googleGkes: outputs.GetResourceResourceGoogleGke[];
+    googleGroups: outputs.GetResourceResourceGoogleGroup[];
     googleSpanners: outputs.GetResourceResourceGoogleSpanner[];
     greenplums: outputs.GetResourceResourceGreenplum[];
     httpAuths: outputs.GetResourceResourceHttpAuth[];
@@ -4894,6 +4895,61 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
     tags?: {[key: string]: string};
 }
 
+export interface GetResourceResourceGoogleGroup {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: string;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group email addresses to filter by. Supports wildcards (*)
+     */
+    groupEmails?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceGoogleSpanner {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -5781,10 +5837,6 @@ export interface GetResourceResourceMcpGatewayNoAuth {
      */
     egressFilter?: string;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
-    /**
      * Unique identifier of the Resource.
      */
     id?: string;
@@ -5836,10 +5888,6 @@ export interface GetResourceResourceMcpGatewayOAuth {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -5913,10 +5961,6 @@ export interface GetResourceResourceMcpGatewayOAuthDcr {
      */
     egressFilter?: string;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
-    /**
      * Unique identifier of the Resource.
      */
     id?: string;
@@ -5984,10 +6028,6 @@ export interface GetResourceResourceMcpGatewayPat {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -6191,6 +6231,10 @@ export interface GetResourceResourceMongoHost {
      */
     proxyClusterId?: string;
     /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -6388,6 +6432,10 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     proxyClusterId?: string;
     /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -6446,6 +6494,10 @@ export interface GetResourceResourceMongoShardedCluster {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9126,6 +9178,7 @@ export interface GetSecretStoreSecretStore {
     cyberarkConjurs: outputs.GetSecretStoreSecretStoreCyberarkConjur[];
     cyberarkPamExperimentals: outputs.GetSecretStoreSecretStoreCyberarkPamExperimental[];
     cyberarkPams: outputs.GetSecretStoreSecretStoreCyberarkPam[];
+    delineaDsvStores: outputs.GetSecretStoreSecretStoreDelineaDsvStore[];
     delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
     gcpCertX509Stores: outputs.GetSecretStoreSecretStoreGcpCertX509Store[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
@@ -9307,6 +9360,30 @@ export interface GetSecretStoreSecretStoreCyberarkPamExperimental {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreDelineaDsvStore {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+     */
+    tenant?: string;
+    /**
+     * The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+     * * gcp_store:
+     */
+    tld?: string;
+}
+
 export interface GetSecretStoreSecretStoreDelineaStore {
     /**
      * Unique identifier of the SecretStore.
@@ -9326,7 +9403,7 @@ export interface GetSecretStoreSecretStoreDelineaStore {
     tags?: {[key: string]: string};
     /**
      * The tenant name to target
-     * * gcp_store:
+     * * delinea_dsv_store:
      */
     tenantName?: string;
 }
@@ -13668,6 +13745,57 @@ export interface ResourceGoogleGkeUserImpersonation {
     tags?: {[key: string]: string};
 }
 
+export interface ResourceGoogleGroups {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface: string;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * comma separated list of group email addresses to filter by. Supports wildcards (*)
+     */
+    groupEmails?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceGoogleSpanner {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -14503,10 +14631,6 @@ export interface ResourceMcpGatewayNoAuth {
      */
     egressFilter?: string;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
-    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -14554,10 +14678,6 @@ export interface ResourceMcpGatewayOAuth {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -14627,10 +14747,6 @@ export interface ResourceMcpGatewayOAuthDcr {
      */
     egressFilter?: string;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
-    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -14694,10 +14810,6 @@ export interface ResourceMcpGatewayPat {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -14885,6 +14997,10 @@ export interface ResourceMongoHost {
      */
     proxyClusterId?: string;
     /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -15070,6 +15186,10 @@ export interface ResourceMongoReplicaSet {
      */
     proxyClusterId?: string;
     /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -15124,6 +15244,10 @@ export interface ResourceMongoShardedCluster {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -17736,6 +17860,26 @@ export interface SecretStoreCyberarkPamExperimental {
     tags?: {[key: string]: string};
 }
 
+export interface SecretStoreDelineaDsvStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+     */
+    tenant: string;
+    /**
+     * The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+     * * gcp_store:
+     */
+    tld?: string;
+}
+
 export interface SecretStoreDelineaStore {
     /**
      * Unique human-readable name of the SecretStore.
@@ -17751,7 +17895,7 @@ export interface SecretStoreDelineaStore {
     tags?: {[key: string]: string};
     /**
      * The tenant name to target
-     * * gcp_store:
+     * * delinea_dsv_store:
      */
     tenantName?: string;
 }

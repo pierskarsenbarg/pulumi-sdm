@@ -3956,6 +3956,57 @@ export interface ResourceGoogleGkeUserImpersonation {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
+export interface ResourceGoogleGroups {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+     */
+    bindInterface?: pulumi.Input<string | undefined>;
+    /**
+     * If true, configures discovery of the Okta org to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Represents the Okta Org Client URL
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string | undefined>;
+    /**
+     * comma separated list of group email addresses to filter by. Supports wildcards (*)
+     */
+    groupEmails?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The privilege levels specify which Groups are managed externally
+     */
+    privilegeLevels?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string | undefined>;
+    /**
+     * DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+     */
+    subdomain?: pulumi.Input<string | undefined>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+}
+
 export interface ResourceGoogleSpanner {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
@@ -4791,10 +4842,6 @@ export interface ResourceMcpGatewayNoAuth {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname?: pulumi.Input<string | undefined>;
-    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -4842,10 +4889,6 @@ export interface ResourceMcpGatewayOAuth {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string | undefined>;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -4915,10 +4958,6 @@ export interface ResourceMcpGatewayOAuthDcr {
      */
     egressFilter?: pulumi.Input<string | undefined>;
     /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname?: pulumi.Input<string | undefined>;
-    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
@@ -4982,10 +5021,6 @@ export interface ResourceMcpGatewayPat {
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string | undefined>;
-    /**
-     * The host to dial to initiate a connection from the egress node to this resource.
-     */
-    hostname?: pulumi.Input<string | undefined>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -5173,6 +5208,10 @@ export interface ResourceMongoHost {
      */
     proxyClusterId?: pulumi.Input<string | undefined>;
     /**
+     * The AWS region to connect to.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string | undefined>;
@@ -5358,6 +5397,10 @@ export interface ResourceMongoReplicaSet {
      */
     proxyClusterId?: pulumi.Input<string | undefined>;
     /**
+     * The AWS region to connect to.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string | undefined>;
@@ -5412,6 +5455,10 @@ export interface ResourceMongoShardedCluster {
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: pulumi.Input<string | undefined>;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8024,6 +8071,26 @@ export interface SecretStoreCyberarkPamExperimental {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
+export interface SecretStoreDelineaDsvStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+     */
+    tenant: pulumi.Input<string>;
+    /**
+     * The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+     * * gcp_store:
+     */
+    tld?: pulumi.Input<string | undefined>;
+}
+
 export interface SecretStoreDelineaStore {
     /**
      * Unique human-readable name of the SecretStore.
@@ -8039,7 +8106,7 @@ export interface SecretStoreDelineaStore {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The tenant name to target
-     * * gcp_store:
+     * * delinea_dsv_store:
      */
     tenantName?: pulumi.Input<string | undefined>;
 }

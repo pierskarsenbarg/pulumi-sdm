@@ -32,7 +32,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The tenant name to target
-        /// * gcp_store:
+        /// * delinea_dsv_store:
         /// </summary>
         public readonly string? TenantName;
 

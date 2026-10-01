@@ -26059,6 +26059,352 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) Tags() pulumi.StringMapOutp
 	}).(pulumi.StringMapOutput)
 }
 
+type ResourceGoogleGroups struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of the Okta org to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// Represents the Okta Org Client URL
+	Domain string `pulumi:"domain"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// comma separated list of group email addresses to filter by. Supports wildcards (*)
+	GroupEmails *string `pulumi:"groupEmails"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels *string `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceGoogleGroupsInput is an input type that accepts ResourceGoogleGroupsArgs and ResourceGoogleGroupsOutput values.
+// You can construct a concrete instance of `ResourceGoogleGroupsInput` via:
+//
+//	ResourceGoogleGroupsArgs{...}
+type ResourceGoogleGroupsInput interface {
+	pulumi.Input
+
+	ToResourceGoogleGroupsOutput() ResourceGoogleGroupsOutput
+	ToResourceGoogleGroupsOutputWithContext(context.Context) ResourceGoogleGroupsOutput
+}
+
+type ResourceGoogleGroupsArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of the Okta org to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// Represents the Okta Org Client URL
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// comma separated list of group email addresses to filter by. Supports wildcards (*)
+	GroupEmails pulumi.StringPtrInput `pulumi:"groupEmails"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels pulumi.StringPtrInput `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceGoogleGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGoogleGroups)(nil)).Elem()
+}
+
+func (i ResourceGoogleGroupsArgs) ToResourceGoogleGroupsOutput() ResourceGoogleGroupsOutput {
+	return i.ToResourceGoogleGroupsOutputWithContext(context.Background())
+}
+
+func (i ResourceGoogleGroupsArgs) ToResourceGoogleGroupsOutputWithContext(ctx context.Context) ResourceGoogleGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGroupsOutput)
+}
+
+func (i ResourceGoogleGroupsArgs) ToResourceGoogleGroupsPtrOutput() ResourceGoogleGroupsPtrOutput {
+	return i.ToResourceGoogleGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGoogleGroupsArgs) ToResourceGoogleGroupsPtrOutputWithContext(ctx context.Context) ResourceGoogleGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGroupsOutput).ToResourceGoogleGroupsPtrOutputWithContext(ctx)
+}
+
+// ResourceGoogleGroupsPtrInput is an input type that accepts ResourceGoogleGroupsArgs, ResourceGoogleGroupsPtr and ResourceGoogleGroupsPtrOutput values.
+// You can construct a concrete instance of `ResourceGoogleGroupsPtrInput` via:
+//
+//	        ResourceGoogleGroupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGoogleGroupsPtrInput interface {
+	pulumi.Input
+
+	ToResourceGoogleGroupsPtrOutput() ResourceGoogleGroupsPtrOutput
+	ToResourceGoogleGroupsPtrOutputWithContext(context.Context) ResourceGoogleGroupsPtrOutput
+}
+
+type resourceGoogleGroupsPtrType ResourceGoogleGroupsArgs
+
+func ResourceGoogleGroupsPtr(v *ResourceGoogleGroupsArgs) ResourceGoogleGroupsPtrInput {
+	return (*resourceGoogleGroupsPtrType)(v)
+}
+
+func (*resourceGoogleGroupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGoogleGroups)(nil)).Elem()
+}
+
+func (i *resourceGoogleGroupsPtrType) ToResourceGoogleGroupsPtrOutput() ResourceGoogleGroupsPtrOutput {
+	return i.ToResourceGoogleGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGoogleGroupsPtrType) ToResourceGoogleGroupsPtrOutputWithContext(ctx context.Context) ResourceGoogleGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGroupsPtrOutput)
+}
+
+type ResourceGoogleGroupsOutput struct{ *pulumi.OutputState }
+
+func (ResourceGoogleGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGoogleGroups)(nil)).Elem()
+}
+
+func (o ResourceGoogleGroupsOutput) ToResourceGoogleGroupsOutput() ResourceGoogleGroupsOutput {
+	return o
+}
+
+func (o ResourceGoogleGroupsOutput) ToResourceGoogleGroupsOutputWithContext(ctx context.Context) ResourceGoogleGroupsOutput {
+	return o
+}
+
+func (o ResourceGoogleGroupsOutput) ToResourceGoogleGroupsPtrOutput() ResourceGoogleGroupsPtrOutput {
+	return o.ToResourceGoogleGroupsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGoogleGroupsOutput) ToResourceGoogleGroupsPtrOutputWithContext(ctx context.Context) ResourceGoogleGroupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGoogleGroups) *ResourceGoogleGroups {
+		return &v
+	}).(ResourceGoogleGroupsPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+func (o ResourceGoogleGroupsOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of the Okta org to be run from a node.
+func (o ResourceGoogleGroupsOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Represents the Okta Org Client URL
+func (o ResourceGoogleGroupsOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGoogleGroupsOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// comma separated list of group email addresses to filter by. Supports wildcards (*)
+func (o ResourceGoogleGroupsOutput) GroupEmails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.GroupEmails }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGoogleGroupsOutput) IdentitySetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) string { return v.IdentitySetId }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGoogleGroupsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o ResourceGoogleGroupsOutput) PrivilegeLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.PrivilegeLevels }).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGroupsOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGoogleGroupsOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+func (o ResourceGoogleGroupsOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGoogleGroupsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceGoogleGroups) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceGoogleGroupsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGoogleGroupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGoogleGroups)(nil)).Elem()
+}
+
+func (o ResourceGoogleGroupsPtrOutput) ToResourceGoogleGroupsPtrOutput() ResourceGoogleGroupsPtrOutput {
+	return o
+}
+
+func (o ResourceGoogleGroupsPtrOutput) ToResourceGoogleGroupsPtrOutputWithContext(ctx context.Context) ResourceGoogleGroupsPtrOutput {
+	return o
+}
+
+func (o ResourceGoogleGroupsPtrOutput) Elem() ResourceGoogleGroupsOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) ResourceGoogleGroups {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGoogleGroups
+		return ret
+	}).(ResourceGoogleGroupsOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+func (o ResourceGoogleGroupsPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of the Okta org to be run from a node.
+func (o ResourceGoogleGroupsPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents the Okta Org Client URL
+func (o ResourceGoogleGroupsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGoogleGroupsPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// comma separated list of group email addresses to filter by. Supports wildcards (*)
+func (o ResourceGoogleGroupsPtrOutput) GroupEmails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupEmails
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGoogleGroupsPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGoogleGroupsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o ResourceGoogleGroupsPtrOutput) PrivilegeLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegeLevels
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGroupsPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGoogleGroupsPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+func (o ResourceGoogleGroupsPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGoogleGroupsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceGoogleGroups) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceGoogleSpanner struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -31327,8 +31673,6 @@ type ResourceMcpGatewayNoAuth struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname *string `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -31366,8 +31710,6 @@ type ResourceMcpGatewayNoAuthArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -31476,11 +31818,6 @@ func (o ResourceMcpGatewayNoAuthOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayNoAuth) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayNoAuthOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMcpGatewayNoAuth) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
 // Unique human-readable name of the Resource.
 func (o ResourceMcpGatewayNoAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayNoAuth) string { return v.Name }).(pulumi.StringOutput)
@@ -31568,16 +31905,6 @@ func (o ResourceMcpGatewayNoAuthPtrOutput) EgressFilter() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.EgressFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayNoAuthPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMcpGatewayNoAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31677,8 +32004,6 @@ type ResourceMcpGatewayOAuth struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname *string `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The OAuth 2.0 authorization endpoint URL.
@@ -31726,8 +32051,6 @@ type ResourceMcpGatewayOAuthArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The OAuth 2.0 authorization endpoint URL.
@@ -31846,11 +32169,6 @@ func (o ResourceMcpGatewayOAuthOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayOAuth) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayOAuthOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMcpGatewayOAuth) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
 // Unique human-readable name of the Resource.
 func (o ResourceMcpGatewayOAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayOAuth) string { return v.Name }).(pulumi.StringOutput)
@@ -31963,16 +32281,6 @@ func (o ResourceMcpGatewayOAuthPtrOutput) EgressFilter() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.EgressFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayOAuthPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMcpGatewayOAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32122,8 +32430,6 @@ type ResourceMcpGatewayOAuthDcr struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname *string `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The OAuth 2.0 authorization endpoint URL.
@@ -32169,8 +32475,6 @@ type ResourceMcpGatewayOAuthDcrArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The OAuth 2.0 authorization endpoint URL.
@@ -32287,11 +32591,6 @@ func (o ResourceMcpGatewayOAuthDcrOutput) EgressFilter() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ResourceMcpGatewayOAuthDcr) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayOAuthDcrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMcpGatewayOAuthDcr) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
 // Unique human-readable name of the Resource.
 func (o ResourceMcpGatewayOAuthDcrOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayOAuthDcr) string { return v.Name }).(pulumi.StringOutput)
@@ -32399,16 +32698,6 @@ func (o ResourceMcpGatewayOAuthDcrPtrOutput) EgressFilter() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.EgressFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayOAuthDcrPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMcpGatewayOAuthDcr) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32548,8 +32837,6 @@ type ResourceMcpGatewayPat struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname *string `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The password to authenticate with.
@@ -32589,8 +32876,6 @@ type ResourceMcpGatewayPatArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The password to authenticate with.
@@ -32701,11 +32986,6 @@ func (o ResourceMcpGatewayPatOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayPat) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayPatOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMcpGatewayPat) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
 // Unique human-readable name of the Resource.
 func (o ResourceMcpGatewayPatOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMcpGatewayPat) string { return v.Name }).(pulumi.StringOutput)
@@ -32798,16 +33078,6 @@ func (o ResourceMcpGatewayPatPtrOutput) EgressFilter() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.EgressFilter
-	}).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o ResourceMcpGatewayPatPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMcpGatewayPat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33642,6 +33912,8 @@ type ResourceMongoHost struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -33684,6 +33956,8 @@ type ResourceMongoHostArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -33816,6 +34090,11 @@ func (o ResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceMongoHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceMongoHostOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoHost) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33954,6 +34233,16 @@ func (o ResourceMongoHostPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceMongoHostPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoHost) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34815,6 +35104,8 @@ type ResourceMongoReplicaSet struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -34859,6 +35150,8 @@ type ResourceMongoReplicaSetArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -34996,6 +35289,11 @@ func (o ResourceMongoReplicaSetOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceMongoReplicaSetOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceMongoReplicaSetOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -35147,6 +35445,16 @@ func (o ResourceMongoReplicaSetPtrOutput) ProxyClusterId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The AWS region to connect to.
+func (o ResourceMongoReplicaSetPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoReplicaSetPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
@@ -35214,6 +35522,8 @@ type ResourceMongoShardedCluster struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -35254,6 +35564,8 @@ type ResourceMongoShardedClusterArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -35383,6 +35695,11 @@ func (o ResourceMongoShardedClusterOutput) ProxyClusterId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The AWS region to connect to.
+func (o ResourceMongoShardedClusterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoShardedClusterOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -35509,6 +35826,16 @@ func (o ResourceMongoShardedClusterPtrOutput) ProxyClusterId() pulumi.StringPtrO
 			return nil
 		}
 		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceMongoShardedClusterPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52737,6 +53064,204 @@ func (o SecretStoreCyberarkPamExperimentalPtrOutput) Tags() pulumi.StringMapOutp
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreDelineaDsvStore struct {
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+	Tenant string `pulumi:"tenant"`
+	// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+	// * gcp_store:
+	Tld *string `pulumi:"tld"`
+}
+
+// SecretStoreDelineaDsvStoreInput is an input type that accepts SecretStoreDelineaDsvStoreArgs and SecretStoreDelineaDsvStoreOutput values.
+// You can construct a concrete instance of `SecretStoreDelineaDsvStoreInput` via:
+//
+//	SecretStoreDelineaDsvStoreArgs{...}
+type SecretStoreDelineaDsvStoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreDelineaDsvStoreOutput() SecretStoreDelineaDsvStoreOutput
+	ToSecretStoreDelineaDsvStoreOutputWithContext(context.Context) SecretStoreDelineaDsvStoreOutput
+}
+
+type SecretStoreDelineaDsvStoreArgs struct {
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+	Tenant pulumi.StringInput `pulumi:"tenant"`
+	// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+	// * gcp_store:
+	Tld pulumi.StringPtrInput `pulumi:"tld"`
+}
+
+func (SecretStoreDelineaDsvStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (i SecretStoreDelineaDsvStoreArgs) ToSecretStoreDelineaDsvStoreOutput() SecretStoreDelineaDsvStoreOutput {
+	return i.ToSecretStoreDelineaDsvStoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreDelineaDsvStoreArgs) ToSecretStoreDelineaDsvStoreOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaDsvStoreOutput)
+}
+
+func (i SecretStoreDelineaDsvStoreArgs) ToSecretStoreDelineaDsvStorePtrOutput() SecretStoreDelineaDsvStorePtrOutput {
+	return i.ToSecretStoreDelineaDsvStorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreDelineaDsvStoreArgs) ToSecretStoreDelineaDsvStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaDsvStoreOutput).ToSecretStoreDelineaDsvStorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreDelineaDsvStorePtrInput is an input type that accepts SecretStoreDelineaDsvStoreArgs, SecretStoreDelineaDsvStorePtr and SecretStoreDelineaDsvStorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreDelineaDsvStorePtrInput` via:
+//
+//	        SecretStoreDelineaDsvStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreDelineaDsvStorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreDelineaDsvStorePtrOutput() SecretStoreDelineaDsvStorePtrOutput
+	ToSecretStoreDelineaDsvStorePtrOutputWithContext(context.Context) SecretStoreDelineaDsvStorePtrOutput
+}
+
+type secretStoreDelineaDsvStorePtrType SecretStoreDelineaDsvStoreArgs
+
+func SecretStoreDelineaDsvStorePtr(v *SecretStoreDelineaDsvStoreArgs) SecretStoreDelineaDsvStorePtrInput {
+	return (*secretStoreDelineaDsvStorePtrType)(v)
+}
+
+func (*secretStoreDelineaDsvStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (i *secretStoreDelineaDsvStorePtrType) ToSecretStoreDelineaDsvStorePtrOutput() SecretStoreDelineaDsvStorePtrOutput {
+	return i.ToSecretStoreDelineaDsvStorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreDelineaDsvStorePtrType) ToSecretStoreDelineaDsvStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaDsvStorePtrOutput)
+}
+
+type SecretStoreDelineaDsvStoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreDelineaDsvStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (o SecretStoreDelineaDsvStoreOutput) ToSecretStoreDelineaDsvStoreOutput() SecretStoreDelineaDsvStoreOutput {
+	return o
+}
+
+func (o SecretStoreDelineaDsvStoreOutput) ToSecretStoreDelineaDsvStoreOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStoreOutput {
+	return o
+}
+
+func (o SecretStoreDelineaDsvStoreOutput) ToSecretStoreDelineaDsvStorePtrOutput() SecretStoreDelineaDsvStorePtrOutput {
+	return o.ToSecretStoreDelineaDsvStorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreDelineaDsvStoreOutput) ToSecretStoreDelineaDsvStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreDelineaDsvStore) *SecretStoreDelineaDsvStore {
+		return &v
+	}).(SecretStoreDelineaDsvStorePtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreDelineaDsvStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreDelineaDsvStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreDelineaDsvStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreDelineaDsvStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+func (o SecretStoreDelineaDsvStoreOutput) Tenant() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreDelineaDsvStore) string { return v.Tenant }).(pulumi.StringOutput)
+}
+
+// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+// * gcp_store:
+func (o SecretStoreDelineaDsvStoreOutput) Tld() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreDelineaDsvStore) *string { return v.Tld }).(pulumi.StringPtrOutput)
+}
+
+type SecretStoreDelineaDsvStorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreDelineaDsvStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (o SecretStoreDelineaDsvStorePtrOutput) ToSecretStoreDelineaDsvStorePtrOutput() SecretStoreDelineaDsvStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreDelineaDsvStorePtrOutput) ToSecretStoreDelineaDsvStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaDsvStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreDelineaDsvStorePtrOutput) Elem() SecretStoreDelineaDsvStoreOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaDsvStore) SecretStoreDelineaDsvStore {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreDelineaDsvStore
+		return ret
+	}).(SecretStoreDelineaDsvStoreOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreDelineaDsvStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaDsvStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreDelineaDsvStorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaDsvStore) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+func (o SecretStoreDelineaDsvStorePtrOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaDsvStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tenant
+	}).(pulumi.StringPtrOutput)
+}
+
+// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+// * gcp_store:
+func (o SecretStoreDelineaDsvStorePtrOutput) Tld() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaDsvStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tld
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecretStoreDelineaStore struct {
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
@@ -52745,7 +53270,7 @@ type SecretStoreDelineaStore struct {
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// The tenant name to target
-	// * gcp_store:
+	// * delinea_dsv_store:
 	TenantName *string `pulumi:"tenantName"`
 }
 
@@ -52768,7 +53293,7 @@ type SecretStoreDelineaStoreArgs struct {
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The tenant name to target
-	// * gcp_store:
+	// * delinea_dsv_store:
 	TenantName pulumi.StringPtrInput `pulumi:"tenantName"`
 }
 
@@ -52865,7 +53390,7 @@ func (o SecretStoreDelineaStoreOutput) Tags() pulumi.StringMapOutput {
 }
 
 // The tenant name to target
-// * gcp_store:
+// * delinea_dsv_store:
 func (o SecretStoreDelineaStoreOutput) TenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretStoreDelineaStore) *string { return v.TenantName }).(pulumi.StringPtrOutput)
 }
@@ -52925,7 +53450,7 @@ func (o SecretStoreDelineaStorePtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 // The tenant name to target
-// * gcp_store:
+// * delinea_dsv_store:
 func (o SecretStoreDelineaStorePtrOutput) TenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretStoreDelineaStore) *string {
 		if v == nil {
@@ -62422,6 +62947,7 @@ type GetResourceResource struct {
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonations []GetResourceResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonations"`
 	GoogleGkes                  []GetResourceResourceGoogleGke                  `pulumi:"googleGkes"`
+	GoogleGroups                []GetResourceResourceGoogleGroup                `pulumi:"googleGroups"`
 	GoogleSpanners              []GetResourceResourceGoogleSpanner              `pulumi:"googleSpanners"`
 	Greenplums                  []GetResourceResourceGreenplum                  `pulumi:"greenplums"`
 	HttpAuths                   []GetResourceResourceHttpAuth                   `pulumi:"httpAuths"`
@@ -62561,6 +63087,7 @@ type GetResourceResourceArgs struct {
 	// Deprecated: google_gke_user_impersonation is deprecated, see docs for more info
 	GoogleGkeUserImpersonations GetResourceResourceGoogleGkeUserImpersonationArrayInput `pulumi:"googleGkeUserImpersonations"`
 	GoogleGkes                  GetResourceResourceGoogleGkeArrayInput                  `pulumi:"googleGkes"`
+	GoogleGroups                GetResourceResourceGoogleGroupArrayInput                `pulumi:"googleGroups"`
 	GoogleSpanners              GetResourceResourceGoogleSpannerArrayInput              `pulumi:"googleSpanners"`
 	Greenplums                  GetResourceResourceGreenplumArrayInput                  `pulumi:"greenplums"`
 	HttpAuths                   GetResourceResourceHttpAuthArrayInput                   `pulumi:"httpAuths"`
@@ -62932,6 +63459,10 @@ func (o GetResourceResourceOutput) GoogleGkeUserImpersonations() GetResourceReso
 
 func (o GetResourceResourceOutput) GoogleGkes() GetResourceResourceGoogleGkeArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGoogleGke { return v.GoogleGkes }).(GetResourceResourceGoogleGkeArrayOutput)
+}
+
+func (o GetResourceResourceOutput) GoogleGroups() GetResourceResourceGoogleGroupArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGoogleGroup { return v.GoogleGroups }).(GetResourceResourceGoogleGroupArrayOutput)
 }
 
 func (o GetResourceResourceOutput) GoogleSpanners() GetResourceResourceGoogleSpannerArrayOutput {
@@ -76371,6 +76902,211 @@ func (o GetResourceResourceGoogleGkeUserImpersonationArrayOutput) Index(i pulumi
 	}).(GetResourceResourceGoogleGkeUserImpersonationOutput)
 }
 
+type GetResourceResourceGoogleGroup struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of the Okta org to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// Represents the Okta Org Client URL
+	Domain *string `pulumi:"domain"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// comma separated list of group email addresses to filter by. Supports wildcards (*)
+	GroupEmails *string `pulumi:"groupEmails"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels *string `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceGoogleGroupInput is an input type that accepts GetResourceResourceGoogleGroupArgs and GetResourceResourceGoogleGroupOutput values.
+// You can construct a concrete instance of `GetResourceResourceGoogleGroupInput` via:
+//
+//	GetResourceResourceGoogleGroupArgs{...}
+type GetResourceResourceGoogleGroupInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGoogleGroupOutput() GetResourceResourceGoogleGroupOutput
+	ToGetResourceResourceGoogleGroupOutputWithContext(context.Context) GetResourceResourceGoogleGroupOutput
+}
+
+type GetResourceResourceGoogleGroupArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of the Okta org to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// Represents the Okta Org Client URL
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// comma separated list of group email addresses to filter by. Supports wildcards (*)
+	GroupEmails pulumi.StringPtrInput `pulumi:"groupEmails"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The privilege levels specify which Groups are managed externally
+	PrivilegeLevels pulumi.StringPtrInput `pulumi:"privilegeLevels"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceGoogleGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGoogleGroup)(nil)).Elem()
+}
+
+func (i GetResourceResourceGoogleGroupArgs) ToGetResourceResourceGoogleGroupOutput() GetResourceResourceGoogleGroupOutput {
+	return i.ToGetResourceResourceGoogleGroupOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGoogleGroupArgs) ToGetResourceResourceGoogleGroupOutputWithContext(ctx context.Context) GetResourceResourceGoogleGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGroupOutput)
+}
+
+// GetResourceResourceGoogleGroupArrayInput is an input type that accepts GetResourceResourceGoogleGroupArray and GetResourceResourceGoogleGroupArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceGoogleGroupArrayInput` via:
+//
+//	GetResourceResourceGoogleGroupArray{ GetResourceResourceGoogleGroupArgs{...} }
+type GetResourceResourceGoogleGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGoogleGroupArrayOutput() GetResourceResourceGoogleGroupArrayOutput
+	ToGetResourceResourceGoogleGroupArrayOutputWithContext(context.Context) GetResourceResourceGoogleGroupArrayOutput
+}
+
+type GetResourceResourceGoogleGroupArray []GetResourceResourceGoogleGroupInput
+
+func (GetResourceResourceGoogleGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGoogleGroup)(nil)).Elem()
+}
+
+func (i GetResourceResourceGoogleGroupArray) ToGetResourceResourceGoogleGroupArrayOutput() GetResourceResourceGoogleGroupArrayOutput {
+	return i.ToGetResourceResourceGoogleGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGoogleGroupArray) ToGetResourceResourceGoogleGroupArrayOutputWithContext(ctx context.Context) GetResourceResourceGoogleGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGroupArrayOutput)
+}
+
+type GetResourceResourceGoogleGroupOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGoogleGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGoogleGroup)(nil)).Elem()
+}
+
+func (o GetResourceResourceGoogleGroupOutput) ToGetResourceResourceGoogleGroupOutput() GetResourceResourceGoogleGroupOutput {
+	return o
+}
+
+func (o GetResourceResourceGoogleGroupOutput) ToGetResourceResourceGoogleGroupOutputWithContext(ctx context.Context) GetResourceResourceGoogleGroupOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+func (o GetResourceResourceGoogleGroupOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of the Okta org to be run from a node.
+func (o GetResourceResourceGoogleGroupOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Represents the Okta Org Client URL
+func (o GetResourceResourceGoogleGroupOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceGoogleGroupOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// comma separated list of group email addresses to filter by. Supports wildcards (*)
+func (o GetResourceResourceGoogleGroupOutput) GroupEmails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.GroupEmails }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceGoogleGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceGoogleGroupOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceGoogleGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The privilege levels specify which Groups are managed externally
+func (o GetResourceResourceGoogleGroupOutput) PrivilegeLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.PrivilegeLevels }).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGoogleGroupOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceGoogleGroupOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+func (o GetResourceResourceGoogleGroupOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceGoogleGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceGoogleGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGoogleGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGoogleGroup)(nil)).Elem()
+}
+
+func (o GetResourceResourceGoogleGroupArrayOutput) ToGetResourceResourceGoogleGroupArrayOutput() GetResourceResourceGoogleGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGoogleGroupArrayOutput) ToGetResourceResourceGoogleGroupArrayOutputWithContext(ctx context.Context) GetResourceResourceGoogleGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGoogleGroupArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGoogleGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceGoogleGroup {
+		return vs[0].([]GetResourceResourceGoogleGroup)[vs[1].(int)]
+	}).(GetResourceResourceGoogleGroupOutput)
+}
+
 type GetResourceResourceGoogleSpanner struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -79412,8 +80148,6 @@ type GetResourceResourceMcpGatewayNoAuth struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -79453,8 +80187,6 @@ type GetResourceResourceMcpGatewayNoAuthArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -79539,11 +80271,6 @@ func (o GetResourceResourceMcpGatewayNoAuthOutput) EgressFilter() pulumi.StringP
 	return o.ApplyT(func(v GetResourceResourceMcpGatewayNoAuth) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o GetResourceResourceMcpGatewayNoAuthOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceResourceMcpGatewayNoAuth) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
 // Unique identifier of the Resource.
 func (o GetResourceResourceMcpGatewayNoAuthOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMcpGatewayNoAuth) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -79620,8 +80347,6 @@ type GetResourceResourceMcpGatewayOAuth struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -79671,8 +80396,6 @@ type GetResourceResourceMcpGatewayOAuthArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -79765,11 +80488,6 @@ func (o GetResourceResourceMcpGatewayOAuthOutput) BindInterface() pulumi.StringP
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o GetResourceResourceMcpGatewayOAuthOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMcpGatewayOAuth) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o GetResourceResourceMcpGatewayOAuthOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceResourceMcpGatewayOAuth) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the Resource.
@@ -79873,8 +80591,6 @@ type GetResourceResourceMcpGatewayOAuthDcr struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -79922,8 +80638,6 @@ type GetResourceResourceMcpGatewayOAuthDcrArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -80014,11 +80728,6 @@ func (o GetResourceResourceMcpGatewayOAuthDcrOutput) BindInterface() pulumi.Stri
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o GetResourceResourceMcpGatewayOAuthDcrOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMcpGatewayOAuthDcr) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o GetResourceResourceMcpGatewayOAuthDcrOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceResourceMcpGatewayOAuthDcr) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the Resource.
@@ -80117,8 +80826,6 @@ type GetResourceResourceMcpGatewayPat struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -80160,8 +80867,6 @@ type GetResourceResourceMcpGatewayPatArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
-	// The host to dial to initiate a connection from the egress node to this resource.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -80246,11 +80951,6 @@ func (o GetResourceResourceMcpGatewayPatOutput) BindInterface() pulumi.StringPtr
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o GetResourceResourceMcpGatewayPatOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMcpGatewayPat) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
-}
-
-// The host to dial to initiate a connection from the egress node to this resource.
-func (o GetResourceResourceMcpGatewayPatOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceResourceMcpGatewayPat) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the Resource.
@@ -80769,6 +81469,8 @@ type GetResourceResourceMongoHost struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -80813,6 +81515,8 @@ type GetResourceResourceMongoHostArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -80924,6 +81628,11 @@ func (o GetResourceResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the proxy cluster for this resource, if any.
 func (o GetResourceResourceMongoHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceMongoHostOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoHost) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -81449,6 +82158,8 @@ type GetResourceResourceMongoReplicaSet struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -81495,6 +82206,8 @@ type GetResourceResourceMongoReplicaSetArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -81613,6 +82326,11 @@ func (o GetResourceResourceMongoReplicaSetOutput) ProxyClusterId() pulumi.String
 	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The AWS region to connect to.
+func (o GetResourceResourceMongoReplicaSetOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMongoReplicaSetOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -81677,6 +82395,8 @@ type GetResourceResourceMongoShardedCluster struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -81719,6 +82439,8 @@ type GetResourceResourceMongoShardedClusterArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -81825,6 +82547,11 @@ func (o GetResourceResourceMongoShardedClusterOutput) PortOverride() pulumi.IntP
 // ID of the proxy cluster for this resource, if any.
 func (o GetResourceResourceMongoShardedClusterOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceMongoShardedClusterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -91284,6 +92011,7 @@ type GetSecretStoreSecretStore struct {
 	CyberarkConjurs          []GetSecretStoreSecretStoreCyberarkConjur          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals []GetSecretStoreSecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimentals"`
 	CyberarkPams             []GetSecretStoreSecretStoreCyberarkPam             `pulumi:"cyberarkPams"`
+	DelineaDsvStores         []GetSecretStoreSecretStoreDelineaDsvStore         `pulumi:"delineaDsvStores"`
 	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
 	GcpCertX509Stores        []GetSecretStoreSecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Stores"`
 	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
@@ -91326,6 +92054,7 @@ type GetSecretStoreSecretStoreArgs struct {
 	CyberarkConjurs          GetSecretStoreSecretStoreCyberarkConjurArrayInput          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput `pulumi:"cyberarkPamExperimentals"`
 	CyberarkPams             GetSecretStoreSecretStoreCyberarkPamArrayInput             `pulumi:"cyberarkPams"`
+	DelineaDsvStores         GetSecretStoreSecretStoreDelineaDsvStoreArrayInput         `pulumi:"delineaDsvStores"`
 	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
 	GcpCertX509Stores        GetSecretStoreSecretStoreGcpCertX509StoreArrayInput        `pulumi:"gcpCertX509Stores"`
 	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
@@ -91430,6 +92159,12 @@ func (o GetSecretStoreSecretStoreOutput) CyberarkPamExperimentals() GetSecretSto
 
 func (o GetSecretStoreSecretStoreOutput) CyberarkPams() GetSecretStoreSecretStoreCyberarkPamArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreCyberarkPam { return v.CyberarkPams }).(GetSecretStoreSecretStoreCyberarkPamArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) DelineaDsvStores() GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreDelineaDsvStore {
+		return v.DelineaDsvStores
+	}).(GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) DelineaStores() GetSecretStoreSecretStoreDelineaStoreArrayOutput {
@@ -92487,6 +93222,142 @@ func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) Index(i pul
 	}).(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput)
 }
 
+type GetSecretStoreSecretStoreDelineaDsvStore struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+	Tenant *string `pulumi:"tenant"`
+	// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+	// * gcp_store:
+	Tld *string `pulumi:"tld"`
+}
+
+// GetSecretStoreSecretStoreDelineaDsvStoreInput is an input type that accepts GetSecretStoreSecretStoreDelineaDsvStoreArgs and GetSecretStoreSecretStoreDelineaDsvStoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreDelineaDsvStoreInput` via:
+//
+//	GetSecretStoreSecretStoreDelineaDsvStoreArgs{...}
+type GetSecretStoreSecretStoreDelineaDsvStoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreDelineaDsvStoreOutput() GetSecretStoreSecretStoreDelineaDsvStoreOutput
+	ToGetSecretStoreSecretStoreDelineaDsvStoreOutputWithContext(context.Context) GetSecretStoreSecretStoreDelineaDsvStoreOutput
+}
+
+type GetSecretStoreSecretStoreDelineaDsvStoreArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+	Tenant pulumi.StringPtrInput `pulumi:"tenant"`
+	// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+	// * gcp_store:
+	Tld pulumi.StringPtrInput `pulumi:"tld"`
+}
+
+func (GetSecretStoreSecretStoreDelineaDsvStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreDelineaDsvStoreArgs) ToGetSecretStoreSecretStoreDelineaDsvStoreOutput() GetSecretStoreSecretStoreDelineaDsvStoreOutput {
+	return i.ToGetSecretStoreSecretStoreDelineaDsvStoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreDelineaDsvStoreArgs) ToGetSecretStoreSecretStoreDelineaDsvStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaDsvStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaDsvStoreOutput)
+}
+
+// GetSecretStoreSecretStoreDelineaDsvStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreDelineaDsvStoreArray and GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreDelineaDsvStoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreDelineaDsvStoreArray{ GetSecretStoreSecretStoreDelineaDsvStoreArgs{...} }
+type GetSecretStoreSecretStoreDelineaDsvStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutput() GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput
+	ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreDelineaDsvStoreArray []GetSecretStoreSecretStoreDelineaDsvStoreInput
+
+func (GetSecretStoreSecretStoreDelineaDsvStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreDelineaDsvStoreArray) ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutput() GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreDelineaDsvStoreArray) ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreDelineaDsvStoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreDelineaDsvStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) ToGetSecretStoreSecretStoreDelineaDsvStoreOutput() GetSecretStoreSecretStoreDelineaDsvStoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) ToGetSecretStoreSecretStoreDelineaDsvStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaDsvStoreOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaDsvStore) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaDsvStore) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaDsvStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaDsvStore) *string { return v.Tenant }).(pulumi.StringPtrOutput)
+}
+
+// The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+// * gcp_store:
+func (o GetSecretStoreSecretStoreDelineaDsvStoreOutput) Tld() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaDsvStore) *string { return v.Tld }).(pulumi.StringPtrOutput)
+}
+
+type GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreDelineaDsvStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput) ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutput() GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput) ToGetSecretStoreSecretStoreDelineaDsvStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreDelineaDsvStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreDelineaDsvStore {
+		return vs[0].([]GetSecretStoreSecretStoreDelineaDsvStore)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreDelineaDsvStoreOutput)
+}
+
 type GetSecretStoreSecretStoreDelineaStore struct {
 	// Unique identifier of the SecretStore.
 	Id *string `pulumi:"id"`
@@ -92497,7 +93368,7 @@ type GetSecretStoreSecretStoreDelineaStore struct {
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// The tenant name to target
-	// * gcp_store:
+	// * delinea_dsv_store:
 	TenantName *string `pulumi:"tenantName"`
 }
 
@@ -92522,7 +93393,7 @@ type GetSecretStoreSecretStoreDelineaStoreArgs struct {
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The tenant name to target
-	// * gcp_store:
+	// * delinea_dsv_store:
 	TenantName pulumi.StringPtrInput `pulumi:"tenantName"`
 }
 
@@ -92598,7 +93469,7 @@ func (o GetSecretStoreSecretStoreDelineaStoreOutput) Tags() pulumi.StringMapOutp
 }
 
 // The tenant name to target
-// * gcp_store:
+// * delinea_dsv_store:
 func (o GetSecretStoreSecretStoreDelineaStoreOutput) TenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) *string { return v.TenantName }).(pulumi.StringPtrOutput)
 }
@@ -96340,6 +97211,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkePtrInput)(nil)).Elem(), ResourceGoogleGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkeUserImpersonationInput)(nil)).Elem(), ResourceGoogleGkeUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkeUserImpersonationPtrInput)(nil)).Elem(), ResourceGoogleGkeUserImpersonationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGroupsInput)(nil)).Elem(), ResourceGoogleGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGroupsPtrInput)(nil)).Elem(), ResourceGoogleGroupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleSpannerInput)(nil)).Elem(), ResourceGoogleSpannerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleSpannerPtrInput)(nil)).Elem(), ResourceGoogleSpannerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGreenplumInput)(nil)).Elem(), ResourceGreenplumArgs{})
@@ -96482,6 +97355,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamPtrInput)(nil)).Elem(), SecretStoreCyberarkPamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalPtrInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaDsvStoreInput)(nil)).Elem(), SecretStoreDelineaDsvStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaDsvStorePtrInput)(nil)).Elem(), SecretStoreDelineaDsvStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStoreInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStorePtrInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpCertX509StoreInput)(nil)).Elem(), SecretStoreGcpCertX509StoreArgs{})
@@ -96714,6 +97589,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeArrayInput)(nil)).Elem(), GetResourceResourceGoogleGkeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeUserImpersonationInput)(nil)).Elem(), GetResourceResourceGoogleGkeUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeUserImpersonationArrayInput)(nil)).Elem(), GetResourceResourceGoogleGkeUserImpersonationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGroupInput)(nil)).Elem(), GetResourceResourceGoogleGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGroupArrayInput)(nil)).Elem(), GetResourceResourceGoogleGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleSpannerInput)(nil)).Elem(), GetResourceResourceGoogleSpannerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleSpannerArrayInput)(nil)).Elem(), GetResourceResourceGoogleSpannerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGreenplumInput)(nil)).Elem(), GetResourceResourceGreenplumArgs{})
@@ -96862,6 +97739,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaDsvStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaDsvStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaDsvStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaDsvStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509StoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpCertX509StoreArgs{})
@@ -97066,6 +97945,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGoogleGkePtrOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleGkeUserImpersonationOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleGkeUserImpersonationPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGoogleGroupsOutput{})
+	pulumi.RegisterOutputType(ResourceGoogleGroupsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleSpannerOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleSpannerPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGreenplumOutput{})
@@ -97208,6 +98089,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreDelineaDsvStoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreDelineaDsvStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreDelineaStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreDelineaStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpCertX509StoreOutput{})
@@ -97440,6 +98323,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeUserImpersonationOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeUserImpersonationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGoogleGroupOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGoogleGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleSpannerOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleSpannerArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGreenplumOutput{})
@@ -97588,6 +98473,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaDsvStoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaDsvStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpCertX509StoreOutput{})

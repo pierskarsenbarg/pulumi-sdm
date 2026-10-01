@@ -84,6 +84,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ProxyClusterId { get; set; }
 
         /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
