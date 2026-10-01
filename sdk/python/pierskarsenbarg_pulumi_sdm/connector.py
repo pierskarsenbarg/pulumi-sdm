@@ -112,9 +112,9 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict', 'outputs.ConnectorAws']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict', 'outputs.ConnectorAzure']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict', 'outputs.ConnectorGcp']]] = None,
                  __props__=None):
         """
         A Connector configures scanning for a given system.
@@ -166,9 +166,9 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None,
+                 aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict', 'outputs.ConnectorAws']]] = None,
+                 azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict', 'outputs.ConnectorAzure']]] = None,
+                 gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict', 'outputs.ConnectorGcp']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -191,9 +191,9 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict']]] = None,
-            azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict']]] = None,
-            gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict']]] = None) -> 'Connector':
+            aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict', 'outputs.ConnectorAws']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict', 'outputs.ConnectorAzure']]] = None,
+            gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict', 'outputs.ConnectorGcp']]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

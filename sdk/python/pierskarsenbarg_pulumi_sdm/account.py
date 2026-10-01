@@ -106,8 +106,8 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
+                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']]] = None,
+                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']]] = None,
                  __props__=None):
         """
         Accounts are users that have access to strongDM. The types of accounts are:
@@ -154,8 +154,8 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
-        :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']] user: A User can connect to resources they are granted directly, or granted via roles.
+        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
+        :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         ...
     @overload
@@ -221,8 +221,8 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None,
+                 service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']]] = None,
+                 user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -244,8 +244,8 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict']]] = None,
-            user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict']]] = None) -> 'Account':
+            service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']]] = None,
+            user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -253,8 +253,8 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
-        :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict']] user: A User can connect to resources they are granted directly, or granted via roles.
+        :param pulumi.Input[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']] service: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
+        :param pulumi.Input[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']] user: A User can connect to resources they are granted directly, or granted via roles.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
