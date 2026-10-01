@@ -170,7 +170,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -241,7 +241,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] approval_mode: Approval mode of the ApprovalWorkflow
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]] approval_steps: The approval steps of this approval workflow
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]] approval_steps: The approval steps of this approval workflow
         :param pulumi.Input[_builtins.str] description: Optional description of the ApprovalWorkflow.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the ApprovalWorkflow.
         """
@@ -331,7 +331,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                 approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -360,7 +360,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+            approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApprovalWorkflow':
         """
@@ -371,7 +371,7 @@ class ApprovalWorkflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] approval_mode: Approval mode of the ApprovalWorkflow
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict']]]] approval_steps: The approval steps of this approval workflow
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]] approval_steps: The approval steps of this approval workflow
         :param pulumi.Input[_builtins.str] description: Optional description of the ApprovalWorkflow.
         :param pulumi.Input[_builtins.str] name: Unique human-readable name of the ApprovalWorkflow.
         """

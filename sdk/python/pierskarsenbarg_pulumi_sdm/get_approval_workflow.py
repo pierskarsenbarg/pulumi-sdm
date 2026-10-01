@@ -124,7 +124,7 @@ class AwaitableGetApprovalWorkflowResult(GetApprovalWorkflowResult):
 
 
 def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
-                          approval_steps: Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]] = None,
+                          approval_steps: Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict', 'outputs.GetApprovalWorkflowApprovalStepResult']]] = None,
                           description: Optional[_builtins.str] = None,
                           id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
@@ -148,7 +148,7 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
 
 
     :param _builtins.str approval_mode: Approval mode of the ApprovalWorkflow
-    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']] approval_steps: The approval steps of this approval workflow
+    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict', 'outputs.GetApprovalWorkflowApprovalStepResult']] approval_steps: The approval steps of this approval workflow
     :param _builtins.str description: Optional description of the ApprovalWorkflow.
     :param _builtins.str id: Unique identifier of the ApprovalWorkflow.
     :param _builtins.str name: Unique human-readable name of the ApprovalWorkflow.
@@ -171,7 +171,7 @@ def get_approval_workflow(approval_mode: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'))
 def get_approval_workflow_output(approval_mode: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 approval_steps: pulumi.Input[Optional[Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']]]]] = None,
+                                 approval_steps: pulumi.Input[Optional[Optional[Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict', 'outputs.GetApprovalWorkflowApprovalStepResult']]]]] = None,
                                  description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -195,7 +195,7 @@ def get_approval_workflow_output(approval_mode: pulumi.Input[Optional[Optional[_
 
 
     :param _builtins.str approval_mode: Approval mode of the ApprovalWorkflow
-    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict']] approval_steps: The approval steps of this approval workflow
+    :param Sequence[Union['GetApprovalWorkflowApprovalStepArgs', 'GetApprovalWorkflowApprovalStepArgsDict', 'outputs.GetApprovalWorkflowApprovalStepResult']] approval_steps: The approval steps of this approval workflow
     :param _builtins.str description: Optional description of the ApprovalWorkflow.
     :param _builtins.str id: Unique identifier of the ApprovalWorkflow.
     :param _builtins.str name: Unique human-readable name of the ApprovalWorkflow.

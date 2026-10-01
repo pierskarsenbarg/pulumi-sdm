@@ -160,11 +160,11 @@ class SecretEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
+                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict', 'outputs.SecretEngineActiveDirectory']]] = None,
+                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict', 'outputs.SecretEngineKeyValue']]] = None,
+                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict', 'outputs.SecretEngineMysqlSecretEngine']]] = None,
+                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict', 'outputs.SecretEnginePostgresSecretEngine']]] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict', 'outputs.SecretEngineSqlserverSecretEngine']]] = None,
                  __props__=None):
         """
         A SecretEngine is managing secrets in SecretStores.
@@ -216,11 +216,11 @@ class SecretEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None,
+                 active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict', 'outputs.SecretEngineActiveDirectory']]] = None,
+                 key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict', 'outputs.SecretEngineKeyValue']]] = None,
+                 mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict', 'outputs.SecretEngineMysqlSecretEngine']]] = None,
+                 postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict', 'outputs.SecretEnginePostgresSecretEngine']]] = None,
+                 sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict', 'outputs.SecretEngineSqlserverSecretEngine']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,11 +245,11 @@ class SecretEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict']]] = None,
-            key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict']]] = None,
-            mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict']]] = None,
-            postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict']]] = None,
-            sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict']]] = None) -> 'SecretEngine':
+            active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict', 'outputs.SecretEngineActiveDirectory']]] = None,
+            key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict', 'outputs.SecretEngineKeyValue']]] = None,
+            mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict', 'outputs.SecretEngineMysqlSecretEngine']]] = None,
+            postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict', 'outputs.SecretEnginePostgresSecretEngine']]] = None,
+            sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict', 'outputs.SecretEngineSqlserverSecretEngine']]] = None) -> 'SecretEngine':
         """
         Get an existing SecretEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
