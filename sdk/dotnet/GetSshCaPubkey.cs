@@ -67,7 +67,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -75,11 +75,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getsshcapubkey" "sshPubkeyQuery" {
+        /// data "sdm_ssh_ca_pubkey" "sshPubkeyQuery" {
         /// }
         /// 
         /// output "sshca" {
-        ///   value = data.sdm_getsshcapubkey.sshPubkeyQuery.public_key
+        ///   value = data.sdm_ssh_ca_pubkey.sshPubkeyQuery.public_key
         /// }
         /// ```
         /// ```java
@@ -179,7 +179,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -187,11 +187,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getsshcapubkey" "sshPubkeyQuery" {
+        /// data "sdm_ssh_ca_pubkey" "sshPubkeyQuery" {
         /// }
         /// 
         /// output "sshca" {
-        ///   value = data.sdm_getsshcapubkey.sshPubkeyQuery.public_key
+        ///   value = data.sdm_ssh_ca_pubkey.sshPubkeyQuery.public_key
         /// }
         /// ```
         /// ```java
@@ -291,7 +291,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -299,11 +299,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getsshcapubkey" "sshPubkeyQuery" {
+        /// data "sdm_ssh_ca_pubkey" "sshPubkeyQuery" {
         /// }
         /// 
         /// output "sshca" {
-        ///   value = data.sdm_getsshcapubkey.sshPubkeyQuery.public_key
+        ///   value = data.sdm_ssh_ca_pubkey.sshPubkeyQuery.public_key
         /// }
         /// ```
         /// ```java

@@ -97,7 +97,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -105,13 +105,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        /// data "sdm_group_role" "securityTeamRoles" {
         ///   group_id = securityTeam.id
         /// }
-        /// data "sdm_getgrouprole" "specificRelationship" {
+        /// data "sdm_group_role" "specificRelationship" {
         ///   id = "grouprole-1234567890abcdef"
         /// }
-        /// data "sdm_getgrouprole" "groupsWithRole" {
+        /// data "sdm_group_role" "groupsWithRole" {
         ///   role_id = adminRole.id
         /// }
         /// ```
@@ -137,7 +137,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .groupId(securityTeam.id())
+        ///             .groupId(securityTeam.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
@@ -145,7 +145,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .roleId(adminRole.id())
+        ///             .roleId(adminRole.get("id"))
         ///             .build());
         /// 
         ///     }
@@ -259,7 +259,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -267,13 +267,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        /// data "sdm_group_role" "securityTeamRoles" {
         ///   group_id = securityTeam.id
         /// }
-        /// data "sdm_getgrouprole" "specificRelationship" {
+        /// data "sdm_group_role" "specificRelationship" {
         ///   id = "grouprole-1234567890abcdef"
         /// }
-        /// data "sdm_getgrouprole" "groupsWithRole" {
+        /// data "sdm_group_role" "groupsWithRole" {
         ///   role_id = adminRole.id
         /// }
         /// ```
@@ -299,7 +299,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .groupId(securityTeam.id())
+        ///             .groupId(securityTeam.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
@@ -307,7 +307,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .roleId(adminRole.id())
+        ///             .roleId(adminRole.get("id"))
         ///             .build());
         /// 
         ///     }
@@ -421,7 +421,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -429,13 +429,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgrouprole" "securityTeamRoles" {
+        /// data "sdm_group_role" "securityTeamRoles" {
         ///   group_id = securityTeam.id
         /// }
-        /// data "sdm_getgrouprole" "specificRelationship" {
+        /// data "sdm_group_role" "specificRelationship" {
         ///   id = "grouprole-1234567890abcdef"
         /// }
-        /// data "sdm_getgrouprole" "groupsWithRole" {
+        /// data "sdm_group_role" "groupsWithRole" {
         ///   role_id = adminRole.id
         /// }
         /// ```
@@ -461,7 +461,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityTeamRoles = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .groupId(securityTeam.id())
+        ///             .groupId(securityTeam.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
@@ -469,7 +469,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var groupsWithRole = SdmFunctions.getGroupRole(GetGroupRoleArgs.builder()
-        ///             .roleId(adminRole.id())
+        ///             .roleId(adminRole.get("id"))
         ///             .build());
         /// 
         ///     }

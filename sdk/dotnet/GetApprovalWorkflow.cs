@@ -91,7 +91,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -99,11 +99,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "manualApprovalWorkflowQuery" {
         ///   name          = "approval workflow manual"
         ///   approval_mode = "manual"
         /// }
-        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "autoGrantApprovalWorkflowQuery" {
         ///   name          = "approval workflow auto"
         ///   approval_mode = "automatic"
         /// }
@@ -241,7 +241,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -249,11 +249,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "manualApprovalWorkflowQuery" {
         ///   name          = "approval workflow manual"
         ///   approval_mode = "manual"
         /// }
-        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "autoGrantApprovalWorkflowQuery" {
         ///   name          = "approval workflow auto"
         ///   approval_mode = "automatic"
         /// }
@@ -391,7 +391,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -399,11 +399,11 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getapprovalworkflow" "manualApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "manualApprovalWorkflowQuery" {
         ///   name          = "approval workflow manual"
         ///   approval_mode = "manual"
         /// }
-        /// data "sdm_getapprovalworkflow" "autoGrantApprovalWorkflowQuery" {
+        /// data "sdm_approval_workflow" "autoGrantApprovalWorkflowQuery" {
         ///   name          = "approval workflow auto"
         ///   approval_mode = "automatic"
         /// }

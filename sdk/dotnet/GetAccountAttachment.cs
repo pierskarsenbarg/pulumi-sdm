@@ -67,7 +67,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -75,7 +75,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        /// data "sdm_account_attachment" "accountAttachmentQuery" {
         ///   account_id = "a-00000054"
         /// }
         /// ```
@@ -175,7 +175,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -183,7 +183,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        /// data "sdm_account_attachment" "accountAttachmentQuery" {
         ///   account_id = "a-00000054"
         /// }
         /// ```
@@ -283,7 +283,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -291,7 +291,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountattachment" "accountAttachmentQuery" {
+        /// data "sdm_account_attachment" "accountAttachmentQuery" {
         ///   account_id = "a-00000054"
         /// }
         /// ```

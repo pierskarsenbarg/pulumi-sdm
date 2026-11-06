@@ -67,7 +67,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -75,7 +75,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getremoteidentitygroup" "default" {
+        /// data "sdm_remote_identity_group" "default" {
         ///   name = "default"
         /// }
         /// ```
@@ -175,7 +175,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -183,7 +183,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getremoteidentitygroup" "default" {
+        /// data "sdm_remote_identity_group" "default" {
         ///   name = "default"
         /// }
         /// ```
@@ -283,7 +283,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -291,7 +291,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getremoteidentitygroup" "default" {
+        /// data "sdm_remote_identity_group" "default" {
         ///   name = "default"
         /// }
         /// ```

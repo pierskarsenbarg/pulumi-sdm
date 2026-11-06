@@ -13,6 +13,18 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const compositeRoleQuery = sdm.getRole({
+ *     composite: true,
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
+ * });
+ * ```
  * <!--End PulumiCodeChooser -->
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
@@ -79,6 +91,18 @@ export interface GetRoleResult {
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const compositeRoleQuery = sdm.getRole({
+ *     composite: true,
+ *     tags: {
+ *         region: "us-west",
+ *         env: "dev",
+ *     },
+ * });
+ * ```
  * <!--End PulumiCodeChooser -->
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {

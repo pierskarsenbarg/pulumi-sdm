@@ -111,7 +111,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -119,13 +119,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getworkflow" "workflowByName" {
+        /// data "sdm_workflow" "workflowByName" {
         ///   name = "workflow example"
         /// }
-        /// data "sdm_getworkflow" "workflowById" {
+        /// data "sdm_workflow" "workflowById" {
         ///   id = "w-1234567890abcdef"
         /// }
-        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        /// data "sdm_workflow" "workflowByApprovalFlow" {
         ///   approval_flow_id = "aw-1234567890abcdef"
         /// }
         /// 
@@ -297,7 +297,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -305,13 +305,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getworkflow" "workflowByName" {
+        /// data "sdm_workflow" "workflowByName" {
         ///   name = "workflow example"
         /// }
-        /// data "sdm_getworkflow" "workflowById" {
+        /// data "sdm_workflow" "workflowById" {
         ///   id = "w-1234567890abcdef"
         /// }
-        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        /// data "sdm_workflow" "workflowByApprovalFlow" {
         ///   approval_flow_id = "aw-1234567890abcdef"
         /// }
         /// 
@@ -483,7 +483,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -491,13 +491,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getworkflow" "workflowByName" {
+        /// data "sdm_workflow" "workflowByName" {
         ///   name = "workflow example"
         /// }
-        /// data "sdm_getworkflow" "workflowById" {
+        /// data "sdm_workflow" "workflowById" {
         ///   id = "w-1234567890abcdef"
         /// }
-        /// data "sdm_getworkflow" "workflowByApprovalFlow" {
+        /// data "sdm_workflow" "workflowByApprovalFlow" {
         ///   approval_flow_id = "aw-1234567890abcdef"
         /// }
         /// 

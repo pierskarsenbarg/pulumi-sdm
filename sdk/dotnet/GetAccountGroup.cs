@@ -97,7 +97,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -105,13 +105,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        /// data "sdm_account_group" "securityLeadGroups" {
         ///   account_id = securityLead.id
         /// }
-        /// data "sdm_getaccountgroup" "specificRelationship" {
+        /// data "sdm_account_group" "specificRelationship" {
         ///   id = "accountgroup-1234567890abcdef"
         /// }
-        /// data "sdm_getaccountgroup" "usersInGroup" {
+        /// data "sdm_account_group" "usersInGroup" {
         ///   group_id = devopsGroup.id
         /// }
         /// ```
@@ -137,7 +137,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .accountId(securityLead.id())
+        ///             .accountId(securityLead.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
@@ -145,7 +145,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .groupId(devopsGroup.id())
+        ///             .groupId(devopsGroup.get("id"))
         ///             .build());
         /// 
         ///     }
@@ -259,7 +259,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -267,13 +267,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        /// data "sdm_account_group" "securityLeadGroups" {
         ///   account_id = securityLead.id
         /// }
-        /// data "sdm_getaccountgroup" "specificRelationship" {
+        /// data "sdm_account_group" "specificRelationship" {
         ///   id = "accountgroup-1234567890abcdef"
         /// }
-        /// data "sdm_getaccountgroup" "usersInGroup" {
+        /// data "sdm_account_group" "usersInGroup" {
         ///   group_id = devopsGroup.id
         /// }
         /// ```
@@ -299,7 +299,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .accountId(securityLead.id())
+        ///             .accountId(securityLead.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
@@ -307,7 +307,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .groupId(devopsGroup.id())
+        ///             .groupId(devopsGroup.get("id"))
         ///             .build());
         /// 
         ///     }
@@ -421,7 +421,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -429,13 +429,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccountgroup" "securityLeadGroups" {
+        /// data "sdm_account_group" "securityLeadGroups" {
         ///   account_id = securityLead.id
         /// }
-        /// data "sdm_getaccountgroup" "specificRelationship" {
+        /// data "sdm_account_group" "specificRelationship" {
         ///   id = "accountgroup-1234567890abcdef"
         /// }
-        /// data "sdm_getaccountgroup" "usersInGroup" {
+        /// data "sdm_account_group" "usersInGroup" {
         ///   group_id = devopsGroup.id
         /// }
         /// ```
@@ -461,7 +461,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         ///     public static void stack(Context ctx) {
         ///         final var securityLeadGroups = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .accountId(securityLead.id())
+        ///             .accountId(securityLead.get("id"))
         ///             .build());
         /// 
         ///         final var specificRelationship = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
@@ -469,7 +469,7 @@ namespace PiersKarsenbarg.Sdm
         ///             .build());
         /// 
         ///         final var usersInGroup = SdmFunctions.getAccountGroup(GetAccountGroupArgs.builder()
-        ///             .groupId(devopsGroup.id())
+        ///             .groupId(devopsGroup.get("id"))
         ///             .build());
         /// 
         ///     }

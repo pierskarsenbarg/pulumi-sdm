@@ -121,6 +121,16 @@ def get_role(id: Optional[_builtins.str] = None,
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_sdm as sdm
+
+    composite_role_query = sdm.get_role(composite=True,
+        tags={
+            "region": "us-west",
+            "env": "dev",
+        })
+    ```
     <!--End PulumiCodeChooser -->
 
 
@@ -153,6 +163,16 @@ def get_role_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_sdm as sdm
+
+    composite_role_query = sdm.get_role(composite=True,
+        tags={
+            "region": "us-west",
+            "env": "dev",
+        })
+    ```
     <!--End PulumiCodeChooser -->
 
 
