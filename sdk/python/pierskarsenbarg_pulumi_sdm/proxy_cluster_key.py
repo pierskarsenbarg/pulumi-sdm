@@ -205,6 +205,16 @@ class ProxyClusterKey(pulumi.CustomResource):
         __props__.__dict__["secret_key"] = secret_key
         return ProxyClusterKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            proxy_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["proxyClusterId"] = proxy_cluster_id
+        __props__["secretKey"] = secret_key
+        return pulumi.runtime.exists_resource(None, 'sdm:index/proxyClusterKey:ProxyClusterKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="proxyClusterId")
     def proxy_cluster_id(self) -> pulumi.Output[_builtins.str]:

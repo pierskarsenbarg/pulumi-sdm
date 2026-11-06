@@ -77,6 +77,12 @@ func (PeeringGroupPeerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringGroupPeerState)(nil)).Elem()
 }
 
+// PeeringGroupPeerExists checks whether an existing PeeringGroupPeer resource with the given ID exists.
+func PeeringGroupPeerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeeringGroupPeerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/peeringGroupPeer:PeeringGroupPeer", id, state, "", opts...)
+}
+
 type peeringGroupPeerArgs struct {
 	// Group ID from which the link will originate.
 	GroupId *string `pulumi:"groupId"`

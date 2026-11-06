@@ -124,6 +124,12 @@ func (RemoteIdentityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remoteIdentityState)(nil)).Elem()
 }
 
+// RemoteIdentityExists checks whether an existing RemoteIdentity resource with the given ID exists.
+func RemoteIdentityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemoteIdentityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/remoteIdentity:RemoteIdentity", id, state, "", opts...)
+}
+
 type remoteIdentityArgs struct {
 	// The account for this remote identity.
 	AccountId string `pulumi:"accountId"`

@@ -80,6 +80,12 @@ func (ManagedSecretValueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedSecretValueState)(nil)).Elem()
 }
 
+// ManagedSecretValueExists checks whether an existing ManagedSecretValue resource with the given ID exists.
+func ManagedSecretValueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedSecretValueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/managedSecretValue:ManagedSecretValue", id, state, "", opts...)
+}
+
 type managedSecretValueArgs struct {
 	// secret engine's public key used for encryption in PEM format
 	PublicKey string `pulumi:"publicKey"`

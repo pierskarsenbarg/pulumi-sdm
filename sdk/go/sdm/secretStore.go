@@ -158,6 +158,12 @@ func (SecretStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretStoreState)(nil)).Elem()
 }
 
+// SecretStoreExists checks whether an existing SecretStore resource with the given ID exists.
+func SecretStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/secretStore:SecretStore", id, state, "", opts...)
+}
+
 type secretStoreArgs struct {
 	ActiveDirectoryStore *SecretStoreActiveDirectoryStore `pulumi:"activeDirectoryStore"`
 	Aws                  *SecretStoreAws                  `pulumi:"aws"`

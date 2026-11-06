@@ -88,6 +88,12 @@ func (WorkflowApproverState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowApproverState)(nil)).Elem()
 }
 
+// WorkflowApproverExists checks whether an existing WorkflowApprover resource with the given ID exists.
+func WorkflowApproverExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowApproverState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/workflowApprover:WorkflowApprover", id, state, "", opts...)
+}
+
 type workflowApproverArgs struct {
 	// The approver account id.
 	AccountId *string `pulumi:"accountId"`

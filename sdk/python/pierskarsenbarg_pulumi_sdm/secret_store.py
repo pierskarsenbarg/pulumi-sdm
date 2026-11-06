@@ -979,6 +979,70 @@ class SecretStore(pulumi.CustomResource):
         __props__.__dict__["vault_token_cert_x509"] = vault_token_cert_x509
         return SecretStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory_store: pulumi.Input[Optional[Union['SecretStoreActiveDirectoryStoreArgs', 'SecretStoreActiveDirectoryStoreArgsDict', 'outputs.SecretStoreActiveDirectoryStore']]] = None,
+            aws: pulumi.Input[Optional[Union['SecretStoreAwsArgs', 'SecretStoreAwsArgsDict', 'outputs.SecretStoreAws']]] = None,
+            aws_cert_x509: pulumi.Input[Optional[Union['SecretStoreAwsCertX509Args', 'SecretStoreAwsCertX509ArgsDict', 'outputs.SecretStoreAwsCertX509']]] = None,
+            azure_store: pulumi.Input[Optional[Union['SecretStoreAzureStoreArgs', 'SecretStoreAzureStoreArgsDict', 'outputs.SecretStoreAzureStore']]] = None,
+            cyberark_conjur: pulumi.Input[Optional[Union['SecretStoreCyberarkConjurArgs', 'SecretStoreCyberarkConjurArgsDict', 'outputs.SecretStoreCyberarkConjur']]] = None,
+            cyberark_pam: pulumi.Input[Optional[Union['SecretStoreCyberarkPamArgs', 'SecretStoreCyberarkPamArgsDict', 'outputs.SecretStoreCyberarkPam']]] = None,
+            cyberark_pam_experimental: pulumi.Input[Optional[Union['SecretStoreCyberarkPamExperimentalArgs', 'SecretStoreCyberarkPamExperimentalArgsDict', 'outputs.SecretStoreCyberarkPamExperimental']]] = None,
+            delinea_dsv_store: pulumi.Input[Optional[Union['SecretStoreDelineaDsvStoreArgs', 'SecretStoreDelineaDsvStoreArgsDict', 'outputs.SecretStoreDelineaDsvStore']]] = None,
+            delinea_store: pulumi.Input[Optional[Union['SecretStoreDelineaStoreArgs', 'SecretStoreDelineaStoreArgsDict', 'outputs.SecretStoreDelineaStore']]] = None,
+            gcp_cert_x509_store: pulumi.Input[Optional[Union['SecretStoreGcpCertX509StoreArgs', 'SecretStoreGcpCertX509StoreArgsDict', 'outputs.SecretStoreGcpCertX509Store']]] = None,
+            gcp_store: pulumi.Input[Optional[Union['SecretStoreGcpStoreArgs', 'SecretStoreGcpStoreArgsDict', 'outputs.SecretStoreGcpStore']]] = None,
+            keyfactor_ssh_store: pulumi.Input[Optional[Union['SecretStoreKeyfactorSshStoreArgs', 'SecretStoreKeyfactorSshStoreArgsDict', 'outputs.SecretStoreKeyfactorSshStore']]] = None,
+            keyfactor_x509_store: pulumi.Input[Optional[Union['SecretStoreKeyfactorX509StoreArgs', 'SecretStoreKeyfactorX509StoreArgsDict', 'outputs.SecretStoreKeyfactorX509Store']]] = None,
+            strong_vault: pulumi.Input[Optional[Union['SecretStoreStrongVaultArgs', 'SecretStoreStrongVaultArgsDict', 'outputs.SecretStoreStrongVault']]] = None,
+            vault_approle: pulumi.Input[Optional[Union['SecretStoreVaultApproleArgs', 'SecretStoreVaultApproleArgsDict', 'outputs.SecretStoreVaultApprole']]] = None,
+            vault_approle_cert_ssh: pulumi.Input[Optional[Union['SecretStoreVaultApproleCertSshArgs', 'SecretStoreVaultApproleCertSshArgsDict', 'outputs.SecretStoreVaultApproleCertSsh']]] = None,
+            vault_approle_cert_x509: pulumi.Input[Optional[Union['SecretStoreVaultApproleCertX509Args', 'SecretStoreVaultApproleCertX509ArgsDict', 'outputs.SecretStoreVaultApproleCertX509']]] = None,
+            vault_aws_ec2: pulumi.Input[Optional[Union['SecretStoreVaultAwsEc2Args', 'SecretStoreVaultAwsEc2ArgsDict', 'outputs.SecretStoreVaultAwsEc2']]] = None,
+            vault_aws_ec2_cert_ssh: pulumi.Input[Optional[Union['SecretStoreVaultAwsEc2CertSshArgs', 'SecretStoreVaultAwsEc2CertSshArgsDict', 'outputs.SecretStoreVaultAwsEc2CertSsh']]] = None,
+            vault_aws_ec2_cert_x509: pulumi.Input[Optional[Union['SecretStoreVaultAwsEc2CertX509Args', 'SecretStoreVaultAwsEc2CertX509ArgsDict', 'outputs.SecretStoreVaultAwsEc2CertX509']]] = None,
+            vault_aws_iam: pulumi.Input[Optional[Union['SecretStoreVaultAwsIamArgs', 'SecretStoreVaultAwsIamArgsDict', 'outputs.SecretStoreVaultAwsIam']]] = None,
+            vault_aws_iam_cert_ssh: pulumi.Input[Optional[Union['SecretStoreVaultAwsIamCertSshArgs', 'SecretStoreVaultAwsIamCertSshArgsDict', 'outputs.SecretStoreVaultAwsIamCertSsh']]] = None,
+            vault_aws_iam_cert_x509: pulumi.Input[Optional[Union['SecretStoreVaultAwsIamCertX509Args', 'SecretStoreVaultAwsIamCertX509ArgsDict', 'outputs.SecretStoreVaultAwsIamCertX509']]] = None,
+            vault_tls: pulumi.Input[Optional[Union['SecretStoreVaultTlsArgs', 'SecretStoreVaultTlsArgsDict', 'outputs.SecretStoreVaultTls']]] = None,
+            vault_tls_cert_ssh: pulumi.Input[Optional[Union['SecretStoreVaultTlsCertSshArgs', 'SecretStoreVaultTlsCertSshArgsDict', 'outputs.SecretStoreVaultTlsCertSsh']]] = None,
+            vault_tls_cert_x509: pulumi.Input[Optional[Union['SecretStoreVaultTlsCertX509Args', 'SecretStoreVaultTlsCertX509ArgsDict', 'outputs.SecretStoreVaultTlsCertX509']]] = None,
+            vault_token: pulumi.Input[Optional[Union['SecretStoreVaultTokenArgs', 'SecretStoreVaultTokenArgsDict', 'outputs.SecretStoreVaultToken']]] = None,
+            vault_token_cert_ssh: pulumi.Input[Optional[Union['SecretStoreVaultTokenCertSshArgs', 'SecretStoreVaultTokenCertSshArgsDict', 'outputs.SecretStoreVaultTokenCertSsh']]] = None,
+            vault_token_cert_x509: pulumi.Input[Optional[Union['SecretStoreVaultTokenCertX509Args', 'SecretStoreVaultTokenCertX509ArgsDict', 'outputs.SecretStoreVaultTokenCertX509']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeDirectoryStore"] = active_directory_store
+        __props__["aws"] = aws
+        __props__["awsCertX509"] = aws_cert_x509
+        __props__["azureStore"] = azure_store
+        __props__["cyberarkConjur"] = cyberark_conjur
+        __props__["cyberarkPam"] = cyberark_pam
+        __props__["cyberarkPamExperimental"] = cyberark_pam_experimental
+        __props__["delineaDsvStore"] = delinea_dsv_store
+        __props__["delineaStore"] = delinea_store
+        __props__["gcpCertX509Store"] = gcp_cert_x509_store
+        __props__["gcpStore"] = gcp_store
+        __props__["keyfactorSshStore"] = keyfactor_ssh_store
+        __props__["keyfactorX509Store"] = keyfactor_x509_store
+        __props__["strongVault"] = strong_vault
+        __props__["vaultApprole"] = vault_approle
+        __props__["vaultApproleCertSsh"] = vault_approle_cert_ssh
+        __props__["vaultApproleCertX509"] = vault_approle_cert_x509
+        __props__["vaultAwsEc2"] = vault_aws_ec2
+        __props__["vaultAwsEc2CertSsh"] = vault_aws_ec2_cert_ssh
+        __props__["vaultAwsEc2CertX509"] = vault_aws_ec2_cert_x509
+        __props__["vaultAwsIam"] = vault_aws_iam
+        __props__["vaultAwsIamCertSsh"] = vault_aws_iam_cert_ssh
+        __props__["vaultAwsIamCertX509"] = vault_aws_iam_cert_x509
+        __props__["vaultTls"] = vault_tls
+        __props__["vaultTlsCertSsh"] = vault_tls_cert_ssh
+        __props__["vaultTlsCertX509"] = vault_tls_cert_x509
+        __props__["vaultToken"] = vault_token
+        __props__["vaultTokenCertSsh"] = vault_token_cert_ssh
+        __props__["vaultTokenCertX509"] = vault_token_cert_x509
+        return pulumi.runtime.exists_resource(None, 'sdm:index/secretStore:SecretStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeDirectoryStore")
     def active_directory_store(self) -> pulumi.Output[Optional['outputs.SecretStoreActiveDirectoryStore']]:

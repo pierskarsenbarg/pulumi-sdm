@@ -81,18 +81,18 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 8.0.x
+        - 10.0.x
         goversion:
-        - 1.26.6
+        - 1.27.3
         language:
         - nodejs
         - python
         - dotnet
         - go
         nodeversion:
-        - 22.x
+        - 24.x
         pythonversion:
-        - "3.11"
+        - "3.12"
   comment-notification:
     if: github.event_name == 'repository_dispatch'
     name: comment-notification
@@ -176,13 +176,13 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 8.0.x
+        - 10.0.x
         goversion:
-        - 1.26.6
+        - 1.27.3
         nodeversion:
-        - 22.x
+        - 24.x
         pythonversion:
-        - "3.11"
+        - "3.12"
   # test:
   #   if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
   #     == github.repository

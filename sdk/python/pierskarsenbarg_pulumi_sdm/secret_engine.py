@@ -269,6 +269,22 @@ class SecretEngine(pulumi.CustomResource):
         __props__.__dict__["sqlserver_secret_engine"] = sqlserver_secret_engine
         return SecretEngine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory: pulumi.Input[Optional[Union['SecretEngineActiveDirectoryArgs', 'SecretEngineActiveDirectoryArgsDict', 'outputs.SecretEngineActiveDirectory']]] = None,
+            key_value: pulumi.Input[Optional[Union['SecretEngineKeyValueArgs', 'SecretEngineKeyValueArgsDict', 'outputs.SecretEngineKeyValue']]] = None,
+            mysql_secret_engine: pulumi.Input[Optional[Union['SecretEngineMysqlSecretEngineArgs', 'SecretEngineMysqlSecretEngineArgsDict', 'outputs.SecretEngineMysqlSecretEngine']]] = None,
+            postgres_secret_engine: pulumi.Input[Optional[Union['SecretEnginePostgresSecretEngineArgs', 'SecretEnginePostgresSecretEngineArgsDict', 'outputs.SecretEnginePostgresSecretEngine']]] = None,
+            sqlserver_secret_engine: pulumi.Input[Optional[Union['SecretEngineSqlserverSecretEngineArgs', 'SecretEngineSqlserverSecretEngineArgsDict', 'outputs.SecretEngineSqlserverSecretEngine']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeDirectory"] = active_directory
+        __props__["keyValue"] = key_value
+        __props__["mysqlSecretEngine"] = mysql_secret_engine
+        __props__["postgresSecretEngine"] = postgres_secret_engine
+        __props__["sqlserverSecretEngine"] = sqlserver_secret_engine
+        return pulumi.runtime.exists_resource(None, 'sdm:index/secretEngine:SecretEngine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
     def active_directory(self) -> pulumi.Output[Optional['outputs.SecretEngineActiveDirectory']]:
