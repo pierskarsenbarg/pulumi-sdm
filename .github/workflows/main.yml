@@ -85,18 +85,18 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 8.0.x
+          - 10.0.x
         goversion:
-          - 1.26.6
+          - 1.27.3
         language:
           - nodejs
           - python
           - dotnet
           - go
         nodeversion:
-          - 22.x
+          - 24.x
         pythonversion:
-          - "3.11"
+          - "3.12"
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
@@ -159,13 +159,13 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 8.0.x
+          - 10.0.x
         goversion:
-          - 1.26.6
+          - 1.27.3
         nodeversion:
-          - 22.x
+          - 24.x
         pythonversion:
-          - "3.11"
+          - "3.12"
   # publish:
   #   name: publish
   #   needs: build_sdk
