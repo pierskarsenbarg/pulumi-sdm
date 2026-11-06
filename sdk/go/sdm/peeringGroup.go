@@ -74,6 +74,12 @@ func (PeeringGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peeringGroupState)(nil)).Elem()
 }
 
+// PeeringGroupExists checks whether an existing PeeringGroup resource with the given ID exists.
+func PeeringGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeeringGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/peeringGroup:PeeringGroup", id, state, "", opts...)
+}
+
 type peeringGroupArgs struct {
 	// Unique human-readable name of the PeeringGroup.
 	Name *string `pulumi:"name"`

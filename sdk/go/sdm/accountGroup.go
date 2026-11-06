@@ -119,6 +119,12 @@ func (AccountGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountGroupState)(nil)).Elem()
 }
 
+// AccountGroupExists checks whether an existing AccountGroup resource with the given ID exists.
+func AccountGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/accountGroup:AccountGroup", id, state, "", opts...)
+}
+
 type accountGroupArgs struct {
 	// Unique identifier of the Account.
 	AccountId string `pulumi:"accountId"`

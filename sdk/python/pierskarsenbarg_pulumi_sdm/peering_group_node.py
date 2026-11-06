@@ -202,6 +202,16 @@ class PeeringGroupNode(pulumi.CustomResource):
         __props__.__dict__["node_id"] = node_id
         return PeeringGroupNode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["nodeId"] = node_id
+        return pulumi.runtime.exists_resource(None, 'sdm:index/peeringGroupNode:PeeringGroupNode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:

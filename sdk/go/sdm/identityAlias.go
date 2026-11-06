@@ -124,6 +124,12 @@ func (IdentityAliasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*identityAliasState)(nil)).Elem()
 }
 
+// IdentityAliasExists checks whether an existing IdentityAlias resource with the given ID exists.
+func IdentityAliasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdentityAliasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/identityAlias:IdentityAlias", id, state, "", opts...)
+}
+
 type identityAliasArgs struct {
 	// The account for this identity alias.
 	AccountId string `pulumi:"accountId"`

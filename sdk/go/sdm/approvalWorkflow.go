@@ -166,6 +166,12 @@ func (ApprovalWorkflowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*approvalWorkflowState)(nil)).Elem()
 }
 
+// ApprovalWorkflowExists checks whether an existing ApprovalWorkflow resource with the given ID exists.
+func ApprovalWorkflowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApprovalWorkflowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/approvalWorkflow:ApprovalWorkflow", id, state, "", opts...)
+}
+
 type approvalWorkflowArgs struct {
 	// Approval mode of the ApprovalWorkflow
 	ApprovalMode string `pulumi:"approvalMode"`

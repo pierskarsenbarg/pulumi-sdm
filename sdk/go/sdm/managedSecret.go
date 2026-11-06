@@ -130,6 +130,12 @@ func (ManagedSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedSecretState)(nil)).Elem()
 }
 
+// ManagedSecretExists checks whether an existing ManagedSecret resource with the given ID exists.
+func ManagedSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/managedSecret:ManagedSecret", id, state, "", opts...)
+}
+
 type managedSecretArgs struct {
 	// Whether the secret requires a lock to access
 	LockRequired *bool `pulumi:"lockRequired"`

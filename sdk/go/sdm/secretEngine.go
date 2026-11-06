@@ -80,6 +80,12 @@ func (SecretEngineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretEngineState)(nil)).Elem()
 }
 
+// SecretEngineExists checks whether an existing SecretEngine resource with the given ID exists.
+func SecretEngineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretEngineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/secretEngine:SecretEngine", id, state, "", opts...)
+}
+
 type secretEngineArgs struct {
 	ActiveDirectory       *SecretEngineActiveDirectory       `pulumi:"activeDirectory"`
 	KeyValue              *SecretEngineKeyValue              `pulumi:"keyValue"`

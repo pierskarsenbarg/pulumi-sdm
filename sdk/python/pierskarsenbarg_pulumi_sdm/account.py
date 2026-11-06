@@ -264,6 +264,16 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            service: pulumi.Input[Optional[Union['AccountServiceArgs', 'AccountServiceArgsDict', 'outputs.AccountService']]] = None,
+            user: pulumi.Input[Optional[Union['AccountUserArgs', 'AccountUserArgsDict', 'outputs.AccountUser']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["service"] = service
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'sdm:index/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def service(self) -> pulumi.Output[Optional['outputs.AccountService']]:

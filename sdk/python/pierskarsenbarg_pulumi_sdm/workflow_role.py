@@ -236,6 +236,16 @@ class WorkflowRole(pulumi.CustomResource):
         __props__.__dict__["workflow_id"] = workflow_id
         return WorkflowRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workflow_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["roleId"] = role_id
+        __props__["workflowId"] = workflow_id
+        return pulumi.runtime.exists_resource(None, 'sdm:index/workflowRole:WorkflowRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[_builtins.str]:

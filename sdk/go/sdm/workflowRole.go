@@ -122,6 +122,12 @@ func (WorkflowRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowRoleState)(nil)).Elem()
 }
 
+// WorkflowRoleExists checks whether an existing WorkflowRole resource with the given ID exists.
+func WorkflowRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/workflowRole:WorkflowRole", id, state, "", opts...)
+}
+
 type workflowRoleArgs struct {
 	// The role id.
 	RoleId string `pulumi:"roleId"`

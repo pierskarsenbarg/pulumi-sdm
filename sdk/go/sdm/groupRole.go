@@ -119,6 +119,12 @@ func (GroupRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupRoleState)(nil)).Elem()
 }
 
+// GroupRoleExists checks whether an existing GroupRole resource with the given ID exists.
+func GroupRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/groupRole:GroupRole", id, state, "", opts...)
+}
+
 type groupRoleArgs struct {
 	// The assigned Group ID.
 	GroupId string `pulumi:"groupId"`

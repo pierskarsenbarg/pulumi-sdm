@@ -113,6 +113,12 @@ func (ProxyClusterKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*proxyClusterKeyState)(nil)).Elem()
 }
 
+// ProxyClusterKeyExists checks whether an existing ProxyClusterKey resource with the given ID exists.
+func ProxyClusterKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProxyClusterKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/proxyClusterKey:ProxyClusterKey", id, state, "", opts...)
+}
+
 type proxyClusterKeyArgs struct {
 	// The ID of the proxy cluster which this key authenticates to.
 	ProxyClusterId string `pulumi:"proxyClusterId"`

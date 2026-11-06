@@ -211,6 +211,18 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["gcp"] = gcp
         return Connector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws: pulumi.Input[Optional[Union['ConnectorAwsArgs', 'ConnectorAwsArgsDict', 'outputs.ConnectorAws']]] = None,
+            azure: pulumi.Input[Optional[Union['ConnectorAzureArgs', 'ConnectorAzureArgsDict', 'outputs.ConnectorAzure']]] = None,
+            gcp: pulumi.Input[Optional[Union['ConnectorGcpArgs', 'ConnectorGcpArgsDict', 'outputs.ConnectorGcp']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aws"] = aws
+        __props__["azure"] = azure
+        __props__["gcp"] = gcp
+        return pulumi.runtime.exists_resource(None, 'sdm:index/connector:Connector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.ConnectorAws']]:

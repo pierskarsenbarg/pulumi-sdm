@@ -204,6 +204,18 @@ class ManagedSecretValue(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ManagedSecretValue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["encrypted"] = encrypted
+        __props__["publicKey"] = public_key
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'sdm:index/managedSecretValue:ManagedSecretValue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[_builtins.str]:

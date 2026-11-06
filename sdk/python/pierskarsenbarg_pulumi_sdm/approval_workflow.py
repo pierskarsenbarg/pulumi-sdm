@@ -385,6 +385,20 @@ class ApprovalWorkflow(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return ApprovalWorkflow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            approval_steps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApprovalWorkflowApprovalStepArgs', 'ApprovalWorkflowApprovalStepArgsDict', 'outputs.ApprovalWorkflowApprovalStep']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalMode"] = approval_mode
+        __props__["approvalSteps"] = approval_steps
+        __props__["description"] = description
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'sdm:index/approvalWorkflow:ApprovalWorkflow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalMode")
     def approval_mode(self) -> pulumi.Output[_builtins.str]:

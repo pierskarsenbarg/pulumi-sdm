@@ -98,6 +98,12 @@ func (IdentitySetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*identitySetState)(nil)).Elem()
 }
 
+// IdentitySetExists checks whether an existing IdentitySet resource with the given ID exists.
+func IdentitySetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdentitySetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/identitySet:IdentitySet", id, state, "", opts...)
+}
+
 type identitySetArgs struct {
 	// Unique human-readable name of the IdentitySet.
 	Name *string `pulumi:"name"`

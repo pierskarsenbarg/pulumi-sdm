@@ -112,6 +112,12 @@ func (AccountAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountAttachmentState)(nil)).Elem()
 }
 
+// AccountAttachmentExists checks whether an existing AccountAttachment resource with the given ID exists.
+func AccountAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("sdm:index/accountAttachment:AccountAttachment", id, state, "", opts...)
+}
+
 type accountAttachmentArgs struct {
 	// The id of the account of this AccountAttachment.
 	AccountId string `pulumi:"accountId"`
