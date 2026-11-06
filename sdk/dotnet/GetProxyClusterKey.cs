@@ -69,7 +69,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -77,7 +77,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        /// data "sdm_proxy_cluster_key" "proxyClusterKeyQuery" {
         ///   proxy_cluster_id = "n-233332245"
         /// }
         /// ```
@@ -179,7 +179,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -187,7 +187,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        /// data "sdm_proxy_cluster_key" "proxyClusterKeyQuery" {
         ///   proxy_cluster_id = "n-233332245"
         /// }
         /// ```
@@ -289,7 +289,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -297,7 +297,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getproxyclusterkey" "proxyClusterKeyQuery" {
+        /// data "sdm_proxy_cluster_key" "proxyClusterKeyQuery" {
         ///   proxy_cluster_id = "n-233332245"
         /// }
         /// ```

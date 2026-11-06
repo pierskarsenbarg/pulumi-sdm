@@ -19,8 +19,74 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const compositeRoleQuery = sdm.getRole({
+        ///     composite: true,
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// composite_role_query = sdm.get_role(composite=True,
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = PiersKarsenbarg.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var compositeRoleQuery = Sdm.GetRole.Invoke(new()
+        ///     {
+        ///         Composite = true,
+        ///         Tags = 
+        ///         {
+        ///             { "region", "us-west" },
+        ///             { "env", "dev" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRole(ctx, &amp;sdm.LookupRoleArgs{
+        /// 			Composite: true,
+        /// 			Tags: map[string]string{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -28,12 +94,44 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getrole" "compositeRoleQuery" {
+        /// data "sdm_role" "compositeRoleQuery" {
         ///   composite = true
         ///   tags = {
         ///     "region" = "us-west"
         ///     "env"    = "dev"
         ///   }
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var compositeRoleQuery = SdmFunctions.getRole(GetRoleArgs.builder()
+        ///             .composite(true)
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
         /// }
         /// ```
         /// ```yaml
@@ -59,8 +157,74 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const compositeRoleQuery = sdm.getRole({
+        ///     composite: true,
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// composite_role_query = sdm.get_role(composite=True,
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = PiersKarsenbarg.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var compositeRoleQuery = Sdm.GetRole.Invoke(new()
+        ///     {
+        ///         Composite = true,
+        ///         Tags = 
+        ///         {
+        ///             { "region", "us-west" },
+        ///             { "env", "dev" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRole(ctx, &amp;sdm.LookupRoleArgs{
+        /// 			Composite: true,
+        /// 			Tags: map[string]string{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -68,12 +232,44 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getrole" "compositeRoleQuery" {
+        /// data "sdm_role" "compositeRoleQuery" {
         ///   composite = true
         ///   tags = {
         ///     "region" = "us-west"
         ///     "env"    = "dev"
         ///   }
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var compositeRoleQuery = SdmFunctions.getRole(GetRoleArgs.builder()
+        ///             .composite(true)
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
         /// }
         /// ```
         /// ```yaml
@@ -99,8 +295,74 @@ namespace PiersKarsenbarg.Sdm
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as sdm from "@pierskarsenbarg/sdm";
+        /// 
+        /// const compositeRoleQuery = sdm.getRole({
+        ///     composite: true,
+        ///     tags: {
+        ///         region: "us-west",
+        ///         env: "dev",
+        ///     },
+        /// });
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_sdm as sdm
+        /// 
+        /// composite_role_query = sdm.get_role(composite=True,
+        ///     tags={
+        ///         "region": "us-west",
+        ///         "env": "dev",
+        ///     })
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = PiersKarsenbarg.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var compositeRoleQuery = Sdm.GetRole.Invoke(new()
+        ///     {
+        ///         Composite = true,
+        ///         Tags = 
+        ///         {
+        ///             { "region", "us-west" },
+        ///             { "env", "dev" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		_, err := sdm.GetRole(ctx, &amp;sdm.LookupRoleArgs{
+        /// 			Composite: true,
+        /// 			Tags: map[string]string{
+        /// 				"region": "us-west",
+        /// 				"env":    "dev",
+        /// 			},
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -108,12 +370,44 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getrole" "compositeRoleQuery" {
+        /// data "sdm_role" "compositeRoleQuery" {
         ///   composite = true
         ///   tags = {
         ///     "region" = "us-west"
         ///     "env"    = "dev"
         ///   }
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.sdm.SdmFunctions;
+        /// import com.pulumi.sdm.inputs.GetRoleArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var compositeRoleQuery = SdmFunctions.getRole(GetRoleArgs.builder()
+        ///             .composite(true)
+        ///             .tags(Map.ofEntries(
+        ///                 Map.entry("region", "us-west"),
+        ///                 Map.entry("env", "dev")
+        ///             ))
+        ///             .build());
+        /// 
+        ///     }
         /// }
         /// ```
         /// ```yaml

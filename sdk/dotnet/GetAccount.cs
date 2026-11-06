@@ -129,7 +129,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -137,7 +137,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccount" "user-queries" {
+        /// data "sdm_account" "user-queries" {
         ///   type  = "user"
         ///   email = "*@strongdm.com"
         ///   tags = {
@@ -145,11 +145,11 @@ namespace PiersKarsenbarg.Sdm
         ///     "env"    = "dev"
         ///   }
         /// }
-        /// data "sdm_getaccount" "api-key-queries" {
+        /// data "sdm_account" "api-key-queries" {
         ///   type = "api"
         ///   name = "*-dev"
         /// }
-        /// data "sdm_getaccount" "admin-token-queries" {
+        /// data "sdm_account" "admin-token-queries" {
         ///   type = "admin-token"
         ///   name = "*-prod"
         /// }
@@ -343,7 +343,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -351,7 +351,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccount" "user-queries" {
+        /// data "sdm_account" "user-queries" {
         ///   type  = "user"
         ///   email = "*@strongdm.com"
         ///   tags = {
@@ -359,11 +359,11 @@ namespace PiersKarsenbarg.Sdm
         ///     "env"    = "dev"
         ///   }
         /// }
-        /// data "sdm_getaccount" "api-key-queries" {
+        /// data "sdm_account" "api-key-queries" {
         ///   type = "api"
         ///   name = "*-dev"
         /// }
-        /// data "sdm_getaccount" "admin-token-queries" {
+        /// data "sdm_account" "admin-token-queries" {
         ///   type = "admin-token"
         ///   name = "*-prod"
         /// }
@@ -557,7 +557,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -565,7 +565,7 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getaccount" "user-queries" {
+        /// data "sdm_account" "user-queries" {
         ///   type  = "user"
         ///   email = "*@strongdm.com"
         ///   tags = {
@@ -573,11 +573,11 @@ namespace PiersKarsenbarg.Sdm
         ///     "env"    = "dev"
         ///   }
         /// }
-        /// data "sdm_getaccount" "api-key-queries" {
+        /// data "sdm_account" "api-key-queries" {
         ///   type = "api"
         ///   name = "*-dev"
         /// }
-        /// data "sdm_getaccount" "admin-token-queries" {
+        /// data "sdm_account" "admin-token-queries" {
         ///   type = "admin-token"
         ///   name = "*-prod"
         /// }

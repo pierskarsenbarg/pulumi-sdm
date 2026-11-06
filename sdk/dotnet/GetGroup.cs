@@ -106,7 +106,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -114,13 +114,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgroup" "securityTeam" {
+        /// data "sdm_group" "securityTeam" {
         ///   name = "Security Team"
         /// }
-        /// data "sdm_getgroup" "administrators" {
+        /// data "sdm_group" "administrators" {
         ///   id = "group-1234567890abcdef"
         /// }
-        /// data "sdm_getgroup" "adminTeams" {
+        /// data "sdm_group" "adminTeams" {
         ///   tags = {
         ///     "admin" = "true"
         ///   }
@@ -280,7 +280,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -288,13 +288,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgroup" "securityTeam" {
+        /// data "sdm_group" "securityTeam" {
         ///   name = "Security Team"
         /// }
-        /// data "sdm_getgroup" "administrators" {
+        /// data "sdm_group" "administrators" {
         ///   id = "group-1234567890abcdef"
         /// }
-        /// data "sdm_getgroup" "adminTeams" {
+        /// data "sdm_group" "adminTeams" {
         ///   tags = {
         ///     "admin" = "true"
         ///   }
@@ -454,7 +454,7 @@ namespace PiersKarsenbarg.Sdm
         /// }
         /// ```
         /// ```hcl
-        /// pulumi {
+        /// terraform {
         ///   required_providers {
         ///     sdm = {
         ///       source = "pulumi/sdm"
@@ -462,13 +462,13 @@ namespace PiersKarsenbarg.Sdm
         ///   }
         /// }
         /// 
-        /// data "sdm_getgroup" "securityTeam" {
+        /// data "sdm_group" "securityTeam" {
         ///   name = "Security Team"
         /// }
-        /// data "sdm_getgroup" "administrators" {
+        /// data "sdm_group" "administrators" {
         ///   id = "group-1234567890abcdef"
         /// }
-        /// data "sdm_getgroup" "adminTeams" {
+        /// data "sdm_group" "adminTeams" {
         ///   tags = {
         ///     "admin" = "true"
         ///   }
