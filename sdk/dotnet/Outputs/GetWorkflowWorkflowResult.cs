@@ -33,6 +33,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public readonly bool? AutoGrant;
         /// <summary>
         /// Optional description of the Workflow.
@@ -81,7 +82,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AccessRequestMaxDuration = accessRequestMaxDuration;
             AccessRules = accessRules;
             ApprovalFlowId = approvalFlowId;
+#pragma warning disable CS0618
             AutoGrant = autoGrant;
+#pragma warning restore CS0618
             Description = description;
             Enabled = enabled;
             Id = id;

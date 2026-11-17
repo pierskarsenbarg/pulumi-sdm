@@ -110,9 +110,11 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.ResourceAksServiceAccount?> AksServiceAccount { get; private set; } = null!;
 
         [Output("aksServiceAccountUserImpersonation")]
+        [Obsolete(@"aks_service_account_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceAksServiceAccountUserImpersonation?> AksServiceAccountUserImpersonation { get; private set; } = null!;
 
         [Output("aksUserImpersonation")]
+        [Obsolete(@"aks_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceAksUserImpersonation?> AksUserImpersonation { get; private set; } = null!;
 
         [Output("amazonEks")]
@@ -122,9 +124,11 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.ResourceAmazonEksInstanceProfile?> AmazonEksInstanceProfile { get; private set; } = null!;
 
         [Output("amazonEksInstanceProfileUserImpersonation")]
+        [Obsolete(@"amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceAmazonEksInstanceProfileUserImpersonation?> AmazonEksInstanceProfileUserImpersonation { get; private set; } = null!;
 
         [Output("amazonEksUserImpersonation")]
+        [Obsolete(@"amazon_eks_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceAmazonEksUserImpersonation?> AmazonEksUserImpersonation { get; private set; } = null!;
 
         [Output("amazonEs")]
@@ -278,6 +282,7 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.ResourceGoogleGke?> GoogleGke { get; private set; } = null!;
 
         [Output("googleGkeUserImpersonation")]
+        [Obsolete(@"google_gke_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceGoogleGkeUserImpersonation?> GoogleGkeUserImpersonation { get; private set; } = null!;
 
         [Output("googleGroups")]
@@ -314,9 +319,11 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.ResourceKubernetesServiceAccount?> KubernetesServiceAccount { get; private set; } = null!;
 
         [Output("kubernetesServiceAccountUserImpersonation")]
+        [Obsolete(@"kubernetes_service_account_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceKubernetesServiceAccountUserImpersonation?> KubernetesServiceAccountUserImpersonation { get; private set; } = null!;
 
         [Output("kubernetesUserImpersonation")]
+        [Obsolete(@"kubernetes_user_impersonation is deprecated, see docs for more info")]
         public Output<Outputs.ResourceKubernetesUserImpersonation?> KubernetesUserImpersonation { get; private set; } = null!;
 
         /// <summary>
@@ -535,9 +542,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceAksServiceAccountArgs>? AksServiceAccount { get; set; }
 
         [Input("aksServiceAccountUserImpersonation")]
+        [Obsolete(@"aks_service_account_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAksServiceAccountUserImpersonationArgs>? AksServiceAccountUserImpersonation { get; set; }
 
         [Input("aksUserImpersonation")]
+        [Obsolete(@"aks_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAksUserImpersonationArgs>? AksUserImpersonation { get; set; }
 
         [Input("amazonEks")]
@@ -547,9 +556,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceAmazonEksInstanceProfileArgs>? AmazonEksInstanceProfile { get; set; }
 
         [Input("amazonEksInstanceProfileUserImpersonation")]
+        [Obsolete(@"amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAmazonEksInstanceProfileUserImpersonationArgs>? AmazonEksInstanceProfileUserImpersonation { get; set; }
 
         [Input("amazonEksUserImpersonation")]
+        [Obsolete(@"amazon_eks_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationArgs>? AmazonEksUserImpersonation { get; set; }
 
         [Input("amazonEs")]
@@ -703,6 +714,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceGoogleGkeArgs>? GoogleGke { get; set; }
 
         [Input("googleGkeUserImpersonation")]
+        [Obsolete(@"google_gke_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationArgs>? GoogleGkeUserImpersonation { get; set; }
 
         [Input("googleGroups")]
@@ -739,9 +751,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceKubernetesServiceAccountArgs>? KubernetesServiceAccount { get; set; }
 
         [Input("kubernetesServiceAccountUserImpersonation")]
+        [Obsolete(@"kubernetes_service_account_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceKubernetesServiceAccountUserImpersonationArgs>? KubernetesServiceAccountUserImpersonation { get; set; }
 
         [Input("kubernetesUserImpersonation")]
+        [Obsolete(@"kubernetes_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceKubernetesUserImpersonationArgs>? KubernetesUserImpersonation { get; set; }
 
         /// <summary>
@@ -921,9 +935,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceAksServiceAccountGetArgs>? AksServiceAccount { get; set; }
 
         [Input("aksServiceAccountUserImpersonation")]
+        [Obsolete(@"aks_service_account_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAksServiceAccountUserImpersonationGetArgs>? AksServiceAccountUserImpersonation { get; set; }
 
         [Input("aksUserImpersonation")]
+        [Obsolete(@"aks_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAksUserImpersonationGetArgs>? AksUserImpersonation { get; set; }
 
         [Input("amazonEks")]
@@ -933,9 +949,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceAmazonEksInstanceProfileGetArgs>? AmazonEksInstanceProfile { get; set; }
 
         [Input("amazonEksInstanceProfileUserImpersonation")]
+        [Obsolete(@"amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAmazonEksInstanceProfileUserImpersonationGetArgs>? AmazonEksInstanceProfileUserImpersonation { get; set; }
 
         [Input("amazonEksUserImpersonation")]
+        [Obsolete(@"amazon_eks_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationGetArgs>? AmazonEksUserImpersonation { get; set; }
 
         [Input("amazonEs")]
@@ -1089,6 +1107,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceGoogleGkeGetArgs>? GoogleGke { get; set; }
 
         [Input("googleGkeUserImpersonation")]
+        [Obsolete(@"google_gke_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceGoogleGkeUserImpersonationGetArgs>? GoogleGkeUserImpersonation { get; set; }
 
         [Input("googleGroups")]
@@ -1125,9 +1144,11 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.ResourceKubernetesServiceAccountGetArgs>? KubernetesServiceAccount { get; set; }
 
         [Input("kubernetesServiceAccountUserImpersonation")]
+        [Obsolete(@"kubernetes_service_account_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceKubernetesServiceAccountUserImpersonationGetArgs>? KubernetesServiceAccountUserImpersonation { get; set; }
 
         [Input("kubernetesUserImpersonation")]
+        [Obsolete(@"kubernetes_user_impersonation is deprecated, see docs for more info")]
         public Input<Inputs.ResourceKubernetesUserImpersonationGetArgs>? KubernetesUserImpersonation { get; set; }
 
         /// <summary>

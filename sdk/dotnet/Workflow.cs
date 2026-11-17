@@ -135,6 +135,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Output("autoGrant")]
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public Output<bool?> AutoGrant { get; private set; } = null!;
 
         /// <summary>
@@ -236,6 +237,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Input("autoGrant")]
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public Input<bool>? AutoGrant { get; set; }
 
         /// <summary>
@@ -298,6 +300,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Input("autoGrant")]
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public Input<bool>? AutoGrant { get; set; }
 
         /// <summary>
