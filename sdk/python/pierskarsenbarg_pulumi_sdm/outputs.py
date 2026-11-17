@@ -26409,6 +26409,8 @@ class SecretEngineActiveDirectory(dict):
             suggest = "max_backoff_duration"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "pathCredentials":
+            suggest = "path_credentials"
         elif key == "publicKey":
             suggest = "public_key"
         elif key == "requestTimeout":
@@ -26442,6 +26444,7 @@ class SecretEngineActiveDirectory(dict):
                  key_rotation_interval_days: Optional[_builtins.int] = None,
                  max_backoff_duration: Optional[_builtins.str] = None,
                  node_selector: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  public_key: Optional[_builtins.str] = None,
                  request_timeout: Optional[_builtins.int] = None,
                  start_tls: Optional[_builtins.bool] = None,
@@ -26450,8 +26453,8 @@ class SecretEngineActiveDirectory(dict):
                  upndomain: Optional[_builtins.str] = None,
                  userdn: Optional[_builtins.str] = None):
         """
-        :param _builtins.str binddn: Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
-        :param _builtins.str bindpass: Password to use along with binddn when performing user search.
+        :param _builtins.str binddn: Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
+        :param _builtins.str bindpass: Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
@@ -26464,6 +26467,7 @@ class SecretEngineActiveDirectory(dict):
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str max_backoff_duration: The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.str public_key: Public key linked with a secret engine
         :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
         :param _builtins.bool start_tls: If true, issues a StartTLS command after establishing an unencrypted connection.
@@ -26495,6 +26499,8 @@ class SecretEngineActiveDirectory(dict):
             pulumi.set(__self__, "max_backoff_duration", max_backoff_duration)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if request_timeout is not None:
@@ -26514,7 +26520,7 @@ class SecretEngineActiveDirectory(dict):
     @pulumi.getter
     def binddn(self) -> _builtins.str:
         """
-        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "binddn")
 
@@ -26522,7 +26528,7 @@ class SecretEngineActiveDirectory(dict):
     @pulumi.getter
     def bindpass(self) -> _builtins.str:
         """
-        Password to use along with binddn when performing user search.
+        Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "bindpass")
 
@@ -26621,6 +26627,14 @@ class SecretEngineActiveDirectory(dict):
         node selector is used to narrow down the nodes used to communicate with with secret engine
         """
         return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -26808,6 +26822,8 @@ class SecretEngineMysqlSecretEngine(dict):
             suggest = "key_rotation_interval_days"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "pathCredentials":
+            suggest = "path_credentials"
         elif key == "publicKey":
             suggest = "public_key"
         elif key == "tlsSkipVerify":
@@ -26836,6 +26852,7 @@ class SecretEngineMysqlSecretEngine(dict):
                  after_read_ttl: Optional[_builtins.str] = None,
                  key_rotation_interval_days: Optional[_builtins.int] = None,
                  node_selector: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  public_key: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  tls: Optional[_builtins.bool] = None,
@@ -26845,14 +26862,15 @@ class SecretEngineMysqlSecretEngine(dict):
         :param _builtins.str database: Database is the database to verify credential against.
         :param _builtins.str hostname: Hostname is the hostname or IP address of the SQL Server.
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         :param _builtins.str after_read_ttl: The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.str public_key: Public key linked with a secret engine
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
@@ -26873,6 +26891,8 @@ class SecretEngineMysqlSecretEngine(dict):
             pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if tags is not None:
@@ -26912,7 +26932,7 @@ class SecretEngineMysqlSecretEngine(dict):
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
 
@@ -26944,7 +26964,7 @@ class SecretEngineMysqlSecretEngine(dict):
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 
@@ -26971,6 +26991,14 @@ class SecretEngineMysqlSecretEngine(dict):
         node selector is used to narrow down the nodes used to communicate with with secret engine
         """
         return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -27028,6 +27056,8 @@ class SecretEnginePostgresSecretEngine(dict):
             suggest = "key_rotation_interval_days"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "pathCredentials":
+            suggest = "path_credentials"
         elif key == "publicKey":
             suggest = "public_key"
 
@@ -27054,6 +27084,7 @@ class SecretEnginePostgresSecretEngine(dict):
                  after_read_ttl: Optional[_builtins.str] = None,
                  key_rotation_interval_days: Optional[_builtins.int] = None,
                  node_selector: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  public_key: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  tls: Optional[_builtins.bool] = None,
@@ -27062,14 +27093,15 @@ class SecretEnginePostgresSecretEngine(dict):
         :param _builtins.str database: Database is the database to verify credential against.
         :param _builtins.str hostname: Hostname is the hostname or IP address of the SQL Server.
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         :param _builtins.str after_read_ttl: The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.str public_key: Public key linked with a secret engine
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
@@ -27089,6 +27121,8 @@ class SecretEnginePostgresSecretEngine(dict):
             pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if tags is not None:
@@ -27126,7 +27160,7 @@ class SecretEnginePostgresSecretEngine(dict):
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
 
@@ -27158,7 +27192,7 @@ class SecretEnginePostgresSecretEngine(dict):
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 
@@ -27185,6 +27219,14 @@ class SecretEnginePostgresSecretEngine(dict):
         node selector is used to narrow down the nodes used to communicate with with secret engine
         """
         return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -27234,6 +27276,8 @@ class SecretEngineSqlserverSecretEngine(dict):
             suggest = "key_rotation_interval_days"
         elif key == "nodeSelector":
             suggest = "node_selector"
+        elif key == "pathCredentials":
+            suggest = "path_credentials"
         elif key == "publicKey":
             suggest = "public_key"
         elif key == "tlsSkipVerify":
@@ -27262,6 +27306,7 @@ class SecretEngineSqlserverSecretEngine(dict):
                  after_read_ttl: Optional[_builtins.str] = None,
                  key_rotation_interval_days: Optional[_builtins.int] = None,
                  node_selector: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  public_key: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  tls: Optional[_builtins.bool] = None,
@@ -27271,14 +27316,15 @@ class SecretEngineSqlserverSecretEngine(dict):
         :param _builtins.str database: Database is the database to verify credential against.
         :param _builtins.str hostname: Hostname is the hostname or IP address of the SQL Server.
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         :param _builtins.str after_read_ttl: The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.str public_key: Public key linked with a secret engine
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
@@ -27299,6 +27345,8 @@ class SecretEngineSqlserverSecretEngine(dict):
             pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if tags is not None:
@@ -27338,7 +27386,7 @@ class SecretEngineSqlserverSecretEngine(dict):
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
 
@@ -27370,7 +27418,7 @@ class SecretEngineSqlserverSecretEngine(dict):
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 
@@ -27397,6 +27445,14 @@ class SecretEngineSqlserverSecretEngine(dict):
         node selector is used to narrow down the nodes used to communicate with with secret engine
         """
         return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -55854,6 +55910,7 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
                  max_backoff_duration: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  node_selector: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  request_timeout: Optional[_builtins.int] = None,
                  secret_store_id: Optional[_builtins.str] = None,
                  secret_store_root_path: Optional[_builtins.str] = None,
@@ -55866,8 +55923,8 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
         """
         :param _builtins.str public_key: Public key linked with a secret engine
         :param _builtins.str after_read_ttl: The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
-        :param _builtins.str binddn: Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
-        :param _builtins.str bindpass: Password to use along with binddn when performing user search.
+        :param _builtins.str binddn: Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
+        :param _builtins.str bindpass: Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         :param _builtins.str certificate: CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
         :param _builtins.int connection_timeout: Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
         :param _builtins.bool do_not_validate_timestamps: If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
@@ -55877,6 +55934,7 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
         :param _builtins.str max_backoff_duration: The maximum retry duration in case of automatic failure. On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.int request_timeout: Timeout, in seconds, for the connection when making requests against the server before returning back an error.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
@@ -55912,6 +55970,8 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
             pulumi.set(__self__, "name", name)
         if node_selector is not None:
             pulumi.set(__self__, "node_selector", node_selector)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
         if secret_store_id is not None:
@@ -55951,7 +56011,7 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
     @pulumi.getter
     def binddn(self) -> Optional[_builtins.str]:
         """
-        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "binddn")
 
@@ -55959,7 +56019,7 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
     @pulumi.getter
     def bindpass(self) -> Optional[_builtins.str]:
         """
-        Password to use along with binddn when performing user search.
+        Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "bindpass")
 
@@ -56034,6 +56094,14 @@ class GetSecretEngineSecretEngineActiveDirectoryResult(dict):
         node selector is used to narrow down the nodes used to communicate with with secret engine
         """
         return pulumi.get(self, "node_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
@@ -56222,6 +56290,7 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
                  name: Optional[_builtins.str] = None,
                  node_selector: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  port: Optional[_builtins.int] = None,
                  secret_store_id: Optional[_builtins.str] = None,
                  secret_store_root_path: Optional[_builtins.str] = None,
@@ -56239,7 +56308,8 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
@@ -56247,7 +56317,7 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
         :param _builtins.bool tls_skip_verify: TLS disable certificate verification
         :param _builtins.str ttl: The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         pulumi.set(__self__, "public_key", public_key)
         if after_read_ttl is not None:
@@ -56266,6 +56336,8 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
             pulumi.set(__self__, "node_selector", node_selector)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if secret_store_id is not None:
@@ -56351,9 +56423,17 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter
@@ -56415,7 +56495,7 @@ class GetSecretEngineSecretEngineMysqlSecretEngineResult(dict):
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 
@@ -56432,6 +56512,7 @@ class GetSecretEngineSecretEnginePostgresSecretEngineResult(dict):
                  name: Optional[_builtins.str] = None,
                  node_selector: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  port: Optional[_builtins.int] = None,
                  secret_store_id: Optional[_builtins.str] = None,
                  secret_store_root_path: Optional[_builtins.str] = None,
@@ -56448,14 +56529,15 @@ class GetSecretEngineSecretEnginePostgresSecretEngineResult(dict):
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
         :param Mapping[str, _builtins.str] tags: Tags is a map of key, value pairs.
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
         :param _builtins.str ttl: The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         pulumi.set(__self__, "public_key", public_key)
         if after_read_ttl is not None:
@@ -56474,6 +56556,8 @@ class GetSecretEngineSecretEnginePostgresSecretEngineResult(dict):
             pulumi.set(__self__, "node_selector", node_selector)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if secret_store_id is not None:
@@ -56557,9 +56641,17 @@ class GetSecretEngineSecretEnginePostgresSecretEngineResult(dict):
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter
@@ -56613,7 +56705,7 @@ class GetSecretEngineSecretEnginePostgresSecretEngineResult(dict):
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 
@@ -56630,6 +56722,7 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
                  name: Optional[_builtins.str] = None,
                  node_selector: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
+                 path_credentials: Optional[_builtins.bool] = None,
                  port: Optional[_builtins.int] = None,
                  secret_store_id: Optional[_builtins.str] = None,
                  secret_store_root_path: Optional[_builtins.str] = None,
@@ -56647,7 +56740,8 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
         :param _builtins.int key_rotation_interval_days: An interval of public/private key rotation for secret engine in days
         :param _builtins.str name: Unique human-readable name of the Secret Engine.
         :param _builtins.str node_selector: node selector is used to narrow down the nodes used to communicate with with secret engine
-        :param _builtins.str password: Password is the password to connect to the SQL Server server.
+        :param _builtins.str password: Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
+        :param _builtins.bool path_credentials: PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
         :param _builtins.int port: Port is the port number of the SQL Server server.
         :param _builtins.str secret_store_id: Backing secret store identifier
         :param _builtins.str secret_store_root_path: Backing Secret Store root path where managed secrets are going to be stored
@@ -56655,7 +56749,7 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
         :param _builtins.bool tls: TLS enables TLS/SSL when connecting to the SQL Server server.
         :param _builtins.bool tls_skip_verify: TLS disable certificate verification
         :param _builtins.str ttl: The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
-        :param _builtins.str username: Username is the username to connect to the SQL Server.
+        :param _builtins.str username: Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         pulumi.set(__self__, "public_key", public_key)
         if after_read_ttl is not None:
@@ -56674,6 +56768,8 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
             pulumi.set(__self__, "node_selector", node_selector)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if path_credentials is not None:
+            pulumi.set(__self__, "path_credentials", path_credentials)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if secret_store_id is not None:
@@ -56759,9 +56855,17 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        Password is the password to connect to the SQL Server server.
+        Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="pathCredentials")
+    def path_credentials(self) -> Optional[_builtins.bool]:
+        """
+        PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        """
+        return pulumi.get(self, "path_credentials")
 
     @_builtins.property
     @pulumi.getter
@@ -56823,7 +56927,7 @@ class GetSecretEngineSecretEngineSqlserverSecretEngineResult(dict):
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        Username is the username to connect to the SQL Server.
+        Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         """
         return pulumi.get(self, "username")
 

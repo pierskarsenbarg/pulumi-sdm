@@ -39,9 +39,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? NodeSelector;
         /// <summary>
-        /// Password is the password to connect to the SQL Server server.
+        /// Password is the password to connect to the SQL Server server. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        /// </summary>
+        public readonly bool? PathCredentials;
         /// <summary>
         /// Port is the port number of the SQL Server server.
         /// </summary>
@@ -71,7 +75,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Ttl;
         /// <summary>
-        /// Username is the username to connect to the SQL Server.
+        /// Username is the username to connect to the SQL Server. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         /// </summary>
         public readonly string Username;
 
@@ -90,6 +94,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? nodeSelector,
 
             string password,
+
+            bool? pathCredentials,
 
             int port,
 
@@ -114,6 +120,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             NodeSelector = nodeSelector;
             Password = password;
+            PathCredentials = pathCredentials;
             Port = port;
             PublicKey = publicKey;
             SecretStoreId = secretStoreId;

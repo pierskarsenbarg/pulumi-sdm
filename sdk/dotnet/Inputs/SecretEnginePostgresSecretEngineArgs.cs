@@ -50,10 +50,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? NodeSelector { get; set; }
 
         /// <summary>
-        /// Password is the password to connect to the SQL Server server.
+        /// Password is the password to connect to the SQL Server server. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        /// </summary>
+        [Input("pathCredentials")]
+        public Input<bool>? PathCredentials { get; set; }
 
         /// <summary>
         /// Port is the port number of the SQL Server server.
@@ -104,7 +110,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? Ttl { get; set; }
 
         /// <summary>
-        /// Username is the username to connect to the SQL Server.
+        /// Username is the username to connect to the SQL Server. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
