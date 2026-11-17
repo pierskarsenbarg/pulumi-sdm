@@ -596,6 +596,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Input("autoGrant")]
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public bool? AutoGrant { get; set; }
 
         /// <summary>
@@ -658,6 +659,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Input("autoGrant")]
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public Input<bool>? AutoGrant { get; set; }
 
         /// <summary>
@@ -715,6 +717,7 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
+        [Obsolete(@"auto_grant is deprecated, see docs for more info")]
         public readonly bool? AutoGrant;
         /// <summary>
         /// Optional description of the Workflow.
@@ -772,7 +775,9 @@ namespace PiersKarsenbarg.Sdm
             AccessRequestFixedDuration = accessRequestFixedDuration;
             AccessRequestMaxDuration = accessRequestMaxDuration;
             ApprovalFlowId = approvalFlowId;
+#pragma warning disable CS0618
             AutoGrant = autoGrant;
+#pragma warning restore CS0618
             Description = description;
             Enabled = enabled;
             Id = id;
