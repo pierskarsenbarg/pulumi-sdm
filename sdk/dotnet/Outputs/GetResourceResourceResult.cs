@@ -17,12 +17,16 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAerospikeResult> Aerospikes;
         public readonly ImmutableArray<Outputs.GetResourceResourceAkResult> Aks;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksBasicAuthResult> AksBasicAuths;
+        [Obsolete(@"aks_service_account_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceAksServiceAccountUserImpersonationResult> AksServiceAccountUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksServiceAccountResult> AksServiceAccounts;
+        [Obsolete(@"aks_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceAksUserImpersonationResult> AksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEkResult> AmazonEks;
+        [Obsolete(@"amazon_eks_instance_profile_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult> AmazonEksInstanceProfileUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> AmazonEksInstanceProfiles;
+        [Obsolete(@"amazon_eks_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> AmazonEksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEsiamResult> AmazonEsiams;
@@ -71,6 +75,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> GcpConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpResult> Gcps;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpwifResult> Gcpwifs;
+        [Obsolete(@"google_gke_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> GoogleGkeUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> GoogleGkes;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGroupResult> GoogleGroups;
@@ -82,8 +87,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceKuberneteResult> Kubernetes;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesBasicAuthResult> KubernetesBasicAuths;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesPodIdentityResult> KubernetesPodIdentities;
+        [Obsolete(@"kubernetes_service_account_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult> KubernetesServiceAccountUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> KubernetesServiceAccounts;
+        [Obsolete(@"kubernetes_user_impersonation is deprecated, see docs for more info")]
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> KubernetesUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceLlmResult> Llms;
         public readonly ImmutableArray<Outputs.GetResourceResourceMariaResult> Marias;
@@ -377,13 +384,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Aerospikes = aerospikes;
             Aks = aks;
             AksBasicAuths = aksBasicAuths;
+#pragma warning disable CS0618
             AksServiceAccountUserImpersonations = aksServiceAccountUserImpersonations;
+#pragma warning restore CS0618
             AksServiceAccounts = aksServiceAccounts;
+#pragma warning disable CS0618
             AksUserImpersonations = aksUserImpersonations;
+#pragma warning restore CS0618
             AmazonEks = amazonEks;
+#pragma warning disable CS0618
             AmazonEksInstanceProfileUserImpersonations = amazonEksInstanceProfileUserImpersonations;
+#pragma warning restore CS0618
             AmazonEksInstanceProfiles = amazonEksInstanceProfiles;
+#pragma warning disable CS0618
             AmazonEksUserImpersonations = amazonEksUserImpersonations;
+#pragma warning restore CS0618
             AmazonEs = amazonEs;
             AmazonEsiams = amazonEsiams;
             AmazonmqAmqp091s = amazonmqAmqp091s;
@@ -431,7 +446,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
             GcpConsoles = gcpConsoles;
             Gcps = gcps;
             Gcpwifs = gcpwifs;
+#pragma warning disable CS0618
             GoogleGkeUserImpersonations = googleGkeUserImpersonations;
+#pragma warning restore CS0618
             GoogleGkes = googleGkes;
             GoogleGroups = googleGroups;
             GoogleSpanners = googleSpanners;
@@ -442,9 +459,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Kubernetes = kubernetes;
             KubernetesBasicAuths = kubernetesBasicAuths;
             KubernetesPodIdentities = kubernetesPodIdentities;
+#pragma warning disable CS0618
             KubernetesServiceAccountUserImpersonations = kubernetesServiceAccountUserImpersonations;
+#pragma warning restore CS0618
             KubernetesServiceAccounts = kubernetesServiceAccounts;
+#pragma warning disable CS0618
             KubernetesUserImpersonations = kubernetesUserImpersonations;
+#pragma warning restore CS0618
             Llms = llms;
             Marias = marias;
             McpGatewayNoAuths = mcpGatewayNoAuths;
