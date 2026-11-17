@@ -26,6 +26,7 @@ export function getSecretEngine(args?: GetSecretEngineArgs, opts?: pulumi.Invoke
         "name": args.name,
         "nodeSelector": args.nodeSelector,
         "password": args.password,
+        "pathCredentials": args.pathCredentials,
         "port": args.port,
         "requestTimeout": args.requestTimeout,
         "secretStoreId": args.secretStoreId,
@@ -47,11 +48,11 @@ export function getSecretEngine(args?: GetSecretEngineArgs, opts?: pulumi.Invoke
  */
 export interface GetSecretEngineArgs {
     /**
-     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     binddn?: string;
     /**
-     * Password to use along with binddn when performing user search.
+     * Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     bindpass?: string;
     /**
@@ -95,9 +96,13 @@ export interface GetSecretEngineArgs {
      */
     nodeSelector?: string;
     /**
-     * Password is the password to connect to the SQL Server server.
+     * Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     password?: string;
+    /**
+     * PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+     */
+    pathCredentials?: boolean;
     /**
      * Port is the port number of the SQL Server server.
      */
@@ -147,7 +152,7 @@ export interface GetSecretEngineArgs {
      */
     userdn?: string;
     /**
-     * Username is the username to connect to the SQL Server.
+     * Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     username?: string;
 }
@@ -157,11 +162,11 @@ export interface GetSecretEngineArgs {
  */
 export interface GetSecretEngineResult {
     /**
-     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     readonly binddn?: string;
     /**
-     * Password to use along with binddn when performing user search.
+     * Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     readonly bindpass?: string;
     /**
@@ -209,9 +214,13 @@ export interface GetSecretEngineResult {
      */
     readonly nodeSelector?: string;
     /**
-     * Password is the password to connect to the SQL Server server.
+     * Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     readonly password?: string;
+    /**
+     * PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+     */
+    readonly pathCredentials?: boolean;
     /**
      * Port is the port number of the SQL Server server.
      */
@@ -264,7 +273,7 @@ export interface GetSecretEngineResult {
      */
     readonly userdn?: string;
     /**
-     * Username is the username to connect to the SQL Server.
+     * Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     readonly username?: string;
 }
@@ -288,6 +297,7 @@ export function getSecretEngineOutput(args?: GetSecretEngineOutputArgs, opts?: p
         "name": args.name,
         "nodeSelector": args.nodeSelector,
         "password": args.password,
+        "pathCredentials": args.pathCredentials,
         "port": args.port,
         "requestTimeout": args.requestTimeout,
         "secretStoreId": args.secretStoreId,
@@ -309,11 +319,11 @@ export function getSecretEngineOutput(args?: GetSecretEngineOutputArgs, opts?: p
  */
 export interface GetSecretEngineOutputArgs {
     /**
-     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+     * Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     binddn?: pulumi.Input<string | undefined>;
     /**
-     * Password to use along with binddn when performing user search.
+     * Bindpass is the password to use along with binddn when performing user search. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     bindpass?: pulumi.Input<string | undefined>;
     /**
@@ -357,9 +367,13 @@ export interface GetSecretEngineOutputArgs {
      */
     nodeSelector?: pulumi.Input<string | undefined>;
     /**
-     * Password is the password to connect to the SQL Server server.
+     * Password is the password to connect to the SQL Server server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+     */
+    pathCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Port is the port number of the SQL Server server.
      */
@@ -409,7 +423,7 @@ export interface GetSecretEngineOutputArgs {
      */
     userdn?: pulumi.Input<string | undefined>;
     /**
-     * Username is the username to connect to the SQL Server.
+     * Username is the username to connect to the SQL Server. With<span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "> pathCredentials </span>it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
      */
     username?: pulumi.Input<string | undefined>;
 }

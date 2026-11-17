@@ -19,11 +19,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? AfterReadTtl;
         /// <summary>
-        /// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        /// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         /// </summary>
         public readonly string? Binddn;
         /// <summary>
-        /// Password to use along with binddn when performing user search.
+        /// Bindpass is the password to use along with binddn when performing user search. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         /// </summary>
         public readonly string? Bindpass;
         /// <summary>
@@ -62,6 +62,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// node selector is used to narrow down the nodes used to communicate with with secret engine
         /// </summary>
         public readonly string? NodeSelector;
+        /// <summary>
+        /// PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        /// </summary>
+        public readonly bool? PathCredentials;
         /// <summary>
         /// Public key linked with a secret engine
         /// </summary>
@@ -129,6 +133,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? nodeSelector,
 
+            bool? pathCredentials,
+
             string publicKey,
 
             int? requestTimeout,
@@ -161,6 +167,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             MaxBackoffDuration = maxBackoffDuration;
             Name = name;
             NodeSelector = nodeSelector;
+            PathCredentials = pathCredentials;
             PublicKey = publicKey;
             RequestTimeout = requestTimeout;
             SecretStoreId = secretStoreId;

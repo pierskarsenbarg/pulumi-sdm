@@ -20,13 +20,13 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? AfterReadTtl { get; set; }
 
         /// <summary>
-        /// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+        /// Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
         /// </summary>
         [Input("binddn", required: true)]
         public Input<string> Binddn { get; set; } = null!;
 
         /// <summary>
-        /// Password to use along with binddn when performing user search.
+        /// Bindpass is the password to use along with binddn when performing user search. With&lt;span pulumi-lang-nodejs=" pathCredentials " pulumi-lang-dotnet=" PathCredentials " pulumi-lang-go=" pathCredentials " pulumi-lang-python=" path_credentials " pulumi-lang-yaml=" pathCredentials " pulumi-lang-java=" pathCredentials " pulumi-lang-hcl=" path_credentials "&gt; pathCredentials &lt;/span&gt;it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
         /// </summary>
         [Input("bindpass", required: true)]
         public Input<string> Bindpass { get; set; } = null!;
@@ -78,6 +78,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("nodeSelector")]
         public Input<string>? NodeSelector { get; set; }
+
+        /// <summary>
+        /// PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+        /// </summary>
+        [Input("pathCredentials")]
+        public Input<bool>? PathCredentials { get; set; }
 
         /// <summary>
         /// Public key linked with a secret engine

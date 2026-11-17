@@ -10527,11 +10527,11 @@
                 },
                 "binddn": {
                     "type": "string",
-                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 },
                 "bindpass": {
                     "type": "string",
-                    "description": "Password to use along with binddn when performing user search.\n"
+                    "description": "Bindpass is the password to use along with binddn when performing user search. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
                 },
                 "certificate": {
                     "type": "string",
@@ -10564,6 +10564,10 @@
                 "nodeSelector": {
                     "type": "string",
                     "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -10711,7 +10715,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -10750,7 +10758,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -10808,7 +10816,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -10843,7 +10855,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -10901,7 +10913,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -10940,7 +10956,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -22363,11 +22379,11 @@
                 },
                 "binddn": {
                     "type": "string",
-                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                    "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 },
                 "bindpass": {
                     "type": "string",
-                    "description": "Password to use along with binddn when performing user search.\n"
+                    "description": "Bindpass is the password to use along with binddn when performing user search. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
                 },
                 "certificate": {
                     "type": "string",
@@ -22404,6 +22420,10 @@
                 "nodeSelector": {
                     "type": "string",
                     "description": "node selector is used to narrow down the nodes used to communicate with with secret engine\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -22539,7 +22559,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -22578,7 +22602,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -22623,7 +22647,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -22658,7 +22686,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -22703,7 +22731,11 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password is the password to connect to the SQL Server server.\n"
+                    "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                },
+                "pathCredentials": {
+                    "type": "boolean",
+                    "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -22742,7 +22774,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username is the username to connect to the SQL Server.\n"
+                    "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                 }
             },
             "type": "object",
@@ -28578,11 +28610,11 @@
                 "properties": {
                     "binddn": {
                         "type": "string",
-                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n"
+                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                     },
                     "bindpass": {
                         "type": "string",
-                        "description": "Password to use along with binddn when performing user search.\n"
+                        "description": "Bindpass is the password to use along with binddn when performing user search. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
                     },
                     "certificate": {
                         "type": "string",
@@ -28626,7 +28658,11 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "Password is the password to connect to the SQL Server server.\n"
+                        "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n"
+                    },
+                    "pathCredentials": {
+                        "type": "boolean",
+                        "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n"
                     },
                     "port": {
                         "type": "integer",
@@ -28681,7 +28717,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "Username is the username to connect to the SQL Server.\n"
+                        "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n"
                     }
                 },
                 "type": "object"
@@ -28690,11 +28726,11 @@
                 "description": "A collection of values returned by getSecretEngine.\n",
                 "properties": {
                     "binddn": {
-                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com\n",
+                        "description": "Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n",
                         "type": "string"
                     },
                     "bindpass": {
-                        "description": "Password to use along with binddn when performing user search.\n",
+                        "description": "Bindpass is the password to use along with binddn when performing user search. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n",
                         "type": "string"
                     },
                     "certificate": {
@@ -28745,8 +28781,12 @@
                         "type": "string"
                     },
                     "password": {
-                        "description": "Password is the password to connect to the SQL Server server.\n",
+                        "description": "Password is the password to connect to the SQL Server server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=password, otherwise it is the literal password.\n",
                         "type": "string"
+                    },
+                    "pathCredentials": {
+                        "description": "PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.\n",
+                        "type": "boolean"
                     },
                     "port": {
                         "description": "Port is the port number of the SQL Server server.\n",
@@ -28806,7 +28846,7 @@
                         "type": "string"
                     },
                     "username": {
-                        "description": "Username is the username to connect to the SQL Server.\n",
+                        "description": "Username is the username to connect to the SQL Server. With\u003cspan pulumi-lang-nodejs=\" pathCredentials \" pulumi-lang-dotnet=\" PathCredentials \" pulumi-lang-go=\" pathCredentials \" pulumi-lang-python=\" path_credentials \" pulumi-lang-yaml=\" pathCredentials \" pulumi-lang-java=\" pathCredentials \" pulumi-lang-hcl=\" path_credentials \"\u003e pathCredentials \u003c/span\u003eit is a secret store path in the resource format path?key=username, otherwise it is the literal username.\n",
                         "type": "string"
                     }
                 },
